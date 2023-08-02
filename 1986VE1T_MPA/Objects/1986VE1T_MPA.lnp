@@ -1,0 +1,22 @@
+--cpu Cortex-M1
+".\objects\adc.o"
+".\objects\main.o"
+".\objects\ports.o"
+".\objects\register_space.o"
+".\objects\timer.o"
+".\objects\uart.o"
+".\objects\clock.o"
+".\objects\protocol.o"
+".\objects\dma.o"
+".\objects\startup_mdr32f1qi.o"
+".\objects\system_mdr32f1qi.o"
+".\objects\mdr32fxqi_adc.o"
+".\objects\mdr32fxqi_dma.o"
+".\objects\mdr32fxqi_port.o"
+".\objects\mdr32fxqi_rst_clk.o"
+".\objects\mdr32fxqi_timer.o"
+".\objects\mdr32fxqi_uart.o"
+--strict --scatter ".\Objects\1986VE1T_MPA.sct"
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\Listings\1986VE1T_MPA.map" -o .\Objects\1986VE1T_MPA.axf
