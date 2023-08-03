@@ -1,49 +1,54 @@
 #include "UART.h"
 
-extern UARTn UART1;
-extern UARTn UART2;
+UARTn UART1 IAR_SECTION ("EXECUTABLE_MEMORY_SECTION") __attribute__((section("EXECUTABLE_MEMORY_SECTION")));
+UARTn UART2 IAR_SECTION ("EXECUTABLE_MEMORY_SECTION") __attribute__((section("EXECUTABLE_MEMORY_SECTION")));
+
 #ifdef K1986VE3T
-	extern UARTn UART3;
-	extern UARTn UART4;
+UARTn UART3;
+UARTn UART4;
 #endif
 
 //обработчик прерываний UART1
 void UART1_IRQHandler(void);
 void UART1_IRQHandler(void)
 {
-	UART_ClearITPendingBit(UART1.UARTx, UART_IT_RX);
-  while (UART_GetFlagStatus (UART1.UARTx, UART_FLAG_TXFE)!= SET){}
-	UART1.buffer_count &= BUFFER_MASK;
-	UART1.buffer_count++;
+		UART1.buffer_count &= BUFFER_MASK;
+		while (UART_GetFlagStatus (UART1.UARTx, UART_FLAG_TXFE)!= SET){}
+		UART1.buffer_count++;
+		UART_ReceiveData(UART1.UARTx);
+		UART_ClearITPendingBit(UART1.UARTx, UART_IT_RX);
 }
 //обработчик прерываний UART2
 void UART2_IRQHandler(void);
 void UART2_IRQHandler(void)
 {
-	UART_ClearITPendingBit(UART2.UARTx, UART_IT_RX);
-  while (UART_GetFlagStatus (UART2.UARTx, UART_FLAG_TXFE)!= SET){}
-	UART2.buffer_count &= BUFFER_MASK;
-	UART2.buffer_count++;
+		UART2.buffer_count &= BUFFER_MASK;
+		while (UART_GetFlagStatus (UART2.UARTx, UART_FLAG_TXFE)!= SET){}
+		UART2.buffer_count++;
+		UART_ReceiveData(UART2.UARTx);
+		UART_ClearITPendingBit(UART2.UARTx, UART_IT_RX);
 }
 #ifdef K1986VE3T
-	//обработчик прерываний UART3
-	void UART3_IRQHandler(void);
-	void UART3_IRQHandler(void)
-	{
-		UART_ClearITPendingBit(UART3.UARTx, UART_IT_RX);
-		while (UART_GetFlagStatus (UART3.UARTx, UART_FLAG_TXFE)!= SET){}
-		UART3.buffer_count &= BUFFER_MASK;
-		UART3.buffer_count++;
-	}
-	//обработчик прерываний UART4
-	void UART4_IRQHandler(void);
-	void UART4_IRQHandler(void)
-	{
-		UART_ClearITPendingBit(UART4.UARTx, UART_IT_RX);
-		while (UART_GetFlagStatus (UART4.UARTx, UART_FLAG_TXFE)!= SET){}
-		UART4.buffer_count &= BUFFER_MASK;
-		UART4.buffer_count++;
-	}
+//обработчик прерываний UART3
+void UART3_IRQHandler(void);
+void UART3_IRQHandler(void)
+{
+	UART3.buffer_count &= BUFFER_MASK;
+	while (UART_GetFlagStatus (UART3.UARTx, UART_FLAG_TXFE)!= SET){}
+	UART3.buffer_count++;
+	UART_ReceiveData(UART3.UARTx);
+	UART_ClearITPendingBit(UART3.UARTx, UART_IT_RX);
+}
+//обработчик прерываний UART4
+void UART4_IRQHandler(void);
+void UART4_IRQHandler(void)
+{
+	UART4.buffer_count &= BUFFER_MASK;
+	while (UART_GetFlagStatus (UART4.UARTx, UART_FLAG_TXFE)!= SET){}
+	UART4.buffer_count++;
+	UART_ReceiveData(UART4.UARTx);
+	UART_ClearITPendingBit(UART4.UARTx, UART_IT_RX);
+}
 #endif
 /*
 Функция инициализация UART
@@ -60,6 +65,7 @@ uint8_t uart_init(UARTn *UART_struct)
 	// Делитель тактовой частоты UART
 	UART_BRGInit(UART_struct->UARTx, UART_struct->UART_HCLKdiv);
 
+	NVIC_EnableIRQ( UART_struct->IRQn );
 	
 	// Конфигурация UART
 	UART_InitStructure.UART_BaudRate = UART_struct->UART.UART_BaudRate;
@@ -75,25 +81,25 @@ uint8_t uart_init(UARTn *UART_struct)
 	{
 		return 1;
 	}
-	
-	// Включить сконфигурированный UART
-	UART_Cmd(UART_struct->UARTx, ENABLE);
-	
-	//UART_DMAConfig(UART_struct.UARTx, UART_IT_FIFO_LVL_2words, UART_IT_FIFO_LVL_2words);
-	//UART_DMACmd(UART_struct.UARTx, DMA_Channel_REQ_UART1_RX, ENABLE);
 
 	//Включение прерываний UART
 	NVIC_SetPriority (UART_struct->IRQn, 1);
 	UART_ITConfig( UART_struct->UARTx, UART_IT_RX, ENABLE );
-	NVIC_EnableIRQ( UART_struct->IRQn );
+	
+	// Включить сконфигурированный UART
+	UART_Cmd(UART_struct->UARTx, ENABLE);
 	
 	return 0;
 }
 /*
 Функция передачи данных по UART
 */
-uint8_t uart_write(UARTn *UART_struct, uint8_t data[], uint32_t data_size)
+uint8_t uart_write(UARTn *UART_struct, uint8_t *data, uint32_t data_size)
 {
+	if (UART_struct->UARTx_timeouts->write_timeout_flag == 1)
+	{
+		MDR_TIMER1->CNT = 0;
+	}
 	if (data_size > UINT32_MAX)
 	{
 		return 1;
@@ -101,7 +107,13 @@ uint8_t uart_write(UARTn *UART_struct, uint8_t data[], uint32_t data_size)
 	for (int i = 0; i < data_size; i++)
 	{
 		UART_SendData(UART_struct->UARTx, data[i]);
-		while (UART_GetFlagStatus(UART_struct->UARTx, UART_FLAG_TXFF) == SET);
+		while (UART_GetFlagStatus(UART_struct->UARTx, UART_FLAG_TXFF) == SET)
+		{
+			if (UART_struct->UARTx_timeouts->write_timeout_flag == 1)
+			{
+				if (TIMER_GetCounter(MDR_TIMER1)==(UART_struct->UARTx_timeouts->write_val_timeout*50)) return 1;
+			}
+		}
 	}
 	return 0;
 }
@@ -110,30 +122,56 @@ uint8_t uart_write(UARTn *UART_struct, uint8_t data[], uint32_t data_size)
 */
 uint8_t uart_read(UARTn *UART_struct, uint32_t len, uint8_t *data)
 {
+	//если длина превышает размер буфера
 	if (len > BUFFER_SIZE)
 	{
 		return 1;
 	}
-	//РїСЂРѕРІРµСЂРєР° РЅР° С‚Рѕ, С‡С‚РѕР±С‹ РєРѕР»-РІРѕ РІРЅРѕРІСЊ РїСЂРёР±С‹РІС€РёС… Р±Р°Р№С‚РѕРІ Р±С‹Р»Рѕ РЅРµ РјРµРЅСЊС€Рµ СЃС‡РёС‚С‹РІР°РµРјРѕР№ РґР»РёРЅС‹
-	if(abs(UART_struct->buffer_count - UART_struct->read_pos) < len)
+	//если последний принятый байт перевалит границу буфера и байты будут перезаписываться в буфере с самого начала
+	if (((UART_struct->read_pos)+len) > BUFFER_SIZE)
 	{
-		return 1;
-	}
-	if ((UART_struct->read_pos+len) > BUFFER_SIZE)
-	{
-		//РїСЂРѕРІРµСЂРєР° РЅР° С‚Рѕ, С‡С‚РѕР±С‹ РєРѕР»-РІРѕ РІРЅРѕРІСЊ РїСЂРёР±С‹РІС€РёС… Р±Р°Р№С‚РѕРІ Р±С‹Р»Рѕ РЅРµ РјРµРЅСЊС€Рµ СЃС‡РёС‚С‹РІР°РµРјРѕР№ РґР»РёРЅС‹
-		if ((BUFFER_SIZE-UART_struct->read_pos+UART_struct->buffer_count) < len)
+		//если задан таймаут 
+		if (UART_struct->UARTx_timeouts->read_timeout_flag == 1)
+		{
+			MDR_TIMER1->CNT = 0;
+			while ((int)((UART_struct->buffer_count) - (UART_struct->read_pos)) >= 0)
+			{
+				if (TIMER_GetCounter(MDR_TIMER1)==(UART_struct->UARTx_timeouts->write_val_timeout*50)) return 1;
+			}
+			while ((BUFFER_SIZE - (UART_struct->read_pos) + (UART_struct->buffer_count)) < len)
+			{
+				if (TIMER_GetCounter(MDR_TIMER1)==(UART_struct->UARTx_timeouts->write_val_timeout*50)) return 1;
+			}
+		}
+		
+		if ((int)((UART_struct->buffer_count) - (UART_struct->read_pos)) >= 0)
 		{
 			return 1;
 		}
-		memcpy(data, UART_struct->buffer + UART_struct->read_pos, BUFFER_SIZE-UART_struct->read_pos);
-		memcpy(data + BUFFER_SIZE-UART_struct->read_pos, UART_struct->buffer, len-BUFFER_SIZE+UART_struct->read_pos);
-		UART_struct->read_pos += len-BUFFER_SIZE;
+		else
+		{
+			if ((BUFFER_SIZE + (UART_struct->buffer_count) - (UART_struct->read_pos)) < len) return 1;
+			memcpy(data, (UART_struct->buffer) + (UART_struct->read_pos), BUFFER_SIZE-(UART_struct->read_pos));
+			memcpy(data + BUFFER_SIZE-(UART_struct->read_pos), UART_struct->buffer, len-BUFFER_SIZE+(UART_struct->read_pos));
+			UART_struct->read_pos = (UART_struct->read_pos) + len-BUFFER_SIZE;
+		}
 	}
+	//если последний принятый байт не перевалит границу буфера
 	else
 	{
-		memcpy(data, UART_struct->buffer + UART_struct->read_pos, len);
-		UART_struct->read_pos += len;
+		//если задан таймаут 
+		if (UART_struct->UARTx_timeouts->read_timeout_flag == 1)
+		{
+			MDR_TIMER1->CNT = 0;
+			while (((UART_struct->buffer_count) - (UART_struct->read_pos)) < len)
+			{
+				if (TIMER_GetCounter(MDR_TIMER1)==(UART_struct->UARTx_timeouts->write_val_timeout*50)) return 1;
+			}
+		}
+		
+		if (((UART_struct->buffer_count) - (UART_struct->read_pos)) < len) return 1;
+		memcpy(data, (UART_struct->buffer) + (UART_struct->read_pos), len);
+		UART_struct->read_pos = (UART_struct->read_pos) + len;
 	}
 	
 	return 0;
@@ -209,6 +247,22 @@ void DMA_UART_RX_init(UARTn *UART_struct)
 	// Разрешить работу DMA с UART
 	DMA_Cmd (UART_struct->DMA_Channel, ENABLE);
 	
-	NVIC_SetPriority (DMA_IRQn, 2);
+	//NVIC_SetPriority (DMA_IRQn, 2);
 	NVIC_EnableIRQ(DMA_IRQn);
+}
+/*
+Функция установки таймаута UARTn на чтение
+*/
+void uart_set_read_timeout(UARTn *UART_struct, uint32_t read_timeout)
+{
+	UART_struct->UARTx_timeouts->read_timeout_flag = 1;
+	UART_struct->UARTx_timeouts->read_val_timeout = read_timeout;
+}
+/*
+Функция установки таймаута UARTn на запись
+*/
+void uart_set_write_timeout(UARTn *UART_struct, uint32_t write_timeout)
+{
+	UART_struct->UARTx_timeouts->write_timeout_flag = 1;
+	UART_struct->UARTx_timeouts->write_val_timeout = write_timeout;
 }

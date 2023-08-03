@@ -29,7 +29,7 @@
 	uint32_t checksum - контрольная сумма
 	uint16_t end - признак конца пакета
 */
-typedef struct TX_RX_PACKET_STRUCT
+typedef struct TX_RX_Packet_Struct
 {
 	uint8_t header;
 	uint8_t receiver_addr;
@@ -41,7 +41,7 @@ typedef struct TX_RX_PACKET_STRUCT
 	uint32_t data_size;
 	uint32_t checksum;
 	uint16_t end;
-}FIELDS_PACKET;
+}Fields_packet;
 
 /*typedef struct TX_RX_PACKET_STRUCT
 {
@@ -59,44 +59,38 @@ typedef struct TX_RX_PACKET_STRUCT
 
 
 /*
-Функция для запроса пакета данных
-UARTn *UART_struct - выбор UART
-возвращает сообщение с результатом 0 - пакет данных получен, обработан и ответный пакет отправлен; 1- нет принятого пакета, ошибка
-*/
-uint8_t PROTOCOL_REQUEST_DATA(UARTn *UART_struct);
-/*
 Функция для отправки пакета данных
 FIELDS_PACKET *received_packet - указатель на структуру с полями принятого пакета
 FIELDS_PACKET *sended_packet - указатель на структуру с полями ответного пакета
 UARTn *UART_struct - выбор UART
 возвращает сообщение с результатом 0 - успех; 1- ошибка
 */
-uint8_t PROTOCOL_WRITE(FIELDS_PACKET *received_packet, FIELDS_PACKET *sended_packet, UARTn *UART_struct);
+uint8_t Protocol_write(Fields_packet *received_packet, Fields_packet *sended_packet, UARTn *UART_struct);
 /*
 Функция для чтения пакета данных
 FIELDS_PACKET *received_packet - указатель на структуру с полями принятого пакета
 UARTn *UART_struct - выбор UART
 возвращает сообщение с результатом 0 - успех; 1- ошибка, принятых пакетов нет либо пакет поврежден
 */
-uint8_t PROTOCOL_READ(FIELDS_PACKET *received_packet, UARTn *UART_struct);
+uint8_t Protocol_read(Fields_packet *received_packet, UARTn *UART_struct);
 /*
 Функция для выполнения требуемой команды
 FIELDS_PACKET *received_packet - указатель на структуру с полями принятого пакета
 FIELDS_PACKET *sended_packet - указатель на структуру с полями ответного пакета
 возвращает сообщение с результатом 0 - успех; 1- ошибка
 */
-uint8_t PROTOCOL_DO_CMD(FIELDS_PACKET *received_packet, FIELDS_PACKET *sended_packet);
+uint8_t Protocol_do_cmd(Fields_packet *received_packet, Fields_packet *sended_packet);
 /*
 Функция вычисления контрольной суммы буфера по алгоритму CRC32
 unsigned char *buf - буфер в виде массива байтов
 size_t len - длина буфера
 например для строки "123456789" - CRC = cbf43926
 */
-uint_least32_t CRC32(unsigned char *buf, size_t len);
+uint_least32_t Crc32(unsigned char *buf, size_t len);
 /*
 Функция вычисления контрольной суммы пакета данных
 FIELDS_PACKET *packet - указатель на структуру с полями пакета
 */
-uint_least32_t PROTOCOL_FIND_CRC(FIELDS_PACKET *packet);
+uint_least32_t Protocol_find_crc(Fields_packet *packet);
 
 #endif /*__PROTOCOL_H */

@@ -8,9 +8,9 @@
   C:\Users\shishov\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_compiler.h \
   C:\Users\shishov\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_armclang.h \
   RTE\Device\MDR32F1QI\system_MDR32F1QI.h \
+  C:\Users\shishov\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.0\Libraries\SPL\MDR32FxQI\inc\MDR32FxQI_rst_clk.h \
   C:\Users\shishov\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.0\Libraries\SPL\MDR32FxQI\inc\MDR32FxQI_uart.h \
   C:\Users\shishov\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.0\Libraries\SPL\MDR32FxQI\inc\MDR32FxQI_port.h \
-  C:\Users\shishov\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.0\Libraries\SPL\MDR32FxQI\inc\MDR32FxQI_rst_clk.h \
   C:\Users\shishov\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.0\Libraries\SPL\MDR32FxQI\inc\MDR32FxQI_dma.h \
   C:\Users\shishov\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.0\Libraries\SPL\MDR32FxQI\inc\MDR32FxQI_timer.h \
   C:\Users\shishov\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.0\Libraries\SPL\MDR32FxQI\inc\MDR32FxQI_adc.h

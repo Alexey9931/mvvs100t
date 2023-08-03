@@ -6,9 +6,9 @@
 
 #ifdef K1986VE1T
 	#include <MDR32F1QI.h>
+	#include <MDR32FxQI_rst_clk.h>
 	#include <MDR32FxQI_uart.h>
 	#include <MDR32FxQI_port.h>
-	#include <MDR32FxQI_rst_clk.h>
 	#include <MDR32FxQI_dma.h>
 	#include <MDR32FxQI_timer.h>
 	#include <MDR32FxQI_adc.h>

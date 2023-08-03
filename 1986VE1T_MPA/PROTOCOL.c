@@ -1,23 +1,9 @@
 #include "PROTOCOL.h"
 
 /*
-Функция для запроса пакета данных
-*/
-uint8_t PROTOCOL_REQUEST_DATA(UARTn *UART_struct)
-{
-	FIELDS_PACKET sended_packet;
-	FIELDS_PACKET received_packet;
-	
-	if(PROTOCOL_READ(&received_packet, UART_struct) != 0) return 1;
-//	if(PROTOCOL_DO_CMD(&received_packet, &sended_packet) != 0) return 1; 
-//	if(PROTOCOL_WRITE(&received_packet, &sended_packet, UART_struct) != 0) return 1;
-	
-	return 0;
-}
-/*
 Функция для отправки пакета данных
 */
-uint8_t PROTOCOL_WRITE(FIELDS_PACKET *received_packet, FIELDS_PACKET *sended_packet, UARTn *UART_struct)
+uint8_t Protocol_write(Fields_packet *received_packet, Fields_packet *sended_packet, UARTn *UART_struct)
 {
 	uint8_t DATA[2048] = {0};//отправляемый массив байтов
 	
@@ -39,7 +25,7 @@ uint8_t PROTOCOL_WRITE(FIELDS_PACKET *received_packet, FIELDS_PACKET *sended_pac
 	}
 	
 	//вычисление контрольной суммы
-	sended_packet->checksum = PROTOCOL_FIND_CRC(sended_packet);
+	sended_packet->checksum = Protocol_find_crc(sended_packet);
 	
 	DATA[7+sended_packet->data_size] = sended_packet->checksum & 0xFF;
 	DATA[7+sended_packet->data_size+1] = sended_packet->checksum>>8;
@@ -54,7 +40,7 @@ uint8_t PROTOCOL_WRITE(FIELDS_PACKET *received_packet, FIELDS_PACKET *sended_pac
 /*
 Функция для чтения пакета данных
 */
-uint8_t PROTOCOL_READ(FIELDS_PACKET *received_packet, UARTn *UART_struct)
+uint8_t Protocol_read(Fields_packet *received_packet, UARTn *UART_struct)
 {
 	uint8_t data[2048];//телеграмма (есть конец и начало пакета)
 	uint8_t buffer[2048];//весь считанный буфер (может не быть конца, в этом случае возврат с ошибкой)
@@ -144,7 +130,7 @@ uint8_t PROTOCOL_READ(FIELDS_PACKET *received_packet, UARTn *UART_struct)
 /*
 Функция для выполнения требуемой команды
 */
-uint8_t PROTOCOL_DO_CMD(FIELDS_PACKET *received_packet, FIELDS_PACKET *sended_packet)
+uint8_t Protocol_do_cmd(Fields_packet *received_packet, Fields_packet *sended_packet)
 {
 	//	//отправка ответа
 //	uint8_t SendBuf[16];
@@ -216,7 +202,7 @@ uint8_t PROTOCOL_DO_CMD(FIELDS_PACKET *received_packet, FIELDS_PACKET *sended_pa
 /*
 Функция вычисления контрольной суммы буфера по алгоритму CRC32
 */
-uint_least32_t CRC32(unsigned char *buf, size_t len)
+uint_least32_t Crc32(unsigned char *buf, size_t len)
 {
 	uint_least32_t crc_table[256];
 	uint_least32_t crc; int i, j;
@@ -240,7 +226,7 @@ uint_least32_t CRC32(unsigned char *buf, size_t len)
 /*
 Функция вычисления контрольной суммы пакета данных
 */
-uint_least32_t PROTOCOL_FIND_CRC(FIELDS_PACKET *packet)
+uint_least32_t Protocol_find_crc(Fields_packet *packet)
 {
 	uint8_t buf_checksum[5 + packet->data_size];//буффер для расчета контрольной суммы
 	buf_checksum[0] = packet->sender_addr;
@@ -252,5 +238,5 @@ uint_least32_t PROTOCOL_FIND_CRC(FIELDS_PACKET *packet)
 	{
 		buf_checksum[k+5] = packet->data[k];
 	}
-	return CRC32(buf_checksum, 5 + packet->data_size);
+	return Crc32(buf_checksum, 5 + packet->data_size);
 }
