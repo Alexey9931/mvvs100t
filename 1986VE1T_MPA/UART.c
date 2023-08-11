@@ -1,5 +1,13 @@
+/*!
+ \file
+ \brief Р¤Р°Р№Р» СЃ СЂРµР°Р»РёР·Р°С†РёРµР№ API РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ UART
+*/
 #include "UART.h"
 
+/*Р“Р»РѕР±Р°Р»СЊРЅС‹Рµ СЌРєР·РµРјРїР»СЏСЂС‹ СЃС‚СЂСѓРєС‚СѓСЂ СЃ РєРѕРЅС„РёРіСѓСЂР°С†РёРѕРЅРЅС‹РјРё РїР°СЂР°РјРµС‚СЂР°РјРё UART Рё Р±СѓС„РµСЂРѕРј РїСЂРёРµРјР° 
+ *(РЅРµРѕР±С…РѕРґРёРјРѕ РґРѕР±Р°РІРёС‚СЊ Р°С‚С‚СЂРёР±СѓС‚, РєРѕС‚РѕСЂС‹Р№ РїСЂРѕРїРёСЃР°РЅ РІ С„Р°Р№Р»Рµ Objects/.sct,
+ * С‚.Рє. РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ DMA Р°РґСЂРµСЃ Р±СѓС„РµСЂР° РЅР°Р·РЅР°С‡РµРЅРёСЏ РґРѕР»Р¶РµРЅ Р»РµР¶Р°С‚СЊ РІ РѕРїСЂРµРґРµР»РµРЅРЅРѕР№ РѕР±Р»Р°СЃС‚Рё РїР°РјСЏС‚Рё)
+*/
 UARTn UART1 IAR_SECTION ("EXECUTABLE_MEMORY_SECTION") __attribute__((section("EXECUTABLE_MEMORY_SECTION")));
 UARTn UART2 IAR_SECTION ("EXECUTABLE_MEMORY_SECTION") __attribute__((section("EXECUTABLE_MEMORY_SECTION")));
 
@@ -8,7 +16,7 @@ UARTn UART3;
 UARTn UART4;
 #endif
 
-//обработчик прерываний UART1
+//РѕР±СЂР°Р±РѕС‚С‡РёРє РїСЂРµСЂС‹РІР°РЅРёР№ UART1
 void UART1_IRQHandler(void);
 void UART1_IRQHandler(void)
 {
@@ -18,7 +26,7 @@ void UART1_IRQHandler(void)
 		UART_ReceiveData(UART1.UARTx);
 		UART_ClearITPendingBit(UART1.UARTx, UART_IT_RX);
 }
-//обработчик прерываний UART2
+//РѕР±СЂР°Р±РѕС‚С‡РёРє РїСЂРµСЂС‹РІР°РЅРёР№ UART2
 void UART2_IRQHandler(void);
 void UART2_IRQHandler(void)
 {
@@ -29,7 +37,7 @@ void UART2_IRQHandler(void)
 		UART_ClearITPendingBit(UART2.UARTx, UART_IT_RX);
 }
 #ifdef K1986VE3T
-//обработчик прерываний UART3
+//РѕР±СЂР°Р±РѕС‚С‡РёРє РїСЂРµСЂС‹РІР°РЅРёР№ UART3
 void UART3_IRQHandler(void);
 void UART3_IRQHandler(void)
 {
@@ -39,7 +47,7 @@ void UART3_IRQHandler(void)
 	UART_ReceiveData(UART3.UARTx);
 	UART_ClearITPendingBit(UART3.UARTx, UART_IT_RX);
 }
-//обработчик прерываний UART4
+//РѕР±СЂР°Р±РѕС‚С‡РёРє РїСЂРµСЂС‹РІР°РЅРёР№ UART4
 void UART4_IRQHandler(void);
 void UART4_IRQHandler(void)
 {
@@ -51,23 +59,23 @@ void UART4_IRQHandler(void)
 }
 #endif
 /*
-Функция инициализация UART
+Р¤СѓРЅРєС†РёСЏ РёРЅРёС†РёР°Р»РёР·Р°С†РёСЏ UART
 */
 uint8_t uart_init(UARTn *UART_struct)
 { 
-	// Объявление структуры для инициализации контроллера UART
+	// РћР±СЉСЏРІР»РµРЅРёРµ СЃС‚СЂСѓРєС‚СѓСЂС‹ РґР»СЏ РёРЅРёС†РёР°Р»РёР·Р°С†РёРё РєРѕРЅС‚СЂРѕР»Р»РµСЂР° UART
 	UART_InitTypeDef UART_InitStructure;
 	uint8_t res = 0;
 	
-	// Включение тактирования UART
+	// Р’РєР»СЋС‡РµРЅРёРµ С‚Р°РєС‚РёСЂРѕРІР°РЅРёСЏ UART
 	RST_CLK_PCLKcmd(UART_struct->RST_CLK_PCLK_UARTn, ENABLE);
 
-	// Делитель тактовой частоты UART
+	// Р”РµР»РёС‚РµР»СЊ С‚Р°РєС‚РѕРІРѕР№ С‡Р°СЃС‚РѕС‚С‹ UART
 	UART_BRGInit(UART_struct->UARTx, UART_struct->UART_HCLKdiv);
 
 	NVIC_EnableIRQ( UART_struct->IRQn );
 	
-	// Конфигурация UART
+	// РљРѕРЅС„РёРіСѓСЂР°С†РёСЏ UART
 	UART_InitStructure.UART_BaudRate = UART_struct->UART.UART_BaudRate;
 	UART_InitStructure.UART_WordLength = UART_struct->UART.UART_WordLength;
 	UART_InitStructure.UART_StopBits = UART_struct->UART.UART_StopBits;
@@ -75,24 +83,24 @@ uint8_t uart_init(UARTn *UART_struct)
 	UART_InitStructure.UART_FIFOMode = UART_struct->UART.UART_FIFOMode;
 	UART_InitStructure.UART_HardwareFlowControl = UART_struct->UART.UART_HardwareFlowControl;
 
-	// Инициализация UART с заданными параметрами
+	// РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ UART СЃ Р·Р°РґР°РЅРЅС‹РјРё РїР°СЂР°РјРµС‚СЂР°РјРё
 	res = UART_Init(UART_struct->UARTx, &UART_InitStructure);
 	if (res != SUCCESS) 
 	{
 		return 1;
 	}
 
-	//Включение прерываний UART
+	//Р’РєР»СЋС‡РµРЅРёРµ РїСЂРµСЂС‹РІР°РЅРёР№ UART
 	NVIC_SetPriority (UART_struct->IRQn, 1);
 	UART_ITConfig( UART_struct->UARTx, UART_IT_RX, ENABLE );
 	
-	// Включить сконфигурированный UART
+	// Р’РєР»СЋС‡РёС‚СЊ СЃРєРѕРЅС„РёРіСѓСЂРёСЂРѕРІР°РЅРЅС‹Р№ UART
 	UART_Cmd(UART_struct->UARTx, ENABLE);
 	
 	return 0;
 }
 /*
-Функция передачи данных по UART
+Р¤СѓРЅРєС†РёСЏ РїРµСЂРµРґР°С‡Рё РґР°РЅРЅС‹С… РїРѕ UART
 */
 uint8_t uart_write(UARTn *UART_struct, uint8_t *data, uint32_t data_size)
 {
@@ -118,19 +126,19 @@ uint8_t uart_write(UARTn *UART_struct, uint8_t *data, uint32_t data_size)
 	return 0;
 }
 /*
-Функция чтения данных из буффера UART
+Р¤СѓРЅРєС†РёСЏ С‡С‚РµРЅРёСЏ РґР°РЅРЅС‹С… РёР· Р±СѓС„С„РµСЂР° UART
 */
 uint8_t uart_read(UARTn *UART_struct, uint32_t len, uint8_t *data)
 {
-	//если длина превышает размер буфера
+	//РµСЃР»Рё РґР»РёРЅР° РїСЂРµРІС‹С€Р°РµС‚ СЂР°Р·РјРµСЂ Р±СѓС„РµСЂР°
 	if (len > BUFFER_SIZE)
 	{
 		return 1;
 	}
-	//если последний принятый байт перевалит границу буфера и байты будут перезаписываться в буфере с самого начала
+	//РµСЃР»Рё РїРѕСЃР»РµРґРЅРёР№ РїСЂРёРЅСЏС‚С‹Р№ Р±Р°Р№С‚ РїРµСЂРµРІР°Р»РёС‚ РіСЂР°РЅРёС†Сѓ Р±СѓС„РµСЂР° Рё Р±Р°Р№С‚С‹ Р±СѓРґСѓС‚ РїРµСЂРµР·Р°РїРёСЃС‹РІР°С‚СЊСЃСЏ РІ Р±СѓС„РµСЂРµ СЃ СЃР°РјРѕРіРѕ РЅР°С‡Р°Р»Р°
 	if (((UART_struct->read_pos)+len) > BUFFER_SIZE)
 	{
-		//если задан таймаут 
+		//РµСЃР»Рё Р·Р°РґР°РЅ С‚Р°Р№РјР°СѓС‚ 
 		if (UART_struct->UARTx_timeouts->read_timeout_flag == 1)
 		{
 			MDR_TIMER1->CNT = 0;
@@ -152,14 +160,14 @@ uint8_t uart_read(UARTn *UART_struct, uint32_t len, uint8_t *data)
 		{
 			if ((BUFFER_SIZE + (UART_struct->buffer_count) - (UART_struct->read_pos)) < len) return 1;
 			memcpy(data, (UART_struct->buffer) + (UART_struct->read_pos), BUFFER_SIZE-(UART_struct->read_pos));
-			memcpy(data + BUFFER_SIZE-(UART_struct->read_pos), UART_struct->buffer, len-BUFFER_SIZE+(UART_struct->read_pos));
+			memcpy(data + BUFFER_SIZE-(UART_struct->read_pos), UART_struct->buffer, len+(UART_struct->read_pos)-BUFFER_SIZE);
 			UART_struct->read_pos = (UART_struct->read_pos) + len-BUFFER_SIZE;
 		}
 	}
-	//если последний принятый байт не перевалит границу буфера
+	//РµСЃР»Рё РїРѕСЃР»РµРґРЅРёР№ РїСЂРёРЅСЏС‚С‹Р№ Р±Р°Р№С‚ РЅРµ РїРµСЂРµРІР°Р»РёС‚ РіСЂР°РЅРёС†Сѓ Р±СѓС„РµСЂР°
 	else
 	{
-		//если задан таймаут 
+		//РµСЃР»Рё Р·Р°РґР°РЅ С‚Р°Р№РјР°СѓС‚ 
 		if (UART_struct->UARTx_timeouts->read_timeout_flag == 1)
 		{
 			MDR_TIMER1->CNT = 0;
@@ -177,7 +185,7 @@ uint8_t uart_read(UARTn *UART_struct, uint32_t len, uint8_t *data)
 	return 0;
 }
 /*
-Функция установки курсора чтения в буфере UART
+Р¤СѓРЅРєС†РёСЏ СѓСЃС‚Р°РЅРѕРІРєРё РєСѓСЂСЃРѕСЂР° С‡С‚РµРЅРёСЏ РІ Р±СѓС„РµСЂРµ UART
 */
 uint8_t uart_set_pos(UARTn *UART_struct, uint32_t pos)
 {
@@ -189,34 +197,34 @@ uint8_t uart_set_pos(UARTn *UART_struct, uint32_t pos)
 	return 0;
 }
 /*
-Функция чтения текущей позиции курсора чтения
+Р¤СѓРЅРєС†РёСЏ С‡С‚РµРЅРёСЏ С‚РµРєСѓС‰РµР№ РїРѕР·РёС†РёРё РєСѓСЂСЃРѕСЂР° С‡С‚РµРЅРёСЏ
 */
 uint32_t uart_read_pos(UARTn *UART_struct)
 {
 	return UART_struct->read_pos;
 }
 /*
-Функция чтения кол-во байт в буфере UART
+Р¤СѓРЅРєС†РёСЏ С‡С‚РµРЅРёСЏ РєРѕР»-РІРѕ Р±Р°Р№С‚ РІ Р±СѓС„РµСЂРµ UART
 */
 uint32_t uart_get_buf_counter(UARTn *UART_struct)
 {
 	return UART_struct->buffer_count;
 }
 /*
-Функция очистки буфера UART
+Р¤СѓРЅРєС†РёСЏ РѕС‡РёСЃС‚РєРё Р±СѓС„РµСЂР° UART
 */
 void uart_clean(UARTn *UART_struct)
 {
 	memset(UART_struct->buffer, 0, sizeof(UART_struct->buffer));
 }
 /*
-Функция инициализации n-го канала DMA  на запрос от приемника UARTn
+Р¤СѓРЅРєС†РёСЏ РёРЅРёС†РёР°Р»РёР·Р°С†РёРё n-РіРѕ РєР°РЅР°Р»Р° DMA  РЅР° Р·Р°РїСЂРѕСЃ РѕС‚ РїСЂРёРµРјРЅРёРєР° UARTn
 */
 void DMA_UART_RX_init(UARTn *UART_struct)
 {
-	//Структура с настройками DMA в целом 
+	//РЎС‚СЂСѓРєС‚СѓСЂР° СЃ РЅР°СЃС‚СЂРѕР№РєР°РјРё DMA РІ С†РµР»РѕРј 
 	DMA_CtrlDataInitTypeDef DMA_InitStructure_UART_RX;
-	//Структура с настройками канала DMA
+	//РЎС‚СЂСѓРєС‚СѓСЂР° СЃ РЅР°СЃС‚СЂРѕР№РєР°РјРё РєР°РЅР°Р»Р° DMA
 	DMA_ChannelInitTypeDef DMA_Channel_UART_RX;
 	
 	DMA_StructInit(&DMA_Channel_UART_RX);
@@ -231,27 +239,27 @@ void DMA_UART_RX_init(UARTn *UART_struct)
 	DMA_InitStructure_UART_RX.DMA_DestProtCtrl = DMA_DestPrivileged;
 	DMA_InitStructure_UART_RX.DMA_Mode = DMA_Mode_Basic;
 	
-	// Задать структуру канала
+	// Р—Р°РґР°С‚СЊ СЃС‚СЂСѓРєС‚СѓСЂСѓ РєР°РЅР°Р»Р°
 	DMA_Channel_UART_RX.DMA_PriCtrlData = &DMA_InitStructure_UART_RX;
 	DMA_Channel_UART_RX.DMA_Priority = DMA_Priority_High;
 	DMA_Channel_UART_RX.DMA_UseBurst = DMA_BurstClear;
 	DMA_Channel_UART_RX.DMA_SelectDataStructure = DMA_CTRL_DATA_PRIMARY;
 	
-	// Инициализировать канал
+	// РРЅРёС†РёР°Р»РёР·РёСЂРѕРІР°С‚СЊ РєР°РЅР°Р»
 	DMA_Init(UART_struct->DMA_Channel, &DMA_Channel_UART_RX);
 	
 	MDR_DMA->CHNL_REQ_MASK_CLR = 1 << UART_struct->DMA_Channel;
 	MDR_DMA->CHNL_USEBURST_CLR = 1 << UART_struct->DMA_Channel;
 	
 	UART_DMACmd(UART_struct->UARTx,UART_DMA_RXE, ENABLE);
-	// Разрешить работу DMA с UART
+	// Р Р°Р·СЂРµС€РёС‚СЊ СЂР°Р±РѕС‚Сѓ DMA СЃ UART
 	DMA_Cmd (UART_struct->DMA_Channel, ENABLE);
 	
 	//NVIC_SetPriority (DMA_IRQn, 2);
 	NVIC_EnableIRQ(DMA_IRQn);
 }
 /*
-Функция установки таймаута UARTn на чтение
+Р¤СѓРЅРєС†РёСЏ СѓСЃС‚Р°РЅРѕРІРєРё С‚Р°Р№РјР°СѓС‚Р° UARTn РЅР° С‡С‚РµРЅРёРµ
 */
 void uart_set_read_timeout(UARTn *UART_struct, uint32_t read_timeout)
 {
@@ -259,7 +267,7 @@ void uart_set_read_timeout(UARTn *UART_struct, uint32_t read_timeout)
 	UART_struct->UARTx_timeouts->read_val_timeout = read_timeout;
 }
 /*
-Функция установки таймаута UARTn на запись
+Р¤СѓРЅРєС†РёСЏ СѓСЃС‚Р°РЅРѕРІРєРё С‚Р°Р№РјР°СѓС‚Р° UARTn РЅР° Р·Р°РїРёСЃСЊ
 */
 void uart_set_write_timeout(UARTn *UART_struct, uint32_t write_timeout)
 {

@@ -44,28 +44,33 @@ uint8_t Protocol_read(Fields_packet *received_packet, UARTn *UART_struct)
 {
 	uint8_t data[2048];//телеграмма (есть конец и начало пакета)
 	uint8_t buffer[2048];//весь считанный буфер (может не быть конца, в этом случае возврат с ошибкой)
+	uint8_t len = 0;
 	
 //	//считываем первые 5 байт телеграммы, по ним определяем длину пакета
 //	if (abs(uart_read_pos(UART_struct) - uart_get_buf_counter(UART_struct)) < 5) //проверка того, если вдруг первые 5 байт еще не успели попасть в буффер
 //	{
 //		return 1;
 //	}
-	if (uart_read(UART_struct, 5,  buffer) == 1)
+	if (uart_read(UART_struct, 5,  buffer))
 	{
 		return 1;
 	}
-//	//определяем длину пакета
-//	for (int len = 4; len >= 3; len--)
+	//определяем длину пакета
+//	for (len = 4; len >= 3; len--)
 //	{
-//		received_packet->length = received_packet->length << 8;
-//		received_packet->length |= buffer[len];
+//		received_packet->length = (received_packet->length) << 8;
+//		received_packet->length = (received_packet->length) | buffer[len];
 //	}
-//	received_packet->length += 3; //с учетом признака начала и конца
-//	
-//	//теперь считываем весь пакет по вычисленной длине пакета
+	received_packet->length = buffer[1]; //с учетом признака начала и конца
+
+	//теперь считываем весь пакет по вычисленной длине пакета
 //	uart_set_pos(UART_struct, uart_read_pos(UART_struct) - 5); //возврат курсора чтения буфера на исходную позицию
 //	memset(buffer,0,sizeof(buffer));
-//	uart_read(&UART_struct, received_packet->length, buffer);
+//	if (uart_read(UART_struct, received_packet->length, buffer))
+//	{
+//		return 1;
+//	}
+	
 //	//распознавание границ пакета
 //	uint32_t count = 0;
 //	while ((buffer[count] != 0xAA)&&(buffer[count-1] != 0xAA))
@@ -97,19 +102,19 @@ uint8_t Protocol_read(Fields_packet *received_packet, UARTn *UART_struct)
 //	received_packet->cmd = data[6];
 //	//поле данных
 //	received_packet->data_size = received_packet->length-13;//кол-во байт поля данных
-//	for (uint8_t len = 0; len < received_packet->data_size; len++)
+//	for (len = 0; len < received_packet->data_size; len++)
 //	{
 //		received_packet->data[len] = data[7+len];
 //	}
 //	//контрольная сумма
-//	for (int len = 3; len >= 0; len--)
+//	for (len = 3; len >= 0; len--)
 //	{
 //		received_packet->checksum = received_packet->checksum << 8;
 //		received_packet->checksum |= data[7+received_packet->data_size+len];
 //	}
 //	//признак конца пакета
 //	uint16_t end = 0;
-//	for (int len = 1; len >= 0; len--)
+//	for (len = 1; len >= 0; len--)
 //	{
 //		received_packet->end = received_packet->end << 8;
 //		received_packet->end |= data[11+received_packet->data_size+len];
@@ -119,7 +124,7 @@ uint8_t Protocol_read(Fields_packet *received_packet, UARTn *UART_struct)
 //	/*
 //	для примера для строки данных "0x55 0x11 0x22 0x10 0x11 0x80 0x01 0x22 0x5E 0xAD 0xC9 0xC3 0xAA 0xAA " - CRC = 0x5E 0xAD 0xC9 0xC3
 //	*/
-//	uint32_t real_checksum = PROTOCOL_FIND_CRC(received_packet);
+//	uint32_t real_checksum = Protocol_find_crc(received_packet);
 //	//если контрольная сумма не верна, то выход из функции
 //	if (real_checksum != received_packet->checksum)
 //	{

@@ -53,11 +53,13 @@ int main(void)
 
 	while(1)
 	{
-		res = uart_read(&UART1, 5, data);
-		if (res != 1)
-		{
-			 uart_write(&UART1, data, 5);
-		}
+		//res = uart_read(&UART1, 5, data);
+		res = request_data(&UART1);
+//		if (res != 1)
+//		{
+//			 UART_SendData(UART1.UARTx, 0);
+//		   while (UART_GetFlagStatus(UART1.UARTx, UART_FLAG_TXFF) == SET){}
+//		}
 		
 //		//res = request_data(&UART1);
 //		if (res == 0)
@@ -72,10 +74,15 @@ int main(void)
 */
 uint8_t request_data(UARTn *UART_struct)
 {
-	Fields_packet sended_packet;
+	Fields_packet *sended_packet;
 	Fields_packet received_packet;
+	Fields_packet *received_packet_pointer = &received_packet;
+	uint8_t buffer[20];
 	
-	if(Protocol_read(&received_packet, UART_struct) != 0) return 1;
+	if(Protocol_read(received_packet_pointer, UART_struct) != 0) return 1;
+	
+	UART_SendData(UART_struct->UARTx, received_packet.length);
+	while (UART_GetFlagStatus(UART1.UARTx, UART_FLAG_TXFF) == SET){}
 	/*
 	выполнение команды периферией
 	switch(cmd)
@@ -83,8 +90,8 @@ uint8_t request_data(UARTn *UART_struct)
 	
 	}
 	*/
-	if(Protocol_do_cmd(&received_packet, &sended_packet) != 0) return 1; 
-	if(Protocol_write(&received_packet, &sended_packet, UART_struct) != 0) return 1;
+	//if(Protocol_do_cmd(&received_packet, &sended_packet) != 0) return 1; 
+	//if(Protocol_write(&received_packet, &sended_packet, UART_struct) != 0) return 1;
 	
 	return 0;
 }
