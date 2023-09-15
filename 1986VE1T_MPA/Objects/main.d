@@ -14,7 +14,12 @@
   C:\Users\shishov\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.0\Libraries\SPL\MDR32FxQI\inc\MDR32FxQI_dma.h \
   C:\Users\shishov\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.0\Libraries\SPL\MDR32FxQI\inc\MDR32FxQI_timer.h \
   C:\Users\shishov\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.0\Libraries\SPL\MDR32FxQI\inc\MDR32FxQI_adc.h \
+  C:\Users\shishov\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.0\Libraries\SPL\MDR32FxQI\inc\MDR32FxQI_ebc.h \
+  C:\Users\shishov\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.0\Libraries\SPL\MDR32FxQI\inc\MDR32FxQI_bkp.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h UART.h TIMER.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h PORTS.h PROTOCOL.h \
-  REGISTER_SPACE.h C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stddef.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdlib.h CLOCK.h DMA.h
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h PORTS.h \
+  rs422_protocol.h C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stddef.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdlib.h CLOCK.h DMA.h EBC.h \
+  MT-12864Av6.h SystemFont5x7R.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\wchar.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\wctype.h external_ram.h

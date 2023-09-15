@@ -440,24 +440,14 @@
               <FilePath>.\PORTS.h</FilePath>
             </File>
             <File>
-              <FileName>PROTOCOL.c</FileName>
+              <FileName>rs422_protocol.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\PROTOCOL.c</FilePath>
+              <FilePath>.\rs422_protocol.c</FilePath>
             </File>
             <File>
-              <FileName>PROTOCOL.h</FileName>
+              <FileName>rs422_protocol.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\PROTOCOL.h</FilePath>
-            </File>
-            <File>
-              <FileName>REGISTER_SPACE.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\REGISTER_SPACE.c</FilePath>
-            </File>
-            <File>
-              <FileName>REGISTER_SPACE.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\REGISTER_SPACE.h</FilePath>
+              <FilePath>.\rs422_protocol.h</FilePath>
             </File>
             <File>
               <FileName>TIMER.c</FileName>
@@ -478,6 +468,46 @@
               <FileName>UART.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\UART.h</FilePath>
+            </File>
+            <File>
+              <FileName>EBC.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\EBC.c</FilePath>
+            </File>
+            <File>
+              <FileName>EBC.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\EBC.h</FilePath>
+            </File>
+            <File>
+              <FileName>MT-12864Av6.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\MT-12864Av6.c</FilePath>
+            </File>
+            <File>
+              <FileName>MT-12864Av6.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\MT-12864Av6.h</FilePath>
+            </File>
+            <File>
+              <FileName>SystemFont5x7R.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\SystemFont5x7R.c</FilePath>
+            </File>
+            <File>
+              <FileName>SystemFont5x7R.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\SystemFont5x7R.h</FilePath>
+            </File>
+            <File>
+              <FileName>external_ram.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\external_ram.c</FilePath>
+            </File>
+            <File>
+              <FileName>external_ram.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\external_ram.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -515,7 +545,25 @@
           <targetInfo name="Target 1"/>
         </targetInfos>
       </component>
+      <component Cclass="Drivers" Cgroup="BKP" Cvendor="Milandr" Cversion="2.0.2i" condition="CON_MDR32FxQI">
+        <package name="MDR32FxQI" schemaVersion="1.2" url="https://ic.milandr.ru/soft/" vendor="Milandr" version="1.0"/>
+        <targetInfos>
+          <targetInfo name="Target 1"/>
+        </targetInfos>
+      </component>
       <component Cclass="Drivers" Cgroup="DMA" Cvendor="Milandr" Cversion="2.0.2i" condition="CON_MDR32FxQI">
+        <package name="MDR32FxQI" schemaVersion="1.2" url="https://ic.milandr.ru/soft/" vendor="Milandr" version="1.0"/>
+        <targetInfos>
+          <targetInfo name="Target 1"/>
+        </targetInfos>
+      </component>
+      <component Cclass="Drivers" Cgroup="EBC" Cvendor="Milandr" Cversion="2.0.2i" condition="CON_MDR32FxQI">
+        <package name="MDR32FxQI" schemaVersion="1.2" url="https://ic.milandr.ru/soft/" vendor="Milandr" version="1.0"/>
+        <targetInfos>
+          <targetInfo name="Target 1"/>
+        </targetInfos>
+      </component>
+      <component Cclass="Drivers" Cgroup="EEPROM" Cvendor="Milandr" Cversion="2.0.2i" condition="CON_MDR32FxQI">
         <package name="MDR32FxQI" schemaVersion="1.2" url="https://ic.milandr.ru/soft/" vendor="Milandr" version="1.0"/>
         <targetInfos>
           <targetInfo name="Target 1"/>
@@ -589,5 +637,14 @@
       </file>
     </files>
   </RTE>
+
+  <LayerInfo>
+    <Layers>
+      <Layer>
+        <LayName>1986VE1T_MPA</LayName>
+        <LayPrjMark>1</LayPrjMark>
+      </Layer>
+    </Layers>
+  </LayerInfo>
 
 </Project>

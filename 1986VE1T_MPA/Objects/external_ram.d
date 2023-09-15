@@ -1,4 +1,4 @@
-./objects/ports.o: PORTS.c PORTS.h MDR32_Drivers.h \
+./objects/external_ram.o: external_ram.c external_ram.h MDR32_Drivers.h \
   C:\Users\shishov\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.0\Libraries\CMSIS\MDR32FxQI\DeviceSupport\MDR32F1QI\inc\MDR32F1QI.h \
   RTE\Device\MDR32F1QI\MDR32FxQI_config.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdint.h \
@@ -15,4 +15,9 @@
   C:\Users\shishov\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.0\Libraries\SPL\MDR32FxQI\inc\MDR32FxQI_timer.h \
   C:\Users\shishov\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.0\Libraries\SPL\MDR32FxQI\inc\MDR32FxQI_adc.h \
   C:\Users\shishov\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.0\Libraries\SPL\MDR32FxQI\inc\MDR32FxQI_ebc.h \
-  C:\Users\shishov\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.0\Libraries\SPL\MDR32FxQI\inc\MDR32FxQI_bkp.h
+  C:\Users\shishov\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.0\Libraries\SPL\MDR32FxQI\inc\MDR32FxQI_bkp.h \
+  rs422_protocol.h UART.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stddef.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdlib.h

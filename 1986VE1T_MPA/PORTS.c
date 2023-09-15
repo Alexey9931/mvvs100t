@@ -1,31 +1,53 @@
-#include "PORTS.h"
+ #include "PORTS.h"
 
 void PortsInit(void)
 {
 // Включение тактирования портов
-RST_CLK_PCLKcmd(RST_CLK_PCLK_PORTB|RST_CLK_PCLK_PORTC, ENABLE);
+RST_CLK_PCLKcmd(RST_CLK_PCLK_PORTB|RST_CLK_PCLK_PORTC|RST_CLK_PCLK_PORTD, ENABLE);
 	
 // Объявление структуры для инициализации портов UART
-PORT_InitTypeDef GPIO_init_struct;
-// Инициализация порта B для функции UART
-PORT_StructInit(&GPIO_init_struct);
-GPIO_init_struct.PORT_FUNC = PORT_FUNC_MAIN;
-GPIO_init_struct.PORT_SPEED = PORT_SPEED_MAXFAST;
-GPIO_init_struct.PORT_MODE = PORT_MODE_DIGITAL;
-GPIO_init_struct.PORT_PULL_UP = PORT_PULL_UP_OFF;
-GPIO_init_struct.PORT_PULL_DOWN = PORT_PULL_DOWN_ON;
-GPIO_init_struct.PORT_PD_SHM = PORT_PD_SHM_OFF;
-GPIO_init_struct.PORT_PD = PORT_PD_DRIVER;
-GPIO_init_struct.PORT_GFEN = PORT_GFEN_OFF;
+PORT_InitTypeDef GPIO_init_structUART1;
+// Инициализация порта B для функции UART1
+PORT_StructInit(&GPIO_init_structUART1);
+GPIO_init_structUART1.PORT_FUNC = PORT_FUNC_MAIN;
+GPIO_init_structUART1.PORT_SPEED = PORT_SPEED_MAXFAST;
+GPIO_init_structUART1.PORT_MODE = PORT_MODE_DIGITAL;
+GPIO_init_structUART1.PORT_PULL_UP = PORT_PULL_UP_OFF;
+GPIO_init_structUART1.PORT_PULL_DOWN = PORT_PULL_DOWN_ON;
+GPIO_init_structUART1.PORT_PD_SHM = PORT_PD_SHM_OFF;
+GPIO_init_structUART1.PORT_PD = PORT_PD_DRIVER;
+GPIO_init_structUART1.PORT_GFEN = PORT_GFEN_OFF;
 	
 // Инициализация вывода PC3 как UART_TX (передача)
-GPIO_init_struct.PORT_Pin = PORT_Pin_3;
-GPIO_init_struct.PORT_OE = PORT_OE_OUT;
-PORT_Init(MDR_PORTC, &GPIO_init_struct);
+GPIO_init_structUART1.PORT_Pin = PORT_Pin_3;
+GPIO_init_structUART1.PORT_OE = PORT_OE_OUT;
+PORT_Init(MDR_PORTC, &GPIO_init_structUART1);
 // Инициализация вывода PC4 как UART_RX (прием)
-GPIO_init_struct.PORT_Pin = PORT_Pin_4;
-GPIO_init_struct.PORT_OE = PORT_OE_IN;
-PORT_Init(MDR_PORTC, &GPIO_init_struct);
+GPIO_init_structUART1.PORT_Pin = PORT_Pin_4;
+GPIO_init_structUART1.PORT_OE = PORT_OE_IN;
+PORT_Init(MDR_PORTC, &GPIO_init_structUART1);
+
+// Объявление структуры для инициализации портов UART
+PORT_InitTypeDef GPIO_init_struct2;
+// Инициализация порта B для функции UART2
+PORT_StructInit(&GPIO_init_struct2);
+GPIO_init_struct2.PORT_FUNC = PORT_FUNC_MAIN;
+GPIO_init_struct2.PORT_SPEED = PORT_SPEED_MAXFAST;
+GPIO_init_struct2.PORT_MODE = PORT_MODE_DIGITAL;
+GPIO_init_struct2.PORT_PULL_UP = PORT_PULL_UP_OFF;
+GPIO_init_struct2.PORT_PULL_DOWN = PORT_PULL_DOWN_ON;
+GPIO_init_struct2.PORT_PD_SHM = PORT_PD_SHM_OFF;
+GPIO_init_struct2.PORT_PD = PORT_PD_DRIVER;
+GPIO_init_struct2.PORT_GFEN = PORT_GFEN_OFF;
+	
+// Инициализация вывода PD13 как UART_TX (передача)
+GPIO_init_struct2.PORT_Pin = PORT_Pin_13;
+GPIO_init_struct2.PORT_OE = PORT_OE_OUT;
+PORT_Init(MDR_PORTD, &GPIO_init_struct2);
+// Инициализация вывода PD14 как UART_RX (прием)
+GPIO_init_struct2.PORT_Pin = PORT_Pin_14;
+GPIO_init_struct2.PORT_OE = PORT_OE_IN;
+PORT_Init(MDR_PORTD, &GPIO_init_struct2);
 
 //// Объявление структуры для инициализации 0-3 каналов АЦП
 //PORT_InitTypeDef GPIO_init_ADC_0_3;

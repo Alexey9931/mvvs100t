@@ -9,7 +9,7 @@
 #include "MDR32_Drivers.h"
 #include "string.h"
 
-#define BUFFER_SIZE 2048             		///< Размер кольцевого буфера UARTn
+#define BUFFER_SIZE 256             		///< Размер кольцевого буфера UARTn
 #define BUFFER_MASK (BUFFER_SIZE-1)			///< Маска, необходимая для корректной работы кольцевого буфера
 
 ///Структура с таймаутами UARTn

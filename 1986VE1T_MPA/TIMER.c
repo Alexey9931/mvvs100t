@@ -10,7 +10,7 @@ void TIMER1_init(void)//период 1сек
 	 /* Initializes the TIMERx Counter */
 	 TIMER_CntStructInit(&TIMER1InitStruct);
 	 TIMER1InitStruct.TIMER_Period = 0xC34F;//50000-1
-	 TIMER1InitStruct.TIMER_Prescaler = 0x0B3F;//2880-1
+	 TIMER1InitStruct.TIMER_Prescaler = WORK_FREQ*20 - 1;//2560-1
 	 
 	 TIMER_CntInit(MDR_TIMER1, &TIMER1InitStruct);
 	
@@ -29,7 +29,7 @@ void TIMER2_init(void)//период 10мс
 	 /* Initializes the TIMERx Counter */
 	 TIMER_CntStructInit(&TIMER2InitStruct);
 	 TIMER2InitStruct.TIMER_Period = 0x270F;//10000-1
-	 TIMER2InitStruct.TIMER_Prescaler = 0x8F;//144-1
+	 TIMER2InitStruct.TIMER_Prescaler = WORK_FREQ - 1;//144-1
 	 
 	 TIMER_CntInit(MDR_TIMER2, &TIMER2InitStruct);
 	

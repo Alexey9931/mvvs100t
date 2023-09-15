@@ -91,7 +91,7 @@ uint8_t uart_init(UARTn *UART_struct)
 	}
 
 	//Включение прерываний UART
-	NVIC_SetPriority (UART_struct->IRQn, 1);
+	//NVIC_SetPriority (UART_struct->IRQn, 1);
 	UART_ITConfig( UART_struct->UARTx, UART_IT_RX, ENABLE );
 	
 	// Включить сконфигурированный UART
