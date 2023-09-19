@@ -53,26 +53,15 @@ int main(void)
 	DMA_UART_RX_init(&UART1);
 	ebc_ports_config();
 	ebc_config();
-	init_external_ram_space(ram_space_pointer);
-//	rx_packet = &ram_space_pointer->packet_struct;
-//	memset(rx_packet,0,sizeof(fields_packet) + NUMBER_CMDS_IN_PACKET*sizeof(fields_cmd));
+	init_external_ram_space();
+
 	while(1)
 	{
-		//res = uart_read(&UART1, 5, data);
 		res = request_data(&UART1);
 		if (res != 1)
 		{
 			uint8_t a = 0;
-			//UART_SendData(UART1.UARTx, 0);
-		   //while (UART_GetFlagStatus(UART1.UARTx, UART_FLAG_TXFF) == SET){}
 		}
-		
-//		//res = request_data(&UART1);
-//		if (res == 0)
-//		{
-//			uart_write(&UART1, &res, 1);
-//		}
-
 	}
 }
 /*
@@ -87,9 +76,9 @@ uint8_t request_data(UARTn *UART_struct)
 	{
 	
 	}
-	*/
+	*/			
 	if(protocol_do_cmds() != 0) return 1; 
-	//if(Protocol_write(&received_packet, &sended_packet, UART_struct) != 0) return 1;
+	if(transmit_packet(UART_struct) != 0) return 1;
 	
 	return 0;
 }

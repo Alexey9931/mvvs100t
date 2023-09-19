@@ -1,8 +1,13 @@
 #include "external_ram.h"
 #include <string.h>
 
-void init_external_ram_space(ram_data *ram_space_pointer)
+extern ram_data *ram_space_pointer;
+
+void init_external_ram_space(void)
 {
+	ram_space_pointer = (ram_data*)EXT_RAM_START_ADDR;
+	//первичная очистка используемого куска памяти ОЗУ
+	memset(ram_space_pointer, 0, sizeof(ram_data));
 	//инициализации структуры, которая лежит в начале ОЗУ
 	ram_space_pointer->start_struct.Length = 32;
 	ram_space_pointer->start_struct.TextInfo = 332;
@@ -23,6 +28,7 @@ void init_external_ram_space(ram_data *ram_space_pointer)
 	
 	//кладем карту регистров по адресу 200 во внешней ОЗУ и инциализируем ее
 	strncpy(&(ram_space_pointer->ram_register_space.PLC_DeviceInfo),"MPA",sizeof("MPA"));
+	ram_space_pointer->ram_register_space.PLC_PMAddr = PM_ADDR;
 	ram_space_pointer->ram_register_space.PLC_DeviceType = 2684487201;
 	ram_space_pointer->ram_register_space.PLC_SerialNumber = 1717986918;
 	ram_space_pointer->ram_register_space.PLC_BusConfig_B1 = 66847485;

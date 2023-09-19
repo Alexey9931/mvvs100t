@@ -15,12 +15,12 @@
 #define NUMBER_CMDS_IN_PACKET 255             		///< Максимальное число команд в одном пакете
 
 ////все поддерживаемые протоколом команды
-//#define TYPE 0x00
-//#define INIT 0x01
-//#define READ 0x02
-//#define WRITE 0x03
-//#define RESET 0x04
-//#define CONFIG 0x05
+#define TYPE 0x00
+#define INIT 0x01
+#define READ 0x02
+#define WRITE 0x03
+#define RESET 0x04
+#define CONFIG 0x05
 
 ///Структура с полями данных для каждой команды внутри одного пакета
 typedef struct cmd_struct
@@ -96,5 +96,18 @@ uint8_t protocol_do_cmds(void);
 */
 uint_least32_t crc32(uint8_t *buf, size_t len);
 
+/*!
+ *	\brief Преобразует слово для передачи в сеть
+ *	\param src - Слово
+ *	\return Преобразованнное слово
+*/
+uint32_t* htonl(uint32_t *src);
+
+/*!
+ *	\brief Преобразует полуслово для передачи в сеть
+ *	\param src - Полуслово
+ *	\return Преобразованнное полуслово
+*/
+uint16_t* htons(uint16_t *src);
 
 #endif /*__PROTOCOL_H */
