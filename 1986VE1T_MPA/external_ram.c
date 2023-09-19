@@ -29,6 +29,7 @@ void init_external_ram_space(void)
 	//кладем карту регистров по адресу 200 во внешней ОЗУ и инциализируем ее
 	strncpy(&(ram_space_pointer->ram_register_space.PLC_DeviceInfo),"MPA",sizeof("MPA"));
 	ram_space_pointer->ram_register_space.PLC_PMAddr = PM_ADDR;
+	ram_space_pointer->ram_register_space.PLC_CM_State = 0x01;
 	ram_space_pointer->ram_register_space.PLC_DeviceType = 2684487201;
 	ram_space_pointer->ram_register_space.PLC_SerialNumber = 1717986918;
 	ram_space_pointer->ram_register_space.PLC_BusConfig_B1 = 66847485;

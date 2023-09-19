@@ -22,6 +22,16 @@
 #define RESET 0x04
 #define CONFIG 0x05
 
+///Коды ошибок обмена данными
+typedef enum protocol_errors
+{
+	NO_ERROR,															///< Нет ошибок
+	UART_ERROR,														///< Ошибка работы UART
+	CRC_ERROR,														///< Ошибка контрольной суммы
+	PM_ADDR_ERROR,												///< Ошибка адресации
+	PACKET_ERROR													///< Ошибка структуры пакета
+} data_exchange_errors;
+
 ///Структура с полями данных для каждой команды внутри одного пакета
 typedef struct cmd_struct
 {
@@ -73,20 +83,20 @@ typedef struct protocol_crc
  *	\param *UART_struct - Выбранный UART 
  *	\return Сообщение с результатом (0 - успех, 1- ошибка)
 */
-uint8_t transmit_packet(UARTn *UART_struct);
+uint8_t transmit_packet(UARTn *UART_struct, uint8_t ext_bus);
 
 /*!
  *	\brief Читает пакет данных
  *	\param *UART_struct - Выбранный UART 
  *	\return Сообщение с результатом (0 - успех, 1- ошибка)
 */
-uint8_t receive_packet(UARTn *UART_struct);
+uint8_t receive_packet(UARTn *UART_struct, uint8_t ext_bus);
 
 /*!
  *	\brief Выполняет требуемые команды
  *	\return Сообщение с результатом (0 - успех, 1- ошибка)
 */
-uint8_t protocol_do_cmds(void);
+uint8_t protocol_do_cmds(uint8_t ext_bus);
 
 /*!
  *	\brief Вычисляет контрольную сумму по алгоритму CRC32

@@ -5,8 +5,10 @@ extern ram_data *ram_space_pointer;
 /*
 Функция для отправки пакета данных
 */
-uint8_t transmit_packet(UARTn *UART_struct)
+uint8_t transmit_packet(UARTn *UART_struct, uint8_t ext_bus)
 {	
+	data_exchange_errors error;
+	
 	//записываем в буфер заголовок пакета
 	memcpy(ram_space_pointer->buffer_tx, &(ram_space_pointer->tx_packet_struct.packet_header), sizeof(ram_space_pointer->tx_packet_struct.packet_header));
 	//записываем в буфер массив команд (команда - данные)
@@ -24,7 +26,8 @@ uint8_t transmit_packet(UARTn *UART_struct)
 	//отправляем данные по UART
 	if (uart_write(UART_struct, ram_space_pointer->buffer_tx, ram_space_pointer->tx_packet_struct.packet_header.packet_length + sizeof(ram_space_pointer->tx_packet_struct.packet_header.header) + sizeof(ram_space_pointer->tx_packet_struct.packet_tail.end)) != 0)
 	{
-		return 1;
+		error = UART_ERROR;
+		return error;
 	}
 	
 	return 0;
@@ -32,26 +35,107 @@ uint8_t transmit_packet(UARTn *UART_struct)
 /*
 Функция для чтения пакета данных
 */
-uint8_t receive_packet(UARTn *UART_struct)
+uint8_t receive_packet(UARTn *UART_struct, uint8_t ext_bus)
 {
+	data_exchange_errors error;
+	uart_errors uart_error;
+	
 	//очистка всех структур данных связанных с принимаемым и отправляемым пакетом
 	memset(&(ram_space_pointer->rx_packet_struct), 0, sizeof(ram_data) - sizeof(ram_space_pointer->start_struct) - sizeof(ram_space_pointer->Reserv) - sizeof(ram_space_pointer->ram_register_space) - sizeof(ram_space_pointer->service_byte_pm) - sizeof(ram_space_pointer->service_byte_um));
 	
 	uint8_t buffer_rx[BUFFER_SIZE];//локальный буфер с принятым пакетом данных
 	
-	//считываем байты заголовка телеграммы для определения длины пакета
-	if (uart_read(UART_struct, sizeof(ram_space_pointer->rx_packet_struct.packet_header),  buffer_rx))
+	//самая первая обязательная проверка - первый байт должен быть 0x55
+	uart_error = uart_read(UART_struct, sizeof(ram_space_pointer->rx_packet_struct.packet_header.header),  buffer_rx);
+	if (uart_error != 0)
 	{
-		return 1;
+		if (uart_error == READ_TIMEOUT_ERROR)
+		{
+			switch(ext_bus)
+			{
+				case 1:
+					ram_space_pointer->service_byte_pm.fail_bus_1 = 1;	//запись в сервисный байт ПМ бита несиправности шины, если превышен таймаут
+					ram_space_pointer->ram_register_space.PLC_BusDefect_B1.fail_timeout = 1; //запись в регистр неисправности шины бита "неисправность по таймауту"
+					break;
+				case 2:
+					ram_space_pointer->service_byte_pm.fail_bus_2 = 1;	//запись в сервисный байт ПМ бита несиправности шины, если превышен таймаут
+					ram_space_pointer->ram_register_space.PLC_BusDefect_B2.fail_timeout = 1; //запись в регистр неисправности шины бита "неисправность по таймауту"
+					break;
+				default:
+					break;
+			}
+		}
+		error = UART_ERROR;
+		return error;
 	}
-	memcpy(&(ram_space_pointer->rx_packet_struct.packet_header) , buffer_rx, sizeof(ram_space_pointer->rx_packet_struct.packet_header));	
+	if (ram_space_pointer->rx_packet_struct.packet_header.header != 0x55)
+	{
+		error = PACKET_ERROR;
+		//увеличиваем кол-во битых пакетов
+		switch(ext_bus)
+		{
+			case 1:
+				ram_space_pointer->ram_register_space.PLC_ErrPackToDevice_B1++;//кол-во поврежденных пакетов подряд 
+				break;
+			case 2:
+				ram_space_pointer->ram_register_space.PLC_ErrPackToDevice_B2++;//кол-во поврежденных пакетов подряд 
+				break;
+			default:
+				break;
+		}
+		return error;
+	}
+	uart_set_pos(UART_struct, uart_read_pos(UART_struct) - sizeof(ram_space_pointer->rx_packet_struct.packet_header.header)); //возврат курсора чтения буфера на исходную позицию
+	
+	//считываем байты заголовка телеграммы для определения длины пакета
+	uart_error = uart_read(UART_struct, sizeof(ram_space_pointer->rx_packet_struct.packet_header),  buffer_rx);
+	if (uart_error != 0)
+	{
+		error = UART_ERROR;
+		if (uart_error == READ_TIMEOUT_ERROR)
+		{
+			switch(ext_bus)
+			{
+				case 1:
+					ram_space_pointer->service_byte_pm.fail_bus_1 = 1;	//запись в сервисный байт ПМ бита несиправности шины, если превышен таймаут
+					ram_space_pointer->ram_register_space.PLC_BusDefect_B1.fail_timeout = 1; //запись в регистр неисправности шины бита "неисправность по таймауту"
+					break;
+				case 2:
+					ram_space_pointer->service_byte_pm.fail_bus_2 = 1;	//запись в сервисный байт ПМ бита несиправности шины, если превышен таймаут
+					ram_space_pointer->ram_register_space.PLC_BusDefect_B2.fail_timeout = 1; //запись в регистр неисправности шины бита "неисправность по таймауту"
+					break;
+				default:
+					break;
+			}
+		}
+		return error;
+	}
+	memcpy(&(ram_space_pointer->rx_packet_struct.packet_header) , buffer_rx, sizeof(ram_space_pointer->rx_packet_struct.packet_header));
 	
 	//считываем весь пакет вычисленной длины
 	uart_set_pos(UART_struct, uart_read_pos(UART_struct) - sizeof(ram_space_pointer->rx_packet_struct.packet_header)); //возврат курсора чтения буфера на исходную позицию
 	memset(buffer_rx,0,sizeof(buffer_rx));
-	if (uart_read(UART_struct, ((ram_space_pointer->rx_packet_struct.packet_header).packet_length)+sizeof(ram_space_pointer->rx_packet_struct.packet_header.header)+sizeof(ram_space_pointer->rx_packet_struct.packet_tail.end), buffer_rx))
+	uart_error = uart_read(UART_struct, ((ram_space_pointer->rx_packet_struct.packet_header).packet_length)+sizeof(ram_space_pointer->rx_packet_struct.packet_header.header)+sizeof(ram_space_pointer->rx_packet_struct.packet_tail.end), buffer_rx);
+	if (uart_error != 0)
 	{
-		return 1;
+		error = UART_ERROR;
+		if (uart_error == READ_TIMEOUT_ERROR)
+		{
+			switch(ext_bus)
+			{
+				case 1:
+					ram_space_pointer->service_byte_pm.fail_bus_1 = 1;	//запись в сервисный байт ПМ бита несиправности шины, если превышен таймаут
+					ram_space_pointer->ram_register_space.PLC_BusDefect_B1.fail_timeout = 1; //запись в регистр неисправности шины бита "неисправность по таймауту"
+					break;
+				case 2:
+					ram_space_pointer->service_byte_pm.fail_bus_2 = 1;	//запись в сервисный байт ПМ бита несиправности шины, если превышен таймаут
+					ram_space_pointer->ram_register_space.PLC_BusDefect_B2.fail_timeout = 1; //запись в регистр неисправности шины бита "неисправность по таймауту"
+					break;
+				default:
+					break;
+			}
+		}
+		return error;
 	}
 	
 	//считываем заголовок пакета
@@ -62,6 +146,25 @@ uint8_t receive_packet(UARTn *UART_struct)
 	
 	//считываем хвост пакета
 	memcpy(&(ram_space_pointer->rx_packet_struct.packet_tail), buffer_rx + (ram_space_pointer->rx_packet_struct.packet_header.packet_length) - sizeof(ram_space_pointer->rx_packet_struct.packet_tail.checksum) + sizeof(ram_space_pointer->rx_packet_struct.packet_header.header), sizeof(fields_packet_tail));
+	
+	//вторая обязательная проверка - последние 2 байта должны быть 0xAA
+	if (ram_space_pointer->rx_packet_struct.packet_tail.end != 0xAAAA)
+	{
+		error = PACKET_ERROR;
+		//увеличиваем кол-во битых пакетов
+		switch(ext_bus)
+		{
+			case 1:
+				ram_space_pointer->ram_register_space.PLC_ErrPackToDevice_B1++;//кол-во поврежденных пакетов подряд 
+				break;
+			case 2:
+				ram_space_pointer->ram_register_space.PLC_ErrPackToDevice_B2++;//кол-во поврежденных пакетов подряд 
+				break;
+			default:
+				break;
+		}
+		return error;
+	}
 	
 	//считываем массив команд (команда - данные)
 	uint16_t buffer_offset = 0; //перемешение по буферу
@@ -87,23 +190,52 @@ uint8_t receive_packet(UARTn *UART_struct)
 	}
 	
 	uint32_t real_checksum = crc32(buffer_crc, ram_space_pointer->rx_packet_struct.packet_header.packet_length - sizeof(ram_space_pointer->rx_packet_struct.packet_tail.checksum));
-	//если контрольная сумма не верна, то выход из функции
+	//если контрольная сумма не верна, т.е. пакет поврежден
 	if (real_checksum != (ram_space_pointer->rx_packet_struct.packet_tail.checksum))
 	{
-		return 1;
+		error = CRC_ERROR;
+		//увеличиваем кол-во битых пакетов
+		switch(ext_bus)
+		{
+			case 1:
+				ram_space_pointer->ram_register_space.PLC_ErrPackToDevice_B1++;//кол-во поврежденных пакетов подряд 
+				break;
+			case 2:
+				ram_space_pointer->ram_register_space.PLC_ErrPackToDevice_B2++;//кол-во поврежденных пакетов подряд 
+				break;
+			default:
+				break;
+		}
+		
+		return error;
 	}
 	//проверка адресации
 	if(ram_space_pointer->rx_packet_struct.packet_header.receiver_addr != PM_ADDR)
 	{
-		return 1;
+		error = PM_ADDR_ERROR;
+		return error;
 	}
-	
+	//если все хорошо
+	switch(ext_bus)
+	{
+		case 1:
+			ram_space_pointer->ram_register_space.PLC_CorrPackToDevice_B1++; //увеличиваем счетчик корректно принятых пакетов
+			ram_space_pointer->ram_register_space.PLC_ErrPackToDevice_B1 = 0;//кол-во поврежденных пакетов подряд 
+			break;
+		case 2:
+			ram_space_pointer->ram_register_space.PLC_CorrPackToDevice_B2++; //увеличиваем счетчик корректно принятых пакетов
+			ram_space_pointer->ram_register_space.PLC_ErrPackToDevice_B2 = 0;//кол-во поврежденных пакетов подряд 
+			break;
+		default:
+			break;
+	}		
+
 	return 0;
 }
 /*
 Функция для выполнения требуемой команды
 */
-uint8_t protocol_do_cmds(void)
+uint8_t protocol_do_cmds(uint8_t ext_bus)
 {
 	uint32_t offset = 0; //указатель на данные для каждой команды
 	uint16_t start_addr = 0; //начальный адрес для чтения/записи регистров
@@ -129,9 +261,37 @@ uint8_t protocol_do_cmds(void)
 				break;
 			case INIT:
 				//по команде INIT кладем в поле дата регистр PLC_SerialNumber, если выполнен ряд условий
-				if((ram_space_pointer->service_byte_um.ready_to_control != 1) || )
+				switch(ext_bus)
 				{
-					break;
+					case 1:
+						if((ram_space_pointer->service_byte_um.ready_to_control == 1) && (ram_space_pointer->service_byte_pm.fail_bus_1 == 0) && (ram_space_pointer->ram_register_space.PLC_CM_State != 0x09))
+						{
+							//заносим инфу в сервисный байт ПМ
+							ram_space_pointer->service_byte_pm.init = 1;
+							//заносим инфу в регистры
+							ram_space_pointer->ram_register_space.PLC_CM_State = 0x04;
+						}
+						else
+						{
+							continue;
+						}
+						break;
+					case 2:
+						if((ram_space_pointer->service_byte_um.ready_to_control == 1) && (ram_space_pointer->service_byte_pm.fail_bus_2 == 0) && (ram_space_pointer->ram_register_space.PLC_CM_State != 0x04))
+						{
+							//заносим инфу в сервисный байт ПМ
+							ram_space_pointer->service_byte_pm.init = 1;
+							//заносим инфу в регистры
+							ram_space_pointer->ram_register_space.PLC_CM_State = 0x09;
+							continue;
+						}	
+						else
+						{
+							continue;
+						}
+						break;
+					default:
+						break;
 				}
 				
 				memcpy((ram_space_pointer->tx_data) + offset, &(ram_space_pointer->ram_register_space.PLC_SerialNumber), sizeof(ram_space_pointer->ram_register_space.PLC_SerialNumber));
@@ -141,8 +301,7 @@ uint8_t protocol_do_cmds(void)
 				//TODO:разобраться для чего поле result
 				ram_space_pointer->tx_cmd_packet[i].result = 0;
 				ram_space_pointer->tx_cmd_packet[i].length = sizeof(ram_space_pointer->tx_cmd_packet[i].cmd) + sizeof(ram_space_pointer->tx_cmd_packet[i].result) + sizeof(ram_space_pointer->tx_cmd_packet[i].length) + sizeof(ram_space_pointer->ram_register_space.PLC_SerialNumber);
-				//заносим инфу в сервисный байт ПМ
-				ram_space_pointer->service_byte_pm.init = 1;
+
 				break;
 			case READ:
 				memcpy(&start_addr, ram_space_pointer->rx_cmd_packet[i].data, sizeof(start_addr));
@@ -157,6 +316,24 @@ uint8_t protocol_do_cmds(void)
 				ram_space_pointer->tx_cmd_packet[i].length = sizeof(ram_space_pointer->tx_cmd_packet[i].cmd) + sizeof(ram_space_pointer->tx_cmd_packet[i].result) + sizeof(ram_space_pointer->tx_cmd_packet[i].length) + size;
 				break;
 			case WRITE:
+				//проверка того, что утсановлено соединение по выбранной шине
+				switch(ext_bus)
+				{
+					case 1:
+						if(ram_space_pointer->ram_register_space.PLC_CM_State != 0x04)
+						{
+							continue;
+						}
+						break;
+					case 2:
+						if(ram_space_pointer->ram_register_space.PLC_CM_State != 0x09)
+						{
+							continue;
+						}
+						break;
+					default:
+						break;
+				}
 				memcpy(&start_addr, ram_space_pointer->rx_cmd_packet[i].data, sizeof(start_addr));
 				memcpy(&size, (ram_space_pointer->rx_cmd_packet[i].data) + sizeof(start_addr), sizeof(size));
 				//по команде WRITE кладем по адресу start_addr size принятых байт для записи и в поле данных кладем код команды
