@@ -41,8 +41,6 @@ int main(void)
 	uart_set_read_timeout(&UART1, 100);
 	uart_set_write_timeout(&UART1, 100);
 	
-	uint8_t data[30];
-	uint8_t res = 0;
 	
 	CLOCK_Init();
 	PortsInit();
@@ -61,12 +59,6 @@ int main(void)
 		request_data(&UART1);
 		//запрос пакета по ШИНЕ2
 		request_data(&UART2);
-		
-//		res = request_data(&UART1);
-//		if (res != 1)
-//		{
-//			uint8_t a = 0;
-//		}
 	}
 }
 /*
@@ -84,54 +76,11 @@ uint8_t request_data(UARTn *UART_struct)
 		ext_bus = 2;
 	}
 	
-	data_exchange_errors error;
-	
-	error = receive_packet(UART_struct, ext_bus);
-	if(error != 0)
+	if((receive_packet(UART_struct, ext_bus)) != 0)
 	{
-		if (error == UART_ERROR)
-		{
-			switch(ext_bus)
-			{
-				case 1:
-					if (ram_space_pointer->ram_register_space.PLC_ErrPackToDevice_B1 >= ram_space_pointer->ram_register_space.PLC_NumCrcErrorsForDefect_B1)
-					{
-						ram_space_pointer->service_byte_pm.fail_bus_1 = 1;	//запись в сервисный байт ПМ бита несиправности шины, если кол-во подряд поврежденных пакетов больше установленного
-						ram_space_pointer->ram_register_space.PLC_BusDefect_B1.many_fail_packet = 1; //запись в регистр неисправности шины бита "кол-во битых пакетов больше установленного"
-					}
-					break;
-				case 2:
-					if (ram_space_pointer->ram_register_space.PLC_ErrPackToDevice_B2 >= ram_space_pointer->ram_register_space.PLC_NumCrcErrorsForDefect_B2)
-					{
-						ram_space_pointer->service_byte_pm.fail_bus_2 = 1;  	//запись в сервисный байт ПМ бита несиправности шины, если кол-во подряд поврежденных пакетов больше установленного
-						ram_space_pointer->ram_register_space.PLC_BusDefect_B2.many_fail_packet = 1; //запись в регистр неисправности шины бита "кол-во битых пакетов больше установленного"
-					}
-					break;
-				default:
-					break;
-			}			
-		}
 		return 1;
 	}
-	else
-	{
-		switch(ext_bus)
-		{
-			case 1:
-				ram_space_pointer->service_byte_pm.fail_bus_1 = 0; //снятие в сервисном байте ПМ бита несиправности шины
-				ram_space_pointer->ram_register_space.PLC_BusDefect_B1.many_fail_packet = 0; //снятие в регистре неисправности шины бита "кол-во битых пакетов больше установленного"
-				ram_space_pointer->ram_register_space.PLC_BusDefect_B1.fail_timeout = 0; //снятие в регистре неисправности шины бита "неисправность по таймауту"
-				break;
-			case 2:
-				//снятие в сервисном байте ПМ бита несиправности шины
-				ram_space_pointer->service_byte_pm.fail_bus_2 = 0;	//снятие в сервисном байте ПМ бита несиправности шины
-				ram_space_pointer->ram_register_space.PLC_BusDefect_B2.many_fail_packet = 0; //снятие в регистре неисправности шины бита "кол-во битых пакетов больше установленного"
-				ram_space_pointer->ram_register_space.PLC_BusDefect_B2.fail_timeout = 0; //снятие в регистре неисправности шины бита "неисправность по таймауту"
-				break;
-			default:
-				break;
-		}			
-	}
+	
 	/*
 	выполнение команды периферией (например опрашиваем каналы АЦП/ЦАП)
 	switch(cmd)

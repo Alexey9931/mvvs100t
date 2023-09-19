@@ -142,32 +142,22 @@ main.c(1): warning: In file included from...
 C:/Users/shishov/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.0/Libraries/SPL/MDR32FxQI/inc\MDR32FxQI_uart.h(243): warning: padding size of 'UART_InitTypeDef' with 2 bytes to alignment boundary [-Wpadded]
 typedef struct
         ^
-main.c(44): warning: mixing declarations and code is incompatible with standards before C99 [-Wdeclaration-after-statement]
-        uint8_t data[30];
-                ^
-main.c(44): warning: unused variable 'data' [-Wunused-variable]
-main.c(45): warning: unused variable 'res' [-Wunused-variable]
-        uint8_t res = 0;
-                ^
 main.c(1): warning: In file included from...
 ./main.h(4): warning: In file included from...
 ./ADC.h(8): warning: In file included from...
 ./UART.h(30): warning: padding struct 'struct UART_Timeouts' with 2 bytes to align 'read_val_timeout' [-Wpadded]
         uint32_t read_val_timeout;                                      ///< Таймаут на чтение
                  ^
-main.c(87): warning: mixing declarations and code is incompatible with standards before C99 [-Wdeclaration-after-statement]
-        data_exchange_errors error;
-                             ^
-main.c(82): warning: variable 'ext_bus' is used uninitialized whenever 'if' condition is false [-Wsometimes-uninitialized]
+main.c(74): warning: variable 'ext_bus' is used uninitialized whenever 'if' condition is false [-Wsometimes-uninitialized]
         else if(UART_struct->UARTx == MDR_UART2)
                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-main.c(89): note: uninitialized use occurs here
-        error = receive_packet(UART_struct, ext_bus);
-                                            ^~~~~~~
-main.c(82): note: remove the 'if' if its condition is always true
+main.c(79): note: uninitialized use occurs here
+        if((receive_packet(UART_struct, ext_bus)) != 0)
+                                        ^~~~~~~
+main.c(74): note: remove the 'if' if its condition is always true
         else if(UART_struct->UARTx == MDR_UART2)
              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-main.c(77): note: initialize the variable 'ext_bus' to silence this warning
+main.c(69): note: initialize the variable 'ext_bus' to silence this warning
         uint8_t ext_bus; //определение шины, по которой идет обмен данными
                        ^
                         = '\0'
@@ -177,7 +167,7 @@ ram_data *ram_space_pointer;
 main.c(11): note: declare 'static' if the variable is not intended to be used outside of this translation unit
 ram_data *ram_space_pointer;
 ^
-18 warnings generated.
+14 warnings generated.
 compiling main.c...
 PORTS.c(1): warning: In file included from...
 ./PORTS.h(4): warning: In file included from...
@@ -238,13 +228,13 @@ rs422_protocol.c(1): warning: In file included from...
 rs422_protocol.c(46): warning: mixing declarations and code is incompatible with standards before C99 [-Wdeclaration-after-statement]
         uint8_t buffer_rx[BUFFER_SIZE];//<EB><EE><EA><E0><EB><FC><ED><FB><E9> <E1><F3><F4><E5><F0> <F1> <EF><F0><E8><ED><FF><F2><FB><EC> <EF><E0><EA><E5><F2><EE><EC> <E4><E0><ED><ED><FB><F5>
                 ^
-rs422_protocol.c(394): warning: mixing declarations and code is incompatible with standards before C99 [-Wdeclaration-after-statement]
+rs422_protocol.c(480): warning: mixing declarations and code is incompatible with standards before C99 [-Wdeclaration-after-statement]
         uint8_t buffer_crc[BUFFER_SIZE];
                 ^
-rs422_protocol.c(292): warning: 'break' will never be executed [-Wunreachable-code-break]
+rs422_protocol.c(343): warning: 'break' will never be executed [-Wunreachable-code-break]
                                                 break;
                                                 ^~~~~
-rs422_protocol.c(420): warning: implicit conversion changes signedness: 'int' to 'uint_least32_t' (aka 'unsigned int') [-Wsign-conversion]
+rs422_protocol.c(506): warning: implicit conversion changes signedness: 'int' to 'uint_least32_t' (aka 'unsigned int') [-Wsign-conversion]
                 crc = i;
                     ~ ^
 11 warnings generated.
@@ -636,8 +626,8 @@ typedef struct
 3 warnings generated.
 compiling MDR32FxQI_uart.c...
 linking...
-Program Size: Code=13544 RO-data=244 RW-data=2052 ZI-data=8364  
-".\Objects\1986VE1T_MPA.axf" - 0 Error(s), 139 Warning(s).
+Program Size: Code=14264 RO-data=244 RW-data=2052 ZI-data=8364  
+".\Objects\1986VE1T_MPA.axf" - 0 Error(s), 135 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -720,7 +710,7 @@ Package Vendor: Milandr
    * Component: Milandr::Drivers:UART:2.0.2i
       Include file:  Libraries/SPL/MDR32FxQI/inc/MDR32FxQI_uart.h
       Source file:   Libraries/SPL/MDR32FxQI/src/MDR32FxQI_uart.c
-Build Time Elapsed:  00:00:08
+Build Time Elapsed:  00:00:03
 </pre>
 </body>
 </html>

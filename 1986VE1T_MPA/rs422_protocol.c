@@ -56,10 +56,12 @@ uint8_t receive_packet(UARTn *UART_struct, uint8_t ext_bus)
 				case 1:
 					ram_space_pointer->service_byte_pm.fail_bus_1 = 1;	//запись в сервисный байт ПМ бита несиправности шины, если превышен таймаут
 					ram_space_pointer->ram_register_space.PLC_BusDefect_B1.fail_timeout = 1; //запись в регистр неисправности шины бита "неисправность по таймауту"
+					ram_space_pointer->ram_register_space.PLC_CM_State = 0x05; // снятие инициализации
 					break;
 				case 2:
 					ram_space_pointer->service_byte_pm.fail_bus_2 = 1;	//запись в сервисный байт ПМ бита несиправности шины, если превышен таймаут
 					ram_space_pointer->ram_register_space.PLC_BusDefect_B2.fail_timeout = 1; //запись в регистр неисправности шины бита "неисправность по таймауту"
+					ram_space_pointer->ram_register_space.PLC_CM_State = 0x05; // снятие инициализации
 					break;
 				default:
 					break;
@@ -68,6 +70,7 @@ uint8_t receive_packet(UARTn *UART_struct, uint8_t ext_bus)
 		error = UART_ERROR;
 		return error;
 	}
+	memcpy(&(ram_space_pointer->rx_packet_struct.packet_header.header) , buffer_rx, sizeof(ram_space_pointer->rx_packet_struct.packet_header.header));
 	if (ram_space_pointer->rx_packet_struct.packet_header.header != 0x55)
 	{
 		error = PACKET_ERROR;
@@ -76,9 +79,21 @@ uint8_t receive_packet(UARTn *UART_struct, uint8_t ext_bus)
 		{
 			case 1:
 				ram_space_pointer->ram_register_space.PLC_ErrPackToDevice_B1++;//кол-во поврежденных пакетов подряд 
+				if (ram_space_pointer->ram_register_space.PLC_ErrPackToDevice_B1 >= ram_space_pointer->ram_register_space.PLC_NumCrcErrorsForDefect_B1)
+				{
+					ram_space_pointer->service_byte_pm.fail_bus_1 = 1;	//запись в сервисный байт ПМ бита несиправности шины, если кол-во подряд поврежденных пакетов больше установленного
+					ram_space_pointer->ram_register_space.PLC_BusDefect_B1.many_fail_packet = 1; //запись в регистр неисправности шины бита "кол-во битых пакетов больше установленного"
+					ram_space_pointer->ram_register_space.PLC_CM_State = 0x05; // снятие инициализации
+				}
 				break;
 			case 2:
 				ram_space_pointer->ram_register_space.PLC_ErrPackToDevice_B2++;//кол-во поврежденных пакетов подряд 
+				if (ram_space_pointer->ram_register_space.PLC_ErrPackToDevice_B2 >= ram_space_pointer->ram_register_space.PLC_NumCrcErrorsForDefect_B2)
+				{
+					ram_space_pointer->service_byte_pm.fail_bus_2 = 1;  	//запись в сервисный байт ПМ бита несиправности шины, если кол-во подряд поврежденных пакетов больше установленного
+					ram_space_pointer->ram_register_space.PLC_BusDefect_B2.many_fail_packet = 1; //запись в регистр неисправности шины бита "кол-во битых пакетов больше установленного"
+					ram_space_pointer->ram_register_space.PLC_CM_State = 0x05; // снятие инициализации
+				}
 				break;
 			default:
 				break;
@@ -86,7 +101,7 @@ uint8_t receive_packet(UARTn *UART_struct, uint8_t ext_bus)
 		return error;
 	}
 	uart_set_pos(UART_struct, uart_read_pos(UART_struct) - sizeof(ram_space_pointer->rx_packet_struct.packet_header.header)); //возврат курсора чтения буфера на исходную позицию
-	
+	memset(buffer_rx,0,sizeof(buffer_rx));
 	//считываем байты заголовка телеграммы для определения длины пакета
 	uart_error = uart_read(UART_struct, sizeof(ram_space_pointer->rx_packet_struct.packet_header),  buffer_rx);
 	if (uart_error != 0)
@@ -99,10 +114,12 @@ uint8_t receive_packet(UARTn *UART_struct, uint8_t ext_bus)
 				case 1:
 					ram_space_pointer->service_byte_pm.fail_bus_1 = 1;	//запись в сервисный байт ПМ бита несиправности шины, если превышен таймаут
 					ram_space_pointer->ram_register_space.PLC_BusDefect_B1.fail_timeout = 1; //запись в регистр неисправности шины бита "неисправность по таймауту"
+					ram_space_pointer->ram_register_space.PLC_CM_State = 0x05; // снятие инициализации
 					break;
 				case 2:
 					ram_space_pointer->service_byte_pm.fail_bus_2 = 1;	//запись в сервисный байт ПМ бита несиправности шины, если превышен таймаут
 					ram_space_pointer->ram_register_space.PLC_BusDefect_B2.fail_timeout = 1; //запись в регистр неисправности шины бита "неисправность по таймауту"
+					ram_space_pointer->ram_register_space.PLC_CM_State = 0x05; // снятие инициализации
 					break;
 				default:
 					break;
@@ -126,10 +143,12 @@ uint8_t receive_packet(UARTn *UART_struct, uint8_t ext_bus)
 				case 1:
 					ram_space_pointer->service_byte_pm.fail_bus_1 = 1;	//запись в сервисный байт ПМ бита несиправности шины, если превышен таймаут
 					ram_space_pointer->ram_register_space.PLC_BusDefect_B1.fail_timeout = 1; //запись в регистр неисправности шины бита "неисправность по таймауту"
+					ram_space_pointer->ram_register_space.PLC_CM_State = 0x05; // снятие инициализации
 					break;
 				case 2:
 					ram_space_pointer->service_byte_pm.fail_bus_2 = 1;	//запись в сервисный байт ПМ бита несиправности шины, если превышен таймаут
 					ram_space_pointer->ram_register_space.PLC_BusDefect_B2.fail_timeout = 1; //запись в регистр неисправности шины бита "неисправность по таймауту"
+					ram_space_pointer->ram_register_space.PLC_CM_State = 0x05; // снятие инициализации
 					break;
 				default:
 					break;
@@ -156,9 +175,21 @@ uint8_t receive_packet(UARTn *UART_struct, uint8_t ext_bus)
 		{
 			case 1:
 				ram_space_pointer->ram_register_space.PLC_ErrPackToDevice_B1++;//кол-во поврежденных пакетов подряд 
+				if (ram_space_pointer->ram_register_space.PLC_ErrPackToDevice_B1 >= ram_space_pointer->ram_register_space.PLC_NumCrcErrorsForDefect_B1)
+				{
+					ram_space_pointer->service_byte_pm.fail_bus_1 = 1;	//запись в сервисный байт ПМ бита несиправности шины, если кол-во подряд поврежденных пакетов больше установленного
+					ram_space_pointer->ram_register_space.PLC_BusDefect_B1.many_fail_packet = 1; //запись в регистр неисправности шины бита "кол-во битых пакетов больше установленного"
+					ram_space_pointer->ram_register_space.PLC_CM_State = 0x05; // снятие инициализации
+				}
 				break;
 			case 2:
 				ram_space_pointer->ram_register_space.PLC_ErrPackToDevice_B2++;//кол-во поврежденных пакетов подряд 
+				if (ram_space_pointer->ram_register_space.PLC_ErrPackToDevice_B2 >= ram_space_pointer->ram_register_space.PLC_NumCrcErrorsForDefect_B2)
+				{
+					ram_space_pointer->service_byte_pm.fail_bus_2 = 1;  	//запись в сервисный байт ПМ бита несиправности шины, если кол-во подряд поврежденных пакетов больше установленного
+					ram_space_pointer->ram_register_space.PLC_BusDefect_B2.many_fail_packet = 1; //запись в регистр неисправности шины бита "кол-во битых пакетов больше установленного"
+					ram_space_pointer->ram_register_space.PLC_CM_State = 0x05; // снятие инициализации
+				}
 				break;
 			default:
 				break;
@@ -199,9 +230,21 @@ uint8_t receive_packet(UARTn *UART_struct, uint8_t ext_bus)
 		{
 			case 1:
 				ram_space_pointer->ram_register_space.PLC_ErrPackToDevice_B1++;//кол-во поврежденных пакетов подряд 
+				if (ram_space_pointer->ram_register_space.PLC_ErrPackToDevice_B1 >= ram_space_pointer->ram_register_space.PLC_NumCrcErrorsForDefect_B1)
+				{
+					ram_space_pointer->service_byte_pm.fail_bus_1 = 1;	//запись в сервисный байт ПМ бита несиправности шины, если кол-во подряд поврежденных пакетов больше установленного
+					ram_space_pointer->ram_register_space.PLC_BusDefect_B1.many_fail_packet = 1; //запись в регистр неисправности шины бита "кол-во битых пакетов больше установленного"
+					ram_space_pointer->ram_register_space.PLC_CM_State = 0x05; // снятие инициализации
+				}
 				break;
 			case 2:
 				ram_space_pointer->ram_register_space.PLC_ErrPackToDevice_B2++;//кол-во поврежденных пакетов подряд 
+				if (ram_space_pointer->ram_register_space.PLC_ErrPackToDevice_B2 >= ram_space_pointer->ram_register_space.PLC_NumCrcErrorsForDefect_B2)
+				{
+					ram_space_pointer->service_byte_pm.fail_bus_2 = 1;  	//запись в сервисный байт ПМ бита несиправности шины, если кол-во подряд поврежденных пакетов больше установленного
+					ram_space_pointer->ram_register_space.PLC_BusDefect_B2.many_fail_packet = 1; //запись в регистр неисправности шины бита "кол-во битых пакетов больше установленного"
+					ram_space_pointer->ram_register_space.PLC_CM_State = 0x05; // снятие инициализации
+				}
 				break;
 			default:
 				break;
@@ -221,10 +264,16 @@ uint8_t receive_packet(UARTn *UART_struct, uint8_t ext_bus)
 		case 1:
 			ram_space_pointer->ram_register_space.PLC_CorrPackToDevice_B1++; //увеличиваем счетчик корректно принятых пакетов
 			ram_space_pointer->ram_register_space.PLC_ErrPackToDevice_B1 = 0;//кол-во поврежденных пакетов подряд 
+			ram_space_pointer->service_byte_pm.fail_bus_1 = 0; //снятие в сервисном байте ПМ бита несиправности шины
+			ram_space_pointer->ram_register_space.PLC_BusDefect_B1.many_fail_packet = 0; //снятие в регистре неисправности шины бита "кол-во битых пакетов больше установленного"
+			ram_space_pointer->ram_register_space.PLC_BusDefect_B1.fail_timeout = 0; //снятие в регистре неисправности шины бита "неисправность по таймауту"
 			break;
 		case 2:
 			ram_space_pointer->ram_register_space.PLC_CorrPackToDevice_B2++; //увеличиваем счетчик корректно принятых пакетов
 			ram_space_pointer->ram_register_space.PLC_ErrPackToDevice_B2 = 0;//кол-во поврежденных пакетов подряд 
+			ram_space_pointer->service_byte_pm.fail_bus_2 = 0;	//снятие в сервисном байте ПМ бита несиправности шины
+			ram_space_pointer->ram_register_space.PLC_BusDefect_B2.many_fail_packet = 0; //снятие в регистре неисправности шины бита "кол-во битых пакетов больше установленного"
+			ram_space_pointer->ram_register_space.PLC_BusDefect_B2.fail_timeout = 0; //снятие в регистре неисправности шины бита "неисправность по таймауту"
 			break;
 		default:
 			break;
@@ -268,6 +317,7 @@ uint8_t protocol_do_cmds(uint8_t ext_bus)
 						{
 							//заносим инфу в сервисный байт ПМ
 							ram_space_pointer->service_byte_pm.init = 1;
+							ram_space_pointer->service_byte_pm.master = 0;
 							//заносим инфу в регистры
 							ram_space_pointer->ram_register_space.PLC_CM_State = 0x04;
 						}
@@ -281,6 +331,7 @@ uint8_t protocol_do_cmds(uint8_t ext_bus)
 						{
 							//заносим инфу в сервисный байт ПМ
 							ram_space_pointer->service_byte_pm.init = 1;
+							ram_space_pointer->service_byte_pm.master = 1;
 							//заносим инфу в регистры
 							ram_space_pointer->ram_register_space.PLC_CM_State = 0x09;
 							continue;
@@ -292,8 +343,7 @@ uint8_t protocol_do_cmds(uint8_t ext_bus)
 						break;
 					default:
 						break;
-				}
-				
+				}		
 				memcpy((ram_space_pointer->tx_data) + offset, &(ram_space_pointer->ram_register_space.PLC_SerialNumber), sizeof(ram_space_pointer->ram_register_space.PLC_SerialNumber));
 				ram_space_pointer->tx_cmd_packet[i].data = (ram_space_pointer->tx_data) + offset;
 				offset += sizeof(ram_space_pointer->ram_register_space.PLC_SerialNumber);
@@ -316,7 +366,7 @@ uint8_t protocol_do_cmds(uint8_t ext_bus)
 				ram_space_pointer->tx_cmd_packet[i].length = sizeof(ram_space_pointer->tx_cmd_packet[i].cmd) + sizeof(ram_space_pointer->tx_cmd_packet[i].result) + sizeof(ram_space_pointer->tx_cmd_packet[i].length) + size;
 				break;
 			case WRITE:
-				//проверка того, что утсановлено соединение по выбранной шине
+				//проверка того, что установлено соединение по выбранной шине
 				switch(ext_bus)
 				{
 					case 1:
@@ -347,6 +397,24 @@ uint8_t protocol_do_cmds(uint8_t ext_bus)
 				ram_space_pointer->tx_cmd_packet[i].length = sizeof(ram_space_pointer->tx_cmd_packet[i].cmd) + sizeof(ram_space_pointer->tx_cmd_packet[i].result) + sizeof(ram_space_pointer->tx_cmd_packet[i].length) + 1;
 				break;
 			case RESET:
+				//проверка того, что установлено соединение по выбранной шине
+				switch(ext_bus)
+				{
+					case 1:
+						if(ram_space_pointer->ram_register_space.PLC_CM_State != 0x04)
+						{
+							continue;
+						}
+						break;
+					case 2:
+						if(ram_space_pointer->ram_register_space.PLC_CM_State != 0x09)
+						{
+							continue;
+						}
+						break;
+					default:
+						break;
+				}
 				//по команде RESET сбрасываем регистры и в поле данных кладем код команды
 				init_external_ram_space();
 				memset((ram_space_pointer->tx_data) + offset, RESET, 1);
@@ -358,6 +426,24 @@ uint8_t protocol_do_cmds(uint8_t ext_bus)
 				ram_space_pointer->tx_cmd_packet[i].length = sizeof(ram_space_pointer->tx_cmd_packet[i].cmd) + sizeof(ram_space_pointer->tx_cmd_packet[i].result) + sizeof(ram_space_pointer->tx_cmd_packet[i].length) + 1;
 				break;
 			case CONFIG:
+				//проверка того, что установлено соединение по выбранной шине
+				switch(ext_bus)
+				{
+					case 1:
+						if(ram_space_pointer->ram_register_space.PLC_CM_State != 0x04)
+						{
+							continue;
+						}
+						break;
+					case 2:
+						if(ram_space_pointer->ram_register_space.PLC_CM_State != 0x09)
+						{
+							continue;
+						}
+						break;
+					default:
+						break;
+				}
 				//проверка на то, что ПМ находится в сервисном режиме
 				if (ram_space_pointer->ram_register_space.PLC_PMAddr != 0x00)
 				{
