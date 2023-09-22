@@ -110,6 +110,9 @@ uint8_t uart_write(UARTn *UART_struct, uint8_t *data, uint32_t data_size)
 {
 	uart_errors error;
 	
+	//активирование микросхемы RS485 на выдачу данных
+	PORT_WriteBit(MDR_PORTC, PORT_Pin_7, 1);
+	
 	if (UART_struct->UARTx_timeouts->write_timeout_flag == 1)
 	{
 		MDR_TIMER1->CNT = 0;
@@ -134,6 +137,10 @@ uint8_t uart_write(UARTn *UART_struct, uint8_t *data, uint32_t data_size)
 			}
 		}
 	}
+	
+	//дезактивирование микросхемы RS485 на выдачу данных
+	PORT_WriteBit(MDR_PORTC, PORT_Pin_7, 0);
+	
 	return 0;
 }
 /*

@@ -28,12 +28,19 @@ void init_external_ram_space(void)
 	
 	//кладем карту регистров по адресу 200 во внешней ОЗУ и инциализируем ее
 	strncpy(&(ram_space_pointer->ram_register_space.PLC_DeviceInfo),"MPA",sizeof("MPA"));
+	ram_space_pointer->ram_register_space.PLC_SoftVer.revision = 1;
+	ram_space_pointer->ram_register_space.PLC_SoftVer.modification = 2;
+	ram_space_pointer->ram_register_space.PLC_SoftVer.type = 6;
+	ram_space_pointer->ram_register_space.PLC_SoftVer.soft_ver = 1;
+	ram_space_pointer->ram_register_space.PLC_SoftVer.add_info = 4;
+	ram_space_pointer->ram_register_space.PLC_SoftVer.develop = 1;
 	ram_space_pointer->ram_register_space.PLC_PMAddr = PM_ADDR;
+	ram_space_pointer->ram_register_space.PLC_Config = 0x1234;
 	ram_space_pointer->ram_register_space.PLC_CM_State = 0x01;
-	ram_space_pointer->ram_register_space.PLC_DeviceType = 2684487201;
+	ram_space_pointer->ram_register_space.PLC_DeviceType = 0xA0020621;
 	ram_space_pointer->ram_register_space.PLC_SerialNumber = 1717986918;
-	ram_space_pointer->ram_register_space.PLC_BusConfig_B1 = 66847485;
-	ram_space_pointer->ram_register_space.PLC_BusConfig_B2 = 100271355;
+	//ram_space_pointer->ram_register_space.PLC_BusConfig_B1 = 0x66847485;
+	//ram_space_pointer->ram_register_space.PLC_BusConfig_B2 = 0x100271355;
 	ram_space_pointer->ram_register_space.PLC_TimeoutForDefect_B1 = 200;
 	ram_space_pointer->ram_register_space.PLC_TimeoutForDefect_B2 = 200;
 	ram_space_pointer->ram_register_space.PLC_NumCrcErrorsForDefect_B1 = 6;

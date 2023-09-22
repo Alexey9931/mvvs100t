@@ -293,7 +293,7 @@ uint8_t protocol_do_cmds(uint8_t ext_bus)
 	//заполнение поля данных
 	for (uint8_t i = 0; i < ram_space_pointer->rx_packet_struct.packet_header.cmd_number; i++)
 	{
-		switch (ram_space_pointer->rx_cmd_packet->cmd)
+		switch (ram_space_pointer->rx_cmd_packet[i].cmd)
 		{
 			case TYPE:
 				//по команде TYPE кладем в поле дата регистры PLC_SoftVer, PLC_Config, PLC_DeviceType, PLC_SerialNumber
@@ -357,7 +357,7 @@ uint8_t protocol_do_cmds(uint8_t ext_bus)
 				memcpy(&start_addr, ram_space_pointer->rx_cmd_packet[i].data, sizeof(start_addr));
 				memcpy(&size, (ram_space_pointer->rx_cmd_packet[i].data) + sizeof(start_addr), sizeof(size));
 				//по команде READ кладем в поле дата size байт начиная с start_addr
-				memcpy((ram_space_pointer->tx_data) + offset, &(ram_space_pointer->ram_register_space) + start_addr, size);
+				memcpy((ram_space_pointer->tx_data) + offset, &(ram_space_pointer->start_struct) + start_addr, size);
 				ram_space_pointer->tx_cmd_packet[i].data = (ram_space_pointer->tx_data) + offset;
 				offset += size;
 				ram_space_pointer->tx_cmd_packet[i].cmd = READ;
@@ -387,7 +387,7 @@ uint8_t protocol_do_cmds(uint8_t ext_bus)
 				memcpy(&start_addr, ram_space_pointer->rx_cmd_packet[i].data, sizeof(start_addr));
 				memcpy(&size, (ram_space_pointer->rx_cmd_packet[i].data) + sizeof(start_addr), sizeof(size));
 				//по команде WRITE кладем по адресу start_addr size принятых байт для записи и в поле данных кладем код команды
-				memcpy(&(ram_space_pointer->ram_register_space) + start_addr, (ram_space_pointer->rx_cmd_packet[i].data) + sizeof(start_addr) + sizeof(size), size);
+				memcpy(&(ram_space_pointer->start_struct) + start_addr, (ram_space_pointer->rx_cmd_packet[i].data) + sizeof(start_addr) + sizeof(size), size);
 				memset((ram_space_pointer->tx_data) + offset, WRITE, 1);
 				ram_space_pointer->tx_cmd_packet[i].data = (ram_space_pointer->tx_data) + offset;
 				offset++;
@@ -473,7 +473,7 @@ uint8_t protocol_do_cmds(uint8_t ext_bus)
 	ram_space_pointer->tx_packet_struct.packet_header.sender_addr = ram_space_pointer->rx_packet_struct.packet_header.receiver_addr;
 	ram_space_pointer->tx_packet_struct.packet_header.packet_length += sizeof(ram_space_pointer->tx_packet_struct.packet_header) - sizeof(ram_space_pointer->tx_packet_struct.packet_header.header) + sizeof(ram_space_pointer->tx_packet_struct.packet_tail.checksum);
 	//TODO:разобраться с полем сервисный байт
-	ram_space_pointer->tx_packet_struct.packet_header.service_byte = 0x80;
+	memcpy(&(ram_space_pointer->tx_packet_struct.packet_header.service_byte), &(ram_space_pointer->service_byte_pm), sizeof(ram_space_pointer->service_byte_pm));
 	ram_space_pointer->tx_packet_struct.packet_header.cmd_number = ram_space_pointer->rx_packet_struct.packet_header.cmd_number;
 	
 	// вычисление контрольной суммы

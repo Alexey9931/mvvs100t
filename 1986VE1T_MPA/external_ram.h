@@ -13,15 +13,35 @@
 #define REGISTER_SPACE_START_ADDR 200		///< Стартовый адрес карты регистров в ОЗУ
 #define CHANEL_NUMBER 8			
 #define RX_DATA_SIZE 256
-#define PM_ADDR 0
+#define PM_ADDR 1
 
 ///Структура с битовыми полями для регистра неисправность шины
 typedef struct bus_defect_struct
 {
 	unsigned many_fail_packet: 1;										///< Количество битых пакетов подряд > уст. значения
 	unsigned fail_timeout: 1;												///< Неисправность по таймауту
-	unsigned reserv: 6;															///< Резерв
+	unsigned reserv: 14;														///< Резерв
 }__attribute__((packed)) bus_defect;
+///Структура с битовыми полями для регистра версия ПО
+typedef struct plc_sof_ver_struct
+{
+	unsigned revision: 4;														///< Ревизия модуля
+	unsigned modification: 4;												///< Модификация модуля
+	unsigned type: 9;																///< Тип модуля
+	unsigned soft_ver: 10;														///< Версия ПО
+	unsigned add_info: 4;																///< Дополнительная информация
+	unsigned develop: 1;														///< 1=ПО в процессе разработки
+}__attribute__((packed)) plc_soft_ver;
+///Структура с битовыми полями для регистра тип устройства
+typedef struct device_type_struct
+{
+	unsigned revision: 4;														///< Ревизия модуля
+	unsigned modification: 4;												///< Модификация модуля
+	unsigned type: 9;																///< Тип модуля
+	unsigned batch: 5;															///< Партия
+	unsigned use_object: 5;													///< Объект применения
+	unsigned reserv: 5;															///< Резерв
+}__attribute__((packed)) device_type;
 ///структура, которая лежит в начале ОЗУ любого модуля
 typedef struct start_struct_ext_ram
 {
@@ -45,57 +65,57 @@ typedef struct start_struct_ext_ram
 ///органиация пространства регистров во внешней ОЗУ
 typedef struct register_space_ext_ram
 {
-	uint32_t 		PLC_SoftVer;																	
-	uint16_t		PLC_Config;
-	uint16_t		PLC_PMAddr;
-	uint32_t		PLC_Durat;
-	uint32_t		PLC_CM_State;
-	uint32_t		PLC_CorrPackFromDevice_B1;
-	uint32_t		PLC_CorrPackToDevice_B1;
-	uint32_t		PLC_ErrPackToDevice_B1;
-	uint32_t		PLC_ErrPackFromDevice_B1;
-	uint32_t		PLC_CorrPackFromDevice_B2;
-	uint32_t		PLC_CorrPackToDevice_B2;
-	uint32_t		PLC_ErrPackToDevice_B2;
-	uint32_t		PLC_ErrPackFromDevice_B2;
-	uint16_t		PLC_PowerDefect;
-	bus_defect	PLC_BusDefect_B1;
-	bus_defect  PLC_BusDefect_B2;
-	uint8_t	  	PLC_SelfDiagDefect[10];
-	uint8_t	  	Reserv_1[68];
-	uint8_t			PLC_DeviceInfo[1024];
+	plc_soft_ver 	PLC_SoftVer;																	
+	uint16_t			PLC_Config;
+	uint16_t			PLC_PMAddr;
+	uint32_t			PLC_Durat;
+	uint32_t			PLC_CM_State;
+	uint32_t			PLC_CorrPackFromDevice_B1;
+	uint32_t			PLC_CorrPackToDevice_B1;
+	uint32_t			PLC_ErrPackToDevice_B1;
+	uint32_t			PLC_ErrPackFromDevice_B1;
+	uint32_t			PLC_CorrPackFromDevice_B2;
+	uint32_t			PLC_CorrPackToDevice_B2;
+	uint32_t			PLC_ErrPackToDevice_B2;
+	uint32_t			PLC_ErrPackFromDevice_B2;
+	uint16_t			PLC_PowerDefect;
+	bus_defect		PLC_BusDefect_B1;
+	bus_defect  	PLC_BusDefect_B2;
+	uint8_t	  		PLC_SelfDiagDefect[10];
+	uint8_t	  		Reserv_1[68];
+	uint8_t				PLC_DeviceInfo[1024];
 	uint32_t		PLC_DeviceType;
-	uint32_t		PLC_SerialNumber;
-	uint32_t		PLC_BusConfig_B1;
-	uint32_t		PLC_BusConfig_B2;
-	uint32_t		PLC_TimeoutForDefect_B1;
-	uint32_t		PLC_TimeoutForDefect_B2;
-	uint16_t		PLC_NumCrcErrorsForDefect_B1;
-	uint16_t		PLC_NumCrcErrorsForDefect_B2;
-	uint16_t		PLC_TimeToRepair;
-	uint16_t		PLC_TimeSoloWork;
-	uint16_t		PLC_DualControl;
-	uint8_t	  	Reserv_2[64];
-	uint16_t		AI_OperMode;
-	uint16_t		AI_NumForAverag[CHANEL_NUMBER];
-	uint16_t		AI_MinCodeADC[CHANEL_NUMBER];
-	uint16_t		AI_MaxCodeADC[CHANEL_NUMBER];
-	uint8_t			Reserv_3[32];
-  float				AI_PolynConst0[CHANEL_NUMBER];
-	float				AI_PolynConst1[CHANEL_NUMBER];
-  float				AI_PolynConst2[CHANEL_NUMBER];
-  float				AI_PolynConst3[CHANEL_NUMBER];
-	float				AI_PolynConst4[CHANEL_NUMBER];
-	float				AI_PolynConst5[CHANEL_NUMBER];
-	float				AI_PolynConst6[CHANEL_NUMBER];
-	uint8_t			AI_MetrologDat[32];
-	uint8_t			Reserv_4[32];
-	uint8_t			Reserv_5[32];
-	uint16_t		AI_SignalChanged;
-	uint16_t		AI_CodeADC[CHANEL_NUMBER];
-	uint32_t		AI_PhysQuantFloat[CHANEL_NUMBER];
-	uint8_t			AI_DiagnosticChannel[CHANEL_NUMBER];
-	uint8_t			Reserv_6[2];
+	uint32_t			PLC_SerialNumber;
+	uint32_t			PLC_BusConfig_B1;
+	uint32_t			PLC_BusConfig_B2;
+	uint32_t			PLC_TimeoutForDefect_B1;
+	uint32_t			PLC_TimeoutForDefect_B2;
+	uint16_t			PLC_NumCrcErrorsForDefect_B1;
+	uint16_t			PLC_NumCrcErrorsForDefect_B2;
+	uint16_t			PLC_TimeToRepair;
+	uint16_t			PLC_TimeSoloWork;
+	uint16_t			PLC_DualControl;
+	uint8_t	  		Reserv_2[64];
+	uint16_t			AI_OperMode;
+	uint16_t			AI_NumForAverag[CHANEL_NUMBER];
+	uint16_t			AI_MinCodeADC[CHANEL_NUMBER];
+	uint16_t			AI_MaxCodeADC[CHANEL_NUMBER];
+	uint8_t				Reserv_3[32];
+  float					AI_PolynConst0[CHANEL_NUMBER];
+	float					AI_PolynConst1[CHANEL_NUMBER];
+  float					AI_PolynConst2[CHANEL_NUMBER];
+  float					AI_PolynConst3[CHANEL_NUMBER];
+	float					AI_PolynConst4[CHANEL_NUMBER];
+	float					AI_PolynConst5[CHANEL_NUMBER];
+	float					AI_PolynConst6[CHANEL_NUMBER];
+	uint8_t				AI_MetrologDat[32];
+	uint8_t				Reserv_4[32];
+	uint8_t				Reserv_5[32];
+	uint16_t			AI_SignalChanged;
+	uint16_t			AI_CodeADC[CHANEL_NUMBER];
+	uint32_t			AI_PhysQuantFloat[CHANEL_NUMBER];
+	uint8_t				AI_DiagnosticChannel[CHANEL_NUMBER];
+	uint8_t				Reserv_6[2];
 
 }__attribute__((packed)) ram_registers;
 ///Структура с битовыми полями для сервисного байта ПМ

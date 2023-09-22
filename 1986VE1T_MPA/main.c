@@ -18,7 +18,7 @@ int main(void)
 	UART1.DMA_Channel = DMA_Channel_REQ_UART1_RX;
 	UART1.IRQn = UART1_IRQn;
 	UART1.RST_CLK_PCLK_UARTn = RST_CLK_PCLK_UART1;
-	UART1.UART.UART_BaudRate = 115200;
+	UART1.UART.UART_BaudRate = 921600;
 	UART1.UART.UART_WordLength = UART_WordLength8b;
 	UART1.UART.UART_StopBits = UART_StopBits1;
 	UART1.UART.UART_Parity = UART_Parity_No;
@@ -52,6 +52,7 @@ int main(void)
 	ebc_ports_config();
 	ebc_config();
 	init_external_ram_space();
+
 
 	while(1)
 	{
