@@ -12,8 +12,7 @@
 #define EXT_RAM_START_ADDR 0x50200000		///< Адрес в памяти МК, с которой начинается обращение к внешней ОЗУ
 #define REGISTER_SPACE_START_ADDR 200		///< Стартовый адрес карты регистров в ОЗУ
 #define CHANEL_NUMBER 8			
-#define RX_DATA_SIZE 256
-#define PM_ADDR 1
+#define PM_ADDR 0
 
 ///Структура с битовыми полями для регистра неисправность шины
 typedef struct bus_defect_struct
@@ -147,10 +146,12 @@ typedef struct ram_data_struct
 	fields_packet 			tx_packet_struct;																			///< Отправляемый пакет с идентифицированными полями
 	fields_cmd 					tx_cmd_packet[NUMBER_CMDS_IN_PACKET];									///< Массив данных для конкретных команд в отправляемом пакете
 	fields_cmd 					rx_cmd_packet[NUMBER_CMDS_IN_PACKET];									///< Массив данных для конкретных команд в принятом пакете
-	uint8_t 						tx_data[RX_DATA_SIZE];																///< Выделенное место для данных tx_packet (пока 1кбайт)
-	uint8_t 						buffer_tx[BUFFER_SIZE];																///< Буфер для передатчика UART
+	uint8_t 						tx_data[BUFFER_SIZE];																	///< Выделенное место для данных tx_packet 
+	uint8_t 						packet_rx[BUFFER_SIZE];																///< Буфер с принятым пакетом
+	uint8_t 						packet_tx[BUFFER_SIZE];																///< Буфер с отправленным пакетом
 	service_struct_pm		service_byte_pm;																			///< Структура сервисного байта ПМ
 	service_struct_um		service_byte_um;																			///< Структура сервисного байта УМ
+	uint8_t 						uart1_rx_buffer[BUFFER_SIZE];													///< Буфер приемника UART1
 }__attribute__((packed)) ram_data;
 
 /*!

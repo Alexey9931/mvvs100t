@@ -9,7 +9,7 @@
 #include "MDR32_Drivers.h"
 #include "string.h"
 
-#define BUFFER_SIZE 256             		///< Размер кольцевого буфера UARTn
+#define BUFFER_SIZE 2048             		///< Размер кольцевого буфера UARTn (в кБАйтах)
 #define BUFFER_MASK (BUFFER_SIZE-1)			///< Маска, необходимая для корректной работы кольцевого буфера
 
 ///Коды ошибок работы UART
@@ -30,21 +30,28 @@ typedef struct UART_Timeouts
 	uint32_t read_val_timeout;  					///< Таймаут на чтение
 	uint32_t write_val_timeout; 					///< Таймаут на запись
 } UARTn_RX_TX_Timeouts;    
-
+///Структура с параметрами DMA канала UARTn
+typedef struct UART_dma_params
+{
+	uint8_t dma_channel;																///< Выбор канала DMA для UARTn
+	uint32_t dma_irq_counter;														///< Счетчик прерываний DMA
+	DMA_CtrlDataInitTypeDef DMA_InitStructure_UART_RX;  ///< Структура с настройками DMA в целом 
+	DMA_ChannelInitTypeDef DMA_Channel_UART_RX;  				///< Структура с настройками канала DMA
+} UARTn_DMA_Ch_params;  
 ///Структура с конфигурационными параметрами UART и буфером приема
 typedef struct UART_ConfigData
 {
 	MDR_UART_TypeDef* UARTx;            	///< Библиотечная структура с периферийными регистрами блока UART
-	UARTn_RX_TX_Timeouts* UARTx_timeouts;	///< Структура с таймаутами UARTn
-	uint8_t DMA_Channel;									///< Выбор канала DMA для UARTn
+	UARTn_RX_TX_Timeouts UARTx_timeouts;	///< Структура с таймаутами UARTn
+	UARTn_DMA_Ch_params uart_dma_ch;			///< Структура с параметрами канала DMA для UART
 	IRQn_Type IRQn;												///< Выбор обработчика прерываний UARTn
 	uint32_t RST_CLK_PCLK_UARTn;					///< Включение тактирования для UARTn
 	UART_InitTypeDef UART;								///< Библиотечная структура с конфигурационными параметрами UART
 	uint32_t UART_HCLKdiv;								///< Выбор делителя тактовой частоты для тактирования блока UARTn		 																	
-	uint8_t buffer[BUFFER_SIZE];					///< Буфер с принятыми байтами
+	uint8_t* buffer;											///< Указатель на буфер преимника UART
 	uint32_t buffer_count;								///< Счетчик элементов буфера
 	uint32_t read_pos;										///< Текущая позиция курсора чтения в буфере
-} UARTn ;
+} UARTn;
 
 /*!
  *	\brief Инициализацирует выбранный  UARTn

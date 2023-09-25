@@ -7,6 +7,7 @@ extern UARTn UART3;
 extern UARTn UART4;
 #endif
 
+
 /*
 Функция инициализация DMA
 */
@@ -40,7 +41,18 @@ void DMA_IRQHandler(void)
 	//если сработало прерывание при заполнении буфера приемника UART1
 	if(DMA_GetFlagStatus(DMA_Channel_REQ_UART1_RX, DMA_FLAG_CHNL_ENA) == RESET)
 	{
-		DMA_UART_RX_init(&UART1);
+		if (UART1.uart_dma_ch.dma_irq_counter == ((BUFFER_SIZE/1024) - 1))
+		{
+			DMA_UART_RX_init(&UART1);
+			UART1.uart_dma_ch.dma_irq_counter = 0;
+		}
+	  else
+		{
+			UART1.uart_dma_ch.DMA_InitStructure_UART_RX.DMA_DestBaseAddr += UART1.uart_dma_ch.DMA_InitStructure_UART_RX.DMA_CycleSize;
+			// Инициализировать канал
+			DMA_Init(UART1.uart_dma_ch.dma_channel, &UART1.uart_dma_ch.DMA_Channel_UART_RX);
+			UART1.uart_dma_ch.dma_irq_counter++;
+		}
 	}
 	//если сработало прерывание при заполнении буфера приемника UART2
 	if(DMA_GetFlagStatus(DMA_Channel_REQ_UART2_RX, DMA_FLAG_CHNL_ENA) == RESET)

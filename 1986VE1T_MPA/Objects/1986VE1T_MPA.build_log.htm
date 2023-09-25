@@ -67,7 +67,28 @@ DMA.c(1): warning: In file included from...
                    ^
 DMA.c(1): warning: In file included from...
 ./DMA.h(4): warning: In file included from...
-./UART.h(41): warning: padding struct 'struct UART_ConfigData' with 2 bytes to align 'RST_CLK_PCLK_UARTn' [-Wpadded]
+./UART.h(30): warning: padding struct 'struct UART_Timeouts' with 2 bytes to align 'read_val_timeout' [-Wpadded]
+        uint32_t read_val_timeout;                                      ///< Таймаут на чтение
+                 ^
+./UART.h(37): warning: padding struct 'struct UART_dma_params' with 3 bytes to align 'dma_irq_counter' [-Wpadded]
+        uint32_t dma_irq_counter;                                                                                                               ///< Счетчик прерываний DMA
+                 ^
+DMA.c(1): warning: In file included from...
+./DMA.h(4): warning: In file included from...
+./UART.h(9): warning: In file included from...
+./MDR32_Drivers.h(12): warning: In file included from...
+C:/Users/shishov/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.0/Libraries/SPL/MDR32FxQI/inc\MDR32FxQI_dma.h(467): warning: padding struct 'DMA_CtrlDataInitTypeDef' with 2 bytes to align 'DMA_MemoryDataSize' [-Wpadded]
+    DMA_Mem_Data_Size               DMA_MemoryDataSize;  /*!< Specifies the Memory data width.
+                                    ^
+C:/Users/shishov/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.0/Libraries/SPL/MDR32FxQI/inc\MDR32FxQI_dma.h(471): warning: padding struct 'DMA_CtrlDataInitTypeDef' with 3 bytes to align 'DMA_CycleSize' [-Wpadded]
+    uint32_t                        DMA_CycleSize;       /*!< Specifies the  total number of DMA transfers that the DMA cycle contains.
+                                    ^
+C:/Users/shishov/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.0/Libraries/SPL/MDR32FxQI/inc\MDR32FxQI_dma.h(495): warning: padding size of 'DMA_ChannelInitTypeDef' with 1 byte to alignment boundary [-Wpadded]
+typedef struct
+        ^
+DMA.c(1): warning: In file included from...
+./DMA.h(4): warning: In file included from...
+./UART.h(48): warning: padding struct 'struct UART_ConfigData' with 3 bytes to align 'RST_CLK_PCLK_UARTn' [-Wpadded]
         uint32_t RST_CLK_PCLK_UARTn;                                    ///< Включение тактирования для UARTn
                  ^
 DMA.c(1): warning: In file included from...
@@ -77,12 +98,7 @@ DMA.c(1): warning: In file included from...
 C:/Users/shishov/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.0/Libraries/SPL/MDR32FxQI/inc\MDR32FxQI_uart.h(243): warning: padding size of 'UART_InitTypeDef' with 2 bytes to alignment boundary [-Wpadded]
 typedef struct
         ^
-DMA.c(1): warning: In file included from...
-./DMA.h(4): warning: In file included from...
-./UART.h(30): warning: padding struct 'struct UART_Timeouts' with 2 bytes to align 'read_val_timeout' [-Wpadded]
-        uint32_t read_val_timeout;                                      ///< Таймаут на чтение
-                 ^
-5 warnings generated.
+9 warnings generated.
 compiling DMA.c...
 main.c(1): warning: In file included from...
 ./main.h(4): warning: In file included from...
@@ -122,7 +138,7 @@ main.c(1): warning: In file included from...
                       ^
 main.c(1): warning: In file included from...
 ./main.h(13): warning: In file included from...
-./external_ram.h(162): warning: no newline at end of file [-Wnewline-eof]
+./external_ram.h(163): warning: no newline at end of file [-Wnewline-eof]
 #endif /*__EXTERNAL_RAM_H */
                             ^
 main.c(1): warning: In file included from...
@@ -132,7 +148,29 @@ main.c(1): warning: In file included from...
 main.c(1): warning: In file included from...
 ./main.h(4): warning: In file included from...
 ./ADC.h(8): warning: In file included from...
-./UART.h(41): warning: padding struct 'struct UART_ConfigData' with 2 bytes to align 'RST_CLK_PCLK_UARTn' [-Wpadded]
+./UART.h(30): warning: padding struct 'struct UART_Timeouts' with 2 bytes to align 'read_val_timeout' [-Wpadded]
+        uint32_t read_val_timeout;                                      ///< Таймаут на чтение
+                 ^
+./UART.h(37): warning: padding struct 'struct UART_dma_params' with 3 bytes to align 'dma_irq_counter' [-Wpadded]
+        uint32_t dma_irq_counter;                                                                                                               ///< Счетчик прерываний DMA
+                 ^
+main.c(1): warning: In file included from...
+./main.h(4): warning: In file included from...
+./ADC.h(4): warning: In file included from...
+./MDR32_Drivers.h(12): warning: In file included from...
+C:/Users/shishov/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.0/Libraries/SPL/MDR32FxQI/inc\MDR32FxQI_dma.h(467): warning: padding struct 'DMA_CtrlDataInitTypeDef' with 2 bytes to align 'DMA_MemoryDataSize' [-Wpadded]
+    DMA_Mem_Data_Size               DMA_MemoryDataSize;  /*!< Specifies the Memory data width.
+                                    ^
+C:/Users/shishov/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.0/Libraries/SPL/MDR32FxQI/inc\MDR32FxQI_dma.h(471): warning: padding struct 'DMA_CtrlDataInitTypeDef' with 3 bytes to align 'DMA_CycleSize' [-Wpadded]
+    uint32_t                        DMA_CycleSize;       /*!< Specifies the  total number of DMA transfers that the DMA cycle contains.
+                                    ^
+C:/Users/shishov/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.0/Libraries/SPL/MDR32FxQI/inc\MDR32FxQI_dma.h(495): warning: padding size of 'DMA_ChannelInitTypeDef' with 1 byte to alignment boundary [-Wpadded]
+typedef struct
+        ^
+main.c(1): warning: In file included from...
+./main.h(4): warning: In file included from...
+./ADC.h(8): warning: In file included from...
+./UART.h(48): warning: padding struct 'struct UART_ConfigData' with 3 bytes to align 'RST_CLK_PCLK_UARTn' [-Wpadded]
         uint32_t RST_CLK_PCLK_UARTn;                                    ///< Включение тактирования для UARTn
                  ^
 main.c(1): warning: In file included from...
@@ -142,22 +180,28 @@ main.c(1): warning: In file included from...
 C:/Users/shishov/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.0/Libraries/SPL/MDR32FxQI/inc\MDR32FxQI_uart.h(243): warning: padding size of 'UART_InitTypeDef' with 2 bytes to alignment boundary [-Wpadded]
 typedef struct
         ^
-main.c(1): warning: In file included from...
-./main.h(4): warning: In file included from...
-./ADC.h(8): warning: In file included from...
-./UART.h(30): warning: padding struct 'struct UART_Timeouts' with 2 bytes to align 'read_val_timeout' [-Wpadded]
-        uint32_t read_val_timeout;                                      ///< Таймаут на чтение
+main.c(78): warning: mixing declarations and code is incompatible with standards before C99 [-Wdeclaration-after-statement]
+        uint8_t ext_bus; //определение шины, по которой идет обмен данными
+                ^
+main.c(76): warning: variable 'timer' set but not used [-Wunused-but-set-variable]
+        uint32_t timer, timer1, timer2;
                  ^
-main.c(75): warning: variable 'ext_bus' is used uninitialized whenever 'if' condition is false [-Wsometimes-uninitialized]
+main.c(76): warning: variable 'timer2' set but not used [-Wunused-but-set-variable]
+        uint32_t timer, timer1, timer2;
+                                ^
+main.c(76): warning: variable 'timer1' set but not used [-Wunused-but-set-variable]
+        uint32_t timer, timer1, timer2;
+                        ^
+main.c(83): warning: variable 'ext_bus' is used uninitialized whenever 'if' condition is false [-Wsometimes-uninitialized]
         else if(UART_struct->UARTx == MDR_UART2)
                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-main.c(80): note: uninitialized use occurs here
+main.c(88): note: uninitialized use occurs here
         if((receive_packet(UART_struct, ext_bus)) != 0)
                                         ^~~~~~~
-main.c(75): note: remove the 'if' if its condition is always true
+main.c(83): note: remove the 'if' if its condition is always true
         else if(UART_struct->UARTx == MDR_UART2)
              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-main.c(70): note: initialize the variable 'ext_bus' to silence this warning
+main.c(78): note: initialize the variable 'ext_bus' to silence this warning
         uint8_t ext_bus; //определение шины, по которой идет обмен данными
                        ^
                         = '\0'
@@ -167,7 +211,7 @@ ram_data *ram_space_pointer;
 main.c(11): note: declare 'static' if the variable is not intended to be used outside of this translation unit
 ram_data *ram_space_pointer;
 ^
-14 warnings generated.
+22 warnings generated.
 compiling main.c...
 PORTS.c(1): warning: In file included from...
 ./PORTS.h(4): warning: In file included from...
@@ -199,12 +243,33 @@ rs422_protocol.c(1): warning: In file included from...
 #endif /*__MDR32_Drivers_H */
                              ^
 rs422_protocol.c(2): warning: In file included from...
-./external_ram.h(162): warning: no newline at end of file [-Wnewline-eof]
+./external_ram.h(163): warning: no newline at end of file [-Wnewline-eof]
 #endif /*__EXTERNAL_RAM_H */
                             ^
 rs422_protocol.c(1): warning: In file included from...
 ./rs422_protocol.h(9): warning: In file included from...
-./UART.h(41): warning: padding struct 'struct UART_ConfigData' with 2 bytes to align 'RST_CLK_PCLK_UARTn' [-Wpadded]
+./UART.h(30): warning: padding struct 'struct UART_Timeouts' with 2 bytes to align 'read_val_timeout' [-Wpadded]
+        uint32_t read_val_timeout;                                      ///< Таймаут на чтение
+                 ^
+./UART.h(37): warning: padding struct 'struct UART_dma_params' with 3 bytes to align 'dma_irq_counter' [-Wpadded]
+        uint32_t dma_irq_counter;                                                                                                               ///< Счетчик прерываний DMA
+                 ^
+rs422_protocol.c(1): warning: In file included from...
+./rs422_protocol.h(9): warning: In file included from...
+./UART.h(9): warning: In file included from...
+./MDR32_Drivers.h(12): warning: In file included from...
+C:/Users/shishov/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.0/Libraries/SPL/MDR32FxQI/inc\MDR32FxQI_dma.h(467): warning: padding struct 'DMA_CtrlDataInitTypeDef' with 2 bytes to align 'DMA_MemoryDataSize' [-Wpadded]
+    DMA_Mem_Data_Size               DMA_MemoryDataSize;  /*!< Specifies the Memory data width.
+                                    ^
+C:/Users/shishov/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.0/Libraries/SPL/MDR32FxQI/inc\MDR32FxQI_dma.h(471): warning: padding struct 'DMA_CtrlDataInitTypeDef' with 3 bytes to align 'DMA_CycleSize' [-Wpadded]
+    uint32_t                        DMA_CycleSize;       /*!< Specifies the  total number of DMA transfers that the DMA cycle contains.
+                                    ^
+C:/Users/shishov/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.0/Libraries/SPL/MDR32FxQI/inc\MDR32FxQI_dma.h(495): warning: padding size of 'DMA_ChannelInitTypeDef' with 1 byte to alignment boundary [-Wpadded]
+typedef struct
+        ^
+rs422_protocol.c(1): warning: In file included from...
+./rs422_protocol.h(9): warning: In file included from...
+./UART.h(48): warning: padding struct 'struct UART_ConfigData' with 3 bytes to align 'RST_CLK_PCLK_UARTn' [-Wpadded]
         uint32_t RST_CLK_PCLK_UARTn;                                    ///< Включение тактирования для UARTn
                  ^
 rs422_protocol.c(1): warning: In file included from...
@@ -220,24 +285,16 @@ rs422_protocol.c(15): warning: mixing declarations and code is incompatible with
 rs422_protocol.c(8): warning: unused parameter 'ext_bus' [-Wunused-parameter]
 uint8_t transmit_packet(UARTn *UART_struct, uint8_t ext_bus)
                                                     ^
-rs422_protocol.c(1): warning: In file included from...
-./rs422_protocol.h(9): warning: In file included from...
-./UART.h(30): warning: padding struct 'struct UART_Timeouts' with 2 bytes to align 'read_val_timeout' [-Wpadded]
-        uint32_t read_val_timeout;                                      ///< Таймаут на чтение
+rs422_protocol.c(203): warning: mixing declarations and code is incompatible with standards before C99 [-Wdeclaration-after-statement]
+        uint16_t buffer_offset = 0; //<EF><E5><F0><E5><EC><E5><F8><E5><ED><E8><E5> <EF><EE> <E1><F3><F4><E5><F0><F3>
                  ^
-rs422_protocol.c(46): warning: mixing declarations and code is incompatible with standards before C99 [-Wdeclaration-after-statement]
-        uint8_t buffer_rx[BUFFER_SIZE];//<EB><EE><EA><E0><EB><FC><ED><FB><E9> <E1><F3><F4><E5><F0> <F1> <EF><F0><E8><ED><FF><F2><FB><EC> <EF><E0><EA><E5><F2><EE><EC> <E4><E0><ED><ED><FB><F5>
-                ^
-rs422_protocol.c(480): warning: mixing declarations and code is incompatible with standards before C99 [-Wdeclaration-after-statement]
-        uint8_t buffer_crc[BUFFER_SIZE];
-                ^
-rs422_protocol.c(343): warning: 'break' will never be executed [-Wunreachable-code-break]
+rs422_protocol.c(334): warning: 'break' will never be executed [-Wunreachable-code-break]
                                                 break;
                                                 ^~~~~
-rs422_protocol.c(506): warning: implicit conversion changes signedness: 'int' to 'uint_least32_t' (aka 'unsigned int') [-Wsign-conversion]
+rs422_protocol.c(485): warning: implicit conversion changes signedness: 'int' to 'uint_least32_t' (aka 'unsigned int') [-Wsign-conversion]
                 crc = i;
                     ~ ^
-11 warnings generated.
+14 warnings generated.
 compiling rs422_protocol.c...
 TIMER.c(1): warning: In file included from...
 ./TIMER.h(4): warning: In file included from...
@@ -297,7 +354,26 @@ UART.c(5): warning: In file included from...
 #endif /*__MDR32_Drivers_H */
                              ^
 UART.c(5): warning: In file included from...
-./UART.h(41): warning: padding struct 'struct UART_ConfigData' with 2 bytes to align 'RST_CLK_PCLK_UARTn' [-Wpadded]
+./UART.h(30): warning: padding struct 'struct UART_Timeouts' with 2 bytes to align 'read_val_timeout' [-Wpadded]
+        uint32_t read_val_timeout;                                      ///< Таймаут на чтение
+                 ^
+./UART.h(37): warning: padding struct 'struct UART_dma_params' with 3 bytes to align 'dma_irq_counter' [-Wpadded]
+        uint32_t dma_irq_counter;                                                                                                               ///< Счетчик прерываний DMA
+                 ^
+UART.c(5): warning: In file included from...
+./UART.h(9): warning: In file included from...
+./MDR32_Drivers.h(12): warning: In file included from...
+C:/Users/shishov/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.0/Libraries/SPL/MDR32FxQI/inc\MDR32FxQI_dma.h(467): warning: padding struct 'DMA_CtrlDataInitTypeDef' with 2 bytes to align 'DMA_MemoryDataSize' [-Wpadded]
+    DMA_Mem_Data_Size               DMA_MemoryDataSize;  /*!< Specifies the Memory data width.
+                                    ^
+C:/Users/shishov/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.0/Libraries/SPL/MDR32FxQI/inc\MDR32FxQI_dma.h(471): warning: padding struct 'DMA_CtrlDataInitTypeDef' with 3 bytes to align 'DMA_CycleSize' [-Wpadded]
+    uint32_t                        DMA_CycleSize;       /*!< Specifies the  total number of DMA transfers that the DMA cycle contains.
+                                    ^
+C:/Users/shishov/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.0/Libraries/SPL/MDR32FxQI/inc\MDR32FxQI_dma.h(495): warning: padding size of 'DMA_ChannelInitTypeDef' with 1 byte to alignment boundary [-Wpadded]
+typedef struct
+        ^
+UART.c(5): warning: In file included from...
+./UART.h(48): warning: padding struct 'struct UART_ConfigData' with 3 bytes to align 'RST_CLK_PCLK_UARTn' [-Wpadded]
         uint32_t RST_CLK_PCLK_UARTn;                                    ///< Включение тактирования для UARTn
                  ^
 UART.c(5): warning: In file included from...
@@ -306,44 +382,37 @@ UART.c(5): warning: In file included from...
 C:/Users/shishov/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.0/Libraries/SPL/MDR32FxQI/inc\MDR32FxQI_uart.h(243): warning: padding size of 'UART_InitTypeDef' with 2 bytes to alignment boundary [-Wpadded]
 typedef struct
         ^
-UART.c(5): warning: In file included from...
-./UART.h(30): warning: padding struct 'struct UART_Timeouts' with 2 bytes to align 'read_val_timeout' [-Wpadded]
-        uint32_t read_val_timeout;                                      ///< Таймаут на чтение
-                 ^
-UART.c(77): warning: implicit conversion loses integer precision: 'uint32_t' (aka 'unsigned int') to 'UART_Clock_BRG_TypeDef' [-Wimplicit-int-conversion]
+UART.c(79): warning: implicit conversion loses integer precision: 'uint32_t' (aka 'unsigned int') to 'UART_Clock_BRG_TypeDef' [-Wimplicit-int-conversion]
         UART_BRGInit(UART_struct->UARTx, UART_struct->UART_HCLKdiv);
         ~~~~~~~~~~~~                     ~~~~~~~~~~~~~^~~~~~~~~~~~
-UART.c(125): warning: comparison of integers of different signs: 'int' and 'uint32_t' (aka 'unsigned int') [-Wsign-compare]
+UART.c(127): warning: comparison of integers of different signs: 'int' and 'uint32_t' (aka 'unsigned int') [-Wsign-compare]
         for (int i = 0; i < data_size; i++)
                         ~ ^ ~~~~~~~~~
-UART.c(5): warning: In file included from...
-./UART.h(9): warning: In file included from...
-./MDR32_Drivers.h(12): warning: In file included from...
-C:/Users/shishov/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.0/Libraries/SPL/MDR32FxQI/inc\MDR32FxQI_dma.h(495): warning: padding size of 'DMA_ChannelInitTypeDef' with 1 byte to alignment boundary [-Wpadded]
-typedef struct
-        ^
-C:/Users/shishov/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.0/Libraries/SPL/MDR32FxQI/inc\MDR32FxQI_dma.h(467): warning: padding struct 'DMA_CtrlDataInitTypeDef' with 2 bytes to align 'DMA_MemoryDataSize' [-Wpadded]
-    DMA_Mem_Data_Size               DMA_MemoryDataSize;  /*!< Specifies the Memory data width.
-                                    ^
-C:/Users/shishov/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.0/Libraries/SPL/MDR32FxQI/inc\MDR32FxQI_dma.h(471): warning: padding struct 'DMA_CtrlDataInitTypeDef' with 3 bytes to align 'DMA_CycleSize' [-Wpadded]
-    uint32_t                        DMA_CycleSize;       /*!< Specifies the  total number of DMA transfers that the DMA cycle contains.
-                                    ^
-UART.c(321): warning: no newline at end of file [-Wnewline-eof]
+UART.c(265): warning: 'memset' call operates on objects of type 'uint8_t' (aka 'unsigned char') while the size is based on a different type 'uint8_t *' (aka 'unsigned char *') [-Wsizeof-pointer-memaccess]
+        memset(UART_struct->buffer, 0, sizeof(UART_struct->buffer));
+               ~~~~~~~~~~~~~~~~~~~            ~~~~~~~~~~~~~^~~~~~
+UART.c(265): note: did you mean to provide an explicit length?
+        memset(UART_struct->buffer, 0, sizeof(UART_struct->buffer));
+                                              ~~~~~~~~~~~~~^~~~~~
+UART.c(275): warning: incompatible pointer to integer conversion assigning to 'uint32_t' (aka 'unsigned int') from 'uint8_t *' (aka 'unsigned char *') [-Wint-conversion]
+        UART_struct->uart_dma_ch.DMA_InitStructure_UART_RX.DMA_DestBaseAddr = UART_struct->buffer;
+                                                                            ^ ~~~~~~~~~~~~~~~~~~~
+UART.c(319): warning: no newline at end of file [-Wnewline-eof]
 }
  ^
 UART.c(11): warning: no previous extern declaration for non-static variable 'UART1' [-Wmissing-variable-declarations]
-UARTn UART1 IAR_SECTION ("EXECUTABLE_MEMORY_SECTION") __attribute__((section("EXECUTABLE_MEMORY_SECTION")));
+UARTn UART1;
       ^
 UART.c(11): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-UARTn UART1 IAR_SECTION ("EXECUTABLE_MEMORY_SECTION") __attribute__((section("EXECUTABLE_MEMORY_SECTION")));
+UARTn UART1;
 ^
 UART.c(12): warning: no previous extern declaration for non-static variable 'UART2' [-Wmissing-variable-declarations]
-UARTn UART2 IAR_SECTION ("EXECUTABLE_MEMORY_SECTION") __attribute__((section("EXECUTABLE_MEMORY_SECTION")));
+UARTn UART2;
       ^
 UART.c(12): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-UARTn UART2 IAR_SECTION ("EXECUTABLE_MEMORY_SECTION") __attribute__((section("EXECUTABLE_MEMORY_SECTION")));
+UARTn UART2;
 ^
-12 warnings generated.
+15 warnings generated.
 compiling UART.c...
 EBC.c(4): warning: In file included from...
 ./EBC.h(4): warning: In file included from...
@@ -416,7 +485,7 @@ external_ram.c(1): warning: In file included from...
 #endif /*__MDR32_Drivers_H */
                              ^
 external_ram.c(1): warning: In file included from...
-./external_ram.h(162): warning: no newline at end of file [-Wnewline-eof]
+./external_ram.h(163): warning: no newline at end of file [-Wnewline-eof]
 #endif /*__EXTERNAL_RAM_H */
                             ^
 external_ram.c(30): warning: incompatible pointer types passing 'uint8_t (*)[1024]' (aka 'unsigned char (*)[1024]') to parameter of type 'char *' [-Wincompatible-pointer-types]
@@ -626,8 +695,8 @@ typedef struct
 3 warnings generated.
 compiling MDR32FxQI_uart.c...
 linking...
-Program Size: Code=14644 RO-data=244 RW-data=2052 ZI-data=8364  
-".\Objects\1986VE1T_MPA.axf" - 0 Error(s), 135 Warning(s).
+Program Size: Code=7926 RO-data=246 RW-data=1028 ZI-data=8596  
+".\Objects\1986VE1T_MPA.axf" - 0 Error(s), 153 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -668,10 +737,10 @@ Package Vendor: Milandr
       Source file:   Libraries/CMSIS/MDR32FxQI/DeviceSupport/MDR32F1QI/startup/arm/startup_MDR32F1QI.S
       Include file:  Libraries/CMSIS/MDR32FxQI/DeviceSupport/MDR32F1QI/startup/system_MDR32F1QI.h
       Include file:  Libraries/CMSIS/MDR32FxQI/DeviceSupport/MDR32F1QI/inc/MDR32F1QI.h
+      Include file:  Libraries/SPL/MDR32FxQI/inc/IRQ_Handler_Template/MDR32F1QI_IT.h
       Source file:   Libraries/SPL/MDR32FxQI/src/IRQ_Handler_Template/MDR32F1QI_IT.c
       Source file:   Libraries/CMSIS/MDR32FxQI/DeviceSupport/MDR32F1QI/startup/system_MDR32F1QI.c
       Include file:  Libraries/CMSIS/MDR32FxQI/CoreSupport/CM1/core_cm1.h
-      Include file:  Libraries/SPL/MDR32FxQI/inc/IRQ_Handler_Template/MDR32F1QI_IT.h
       Include file:  Libraries/SPL/MDR32FxQI/MDR32FxQI_config.h
 
    * Component: Milandr::Drivers:ADC:2.0.2i
@@ -679,8 +748,8 @@ Package Vendor: Milandr
       Include file:  Libraries/SPL/MDR32FxQI/inc/MDR32FxQI_adc.h
 
    * Component: Milandr::Drivers:BKP:2.0.2i
-      Source file:   Libraries/SPL/MDR32FxQI/src/MDR32FxQI_bkp.c
       Include file:  Libraries/SPL/MDR32FxQI/inc/MDR32FxQI_bkp.h
+      Source file:   Libraries/SPL/MDR32FxQI/src/MDR32FxQI_bkp.c
 
    * Component: Milandr::Drivers:DMA:2.0.2i
       Source file:   Libraries/SPL/MDR32FxQI/src/MDR32FxQI_dma.c
@@ -691,26 +760,26 @@ Package Vendor: Milandr
       Source file:   Libraries/SPL/MDR32FxQI/src/MDR32FxQI_ebc.c
 
    * Component: Milandr::Drivers:EEPROM:2.0.2i
-      Source file:   Libraries/SPL/MDR32FxQI/src/MDR32FxQI_eeprom_cache.S
-      Source file:   Libraries/SPL/MDR32FxQI/src/MDR32FxQI_eeprom.c
       Include file:  Libraries/SPL/MDR32FxQI/inc/MDR32FxQI_eeprom.h
+      Source file:   Libraries/SPL/MDR32FxQI/src/MDR32FxQI_eeprom.c
+      Source file:   Libraries/SPL/MDR32FxQI/src/MDR32FxQI_eeprom_cache.S
 
    * Component: Milandr::Drivers:PORT:2.0.2i
-      Source file:   Libraries/SPL/MDR32FxQI/src/MDR32FxQI_port.c
       Include file:  Libraries/SPL/MDR32FxQI/inc/MDR32FxQI_port.h
+      Source file:   Libraries/SPL/MDR32FxQI/src/MDR32FxQI_port.c
 
    * Component: Milandr::Drivers:RST_CLK:2.0.2i
-      Source file:   Libraries/SPL/MDR32FxQI/src/MDR32FxQI_rst_clk.c
       Include file:  Libraries/SPL/MDR32FxQI/inc/MDR32FxQI_rst_clk.h
+      Source file:   Libraries/SPL/MDR32FxQI/src/MDR32FxQI_rst_clk.c
 
    * Component: Milandr::Drivers:TIMER:2.0.2i
-      Include file:  Libraries/SPL/MDR32FxQI/inc/MDR32FxQI_timer.h
       Source file:   Libraries/SPL/MDR32FxQI/src/MDR32FxQI_timer.c
+      Include file:  Libraries/SPL/MDR32FxQI/inc/MDR32FxQI_timer.h
 
    * Component: Milandr::Drivers:UART:2.0.2i
-      Include file:  Libraries/SPL/MDR32FxQI/inc/MDR32FxQI_uart.h
       Source file:   Libraries/SPL/MDR32FxQI/src/MDR32FxQI_uart.c
-Build Time Elapsed:  00:00:03
+      Include file:  Libraries/SPL/MDR32FxQI/inc/MDR32FxQI_uart.h
+Build Time Elapsed:  00:00:04
 </pre>
 </body>
 </html>

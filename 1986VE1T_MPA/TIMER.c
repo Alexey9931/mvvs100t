@@ -29,7 +29,7 @@ void TIMER2_init(void)//период 10мс
 	 /* Initializes the TIMERx Counter */
 	 TIMER_CntStructInit(&TIMER2InitStruct);
 	 TIMER2InitStruct.TIMER_Period = 0x270F;//10000-1
-	 TIMER2InitStruct.TIMER_Prescaler = WORK_FREQ - 1;//144-1
+	 TIMER2InitStruct.TIMER_Prescaler = WORK_FREQ - 1;//128-1
 	 
 	 TIMER_CntInit(MDR_TIMER2, &TIMER2InitStruct);
 	

@@ -8,12 +8,14 @@
  *(необходимо добавить аттрибут, который прописан в файле Objects/.sct,
  * т.к. для работы с DMA адрес буфера назначения должен лежать в определенной области памяти)
 */
-UARTn UART1 IAR_SECTION ("EXECUTABLE_MEMORY_SECTION") __attribute__((section("EXECUTABLE_MEMORY_SECTION")));
-UARTn UART2 IAR_SECTION ("EXECUTABLE_MEMORY_SECTION") __attribute__((section("EXECUTABLE_MEMORY_SECTION")));
+UARTn UART1;
+UARTn UART2;
 
 #ifdef K1986VE3T
 UARTn UART3;
+extern UARTn_RX_TX_Timeouts uart3_timeouts;
 UARTn UART4;
+extern UARTn_RX_TX_Timeouts uart4_timeouts;
 #endif
 
 //обработчик прерываний UART1
@@ -113,7 +115,7 @@ uint8_t uart_write(UARTn *UART_struct, uint8_t *data, uint32_t data_size)
 	//активирование микросхемы RS485 на выдачу данных
 	PORT_WriteBit(MDR_PORTC, PORT_Pin_7, 1);
 	
-	if (UART_struct->UARTx_timeouts->write_timeout_flag == 1)
+	if (UART_struct->UARTx_timeouts.write_timeout_flag == 1)
 	{
 		MDR_TIMER1->CNT = 0;
 	}
@@ -127,9 +129,9 @@ uint8_t uart_write(UARTn *UART_struct, uint8_t *data, uint32_t data_size)
 		UART_SendData(UART_struct->UARTx, data[i]);
 		while (UART_GetFlagStatus(UART_struct->UARTx, UART_FLAG_TXFF) == SET)
 		{
-			if (UART_struct->UARTx_timeouts->write_timeout_flag == 1)
+			if (UART_struct->UARTx_timeouts.write_timeout_flag == 1)
 			{
-				if (TIMER_GetCounter(MDR_TIMER1)==(UART_struct->UARTx_timeouts->write_val_timeout*50)) 
+				if (TIMER_GetCounter(MDR_TIMER1)==(UART_struct->UARTx_timeouts.write_val_timeout*50)) 
 				{
 					error = WRITE_TIMEOUT_ERROR;
 					return error;
@@ -160,12 +162,12 @@ uint8_t uart_read(UARTn *UART_struct, uint32_t len, uint8_t *data)
 	if (((UART_struct->read_pos)+len) > BUFFER_SIZE)
 	{
 		//если задан таймаут 
-		if (UART_struct->UARTx_timeouts->read_timeout_flag == 1)
+		if (UART_struct->UARTx_timeouts.read_timeout_flag == 1)
 		{
 			MDR_TIMER1->CNT = 0;
 			while ((int)((UART_struct->buffer_count) - (UART_struct->read_pos)) >= 0)
 			{
-				if (TIMER_GetCounter(MDR_TIMER1)==(UART_struct->UARTx_timeouts->write_val_timeout*50))
+				if (TIMER_GetCounter(MDR_TIMER1)==(UART_struct->UARTx_timeouts.write_val_timeout*50))
 				{
 					error = READ_TIMEOUT_ERROR;
 					return error;
@@ -173,7 +175,7 @@ uint8_t uart_read(UARTn *UART_struct, uint32_t len, uint8_t *data)
 			}
 			while ((BUFFER_SIZE - (UART_struct->read_pos) + (UART_struct->buffer_count)) < len)
 			{
-				if (TIMER_GetCounter(MDR_TIMER1)==(UART_struct->UARTx_timeouts->write_val_timeout*50)) 
+				if (TIMER_GetCounter(MDR_TIMER1)==(UART_struct->UARTx_timeouts.write_val_timeout*50)) 
 				{
 					error = READ_TIMEOUT_ERROR;
 					return error;
@@ -202,12 +204,12 @@ uint8_t uart_read(UARTn *UART_struct, uint32_t len, uint8_t *data)
 	else
 	{
 		//если задан таймаут 
-		if (UART_struct->UARTx_timeouts->read_timeout_flag == 1)
+		if (UART_struct->UARTx_timeouts.read_timeout_flag == 1)
 		{
 			MDR_TIMER1->CNT = 0;
 			while (((UART_struct->buffer_count) - (UART_struct->read_pos)) < len)
 			{
-				if (TIMER_GetCounter(MDR_TIMER1)==(UART_struct->UARTx_timeouts->write_val_timeout*50))
+				if (TIMER_GetCounter(MDR_TIMER1)==(UART_struct->UARTx_timeouts.write_val_timeout*50))
 				{				
 					error = READ_TIMEOUT_ERROR;
 					return error;
@@ -267,38 +269,34 @@ void uart_clean(UARTn *UART_struct)
 */
 void DMA_UART_RX_init(UARTn *UART_struct)
 {
-	//Структура с настройками DMA в целом 
-	DMA_CtrlDataInitTypeDef DMA_InitStructure_UART_RX;
-	//Структура с настройками канала DMA
-	DMA_ChannelInitTypeDef DMA_Channel_UART_RX;
-	
-	DMA_StructInit(&DMA_Channel_UART_RX);
-	DMA_InitStructure_UART_RX.DMA_SourceBaseAddr = (uint32_t)(&(UART_struct->UARTx->DR));
-	DMA_InitStructure_UART_RX.DMA_DestBaseAddr = (uint32_t) &(UART_struct->buffer);
-	DMA_InitStructure_UART_RX.DMA_CycleSize = BUFFER_SIZE;
-	DMA_InitStructure_UART_RX.DMA_SourceIncSize = DMA_SourceIncNo;
-	DMA_InitStructure_UART_RX.DMA_DestIncSize = DMA_DestIncByte;
-	DMA_InitStructure_UART_RX.DMA_MemoryDataSize = DMA_MemoryDataSize_Byte;
-	DMA_InitStructure_UART_RX.DMA_NumContinuous = DMA_Transfers_1;
-	DMA_InitStructure_UART_RX.DMA_SourceProtCtrl = DMA_SourcePrivileged;
-	DMA_InitStructure_UART_RX.DMA_DestProtCtrl = DMA_DestPrivileged;
-	DMA_InitStructure_UART_RX.DMA_Mode = DMA_Mode_Basic;
+
+	DMA_StructInit(&UART_struct->uart_dma_ch.DMA_Channel_UART_RX);
+	UART_struct->uart_dma_ch.DMA_InitStructure_UART_RX.DMA_SourceBaseAddr = (uint32_t)(&(UART_struct->UARTx->DR));
+	UART_struct->uart_dma_ch.DMA_InitStructure_UART_RX.DMA_DestBaseAddr = UART_struct->buffer;
+	UART_struct->uart_dma_ch.DMA_InitStructure_UART_RX.DMA_CycleSize = 1024;
+	UART_struct->uart_dma_ch.DMA_InitStructure_UART_RX.DMA_SourceIncSize = DMA_SourceIncNo;
+	UART_struct->uart_dma_ch.DMA_InitStructure_UART_RX.DMA_DestIncSize = DMA_DestIncByte;
+	UART_struct->uart_dma_ch.DMA_InitStructure_UART_RX.DMA_MemoryDataSize = DMA_MemoryDataSize_Byte;
+	UART_struct->uart_dma_ch.DMA_InitStructure_UART_RX.DMA_NumContinuous = DMA_Transfers_1;
+	UART_struct->uart_dma_ch.DMA_InitStructure_UART_RX.DMA_SourceProtCtrl = DMA_SourcePrivileged;
+	UART_struct->uart_dma_ch.DMA_InitStructure_UART_RX.DMA_DestProtCtrl = DMA_DestPrivileged;
+	UART_struct->uart_dma_ch.DMA_InitStructure_UART_RX.DMA_Mode = DMA_Mode_Basic;
 	
 	// Задать структуру канала
-	DMA_Channel_UART_RX.DMA_PriCtrlData = &DMA_InitStructure_UART_RX;
-	DMA_Channel_UART_RX.DMA_Priority = DMA_Priority_High;
-	DMA_Channel_UART_RX.DMA_UseBurst = DMA_BurstClear;
-	DMA_Channel_UART_RX.DMA_SelectDataStructure = DMA_CTRL_DATA_PRIMARY;
+	UART_struct->uart_dma_ch.DMA_Channel_UART_RX.DMA_PriCtrlData = &UART_struct->uart_dma_ch.DMA_InitStructure_UART_RX;
+	UART_struct->uart_dma_ch.DMA_Channel_UART_RX.DMA_Priority = DMA_Priority_High;
+	UART_struct->uart_dma_ch.DMA_Channel_UART_RX.DMA_UseBurst = DMA_BurstClear;
+	UART_struct->uart_dma_ch.DMA_Channel_UART_RX.DMA_SelectDataStructure = DMA_CTRL_DATA_PRIMARY;
 	
 	// Инициализировать канал
-	DMA_Init(UART_struct->DMA_Channel, &DMA_Channel_UART_RX);
+	DMA_Init(UART_struct->uart_dma_ch.dma_channel, &UART_struct->uart_dma_ch.DMA_Channel_UART_RX);
 	
-	MDR_DMA->CHNL_REQ_MASK_CLR = 1 << UART_struct->DMA_Channel;
-	MDR_DMA->CHNL_USEBURST_CLR = 1 << UART_struct->DMA_Channel;
+	MDR_DMA->CHNL_REQ_MASK_CLR = 1 << UART_struct->uart_dma_ch.dma_channel;
+	MDR_DMA->CHNL_USEBURST_CLR = 1 << UART_struct->uart_dma_ch.dma_channel;
 	
 	UART_DMACmd(UART_struct->UARTx,UART_DMA_RXE, ENABLE);
 	// Разрешить работу DMA с UART
-	DMA_Cmd (UART_struct->DMA_Channel, ENABLE);
+	DMA_Cmd (UART_struct->uart_dma_ch.dma_channel, ENABLE);
 	
 	//NVIC_SetPriority (DMA_IRQn, 2);
 	NVIC_EnableIRQ(DMA_IRQn);
@@ -308,14 +306,14 @@ void DMA_UART_RX_init(UARTn *UART_struct)
 */
 void uart_set_read_timeout(UARTn *UART_struct, uint32_t read_timeout)
 {
-	UART_struct->UARTx_timeouts->read_timeout_flag = 1;
-	UART_struct->UARTx_timeouts->read_val_timeout = read_timeout;
+	UART_struct->UARTx_timeouts.read_timeout_flag = 1;
+	UART_struct->UARTx_timeouts.read_val_timeout = read_timeout;
 }
 /*
 Функция установки таймаута UARTn на запись
 */
 void uart_set_write_timeout(UARTn *UART_struct, uint32_t write_timeout)
 {
-	UART_struct->UARTx_timeouts->write_timeout_flag = 1;
-	UART_struct->UARTx_timeouts->write_val_timeout = write_timeout;
+	UART_struct->UARTx_timeouts.write_timeout_flag = 1;
+	UART_struct->UARTx_timeouts.write_val_timeout = write_timeout;
 }
