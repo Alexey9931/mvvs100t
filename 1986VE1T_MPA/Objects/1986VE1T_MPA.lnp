@@ -21,6 +21,7 @@
 ".\objects\mdr32fxqi_eeprom_cache.o"
 ".\objects\mdr32fxqi_port.o"
 ".\objects\mdr32fxqi_rst_clk.o"
+".\objects\mdr32fxqi_ssp.o"
 ".\objects\mdr32fxqi_timer.o"
 ".\objects\mdr32fxqi_uart.o"
 --strict --scatter ".\Objects\1986VE1T_MPA.sct"

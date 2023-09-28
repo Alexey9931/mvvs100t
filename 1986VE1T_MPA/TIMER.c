@@ -42,8 +42,8 @@ void TIMER2_init(void)//период 10мс
 
 void Delay_milli(uint32_t time_milli)//задержка максимум 1сек (time_milli=999)
 { 
-	MDR_TIMER1->CNT = 0;
-	while(TIMER_GetCounter(MDR_TIMER1)!=(time_milli*50));
+	TIMER_SetCounter(MDR_TIMER1, 0);
+	while(TIMER_GetCounter(MDR_TIMER1)!=(time_milli*50)){}
 }
 void Delay_micro(uint32_t time_micro)//задержка в мкс
 { 

@@ -32,24 +32,30 @@ typedef enum protocol_errors
 	PACKET_ERROR													///< Ошибка структуры пакета
 } data_exchange_errors;
 
-///Структура с полями данных для каждой команды внутри одного пакета
-typedef struct cmd_struct
+///Структура с заголовком для каждой команды внутри одного пакета
+typedef struct cmd_header_struct
 {
 	uint8_t cmd;			///< Команда
 	uint16_t result;	///< Результат выполнения команды
 	uint16_t length;	///< Длина команды
-	uint8_t *data;		///< Данные
+}__attribute__((packed)) fields_cmd_header;
+
+///Структура с полями данных для каждой команды внутри одного пакета
+typedef struct cmd_struct
+{
+	fields_cmd_header 	header;		///< Заголовок
+	uint8_t 						*data;		///< Данные
 }__attribute__((packed)) fields_cmd;
 
 ///Структура с полями заголовка пакета
 typedef struct packet_header_struct
 {
-	uint8_t header;							///< Заголовок
-	uint8_t receiver_addr;			///< Адрес получателя
-	uint8_t sender_addr;				///< Адрес отправителя
-	uint16_t packet_length;			///< Длина пакета
-	uint8_t service_byte;				///< Сервисный байт
-	uint8_t cmd_number;					///< Количество команд
+	uint8_t 	header;							///< Заголовок
+	uint8_t 	receiver_addr;			///< Адрес получателя
+	uint8_t 	sender_addr;				///< Адрес отправителя
+	uint16_t 	packet_length;			///< Длина пакета
+	uint8_t 	service_byte;				///< Сервисный байт
+	uint8_t 	cmd_number;					///< Количество команд
 }__attribute__((packed)) fields_packet_header;
 
 ///Структура с полями конца пакета
@@ -62,25 +68,16 @@ typedef struct packet_tail_Struct
 ///Структура со всеми полями данных пакета
 typedef struct tx_rx_packet_struct
 {
-	fields_packet_header packet_header;	///< Заголовочные поля
-	fields_cmd *cmd_with_data;						///< Поля с содержимым каждой команды
-	fields_packet_tail packet_tail;			///< Поля хвоста пакета
+	fields_packet_header 	packet_header;																	///< Заголовочные поля
+	fields_cmd 						cmd_with_data[NUMBER_CMDS_IN_PACKET];						///< Массив полей с содержимым каждой команды
+	fields_packet_tail 		packet_tail;																		///< Поля хвоста пакета
 }__attribute__((packed)) fields_packet;
 
-///Структура с полями, необходимыми для расчета контрольной суммы
-typedef struct protocol_crc
-{
-	uint8_t receiver_addr;			///< Адрес получателя
-	uint8_t sender_addr;				///< Адрес отправителя
-	uint16_t packet_length;			///< Длина пакета
-	uint8_t service_byte;				///< Сервисный байт
-	uint8_t cmd_number;					///< Количество команд
-	fields_cmd *cmd_with_data;	///< Поля с содержимым каждой команды
-}__attribute__((packed)) fields_crc;
 
 /*!
  *	\brief Отправляет пакет данных
  *	\param *UART_struct - Выбранный UART 
+ *	\param ext_bus - Номер шины
  *	\return Сообщение с результатом (0 - успех, 1- ошибка)
 */
 uint8_t transmit_packet(UARTn *UART_struct, uint8_t ext_bus);
@@ -88,12 +85,14 @@ uint8_t transmit_packet(UARTn *UART_struct, uint8_t ext_bus);
 /*!
  *	\brief Читает пакет данных
  *	\param *UART_struct - Выбранный UART 
+ *	\param ext_bus - Номер шины
  *	\return Сообщение с результатом (0 - успех, 1- ошибка)
 */
 uint8_t receive_packet(UARTn *UART_struct, uint8_t ext_bus);
 
 /*!
  *	\brief Выполняет требуемые команды
+ *	\param ext_bus - Номер шины
  *	\return Сообщение с результатом (0 - успех, 1- ошибка)
 */
 uint8_t protocol_do_cmds(uint8_t ext_bus);
@@ -105,6 +104,25 @@ uint8_t protocol_do_cmds(uint8_t ext_bus);
  *	\return Контрольная сумма
 */
 uint_least32_t crc32(uint8_t *buf, size_t len);
+
+/*!
+ *	\brief Заполняет таблицу CRC32
+*/
+void fill_crc32_table(void);
+
+/*!
+ *	\brief Обработчик ошибок работы UART
+ *	\param uart_error - Код ошибки UART
+ *	\param ext_bus - Номер шины
+*/
+void uart_error_handler(uart_errors uart_error, uint8_t ext_bus);
+
+/*!
+ *	\brief Обработчик ошибок протокола
+ *	\param protocol_error - Код ошибки протокола
+ *	\param ext_bus - Номер шины
+*/
+void protocol_error_handler(uint8_t ext_bus);
 
 /*!
  *	\brief Преобразует слово для передачи в сеть

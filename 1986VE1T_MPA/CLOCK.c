@@ -3,6 +3,9 @@
 
 void CLOCK_Init(void) // тактирование WORK_FREQ МГц
 {
+	// Сброс настроек системы тактирования
+  RST_CLK_DeInit();
+	
 	//настройка тактирования от внешнего кварца HSE_OSC МГц
 	// Включаем генератор на внешнем кварце
 	RST_CLK_HSEconfig (RST_CLK_HSE_ON);
@@ -27,9 +30,9 @@ void CLOCK_Init(void) // тактирование WORK_FREQ МГц
 	
 	 
 	/* Enables the RST_CLK_PCLK_BKP */
-  RST_CLK_PCLKcmd(RST_CLK_PCLK_BKP, ENABLE);
+ // RST_CLK_PCLKcmd(RST_CLK_PCLK_BKP, ENABLE);
   /* Setting the parameters of the voltage regulator SelectRI and LOW in the BKP controller (CPU_CLK = 128 MHz) */
-  BKP_DUccMode(BKP_DUcc_over_80MHz);
+  //BKP_DUccMode(BKP_DUcc_over_80MHz);
 	
 	SystemCoreClockUpdate();
 }

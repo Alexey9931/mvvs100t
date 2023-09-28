@@ -3,6 +3,7 @@
  \brief Файл с реализацией API для работы с UART
 */
 #include "UART.h"
+#include "TIMER.h"
 
 /*Глобальные экземпляры структур с конфигурационными параметрами UART и буфером приема 
  *(необходимо добавить аттрибут, который прописан в файле Objects/.sct,
@@ -139,7 +140,7 @@ uint8_t uart_write(UARTn *UART_struct, uint8_t *data, uint32_t data_size)
 			}
 		}
 	}
-	
+	Delay_micro(10);
 	//дезактивирование микросхемы RS485 на выдачу данных
 	PORT_WriteBit(MDR_PORTC, PORT_Pin_7, 0);
 	
@@ -155,6 +156,7 @@ uint8_t uart_read(UARTn *UART_struct, uint32_t len, uint8_t *data)
 	//если длина превышает размер буфера
 	if (len > BUFFER_SIZE)
 	{
+		//UART_struct->read_pos = (UART_struct->read_pos)++;
 		error = SIZE_ERROR;
 		return error;
 	}
@@ -164,10 +166,10 @@ uint8_t uart_read(UARTn *UART_struct, uint32_t len, uint8_t *data)
 		//если задан таймаут 
 		if (UART_struct->UARTx_timeouts.read_timeout_flag == 1)
 		{
-			MDR_TIMER1->CNT = 0;
+			TIMER_SetCounter(MDR_TIMER1, 0);
 			while ((int)((UART_struct->buffer_count) - (UART_struct->read_pos)) >= 0)
 			{
-				if (TIMER_GetCounter(MDR_TIMER1)==(UART_struct->UARTx_timeouts.write_val_timeout*50))
+				if (TIMER_GetCounter(MDR_TIMER1)==(UART_struct->UARTx_timeouts.read_val_timeout*50))
 				{
 					error = READ_TIMEOUT_ERROR;
 					return error;
@@ -175,7 +177,7 @@ uint8_t uart_read(UARTn *UART_struct, uint32_t len, uint8_t *data)
 			}
 			while ((BUFFER_SIZE - (UART_struct->read_pos) + (UART_struct->buffer_count)) < len)
 			{
-				if (TIMER_GetCounter(MDR_TIMER1)==(UART_struct->UARTx_timeouts.write_val_timeout*50)) 
+				if (TIMER_GetCounter(MDR_TIMER1)==(UART_struct->UARTx_timeouts.read_val_timeout*50)) 
 				{
 					error = READ_TIMEOUT_ERROR;
 					return error;
@@ -206,10 +208,11 @@ uint8_t uart_read(UARTn *UART_struct, uint32_t len, uint8_t *data)
 		//если задан таймаут 
 		if (UART_struct->UARTx_timeouts.read_timeout_flag == 1)
 		{
+			TIMER_SetCounter(MDR_TIMER1, 0);
 			MDR_TIMER1->CNT = 0;
 			while (((UART_struct->buffer_count) - (UART_struct->read_pos)) < len)
 			{
-				if (TIMER_GetCounter(MDR_TIMER1)==(UART_struct->UARTx_timeouts.write_val_timeout*50))
+ 				if (TIMER_GetCounter(MDR_TIMER1)==(UART_struct->UARTx_timeouts.read_val_timeout*50))
 				{				
 					error = READ_TIMEOUT_ERROR;
 					return error;
@@ -272,8 +275,8 @@ void DMA_UART_RX_init(UARTn *UART_struct)
 
 	DMA_StructInit(&UART_struct->uart_dma_ch.DMA_Channel_UART_RX);
 	UART_struct->uart_dma_ch.DMA_InitStructure_UART_RX.DMA_SourceBaseAddr = (uint32_t)(&(UART_struct->UARTx->DR));
-	UART_struct->uart_dma_ch.DMA_InitStructure_UART_RX.DMA_DestBaseAddr = UART_struct->buffer;
-	UART_struct->uart_dma_ch.DMA_InitStructure_UART_RX.DMA_CycleSize = 1024;
+	UART_struct->uart_dma_ch.DMA_InitStructure_UART_RX.DMA_DestBaseAddr = (uint32_t)(UART_struct->buffer);
+	UART_struct->uart_dma_ch.DMA_InitStructure_UART_RX.DMA_CycleSize = BUFFER_SIZE;
 	UART_struct->uart_dma_ch.DMA_InitStructure_UART_RX.DMA_SourceIncSize = DMA_SourceIncNo;
 	UART_struct->uart_dma_ch.DMA_InitStructure_UART_RX.DMA_DestIncSize = DMA_DestIncByte;
 	UART_struct->uart_dma_ch.DMA_InitStructure_UART_RX.DMA_MemoryDataSize = DMA_MemoryDataSize_Byte;

@@ -10,6 +10,31 @@ extern UARTn UART4;
 //указатель для обращения к внешнему ОЗУ
 ram_data *ram_space_pointer;
 
+//void NonMaskableInt_IRQn_Handler(void);
+//void NonMaskableInt_IRQn_Handler(void)
+//{
+//	uart_set_read_timeout(&UART1, 100);
+//}
+//void HardFault_IRQn_Handler(void);
+//void HardFault_IRQn_Handler(void)
+//{
+//	uart_set_read_timeout(&UART1, 100);
+//}
+//void SVCall_IRQn_IRQn_Handler(void);
+//void SVCall_IRQn_IRQn_Handler(void)
+//{
+//	uart_set_read_timeout(&UART1, 100);
+//}
+//void PendSV_IRQn_IRQn_Handler(void);
+//void PendSV_IRQn_IRQn_Handler(void)
+//{
+//	uart_set_read_timeout(&UART1, 100);
+//}
+//void SysTick_IRQn_IRQn_Handler(void);
+//void SysTick_IRQn_IRQn_Handler(void)
+//{
+//	uart_set_read_timeout(&UART1, 100);
+//}
 
 int main(void)
 {	
@@ -17,6 +42,7 @@ int main(void)
 	PortsInit();
 	TIMER1_init();
 	TIMER2_init();
+
 	DMA_common_init();
 	ebc_ports_config();
 	ebc_config();
@@ -58,12 +84,11 @@ int main(void)
 
 	uart_init(&UART1);
 	DMA_UART_RX_init(&UART1);
-	
 
 	while(1)
 	{
 		//запрос пакета по ШИНЕ1
-		//request_data(&UART1);
+		request_data(&UART1);
 		//запрос пакета по ШИНЕ2
 		//request_data(&UART2);
 	}
@@ -74,7 +99,7 @@ int main(void)
 uint8_t request_data(UARTn *UART_struct)
 {
 	uint32_t timer, timer1, timer2;
-	MDR_TIMER1->CNT = 0;
+	//MDR_TIMER1->CNT = 0;
 	uint8_t ext_bus; //определение шины, по которой идет обмен данными
 	if(UART_struct->UARTx == MDR_UART1)
 	{
@@ -89,7 +114,7 @@ uint8_t request_data(UARTn *UART_struct)
 	{
 		return 1;
 	}
-	timer = TIMER_GetCounter(MDR_TIMER1);
+	//timer = TIMER_GetCounter(MDR_TIMER1) - timer;
 	/*
 	выполнение команды периферией (например опрашиваем каналы АЦП/ЦАП)
 	switch(cmd)
@@ -101,11 +126,11 @@ uint8_t request_data(UARTn *UART_struct)
 	{
 		return 1; 
 	}
-	timer1 = TIMER_GetCounter(MDR_TIMER1);
+	//timer1 = TIMER_GetCounter(MDR_TIMER1) - timer;
 	if(transmit_packet(UART_struct, ext_bus) != 0)
 	{
 		return 1;
 	}
-	timer2 = TIMER_GetCounter(MDR_TIMER1);
+	//timer2 = TIMER_GetCounter(MDR_TIMER1) - timer1;
 	return 0;
 }

@@ -31,6 +31,8 @@ GPIO_init_structUART1.PORT_Pin = PORT_Pin_7;
 GPIO_init_structUART1.PORT_FUNC = PORT_FUNC_PORT;
 GPIO_init_structUART1.PORT_OE = PORT_OE_OUT;
 PORT_Init(MDR_PORTC, &GPIO_init_structUART1);
+//дезактивирование микросхемы RS485 на выдачу данных
+PORT_WriteBit(MDR_PORTC, PORT_Pin_7, 0);
 
 // Объявление структуры для инициализации портов UART
 PORT_InitTypeDef GPIO_init_struct2;
