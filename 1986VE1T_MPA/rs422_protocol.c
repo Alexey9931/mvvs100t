@@ -68,7 +68,7 @@ uint8_t receive_packet(UARTn *UART_struct, uint8_t ext_bus)
 	if (ram_space_pointer->rx_packet_struct.packet_header.header != 0x55)
 	{
 		protocol_error = PACKET_ERROR;
-		protocol_error_handler(ext_bus);
+		//protocol_error_handler(ext_bus);
 		return protocol_error;
 	}
 	
@@ -107,7 +107,7 @@ uint8_t receive_packet(UARTn *UART_struct, uint8_t ext_bus)
 	if (rx_pack_ptr->packet_tail.end != 0xAAAA)
 	{
 		protocol_error = PACKET_ERROR;
-		protocol_error_handler(ext_bus);
+		//protocol_error_handler(ext_bus);
 		return protocol_error;
 	}
 	//считываем массив команд (команда - данные)
@@ -244,8 +244,9 @@ uint8_t protocol_do_cmds(uint8_t ext_bus)
 			case READ:
 				memcpy(&start_addr, ram_space_pointer->rx_packet_struct.cmd_with_data[i].data, sizeof(start_addr));
 				memcpy(&size, ram_space_pointer->rx_packet_struct.cmd_with_data[i].data + sizeof(start_addr), sizeof(size));
+				
 				//по команде READ кладем в поле дата size байт начиная с start_addr
-				memcpy((ram_space_pointer->tx_data) + offset, &(ram_space_pointer->start_struct) + start_addr, size);
+				memcpy((ram_space_pointer->tx_data) + offset, (void*)(&(ram_space_pointer->start_struct)) + start_addr, size);
 				ram_space_pointer->tx_packet_struct.cmd_with_data[i].data = (ram_space_pointer->tx_data) + offset;
 				offset += size;
 				ram_space_pointer->tx_packet_struct.cmd_with_data[i].header.cmd = READ;
@@ -277,7 +278,7 @@ uint8_t protocol_do_cmds(uint8_t ext_bus)
 				//start_addr = *(ram_space_pointer->rx_packet_struct.cmd_with_data[i].data);
 				//size = *((ram_space_pointer->rx_packet_struct.cmd_with_data[i].data) + sizeof(start_addr));
 				//по команде WRITE кладем по адресу start_addr size принятых байт для записи и в поле данных кладем код команды
-				memcpy(&(ram_space_pointer->start_struct) + start_addr, (ram_space_pointer->rx_packet_struct.cmd_with_data[i].data), size);
+				memcpy((void*)(&(ram_space_pointer->start_struct)) + start_addr, (ram_space_pointer->rx_packet_struct.cmd_with_data[i].data), size);
 				memset((ram_space_pointer->tx_data) + offset, WRITE, 1);
 				//*(uint8_t*)((ram_space_pointer->tx_data) + offset) = WRITE;
 				ram_space_pointer->tx_packet_struct.cmd_with_data[i].data = (ram_space_pointer->tx_data) + offset;

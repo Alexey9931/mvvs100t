@@ -183,12 +183,12 @@ typedef struct
 main.c(101): warning: unused variable 'timer1' [-Wunused-variable]
         uint32_t timer, timer1, timer2;
                         ^
-main.c(101): warning: unused variable 'timer' [-Wunused-variable]
-        uint32_t timer, timer1, timer2;
-                 ^
 main.c(101): warning: unused variable 'timer2' [-Wunused-variable]
         uint32_t timer, timer1, timer2;
                                 ^
+main.c(101): warning: unused variable 'timer' [-Wunused-variable]
+        uint32_t timer, timer1, timer2;
+                 ^
 main.c(108): warning: variable 'ext_bus' is used uninitialized whenever 'if' condition is false [-Wsometimes-uninitialized]
         else if(UART_struct->UARTx == MDR_UART2)
                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -285,10 +285,16 @@ uint8_t transmit_packet(UARTn *UART_struct, uint8_t ext_bus)
 rs422_protocol.c(114): warning: mixing declarations and code is incompatible with standards before C99 [-Wdeclaration-after-statement]
         uint16_t buffer_offset = 0; //<EF><E5><F0><E5><EC><E5><F8><E5><ED><E8><E5> <EF><EE> <E1><F3><F4><E5><F0><F3>
                  ^
-rs422_protocol.c(401): warning: implicit conversion changes signedness: 'int' to 'uint_least32_t' (aka 'unsigned int') [-Wsign-conversion]
+rs422_protocol.c(249): warning: arithmetic on a pointer to void is a GNU extension [-Wpointer-arith]
+                                memcpy((ram_space_pointer->tx_data) + offset, (void*)(&(ram_space_pointer->start_struct)) + start_addr, size);
+                                                                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ^
+rs422_protocol.c(281): warning: arithmetic on a pointer to void is a GNU extension [-Wpointer-arith]
+                                memcpy((void*)(&(ram_space_pointer->start_struct)) + start_addr, (ram_space_pointer->rx_packet_struct.cmd_with_data[i].data), size);
+                                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ^
+rs422_protocol.c(402): warning: implicit conversion changes signedness: 'int' to 'uint_least32_t' (aka 'unsigned int') [-Wsign-conversion]
                 crc = i;
                     ~ ^
-13 warnings generated.
+15 warnings generated.
 compiling rs422_protocol.c...
 TIMER.c(1): warning: In file included from...
 ./TIMER.h(4): warning: In file included from...
@@ -703,8 +709,8 @@ typedef struct
 3 warnings generated.
 compiling MDR32FxQI_uart.c...
 linking...
-Program Size: Code=13740 RO-data=244 RW-data=1028 ZI-data=8596  
-".\Objects\1986VE1T_MPA.axf" - 0 Error(s), 154 Warning(s).
+Program Size: Code=13720 RO-data=244 RW-data=1028 ZI-data=8596  
+".\Objects\1986VE1T_MPA.axf" - 0 Error(s), 156 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -792,7 +798,7 @@ Package Vendor: Milandr
    * Component: Milandr::Drivers:UART:2.0.2i
       Include file:  Libraries/SPL/MDR32FxQI/inc/MDR32FxQI_uart.h
       Source file:   Libraries/SPL/MDR32FxQI/src/MDR32FxQI_uart.c
-Build Time Elapsed:  00:00:03
+Build Time Elapsed:  00:00:04
 </pre>
 </body>
 </html>

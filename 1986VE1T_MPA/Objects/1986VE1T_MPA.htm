@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\1986VE1T_MPA.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\1986VE1T_MPA.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6180002: Last Updated: Thu Sep 28 11:50:11 2023
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6180002: Last Updated: Thu Sep 28 13:54:02 2023
 <BR><P>
 <H3>Maximum Stack Usage =        360 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -1008,7 +1008,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_write
 </UL>
 
-<P><STRONG><a name="[7f]"></a>crc32</STRONG> (Thumb, 92 bytes, Stack size 12 bytes, rs422_protocol.o(.text.crc32))
+<P><STRONG><a name="[7e]"></a>crc32</STRONG> (Thumb, 92 bytes, Stack size 12 bytes, rs422_protocol.o(.text.crc32))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = crc32
 </UL>
 <BR>[Called By]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;transmit_packet
@@ -1073,7 +1073,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[2e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_main
 </UL>
 
-<P><STRONG><a name="[7a]"></a>protocol_do_cmds</STRONG> (Thumb, 2092 bytes, Stack size 96 bytes, rs422_protocol.o(.text.protocol_do_cmds))
+<P><STRONG><a name="[7a]"></a>protocol_do_cmds</STRONG> (Thumb, 2084 bytes, Stack size 96 bytes, rs422_protocol.o(.text.protocol_do_cmds))
 <BR><BR>[Stack]<UL><LI>Max Depth = 272<LI>Call Chain = protocol_do_cmds &rArr; init_external_ram_space &rArr; strncpy
 </UL>
 <BR>[Calls]<UL><LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init_external_ram_space
@@ -1082,19 +1082,19 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;request_data
 </UL>
 
-<P><STRONG><a name="[7e]"></a>protocol_error_handler</STRONG> (Thumb, 332 bytes, Stack size 24 bytes, rs422_protocol.o(.text.protocol_error_handler))
+<P><STRONG><a name="[7f]"></a>protocol_error_handler</STRONG> (Thumb, 332 bytes, Stack size 24 bytes, rs422_protocol.o(.text.protocol_error_handler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = protocol_error_handler
 </UL>
 <BR>[Called By]<UL><LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;receive_packet
 </UL>
 
-<P><STRONG><a name="[7b]"></a>receive_packet</STRONG> (Thumb, 876 bytes, Stack size 80 bytes, rs422_protocol.o(.text.receive_packet))
+<P><STRONG><a name="[7b]"></a>receive_packet</STRONG> (Thumb, 860 bytes, Stack size 80 bytes, rs422_protocol.o(.text.receive_packet))
 <BR><BR>[Stack]<UL><LI>Max Depth = 152<LI>Call Chain = receive_packet &rArr; uart_read &rArr; __aeabi_memcpy
 </UL>
-<BR>[Calls]<UL><LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;protocol_error_handler
+<BR>[Calls]<UL><LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;protocol_error_handler
 <LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_error_handler
 <LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_read
-<LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;crc32
+<LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;crc32
 <LI><a href="#[39]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr
 <LI><a href="#[35]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
 </UL>
@@ -1115,7 +1115,7 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 116<LI>Call Chain = transmit_packet &rArr; uart_write &rArr; Delay_micro &rArr; TIMER_GetCounter
 </UL>
 <BR>[Calls]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_write
-<LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;crc32
+<LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;crc32
 <LI><a href="#[35]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
 </UL>
 <BR>[Called By]<UL><LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;request_data
@@ -1140,7 +1140,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[2f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[7c]"></a>uart_read</STRONG> (Thumb, 480 bytes, Stack size 48 bytes, uart.o(.text.uart_read))
+<P><STRONG><a name="[7c]"></a>uart_read</STRONG> (Thumb, 472 bytes, Stack size 48 bytes, uart.o(.text.uart_read))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = uart_read &rArr; __aeabi_memcpy
 </UL>
 <BR>[Calls]<UL><LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMER_GetCounter
