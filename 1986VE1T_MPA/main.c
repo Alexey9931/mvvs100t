@@ -1,5 +1,8 @@
 #include "main.h"
 
+extern SPIn SPI1;
+extern SPIn SPI2;
+
 extern UARTn UART1;
 extern UARTn UART2;
 #ifdef K1986VE3T
@@ -10,31 +13,6 @@ extern UARTn UART4;
 //указатель для обращения к внешнему ОЗУ
 ram_data *ram_space_pointer;
 
-//void NonMaskableInt_IRQn_Handler(void);
-//void NonMaskableInt_IRQn_Handler(void)
-//{
-//	uart_set_read_timeout(&UART1, 100);
-//}
-//void HardFault_IRQn_Handler(void);
-//void HardFault_IRQn_Handler(void)
-//{
-//	uart_set_read_timeout(&UART1, 100);
-//}
-//void SVCall_IRQn_IRQn_Handler(void);
-//void SVCall_IRQn_IRQn_Handler(void)
-//{
-//	uart_set_read_timeout(&UART1, 100);
-//}
-//void PendSV_IRQn_IRQn_Handler(void);
-//void PendSV_IRQn_IRQn_Handler(void)
-//{
-//	uart_set_read_timeout(&UART1, 100);
-//}
-//void SysTick_IRQn_IRQn_Handler(void);
-//void SysTick_IRQn_IRQn_Handler(void)
-//{
-//	uart_set_read_timeout(&UART1, 100);
-//}
 
 int main(void)
 {	
@@ -47,7 +25,6 @@ int main(void)
 	ebc_ports_config();
 	ebc_config();
 	init_external_ram_space();
-	
 	
 	//Инициализация структур для UART1-2:
 	UART1.UARTx = MDR_UART1;
@@ -69,28 +46,44 @@ int main(void)
 	UART2.uart_dma_ch.dma_channel = DMA_Channel_REQ_UART2_RX;
 	UART2.IRQn = UART2_IRQn;
 	UART2.RST_CLK_PCLK_UARTn = RST_CLK_PCLK_UART2;
-	UART2.UART.UART_BaudRate = 115200;
+	UART2.UART.UART_BaudRate = 921600;
 	UART2.UART.UART_WordLength = UART_WordLength8b;
 	UART2.UART.UART_StopBits = UART_StopBits1;
 	UART2.UART.UART_Parity = UART_Parity_No;
 	UART2.UART.UART_FIFOMode = UART_FIFO_OFF;
 	UART2.UART.UART_HardwareFlowControl = UART_HardwareFlowControl_RXE | UART_HardwareFlowControl_TXE;
 	UART2.UART_HCLKdiv = UART_HCLKdiv1;
+	UART2.buffer = (uint8_t*)(ram_space_pointer->uart2_rx_buffer);
 	UART2.buffer_count = 0;
 	UART2.read_pos = 0;
 
 	uart_set_read_timeout(&UART1, 100);
-	uart_set_write_timeout(&UART1, 100);
+	uart_set_read_timeout(&UART2, 100);
 
 	uart_init(&UART1);
 	DMA_UART_RX_init(&UART1);
+	uart_init(&UART2);
+	DMA_UART_RX_init(&UART2);
+	
+	//инициализация структур для работы с SPI
+	SPI1.SSPx = MDR_SSP1;
+	SPI1.RST_CLK_PCLK_SPIn = RST_CLK_PCLK_SSP1;
+	SPI1.SSP_HCLKdiv = 1;
+	SPI1.SPI.SSP_WordLength = SSP_WordLength16b;
+	SPI1.SPI.SSP_Mode = SSP_ModeSlave;
+	SPI1.SPI.SSP_SPH = SSP_SPH_2Edge;
+	SPI1.SPI.SSP_FRF = SSP_FRF_SPI_Motorola;
+	SPI1.SPI.SSP_CPSDVSR = 72;
+	
+	spi_init(&SPI1);
+
 
 	while(1)
 	{
 		//запрос пакета по ШИНЕ1
-		request_data(&UART1);
+		//request_data(&UART1);
 		//запрос пакета по ШИНЕ2
-		//request_data(&UART2);
+		request_data(&UART2);
 	}
 }
 /*
@@ -98,8 +91,6 @@ int main(void)
 */
 uint8_t request_data(UARTn *UART_struct)
 {
-	uint32_t timer, timer1, timer2;
-	//MDR_TIMER1->CNT = 0;
 	uint8_t ext_bus; //определение шины, по которой идет обмен данными
 	if(UART_struct->UARTx == MDR_UART1)
 	{
@@ -110,11 +101,10 @@ uint8_t request_data(UARTn *UART_struct)
 		ext_bus = 2;
 	}
 	
-	if((receive_packet(UART_struct, ext_bus)) != 0)
+	if((receive_packet(UART_struct, ext_bus)) != NO_ERROR)
 	{
 		return 1;
 	}
-	//timer = TIMER_GetCounter(MDR_TIMER1) - timer;
 	/*
 	выполнение команды периферией (например опрашиваем каналы АЦП/ЦАП)
 	switch(cmd)
@@ -126,11 +116,10 @@ uint8_t request_data(UARTn *UART_struct)
 	{
 		return 1; 
 	}
-	//timer1 = TIMER_GetCounter(MDR_TIMER1) - timer;
-	if(transmit_packet(UART_struct, ext_bus) != 0)
+	if(transmit_packet(UART_struct, ext_bus) != NO_ERROR)
 	{
 		return 1;
 	}
-	//timer2 = TIMER_GetCounter(MDR_TIMER1) - timer1;
+	
 	return 0;
 }

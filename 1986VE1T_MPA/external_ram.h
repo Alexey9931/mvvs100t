@@ -214,6 +214,7 @@ typedef struct ram_data_struct
 	service_struct_um				service_byte_um;																									///< Структура сервисного байта УМ
 	uint_least32_t 					crc_table[256];																										///< Таблица для вычисления контрольной суммы
 	uint8_t 								uart1_rx_buffer[BUFFER_SIZE];																			///< Буфер приемника UART1
+	uint8_t 								uart2_rx_buffer[BUFFER_SIZE];																			///< Буфер приемника UART2
 }__attribute__((packed)) ram_data;
 
 /*!

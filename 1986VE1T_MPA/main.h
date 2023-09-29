@@ -1,8 +1,9 @@
 #ifndef __MAIN_H
 #define __MAIN_H
 
-#include "ADC.h"
+#include "1273pv19t.h"
 #include "TIMER.h"
+#include "SPI.h"
 #include "UART.h"
 #include "PORTS.h"
 #include "rs422_protocol.h"

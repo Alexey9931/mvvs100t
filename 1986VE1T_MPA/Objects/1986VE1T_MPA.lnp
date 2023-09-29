@@ -1,5 +1,4 @@
 --cpu Cortex-M1
-".\objects\adc.o"
 ".\objects\clock.o"
 ".\objects\dma.o"
 ".\objects\main.o"
@@ -11,9 +10,10 @@
 ".\objects\mt-12864av6.o"
 ".\objects\systemfont5x7r.o"
 ".\objects\external_ram.o"
+".\objects\1273pv19t.o"
+".\objects\spi.o"
 ".\objects\startup_mdr32f1qi.o"
 ".\objects\system_mdr32f1qi.o"
-".\objects\mdr32fxqi_adc.o"
 ".\objects\mdr32fxqi_bkp.o"
 ".\objects\mdr32fxqi_dma.o"
 ".\objects\mdr32fxqi_ebc.o"

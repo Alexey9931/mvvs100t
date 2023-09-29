@@ -385,16 +385,6 @@
           <GroupName>Source Group 1</GroupName>
           <Files>
             <File>
-              <FileName>ADC.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\ADC.c</FilePath>
-            </File>
-            <File>
-              <FileName>ADC.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\ADC.h</FilePath>
-            </File>
-            <File>
               <FileName>CLOCK.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\CLOCK.c</FilePath>
@@ -509,6 +499,26 @@
               <FileType>5</FileType>
               <FilePath>.\external_ram.h</FilePath>
             </File>
+            <File>
+              <FileName>1273pv19t.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\1273pv19t.c</FilePath>
+            </File>
+            <File>
+              <FileName>1273pv19t.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\1273pv19t.h</FilePath>
+            </File>
+            <File>
+              <FileName>SPI.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\SPI.c</FilePath>
+            </File>
+            <File>
+              <FileName>SPI.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\SPI.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -534,12 +544,6 @@
         </targetInfos>
       </component>
       <component Cclass="Device" Cgroup="Startup" Cvariant="1. Rev.6+" Cvendor="Milandr" Cversion="2.0.2i" condition="CON_MDR32F1QI">
-        <package name="MDR32FxQI" schemaVersion="1.2" url="https://ic.milandr.ru/soft/" vendor="Milandr" version="1.0"/>
-        <targetInfos>
-          <targetInfo name="Target 1"/>
-        </targetInfos>
-      </component>
-      <component Cclass="Drivers" Cgroup="ADC" Cvendor="Milandr" Cversion="2.0.2i" condition="CON_MDR32FxQI">
         <package name="MDR32FxQI" schemaVersion="1.2" url="https://ic.milandr.ru/soft/" vendor="Milandr" version="1.0"/>
         <targetInfos>
           <targetInfo name="Target 1"/>

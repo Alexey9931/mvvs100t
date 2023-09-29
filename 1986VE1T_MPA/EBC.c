@@ -94,6 +94,7 @@ void ebc_config(void)
     EBC_InitStruct.EBC_Mode = EBC_MODE_RAM;
     /* Initializes the EBC peripheral registers */
     EBC_Init(&EBC_InitStruct);
+		//MDR_EBC->CONTROL |= (1<<5);
 
     /* Initializes the EBC memory region 0õ50000000-0õ5FFFFFFF */
     /* Struct init */

@@ -41,23 +41,34 @@ void DMA_IRQHandler(void)
 	//если сработало прерывание при заполнении буфера приемника UART1
 	if(DMA_GetFlagStatus(DMA_Channel_REQ_UART1_RX, DMA_FLAG_CHNL_ENA) == RESET)
 	{
-		//if (UART1.uart_dma_ch.dma_irq_counter == ((BUFFER_SIZE/1024) - 1))
-		//{
+		if (UART1.uart_dma_ch.dma_irq_counter == ((BUFFER_SIZE/1024) - 1))
+		{
 			DMA_UART_RX_init(&UART1);
-		//	UART1.uart_dma_ch.dma_irq_counter = 0;
-		//}
-	  //else
-		//{
-		//	UART1.uart_dma_ch.DMA_InitStructure_UART_RX.DMA_DestBaseAddr += UART1.uart_dma_ch.DMA_InitStructure_UART_RX.DMA_CycleSize;
-			// Инициализировать канал
-		//	DMA_Init(UART1.uart_dma_ch.dma_channel, &UART1.uart_dma_ch.DMA_Channel_UART_RX);
-		//	UART1.uart_dma_ch.dma_irq_counter++;
-		//}
+			UART1.uart_dma_ch.dma_irq_counter = 0;
+		}
+	  else
+		{
+			UART1.uart_dma_ch.DMA_InitStructure_UART_RX.DMA_DestBaseAddr += UART1.uart_dma_ch.DMA_InitStructure_UART_RX.DMA_CycleSize;
+			 //Инициализировать канал
+			DMA_Init(UART1.uart_dma_ch.dma_channel, &UART1.uart_dma_ch.DMA_Channel_UART_RX);
+			UART1.uart_dma_ch.dma_irq_counter++;
+		}
 	}
 	//если сработало прерывание при заполнении буфера приемника UART2
 	if(DMA_GetFlagStatus(DMA_Channel_REQ_UART2_RX, DMA_FLAG_CHNL_ENA) == RESET)
 	{
-		DMA_UART_RX_init(&UART2);
+		if (UART2.uart_dma_ch.dma_irq_counter == ((BUFFER_SIZE/1024) - 1))
+		{
+			DMA_UART_RX_init(&UART2);
+			UART2.uart_dma_ch.dma_irq_counter = 0;
+		}
+	  else
+		{
+			UART2.uart_dma_ch.DMA_InitStructure_UART_RX.DMA_DestBaseAddr += UART2.uart_dma_ch.DMA_InitStructure_UART_RX.DMA_CycleSize;
+			 //Инициализировать канал
+			DMA_Init(UART2.uart_dma_ch.dma_channel, &UART2.uart_dma_ch.DMA_Channel_UART_RX);
+			UART2.uart_dma_ch.dma_irq_counter++;
+		}
 	}
 	#endif
 	#ifdef K1986VE3T

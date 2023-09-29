@@ -30,7 +30,7 @@ typedef enum protocol_errors
 	CRC_ERROR,														///< Ошибка контрольной суммы
 	PM_ADDR_ERROR,												///< Ошибка адресации
 	PACKET_ERROR													///< Ошибка структуры пакета
-} data_exchange_errors;
+} protocol_error;
 
 ///Структура с заголовком для каждой команды внутри одного пакета
 typedef struct cmd_header_struct
@@ -80,15 +80,15 @@ typedef struct tx_rx_packet_struct
  *	\param ext_bus - Номер шины
  *	\return Сообщение с результатом (0 - успех, 1- ошибка)
 */
-uint8_t transmit_packet(UARTn *UART_struct, uint8_t ext_bus);
+protocol_error transmit_packet(UARTn *UART_struct, uint8_t ext_bus);
 
 /*!
  *	\brief Читает пакет данных
  *	\param *UART_struct - Выбранный UART 
  *	\param ext_bus - Номер шины
- *	\return Сообщение с результатом (0 - успех, 1- ошибка)
+ *	\return Код ошибки protocol_error
 */
-uint8_t receive_packet(UARTn *UART_struct, uint8_t ext_bus);
+protocol_error receive_packet(UARTn *UART_struct, uint8_t ext_bus);
 
 /*!
  *	\brief Выполняет требуемые команды
@@ -111,18 +111,11 @@ uint_least32_t crc32(uint8_t *buf, size_t len);
 void fill_crc32_table(void);
 
 /*!
- *	\brief Обработчик ошибок работы UART
- *	\param uart_error - Код ошибки UART
+ *	\brief Обрабатывает ошибки
+ *	\param error - Код ошибки
  *	\param ext_bus - Номер шины
 */
-void uart_error_handler(uart_errors uart_error, uint8_t ext_bus);
-
-/*!
- *	\brief Обработчик ошибок протокола
- *	\param protocol_error - Код ошибки протокола
- *	\param ext_bus - Номер шины
-*/
-void protocol_error_handler(uint8_t ext_bus);
+void error_handler(protocol_error error, uint8_t ext_bus);
 
 /*!
  *	\brief Преобразует слово для передачи в сеть

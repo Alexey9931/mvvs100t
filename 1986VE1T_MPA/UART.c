@@ -156,7 +156,6 @@ uint8_t uart_read(UARTn *UART_struct, uint32_t len, uint8_t *data)
 	//если длина превышает размер буфера
 	if (len > BUFFER_SIZE)
 	{
-		//UART_struct->read_pos = (UART_struct->read_pos)++;
 		error = SIZE_ERROR;
 		return error;
 	}
@@ -276,7 +275,7 @@ void DMA_UART_RX_init(UARTn *UART_struct)
 	DMA_StructInit(&UART_struct->uart_dma_ch.DMA_Channel_UART_RX);
 	UART_struct->uart_dma_ch.DMA_InitStructure_UART_RX.DMA_SourceBaseAddr = (uint32_t)(&(UART_struct->UARTx->DR));
 	UART_struct->uart_dma_ch.DMA_InitStructure_UART_RX.DMA_DestBaseAddr = (uint32_t)(UART_struct->buffer);
-	UART_struct->uart_dma_ch.DMA_InitStructure_UART_RX.DMA_CycleSize = BUFFER_SIZE;
+	UART_struct->uart_dma_ch.DMA_InitStructure_UART_RX.DMA_CycleSize = 1024;
 	UART_struct->uart_dma_ch.DMA_InitStructure_UART_RX.DMA_SourceIncSize = DMA_SourceIncNo;
 	UART_struct->uart_dma_ch.DMA_InitStructure_UART_RX.DMA_DestIncSize = DMA_DestIncByte;
 	UART_struct->uart_dma_ch.DMA_InitStructure_UART_RX.DMA_MemoryDataSize = DMA_MemoryDataSize_Byte;
