@@ -9,6 +9,19 @@
 #include "MDR32_Drivers.h"
 #include "string.h"
 
+///ножки для UART1-2
+#define PORT_UART1 MDR_PORTC
+#define PIN_UART1_RX PORT_Pin_4
+#define PIN_UART1_TX PORT_Pin_3
+#define PORT_UART2 MDR_PORTD
+#define PIN_UART2_RX PORT_Pin_14
+#define PIN_UART2_TX PORT_Pin_13
+///управляющие ножки для активации на прием микросхемы RS-485 для UART1-2
+#define PORT_UART1_EN MDR_PORTD
+#define PORT_UART2_EN MDR_PORTD
+#define PIN_UART1_EN PORT_Pin_10
+#define PIN_UART2_EN PORT_Pin_12
+
 #define BUFFER_SIZE 4096             		///< Размер кольцевого буфера UARTn (в кБАйтах)
 #define BUFFER_MASK (BUFFER_SIZE-1)			///< Маска, необходимая для корректной работы кольцевого буфера
 
@@ -25,6 +38,7 @@ typedef enum errors
 ///Структура с таймаутами UARTn
 typedef struct UART_Timeouts
 {
+	MDR_TIMER_TypeDef* TIMERx;						///< Выбор таймера для отслеживания таймаутов
 	uint8_t read_timeout_flag;  					///< Флаг таймаута на чтение
 	uint8_t write_timeout_flag; 					///< Флаг таймаута на запись
 	uint32_t read_val_timeout;  					///< Таймаут на чтение
@@ -52,6 +66,11 @@ typedef struct UART_ConfigData
 	uint32_t buffer_count;								///< Счетчик элементов буфера
 	uint32_t read_pos;										///< Текущая позиция курсора чтения в буфере
 } UARTn;
+
+/*!
+ *	\brief Конфигурирует выводы МК для UART
+*/
+void uart_gpio_config(void);
 
 /*!
  *	\brief Инициализацирует выбранный  UARTn

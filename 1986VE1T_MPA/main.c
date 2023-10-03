@@ -17,13 +17,13 @@ ram_data *ram_space_pointer;
 int main(void)
 {	
 	CLOCK_Init();
-	PortsInit();
-	TIMER1_init();
-	TIMER2_init();
+	timer_gpio_config();
+	timer1_init();
+	timer2_init();
+	timer3_init();
 
 	DMA_common_init();
-	ebc_ports_config();
-	ebc_config();
+	ebc_init();
 	init_external_ram_space();
 	
 	//Инициализация структур для UART1-2:
@@ -41,6 +41,7 @@ int main(void)
 	UART1.buffer = (uint8_t*)(ram_space_pointer->uart1_rx_buffer);
 	UART1.buffer_count = 0;
 	UART1.read_pos = 0;
+	UART1.UARTx_timeouts.TIMERx = MDR_TIMER3;
 
 	UART2.UARTx = MDR_UART2;
 	UART2.uart_dma_ch.dma_channel = DMA_Channel_REQ_UART2_RX;
@@ -56,6 +57,7 @@ int main(void)
 	UART2.buffer = (uint8_t*)(ram_space_pointer->uart2_rx_buffer);
 	UART2.buffer_count = 0;
 	UART2.read_pos = 0;
+	UART2.UARTx_timeouts.TIMERx = MDR_TIMER3;
 
 	uart_set_read_timeout(&UART1, 100);
 	uart_set_read_timeout(&UART2, 100);
@@ -73,9 +75,10 @@ int main(void)
 	SPI1.SPI.SSP_Mode = SSP_ModeSlave;
 	SPI1.SPI.SSP_SPH = SSP_SPH_2Edge;
 	SPI1.SPI.SSP_FRF = SSP_FRF_SPI_Motorola;
-	SPI1.SPI.SSP_CPSDVSR = 72;
+	SPI1.SPI.SSP_CPSDVSR = 64;
 	
 	spi_init(&SPI1);
+	adc_init();
 
 
 	while(1)

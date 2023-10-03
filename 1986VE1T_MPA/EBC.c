@@ -1,10 +1,18 @@
+/*!
+ \file
+ \brief Файл с реализацией API для работы с EBC
+*/
+
 #ifndef __CONFIG_C
 #define __CONFIG_C
 
 #include "EBC.h"
 
-void ebc_ports_config(void)
-{
+/*
+Функция конфигурирования выводов МК для EBC
+*/
+void ebc_gpio_config(void)
+{	
 		// Структура для инициализации линий ввода-вывода системной шины
 		PORT_InitTypeDef ExtBusInitStruct;
 		
@@ -80,9 +88,13 @@ void ebc_ports_config(void)
 
 		PORT_Init(MDR_PORTE, &ExtBusInitStruct);
 }
-
-void ebc_config(void)
+/*
+Функция инициализации EBC
+*/
+void ebc_init(void)
 {
+		ebc_gpio_config();
+	
 		EBC_InitTypeDef EBC_InitStruct;
     EBC_MemRegionInitTypeDef EBC_MemRegionInitStruct;
 

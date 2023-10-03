@@ -6,23 +6,68 @@
 #include "math.h"
 #include "1273pv19t.h"
 #include "TIMER.h"
+#include "SPI.h"
+
+void adc_gpio_config(void)
+{
+	// Включение тактирования портов
+	RST_CLK_PCLKcmd(RST_CLK_PCLK_PORTD, ENABLE);	
+	
+	PORT_InitTypeDef GPIO_init_structADC;
+	
+	//инициализация RESET PD9 для аппаратного сброса ацп
+	GPIO_init_structADC.PORT_Pin = PIN_ADC_RST;
+	GPIO_init_structADC.PORT_FUNC = PORT_FUNC_PORT;
+	GPIO_init_structADC.PORT_OE = PORT_OE_OUT;
+	PORT_Init(PORT_ADC_RST, &GPIO_init_structADC);
+	//установка RESET в лог единицу
+	PORT_SetBits(PORT_ADC_RST,PIN_ADC_RST);
+	
+	//инициализация ножек выбора режима работы (0-10В,4-20мА)
+	GPIO_init_structADC.PORT_Pin = PIN_ADC_MODE_A0;
+	GPIO_init_structADC.PORT_FUNC = PORT_FUNC_PORT;
+	GPIO_init_structADC.PORT_OE = PORT_OE_OUT;
+	PORT_Init(PORT_ADC_MODE, &GPIO_init_structADC);
+	
+	GPIO_init_structADC.PORT_Pin = PIN_ADC_MODE_A1;
+	GPIO_init_structADC.PORT_FUNC = PORT_FUNC_PORT;
+	GPIO_init_structADC.PORT_OE = PORT_OE_OUT;
+	PORT_Init(PORT_ADC_MODE, &GPIO_init_structADC);
+	
+	PORT_SetBits(PORT_ADC_MODE,PIN_ADC_MODE_A0);
+	PORT_ResetBits(PORT_ADC_MODE,PIN_ADC_MODE_A1);
+	
+}
 
 void adc_init(void)
 {
-	SSP_SendData(MDR_SSP1, 0x8308);//регистр D(канал 1)
-	Delay_milli(1);
-//	SSP_SendData(MDR_SSP1, 0x8380);//регистр D(канал 2)
-//	Delay_milli(1);
-	SSP_SendData(MDR_SSP1, 0x82E0);//регистр C
-	Delay_milli(1);
-	SSP_SendData(MDR_SSP1, 0x8001);//регистр A
-	Delay_milli(1);
+	PORT_SetBits(PORT_SSP1,PIN_SSP1_SS);
+	adc_gpio_config();
+	
+	adc_reset();
+	delay_milli(1);
+	
+	//режим control, запись в регистр D управление питанием АЦП1 и АЦП2
+	SSP_SendData(MDR_SSP1, 0x8388);
+	delay_milli(1);
+	//режим control, запись в регистр E управление питанием АЦП3 и АЦП4
+	SSP_SendData(MDR_SSP1, 0x8488);
+	delay_milli(1);
+	//режим control, запись в регистр F управление питанием АЦП5 и АЦП6
+	SSP_SendData(MDR_SSP1, 0x8588);
+	delay_milli(1);
+	//режим control, запись в регистр C вкл. 5В режима,использ. вывода REFOUT, вкл. опорное напряж.
+	SSP_SendData(MDR_SSP1, 0x82E0);
+	delay_milli(1);
+	//режим control, запись в регистр А - перевод в режим данных
+	SSP_SendData(MDR_SSP1, 0x8001);
+	delay_milli(1);
 }
 void adc_reset(void)
 {
-	PORT_ResetBits(MDR_PORTC,PORT_Pin_0);
-	Delay_milli(100);
-	PORT_SetBits(MDR_PORTC,PORT_Pin_0);
+	PORT_ResetBits(PORT_ADC_RST,PIN_ADC_RST);
+	delay_milli(100);
+	PORT_SetBits(PORT_ADC_RST,PIN_ADC_RST);
 }
 float adc_read(void)
 {
@@ -59,7 +104,7 @@ float adc_read(void)
 //		
 		
 		//самодиагностика для однополярного случая	на мультиплексоре A0=0;A1=1 (на выходе должно быть 0В)
-		adc_code = ~get_FIFO_SPI_RX()+1;
+//		adc_code = ~get_FIFO_SPI_RX()+1;
 		U = 1.6474f*pow(10,-4)*adc_code + 5.398f;
 		delta = 6.6962f*pow(10,-6)*adc_code + 0.4252307f;
 		U1 = U - delta; 

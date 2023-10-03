@@ -420,16 +420,6 @@
               <FilePath>.\MDR32_Drivers.h</FilePath>
             </File>
             <File>
-              <FileName>PORTS.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\PORTS.c</FilePath>
-            </File>
-            <File>
-              <FileName>PORTS.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\PORTS.h</FilePath>
-            </File>
-            <File>
               <FileName>rs422_protocol.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\rs422_protocol.c</FilePath>
@@ -468,26 +458,6 @@
               <FileName>EBC.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\EBC.h</FilePath>
-            </File>
-            <File>
-              <FileName>MT-12864Av6.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\MT-12864Av6.c</FilePath>
-            </File>
-            <File>
-              <FileName>MT-12864Av6.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\MT-12864Av6.h</FilePath>
-            </File>
-            <File>
-              <FileName>SystemFont5x7R.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\SystemFont5x7R.c</FilePath>
-            </File>
-            <File>
-              <FileName>SystemFont5x7R.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\SystemFont5x7R.h</FilePath>
             </File>
             <File>
               <FileName>external_ram.c</FileName>

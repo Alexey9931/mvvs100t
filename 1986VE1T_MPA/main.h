@@ -5,12 +5,10 @@
 #include "TIMER.h"
 #include "SPI.h"
 #include "UART.h"
-#include "PORTS.h"
 #include "rs422_protocol.h"
 #include "CLOCK.h"
 #include "DMA.h"
 #include "EBC.h"
-#include "MT-12864Av6.h"
 #include "external_ram.h"
 
 /*

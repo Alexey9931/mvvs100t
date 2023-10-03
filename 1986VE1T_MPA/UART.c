@@ -63,10 +63,79 @@ void UART4_IRQHandler(void)
 #endif
 
 /*
+Функция конфигурации выводов МК для UART
+*/
+void uart_gpio_config(void)
+{
+	// Включение тактирования портов
+	RST_CLK_PCLKcmd(RST_CLK_PCLK_PORTD|RST_CLK_PCLK_PORTC, ENABLE);	
+
+	// Инициализации портов UART1
+	PORT_InitTypeDef GPIO_init_structUART1;
+
+	PORT_StructInit(&GPIO_init_structUART1);
+	GPIO_init_structUART1.PORT_FUNC = PORT_FUNC_MAIN;
+	GPIO_init_structUART1.PORT_SPEED = PORT_SPEED_MAXFAST;
+	GPIO_init_structUART1.PORT_MODE = PORT_MODE_DIGITAL;
+	GPIO_init_structUART1.PORT_PULL_UP = PORT_PULL_UP_OFF;
+	GPIO_init_structUART1.PORT_PULL_DOWN = PORT_PULL_DOWN_ON;
+	GPIO_init_structUART1.PORT_PD_SHM = PORT_PD_SHM_OFF;
+	GPIO_init_structUART1.PORT_PD = PORT_PD_DRIVER;
+	GPIO_init_structUART1.PORT_GFEN = PORT_GFEN_OFF;
+	// Инициализация вывода PC3 как UART_TX (передача)
+	GPIO_init_structUART1.PORT_Pin = PIN_UART1_TX;
+	GPIO_init_structUART1.PORT_OE = PORT_OE_OUT;
+	PORT_Init(PORT_UART1, &GPIO_init_structUART1);
+	// Инициализация вывода PC4 как UART_RX (прием)
+	GPIO_init_structUART1.PORT_Pin = PIN_UART1_RX;
+	GPIO_init_structUART1.PORT_OE = PORT_OE_IN;
+	PORT_Init(PORT_UART1, &GPIO_init_structUART1);
+
+	//инициализация ножки разрешения записи данных по UART1 (для микросхемы rs485)
+	GPIO_init_structUART1.PORT_Pin = PIN_UART1_EN;
+	GPIO_init_structUART1.PORT_FUNC = PORT_FUNC_PORT;
+	GPIO_init_structUART1.PORT_OE = PORT_OE_OUT;
+	PORT_Init(PORT_UART1_EN, &GPIO_init_structUART1);
+	//дезактивирование микросхемы RS485 на выдачу данных
+	PORT_WriteBit(PORT_UART1_EN, PIN_UART1_EN, 0);
+
+
+	// Инициализация портов UART2
+	PORT_InitTypeDef GPIO_init_structUART2;
+	
+	PORT_StructInit(&GPIO_init_structUART2);
+	GPIO_init_structUART2.PORT_FUNC = PORT_FUNC_MAIN;
+	GPIO_init_structUART2.PORT_SPEED = PORT_SPEED_MAXFAST;
+	GPIO_init_structUART2.PORT_MODE = PORT_MODE_DIGITAL;
+	GPIO_init_structUART2.PORT_PULL_UP = PORT_PULL_UP_OFF;
+	GPIO_init_structUART2.PORT_PULL_DOWN = PORT_PULL_DOWN_ON;
+	GPIO_init_structUART2.PORT_PD_SHM = PORT_PD_SHM_OFF;
+	GPIO_init_structUART2.PORT_PD = PORT_PD_DRIVER;
+	GPIO_init_structUART2.PORT_GFEN = PORT_GFEN_OFF;
+	// Инициализация вывода PD13 как UART_TX (передача)
+	GPIO_init_structUART2.PORT_Pin = PIN_UART2_TX;
+	GPIO_init_structUART2.PORT_OE = PORT_OE_OUT;
+	PORT_Init(PORT_UART2, &GPIO_init_structUART2);
+	// Инициализация вывода PD14 как UART_RX (прием)
+	GPIO_init_structUART2.PORT_Pin = PIN_UART2_RX;
+	GPIO_init_structUART2.PORT_OE = PORT_OE_IN;
+	PORT_Init(PORT_UART2, &GPIO_init_structUART2);
+
+	//инициализация ножки разрешения записи данных по UART2 (для микросхемы rs485)
+	GPIO_init_structUART2.PORT_Pin = PIN_UART2_EN;
+	GPIO_init_structUART2.PORT_FUNC = PORT_FUNC_PORT;
+	GPIO_init_structUART2.PORT_OE = PORT_OE_OUT;
+	PORT_Init(PORT_UART2_EN, &GPIO_init_structUART2);
+	//дезактивирование микросхемы RS485 на выдачу данных
+	PORT_WriteBit(PORT_UART2_EN, PIN_UART2_EN, 0);
+}
+/*
 Функция инициализация UART
 */
 uint8_t uart_init(UARTn *UART_struct)
 { 
+	uart_gpio_config();
+	
 	uart_errors error;
 	
 	// Объявление структуры для инициализации контроллера UART
@@ -114,11 +183,18 @@ uint8_t uart_write(UARTn *UART_struct, uint8_t *data, uint32_t data_size)
 	uart_errors error;
 	
 	//активирование микросхемы RS485 на выдачу данных
-	PORT_WriteBit(MDR_PORTC, PORT_Pin_7, 1);
+	if (UART_struct->UARTx == MDR_UART1)
+	{
+		PORT_WriteBit(PORT_UART1_EN, PIN_UART1_EN, 1);
+	}
+	else if (UART_struct->UARTx == MDR_UART2)
+	{
+		PORT_WriteBit(PORT_UART2_EN, PIN_UART2_EN, 1);
+	}
 	
 	if (UART_struct->UARTx_timeouts.write_timeout_flag == 1)
 	{
-		MDR_TIMER1->CNT = 0;
+		TIMER_SetCounter(UART_struct->UARTx_timeouts.TIMERx, 0);
 	}
 	if (data_size > BUFFER_SIZE)
 	{
@@ -132,7 +208,7 @@ uint8_t uart_write(UARTn *UART_struct, uint8_t *data, uint32_t data_size)
 		{
 			if (UART_struct->UARTx_timeouts.write_timeout_flag == 1)
 			{
-				if (TIMER_GetCounter(MDR_TIMER1)==(UART_struct->UARTx_timeouts.write_val_timeout*50)) 
+				if (TIMER_GetCounter(UART_struct->UARTx_timeouts.TIMERx)==(UART_struct->UARTx_timeouts.write_val_timeout*50)) 
 				{
 					error = WRITE_TIMEOUT_ERROR;
 					return error;
@@ -140,9 +216,17 @@ uint8_t uart_write(UARTn *UART_struct, uint8_t *data, uint32_t data_size)
 			}
 		}
 	}
-	Delay_micro(10);
-	//дезактивирование микросхемы RS485 на выдачу данных
-	PORT_WriteBit(MDR_PORTC, PORT_Pin_7, 0);
+	//небольшая задержка для микросхемы RS-485 
+	delay_micro(10);
+	//дезактивирование микросхемы RS485 на прием данных
+	if (UART_struct->UARTx == MDR_UART1)
+	{
+		PORT_WriteBit(PORT_UART1_EN, PIN_UART1_EN, 0);
+	}
+	else if (UART_struct->UARTx == MDR_UART2)
+	{
+		PORT_WriteBit(PORT_UART2_EN, PIN_UART2_EN, 0);
+	}
 	
 	return 0;
 }
@@ -165,10 +249,10 @@ uint8_t uart_read(UARTn *UART_struct, uint32_t len, uint8_t *data)
 		//если задан таймаут 
 		if (UART_struct->UARTx_timeouts.read_timeout_flag == 1)
 		{
-			TIMER_SetCounter(MDR_TIMER1, 0);
+			TIMER_SetCounter(UART_struct->UARTx_timeouts.TIMERx, 0);
 			while ((int)((UART_struct->buffer_count) - (UART_struct->read_pos)) >= 0)
 			{
-				if (TIMER_GetCounter(MDR_TIMER1)==(UART_struct->UARTx_timeouts.read_val_timeout*50))
+				if (TIMER_GetCounter(UART_struct->UARTx_timeouts.TIMERx)==(UART_struct->UARTx_timeouts.read_val_timeout*50))
 				{
 					error = READ_TIMEOUT_ERROR;
 					return error;
@@ -176,7 +260,7 @@ uint8_t uart_read(UARTn *UART_struct, uint32_t len, uint8_t *data)
 			}
 			while ((BUFFER_SIZE - (UART_struct->read_pos) + (UART_struct->buffer_count)) < len)
 			{
-				if (TIMER_GetCounter(MDR_TIMER1)==(UART_struct->UARTx_timeouts.read_val_timeout*50)) 
+				if (TIMER_GetCounter(UART_struct->UARTx_timeouts.TIMERx)==(UART_struct->UARTx_timeouts.read_val_timeout*50)) 
 				{
 					error = READ_TIMEOUT_ERROR;
 					return error;
@@ -207,11 +291,10 @@ uint8_t uart_read(UARTn *UART_struct, uint32_t len, uint8_t *data)
 		//если задан таймаут 
 		if (UART_struct->UARTx_timeouts.read_timeout_flag == 1)
 		{
-			TIMER_SetCounter(MDR_TIMER1, 0);
-			MDR_TIMER1->CNT = 0;
+			TIMER_SetCounter(UART_struct->UARTx_timeouts.TIMERx, 0);
 			while (((UART_struct->buffer_count) - (UART_struct->read_pos)) < len)
 			{
- 				if (TIMER_GetCounter(MDR_TIMER1)==(UART_struct->UARTx_timeouts.read_val_timeout*50))
+ 				if (TIMER_GetCounter(UART_struct->UARTx_timeouts.TIMERx)==(UART_struct->UARTx_timeouts.read_val_timeout*50))
 				{				
 					error = READ_TIMEOUT_ERROR;
 					return error;

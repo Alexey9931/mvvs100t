@@ -18,5 +18,4 @@
   C:\Users\shishov\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.0\Libraries\SPL\MDR32FxQI\inc\MDR32FxQI_timer.h \
   C:\Users\shishov\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.0\Libraries\SPL\MDR32FxQI\inc\MDR32FxQI_ebc.h \
   C:\Users\shishov\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.0\Libraries\SPL\MDR32FxQI\inc\MDR32FxQI_bkp.h \
-  TIMER.h UART.h C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h ADC.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h
+  TIMER.h C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h SPI.h
