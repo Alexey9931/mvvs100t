@@ -65,10 +65,11 @@ void UART4_IRQHandler(void)
 /*
 Функция конфигурации выводов МК для UART
 */
+void uart_gpio_config(void);
 void uart_gpio_config(void)
 {
 	// Включение тактирования портов
-	RST_CLK_PCLKcmd(RST_CLK_PCLK_PORTD|RST_CLK_PCLK_PORTC, ENABLE);	
+	RST_CLK_PCLKcmd(RST_CLK_PCLK_RST_CLK|RST_CLK_PCLK_PORTD|RST_CLK_PCLK_PORTC, ENABLE);	
 
 	// Инициализации портов UART1
 	PORT_InitTypeDef GPIO_init_structUART1;
@@ -181,6 +182,7 @@ uint8_t uart_init(UARTn *UART_struct)
 uint8_t uart_write(UARTn *UART_struct, uint8_t *data, uint32_t data_size)
 {
 	uart_errors error;
+	uint32_t timer_cnt = 0;
 	
 	//активирование микросхемы RS485 на выдачу данных
 	if (UART_struct->UARTx == MDR_UART1)
@@ -194,7 +196,7 @@ uint8_t uart_write(UARTn *UART_struct, uint8_t *data, uint32_t data_size)
 	
 	if (UART_struct->UARTx_timeouts.write_timeout_flag == 1)
 	{
-		TIMER_SetCounter(UART_struct->UARTx_timeouts.TIMERx, 0);
+		TIMER_SetCounter(UART_struct->UARTx_timeouts.timer_n_timeout->TIMERx, 0);
 	}
 	if (data_size > BUFFER_SIZE)
 	{
@@ -208,7 +210,8 @@ uint8_t uart_write(UARTn *UART_struct, uint8_t *data, uint32_t data_size)
 		{
 			if (UART_struct->UARTx_timeouts.write_timeout_flag == 1)
 			{
-				if (TIMER_GetCounter(UART_struct->UARTx_timeouts.TIMERx)==(UART_struct->UARTx_timeouts.write_val_timeout*50)) 
+				timer_cnt = TIMER_GetCounter(UART_struct->UARTx_timeouts.timer_n_timeout->TIMERx);
+				if (timer_cnt==(UART_struct->UARTx_timeouts.write_val_timeout*50)) 
 				{
 					error = WRITE_TIMEOUT_ERROR;
 					return error;
@@ -236,6 +239,7 @@ uint8_t uart_write(UARTn *UART_struct, uint8_t *data, uint32_t data_size)
 uint8_t uart_read(UARTn *UART_struct, uint32_t len, uint8_t *data)
 {
 	uart_errors error;
+	uint32_t timer_cnt = 0;
 	
 	//если длина превышает размер буфера
 	if (len > BUFFER_SIZE)
@@ -249,10 +253,11 @@ uint8_t uart_read(UARTn *UART_struct, uint32_t len, uint8_t *data)
 		//если задан таймаут 
 		if (UART_struct->UARTx_timeouts.read_timeout_flag == 1)
 		{
-			TIMER_SetCounter(UART_struct->UARTx_timeouts.TIMERx, 0);
+			TIMER_SetCounter(UART_struct->UARTx_timeouts.timer_n_timeout->TIMERx, 0);
 			while ((int)((UART_struct->buffer_count) - (UART_struct->read_pos)) >= 0)
 			{
-				if (TIMER_GetCounter(UART_struct->UARTx_timeouts.TIMERx)==(UART_struct->UARTx_timeouts.read_val_timeout*50))
+				timer_cnt = TIMER_GetCounter(UART_struct->UARTx_timeouts.timer_n_timeout->TIMERx);
+				if (timer_cnt==(UART_struct->UARTx_timeouts.read_val_timeout*50))
 				{
 					error = READ_TIMEOUT_ERROR;
 					return error;
@@ -260,7 +265,8 @@ uint8_t uart_read(UARTn *UART_struct, uint32_t len, uint8_t *data)
 			}
 			while ((BUFFER_SIZE - (UART_struct->read_pos) + (UART_struct->buffer_count)) < len)
 			{
-				if (TIMER_GetCounter(UART_struct->UARTx_timeouts.TIMERx)==(UART_struct->UARTx_timeouts.read_val_timeout*50)) 
+				timer_cnt = TIMER_GetCounter(UART_struct->UARTx_timeouts.timer_n_timeout->TIMERx);
+				if (timer_cnt==(UART_struct->UARTx_timeouts.read_val_timeout*50)) 
 				{
 					error = READ_TIMEOUT_ERROR;
 					return error;
@@ -291,10 +297,11 @@ uint8_t uart_read(UARTn *UART_struct, uint32_t len, uint8_t *data)
 		//если задан таймаут 
 		if (UART_struct->UARTx_timeouts.read_timeout_flag == 1)
 		{
-			TIMER_SetCounter(UART_struct->UARTx_timeouts.TIMERx, 0);
+			TIMER_SetCounter(UART_struct->UARTx_timeouts.timer_n_timeout->TIMERx, 0);
 			while (((UART_struct->buffer_count) - (UART_struct->read_pos)) < len)
 			{
- 				if (TIMER_GetCounter(UART_struct->UARTx_timeouts.TIMERx)==(UART_struct->UARTx_timeouts.read_val_timeout*50))
+				timer_cnt = TIMER_GetCounter(UART_struct->UARTx_timeouts.timer_n_timeout->TIMERx);
+ 				if (timer_cnt==(UART_struct->UARTx_timeouts.read_val_timeout*50))
 				{				
 					error = READ_TIMEOUT_ERROR;
 					return error;

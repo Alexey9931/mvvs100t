@@ -7,6 +7,7 @@
 #define __UART_H
 
 #include "MDR32_Drivers.h"
+#include "TIMER.h"
 #include "string.h"
 
 ///ножки для UART1-2
@@ -38,11 +39,11 @@ typedef enum errors
 ///Структура с таймаутами UARTn
 typedef struct UART_Timeouts
 {
-	MDR_TIMER_TypeDef* TIMERx;						///< Выбор таймера для отслеживания таймаутов
-	uint8_t read_timeout_flag;  					///< Флаг таймаута на чтение
-	uint8_t write_timeout_flag; 					///< Флаг таймаута на запись
-	uint32_t read_val_timeout;  					///< Таймаут на чтение
-	uint32_t write_val_timeout; 					///< Таймаут на запись
+	timer_n 							*timer_n_timeout;							///< Выбор таймера для отслеживания таймаутов
+	uint8_t 							read_timeout_flag;  					///< Флаг таймаута на чтение
+	uint8_t 							write_timeout_flag; 					///< Флаг таймаута на запись
+	uint32_t 							read_val_timeout;  						///< Таймаут на чтение
+	uint32_t 							write_val_timeout; 						///< Таймаут на запись
 } UARTn_RX_TX_Timeouts;    
 ///Структура с параметрами DMA канала UARTn
 typedef struct UART_dma_params
@@ -66,11 +67,6 @@ typedef struct UART_ConfigData
 	uint32_t buffer_count;								///< Счетчик элементов буфера
 	uint32_t read_pos;										///< Текущая позиция курсора чтения в буфере
 } UARTn;
-
-/*!
- *	\brief Конфигурирует выводы МК для UART
-*/
-void uart_gpio_config(void);
 
 /*!
  *	\brief Инициализацирует выбранный  UARTn
@@ -134,14 +130,14 @@ void DMA_UART_RX_init(UARTn *UART_struct);
 /*!
  * \brief Устанавливает таймаут UARTn на чтение
  * \param *UART_struct - Выбранный UART для инициализации
- * \param read_timeout - Таймаут на чтение
+ * \param read_timeout - Таймаут на чтение (в мс)
 */
 void uart_set_read_timeout(UARTn *UART_struct, uint32_t read_timeout);
 
 /*!
  * \brief Устанавливает таймаут UARTn на запись
  * \param *UART_struct - Выбранный UART для инициализации
- * \param write_timeout - Таймаут на запись
+ * \param write_timeout - Таймаут на запись (в мс)
 */
 void uart_set_write_timeout(UARTn *UART_struct, uint32_t write_timeout);
 

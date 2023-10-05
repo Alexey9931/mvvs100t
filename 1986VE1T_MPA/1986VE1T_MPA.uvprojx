@@ -575,6 +575,24 @@
       </component>
     </components>
     <files>
+      <file attr="config" category="source" name="Libraries\CMSIS\CM1\DeviceSupport\MDR1986VE1T\startup\arm\startup_MDR1986VE1T.s" version="1.5">
+        <instance index="0" removed="1">RTE\Device\MDR1986BE1T\startup_MDR1986VE1T.s</instance>
+        <component Cclass="Device" Cgroup="Startup" Cvendor="Keil" Cversion="1.5" condition="CON_MDR1986BE1T"/>
+        <package name="MDR1986BExx" schemaVersion="1.3" url="http://www.keil.com/pack/" vendor="Keil" version="1.5"/>
+        <targetInfos/>
+      </file>
+      <file attr="config" category="source" name="Libraries\CMSIS\CM1\DeviceSupport\MDR1986VE1T\startup\arm\system_MDR1986VE1T.c" version="1.5">
+        <instance index="0" removed="1">RTE\Device\MDR1986BE1T\system_MDR1986VE1T.c</instance>
+        <component Cclass="Device" Cgroup="Startup" Cvendor="Keil" Cversion="1.5" condition="CON_MDR1986BE1T"/>
+        <package name="MDR1986BExx" schemaVersion="1.3" url="http://www.keil.com/pack/" vendor="Keil" version="1.5"/>
+        <targetInfos/>
+      </file>
+      <file attr="config" category="header" name="Libraries\CMSIS\CM1\DeviceSupport\MDR1986VE1T\startup\arm\system_MDR1986VE1T.h" version="1.5">
+        <instance index="0" removed="1">RTE\Device\MDR1986BE1T\system_MDR1986VE1T.h</instance>
+        <component Cclass="Device" Cgroup="Startup" Cvendor="Keil" Cversion="1.5" condition="CON_MDR1986BE1T"/>
+        <package name="MDR1986BExx" schemaVersion="1.3" url="http://www.keil.com/pack/" vendor="Keil" version="1.5"/>
+        <targetInfos/>
+      </file>
       <file attr="config" category="linkerScript" name="IDE\scatter\MDR32F1QI.sct" version="2.0.2i">
         <instance index="0">RTE\Device\MDR32F1QI\MDR32F1QI.sct</instance>
         <component Cclass="Device" Cgroup="Startup" Cvariant="1. Rev.6+" Cvendor="Milandr" Cversion="2.0.2i" condition="CON_MDR32F1QI"/>

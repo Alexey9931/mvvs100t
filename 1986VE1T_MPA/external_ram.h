@@ -11,10 +11,15 @@
 
 #define EXT_RAM_START_ADDR 0x50200000		///< Адрес в памяти МК, с которой начинается обращение к внешней ОЗУ
 #define REGISTER_SPACE_START_ADDR 200		///< Стартовый адрес карты регистров в ОЗУ
-#define CHANEL_NUMBER 8									///< Кол-во каналов в МПА
+#define CHANEL_NUMBER 6									///< Кол-во каналов в МПА
+#define MAX_CHANEL_NUMBER 8							///< Максимальное кол-во каналов в МПА
 #define PM_DEV_ADDR 0										///< Адрес модуля
 #define PM_CHASSIS_ADDR 0								///< Адрес шасси
 #define NUMBER_OF_RANGES 3							///< Кол-во диапазонов в стартовой структуре
+
+#define TEST_BIT(num, value) ((value>>num)&0x1)
+#define SET_BIT(num, value) (value |= (1<<num))
+#define RESET_BIT(num, value) (value &= ~(1<<num))
 
 ///Типы модулей
 typedef enum type_of_module
@@ -103,6 +108,14 @@ typedef struct self_diag_struct
 	uint8_t fail_chanels[8];																		///< Неисправность в каналах
 	unsigned reserv1:											8;										///< Резерв
 }__attribute__((packed)) self_diag;
+
+///Структура с битовыми полями для регистра режим работы канала
+typedef struct ai_oper_mode_struct
+{
+	unsigned 	adc_chs_mode:						8;			///< Режим работы каналов
+	unsigned 	reserv1:								8;			///< Резерв
+}__attribute__((packed)) ai_oper_mode;
+
 ///Структура одного диапазона для стартовой структуры
 typedef struct range_start_struct
 {
@@ -111,6 +124,7 @@ typedef struct range_start_struct
 	uint16_t	address;											///< Адрес
 	uint16_t	size;													///< Количество байт
 }__attribute__((packed)) range;
+
 ///структура, которая лежит в начале ОЗУ любого модуля
 typedef struct start_struct_ext_ram
 {
@@ -120,6 +134,7 @@ typedef struct start_struct_ext_ram
 	uint16_t	number_of_ranges;														///< Количество диапазонов
 	range			ranges_in_start_struct[NUMBER_OF_RANGES];		///< Диапазоны в стартовой структуре
 }__attribute__((packed)) ram_start_struct;
+
 ///органиация пространства общих регистров во внешнем ОЗУ
 typedef struct common_register_space_ext_ram
 {
@@ -158,25 +173,25 @@ typedef struct common_register_space_ext_ram
 ///органиация пространства регистров МПА во внешнем ОЗУ
 typedef struct mpa_register_space_ext_ram
 {
-	uint16_t			AI_OperMode;
-	uint16_t			AI_NumForAverag[CHANEL_NUMBER];
-	uint16_t			AI_MinCodeADC[CHANEL_NUMBER];
-	uint16_t			AI_MaxCodeADC[CHANEL_NUMBER];
+	ai_oper_mode	AI_OperMode;
+	uint16_t			AI_NumForAverag[MAX_CHANEL_NUMBER];
+	int16_t				AI_MinCodeADC[MAX_CHANEL_NUMBER];
+	int16_t				AI_MaxCodeADC[MAX_CHANEL_NUMBER];
 	uint8_t				Reserv_3[32];
-  float					AI_PolynConst0[CHANEL_NUMBER];
-	float					AI_PolynConst1[CHANEL_NUMBER];
-  float					AI_PolynConst2[CHANEL_NUMBER];
-  float					AI_PolynConst3[CHANEL_NUMBER];
-	float					AI_PolynConst4[CHANEL_NUMBER];
-	float					AI_PolynConst5[CHANEL_NUMBER];
-	float					AI_PolynConst6[CHANEL_NUMBER];
+  float					AI_PolynConst0[MAX_CHANEL_NUMBER];
+	float					AI_PolynConst1[MAX_CHANEL_NUMBER];
+  float					AI_PolynConst2[MAX_CHANEL_NUMBER];
+  float					AI_PolynConst3[MAX_CHANEL_NUMBER];
+	float					AI_PolynConst4[MAX_CHANEL_NUMBER];
+	float					AI_PolynConst5[MAX_CHANEL_NUMBER];
+	float					AI_PolynConst6[MAX_CHANEL_NUMBER];
 	uint8_t				AI_MetrologDat[32];
 	uint8_t				Reserv_4[32];
 	uint8_t				Reserv_5[32];
 	uint16_t			AI_SignalChanged;
-	uint16_t			AI_CodeADC[CHANEL_NUMBER];
-	uint32_t			AI_PhysQuantFloat[CHANEL_NUMBER];
-	uint8_t				AI_DiagnosticChannel[CHANEL_NUMBER];
+	int16_t				AI_CodeADC[MAX_CHANEL_NUMBER];
+	float					AI_PhysQuantFloat[MAX_CHANEL_NUMBER];
+	uint8_t				AI_DiagnosticChannel[MAX_CHANEL_NUMBER];
 	uint8_t				Reserv_6[2];
 }__attribute__((packed)) mpa_ram_registers;
 ///Структура с битовыми полями для сервисного байта ПМ

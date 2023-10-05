@@ -18,4 +18,9 @@ UARTn *UART_struct - выбор UART
 */
 uint8_t request_data(UARTn *UART_struct);
 
+/*
+Функция для выполнения периферийной задачи МПА
+*/
+void do_mpa_task(adc_n *adc_struct);
+
 #endif /*__MAIN_H */

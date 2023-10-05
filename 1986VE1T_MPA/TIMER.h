@@ -13,25 +13,24 @@
 #define PORT_ADC_SDIFS_IRQ MDR_PORTE
 #define PIN_ADC_SDIFS_IRQ PORT_Pin_8
 
-/*!
- *	\brief Конфигурирует выводы МК для каналов таймеров
-*/
-void timer_gpio_config(void);
+///Структура с конфигурационными параметрами Таймеров 
+typedef struct timer_config_struct
+{
+	MDR_TIMER_TypeDef* 						TIMERx;            							///< Библиотечная структура с периферийными регистрами блока TIMER
+	TIMER_CntInitTypeDef 					TIMERInitStruct;            		///< Библиотечная структура с конфигурационными параметрами блока TIMER
+	TIMER_ChnInitTypeDef 					sTIM_ChnInit;										///< Библиотечная структура с конфигурационными параметрами каналов блока TIMER (используются например для режима захвата)
+	uint32_t 											RST_CLK_PCLK_TIMERn;						///< Включение тактирования для блока TIMER
+	TIMER_Clock_BRG_TypeDef 			TIMER_HCLKdiv;									///< Выбор делителя тактовой частоты для тактирования блока TIMER	
+	IRQn_Type 										IRQn;														///< Выбор обработчика прерываний блока TIMER
+	TIMER_Status_Flags_TypeDef		TIMER_STATUS;										///< Настрока события, по которому происходит прерывание блока TIMER	
+} timer_n;	
+
 
 /*!
- *	\brief Инициализацирует Timer1
+ *	\brief Инициализацирует выбранный Timer
+ *	\param timer - Таймер для инициализации
 */
-void timer1_init(void);
-
-/*!
- *	\brief Инициализацирует Timer3
-*/
-void timer3_init(void);
-
-/*!
- *	\brief Инициализацирует Timer2
-*/
-void timer2_init(void);
+void timer_init(timer_n *timer_struct);
 
 /*!
  *	\brief Реализует задержку в мс

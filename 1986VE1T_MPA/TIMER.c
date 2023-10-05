@@ -4,12 +4,22 @@
 */
 
 #include "TIMER.h"
+#include "SPI.h"
 
+timer_n timer_1;
+timer_n timer_2;
+timer_n timer_3;
+
+extern spi_n spi_1;
 /*
-Функция конфигурации выводов МК для каналов таймеров
+Функция конфигурации выводов МК для каналов Timer2
 */
-void timer_gpio_config(void)
+void timer2_gpio_config(void);
+void timer2_gpio_config(void)
 {
+	// Включение тактирования портов
+	RST_CLK_PCLKcmd(RST_CLK_PCLK_RST_CLK|RST_CLK_PCLK_PORTE, ENABLE);	
+	
 	//Инициализация порта E для канала 2 таймера 2 на вход прерывания SDIFS/SDOFS от АЦП (канал захвата для таймера)
 	PORT_InitTypeDef GPIO_init_struct_TIMER2;
 	
@@ -25,86 +35,108 @@ void timer_gpio_config(void)
 /*
 Функция инициализации Timer1 (настроен на период 10мс)
 */
-void timer1_init(void)
+void timer1_init(timer_n *timer_struct);
+void timer1_init(timer_n *timer_struct)
 {
 	TIMER_CntInitTypeDef TIMER1InitStruct;
 	
-  RST_CLK_PCLKcmd (RST_CLK_PCLK_TIMER1, ENABLE);
+  RST_CLK_PCLKcmd (timer_struct->RST_CLK_PCLK_TIMERn, ENABLE);
 	/* Initializes the TIMERx Counter */
 	TIMER_CntStructInit(&TIMER1InitStruct);
-	TIMER1InitStruct.TIMER_Period = 0x270F;//10000-1
-	TIMER1InitStruct.TIMER_Prescaler = WORK_FREQ - 1;//128-1
+	TIMER1InitStruct.TIMER_Period = timer_struct->TIMERInitStruct.TIMER_Period;
+	TIMER1InitStruct.TIMER_Prescaler = timer_struct->TIMERInitStruct.TIMER_Prescaler;
 	 
-	TIMER_CntInit(MDR_TIMER1, &TIMER1InitStruct);
+	TIMER_CntInit(timer_struct->TIMERx, &TIMER1InitStruct);
 	
   /* Enable TIMER1 clock */
-  TIMER_BRGInit(MDR_TIMER1,TIMER_HCLKdiv1);
+  TIMER_BRGInit(timer_struct->TIMERx,timer_struct->TIMER_HCLKdiv);
 
 	/* Enable TIMER1 */
-  TIMER_Cmd(MDR_TIMER1,ENABLE);
+  TIMER_Cmd(timer_struct->TIMERx,ENABLE);
 }
 /*
 Функция инициализации Timer3 (настроен на период 1сек)
 */
-void timer3_init(void)
+void timer3_init(timer_n *timer_struct);
+void timer3_init(timer_n *timer_struct)
 {
 	TIMER_CntInitTypeDef TIMER3InitStruct;
 	
-  RST_CLK_PCLKcmd (RST_CLK_PCLK_TIMER3, ENABLE);
+  RST_CLK_PCLKcmd (timer_struct->RST_CLK_PCLK_TIMERn, ENABLE);
 	/* Initializes the TIMERx Counter */
 	TIMER_CntStructInit(&TIMER3InitStruct);
-	TIMER3InitStruct.TIMER_Period = 0xC34F;//50000-1
-	TIMER3InitStruct.TIMER_Prescaler = WORK_FREQ*20 - 1;//2560-1
+	TIMER3InitStruct.TIMER_Period = timer_struct->TIMERInitStruct.TIMER_Period;
+	TIMER3InitStruct.TIMER_Prescaler = timer_struct->TIMERInitStruct.TIMER_Prescaler;
 	 
-	TIMER_CntInit(MDR_TIMER3, &TIMER3InitStruct);
+	TIMER_CntInit(timer_struct->TIMERx, &TIMER3InitStruct);
 	
   /* Enable TIMER3 clock */
-  TIMER_BRGInit(MDR_TIMER3,TIMER_HCLKdiv1);
+  TIMER_BRGInit(timer_struct->TIMERx,timer_struct->TIMER_HCLKdiv);
 
 	/* Enable TIMER3 */
-  TIMER_Cmd(MDR_TIMER3,ENABLE);
+  TIMER_Cmd(timer_struct->TIMERx,ENABLE);
 }
 /*
 Функция инициализации Timer2 (настроен для режима захвата-для нужд АЦП)
 */
-void timer2_init(void)
+void timer2_init(timer_n *timer_struct);
+void timer2_init(timer_n *timer_struct)
 {
 	TIMER_CntInitTypeDef TIMER2InitStruct;
 	TIMER_ChnInitTypeDef sTIM2_ChnInit;
 
-	RST_CLK_PCLKcmd (RST_CLK_PCLK_TIMER2, ENABLE);
+	RST_CLK_PCLKcmd (timer_struct->RST_CLK_PCLK_TIMERn, ENABLE);
 
 	/* Initializes the TIMERx Counter */
 	TIMER_CntStructInit(&TIMER2InitStruct);
-	TIMER2InitStruct.TIMER_Prescaler = 0;
-	TIMER2InitStruct.TIMER_Period = 0;
-	TIMER2InitStruct.TIMER_CounterDirection = TIMER_CntDir_Up;
-	TIMER2InitStruct.TIMER_CounterMode = TIMER_CntMode_EvtFixedDir;
-	TIMER2InitStruct.TIMER_EventSource = TIMER_EvSrc_CH2;
-	TIMER2InitStruct.TIMER_ARR_UpdateMode = TIMER_ARR_Update_Immediately;
-	TIMER2InitStruct.TIMER_FilterSampling = TIMER_FDTS_TIMER_CLK_div_1;
-	TIMER2InitStruct.TIMER_ETR_FilterConf = TIMER_Filter_8FF_at_FTDS_div_32;
-	TIMER2InitStruct.TIMER_ETR_Prescaler = TIMER_ETR_Prescaler_None;
-	TIMER2InitStruct.TIMER_ETR_Polarity = TIMER_ETRPolarity_NonInverted;
-	TIMER2InitStruct.TIMER_BRK_Polarity = TIMER_BRKPolarity_NonInverted;
-	TIMER_CntInit (MDR_TIMER2, &TIMER2InitStruct);
+	TIMER2InitStruct.TIMER_Prescaler = timer_struct->TIMERInitStruct.TIMER_Prescaler;
+	TIMER2InitStruct.TIMER_Period = timer_struct->TIMERInitStruct.TIMER_Period;
+	TIMER2InitStruct.TIMER_CounterDirection = timer_struct->TIMERInitStruct.TIMER_CounterDirection;
+	TIMER2InitStruct.TIMER_CounterMode = timer_struct->TIMERInitStruct.TIMER_CounterMode;
+	TIMER2InitStruct.TIMER_EventSource = timer_struct->TIMERInitStruct.TIMER_EventSource;
+	TIMER2InitStruct.TIMER_ARR_UpdateMode = timer_struct->TIMERInitStruct.TIMER_ARR_UpdateMode;
+	TIMER2InitStruct.TIMER_FilterSampling = timer_struct->TIMERInitStruct.TIMER_FilterSampling;
+	TIMER2InitStruct.TIMER_ETR_FilterConf = timer_struct->TIMERInitStruct.TIMER_ETR_FilterConf;
+	TIMER2InitStruct.TIMER_ETR_Prescaler = timer_struct->TIMERInitStruct.TIMER_ETR_Prescaler;
+	TIMER2InitStruct.TIMER_ETR_Polarity = timer_struct->TIMERInitStruct.TIMER_ETR_Polarity;
+	TIMER2InitStruct.TIMER_BRK_Polarity = timer_struct->TIMERInitStruct.TIMER_BRK_Polarity;
+	TIMER_CntInit (timer_struct->TIMERx, &TIMER2InitStruct);
 	
 	TIMER_ChnStructInit (&sTIM2_ChnInit);
-	sTIM2_ChnInit.TIMER_CH_Number = TIMER_CHANNEL2;
-  sTIM2_ChnInit.TIMER_CH_Mode = TIMER_CH_MODE_CAPTURE;
-  sTIM2_ChnInit.TIMER_CH_EventSource = TIMER_CH_EvSrc_PE; //отрицательный фронт
-  TIMER_ChnInit (MDR_TIMER2, &sTIM2_ChnInit);
+	sTIM2_ChnInit.TIMER_CH_Number = timer_struct->sTIM_ChnInit.TIMER_CH_Number;
+  sTIM2_ChnInit.TIMER_CH_Mode = timer_struct->sTIM_ChnInit.TIMER_CH_Mode;
+  sTIM2_ChnInit.TIMER_CH_EventSource = timer_struct->sTIM_ChnInit.TIMER_CH_EventSource;
+  TIMER_ChnInit (timer_struct->TIMERx, &sTIM2_ChnInit);
 	 
-	TIMER_ChnCCR1_Cmd(MDR_TIMER2, TIMER_CHANNEL2, ENABLE);
+	TIMER_ChnCCR1_Cmd(timer_struct->TIMERx, sTIM2_ChnInit.TIMER_CH_Number, ENABLE);
 
-	NVIC_EnableIRQ(TIMER2_IRQn);
-	TIMER_ITConfig(MDR_TIMER2, TIMER_STATUS_CCR_CAP1_CH2, ENABLE);
-	NVIC_SetPriority(TIMER2_IRQn, 0);
+	NVIC_EnableIRQ(timer_struct->IRQn);
+	TIMER_ITConfig(timer_struct->TIMERx, timer_struct->TIMER_STATUS, ENABLE);
+	//NVIC_SetPriority(timer_struct->IRQn, 0);
 
 	/* Enable TIMER2 clock */
-  TIMER_BRGInit(MDR_TIMER2,TIMER_HCLKdiv1);
+  TIMER_BRGInit(timer_struct->TIMERx,timer_struct->TIMER_HCLKdiv);
 	/* Enable TIMER2 */
-  TIMER_Cmd(MDR_TIMER2,ENABLE);
+  TIMER_Cmd(timer_struct->TIMERx,ENABLE);
+}
+/*
+Функция инициализации выбранного Timer 
+*/
+void timer_init(timer_n *timer_struct)
+{
+	if (timer_struct->TIMERx == MDR_TIMER1)
+	{
+		timer1_init(timer_struct);
+	}
+	else if (timer_struct->TIMERx == MDR_TIMER2)
+	{
+		timer2_gpio_config();
+		timer2_init(timer_struct);
+	}
+	else if (timer_struct->TIMERx == MDR_TIMER3)
+	{
+		timer3_init(timer_struct);
+	}
 }
 /*
 Обработчик преывааний по захвату Timer2
@@ -112,20 +144,27 @@ void timer2_init(void)
 void TIMER2_IRQHandler(void);
 void TIMER2_IRQHandler(void)
 {
-  SSP_Cmd(MDR_SSP1, ENABLE);
-//	FIFO_SPI_RX = SPI_ReceiveWord(MDR_SSP1);
-	SSP_Cmd(MDR_SSP1, DISABLE);
-	TIMER_ClearITPendingBit(MDR_TIMER2, TIMER_STATUS_CCR_CAP1_CH2);
+	//MDR_PORTE->SETTX = PORT_Pin_11;
+	//включение SPI
+	spi_1.SSPx->CR1 |= 0x0002;
+	//while (SSP_GetFlagStatus(spi_1.SSPx, SSP_FLAG_RNE) != SET)  {}  //ждем пока появится байт  
+	delay_micro(7);
+//	MDR_TIMER1->CNT = 0;
+//	while((MDR_TIMER1->CNT)!=7);
+	spi_1.fifo_halfword = (spi_1.SSPx->DR);
+	//выключение SPI
+	spi_1.SSPx->CR1 &= 0xFFFD;
+	timer_2.TIMERx->STATUS = ~timer_2.TIMER_STATUS;
+	//TIMER_ClearITPendingBit(timer_2.TIMERx, timer_2.TIMER_STATUS);
+	//MDR_PORTE->CLRTX = PORT_Pin_11;
 }
 /*
 Функция реализации задержки в мс
 */
 void delay_milli(uint32_t time_milli)//задержка в мс 
 { 
-	for (uint32_t i = 0; i < time_milli; i++)
-	{
-		delay_micro(1000);
-	}
+	TIMER_SetCounter(MDR_TIMER3, 0);
+	while(TIMER_GetCounter(MDR_TIMER3)!=(time_milli*50));
 }
 /*
 Функция реализации задержки в мкс

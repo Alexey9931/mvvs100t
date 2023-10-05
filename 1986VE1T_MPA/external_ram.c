@@ -1,5 +1,6 @@
 #include "external_ram.h"
 #include <string.h>
+#include <math.h>
 
 extern ram_data *ram_space_pointer;
 
@@ -58,20 +59,23 @@ void init_external_ram_space(void)
 	ram_space_pointer->common_ram_register_space.PLC_TimeSoloWork = 61166;
 	ram_space_pointer->common_ram_register_space.PLC_DualControl = 56797;
 	memset(&(ram_space_pointer->common_ram_register_space.Reserv_2), 0, sizeof(ram_space_pointer->common_ram_register_space.Reserv_2));
-	ram_space_pointer->mpa_ram_register_space.AI_OperMode = 0;
-	for (uint8_t i = 0; i < CHANEL_NUMBER; i++)
+	
+	//инциализация регистров МПА
+	for (uint8_t i = 0; i < MAX_CHANEL_NUMBER; i++)
 	{
+		RESET_BIT(i, ram_space_pointer->mpa_ram_register_space.AI_OperMode.adc_chs_mode);
 		ram_space_pointer->mpa_ram_register_space.AI_NumForAverag[i] = 10;
 		ram_space_pointer->mpa_ram_register_space.AI_MinCodeADC[i] = 0;
 		ram_space_pointer->mpa_ram_register_space.AI_MaxCodeADC[i] = 65535;
-		ram_space_pointer->mpa_ram_register_space.AI_PolynConst0[i] = 0;
-		ram_space_pointer->mpa_ram_register_space.AI_PolynConst1[i] = 0;
-		ram_space_pointer->mpa_ram_register_space.AI_PolynConst2[i] = 0;
-		ram_space_pointer->mpa_ram_register_space.AI_PolynConst3[i] = 0;
-		ram_space_pointer->mpa_ram_register_space.AI_PolynConst4[i] = 0;
-		ram_space_pointer->mpa_ram_register_space.AI_PolynConst5[i] = 0;
-		ram_space_pointer->mpa_ram_register_space.AI_PolynConst6[i] = 0;
-		ram_space_pointer->mpa_ram_register_space.AI_MetrologDat[i] = 0;
+		//такие значения коэф. полиномов только для напряжения 0-10В
+		ram_space_pointer->mpa_ram_register_space.AI_PolynConst0[i] = 4.972769f;
+		ram_space_pointer->mpa_ram_register_space.AI_PolynConst1[i] = 0.000161f;
+		ram_space_pointer->mpa_ram_register_space.AI_PolynConst2[i] = 0.0f;
+		ram_space_pointer->mpa_ram_register_space.AI_PolynConst3[i] = 0.0f;
+		ram_space_pointer->mpa_ram_register_space.AI_PolynConst4[i] = 0.0f; 
+		ram_space_pointer->mpa_ram_register_space.AI_PolynConst5[i] = 0.0f;
+		ram_space_pointer->mpa_ram_register_space.AI_PolynConst6[i] = 0.0f;
+		ram_space_pointer->mpa_ram_register_space.AI_MetrologDat[i] = 0.0f;
 	}
 	memset(ram_space_pointer->mpa_ram_register_space.AI_MetrologDat, 0, sizeof(ram_space_pointer->mpa_ram_register_space.AI_MetrologDat));
 	memset(ram_space_pointer->mpa_ram_register_space.Reserv_4, 0, sizeof(ram_space_pointer->mpa_ram_register_space.Reserv_4));
