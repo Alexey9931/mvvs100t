@@ -37,9 +37,11 @@ int main(void)
 	spi_1.SPI.SSP_SPH = SSP_SPH_2Edge;
 	spi_1.SPI.SSP_FRF = SSP_FRF_SPI_Motorola;
 	spi_1.SPI.SSP_HardwareFlowControl = SSP_HardwareFlowControl_SSE;
-	spi_1.SPI.SSP_CPSDVSR = 64;
+	spi_1.SPI.SSP_CPSDVSR = WORK_FREQ/2;
+	spi_1.spi_dma_ch.dma_channel = DMA_Channel_REQ_SSP1_RX;
 	
 	spi_init(&spi_1);
+	dma_spi_rx_init(&spi_1);
 	
 	//инициализация Timer1
 	timer_1.RST_CLK_PCLK_TIMERn = RST_CLK_PCLK_TIMER1;
@@ -90,51 +92,53 @@ int main(void)
 	//adc_set_read_timeout(&adc_1, 200);
 	adc_init(&adc_1);
 
-	//Инициализация UART1-2:
-	UART1.UARTx = MDR_UART1;
-	UART1.uart_dma_ch.dma_channel = DMA_Channel_REQ_UART1_RX;
-	UART1.IRQn = UART1_IRQn;
-	UART1.RST_CLK_PCLK_UARTn = RST_CLK_PCLK_UART1;
-	UART1.UART.UART_BaudRate = 921600;
-	UART1.UART.UART_WordLength = UART_WordLength8b;
-	UART1.UART.UART_StopBits = UART_StopBits1;
-	UART1.UART.UART_Parity = UART_Parity_No;
-	UART1.UART.UART_FIFOMode = UART_FIFO_OFF;
-	UART1.UART.UART_HardwareFlowControl = UART_HardwareFlowControl_RXE | UART_HardwareFlowControl_TXE;
-	UART1.UART_HCLKdiv = UART_HCLKdiv1;
-	UART1.buffer = (uint8_t*)(ram_space_pointer->uart1_rx_buffer);
-	UART1.buffer_count = 0;
-	UART1.read_pos = 0;
-	UART1.UARTx_timeouts.timer_n_timeout = &timer_3;
+//	//Инициализация UART1-2:
+//	UART1.UARTx = MDR_UART1;
+//	UART1.uart_dma_ch.dma_channel = DMA_Channel_REQ_UART1_RX;
+//	UART1.IRQn = UART1_IRQn;
+//	UART1.RST_CLK_PCLK_UARTn = RST_CLK_PCLK_UART1;
+//	UART1.UART.UART_BaudRate = 921600;
+//	UART1.UART.UART_WordLength = UART_WordLength8b;
+//	UART1.UART.UART_StopBits = UART_StopBits1;
+//	UART1.UART.UART_Parity = UART_Parity_No;
+//	UART1.UART.UART_FIFOMode = UART_FIFO_OFF;
+//	UART1.UART.UART_HardwareFlowControl = UART_HardwareFlowControl_RXE | UART_HardwareFlowControl_TXE;
+//	UART1.UART_HCLKdiv = UART_HCLKdiv1;
+//	UART1.buffer = (uint8_t*)(ram_space_pointer->uart1_rx_buffer);
+//	UART1.buffer_count = 0;
+//	UART1.read_pos = 0;
+//	UART1.UARTx_timeouts.timer_n_timeout = &timer_3;
 
-	UART2.UARTx = MDR_UART2;
-	UART2.uart_dma_ch.dma_channel = DMA_Channel_REQ_UART2_RX;
-	UART2.IRQn = UART2_IRQn;
-	UART2.RST_CLK_PCLK_UARTn = RST_CLK_PCLK_UART2;
-	UART2.UART.UART_BaudRate = 921600;
-	UART2.UART.UART_WordLength = UART_WordLength8b;
-	UART2.UART.UART_StopBits = UART_StopBits1;
-	UART2.UART.UART_Parity = UART_Parity_No;
-	UART2.UART.UART_FIFOMode = UART_FIFO_OFF;
-	UART2.UART.UART_HardwareFlowControl = UART_HardwareFlowControl_RXE | UART_HardwareFlowControl_TXE;
-	UART2.UART_HCLKdiv = UART_HCLKdiv1;
-	UART2.buffer = (uint8_t*)(ram_space_pointer->uart2_rx_buffer);
-	UART2.buffer_count = 0;
-	UART2.read_pos = 0;
-	UART2.UARTx_timeouts.timer_n_timeout = &timer_3;
+//	UART2.UARTx = MDR_UART2;
+//	UART2.uart_dma_ch.dma_channel = DMA_Channel_REQ_UART2_RX;
+//	UART2.IRQn = UART2_IRQn;
+//	UART2.RST_CLK_PCLK_UARTn = RST_CLK_PCLK_UART2;
+//	UART2.UART.UART_BaudRate = 921600;
+//	UART2.UART.UART_WordLength = UART_WordLength8b;
+//	UART2.UART.UART_StopBits = UART_StopBits1;
+//	UART2.UART.UART_Parity = UART_Parity_No;
+//	UART2.UART.UART_FIFOMode = UART_FIFO_OFF;
+//	UART2.UART.UART_HardwareFlowControl = UART_HardwareFlowControl_RXE | UART_HardwareFlowControl_TXE;
+//	UART2.UART_HCLKdiv = UART_HCLKdiv1;
+//	UART2.buffer = (uint8_t*)(ram_space_pointer->uart2_rx_buffer);
+//	UART2.buffer_count = 0;
+//	UART2.read_pos = 0;
+//	UART2.UARTx_timeouts.timer_n_timeout = &timer_3;
 
-	uart_set_read_timeout(&UART1, 100);
-	uart_set_read_timeout(&UART2, 100);
+//	uart_set_read_timeout(&UART1, 100);
+//	uart_set_read_timeout(&UART2, 100);
 
-	uart_init(&UART1);
-	DMA_UART_RX_init(&UART1);
-	uart_init(&UART2);
-	DMA_UART_RX_init(&UART2);
+//	uart_init(&UART1);
+//	DMA_UART_RX_init(&UART1);
+//	uart_init(&UART2);
+//	DMA_UART_RX_init(&UART2);
 	
 
 	while(1)
 	{
 		do_mpa_task(&adc_1);
+//		delay_micro(50);
+		//do_mpa_task(&adc_1);
 		//SSP_SendData(MDR_SSP1, 0x7FFF);
 		//запрос пакета по ШИНЕ1
 		//request_data(&UART1);
@@ -181,7 +185,7 @@ uint8_t request_data(UARTn *UART_struct)
 */
 void do_mpa_task(adc_n *adc_struct)
 {
-	//delay_micro(125);
+	delay_micro(56);
 	//TODO: пока что читает каналы МПА только для напряжений 0-10В (для тока в карту регистров надо добавлять свои полиномы)
 	
 	//указатель на пространство регистров МПА
@@ -205,7 +209,8 @@ void do_mpa_task(adc_n *adc_struct)
 	for (uint8_t i = 0; i < CHANEL_NUMBER; i++)
 	{
 		//инициируем чтение канала АЦП записью в буфер передатчика SPI 0x7FFF
-		ptr->AI_CodeADC[i] = adc_read(adc_struct);
+		//ptr->AI_CodeADC[i] = adc_read(adc_struct);
+		ptr->AI_CodeADC[i] = adc_struct->spi_struct->buffer[i];
 		switch ( TEST_BIT(i, ptr->AI_OperMode.adc_chs_mode))
 		{
 			case 0:

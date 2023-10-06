@@ -5,6 +5,10 @@
 
 #include "TIMER.h"
 #include "SPI.h"
+#include "1273pv19t.h"
+
+
+extern adc_n adc_1;
 
 timer_n timer_1;
 timer_n timer_2;
@@ -146,17 +150,65 @@ void TIMER2_IRQHandler(void)
 {
 	//MDR_PORTE->SETTX = PORT_Pin_11;
 	//включение SPI
-	spi_1.SSPx->CR1 |= 0x0002;
+//	spi_1.SSPx->CR1 |= 0x0002;
+	if (adc_1.init_flag == 1)
+	{
+		//MDR_PORTE->SETTX = PORT_Pin_11;
+		//включение SPI
+		//spi_1.SSPx->CR1 |= 0x0002;
+//		//отключаем прерывание от таймера
+//		NVIC_DisableIRQ(timer_2.IRQn);
+//		TIMER_Cmd(timer_2.TIMERx,DISABLE);
+		if (spi_1.spi_dma_ch.dma_irq_counter == 0)
+		{
+			MDR_PORTE->SETTX = PORT_Pin_11;
+			//включение SPI
+			spi_1.SSPx->CR1 |= 0x0002;
+			//включаем DMA от SPI1
+			//SSP_DMACmd(spi_1.SSPx, SSP_DMA_RXE, ENABLE);
+			spi_1.SSPx->DMACR |= SSP_DMA_RXE;
+			// Разрешить работу DMA с SPI
+			MDR_DMA->CHNL_ENABLE_SET = (1 << spi_1.spi_dma_ch.dma_channel);
+			//DMA_Cmd (spi_1.spi_dma_ch.dma_channel, ENABLE);
+		}
+//		//включаем DMA от SPI1
+//		SSP_DMACmd(spi_1.SSPx, SSP_DMA_RXE, ENABLE);
+//		// Разрешить работу DMA с SPI
+//		DMA_Cmd (spi_1.spi_dma_ch.dma_channel, ENABLE);
+		
+		//SSP_SendData(adc_1.spi_struct->SSPx, 0x7FFF);
+//		while ((DMA_Ctrl_Rx & 3) != 0){}
+//		//выключаем DMA от SPI1
+//		SSP_DMACmd(spi_1.SSPx, SSP_DMA_RXE, DISABLE);
+//		// Запретить работу DMA с SPI
+//		DMA_Cmd (spi_1.spi_dma_ch.dma_channel, DISABLE);
+//			//включаем прерывание от таймера
+//		NVIC_EnableIRQ(timer_2.IRQn);
+//		TIMER_Cmd(timer_2.TIMERx,ENABLE);	
+//		//выключение SPI
+//		spi_1.SSPx->CR1 &= 0xFFFD;
+//		timer_2.TIMERx->STATUS = ~timer_2.TIMER_STATUS;
+	}
+	else
+	{
+		//включение SPI
+		spi_1.SSPx->CR1 |= 0x0002;
+		delay_micro(7);
+		spi_1.fifo_halfword = (spi_1.SSPx->DR);
+		//выключение SPI
+		spi_1.SSPx->CR1 &= 0xFFFD;
+	}
 	//while (SSP_GetFlagStatus(spi_1.SSPx, SSP_FLAG_RNE) != SET)  {}  //ждем пока появится байт  
-	delay_micro(7);
+//	delay_micro(7);
 //	MDR_TIMER1->CNT = 0;
 //	while((MDR_TIMER1->CNT)!=7);
-	spi_1.fifo_halfword = (spi_1.SSPx->DR);
+	//spi_1.fifo_halfword = (spi_1.SSPx->DR);
 	//выключение SPI
-	spi_1.SSPx->CR1 &= 0xFFFD;
-	timer_2.TIMERx->STATUS = ~timer_2.TIMER_STATUS;
+	//spi_1.SSPx->CR1 &= 0xFFFD;
+	//timer_2.TIMERx->STATUS = ~timer_2.TIMER_STATUS;
 	//TIMER_ClearITPendingBit(timer_2.TIMERx, timer_2.TIMER_STATUS);
 	//MDR_PORTE->CLRTX = PORT_Pin_11;
+	timer_2.TIMERx->STATUS = ~timer_2.TIMER_STATUS;
 }
 /*
 Функция реализации задержки в мс

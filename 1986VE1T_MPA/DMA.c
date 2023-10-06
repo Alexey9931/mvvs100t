@@ -1,4 +1,13 @@
 #include "DMA.h"
+#include "SPI.h"
+
+
+extern spi_n spi_1;
+extern spi_n spi_2;
+
+extern timer_n timer_1;
+extern timer_n timer_2;
+extern timer_n timer_3;
 
 extern UARTn UART1;
 extern UARTn UART2;
@@ -39,7 +48,7 @@ void DMA_IRQHandler(void)
 {
 	#ifdef K1986VE1T
 	//если сработало прерывание при заполнении буфера приемника UART1
-	if(DMA_GetFlagStatus(DMA_Channel_REQ_UART1_RX, DMA_FLAG_CHNL_ENA) == RESET)
+	if(DMA_GetFlagStatus(DMA_Channel_REQ_UART1_RX, DMA_FLAG_CHNL_ENA) == 0)
 	{
 		if (UART1.uart_dma_ch.dma_irq_counter == ((BUFFER_SIZE/1024) - 1))
 		{
@@ -55,7 +64,7 @@ void DMA_IRQHandler(void)
 		}
 	}
 	//если сработало прерывание при заполнении буфера приемника UART2
-	if(DMA_GetFlagStatus(DMA_Channel_REQ_UART2_RX, DMA_FLAG_CHNL_ENA) == RESET)
+	if(DMA_GetFlagStatus(DMA_Channel_REQ_UART2_RX, DMA_FLAG_CHNL_ENA) == 0)
 	{
 		if (UART2.uart_dma_ch.dma_irq_counter == ((BUFFER_SIZE/1024) - 1))
 		{
@@ -69,6 +78,39 @@ void DMA_IRQHandler(void)
 			DMA_Init(UART2.uart_dma_ch.dma_channel, &UART2.uart_dma_ch.DMA_Channel_UART_RX);
 			UART2.uart_dma_ch.dma_irq_counter++;
 		}
+	}
+	//если сработало прерывание при заполнении буфера приемника SPI1
+	if(DMA_GetFlagStatus(DMA_Channel_REQ_SSP1_RX, DMA_FLAG_CHNL_ENA) == 0)
+	{
+		if (spi_1.spi_dma_ch.dma_irq_counter == (CHANEL_NUMBER-1))
+		{
+			spi_1.spi_dma_ch.dma_irq_counter = 0;
+			//выключение SPI
+			spi_1.SSPx->CR1 &= 0xFFFD;
+			MDR_PORTE->CLRTX = PORT_Pin_11;
+			dma_spi_rx_init(&spi_1);
+		}
+		else
+		{
+				spi_1.spi_dma_ch.DMA_InitStructure_SPI_RX.DMA_DestBaseAddr += spi_1.spi_dma_ch.DMA_InitStructure_SPI_RX.DMA_CycleSize*2;
+				DMA_Init(spi_1.spi_dma_ch.dma_channel, &spi_1.spi_dma_ch.DMA_Channel_SPI_RX);
+				spi_1.spi_dma_ch.dma_irq_counter++;
+		}
+		SSP_SendData(spi_1.SSPx, 0x7FFF);
+//		//выключаем DMA от SPI1
+//		SSP_DMACmd(spi_1.SSPx, SSP_DMA_RXE, DISABLE);
+//		// Запретить работу DMA с SPI
+//		DMA_Cmd (spi_1.spi_dma_ch.dma_channel, DISABLE);
+//			//включаем прерывание от таймера
+//		NVIC_EnableIRQ(timer_2.IRQn);
+//		TIMER_Cmd(timer_2.TIMERx,ENABLE);	
+		//выключение SPI
+		//spi_1.SSPx->CR1 &= 0xFFFD;
+		//timer_2.TIMERx->STATUS = ~timer_2.TIMER_STATUS;
+		//spi_1.spi_dma_ch.dma_irq_counter = 0;
+		
+		//MDR_PORTE->CLRTX = PORT_Pin_11;
+		//dma_spi_rx_init(&spi_1);
 	}
 	#endif
 	#ifdef K1986VE3T

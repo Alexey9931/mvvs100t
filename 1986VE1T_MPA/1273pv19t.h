@@ -25,7 +25,8 @@ typedef struct adc_config_data
 	timer_n 	*timer_n_timeout;		///< Выбор таймера для отслеживания таймаутов
 	timer_n 	*timer_n_capture;		///< Выбор таймера для режима захвата сигнала SDIFS/SDOFS
 	uint32_t	read_timeout;				///< Таймаут на чтение канала АЦП
-	uint8_t 	timeout_flag;  ///< Флаг таймаута на чтение
+	uint8_t 	timeout_flag;  			///< Флаг таймаута на чтение
+	uint8_t  init_flag;
 } adc_n;
 
 /*!

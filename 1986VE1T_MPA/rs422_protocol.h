@@ -15,11 +15,11 @@
 #define NUMBER_CMDS_IN_PACKET 255             		///< Максимальное число команд в одном пакете
 
 ////все поддерживаемые протоколом команды
-#define TYPE 0x00
-#define INIT 0x01
-#define READ 0x02
-#define WRITE 0x03
-#define RESET 0x04
+#define TYPE_CMD 0x00
+#define INIT_CMD 0x01
+#define READ_CMD 0x02
+#define WRITE_CMD 0x03
+#define RESET_CMD 0x04
 #define CONFIG 0x05
 
 ///Коды ошибок обмена данными

@@ -147,9 +147,9 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>137</LineNumber>
+          <LineNumber>139</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>10278</Address>
+          <Address>9318</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -158,23 +158,23 @@
           <BreakIfRCount>1</BreakIfRCount>
           <Filename>.\main.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\1986VE1T_MPA\main.c\137</Expression>
+          <Expression>\\1986VE1T_MPA\main.c\139</Expression>
         </Bp>
         <Bp>
           <Number>1</Number>
           <Type>0</Type>
-          <LineNumber>224</LineNumber>
+          <LineNumber>91</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>8180</Address>
+          <Address>2092</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>.\main.c</Filename>
+          <Filename>.\DMA.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\1986VE1T_MPA\main.c\224</Expression>
+          <Expression>\\1986VE1T_MPA\DMA.c\91</Expression>
         </Bp>
       </Breakpoint>
       <WatchWindow1>
@@ -212,6 +212,16 @@
           <count>6</count>
           <WinNumber>1</WinNumber>
           <ItemText>timer_cnt</ItemText>
+        </Ww>
+        <Ww>
+          <count>7</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>DMA_ControlTable[DMA_Channels_Number * (1 + DMA_AlternateData)]</ItemText>
+        </Ww>
+        <Ww>
+          <count>8</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>DMA_ControlTable[DMA_Channel_REQ_SSP1_RX]</ItemText>
         </Ww>
       </WatchWindow1>
       <MemoryWindow1>
@@ -265,6 +275,10 @@
       <pSingCmdsp></pSingCmdsp>
       <pMultCmdsp></pMultCmdsp>
       <SystemViewers>
+        <Entry>
+          <Name>System Viewer\MDR_DMA</Name>
+          <WinId>35899</WinId>
+        </Entry>
         <Entry>
           <Name>System Viewer\MDR_EBC</Name>
           <WinId>35904</WinId>

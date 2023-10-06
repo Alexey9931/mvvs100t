@@ -28,8 +28,8 @@
 	#include <MDR32F9Qx_bkp.h>  	
 #endif
 
-#define HSE_OSC ((uint32_t)8000000) //частота внешнего тактового генератора (!также изменить в MDR32_config.h)
-#define WORK_FREQ 128 //рабоча€ частота в ћ√ц
+#define HSE_OSC ((uint32_t)12000000) //частота внешнего тактового генератора (!также изменить в MDR32_config.h)
+#define WORK_FREQ 144 //рабоча€ частота в ћ√ц
 
 
 #endif /*__MDR32_Drivers_H */

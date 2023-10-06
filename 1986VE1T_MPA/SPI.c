@@ -4,8 +4,12 @@
 */
 #include "SPI.h"
 
-spi_n spi_1;
-spi_n spi_2;
+/*Глобальные экземпляры структур с конфигурационными параметрами SPI и буфером приема 
+ *(необходимо добавить аттрибут, который прописан в файле Objects/.sct,
+ * т.к. для работы с DMA адрес буфера назначения должен лежать в определенной области памяти)
+ */
+spi_n spi_1 IAR_SECTION ("EXECUTABLE_MEMORY_SECTION") __attribute__((section("EXECUTABLE_MEMORY_SECTION")));
+spi_n spi_2 IAR_SECTION ("EXECUTABLE_MEMORY_SECTION") __attribute__((section("EXECUTABLE_MEMORY_SECTION")));
 
 /*
 Функция конфигурирования выводов МК для SPI
@@ -108,4 +112,41 @@ uint16_t spi_receive_halfword(spi_n *spi_struct)
 	tmpVar = SSP_ReceiveData(spi_struct->SSPx);
 		
 	return tmpVar;
+}
+/*
+Функция инициализации n-го канала DMA  на запрос от приемника SPIn
+*/
+void dma_spi_rx_init(spi_n *spi_struct)
+{
+
+	DMA_StructInit(&spi_struct->spi_dma_ch.DMA_Channel_SPI_RX);
+	spi_struct->spi_dma_ch.DMA_InitStructure_SPI_RX.DMA_SourceBaseAddr = (uint32_t)(&(spi_struct->SSPx->DR));
+	spi_struct->spi_dma_ch.DMA_InitStructure_SPI_RX.DMA_DestBaseAddr = (uint32_t)(spi_struct->buffer);
+	spi_struct->spi_dma_ch.DMA_InitStructure_SPI_RX.DMA_CycleSize = 1;
+	spi_struct->spi_dma_ch.DMA_InitStructure_SPI_RX.DMA_SourceIncSize = DMA_SourceIncNo;
+	spi_struct->spi_dma_ch.DMA_InitStructure_SPI_RX.DMA_DestIncSize = DMA_DestIncHalfword;
+	spi_struct->spi_dma_ch.DMA_InitStructure_SPI_RX.DMA_MemoryDataSize = DMA_MemoryDataSize_HalfWord;
+	spi_struct->spi_dma_ch.DMA_InitStructure_SPI_RX.DMA_NumContinuous = DMA_Transfers_1;
+	spi_struct->spi_dma_ch.DMA_InitStructure_SPI_RX.DMA_SourceProtCtrl = DMA_SourcePrivileged;
+	spi_struct->spi_dma_ch.DMA_InitStructure_SPI_RX.DMA_DestProtCtrl = DMA_DestPrivileged;
+	spi_struct->spi_dma_ch.DMA_InitStructure_SPI_RX.DMA_Mode = DMA_Mode_Basic;
+	
+	// Задать структуру канала
+	spi_struct->spi_dma_ch.DMA_Channel_SPI_RX.DMA_PriCtrlData = &spi_struct->spi_dma_ch.DMA_InitStructure_SPI_RX;
+	spi_struct->spi_dma_ch.DMA_Channel_SPI_RX.DMA_Priority = DMA_Priority_High;
+	spi_struct->spi_dma_ch.DMA_Channel_SPI_RX.DMA_UseBurst = DMA_BurstClear;
+	spi_struct->spi_dma_ch.DMA_Channel_SPI_RX.DMA_SelectDataStructure = DMA_CTRL_DATA_PRIMARY;
+	
+	// Инициализировать канал
+	DMA_Init(spi_struct->spi_dma_ch.dma_channel, &spi_struct->spi_dma_ch.DMA_Channel_SPI_RX);
+	
+	MDR_DMA->CHNL_REQ_MASK_CLR = 1 << spi_struct->spi_dma_ch.dma_channel;
+	MDR_DMA->CHNL_USEBURST_CLR = 1 << spi_struct->spi_dma_ch.dma_channel;
+	
+	SSP_DMACmd(spi_struct->SSPx, SSP_DMA_RXE, DISABLE);
+	// Разрешить работу DMA с SPI
+	DMA_Cmd (spi_struct->spi_dma_ch.dma_channel, DISABLE);
+	
+	//NVIC_SetPriority (DMA_IRQn, 2);
+	NVIC_EnableIRQ(DMA_IRQn);
 }

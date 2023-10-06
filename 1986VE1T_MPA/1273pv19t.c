@@ -42,7 +42,7 @@ void adc_gpio_config(void)
 	GPIO_init_structADC.PORT_OE = PORT_OE_OUT;
 	PORT_Init(PORT_ADC_MODE, &GPIO_init_structADC);
 	
-	PORT_SetBits(PORT_ADC_MODE,PIN_ADC_MODE_A0);
+	PORT_ResetBits(PORT_ADC_MODE,PIN_ADC_MODE_A0);
 	PORT_ResetBits(PORT_ADC_MODE,PIN_ADC_MODE_A1);
 	
 }
@@ -59,11 +59,11 @@ void adc_init(adc_n *adc_struct)
 	delay_milli(1);
 	
 //	//режим control, запись в регистр B для изменения частоты SCK на 16МГц
-//	SSP_SendData(SPI_struct->SSPx, 0x810C);
+//	SSP_SendData(adc_struct->spi_struct->SSPx, 0x8108);
 //	delay_milli(1);
 //	//изменение частоты SCK SPI
-//	SPI_struct->SPI.SSP_CPSDVSR = 8;
-//	SSP_Init(SPI_struct->SSPx,&SPI_struct->SPI);
+//	adc_struct->spi_struct->SPI.SSP_CPSDVSR = 8;
+//	SSP_Init(adc_struct->spi_struct->SSPx,&adc_struct->spi_struct->SPI);
 	
 	//режим control, запись в регистр D управление питанием АЦП1 и АЦП2
 	SSP_SendData(adc_struct->spi_struct->SSPx, 0x8388);
@@ -77,9 +77,15 @@ void adc_init(adc_n *adc_struct)
 	//режим control, запись в регистр C вкл. 5В режима,использ. вывода REFOUT, вкл. опорное напряж.
 	SSP_SendData(adc_struct->spi_struct->SSPx, 0x82E0);
 	delay_milli(1);
+//	//режим однополярного входного сигнала, запись в регистр G 
+//	SSP_SendData(adc_struct->spi_struct->SSPx, 0x86BF);
+//	delay_milli(1);
 	//режим control, запись в регистр А - перевод в режим данных
 	SSP_SendData(adc_struct->spi_struct->SSPx, 0x8001);
-	delay_milli(1);
+	delay_micro(20);
+	//delay_milli(1);
+	adc_struct->init_flag = 1;
+	SSP_SendData(adc_struct->spi_struct->SSPx, 0x7FFF);
 }
 /*
 Функция аппаратного перезапуска АЦП

@@ -157,7 +157,7 @@ uint8_t protocol_do_cmds(uint8_t ext_bus)
 	{
 		switch (ram_space_pointer->rx_packet_struct.cmd_with_data[i].header.cmd)
 		{
-				case TYPE:
+				case TYPE_CMD:
 						//по команде TYPE кладем в поле дата регистры PLC_SoftVer, PLC_Config, PLC_DeviceType, PLC_SerialNumber
 						ram_space_pointer->tx_packet_struct.cmd_with_data[i].data = (ram_space_pointer->tx_data) + offset;
 						
@@ -174,14 +174,14 @@ uint8_t protocol_do_cmds(uint8_t ext_bus)
 						//*(uint32_t*)((ram_space_pointer->tx_data) + offset) = ram_space_pointer->common_ram_register_space.PLC_SerialNumber;
 						offset += sizeof(ram_space_pointer->common_ram_register_space.PLC_SerialNumber);
 						
-						ram_space_pointer->tx_packet_struct.cmd_with_data[i].header.cmd = TYPE;
+						ram_space_pointer->tx_packet_struct.cmd_with_data[i].header.cmd = TYPE_CMD;
 						//TODO:разобраться для чего поле result
 						ram_space_pointer->tx_packet_struct.cmd_with_data[i].header.result = 0;
 						ram_space_pointer->tx_packet_struct.cmd_with_data[i].header.length = sizeof(fields_cmd_header) + sizeof(ram_space_pointer->common_ram_register_space.PLC_SoftVer) + 
 							sizeof(ram_space_pointer->common_ram_register_space.PLC_Config) + sizeof(ram_space_pointer->common_ram_register_space.PLC_DeviceType) + sizeof(ram_space_pointer->common_ram_register_space.PLC_SerialNumber);
 						break;
 					
-				case INIT:
+				case INIT_CMD:
 						//по команде INIT кладем в поле дата регистр PLC_SerialNumber, если выполнен ряд условий
 						switch (ext_bus)
 						{
@@ -222,13 +222,13 @@ uint8_t protocol_do_cmds(uint8_t ext_bus)
 						//*(uint32_t*)((ram_space_pointer->tx_data) + offset) = ram_space_pointer->common_ram_register_space.PLC_SerialNumber;
 						ram_space_pointer->tx_packet_struct.cmd_with_data[i].data = (ram_space_pointer->tx_data) + offset;
 						offset += sizeof(ram_space_pointer->common_ram_register_space.PLC_SerialNumber);
-						ram_space_pointer->tx_packet_struct.cmd_with_data[i].header.cmd = INIT;
+						ram_space_pointer->tx_packet_struct.cmd_with_data[i].header.cmd = INIT_CMD;
 						//TODO:разобраться для чего поле result
 						ram_space_pointer->tx_packet_struct.cmd_with_data[i].header.result = 0;
 						ram_space_pointer->tx_packet_struct.cmd_with_data[i].header.length = sizeof(fields_cmd_header)+ sizeof(ram_space_pointer->common_ram_register_space.PLC_SerialNumber);
 						break;
 					
-				case READ:
+				case READ_CMD:
 						memcpy(&start_addr, ram_space_pointer->rx_packet_struct.cmd_with_data[i].data, sizeof(start_addr));
 						memcpy(&size, ram_space_pointer->rx_packet_struct.cmd_with_data[i].data + sizeof(start_addr), sizeof(size));
 						
@@ -236,13 +236,13 @@ uint8_t protocol_do_cmds(uint8_t ext_bus)
 						memcpy((ram_space_pointer->tx_data) + offset, (void*)(&(ram_space_pointer->start_struct)) + start_addr, size);
 						ram_space_pointer->tx_packet_struct.cmd_with_data[i].data = (ram_space_pointer->tx_data) + offset;
 						offset += size;
-						ram_space_pointer->tx_packet_struct.cmd_with_data[i].header.cmd = READ;
+						ram_space_pointer->tx_packet_struct.cmd_with_data[i].header.cmd = READ_CMD;
 						//TODO:разобраться для чего поле result
 						ram_space_pointer->tx_packet_struct.cmd_with_data[i].header.result = 0;
 						ram_space_pointer->tx_packet_struct.cmd_with_data[i].header.length = sizeof(fields_cmd_header) + size;
 						break;
 				
-				case WRITE:
+				case WRITE_CMD:
 						//проверка того, что установлено соединение по выбранной шине
 						switch (ext_bus)
 						{
@@ -269,17 +269,17 @@ uint8_t protocol_do_cmds(uint8_t ext_bus)
 						//size = *((ram_space_pointer->rx_packet_struct.cmd_with_data[i].data) + sizeof(start_addr));
 						//по команде WRITE кладем по адресу start_addr size принятых байт для записи и в поле данных кладем код команды
 						memcpy((void*)(&(ram_space_pointer->start_struct)) + start_addr, (ram_space_pointer->rx_packet_struct.cmd_with_data[i].data) + sizeof(start_addr) + sizeof(size), size);
-						memset((ram_space_pointer->tx_data) + offset, WRITE, 1);
+						memset((ram_space_pointer->tx_data) + offset, WRITE_CMD, 1);
 						//*(uint8_t*)((ram_space_pointer->tx_data) + offset) = WRITE;
 						ram_space_pointer->tx_packet_struct.cmd_with_data[i].data = (ram_space_pointer->tx_data) + offset;
 						offset++;
-						ram_space_pointer->tx_packet_struct.cmd_with_data[i].header.cmd = WRITE;
+						ram_space_pointer->tx_packet_struct.cmd_with_data[i].header.cmd = WRITE_CMD;
 						//TODO:разобраться для чего поле result
 						ram_space_pointer->tx_packet_struct.cmd_with_data[i].header.result = 0;
 						ram_space_pointer->tx_packet_struct.cmd_with_data[i].header.length = sizeof(fields_cmd_header) + 1;
 						break;
 					
-			case RESET:
+			case RESET_CMD:
 					//проверка того, что установлено соединение по выбранной шине
 					switch (ext_bus)
 					{

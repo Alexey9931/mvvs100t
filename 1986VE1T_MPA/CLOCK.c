@@ -13,7 +13,7 @@ void CLOCK_Init(void) // тактирование WORK_FREQ МГц
 	
 	// Настраиваем источник и коэффициент умножения PLL
 	//(CPU_C1_SEL = HSE / 1 * 9 = 128 МГц )
-	RST_CLK_CPU_PLLconfig ( RST_CLK_CPU_PLLsrcHSEdiv1,15);
+	RST_CLK_CPU_PLLconfig ( RST_CLK_CPU_PLLsrcHSEdiv1,11);
 	
 	// Включаем PLL, но еще не подключаем к кристаллу (PLL умножает частоту тактирования)
 	RST_CLK_CPU_PLLcmd (ENABLE);
