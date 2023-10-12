@@ -6,9 +6,10 @@
 #include "TIMER.h"
 #include "SPI.h"
 #include "1273pv19t.h"
-
+#include "external_ram.h"
 
 extern adc_n adc_1;
+extern ram_data *ram_space_pointer;
 
 timer_n timer_1;
 timer_n timer_2;
@@ -114,14 +115,16 @@ void timer2_init(timer_n *timer_struct)
 	 
 	TIMER_ChnCCR1_Cmd(timer_struct->TIMERx, sTIM2_ChnInit.TIMER_CH_Number, ENABLE);
 
-	NVIC_EnableIRQ(timer_struct->IRQn);
 	TIMER_ITConfig(timer_struct->TIMERx, timer_struct->TIMER_STATUS, ENABLE);
+	NVIC_EnableIRQ(timer_struct->IRQn);
 	//NVIC_SetPriority(timer_struct->IRQn, 0);
 
 	/* Enable TIMER2 clock */
   TIMER_BRGInit(timer_struct->TIMERx,timer_struct->TIMER_HCLKdiv);
 	/* Enable TIMER2 */
   TIMER_Cmd(timer_struct->TIMERx,ENABLE);
+
+	
 }
 /*
 Функция инициализации выбранного Timer 
@@ -148,66 +151,16 @@ void timer_init(timer_n *timer_struct)
 void TIMER2_IRQHandler(void);
 void TIMER2_IRQHandler(void)
 {
-	//MDR_PORTE->SETTX = PORT_Pin_11;
-	//включение SPI
-//	spi_1.SSPx->CR1 |= 0x0002;
-	if (adc_1.init_flag == 1)
+	if ((adc_1.init_flag == 1))
 	{
-		//MDR_PORTE->SETTX = PORT_Pin_11;
-		//включение SPI
-		//spi_1.SSPx->CR1 |= 0x0002;
-//		//отключаем прерывание от таймера
-//		NVIC_DisableIRQ(timer_2.IRQn);
-//		TIMER_Cmd(timer_2.TIMERx,DISABLE);
-		if (spi_1.spi_dma_ch.dma_irq_counter == 0)
+		uint16_t spi_rx_value = spi_receive_halfword(&spi_1);
+		memcpy(ram_space_pointer->spi_1_rx_buffer + spi_1.buffer_counter, &spi_rx_value, sizeof(spi_rx_value));
+		spi_1.buffer_counter++;
+		if (spi_1.buffer_counter == CHANEL_NUMBER*10)
 		{
-			MDR_PORTE->SETTX = PORT_Pin_11;
-			//включение SPI
-			spi_1.SSPx->CR1 |= 0x0002;
-			//включаем DMA от SPI1
-			//SSP_DMACmd(spi_1.SSPx, SSP_DMA_RXE, ENABLE);
-			spi_1.SSPx->DMACR |= SSP_DMA_RXE;
-			// Разрешить работу DMA с SPI
-			MDR_DMA->CHNL_ENABLE_SET = (1 << spi_1.spi_dma_ch.dma_channel);
-			//DMA_Cmd (spi_1.spi_dma_ch.dma_channel, ENABLE);
+			spi_1.buffer_counter = 0;
 		}
-//		//включаем DMA от SPI1
-//		SSP_DMACmd(spi_1.SSPx, SSP_DMA_RXE, ENABLE);
-//		// Разрешить работу DMA с SPI
-//		DMA_Cmd (spi_1.spi_dma_ch.dma_channel, ENABLE);
-		
-		//SSP_SendData(adc_1.spi_struct->SSPx, 0x7FFF);
-//		while ((DMA_Ctrl_Rx & 3) != 0){}
-//		//выключаем DMA от SPI1
-//		SSP_DMACmd(spi_1.SSPx, SSP_DMA_RXE, DISABLE);
-//		// Запретить работу DMA с SPI
-//		DMA_Cmd (spi_1.spi_dma_ch.dma_channel, DISABLE);
-//			//включаем прерывание от таймера
-//		NVIC_EnableIRQ(timer_2.IRQn);
-//		TIMER_Cmd(timer_2.TIMERx,ENABLE);	
-//		//выключение SPI
-//		spi_1.SSPx->CR1 &= 0xFFFD;
-//		timer_2.TIMERx->STATUS = ~timer_2.TIMER_STATUS;
 	}
-	else
-	{
-		//включение SPI
-		spi_1.SSPx->CR1 |= 0x0002;
-		delay_micro(7);
-		spi_1.fifo_halfword = (spi_1.SSPx->DR);
-		//выключение SPI
-		spi_1.SSPx->CR1 &= 0xFFFD;
-	}
-	//while (SSP_GetFlagStatus(spi_1.SSPx, SSP_FLAG_RNE) != SET)  {}  //ждем пока появится байт  
-//	delay_micro(7);
-//	MDR_TIMER1->CNT = 0;
-//	while((MDR_TIMER1->CNT)!=7);
-	//spi_1.fifo_halfword = (spi_1.SSPx->DR);
-	//выключение SPI
-	//spi_1.SSPx->CR1 &= 0xFFFD;
-	//timer_2.TIMERx->STATUS = ~timer_2.TIMER_STATUS;
-	//TIMER_ClearITPendingBit(timer_2.TIMERx, timer_2.TIMER_STATUS);
-	//MDR_PORTE->CLRTX = PORT_Pin_11;
 	timer_2.TIMERx->STATUS = ~timer_2.TIMER_STATUS;
 }
 /*
@@ -226,3 +179,5 @@ void delay_micro(uint32_t time_micro)//задержка в мкс (максим�
 	TIMER_SetCounter(MDR_TIMER1, 0);
 	while(TIMER_GetCounter(MDR_TIMER1)!=time_micro);
 }
+
+

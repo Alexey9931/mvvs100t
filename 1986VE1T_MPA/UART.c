@@ -198,7 +198,7 @@ uint8_t uart_write(UARTn *UART_struct, uint8_t *data, uint32_t data_size)
 	{
 		TIMER_SetCounter(UART_struct->UARTx_timeouts.timer_n_timeout->TIMERx, 0);
 	}
-	if (data_size > BUFFER_SIZE)
+	if (data_size > UART_BUFFER_SIZE)
 	{
 		error = SIZE_ERROR;
 		return error;
@@ -242,13 +242,13 @@ uint8_t uart_read(UARTn *UART_struct, uint32_t len, uint8_t *data)
 	uint32_t timer_cnt = 0;
 	
 	//если длина превышает размер буфера
-	if (len > BUFFER_SIZE)
+	if (len > UART_BUFFER_SIZE)
 	{
 		error = SIZE_ERROR;
 		return error;
 	}
 	//если последний принятый байт перевалит границу буфера и байты будут перезаписываться в буфере с самого начала
-	if (((UART_struct->read_pos)+len) > BUFFER_SIZE)
+	if (((UART_struct->read_pos)+len) > UART_BUFFER_SIZE)
 	{
 		//если задан таймаут 
 		if (UART_struct->UARTx_timeouts.read_timeout_flag == 1)
@@ -263,7 +263,7 @@ uint8_t uart_read(UARTn *UART_struct, uint32_t len, uint8_t *data)
 					return error;
 				}
 			}
-			while ((BUFFER_SIZE - (UART_struct->read_pos) + (UART_struct->buffer_count)) < len)
+			while ((UART_BUFFER_SIZE - (UART_struct->read_pos) + (UART_struct->buffer_count)) < len)
 			{
 				timer_cnt = TIMER_GetCounter(UART_struct->UARTx_timeouts.timer_n_timeout->TIMERx);
 				if (timer_cnt==(UART_struct->UARTx_timeouts.read_val_timeout*50)) 
@@ -281,14 +281,14 @@ uint8_t uart_read(UARTn *UART_struct, uint32_t len, uint8_t *data)
 		}
 		else
 		{
-			if ((BUFFER_SIZE + (UART_struct->buffer_count) - (UART_struct->read_pos)) < len)
+			if ((UART_BUFFER_SIZE + (UART_struct->buffer_count) - (UART_struct->read_pos)) < len)
 			{
 				error = SIZE_ERROR;
 				return error;
 			}
-			memcpy(data, (UART_struct->buffer) + (UART_struct->read_pos), BUFFER_SIZE-(UART_struct->read_pos));
-			memcpy(data + BUFFER_SIZE-(UART_struct->read_pos), UART_struct->buffer, len+(UART_struct->read_pos)-BUFFER_SIZE);
-			UART_struct->read_pos = (UART_struct->read_pos) + len-BUFFER_SIZE;
+			memcpy(data, (UART_struct->buffer) + (UART_struct->read_pos), UART_BUFFER_SIZE-(UART_struct->read_pos));
+			memcpy(data + UART_BUFFER_SIZE-(UART_struct->read_pos), UART_struct->buffer, len+(UART_struct->read_pos)-UART_BUFFER_SIZE);
+			UART_struct->read_pos = (UART_struct->read_pos) + len-UART_BUFFER_SIZE;
 		}
 	}
 	//если последний принятый байт не перевалит границу буфера
@@ -327,7 +327,7 @@ uint8_t uart_set_pos(UARTn *UART_struct, uint32_t pos)
 {
 	uart_errors error;
 	
-	if (pos > BUFFER_SIZE)
+	if (pos > UART_BUFFER_SIZE)
 	{
 		error = POSITION_ERROR;
 		return error;

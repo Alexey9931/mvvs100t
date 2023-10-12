@@ -31,5 +31,11 @@
 #define HSE_OSC ((uint32_t)12000000) //частота внешнего тактового генератора (!также изменить в MDR32_config.h)
 #define WORK_FREQ 144 //рабочая частота в МГц
 
+#define CHANEL_NUMBER 6									///< Кол-во каналов в МПА
+#define MAX_CHANEL_NUMBER 8							///< Максимальное кол-во каналов в МПА
+#define PM_DEV_ADDR 0										///< Адрес модуля
+#define PM_CHASSIS_ADDR 0								///< Адрес шасси
+#define NUMBER_OF_RANGES 3							///< Кол-во диапазонов в стартовой структуре
+
 
 #endif /*__MDR32_Drivers_H */

@@ -143,40 +143,7 @@
           <Name>(105=-1,-1,-1,-1,0)</Name>
         </SetRegEntry>
       </TargetDriverDllRegistry>
-      <Breakpoint>
-        <Bp>
-          <Number>0</Number>
-          <Type>0</Type>
-          <LineNumber>139</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>9318</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>.\main.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\1986VE1T_MPA\main.c\139</Expression>
-        </Bp>
-        <Bp>
-          <Number>1</Number>
-          <Type>0</Type>
-          <LineNumber>91</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>2092</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>.\DMA.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\1986VE1T_MPA\DMA.c\91</Expression>
-        </Bp>
-      </Breakpoint>
+      <Breakpoint/>
       <WatchWindow1>
         <Ww>
           <count>0</count>
@@ -201,27 +168,32 @@
         <Ww>
           <count>4</count>
           <WinNumber>1</WinNumber>
-          <ItemText>spi_1</ItemText>
+          <ItemText>adc_struct</ItemText>
         </Ww>
         <Ww>
           <count>5</count>
           <WinNumber>1</WinNumber>
-          <ItemText>adc_struct</ItemText>
+          <ItemText>timer_cnt</ItemText>
         </Ww>
         <Ww>
           <count>6</count>
           <WinNumber>1</WinNumber>
-          <ItemText>timer_cnt</ItemText>
+          <ItemText>DMA_ControlTable[DMA_Channels_Number * (1 + DMA_AlternateData)]</ItemText>
         </Ww>
         <Ww>
           <count>7</count>
           <WinNumber>1</WinNumber>
-          <ItemText>DMA_ControlTable[DMA_Channels_Number * (1 + DMA_AlternateData)]</ItemText>
+          <ItemText>DMA_ControlTable[DMA_Channel_REQ_SSP1_RX]</ItemText>
         </Ww>
         <Ww>
           <count>8</count>
           <WinNumber>1</WinNumber>
-          <ItemText>DMA_ControlTable[DMA_Channel_REQ_SSP1_RX]</ItemText>
+          <ItemText>adc_1</ItemText>
+        </Ww>
+        <Ww>
+          <count>9</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>spi_1</ItemText>
         </Ww>
       </WatchWindow1>
       <MemoryWindow1>
@@ -276,32 +248,16 @@
       <pMultCmdsp></pMultCmdsp>
       <SystemViewers>
         <Entry>
-          <Name>System Viewer\MDR_DMA</Name>
-          <WinId>35899</WinId>
-        </Entry>
-        <Entry>
-          <Name>System Viewer\MDR_EBC</Name>
-          <WinId>35904</WinId>
-        </Entry>
-        <Entry>
-          <Name>System Viewer\MDR_PORTC</Name>
-          <WinId>35903</WinId>
+          <Name>System Viewer\MDR_RST_CLK</Name>
+          <WinId>35905</WinId>
         </Entry>
         <Entry>
           <Name>System Viewer\MDR_SSP1</Name>
-          <WinId>35902</WinId>
-        </Entry>
-        <Entry>
-          <Name>System Viewer\MDR_TIMER1</Name>
-          <WinId>35905</WinId>
+          <WinId>35904</WinId>
         </Entry>
         <Entry>
           <Name>System Viewer\MDR_TIMER2</Name>
           <WinId>35901</WinId>
-        </Entry>
-        <Entry>
-          <Name>System Viewer\MDR_TIMER3</Name>
-          <WinId>35900</WinId>
         </Entry>
       </SystemViewers>
     </TargetOption>

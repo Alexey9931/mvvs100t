@@ -18,7 +18,7 @@ void spi_gpio_config(void);
 void spi_gpio_config(void)
 {
 	// Включение тактирования портов
-	RST_CLK_PCLKcmd(RST_CLK_PCLK_RST_CLK|RST_CLK_PCLK_PORTC, ENABLE);	
+	RST_CLK_PCLKcmd(RST_CLK_PCLK_RST_CLK|RST_CLK_PCLK_PORTD, ENABLE);	
 	
 	// Инициализация портов SSP1
 	PORT_InitTypeDef GPIO_init_struct_SPI1;
@@ -27,26 +27,25 @@ void spi_gpio_config(void)
 	GPIO_init_struct_SPI1.PORT_FUNC = PORT_FUNC_ALTER;
 	GPIO_init_struct_SPI1.PORT_MODE = PORT_MODE_DIGITAL;
 	GPIO_init_struct_SPI1.PORT_SPEED = PORT_SPEED_MAXFAST;
-	//Инициализация вывода PC7 как SCK
+	//Инициализация вывода SCK
 	GPIO_init_struct_SPI1.PORT_Pin = PIN_SSP1_SCK;
 	GPIO_init_struct_SPI1.PORT_OE = PORT_OE_IN;
 	PORT_Init(PORT_SSP1, &GPIO_init_struct_SPI1);
-	//Инициализация вывода PC6 как SSP_RX
+	//Инициализация вывода SSP_RX
 	GPIO_init_struct_SPI1.PORT_Pin = PIN_SSP1_RX;
 	GPIO_init_struct_SPI1.PORT_OE = PORT_OE_IN;
 	PORT_Init(PORT_SSP1, &GPIO_init_struct_SPI1);
-	//Инициализация вывода PC5 как SSP_TX
+	//Инициализация вывода SSP_TX
 	GPIO_init_struct_SPI1.PORT_Pin = PIN_SSP1_TX;
 	GPIO_init_struct_SPI1.PORT_OE = PORT_OE_OUT;
 	PORT_Init(PORT_SSP1, &GPIO_init_struct_SPI1);
-	PORT_SetBits(PORT_SSP1,PORT_Pin_5);
-	//Инициализация вывода PC8 как SS
+	PORT_ResetBits(PORT_SSP1,PIN_SSP1_TX);
+	//Инициализация вывода SS (вход SDIFS)
 	GPIO_init_struct_SPI1.PORT_Pin = PIN_SSP1_SS;
-	GPIO_init_struct_SPI1.PORT_FUNC = PORT_FUNC_PORT;
-	GPIO_init_struct_SPI1.PORT_OE = PORT_OE_OUT;
+	GPIO_init_struct_SPI1.PORT_FUNC = PORT_FUNC_ALTER;
+	GPIO_init_struct_SPI1.PORT_OE = PORT_OE_IN;
 	PORT_Init(PORT_SSP1, &GPIO_init_struct_SPI1);
-	//установка SS в лог ноль
-	PORT_ResetBits(PORT_SSP1,PIN_SSP1_SS);
+	
 }
 /*
 Функция инициализация SPI
@@ -78,7 +77,8 @@ void spi_init(spi_n *spi_struct)
   SSP_ITConfig (spi_struct->SSPx, SSP_IT_RX | SSP_IT_TX, ENABLE);
 	
 	//Специально не включаем SPI, т.к. МК находится в SLAVE-режиме
-	SSP_Cmd(spi_struct->SSPx, DISABLE);
+	SSP_Cmd(spi_struct->SSPx, ENABLE);
+	
 }
 /*
 Функция передачи полуслова по SPI
@@ -113,6 +113,18 @@ uint16_t spi_receive_halfword(spi_n *spi_struct)
 		
 	return tmpVar;
 }
+/*
+Функция очистки FIFO буфера приемника SPI
+*/
+void spi_clean_fifo_rx_buf(spi_n *spi_struct)
+{	
+	uint16_t a;
+	for (uint8_t i = 0; i < FIFO_SIZE; i++)
+	{
+		a = spi_struct->SSPx->DR;
+	}
+}
+
 /*
 Функция инициализации n-го канала DMA  на запрос от приемника SPIn
 */
@@ -150,3 +162,4 @@ void dma_spi_rx_init(spi_n *spi_struct)
 	//NVIC_SetPriority (DMA_IRQn, 2);
 	NVIC_EnableIRQ(DMA_IRQn);
 }
+

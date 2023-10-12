@@ -8,14 +8,10 @@
 
 #include "MDR32_Drivers.h"
 #include "rs422_protocol.h"
+#include "SPI.h"
 
 #define EXT_RAM_START_ADDR 0x50200000		///< Адрес в памяти МК, с которой начинается обращение к внешней ОЗУ
 #define REGISTER_SPACE_START_ADDR 200		///< Стартовый адрес карты регистров в ОЗУ
-#define CHANEL_NUMBER 6									///< Кол-во каналов в МПА
-#define MAX_CHANEL_NUMBER 8							///< Максимальное кол-во каналов в МПА
-#define PM_DEV_ADDR 0										///< Адрес модуля
-#define PM_CHASSIS_ADDR 0								///< Адрес шасси
-#define NUMBER_OF_RANGES 3							///< Кол-во диапазонов в стартовой структуре
 
 #define TEST_BIT(num, value) ((value>>num)&0x1)
 #define SET_BIT(num, value) (value |= (1<<num))
@@ -222,14 +218,15 @@ typedef struct ram_data_struct
 	mpa_ram_registers				mpa_ram_register_space;																						///< Карта регистров МПА начиная с адреса REGISTER_SPACE_START_ADDR
 	fields_packet 					rx_packet_struct;																									///< Принятый пакет с идентифицированными полями
 	fields_packet 					tx_packet_struct;																									///< Отправляемый пакет с идентифицированными полями
-	uint8_t 								tx_data[BUFFER_SIZE];																							///< Выделенное место для данных tx_packet 
-	uint8_t 								packet_rx[BUFFER_SIZE];																						///< Буфер с принятым пакетом
-	uint8_t 								packet_tx[BUFFER_SIZE];																						///< Буфер с отправленным пакетом
+	uint8_t 								tx_data[UART_BUFFER_SIZE];																				///< Выделенное место для данных tx_packet 
+	uint8_t 								packet_rx[UART_BUFFER_SIZE];																			///< Буфер с принятым пакетом
+	uint8_t 								packet_tx[UART_BUFFER_SIZE];																		  ///< Буфер с отправленным пакетом
 	service_struct_pm				service_byte_pm;																									///< Структура сервисного байта ПМ
 	service_struct_um				service_byte_um;																									///< Структура сервисного байта УМ
 	uint_least32_t 					crc_table[256];																										///< Таблица для вычисления контрольной суммы
-	uint8_t 								uart1_rx_buffer[BUFFER_SIZE];																			///< Буфер приемника UART1
-	uint8_t 								uart2_rx_buffer[BUFFER_SIZE];																			///< Буфер приемника UART2
+	uint8_t 								uart1_rx_buffer[UART_BUFFER_SIZE];																///< Буфер приемника UART1
+	uint8_t 								uart2_rx_buffer[UART_BUFFER_SIZE];																///< Буфер приемника UART2
+	uint16_t 								spi_1_rx_buffer[SPI_BUFFER_SIZE];																	///< Буфер приемника SPI1
 }__attribute__((packed)) ram_data;
 
 /*!

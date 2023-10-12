@@ -8,7 +8,10 @@
 #include "TIMER.h"
 #include "external_ram.h"
 
+extern spi_n spi_1;
+extern timer_n timer_2;
 adc_n adc_1;
+
 
 /*
 Функция конфигурирования выводов МК для АЦП
@@ -17,7 +20,7 @@ void adc_gpio_config(void);
 void adc_gpio_config(void)
 {
 	// Включение тактирования портов
-	RST_CLK_PCLKcmd(RST_CLK_PCLK_RST_CLK|RST_CLK_PCLK_PORTD|RST_CLK_PCLK_PORTE, ENABLE);	
+	RST_CLK_PCLKcmd(RST_CLK_PCLK_RST_CLK|RST_CLK_PCLK_PORTD|RST_CLK_PCLK_PORTE|RST_CLK_PCLK_PORTC, ENABLE);	
 	
 	PORT_InitTypeDef GPIO_init_structADC;
 	PORT_StructInit(&GPIO_init_structADC);
@@ -45,24 +48,33 @@ void adc_gpio_config(void)
 	PORT_ResetBits(PORT_ADC_MODE,PIN_ADC_MODE_A0);
 	PORT_ResetBits(PORT_ADC_MODE,PIN_ADC_MODE_A1);
 	
+	//Инициализация вывода NSS
+	GPIO_init_structADC.PORT_Pin = PIN_ADC_NSS;
+	GPIO_init_structADC.PORT_FUNC = PORT_FUNC_PORT;
+	GPIO_init_structADC.PORT_OE = PORT_OE_OUT;
+	PORT_Init(PORT_ADC_NSS, &GPIO_init_structADC);
+	
+	//установка NSS в лог ноль
+	PORT_ResetBits(PORT_ADC_NSS, PIN_ADC_NSS);
 }
 /*
 Функция инициализации АЦП
 */
 void adc_init(adc_n *adc_struct)
 {
-	PORT_SetBits(PORT_SSP1,PIN_SSP1_SS);
 	adc_gpio_config();
+	//активация АЦП
+	PORT_SetBits(PORT_ADC_NSS, PIN_ADC_NSS);
 	delay_milli(1);
 	
 	adc_reset();
 	delay_milli(1);
 	
-//	//режим control, запись в регистр B для изменения частоты SCK на 16МГц
-//	SSP_SendData(adc_struct->spi_struct->SSPx, 0x8108);
+//	//режим control, запись в регистр B для изменения частоты DMCLK на 8МГц и SCK на 4МГц
+//	SSP_SendData(adc_struct->spi_struct->SSPx, 0x8103);
 //	delay_milli(1);
 //	//изменение частоты SCK SPI
-//	adc_struct->spi_struct->SPI.SSP_CPSDVSR = 8;
+//	adc_struct->spi_struct->SPI.SSP_CPSDVSR = 36;
 //	SSP_Init(adc_struct->spi_struct->SSPx,&adc_struct->spi_struct->SPI);
 	
 	//режим control, запись в регистр D управление питанием АЦП1 и АЦП2
@@ -83,9 +95,10 @@ void adc_init(adc_n *adc_struct)
 	//режим control, запись в регистр А - перевод в режим данных
 	SSP_SendData(adc_struct->spi_struct->SSPx, 0x8001);
 	delay_micro(20);
-	//delay_milli(1);
 	adc_struct->init_flag = 1;
-	SSP_SendData(adc_struct->spi_struct->SSPx, 0x7FFF);
+	
+	//очистка буфера FIFO передатчика
+	spi_clean_fifo_rx_buf(adc_struct->spi_struct);
 }
 /*
 Функция аппаратного перезапуска АЦП
@@ -96,43 +109,5 @@ void adc_reset(void)
 	delay_milli(100);
 	PORT_SetBits(PORT_ADC_RST,PIN_ADC_RST);
 }
-/*
-Функция чтения канала АЦП
-*/
-int16_t adc_read(adc_n *adc_struct)
-{
-	int16_t value = 0;
-	uint32_t timer_cnt = 0;
-	
-	if (adc_struct->timeout_flag == 1)
-	{
-		TIMER_SetCounter(adc_struct->timer_n_timeout->TIMERx, 0);
-	}
-	//инициируем чтение канала АЦП записью в буфер передатчика SPI 0x7FFF
-	SSP_SendData(adc_struct->spi_struct->SSPx, 0x7FFF);
-	//ждем, пока придет SDIFS/SDOFS
-	while(((adc_struct->timer_n_capture->TIMERx->STATUS)&(adc_struct->timer_n_capture->TIMER_STATUS)) == 0) 
-	{
-		if (adc_struct->timeout_flag == 1)
-		{
-			//если истек таймаут, то выходим
-			timer_cnt = TIMER_GetCounter(adc_struct->timer_n_timeout->TIMERx);
-			if (timer_cnt==(adc_struct->read_timeout)) 
-			{ 
-				return value; 
-			}
-	}
-	}
-	//delay_micro(8);
- 	value = ~(adc_struct->spi_struct->fifo_halfword) + 1;
-	
-	return value;
-}
-/*
-Функция установки таймаута на чтение канала АЦП
-*/
-void adc_set_read_timeout(adc_n *adc_struct, uint32_t read_timeout)
-{
-	adc_struct->read_timeout = read_timeout;
-	adc_struct->timeout_flag = 1;
-}
+
+

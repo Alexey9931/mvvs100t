@@ -29,7 +29,7 @@ Project File Date:  10/03/2023
 Rebuild target 'Target 1'
 CLOCK.c(1): warning: In file included from...
 ./CLOCK.h(4): warning: In file included from...
-./MDR32_Drivers.h(35): warning: no newline at end of file [-Wnewline-eof]
+./MDR32_Drivers.h(41): warning: no newline at end of file [-Wnewline-eof]
 #endif /*__MDR32_Drivers_H */
                              ^
 CLOCK.c(1): warning: In file included from...
@@ -44,13 +44,13 @@ compiling CLOCK.c...
 DMA.c(1): warning: In file included from...
 ./DMA.h(4): warning: In file included from...
 ./UART.h(9): warning: In file included from...
-./MDR32_Drivers.h(35): warning: no newline at end of file [-Wnewline-eof]
+./MDR32_Drivers.h(41): warning: no newline at end of file [-Wnewline-eof]
 #endif /*__MDR32_Drivers_H */
                              ^
 DMA.c(1): warning: In file included from...
 ./DMA.h(4): warning: In file included from...
 ./UART.h(10): warning: In file included from...
-./TIMER.h(48): warning: no newline at end of file [-Wnewline-eof]
+./TIMER.h(51): warning: no newline at end of file [-Wnewline-eof]
 #endif /*__TIMER_H */
                      ^
 DMA.c(1): warning: In file included from...
@@ -58,12 +58,7 @@ DMA.c(1): warning: In file included from...
 #endif /*__DMA_H */
                    ^
 DMA.c(2): warning: In file included from...
-./SPI.h(10): warning: In file included from...
-./external_ram.h(241): warning: no newline at end of file [-Wnewline-eof]
-#endif /*__EXTERNAL_RAM_H */
-                            ^
-DMA.c(2): warning: In file included from...
-./SPI.h(75): warning: no newline at end of file [-Wnewline-eof]
+./SPI.h(85): warning: no newline at end of file [-Wnewline-eof]
 #endif /*__SPI_H */
                    ^
 DMA.c(1): warning: In file included from...
@@ -99,16 +94,14 @@ DMA.c(1): warning: In file included from...
 C:/Users/shishov/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.0/Libraries/SPL/MDR32FxQI/inc\MDR32FxQI_uart.h(243): warning: padding size of 'UART_InitTypeDef' with 2 bytes to alignment boundary [-Wpadded]
 typedef struct
         ^
+DMA.c(3): warning: In file included from...
+./1273pv19t.h(25): warning: padding size of 'struct adc_config_data' with 3 bytes to alignment boundary [-Wpadded]
+typedef struct adc_config_data
+               ^
 DMA.c(2): warning: In file included from...
-./SPI.h(24): warning: padding struct 'struct spi_dma_params' with 3 bytes to align 'dma_irq_counter' [-Wpadded]
+./SPI.h(28): warning: padding struct 'struct spi_dma_params' with 3 bytes to align 'dma_irq_counter' [-Wpadded]
         uint32_t                                                                        dma_irq_counter;                                         ///< <D1><F7><E5><F2><F7><E8><EA> <EF><F0><E5><F0><FB><E2><E0><ED><E8><E9> DMA
                                                                                         ^
-./SPI.h(37): warning: padding struct 'struct spi_config_data' with 1 byte to align 'fifo_halfword' [-Wpadded]
-        int16_t                                                                 fifo_halfword;                                                  ///< <CF><EE><EB><F3><F1><EB><EE><E2><EE> <E2> <EF><F0><E8><E5><EC><ED><E8><EA><E5> SPI
-                                                                                ^
-./SPI.h(30): warning: padding size of 'struct spi_config_data' with 2 bytes to alignment boundary [-Wpadded]
-typedef struct spi_config_data
-               ^
 DMA.c(1): warning: In file included from...
 ./DMA.h(4): warning: In file included from...
 ./UART.h(9): warning: In file included from...
@@ -122,40 +115,29 @@ typedef struct
 DMA.c(1): warning: In file included from...
 ./DMA.h(4): warning: In file included from...
 ./UART.h(10): warning: In file included from...
-./TIMER.h(25): warning: padding struct 'struct timer_config_struct' with 2 bytes to align 'TIMER_STATUS' [-Wpadded]
+./TIMER.h(26): warning: padding struct 'struct timer_config_struct' with 2 bytes to align 'TIMER_STATUS' [-Wpadded]
         TIMER_Status_Flags_TypeDef              TIMER_STATUS;                                                                           ///< <CD><E0><F1><F2><F0><EE><EA><E0> <F1><EE><E1><FB><F2><E8><FF>, <EF><EE> <EA><EE><F2><EE><F0><EE><EC><F3> <EF><F0><EE><E8><F1><F5><EE><E4><E8><F2> <EF><F0><E5><F0><FB><E2><E0><ED><E8><E5> <E1><EB><EE><EA><E0> TIMER    
                                                 ^
-18 warnings generated.
+16 warnings generated.
 compiling DMA.c...
 main.c(1): warning: In file included from...
 ./main.h(4): warning: In file included from...
 ./1273pv19t.h(9): warning: In file included from...
-./MDR32_Drivers.h(35): warning: no newline at end of file [-Wnewline-eof]
+./MDR32_Drivers.h(41): warning: no newline at end of file [-Wnewline-eof]
 #endif /*__MDR32_Drivers_H */
                              ^
 main.c(1): warning: In file included from...
 ./main.h(4): warning: In file included from...
 ./1273pv19t.h(10): warning: In file included from...
-./SPI.h(10): warning: In file included from...
-./external_ram.h(10): warning: In file included from...
-./rs422_protocol.h(9): warning: In file included from...
-./UART.h(10): warning: In file included from...
-./TIMER.h(48): warning: no newline at end of file [-Wnewline-eof]
-#endif /*__TIMER_H */
-                     ^
-main.c(1): warning: In file included from...
-./main.h(4): warning: In file included from...
-./1273pv19t.h(10): warning: In file included from...
-./SPI.h(10): warning: In file included from...
-./external_ram.h(241): warning: no newline at end of file [-Wnewline-eof]
-#endif /*__EXTERNAL_RAM_H */
-                            ^
-main.c(1): warning: In file included from...
-./main.h(4): warning: In file included from...
-./1273pv19t.h(10): warning: In file included from...
-./SPI.h(75): warning: no newline at end of file [-Wnewline-eof]
+./SPI.h(85): warning: no newline at end of file [-Wnewline-eof]
 #endif /*__SPI_H */
                    ^
+main.c(1): warning: In file included from...
+./main.h(4): warning: In file included from...
+./1273pv19t.h(11): warning: In file included from...
+./TIMER.h(51): warning: no newline at end of file [-Wnewline-eof]
+#endif /*__TIMER_H */
+                     ^
 main.c(1): warning: In file included from...
 ./main.h(9): warning: In file included from...
 ./CLOCK.h(8): warning: no newline at end of file [-Wnewline-eof]
@@ -167,13 +149,18 @@ main.c(1): warning: In file included from...
 #endif /*__DMA_H */
                    ^
 main.c(1): warning: In file included from...
+./main.h(12): warning: In file included from...
+./external_ram.h(238): warning: no newline at end of file [-Wnewline-eof]
+#endif /*__EXTERNAL_RAM_H */
+                            ^
+main.c(1): warning: In file included from...
 ./main.h(26): warning: no newline at end of file [-Wnewline-eof]
 #endif /*__MAIN_H */
                     ^
 main.c(1): warning: In file included from...
 ./main.h(4): warning: In file included from...
 ./1273pv19t.h(10): warning: In file included from...
-./SPI.h(24): warning: padding struct 'struct spi_dma_params' with 3 bytes to align 'dma_irq_counter' [-Wpadded]
+./SPI.h(28): warning: padding struct 'struct spi_dma_params' with 3 bytes to align 'dma_irq_counter' [-Wpadded]
         uint32_t                                                                        dma_irq_counter;                                         ///< <D1><F7><E5><F2><F7><E8><EA> <EF><F0><E5><F0><FB><E2><E0><ED><E8><E9> DMA
                                                                                         ^
 main.c(1): warning: In file included from...
@@ -191,15 +178,6 @@ typedef struct
         ^
 main.c(1): warning: In file included from...
 ./main.h(4): warning: In file included from...
-./1273pv19t.h(10): warning: In file included from...
-./SPI.h(37): warning: padding struct 'struct spi_config_data' with 1 byte to align 'fifo_halfword' [-Wpadded]
-        int16_t                                                                 fifo_halfword;                                                  ///< <CF><EE><EB><F3><F1><EB><EE><E2><EE> <E2> <EF><F0><E8><E5><EC><ED><E8><EA><E5> SPI
-                                                                                ^
-./SPI.h(30): warning: padding size of 'struct spi_config_data' with 2 bytes to alignment boundary [-Wpadded]
-typedef struct spi_config_data
-               ^
-main.c(1): warning: In file included from...
-./main.h(4): warning: In file included from...
 ./1273pv19t.h(9): warning: In file included from...
 ./MDR32_Drivers.h(14): warning: In file included from...
 C:/Users/shishov/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.0/Libraries/SPL/MDR32FxQI/inc\MDR32FxQI_timer.h(543): warning: padding struct 'TIMER_CntInitTypeDef' with 2 bytes to align 'TIMER_Period' [-Wpadded]
@@ -210,25 +188,17 @@ typedef struct
         ^
 main.c(1): warning: In file included from...
 ./main.h(4): warning: In file included from...
-./1273pv19t.h(10): warning: In file included from...
-./SPI.h(10): warning: In file included from...
-./external_ram.h(10): warning: In file included from...
-./rs422_protocol.h(9): warning: In file included from...
-./UART.h(10): warning: In file included from...
-./TIMER.h(25): warning: padding struct 'struct timer_config_struct' with 2 bytes to align 'TIMER_STATUS' [-Wpadded]
+./1273pv19t.h(11): warning: In file included from...
+./TIMER.h(26): warning: padding struct 'struct timer_config_struct' with 2 bytes to align 'TIMER_STATUS' [-Wpadded]
         TIMER_Status_Flags_TypeDef              TIMER_STATUS;                                                                           ///< <CD><E0><F1><F2><F0><EE><EA><E0> <F1><EE><E1><FB><F2><E8><FF>, <EF><EE> <EA><EE><F2><EE><F0><EE><EC><F3> <EF><F0><EE><E8><F1><F5><EE><E4><E8><F2> <EF><F0><E5><F0><FB><E2><E0><ED><E8><E5> <E1><EB><EE><EA><E0> TIMER    
                                                 ^
 main.c(1): warning: In file included from...
 ./main.h(4): warning: In file included from...
-./1273pv19t.h(22): warning: padding size of 'struct adc_config_data' with 2 bytes to alignment boundary [-Wpadded]
+./1273pv19t.h(25): warning: padding size of 'struct adc_config_data' with 3 bytes to alignment boundary [-Wpadded]
 typedef struct adc_config_data
                ^
 main.c(1): warning: In file included from...
-./main.h(4): warning: In file included from...
-./1273pv19t.h(10): warning: In file included from...
-./SPI.h(10): warning: In file included from...
-./external_ram.h(10): warning: In file included from...
-./rs422_protocol.h(9): warning: In file included from...
+./main.h(7): warning: In file included from...
 ./UART.h(45): warning: padding struct 'struct UART_Timeouts' with 2 bytes to align 'read_val_timeout' [-Wpadded]
         uint32_t                                                        read_val_timeout;                                               ///< Таймаут на чтение
                                                                         ^
@@ -245,47 +215,46 @@ main.c(1): warning: In file included from...
 C:/Users/shishov/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.0/Libraries/SPL/MDR32FxQI/inc\MDR32FxQI_uart.h(243): warning: padding size of 'UART_InitTypeDef' with 2 bytes to alignment boundary [-Wpadded]
 typedef struct
         ^
-main.c(159): warning: variable 'ext_bus' is used uninitialized whenever 'if' condition is false [-Wsometimes-uninitialized]
+main.c(154): warning: variable 'ext_bus' is used uninitialized whenever 'if' condition is false [-Wsometimes-uninitialized]
         else if(UART_struct->UARTx == MDR_UART2)
                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-main.c(164): note: uninitialized use occurs here
+main.c(159): note: uninitialized use occurs here
         if((receive_packet(UART_struct, ext_bus)) != NO_ERROR)
                                         ^~~~~~~
-main.c(159): note: remove the 'if' if its condition is always true
+main.c(154): note: remove the 'if' if its condition is always true
         else if(UART_struct->UARTx == MDR_UART2)
              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-main.c(154): note: initialize the variable 'ext_bus' to silence this warning
+main.c(149): note: initialize the variable 'ext_bus' to silence this warning
         uint8_t ext_bus; //определение шины, по которой идет обмен данными
                        ^
                         = '\0'
-main.c(213): warning: implicit conversion changes signedness: 'uint16_t' (aka 'unsigned short') to 'int16_t' (aka 'short') [-Wsign-conversion]
-                ptr->AI_CodeADC[i] = adc_struct->spi_struct->buffer[i];
-                                   ~ ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-main.c(192): warning: mixing declarations and code is incompatible with standards before C99 [-Wdeclaration-after-statement]
-        mpa_ram_registers *ptr = &ram_space_pointer->mpa_ram_register_space;
-                           ^
 main.c(20): warning: no previous extern declaration for non-static variable 'ram_space_pointer' [-Wmissing-variable-declarations]
 ram_data *ram_space_pointer;
           ^
 main.c(20): note: declare 'static' if the variable is not intended to be used outside of this translation unit
 ram_data *ram_space_pointer;
 ^
-25 warnings generated.
+21 warnings generated.
 compiling main.c...
 rs422_protocol.c(1): warning: In file included from...
 ./rs422_protocol.h(9): warning: In file included from...
 ./UART.h(9): warning: In file included from...
-./MDR32_Drivers.h(35): warning: no newline at end of file [-Wnewline-eof]
+./MDR32_Drivers.h(41): warning: no newline at end of file [-Wnewline-eof]
 #endif /*__MDR32_Drivers_H */
                              ^
 rs422_protocol.c(1): warning: In file included from...
 ./rs422_protocol.h(9): warning: In file included from...
 ./UART.h(10): warning: In file included from...
-./TIMER.h(48): warning: no newline at end of file [-Wnewline-eof]
+./TIMER.h(51): warning: no newline at end of file [-Wnewline-eof]
 #endif /*__TIMER_H */
                      ^
 rs422_protocol.c(2): warning: In file included from...
-./external_ram.h(241): warning: no newline at end of file [-Wnewline-eof]
+./external_ram.h(11): warning: In file included from...
+./SPI.h(85): warning: no newline at end of file [-Wnewline-eof]
+#endif /*__SPI_H */
+                   ^
+rs422_protocol.c(2): warning: In file included from...
+./external_ram.h(238): warning: no newline at end of file [-Wnewline-eof]
 #endif /*__EXTERNAL_RAM_H */
                             ^
 rs422_protocol.c(1): warning: In file included from...
@@ -340,7 +309,7 @@ typedef struct
 rs422_protocol.c(1): warning: In file included from...
 ./rs422_protocol.h(9): warning: In file included from...
 ./UART.h(10): warning: In file included from...
-./TIMER.h(25): warning: padding struct 'struct timer_config_struct' with 2 bytes to align 'TIMER_STATUS' [-Wpadded]
+./TIMER.h(26): warning: padding struct 'struct timer_config_struct' with 2 bytes to align 'TIMER_STATUS' [-Wpadded]
         TIMER_Status_Flags_TypeDef              TIMER_STATUS;                                                                           ///< <CD><E0><F1><F2><F0><EE><EA><E0> <F1><EE><E1><FB><F2><E8><FF>, <EF><EE> <EA><EE><F2><EE><F0><EE><EC><F3> <EF><F0><EE><E8><F1><F5><EE><E4><E8><F2> <EF><F0><E5><F0><FB><E2><E0><ED><E8><E5> <E1><EB><EE><EA><E0> TIMER    
                                                 ^
 rs422_protocol.c(114): warning: mixing declarations and code is incompatible with standards before C99 [-Wdeclaration-after-statement]
@@ -355,33 +324,32 @@ rs422_protocol.c(271): warning: arithmetic on a pointer to void is a GNU extensi
 rs422_protocol.c(399): warning: implicit conversion changes signedness: 'int' to 'uint_least32_t' (aka 'unsigned int') [-Wsign-conversion]
                 crc = i;
                     ~ ^
-19 warnings generated.
+20 warnings generated.
 compiling rs422_protocol.c...
 TIMER.c(6): warning: In file included from...
 ./TIMER.h(9): warning: In file included from...
-./MDR32_Drivers.h(35): warning: no newline at end of file [-Wnewline-eof]
+./MDR32_Drivers.h(41): warning: no newline at end of file [-Wnewline-eof]
 #endif /*__MDR32_Drivers_H */
                              ^
 TIMER.c(6): warning: In file included from...
-./TIMER.h(48): warning: no newline at end of file [-Wnewline-eof]
+./TIMER.h(51): warning: no newline at end of file [-Wnewline-eof]
 #endif /*__TIMER_H */
                      ^
 TIMER.c(7): warning: In file included from...
-./SPI.h(10): warning: In file included from...
-./external_ram.h(241): warning: no newline at end of file [-Wnewline-eof]
-#endif /*__EXTERNAL_RAM_H */
-                            ^
-TIMER.c(7): warning: In file included from...
-./SPI.h(75): warning: no newline at end of file [-Wnewline-eof]
+./SPI.h(85): warning: no newline at end of file [-Wnewline-eof]
 #endif /*__SPI_H */
                    ^
+TIMER.c(9): warning: In file included from...
+./external_ram.h(238): warning: no newline at end of file [-Wnewline-eof]
+#endif /*__EXTERNAL_RAM_H */
+                            ^
 TIMER.c(6): warning: In file included from...
 ./TIMER.h(9): warning: In file included from...
 ./MDR32_Drivers.h(12): warning: In file included from...
 C:/Users/shishov/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.0/Libraries/SPL/MDR32FxQI/inc\MDR32FxQI_port.h(200): warning: padding size of 'PORT_InitTypeDef' with 1 byte to alignment boundary [-Wpadded]
 typedef struct
         ^
-TIMER.c(28): warning: mixing declarations and code is incompatible with standards before C99 [-Wdeclaration-after-statement]
+TIMER.c(29): warning: mixing declarations and code is incompatible with standards before C99 [-Wdeclaration-after-statement]
         PORT_InitTypeDef GPIO_init_struct_TIMER2;
                          ^
 TIMER.c(6): warning: In file included from...
@@ -394,18 +362,18 @@ C:/Users/shishov/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.0/Libraries/SPL/MDR
 typedef struct
         ^
 TIMER.c(6): warning: In file included from...
-./TIMER.h(25): warning: padding struct 'struct timer_config_struct' with 2 bytes to align 'TIMER_STATUS' [-Wpadded]
+./TIMER.h(26): warning: padding struct 'struct timer_config_struct' with 2 bytes to align 'TIMER_STATUS' [-Wpadded]
         TIMER_Status_Flags_TypeDef              TIMER_STATUS;                                                                           ///< <CD><E0><F1><F2><F0><EE><EA><E0> <F1><EE><E1><FB><F2><E8><FF>, <EF><EE> <EA><EE><F2><EE><F0><EE><EC><F3> <EF><F0><EE><E8><F1><F5><EE><E4><E8><F2> <EF><F0><E5><F0><FB><E2><E0><ED><E8><E5> <E1><EB><EE><EA><E0> TIMER    
                                                 ^
-TIMER.c(115): warning: implicit conversion loses integer precision: 'uint16_t' (aka 'unsigned short') to 'TIMER_Channel_Number_TypeDef' [-Wimplicit-int-conversion]
+TIMER.c(116): warning: implicit conversion loses integer precision: 'uint16_t' (aka 'unsigned short') to 'TIMER_Channel_Number_TypeDef' [-Wimplicit-int-conversion]
         TIMER_ChnCCR1_Cmd(timer_struct->TIMERx, sTIM2_ChnInit.TIMER_CH_Number, ENABLE);
         ~~~~~~~~~~~~~~~~~                       ~~~~~~~~~~~~~~^~~~~~~~~~~~~~~
 TIMER.c(8): warning: In file included from...
-./1273pv19t.h(22): warning: padding size of 'struct adc_config_data' with 2 bytes to alignment boundary [-Wpadded]
+./1273pv19t.h(25): warning: padding size of 'struct adc_config_data' with 3 bytes to alignment boundary [-Wpadded]
 typedef struct adc_config_data
                ^
 TIMER.c(7): warning: In file included from...
-./SPI.h(24): warning: padding struct 'struct spi_dma_params' with 3 bytes to align 'dma_irq_counter' [-Wpadded]
+./SPI.h(28): warning: padding struct 'struct spi_dma_params' with 3 bytes to align 'dma_irq_counter' [-Wpadded]
         uint32_t                                                                        dma_irq_counter;                                         ///< <D1><F7><E5><F2><F7><E8><EA> <EF><F0><E5><F0><FB><E2><E0><ED><E8><E9> DMA
                                                                                         ^
 TIMER.c(6): warning: In file included from...
@@ -420,44 +388,34 @@ C:/Users/shishov/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.0/Libraries/SPL/MDR
 C:/Users/shishov/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.0/Libraries/SPL/MDR32FxQI/inc\MDR32FxQI_dma.h(495): warning: padding size of 'DMA_ChannelInitTypeDef' with 1 byte to alignment boundary [-Wpadded]
 typedef struct
         ^
-TIMER.c(7): warning: In file included from...
-./SPI.h(37): warning: padding struct 'struct spi_config_data' with 1 byte to align 'fifo_halfword' [-Wpadded]
-        int16_t                                                                 fifo_halfword;                                                  ///< <CF><EE><EB><F3><F1><EB><EE><E2><EE> <E2> <EF><F0><E8><E5><EC><ED><E8><EA><E5> SPI
-                                                                                ^
-./SPI.h(30): warning: padding size of 'struct spi_config_data' with 2 bytes to alignment boundary [-Wpadded]
-typedef struct spi_config_data
-               ^
-TIMER.c(197): warning: implicit conversion loses integer precision: 'volatile uint32_t' (aka 'volatile unsigned int') to 'int16_t' (aka 'short') [-Wimplicit-int-conversion]
-                spi_1.fifo_halfword = (spi_1.SSPx->DR);
-                                    ~  ~~~~~~~~~~~~^~
-TIMER.c(13): warning: no previous extern declaration for non-static variable 'timer_1' [-Wmissing-variable-declarations]
+TIMER.c(14): warning: no previous extern declaration for non-static variable 'timer_1' [-Wmissing-variable-declarations]
 timer_n timer_1;
-        ^
-TIMER.c(13): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-timer_n timer_1;
-^
-TIMER.c(14): warning: no previous extern declaration for non-static variable 'timer_2' [-Wmissing-variable-declarations]
-timer_n timer_2;
         ^
 TIMER.c(14): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-timer_n timer_2;
+timer_n timer_1;
 ^
-TIMER.c(15): warning: no previous extern declaration for non-static variable 'timer_3' [-Wmissing-variable-declarations]
-timer_n timer_3;
+TIMER.c(15): warning: no previous extern declaration for non-static variable 'timer_2' [-Wmissing-variable-declarations]
+timer_n timer_2;
         ^
 TIMER.c(15): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+timer_n timer_2;
+^
+TIMER.c(16): warning: no previous extern declaration for non-static variable 'timer_3' [-Wmissing-variable-declarations]
+timer_n timer_3;
+        ^
+TIMER.c(16): note: declare 'static' if the variable is not intended to be used outside of this translation unit
 timer_n timer_3;
 ^
-21 warnings generated.
+18 warnings generated.
 compiling TIMER.c...
 UART.c(5): warning: In file included from...
 ./UART.h(9): warning: In file included from...
-./MDR32_Drivers.h(35): warning: no newline at end of file [-Wnewline-eof]
+./MDR32_Drivers.h(41): warning: no newline at end of file [-Wnewline-eof]
 #endif /*__MDR32_Drivers_H */
                              ^
 UART.c(5): warning: In file included from...
 ./UART.h(10): warning: In file included from...
-./TIMER.h(48): warning: no newline at end of file [-Wnewline-eof]
+./TIMER.h(51): warning: no newline at end of file [-Wnewline-eof]
 #endif /*__TIMER_H */
                      ^
 UART.c(5): warning: In file included from...
@@ -500,7 +458,7 @@ typedef struct
         ^
 UART.c(5): warning: In file included from...
 ./UART.h(10): warning: In file included from...
-./TIMER.h(25): warning: padding struct 'struct timer_config_struct' with 2 bytes to align 'TIMER_STATUS' [-Wpadded]
+./TIMER.h(26): warning: padding struct 'struct timer_config_struct' with 2 bytes to align 'TIMER_STATUS' [-Wpadded]
         TIMER_Status_Flags_TypeDef              TIMER_STATUS;                                                                           ///< <CD><E0><F1><F2><F0><EE><EA><E0> <F1><EE><E1><FB><F2><E8><FF>, <EF><EE> <EA><EE><F2><EE><F0><EE><EC><F3> <EF><F0><EE><E8><F1><F5><EE><E4><E8><F2> <EF><F0><E5><F0><FB><E2><E0><ED><E8><E5> <E1><EB><EE><EA><E0> TIMER    
                                                 ^
 UART.c(5): warning: In file included from...
@@ -546,7 +504,7 @@ UARTn UART2;
 compiling UART.c...
 EBC.c(9): warning: In file included from...
 ./EBC.h(10): warning: In file included from...
-./MDR32_Drivers.h(35): warning: no newline at end of file [-Wnewline-eof]
+./MDR32_Drivers.h(41): warning: no newline at end of file [-Wnewline-eof]
 #endif /*__MDR32_Drivers_H */
                              ^
 EBC.c(9): warning: In file included from...
@@ -562,18 +520,23 @@ EBC.c(98): warning: mixing declarations and code is incompatible with standards 
 compiling EBC.c...
 external_ram.c(1): warning: In file included from...
 ./external_ram.h(9): warning: In file included from...
-./MDR32_Drivers.h(35): warning: no newline at end of file [-Wnewline-eof]
+./MDR32_Drivers.h(41): warning: no newline at end of file [-Wnewline-eof]
 #endif /*__MDR32_Drivers_H */
                              ^
 external_ram.c(1): warning: In file included from...
 ./external_ram.h(10): warning: In file included from...
 ./rs422_protocol.h(9): warning: In file included from...
 ./UART.h(10): warning: In file included from...
-./TIMER.h(48): warning: no newline at end of file [-Wnewline-eof]
+./TIMER.h(51): warning: no newline at end of file [-Wnewline-eof]
 #endif /*__TIMER_H */
                      ^
 external_ram.c(1): warning: In file included from...
-./external_ram.h(241): warning: no newline at end of file [-Wnewline-eof]
+./external_ram.h(11): warning: In file included from...
+./SPI.h(85): warning: no newline at end of file [-Wnewline-eof]
+#endif /*__SPI_H */
+                   ^
+external_ram.c(1): warning: In file included from...
+./external_ram.h(238): warning: no newline at end of file [-Wnewline-eof]
 #endif /*__EXTERNAL_RAM_H */
                             ^
 external_ram.c(31): warning: incompatible pointer types passing 'uint8_t (*)[1024]' (aka 'unsigned char (*)[1024]') to parameter of type 'char *' [-Wincompatible-pointer-types]
@@ -585,49 +548,39 @@ extern _ARMABI char *strncpy(char * __restrict /*s1*/, const char * __restrict /
 external_ram.c(69): warning: implicit conversion from 'int' to 'int16_t' (aka 'short') changes value from 65535 to -1 [-Wconstant-conversion]
                 ram_space_pointer->mpa_ram_register_space.AI_MaxCodeADC[i] = 65535;
                                                                            ~ ^~~~~
-5 warnings generated.
+6 warnings generated.
 compiling external_ram.c...
 1273pv19t.c(7): warning: In file included from...
 ./1273pv19t.h(9): warning: In file included from...
-./MDR32_Drivers.h(35): warning: no newline at end of file [-Wnewline-eof]
+./MDR32_Drivers.h(41): warning: no newline at end of file [-Wnewline-eof]
 #endif /*__MDR32_Drivers_H */
                              ^
 1273pv19t.c(7): warning: In file included from...
 ./1273pv19t.h(10): warning: In file included from...
-./SPI.h(10): warning: In file included from...
-./external_ram.h(10): warning: In file included from...
-./rs422_protocol.h(9): warning: In file included from...
-./UART.h(10): warning: In file included from...
-./TIMER.h(48): warning: no newline at end of file [-Wnewline-eof]
-#endif /*__TIMER_H */
-                     ^
-1273pv19t.c(7): warning: In file included from...
-./1273pv19t.h(10): warning: In file included from...
-./SPI.h(10): warning: In file included from...
-./external_ram.h(241): warning: no newline at end of file [-Wnewline-eof]
-#endif /*__EXTERNAL_RAM_H */
-                            ^
-1273pv19t.c(7): warning: In file included from...
-./1273pv19t.h(10): warning: In file included from...
-./SPI.h(75): warning: no newline at end of file [-Wnewline-eof]
+./SPI.h(85): warning: no newline at end of file [-Wnewline-eof]
 #endif /*__SPI_H */
                    ^
+1273pv19t.c(7): warning: In file included from...
+./1273pv19t.h(11): warning: In file included from...
+./TIMER.h(51): warning: no newline at end of file [-Wnewline-eof]
+#endif /*__TIMER_H */
+                     ^
+1273pv19t.c(9): warning: In file included from...
+./external_ram.h(238): warning: no newline at end of file [-Wnewline-eof]
+#endif /*__EXTERNAL_RAM_H */
+                            ^
 1273pv19t.c(7): warning: In file included from...
 ./1273pv19t.h(9): warning: In file included from...
 ./MDR32_Drivers.h(12): warning: In file included from...
 C:/Users/shishov/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.0/Libraries/SPL/MDR32FxQI/inc\MDR32FxQI_port.h(200): warning: padding size of 'PORT_InitTypeDef' with 1 byte to alignment boundary [-Wpadded]
 typedef struct
         ^
-1273pv19t.c(22): warning: mixing declarations and code is incompatible with standards before C99 [-Wdeclaration-after-statement]
+1273pv19t.c(25): warning: mixing declarations and code is incompatible with standards before C99 [-Wdeclaration-after-statement]
         PORT_InitTypeDef GPIO_init_structADC;
                          ^
 1273pv19t.c(7): warning: In file included from...
-./1273pv19t.h(22): warning: padding size of 'struct adc_config_data' with 2 bytes to alignment boundary [-Wpadded]
-typedef struct adc_config_data
-               ^
-1273pv19t.c(7): warning: In file included from...
 ./1273pv19t.h(10): warning: In file included from...
-./SPI.h(24): warning: padding struct 'struct spi_dma_params' with 3 bytes to align 'dma_irq_counter' [-Wpadded]
+./SPI.h(28): warning: padding struct 'struct spi_dma_params' with 3 bytes to align 'dma_irq_counter' [-Wpadded]
         uint32_t                                                                        dma_irq_counter;                                         ///< <D1><F7><E5><F2><F7><E8><EA> <EF><F0><E5><F0><FB><E2><E0><ED><E8><E9> DMA
                                                                                         ^
 1273pv19t.c(7): warning: In file included from...
@@ -643,12 +596,8 @@ C:/Users/shishov/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.0/Libraries/SPL/MDR
 typedef struct
         ^
 1273pv19t.c(7): warning: In file included from...
-./1273pv19t.h(10): warning: In file included from...
-./SPI.h(37): warning: padding struct 'struct spi_config_data' with 1 byte to align 'fifo_halfword' [-Wpadded]
-        int16_t                                                                 fifo_halfword;                                                  ///< <CF><EE><EB><F3><F1><EB><EE><E2><EE> <E2> <EF><F0><E8><E5><EC><ED><E8><EA><E5> SPI
-                                                                                ^
-./SPI.h(30): warning: padding size of 'struct spi_config_data' with 2 bytes to alignment boundary [-Wpadded]
-typedef struct spi_config_data
+./1273pv19t.h(25): warning: padding size of 'struct adc_config_data' with 3 bytes to alignment boundary [-Wpadded]
+typedef struct adc_config_data
                ^
 1273pv19t.c(7): warning: In file included from...
 ./1273pv19t.h(9): warning: In file included from...
@@ -660,42 +609,25 @@ C:/Users/shishov/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.0/Libraries/SPL/MDR
 typedef struct
         ^
 1273pv19t.c(7): warning: In file included from...
-./1273pv19t.h(10): warning: In file included from...
-./SPI.h(10): warning: In file included from...
-./external_ram.h(10): warning: In file included from...
-./rs422_protocol.h(9): warning: In file included from...
-./UART.h(10): warning: In file included from...
-./TIMER.h(25): warning: padding struct 'struct timer_config_struct' with 2 bytes to align 'TIMER_STATUS' [-Wpadded]
+./1273pv19t.h(11): warning: In file included from...
+./TIMER.h(26): warning: padding struct 'struct timer_config_struct' with 2 bytes to align 'TIMER_STATUS' [-Wpadded]
         TIMER_Status_Flags_TypeDef              TIMER_STATUS;                                                                           ///< <CD><E0><F1><F2><F0><EE><EA><E0> <F1><EE><E1><FB><F2><E8><FF>, <EF><EE> <EA><EE><F2><EE><F0><EE><EC><F3> <EF><F0><EE><E8><F1><F5><EE><E4><E8><F2> <EF><F0><E5><F0><FB><E2><E0><ED><E8><E5> <E1><EB><EE><EA><E0> TIMER    
                                                 ^
-1273pv19t.c(11): warning: no previous extern declaration for non-static variable 'adc_1' [-Wmissing-variable-declarations]
+1273pv19t.c(13): warning: no previous extern declaration for non-static variable 'adc_1' [-Wmissing-variable-declarations]
 adc_n adc_1;
       ^
-1273pv19t.c(11): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+1273pv19t.c(13): note: declare 'static' if the variable is not intended to be used outside of this translation unit
 adc_n adc_1;
 ^
-17 warnings generated.
+15 warnings generated.
 compiling 1273pv19t.c...
 SPI.c(5): warning: In file included from...
 ./SPI.h(9): warning: In file included from...
-./MDR32_Drivers.h(35): warning: no newline at end of file [-Wnewline-eof]
+./MDR32_Drivers.h(41): warning: no newline at end of file [-Wnewline-eof]
 #endif /*__MDR32_Drivers_H */
                              ^
 SPI.c(5): warning: In file included from...
-./SPI.h(10): warning: In file included from...
-./external_ram.h(10): warning: In file included from...
-./rs422_protocol.h(9): warning: In file included from...
-./UART.h(10): warning: In file included from...
-./TIMER.h(48): warning: no newline at end of file [-Wnewline-eof]
-#endif /*__TIMER_H */
-                     ^
-SPI.c(5): warning: In file included from...
-./SPI.h(10): warning: In file included from...
-./external_ram.h(241): warning: no newline at end of file [-Wnewline-eof]
-#endif /*__EXTERNAL_RAM_H */
-                            ^
-SPI.c(5): warning: In file included from...
-./SPI.h(75): warning: no newline at end of file [-Wnewline-eof]
+./SPI.h(85): warning: no newline at end of file [-Wnewline-eof]
 #endif /*__SPI_H */
                    ^
 SPI.c(5): warning: In file included from...
@@ -707,11 +639,11 @@ typedef struct
 SPI.c(24): warning: mixing declarations and code is incompatible with standards before C99 [-Wdeclaration-after-statement]
         PORT_InitTypeDef GPIO_init_struct_SPI1;
                          ^
-SPI.c(59): warning: mixing declarations and code is incompatible with standards before C99 [-Wdeclaration-after-statement]
+SPI.c(58): warning: mixing declarations and code is incompatible with standards before C99 [-Wdeclaration-after-statement]
         SSP_InitTypeDef SSP_InitStruct;
                         ^
 SPI.c(5): warning: In file included from...
-./SPI.h(24): warning: padding struct 'struct spi_dma_params' with 3 bytes to align 'dma_irq_counter' [-Wpadded]
+./SPI.h(28): warning: padding struct 'struct spi_dma_params' with 3 bytes to align 'dma_irq_counter' [-Wpadded]
         uint32_t                                                                        dma_irq_counter;                                         ///< <D1><F7><E5><F2><F7><E8><EA> <EF><F0><E5><F0><FB><E2><E0><ED><E8><E9> DMA
                                                                                         ^
 SPI.c(5): warning: In file included from...
@@ -726,13 +658,12 @@ C:/Users/shishov/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.0/Libraries/SPL/MDR
 C:/Users/shishov/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.0/Libraries/SPL/MDR32FxQI/inc\MDR32FxQI_dma.h(495): warning: padding size of 'DMA_ChannelInitTypeDef' with 1 byte to alignment boundary [-Wpadded]
 typedef struct
         ^
-SPI.c(5): warning: In file included from...
-./SPI.h(37): warning: padding struct 'struct spi_config_data' with 1 byte to align 'fifo_halfword' [-Wpadded]
-        int16_t                                                                 fifo_halfword;                                                  ///< <CF><EE><EB><F3><F1><EB><EE><E2><EE> <E2> <EF><F0><E8><E5><EC><ED><E8><EA><E5> SPI
-                                                                                ^
-./SPI.h(30): warning: padding size of 'struct spi_config_data' with 2 bytes to alignment boundary [-Wpadded]
-typedef struct spi_config_data
-               ^
+SPI.c(124): warning: implicit conversion loses integer precision: 'volatile uint32_t' (aka 'volatile unsigned int') to 'uint16_t' (aka 'unsigned short') [-Wimplicit-int-conversion]
+                a = spi_struct->SSPx->DR;
+                  ~ ~~~~~~~~~~~~~~~~~~^~
+SPI.c(121): warning: variable 'a' set but not used [-Wunused-but-set-variable]
+        uint16_t a;
+                 ^
 SPI.c(11): warning: no previous extern declaration for non-static variable 'spi_1' [-Wmissing-variable-declarations]
 spi_n spi_1 IAR_SECTION ("EXECUTABLE_MEMORY_SECTION") __attribute__((section("EXECUTABLE_MEMORY_SECTION")));
       ^
@@ -745,10 +676,18 @@ spi_n spi_2 IAR_SECTION ("EXECUTABLE_MEMORY_SECTION") __attribute__((section("EX
 SPI.c(12): note: declare 'static' if the variable is not intended to be used outside of this translation unit
 spi_n spi_2 IAR_SECTION ("EXECUTABLE_MEMORY_SECTION") __attribute__((section("EXECUTABLE_MEMORY_SECTION")));
 ^
-15 warnings generated.
+13 warnings generated.
 compiling SPI.c...
 assembling startup_MDR32F1QI.S...
 compiling system_MDR32F1QI.c...
+C:/Users/shishov/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.0/Libraries/SPL/MDR32FxQI/src/MDR32FxQI_bkp.c(508): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+    tmpreg = MDR_BKP->REG_0E & (~(3 << BKP_REG_0E_TRIM_34_Pos));
+                             ~  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+C:/Users/shishov/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.0/Libraries/SPL/MDR32FxQI/src/MDR32FxQI_bkp.c(527): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
+        MDR_BKP->REG_0E &= ~(1 << BKP_REG_0E_ILIMEN_Pos);
+                        ~~ ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+2 warnings generated.
+compiling MDR32FxQI_bkp.c...
 C:/Users/shishov/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.0/Libraries/SPL/MDR32FxQI/src/MDR32FxQI_ebc.c(95): warning: bitwise operation between different enumeration types ('const EBC_Mode_Sel' and 'const EBC_Clk_Polarity') [-Wenum-enum-conversion]
                    | (EBC_InitStruct->EBC_Cpol)
                    ^ ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -763,14 +702,6 @@ C:/Users/shishov/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.0/Libraries/SPL/MDR
                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 4 warnings generated.
 compiling MDR32FxQI_ebc.c...
-C:/Users/shishov/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.0/Libraries/SPL/MDR32FxQI/src/MDR32FxQI_bkp.c(508): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
-    tmpreg = MDR_BKP->REG_0E & (~(3 << BKP_REG_0E_TRIM_34_Pos));
-                             ~  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-C:/Users/shishov/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.0/Libraries/SPL/MDR32FxQI/src/MDR32FxQI_bkp.c(527): warning: implicit conversion changes signedness: 'int' to 'unsigned int' [-Wsign-conversion]
-        MDR_BKP->REG_0E &= ~(1 << BKP_REG_0E_ILIMEN_Pos);
-                        ~~ ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-2 warnings generated.
-compiling MDR32FxQI_bkp.c...
 C:/Users/shishov/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.0/Libraries/SPL/MDR32FxQI/src/MDR32FxQI_dma.c(23): warning: In file included from...
 C:/Users/shishov/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.0/Libraries/SPL/MDR32FxQI/inc\MDR32FxQI_dma.h(467): warning: padding struct 'DMA_CtrlDataInitTypeDef' with 2 bytes to align 'DMA_MemoryDataSize' [-Wpadded]
     DMA_Mem_Data_Size               DMA_MemoryDataSize;  /*!< Specifies the Memory data width.
@@ -920,8 +851,8 @@ C:/Users/shishov/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.0/Libraries/SPL/MDR
 11 warnings generated.
 compiling MDR32FxQI_timer.c...
 linking...
-Program Size: Code=10468 RO-data=244 RW-data=2052 ZI-data=8772  
-".\Objects\1986VE1T_MPA.axf" - 0 Error(s), 195 Warning(s).
+Program Size: Code=17740 RO-data=244 RW-data=2052 ZI-data=8764  
+".\Objects\1986VE1T_MPA.axf" - 0 Error(s), 184 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -959,18 +890,18 @@ Package Vendor: Milandr
    * Component: ARM::CMSIS:CORE:5.6.0
 
    * Component: Milandr::Device:Startup:1. Rev.6+:2.0.2i
-      Include file:  Libraries/CMSIS/MDR32FxQI/CoreSupport/CM1/core_cm1.h
+      Include file:  Libraries/CMSIS/MDR32FxQI/DeviceSupport/MDR32F1QI/inc/MDR32F1QI.h
+      Include file:  Libraries/SPL/MDR32FxQI/MDR32FxQI_config.h
+      Include file:  Libraries/CMSIS/MDR32FxQI/DeviceSupport/MDR32F1QI/startup/system_MDR32F1QI.h
       Source file:   Libraries/CMSIS/MDR32FxQI/DeviceSupport/MDR32F1QI/startup/system_MDR32F1QI.c
+      Source file:   Libraries/CMSIS/MDR32FxQI/DeviceSupport/MDR32F1QI/startup/arm/startup_MDR32F1QI.S
       Include file:  Libraries/SPL/MDR32FxQI/inc/IRQ_Handler_Template/MDR32F1QI_IT.h
       Source file:   Libraries/SPL/MDR32FxQI/src/IRQ_Handler_Template/MDR32F1QI_IT.c
-      Source file:   Libraries/CMSIS/MDR32FxQI/DeviceSupport/MDR32F1QI/startup/arm/startup_MDR32F1QI.S
-      Include file:  Libraries/CMSIS/MDR32FxQI/DeviceSupport/MDR32F1QI/startup/system_MDR32F1QI.h
-      Include file:  Libraries/SPL/MDR32FxQI/MDR32FxQI_config.h
-      Include file:  Libraries/CMSIS/MDR32FxQI/DeviceSupport/MDR32F1QI/inc/MDR32F1QI.h
+      Include file:  Libraries/CMSIS/MDR32FxQI/CoreSupport/CM1/core_cm1.h
 
    * Component: Milandr::Drivers:BKP:2.0.2i
-      Source file:   Libraries/SPL/MDR32FxQI/src/MDR32FxQI_bkp.c
       Include file:  Libraries/SPL/MDR32FxQI/inc/MDR32FxQI_bkp.h
+      Source file:   Libraries/SPL/MDR32FxQI/src/MDR32FxQI_bkp.c
 
    * Component: Milandr::Drivers:DMA:2.0.2i
       Include file:  Libraries/SPL/MDR32FxQI/inc/MDR32FxQI_dma.h
@@ -981,9 +912,9 @@ Package Vendor: Milandr
       Include file:  Libraries/SPL/MDR32FxQI/inc/MDR32FxQI_ebc.h
 
    * Component: Milandr::Drivers:EEPROM:2.0.2i
+      Include file:  Libraries/SPL/MDR32FxQI/inc/MDR32FxQI_eeprom.h
       Source file:   Libraries/SPL/MDR32FxQI/src/MDR32FxQI_eeprom.c
       Source file:   Libraries/SPL/MDR32FxQI/src/MDR32FxQI_eeprom_cache.S
-      Include file:  Libraries/SPL/MDR32FxQI/inc/MDR32FxQI_eeprom.h
 
    * Component: Milandr::Drivers:PORT:2.0.2i
       Include file:  Libraries/SPL/MDR32FxQI/inc/MDR32FxQI_port.h
@@ -994,17 +925,17 @@ Package Vendor: Milandr
       Include file:  Libraries/SPL/MDR32FxQI/inc/MDR32FxQI_rst_clk.h
 
    * Component: Milandr::Drivers:SSP:2.0.2i
-      Source file:   Libraries/SPL/MDR32FxQI/src/MDR32FxQI_ssp.c
       Include file:  Libraries/SPL/MDR32FxQI/inc/MDR32FxQI_ssp.h
+      Source file:   Libraries/SPL/MDR32FxQI/src/MDR32FxQI_ssp.c
 
    * Component: Milandr::Drivers:TIMER:2.0.2i
-      Include file:  Libraries/SPL/MDR32FxQI/inc/MDR32FxQI_timer.h
       Source file:   Libraries/SPL/MDR32FxQI/src/MDR32FxQI_timer.c
+      Include file:  Libraries/SPL/MDR32FxQI/inc/MDR32FxQI_timer.h
 
    * Component: Milandr::Drivers:UART:2.0.2i
       Source file:   Libraries/SPL/MDR32FxQI/src/MDR32FxQI_uart.c
       Include file:  Libraries/SPL/MDR32FxQI/inc/MDR32FxQI_uart.h
-Build Time Elapsed:  00:00:04
+Build Time Elapsed:  00:00:03
 </pre>
 </body>
 </html>

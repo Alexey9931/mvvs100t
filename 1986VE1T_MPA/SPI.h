@@ -7,14 +7,18 @@
 #define __SPI_H
 
 #include "MDR32_Drivers.h"
-#include "external_ram.h"
+
 
 ///ножки для SSP1
-#define PORT_SSP1 MDR_PORTC
-#define PIN_SSP1_SCK PORT_Pin_7
-#define PIN_SSP1_RX PORT_Pin_6
-#define PIN_SSP1_TX PORT_Pin_5
-#define PIN_SSP1_SS PORT_Pin_8
+#define PORT_SSP1 MDR_PORTD
+#define PIN_SSP1_SCK PORT_Pin_4
+#define PIN_SSP1_RX PORT_Pin_3
+#define PIN_SSP1_TX PORT_Pin_2
+#define PIN_SSP1_SS PORT_Pin_5
+
+
+#define FIFO_SIZE 8
+#define SPI_BUFFER_SIZE 512
 
 
 ///Структура с параметрами DMA канала SPIn
@@ -34,8 +38,8 @@ typedef struct spi_config_data
 	uint32_t 								RST_CLK_PCLK_SPIn;					///< Включение тактирования для SPIn
 	SSP_InitTypeDef 				SPI;												///< Библиотечная структура с конфигурационными параметрами SPI
 	SSP_Clock_BRG_TypeDef 	SSP_HCLKdiv;								///< Выбор делителя тактовой частоты для тактирования блока SPIn	
-	int16_t 								fifo_halfword;							///< Полуслово в приемнике SPI
-	uint16_t								buffer[MAX_CHANEL_NUMBER];	///< Буфер приемника SPI
+	uint8_t 								buffer_counter;							///< Счетчик слов в приемнике SPI
+	uint16_t								*buffer;										///< Указатель на буфер приемника SPI
 } spi_n;
 
 /*!
@@ -64,6 +68,12 @@ void spi_transmit_message(spi_n *spi_struct, uint16_t message[], uint32_t length
  *	\param *spi_struct - Выбранный SPI 
 */
 uint16_t spi_receive_halfword(spi_n *spi_struct);
+
+/*!
+ *	\brief Очищает FIFO буфер приемника SPIn
+ *	\param *spi_struct - Выбранный SPI 
+*/
+void spi_clean_fifo_rx_buf(spi_n *spi_struct);
 
 /*!
  *	\brief Инициализирует n-ый канал DMA  на запрос от приемника SPIn
