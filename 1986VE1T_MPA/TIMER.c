@@ -7,6 +7,7 @@
 #include "SPI.h"
 #include "1273pv19t.h"
 #include "external_ram.h"
+#include <math.h>
 
 extern adc_n adc_1;
 extern ram_data *ram_space_pointer;
@@ -16,27 +17,7 @@ timer_n timer_2;
 timer_n timer_3;
 
 extern spi_n spi_1;
-/*
-Функция конфигурации выводов МК для каналов Timer2
-*/
-void timer2_gpio_config(void);
-void timer2_gpio_config(void)
-{
-	// Включение тактирования портов
-	RST_CLK_PCLKcmd(RST_CLK_PCLK_RST_CLK|RST_CLK_PCLK_PORTE, ENABLE);	
-	
-	//Инициализация порта E для канала 2 таймера 2 на вход прерывания SDIFS/SDOFS от АЦП (канал захвата для таймера)
-	PORT_InitTypeDef GPIO_init_struct_TIMER2;
-	
-	PORT_StructInit (&GPIO_init_struct_TIMER2);
-	GPIO_init_struct_TIMER2.PORT_FUNC = PORT_FUNC_MAIN;
-	GPIO_init_struct_TIMER2.PORT_OE = PORT_OE_IN;
-	GPIO_init_struct_TIMER2.PORT_SPEED = PORT_SPEED_MAXFAST;
-	GPIO_init_struct_TIMER2.PORT_MODE = PORT_MODE_DIGITAL;
-	GPIO_init_struct_TIMER2.PORT_Pin = PIN_ADC_SDIFS_IRQ;
-	GPIO_init_struct_TIMER2.PORT_PULL_DOWN = PORT_PULL_DOWN_ON;
-	PORT_Init (PORT_ADC_SDIFS_IRQ, &GPIO_init_struct_TIMER2);
-}
+
 /*
 Функция инициализации Timer1 (настроен на период 10мс)
 */
@@ -137,7 +118,6 @@ void timer_init(timer_n *timer_struct)
 	}
 	else if (timer_struct->TIMERx == MDR_TIMER2)
 	{
-		timer2_gpio_config();
 		timer2_init(timer_struct);
 	}
 	else if (timer_struct->TIMERx == MDR_TIMER3)
@@ -146,19 +126,28 @@ void timer_init(timer_n *timer_struct)
 	}
 }
 /*
-Обработчик преывааний по захвату Timer2
+Обработчик прерываний по захвату Timer2
 */
 void TIMER2_IRQHandler(void);
 void TIMER2_IRQHandler(void)
 {
+	//только если инициализирован АЦП
 	if ((adc_1.init_flag == 1))
 	{
-		uint16_t spi_rx_value = spi_receive_halfword(&spi_1);
-		memcpy(ram_space_pointer->spi_1_rx_buffer + spi_1.buffer_counter, &spi_rx_value, sizeof(spi_rx_value));
-		spi_1.buffer_counter++;
-		if (spi_1.buffer_counter == CHANEL_NUMBER*10)
+		//если время между пакетами двух последовательно считываемых каналов больше 12мкс
+		if (abs(adc_1.timer_n_sample->TIMERx->CNT - adc_1.sample_timer_cnt) > 120)
 		{
-			spi_1.buffer_counter = 0;
+			adc_1.spi_struct->buffer_counter -= adc_1.spi_struct->buffer_counter % CHANEL_NUMBER;
+		}
+		adc_1.sample_timer_cnt = adc_1.timer_n_sample->TIMERx->CNT;
+		
+		uint16_t spi_rx_value = spi_receive_halfword(adc_1.spi_struct);
+		memcpy(ram_space_pointer->spi_1_rx_buffer + spi_1.buffer_counter, &spi_rx_value, sizeof(spi_rx_value));
+		adc_1.spi_struct->buffer_counter++;
+		//если считали все каналы нужное кол-во раз для усреднения
+		if (adc_1.spi_struct->buffer_counter == CHANEL_NUMBER*adc_1.avg_num)
+		{
+			adc_1.spi_struct->buffer_counter = 0;
 		}
 	}
 	timer_2.TIMERx->STATUS = ~timer_2.TIMER_STATUS;
@@ -168,16 +157,18 @@ void TIMER2_IRQHandler(void)
 */
 void delay_milli(uint32_t time_milli)//задержка в мс 
 { 
-	TIMER_SetCounter(MDR_TIMER3, 0);
-	while(TIMER_GetCounter(MDR_TIMER3)!=(time_milli*50));
+	//TIMER_SetCounter(MDR_TIMER3, 0);
+	uint32_t timer_cnt = TIMER_GetCounter(MDR_TIMER3);
+	while(abs(TIMER_GetCounter(MDR_TIMER3) - timer_cnt)!=(time_milli*50));
 }
 /*
 Функция реализации задержки в мкс
 */
 void delay_micro(uint32_t time_micro)//задержка в мкс (максимум 10мс -> time_micro=9999)
 { 
-	TIMER_SetCounter(MDR_TIMER1, 0);
-	while(TIMER_GetCounter(MDR_TIMER1)!=time_micro);
+	//TIMER_SetCounter(MDR_TIMER1, 0);
+	uint32_t timer_cnt = TIMER_GetCounter(MDR_TIMER1);
+	while(abs(TIMER_GetCounter(MDR_TIMER1) - timer_cnt)!=time_micro);
 }
 
 

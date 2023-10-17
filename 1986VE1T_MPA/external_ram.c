@@ -4,6 +4,9 @@
 
 extern ram_data *ram_space_pointer;
 
+/*!
+	Функция инициализации области памяти внешнего ОЗУ
+*/
 void init_external_ram_space(void)
 {
 	ram_space_pointer = (ram_data*)EXT_RAM_START_ADDR;
@@ -85,3 +88,22 @@ void init_external_ram_space(void)
 	fill_crc32_table();
 }
 
+/*!
+	Функция нахождения максимального элемента массива 
+*/
+uint16_t find_max_halfword(uint16_t *array, uint32_t array_size)
+{
+	uint16_t result = 0;
+	uint16_t next_item;
+	
+	for (int i = 0; i < array_size; i++)
+	{
+		memcpy(&next_item, (uint16_t*)(array + i*sizeof(result)), sizeof(result));
+		if (next_item > result)
+		{
+			result = next_item;
+		}
+	}
+	
+	return result;
+}

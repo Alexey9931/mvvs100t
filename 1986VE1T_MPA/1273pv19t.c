@@ -56,6 +56,15 @@ void adc_gpio_config(void)
 	
 	//установка NSS в лог ноль
 	PORT_ResetBits(PORT_ADC_NSS, PIN_ADC_NSS);
+	
+	//Инициализация порта E для канала 2 таймера 2 на вход прерывания SDIFS/SDOFS от АЦП (канал захвата для таймера)
+	GPIO_init_structADC.PORT_FUNC = PORT_FUNC_MAIN;
+	GPIO_init_structADC.PORT_OE = PORT_OE_IN;
+	GPIO_init_structADC.PORT_SPEED = PORT_SPEED_MAXFAST;
+	GPIO_init_structADC.PORT_MODE = PORT_MODE_DIGITAL;
+	GPIO_init_structADC.PORT_Pin = PIN_ADC_SDIFS_IRQ;
+	GPIO_init_structADC.PORT_PULL_DOWN = PORT_PULL_DOWN_ON;
+	PORT_Init (PORT_ADC_SDIFS_IRQ, &GPIO_init_structADC);
 }
 /*
 Функция инициализации АЦП
@@ -95,10 +104,11 @@ void adc_init(adc_n *adc_struct)
 	//режим control, запись в регистр А - перевод в режим данных
 	SSP_SendData(adc_struct->spi_struct->SSPx, 0x8001);
 	delay_micro(20);
-	adc_struct->init_flag = 1;
 	
 	//очистка буфера FIFO передатчика
 	spi_clean_fifo_rx_buf(adc_struct->spi_struct);
+	
+	adc_struct->init_flag = 1;
 }
 /*
 Функция аппаратного перезапуска АЦП

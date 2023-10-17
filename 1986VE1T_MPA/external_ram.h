@@ -39,8 +39,8 @@ typedef struct plc_sof_ver_struct
 	unsigned revision: 4;														///< Ревизия модуля
 	unsigned modification: 4;												///< Модификация модуля
 	unsigned type: 9;																///< Тип модуля
-	unsigned soft_ver: 10;														///< Версия ПО
-	unsigned add_info: 4;																///< Дополнительная информация
+	unsigned soft_ver: 10;													///< Версия ПО
+	unsigned add_info: 4;														///< Дополнительная информация
 	unsigned develop: 1;														///< 1=ПО в процессе разработки
 }__attribute__((packed)) plc_soft_ver;
 
@@ -234,5 +234,12 @@ typedef struct ram_data_struct
  *	\param *ram_space_pointer - указатель на область внешнего ОЗУ
 */
 void init_external_ram_space(void);
+
+/*!
+ *	\brief Находит максимальный элемент массива
+ *	\param *array - указатель на массив поиска
+ *	\param array_size - размер массива
+*/
+uint16_t find_max_halfword(uint16_t *array, uint32_t array_size);
 	
 #endif /*__EXTERNAL_RAM_H */

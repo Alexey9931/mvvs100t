@@ -20,13 +20,19 @@
 ///управляющая ножка для активации микросхемы АЦП
 #define PORT_ADC_NSS MDR_PORTD
 #define PIN_ADC_NSS PORT_Pin_1
+///ножка на вход прерывания SDIFS/SDOFS от АЦП (канал захвата для таймера)
+#define PORT_ADC_SDIFS_IRQ MDR_PORTE
+#define PIN_ADC_SDIFS_IRQ PORT_Pin_8
 
 ///Структура с конфигурационными параметрами АЦП
 typedef struct adc_config_data
 {
 	spi_n 		*spi_struct;      	///< SPI, по которому подключен АЦП
 	timer_n 	*timer_n_capture;		///< Выбор таймера для режима захвата сигнала SDIFS/SDOFS
+	timer_n 	*timer_n_sample;		///< Выбор таймера для измерения задержки между пакетами с каналами
 	uint8_t  	init_flag;					///< Флаг инициализации АЦП
+	uint16_t 	avg_num;						///< Кол-во выборок для усреднения
+	uint32_t	sample_timer_cnt;		///< Счетчик задержки между пакетами с каналами		
 } adc_n;
 
 /*!

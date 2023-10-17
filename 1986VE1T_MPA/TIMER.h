@@ -9,10 +9,6 @@
 #include "MDR32_Drivers.h"
 #include <stdio.h>
 
-///ножка на вход прерывания SDIFS/SDOFS от АЦП (канал захвата для таймера)
-#define PORT_ADC_SDIFS_IRQ MDR_PORTE
-#define PIN_ADC_SDIFS_IRQ PORT_Pin_8
-
 
 ///Структура с конфигурационными параметрами Таймеров 
 typedef struct timer_config_struct
@@ -44,8 +40,6 @@ void delay_milli(uint32_t time_milli);
  *	\param time_micro - Задержка в мкс
 */
 void delay_micro(uint32_t time_micro);
-
-void dma_timer_init(timer_n *timer_struct);
 
 
 #endif /*__TIMER_H */

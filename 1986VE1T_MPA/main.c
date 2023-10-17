@@ -28,7 +28,7 @@ int main(void)
 	ebc_init();
 	init_external_ram_space();
 	
-	//инициализация SPI1
+	//инициализация SSI1
 	spi_1.SSPx = MDR_SSP1;
 	spi_1.RST_CLK_PCLK_SPIn = RST_CLK_PCLK_SSP1;
 	spi_1.SSP_HCLKdiv = SSP_HCLKdiv1;
@@ -42,7 +42,6 @@ int main(void)
 	spi_1.buffer = ram_space_pointer->spi_1_rx_buffer;
 	
 	spi_init(&spi_1);
-	//dma_spi_rx_init(&spi_1);
 	
 	//инициализация Timer1
 	timer_1.RST_CLK_PCLK_TIMERn = RST_CLK_PCLK_TIMER1;
@@ -88,8 +87,11 @@ int main(void)
 	//инициализация АЦП1
 	adc_1.spi_struct = &spi_1;
 	adc_1.timer_n_capture = &timer_2;
+	adc_1.timer_n_sample = &timer_1;
+	adc_1.avg_num = find_max_halfword(ram_space_pointer->mpa_ram_register_space.AI_NumForAverag, CHANEL_NUMBER);
 	
 	adc_init(&adc_1);
+	adc_1.sample_timer_cnt = TIMER_GetCounter(MDR_TIMER1);
 
 	//Инициализация UART1-2:
 	UART1.UARTx = MDR_UART1;
@@ -124,8 +126,8 @@ int main(void)
 	UART2.read_pos = 0;
 	UART2.UARTx_timeouts.timer_n_timeout = &timer_3;
 
-	uart_set_read_timeout(&UART1, 100);
-	uart_set_read_timeout(&UART2, 100);
+	uart_set_read_timeout(&UART1, 200);
+	uart_set_read_timeout(&UART2, 200);
 
 	uart_init(&UART1);
 	DMA_UART_RX_init(&UART1);
@@ -135,10 +137,13 @@ int main(void)
 
 	while(1)
 	{		
+		delay_milli(100);
 		//запрос пакета по ШИНЕ1
 		//request_data(&UART1);
 		//запрос пакета по ШИНЕ2
-		request_data(&UART2);
+		//request_data(&UART2);
+		//delay_milli(10);
+		do_mpa_task(&adc_1);
 	}
 }
 /*
@@ -162,7 +167,7 @@ uint8_t request_data(UARTn *UART_struct)
 	}
 	
 	//выполнение команды периферией (опрос каналов АЦП)
-	do_mpa_task(&adc_1);
+	//do_mpa_task(&adc_1);
 			
 	if(protocol_do_cmds(ext_bus) != 0)
 	{
@@ -180,7 +185,8 @@ uint8_t request_data(UARTn *UART_struct)
 */
 void do_mpa_task(adc_n *adc_struct)
 {
-	int adc_code[MAX_CHANEL_NUMBER];
+	int adc_code[MAX_CHANEL_NUMBER] = {0};
+	int16_t unused_value;
 	//TODO: пока что читает каналы МПА только для напряжений 0-10В (для тока в карту регистров надо добавлять свои полиномы)
 	
 	//указатель на пространство регистров МПА
@@ -201,13 +207,18 @@ void do_mpa_task(adc_n *adc_struct)
 //самодиагностика для однополярного случая	на мультиплексоре A0=0;A1=1 (на выходе должно быть 0В)
 //		U = 1.6474f*pow(10,-4)*adc_code + 5.398f;
 //		delta = 6.6962f*pow(10,-6)*adc_code + 0.4252307f;
+
+	//делаем усреднение по максим кол-ву выборок если выборки различаются для разных каналов
+	adc_1.avg_num = find_max_halfword(ram_space_pointer->mpa_ram_register_space.AI_NumForAverag, CHANEL_NUMBER);
+	
 	for (uint8_t k = 0; k < CHANEL_NUMBER; k++)
 	{
-		for (uint8_t i = 0; i < 10; i++)
+		for (uint8_t i = 0; i < ptr->AI_NumForAverag[k]; i++)
 		{		
-			adc_code[k] += ~ *(uint16_t*)(adc_struct->spi_struct->buffer + (i*CHANEL_NUMBER)) + 1;		
+			memcpy(&unused_value, adc_struct->spi_struct->buffer + (i*CHANEL_NUMBER) + k, sizeof(unused_value));
+			adc_code[k] += (int16_t)(~unused_value + 1);	
 		}
-		adc_code[k] /= 10;
+		adc_code[k] /= ptr->AI_NumForAverag[k];
 		memcpy(&(ptr->AI_CodeADC[k]), &adc_code[k], sizeof(adc_code[k]));
 		switch ( TEST_BIT(k, ptr->AI_OperMode.adc_chs_mode))
 		{
