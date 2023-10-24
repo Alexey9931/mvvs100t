@@ -43,7 +43,7 @@ int main(void)
 	
 	spi_init(&spi_1);
 	
-	//инициализация Timer1
+	//инициализация Timer1 (настроен на период 10мс)
 	timer_1.RST_CLK_PCLK_TIMERn = RST_CLK_PCLK_TIMER1;
 	timer_1.TIMERInitStruct.TIMER_Period = 0x270F;//10000-1
 	timer_1.TIMERInitStruct.TIMER_Prescaler = WORK_FREQ - 1;//128-1
@@ -52,7 +52,7 @@ int main(void)
 	
 	timer_init(&timer_1);
 	
-	//инициализация Timer3
+	//инициализация Timer3 (настроен на период 1сек)
 	timer_3.RST_CLK_PCLK_TIMERn = RST_CLK_PCLK_TIMER3;
 	timer_3.TIMERInitStruct.TIMER_Period = 0xC34F;//50000-1
 	timer_3.TIMERInitStruct.TIMER_Prescaler = WORK_FREQ*20 - 1;//2560-1
@@ -61,37 +61,36 @@ int main(void)
 	
 	timer_init(&timer_3);
 	
-	//инициализация Timer2
+	//инициализация Timer2 (настроен для режима захвата по 2 каналу таймера - для нужд АЦП, также настроен на период 10мкс)
 	timer_2.RST_CLK_PCLK_TIMERn = RST_CLK_PCLK_TIMER2;
-	timer_2.TIMERInitStruct.TIMER_Period = 0x00;
-	timer_2.TIMERInitStruct.TIMER_Prescaler = 0x00;
-	timer_2.TIMERInitStruct.TIMER_CounterDirection = TIMER_CntDir_Up;
-	timer_2.TIMERInitStruct.TIMER_CounterMode = TIMER_CntMode_EvtFixedDir;
-	timer_2.TIMERInitStruct.TIMER_EventSource = TIMER_EvSrc_CH2;
-	timer_2.TIMERInitStruct.TIMER_ARR_UpdateMode = TIMER_ARR_Update_Immediately;
-	timer_2.TIMERInitStruct.TIMER_FilterSampling = TIMER_FDTS_TIMER_CLK_div_1;
-	timer_2.TIMERInitStruct.TIMER_ETR_FilterConf = TIMER_Filter_8FF_at_FTDS_div_32;
-	timer_2.TIMERInitStruct.TIMER_ETR_Prescaler = TIMER_ETR_Prescaler_None;
-	timer_2.TIMERInitStruct.TIMER_ETR_Polarity = TIMER_ETRPolarity_NonInverted;
-	timer_2.TIMERInitStruct.TIMER_BRK_Polarity = TIMER_BRKPolarity_NonInverted;
+	timer_2.TIMERInitStruct.TIMER_Period = 10 + 1;
+	timer_2.TIMERInitStruct.TIMER_Prescaler = WORK_FREQ + 1;
 	timer_2.TIMERx = MDR_TIMER2;
 	timer_2.TIMER_HCLKdiv = TIMER_HCLKdiv1;
 	timer_2.sTIM_ChnInit.TIMER_CH_Number = TIMER_CHANNEL2;
 	timer_2.sTIM_ChnInit.TIMER_CH_Mode = TIMER_CH_MODE_CAPTURE;
 	timer_2.sTIM_ChnInit.TIMER_CH_EventSource = TIMER_CH_EvSrc_PE;
 	timer_2.IRQn = TIMER2_IRQn;
-	timer_2.TIMER_STATUS = TIMER_STATUS_CCR_CAP1_CH2;
+	timer_2.TIMER_STATUS = TIMER_STATUS_CCR_CAP1_CH2 | TIMER_STATUS_CNT_ARR;
+	timer_2.TIMERx->CNT = 0;
 	
 	timer_init(&timer_2);
 	
 	//инициализация АЦП1
 	adc_1.spi_struct = &spi_1;
+	adc_1.spi_struct->buffer_counter = 0;
 	adc_1.timer_n_capture = &timer_2;
 	adc_1.timer_n_sample = &timer_1;
 	adc_1.avg_num = find_max_halfword(ram_space_pointer->mpa_ram_register_space.AI_NumForAverag, CHANEL_NUMBER);
+	adc_1.last_ch_rx = 0;
+	adc_1.init_flag = 0;
 	
 	adc_init(&adc_1);
 	adc_1.sample_timer_cnt = TIMER_GetCounter(MDR_TIMER1);
+	
+//	NVIC_EnableIRQ(SSP1_IRQn);
+//	// Выбор источников прерываний (прием и передача данных)
+//  SSP_ITConfig (adc_1.spi_struct->SSPx, SSP_IT_RX, ENABLE);
 
 	//Инициализация UART1-2:
 	UART1.UARTx = MDR_UART1;
@@ -126,24 +125,24 @@ int main(void)
 	UART2.read_pos = 0;
 	UART2.UARTx_timeouts.timer_n_timeout = &timer_3;
 
-	uart_set_read_timeout(&UART1, 200);
-	uart_set_read_timeout(&UART2, 200);
+	//uart_set_read_timeout(&UART1, 300);
+	uart_set_read_timeout(&UART2, 900);
 
-	uart_init(&UART1);
-	DMA_UART_RX_init(&UART1);
+//	uart_init(&UART1);
+//	DMA_UART_RX_init(&UART1);
 	uart_init(&UART2);
 	DMA_UART_RX_init(&UART2);
 	
 
 	while(1)
 	{		
-		delay_milli(100);
+		//delay_milli(100);
 		//запрос пакета по ШИНЕ1
 		//request_data(&UART1);
 		//запрос пакета по ШИНЕ2
-		//request_data(&UART2);
+//		request_data(&UART2);
 		//delay_milli(10);
-		do_mpa_task(&adc_1);
+		//do_mpa_task(&adc_1);
 	}
 }
 /*
@@ -167,7 +166,7 @@ uint8_t request_data(UARTn *UART_struct)
 	}
 	
 	//выполнение команды периферией (опрос каналов АЦП)
-	//do_mpa_task(&adc_1);
+	do_mpa_task(&adc_1);
 			
 	if(protocol_do_cmds(ext_bus) != 0)
 	{

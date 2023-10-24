@@ -3,6 +3,8 @@
  \brief Файл с реализацией API для работы с SPI
 */
 #include "SPI.h"
+#include "1273pv19t.h"
+#include "external_ram.h"
 
 /*Глобальные экземпляры структур с конфигурационными параметрами SPI и буфером приема 
  *(необходимо добавить аттрибут, который прописан в файле Objects/.sct,
@@ -10,6 +12,12 @@
  */
 spi_n spi_1 IAR_SECTION ("EXECUTABLE_MEMORY_SECTION") __attribute__((section("EXECUTABLE_MEMORY_SECTION")));
 spi_n spi_2 IAR_SECTION ("EXECUTABLE_MEMORY_SECTION") __attribute__((section("EXECUTABLE_MEMORY_SECTION")));
+
+extern adc_n adc_1;
+extern ram_data *ram_space_pointer;
+
+extern UARTn UART1;
+extern UARTn UART2;
 
 /*
 Функция конфигурирования выводов МК для SPI
@@ -73,10 +81,11 @@ void spi_init(spi_n *spi_struct)
   SSP_InitStruct.SSP_CPSDVSR = spi_struct->SPI.SSP_CPSDVSR;//частота обмена 2МГц 
 	SSP_Init(spi_struct->SSPx,&SSP_InitStruct);
 	
+//	NVIC_SetPriority (SSP1_IRQn, 1);
+	NVIC_DisableIRQ(SSP1_IRQn);
 	// Выбор источников прерываний (прием и передача данных)
-  SSP_ITConfig (spi_struct->SSPx, SSP_IT_RX | SSP_IT_TX, ENABLE);
+  SSP_ITConfig (spi_struct->SSPx, SSP_IT_RX, DISABLE);
 	
-	//Специально не включаем SPI, т.к. МК находится в SLAVE-режиме
 	SSP_Cmd(spi_struct->SSPx, ENABLE);
 	
 }
@@ -119,7 +128,8 @@ uint16_t spi_receive_halfword(spi_n *spi_struct)
 void spi_clean_fifo_rx_buf(spi_n *spi_struct)
 {	
 	uint16_t a;
-	for (uint8_t i = 0; i < FIFO_SIZE; i++)
+	//for (uint8_t i = 0; i < FIFO_SIZE; i++)
+	while(SSP_GetFlagStatus(spi_struct->SSPx, SSP_FLAG_RNE) == SET)
 	{
 		a = spi_struct->SSPx->DR;
 	}
@@ -160,6 +170,181 @@ void dma_spi_rx_init(spi_n *spi_struct)
 	DMA_Cmd (spi_struct->spi_dma_ch.dma_channel, DISABLE);
 	
 	//NVIC_SetPriority (DMA_IRQn, 2);
-	NVIC_EnableIRQ(DMA_IRQn);
+	//NVIC_EnableIRQ(DMA_IRQn);
 }
 
+void SSP1_IRQHandler(void);
+void SSP1_IRQHandler(void)
+{
+	//только если инициализирован АЦП
+	if ((adc_1.init_flag == 1))
+	{		
+		//если буфер приемника заполнен (8 слов считать нужно)
+		if (SSP_GetFlagStatus(adc_1.spi_struct->SSPx, SSP_FLAG_RFF) == SET)
+		{				
+			//считываем FIFO буфер SPI
+			uint16_t spi_rx_value[FIFO_SIZE];
+			for (uint8_t i = 0; i < FIFO_SIZE; i++)
+			{
+				spi_rx_value[i] = adc_1.spi_struct->SSPx->DR;
+			}
+			
+//			if (((spi_1.buffer_counter + FIFO_SIZE) % CHANEL_NUMBER) != 0)
+//			{
+//				if (((spi_1.buffer_counter + FIFO_SIZE) % CHANEL_NUMBER) != ((adc_1.last_ch_rx - 1) % CHANEL_NUMBER))
+//				{
+//					memcpy(ram_space_pointer->spi_1_rx_buffer + spi_1.buffer_counter + ((spi_1.buffer_counter) % CHANEL_NUMBER)-adc_1.last_ch_rx+1, spi_rx_value, sizeof(spi_rx_value));
+//				}
+//				else
+//				{
+//					memcpy(ram_space_pointer->spi_1_rx_buffer + spi_1.buffer_counter, spi_rx_value, sizeof(spi_rx_value));
+//				}
+//			}
+//			else if (((spi_1.buffer_counter + FIFO_SIZE) % CHANEL_NUMBER) == 0)
+//			{
+//				if (((spi_1.buffer_counter + FIFO_SIZE) % CHANEL_NUMBER) != ((adc_1.last_ch_rx) % CHANEL_NUMBER))
+//				{
+//					memcpy(ram_space_pointer->spi_1_rx_buffer + spi_1.buffer_counter + 4, spi_rx_value, sizeof(spi_rx_value));
+//				}
+//				else
+//				{
+//					memcpy(ram_space_pointer->spi_1_rx_buffer + spi_1.buffer_counter, spi_rx_value, sizeof(spi_rx_value));
+//				}
+//			}
+
+//			switch ((spi_1.buffer_counter + FIFO_SIZE) % CHANEL_NUMBER)
+//			{
+//				case 2:
+//						//adc_1.last_ch_rx -= 1;
+//						if (adc_1.last_ch_rx == 1)
+//						{
+//							memcpy(ram_space_pointer->spi_1_rx_buffer + spi_1.buffer_counter + adc_1.last_ch_rx + 4, spi_rx_value, sizeof(spi_rx_value));
+//						}
+//						else
+//						{
+//							memcpy(ram_space_pointer->spi_1_rx_buffer + spi_1.buffer_counter + adc_1.last_ch_rx - 2 - 1, spi_rx_value, sizeof(spi_rx_value));
+//						}
+//						break;
+//				
+//				case 4:
+//						//adc_1.last_ch_rx -= 1;
+//						if (adc_1.last_ch_rx == 1)
+//						{
+//							memcpy(ram_space_pointer->spi_1_rx_buffer + spi_1.buffer_counter + adc_1.last_ch_rx + 2, spi_rx_value, sizeof(spi_rx_value));
+//						}
+//						else
+//						{
+//							memcpy(ram_space_pointer->spi_1_rx_buffer + spi_1.buffer_counter + adc_1.last_ch_rx - 4 - 1, spi_rx_value, sizeof(spi_rx_value));
+//						}	
+//						break;
+//				
+//				case 0:
+//						memcpy(ram_space_pointer->spi_1_rx_buffer + spi_1.buffer_counter + adc_1.last_ch_rx - 6, spi_rx_value, sizeof(spi_rx_value));
+//						break;
+//			}
+
+
+//			if (adc_1.spi_struct->buffer_counter == 0)
+//			{
+//				
+//				if (adc_1.last_ch_rx == 1)
+//				{
+//					memcpy(ram_space_pointer->spi_1_rx_buffer, spi_rx_value, sizeof(spi_rx_value));
+//					adc_1.spi_struct->buffer_counter += FIFO_SIZE;
+//					adc_1.pre_last_ch_rx = 3;
+//				}
+//				else if (adc_1.last_ch_rx == 3)
+//				{
+//					memcpy(ram_space_pointer->spi_1_rx_buffer, spi_rx_value, sizeof(spi_rx_value));
+//					adc_1.spi_struct->buffer_counter += FIFO_SIZE;
+//					adc_1.pre_last_ch_rx = adc_1.last_ch_rx;
+//				}
+//				else
+//				{
+//					memcpy(ram_space_pointer->spi_1_rx_buffer, spi_rx_value +  FIFO_SIZE - adc_1.last_ch_rx + 1, adc_1.last_ch_rx - 1);
+//					adc_1.spi_struct->buffer_counter += adc_1.last_ch_rx;
+//					adc_1.pre_last_ch_rx = adc_1.last_ch_rx;
+//				}
+//			}
+//			else
+//			{
+//				if (((adc_1.spi_struct->buffer_counter + FIFO_SIZE) % CHANEL_NUMBER) == 0)
+//				{
+//					if (abs(adc_1.last_ch_rx - adc_1.pre_last_ch_rx) == (FIFO_SIZE - CHANEL_NUMBER - 1))
+//					{
+//						memcpy(ram_space_pointer->spi_1_rx_buffer + adc_1.spi_struct->buffer_counter, spi_rx_value, sizeof(spi_rx_value));
+//						adc_1.spi_struct->buffer_counter += FIFO_SIZE;
+//						adc_1.pre_last_ch_rx = adc_1.last_ch_rx - 1;
+//					}
+//					else
+//					{
+//						memcpy(ram_space_pointer->spi_1_rx_buffer + adc_1.spi_struct->buffer_counter, spi_rx_value + adc_1.pre_last_ch_rx, FIFO_SIZE - (adc_1.pre_last_ch_rx));
+//						adc_1.spi_struct->buffer_counter += FIFO_SIZE - (adc_1.pre_last_ch_rx);
+//						adc_1.pre_last_ch_rx = adc_1.last_ch_rx + 1;
+//					}
+//				}
+//				else
+//				{
+//					if (abs(adc_1.last_ch_rx - adc_1.pre_last_ch_rx) == (FIFO_SIZE - CHANEL_NUMBER))
+//					{
+//						memcpy(ram_space_pointer->spi_1_rx_buffer + adc_1.spi_struct->buffer_counter, spi_rx_value, sizeof(spi_rx_value));
+//						adc_1.spi_struct->buffer_counter += FIFO_SIZE;
+//						adc_1.pre_last_ch_rx = adc_1.last_ch_rx;
+//					}
+//					else
+//					{
+//						memcpy(ram_space_pointer->spi_1_rx_buffer + adc_1.spi_struct->buffer_counter, spi_rx_value + adc_1.pre_last_ch_rx - 1, FIFO_SIZE - (adc_1.pre_last_ch_rx - 1));
+//						adc_1.spi_struct->buffer_counter += FIFO_SIZE - (adc_1.pre_last_ch_rx - 1);
+//						adc_1.pre_last_ch_rx = adc_1.last_ch_rx;
+//					}
+//				}
+//	
+//			}
+
+			if (adc_1.last_ch_rx != 6)
+			{ 
+				if (abs(adc_1.last_ch_rx - adc_1.pre_last_ch_rx) == (FIFO_SIZE - CHANEL_NUMBER))
+				{
+						memcpy(ram_space_pointer->spi_1_rx_buffer + adc_1.spi_struct->buffer_counter, spi_rx_value, sizeof(spi_rx_value));
+						adc_1.spi_struct->buffer_counter += FIFO_SIZE;
+						adc_1.pre_last_ch_rx = adc_1.last_ch_rx;
+				}
+				else
+				{
+					memcpy(ram_space_pointer->spi_1_rx_buffer + adc_1.spi_struct->buffer_counter, spi_rx_value + adc_1.pre_last_ch_rx - 1, FIFO_SIZE - (adc_1.pre_last_ch_rx - 1));
+				  adc_1.spi_struct->buffer_counter += FIFO_SIZE - (adc_1.pre_last_ch_rx - 1);
+					adc_1.pre_last_ch_rx = adc_1.last_ch_rx;
+				}
+			}
+			else
+			{
+				if (abs(adc_1.last_ch_rx - adc_1.pre_last_ch_rx) == (FIFO_SIZE - CHANEL_NUMBER - 1))
+				{
+					memcpy(ram_space_pointer->spi_1_rx_buffer + adc_1.spi_struct->buffer_counter, spi_rx_value, sizeof(spi_rx_value));
+					adc_1.spi_struct->buffer_counter += FIFO_SIZE;
+					adc_1.pre_last_ch_rx = 1;
+				}
+				else
+				{
+					memcpy(ram_space_pointer->spi_1_rx_buffer + adc_1.spi_struct->buffer_counter, spi_rx_value + adc_1.last_ch_rx - adc_1.pre_last_ch_rx - 1, FIFO_SIZE - (adc_1.pre_last_ch_rx - 1));
+				  adc_1.spi_struct->buffer_counter += FIFO_SIZE - (adc_1.pre_last_ch_rx - 1);
+					adc_1.pre_last_ch_rx = adc_1.last_ch_rx;
+				}
+			}
+			
+			
+			
+			//adc_1.spi_struct->buffer_counter += FIFO_SIZE;
+			//если считали все каналы нужное кол-во раз для усреднения и так чтобы буфер был кратен пакетам размером CHANEL_NUMBER
+			//if (adc_1.spi_struct->buffer_counter == (CHANEL_NUMBER*adc_1.avg_num/8 + 1))
+			if ((adc_1.spi_struct->buffer_counter >= (CHANEL_NUMBER*adc_1.avg_num)) && ((adc_1.spi_struct->buffer_counter % (CHANEL_NUMBER*FIFO_SIZE) == 0)))
+			{
+				adc_1.spi_struct->buffer_counter = 0;
+//				NVIC_DisableIRQ(SSP1_IRQn);
+//				SSP_ITConfig (adc_1.spi_struct->SSPx, SSP_IT_RX, DISABLE);
+			}
+		}
+	}
+	
+	SSP_ClearITPendingBit(MDR_SSP1, SSP_IT_RX);
+}

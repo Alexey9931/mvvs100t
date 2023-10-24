@@ -168,7 +168,7 @@ uint8_t uart_init(UARTn *UART_struct)
 	}
 
 	//Включение прерываний UART
-	//NVIC_SetPriority (UART_struct->IRQn, 1);
+	//NVIC_SetPriority (UART_struct->IRQn, 0);
 	UART_ITConfig( UART_struct->UARTx, UART_IT_RX, ENABLE );
 	
 	// Включить сконфигурированный UART
@@ -211,7 +211,7 @@ uint8_t uart_write(UARTn *UART_struct, uint8_t *data, uint32_t data_size)
 			if (UART_struct->UARTx_timeouts.write_timeout_flag == 1)
 			{
 				timer_cnt = TIMER_GetCounter(UART_struct->UARTx_timeouts.timer_n_timeout->TIMERx);
-				if (timer_cnt==(UART_struct->UARTx_timeouts.write_val_timeout*50)) 
+				if (timer_cnt >= (UART_struct->UARTx_timeouts.write_val_timeout*50)) 
 				{
 					error = WRITE_TIMEOUT_ERROR;
 					return error;
@@ -257,7 +257,7 @@ uint8_t uart_read(UARTn *UART_struct, uint32_t len, uint8_t *data)
 			while ((int)((UART_struct->buffer_count) - (UART_struct->read_pos)) >= 0)
 			{
 				timer_cnt = TIMER_GetCounter(UART_struct->UARTx_timeouts.timer_n_timeout->TIMERx);
-				if (timer_cnt==(UART_struct->UARTx_timeouts.read_val_timeout*50))
+				if (timer_cnt >= (UART_struct->UARTx_timeouts.read_val_timeout*50))
 				{
 					error = READ_TIMEOUT_ERROR;
 					return error;
@@ -266,7 +266,7 @@ uint8_t uart_read(UARTn *UART_struct, uint32_t len, uint8_t *data)
 			while ((UART_BUFFER_SIZE - (UART_struct->read_pos) + (UART_struct->buffer_count)) < len)
 			{
 				timer_cnt = TIMER_GetCounter(UART_struct->UARTx_timeouts.timer_n_timeout->TIMERx);
-				if (timer_cnt==(UART_struct->UARTx_timeouts.read_val_timeout*50)) 
+				if (timer_cnt >= (UART_struct->UARTx_timeouts.read_val_timeout*50)) 
 				{
 					error = READ_TIMEOUT_ERROR;
 					return error;
@@ -301,7 +301,7 @@ uint8_t uart_read(UARTn *UART_struct, uint32_t len, uint8_t *data)
 			while (((UART_struct->buffer_count) - (UART_struct->read_pos)) < len)
 			{
 				timer_cnt = TIMER_GetCounter(UART_struct->UARTx_timeouts.timer_n_timeout->TIMERx);
- 				if (timer_cnt==(UART_struct->UARTx_timeouts.read_val_timeout*50))
+ 				if (timer_cnt >= (UART_struct->UARTx_timeouts.read_val_timeout*50))
 				{				
 					error = READ_TIMEOUT_ERROR;
 					return error;
@@ -390,7 +390,7 @@ void DMA_UART_RX_init(UARTn *UART_struct)
 	// Разрешить работу DMA с UART
 	DMA_Cmd (UART_struct->uart_dma_ch.dma_channel, ENABLE);
 	
-	//NVIC_SetPriority (DMA_IRQn, 2);
+	//NVIC_SetPriority (DMA_IRQn, 0);
 	NVIC_EnableIRQ(DMA_IRQn);
 }
 /*

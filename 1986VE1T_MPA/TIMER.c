@@ -19,7 +19,7 @@ timer_n timer_3;
 extern spi_n spi_1;
 
 /*
-Функция инициализации Timer1 (настроен на период 10мс)
+Функция инициализации Timer1
 */
 void timer1_init(timer_n *timer_struct);
 void timer1_init(timer_n *timer_struct)
@@ -41,7 +41,7 @@ void timer1_init(timer_n *timer_struct)
   TIMER_Cmd(timer_struct->TIMERx,ENABLE);
 }
 /*
-Функция инициализации Timer3 (настроен на период 1сек)
+Функция инициализации Timer3 
 */
 void timer3_init(timer_n *timer_struct);
 void timer3_init(timer_n *timer_struct)
@@ -63,7 +63,7 @@ void timer3_init(timer_n *timer_struct)
   TIMER_Cmd(timer_struct->TIMERx,ENABLE);
 }
 /*
-Функция инициализации Timer2 (настроен для режима захвата-для нужд АЦП)
+Функция инициализации Timer2
 */
 void timer2_init(timer_n *timer_struct);
 void timer2_init(timer_n *timer_struct)
@@ -98,7 +98,7 @@ void timer2_init(timer_n *timer_struct)
 
 	TIMER_ITConfig(timer_struct->TIMERx, timer_struct->TIMER_STATUS, ENABLE);
 	NVIC_EnableIRQ(timer_struct->IRQn);
-	//NVIC_SetPriority(timer_struct->IRQn, 0);
+//	NVIC_SetPriority(timer_struct->IRQn, 0);
 
 	/* Enable TIMER2 clock */
   TIMER_BRGInit(timer_struct->TIMERx,timer_struct->TIMER_HCLKdiv);
@@ -126,40 +126,64 @@ void timer_init(timer_n *timer_struct)
 	}
 }
 /*
-Обработчик прерываний по захвату Timer2
+Обработчик прерываний Timer2
 */
 void TIMER2_IRQHandler(void);
 void TIMER2_IRQHandler(void)
 {
-	//только если инициализирован АЦП
-	if ((adc_1.init_flag == 1))
+	//если сработало прерывание по переполнению счетчика CNT (CNT=ARR)
+	if (TIMER_GetITStatus(timer_2.TIMERx, TIMER_STATUS_CNT_ARR) == SET)
 	{
-		//если время между пакетами двух последовательно считываемых каналов больше 12мкс
-		if (abs(adc_1.timer_n_sample->TIMERx->CNT - adc_1.sample_timer_cnt) > 120)
+		//только если инициализирован АЦП
+		if ((adc_1.init_flag == 1))
 		{
-			adc_1.spi_struct->buffer_counter -= adc_1.spi_struct->buffer_counter % CHANEL_NUMBER;
+			TIMER_ITConfig(timer_2.TIMERx, TIMER_STATUS_CNT_ARR, DISABLE);	
+			//считываем FIFO буфер SPI
+			uint16_t spi_rx_value[FIFO_SIZE];
+			for (uint8_t i = 0; i < FIFO_SIZE; i++)
+			{
+				spi_rx_value[i] = adc_1.spi_struct->SSPx->DR;
+			}
+			//только если пришли все каналы, то записываем в буфер SPI
+			if (adc_1.last_ch_rx == CHANEL_NUMBER)
+			{
+				memcpy(ram_space_pointer->spi_1_rx_buffer + spi_1.buffer_counter, spi_rx_value, CHANEL_NUMBER*sizeof(spi_rx_value[0]));
+				spi_1.buffer_counter += CHANEL_NUMBER;
+				if (adc_1.spi_struct->buffer_counter >= (CHANEL_NUMBER*adc_1.avg_num))
+				{
+					adc_1.spi_struct->buffer_counter = 0;
+				}
+			}
+//			PORT_ADC_MODE->SETTX = PIN_ADC_MODE_A1;
+//			PORT_ADC_MODE->CLRTX = PIN_ADC_MODE_A1;
 		}
-		adc_1.sample_timer_cnt = adc_1.timer_n_sample->TIMERx->CNT;
-		
-		uint16_t spi_rx_value = spi_receive_halfword(adc_1.spi_struct);
-		memcpy(ram_space_pointer->spi_1_rx_buffer + spi_1.buffer_counter, &spi_rx_value, sizeof(spi_rx_value));
-		adc_1.spi_struct->buffer_counter++;
-		//если считали все каналы нужное кол-во раз для усреднения
-		if (adc_1.spi_struct->buffer_counter == CHANEL_NUMBER*adc_1.avg_num)
-		{
-			adc_1.spi_struct->buffer_counter = 0;
-		}
+		TIMER_ClearITPendingBit(timer_2.TIMERx, timer_2.TIMER_STATUS);
 	}
-	timer_2.TIMERx->STATUS = ~timer_2.TIMER_STATUS;
+	//если сработало прерывание по срабатыванию захвата по 2 каналу Timer2
+	if (TIMER_GetITStatus(timer_2.TIMERx, TIMER_STATUS_CCR_CAP1_CH2) == SET)
+	{
+			//только если инициализирован АЦП
+			if ((adc_1.init_flag == 1))
+			{
+					adc_1.last_ch_rx++;
+					if (adc_1.last_ch_rx == (CHANEL_NUMBER+1))
+					{
+						adc_1.last_ch_rx = 1;
+					}
+					TIMER_ITConfig(timer_2.TIMERx, TIMER_STATUS_CNT_ARR, ENABLE);
+					TIMER_SetCounter(MDR_TIMER2, 0);				
+			}
+			TIMER_ClearITPendingBit(timer_2.TIMERx, timer_2.TIMER_STATUS);
+	}
 }
 /*
 Функция реализации задержки в мс
 */
 void delay_milli(uint32_t time_milli)//задержка в мс 
 { 
-	//TIMER_SetCounter(MDR_TIMER3, 0);
-	uint32_t timer_cnt = TIMER_GetCounter(MDR_TIMER3);
-	while(abs(TIMER_GetCounter(MDR_TIMER3) - timer_cnt)!=(time_milli*50));
+	TIMER_SetCounter(MDR_TIMER3, 0);
+	//uint32_t timer_cnt = TIMER_GetCounter(MDR_TIMER3);
+	while (TIMER_GetCounter(MDR_TIMER3) <=(time_milli*50));
 }
 /*
 Функция реализации задержки в мкс
@@ -168,7 +192,7 @@ void delay_micro(uint32_t time_micro)//задержка в мкс (максим�
 { 
 	//TIMER_SetCounter(MDR_TIMER1, 0);
 	uint32_t timer_cnt = TIMER_GetCounter(MDR_TIMER1);
-	while(abs(TIMER_GetCounter(MDR_TIMER1) - timer_cnt)!=time_micro);
+	while(abs(TIMER_GetCounter(MDR_TIMER1) - timer_cnt) <= time_micro);
 }
 
 
