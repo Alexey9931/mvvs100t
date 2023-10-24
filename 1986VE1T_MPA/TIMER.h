@@ -19,7 +19,7 @@ typedef struct timer_config_struct
 	uint32_t 											RST_CLK_PCLK_TIMERn;						///< Включение тактирования для блока TIMER
 	TIMER_Clock_BRG_TypeDef 			TIMER_HCLKdiv;									///< Выбор делителя тактовой частоты для тактирования блока TIMER	
 	IRQn_Type 										IRQn;														///< Выбор обработчика прерываний блока TIMER
-	TIMER_Status_Flags_TypeDef		TIMER_STATUS;										///< Настрока события, по которому происходит прерывание блока TIMER	
+	TIMER_Status_Flags_TypeDef		TIMER_STATUS;										///< Настрока событий, по которому происходит прерывание блока TIMER	
 	uint32_t											timer_cnt;											///< Счетчик для TIMER (может быть использован для разных целей)	
 } timer_n;	
 

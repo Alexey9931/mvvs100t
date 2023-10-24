@@ -80,17 +80,12 @@ int main(void)
 	adc_1.spi_struct = &spi_1;
 	adc_1.spi_struct->buffer_counter = 0;
 	adc_1.timer_n_capture = &timer_2;
-	adc_1.timer_n_sample = &timer_1;
 	adc_1.avg_num = find_max_halfword(ram_space_pointer->mpa_ram_register_space.AI_NumForAverag, CHANEL_NUMBER);
-	adc_1.last_ch_rx = 0;
+	adc_1.ch_rx_num = 0;
 	adc_1.init_flag = 0;
 	
 	adc_init(&adc_1);
-	adc_1.sample_timer_cnt = TIMER_GetCounter(MDR_TIMER1);
 	
-//	NVIC_EnableIRQ(SSP1_IRQn);
-//	// Выбор источников прерываний (прием и передача данных)
-//  SSP_ITConfig (adc_1.spi_struct->SSPx, SSP_IT_RX, ENABLE);
 
 	//Инициализация UART1-2:
 	UART1.UARTx = MDR_UART1;
@@ -136,7 +131,8 @@ int main(void)
 
 	while(1)
 	{		
-		//delay_milli(100);
+		delay_milli(100);
+		do_mpa_task(&adc_1);
 		//запрос пакета по ШИНЕ1
 		//request_data(&UART1);
 		//запрос пакета по ШИНЕ2

@@ -145,7 +145,7 @@ void TIMER2_IRQHandler(void)
 				spi_rx_value[i] = adc_1.spi_struct->SSPx->DR;
 			}
 			//только если пришли все каналы, то записываем в буфер SPI
-			if (adc_1.last_ch_rx == CHANEL_NUMBER)
+			if (adc_1.ch_rx_num == CHANEL_NUMBER)
 			{
 				memcpy(ram_space_pointer->spi_1_rx_buffer + spi_1.buffer_counter, spi_rx_value, CHANEL_NUMBER*sizeof(spi_rx_value[0]));
 				spi_1.buffer_counter += CHANEL_NUMBER;
@@ -154,8 +154,6 @@ void TIMER2_IRQHandler(void)
 					adc_1.spi_struct->buffer_counter = 0;
 				}
 			}
-//			PORT_ADC_MODE->SETTX = PIN_ADC_MODE_A1;
-//			PORT_ADC_MODE->CLRTX = PIN_ADC_MODE_A1;
 		}
 		TIMER_ClearITPendingBit(timer_2.TIMERx, timer_2.TIMER_STATUS);
 	}
@@ -165,10 +163,10 @@ void TIMER2_IRQHandler(void)
 			//только если инициализирован АЦП
 			if ((adc_1.init_flag == 1))
 			{
-					adc_1.last_ch_rx++;
-					if (adc_1.last_ch_rx == (CHANEL_NUMBER+1))
+					adc_1.ch_rx_num++;
+					if (adc_1.ch_rx_num == (CHANEL_NUMBER+1))
 					{
-						adc_1.last_ch_rx = 1;
+						adc_1.ch_rx_num = 1;
 					}
 					TIMER_ITConfig(timer_2.TIMERx, TIMER_STATUS_CNT_ARR, ENABLE);
 					TIMER_SetCounter(MDR_TIMER2, 0);				

@@ -35,10 +35,11 @@ Section Cross References
     main.o(.text.main) refers to timer.o(.text.timer_init) for timer_init
     main.o(.text.main) refers to external_ram.o(.text.find_max_halfword) for find_max_halfword
     main.o(.text.main) refers to 1273pv19t.o(.text.adc_init) for adc_init
-    main.o(.text.main) refers to mdr32fxqi_timer.o(.text.TIMER_GetCounter) for TIMER_GetCounter
     main.o(.text.main) refers to uart.o(.text.uart_set_read_timeout) for uart_set_read_timeout
     main.o(.text.main) refers to uart.o(.text.uart_init) for uart_init
     main.o(.text.main) refers to uart.o(.text.DMA_UART_RX_init) for DMA_UART_RX_init
+    main.o(.text.main) refers to timer.o(.text.delay_milli) for delay_milli
+    main.o(.text.main) refers to main.o(.text.do_mpa_task) for do_mpa_task
     main.o(.text.main) refers to spi.o(EXECUTABLE_MEMORY_SECTION) for spi_1
     main.o(.text.main) refers to main.o(.bss.ram_space_pointer) for ram_space_pointer
     main.o(.text.main) refers to timer.o(.bss.timer_1) for timer_1
@@ -48,12 +49,6 @@ Section Cross References
     main.o(.text.main) refers to uart.o(.bss.UART1) for UART1
     main.o(.text.main) refers to uart.o(.bss.UART2) for UART2
     main.o(.ARM.exidx.text.main) refers to main.o(.text.main) for [Anonymous Symbol]
-    main.o(.text.request_data) refers to rs422_protocol.o(.text.receive_packet) for receive_packet
-    main.o(.text.request_data) refers to main.o(.text.do_mpa_task) for do_mpa_task
-    main.o(.text.request_data) refers to rs422_protocol.o(.text.protocol_do_cmds) for protocol_do_cmds
-    main.o(.text.request_data) refers to rs422_protocol.o(.text.transmit_packet) for transmit_packet
-    main.o(.text.request_data) refers to 1273pv19t.o(.bss.adc_1) for adc_1
-    main.o(.ARM.exidx.text.request_data) refers to main.o(.text.request_data) for [Anonymous Symbol]
     main.o(.text.do_mpa_task) refers to external_ram.o(.text.find_max_halfword) for find_max_halfword
     main.o(.text.do_mpa_task) refers to aeabi_sdiv.o(.text) for __aeabi_idiv
     main.o(.text.do_mpa_task) refers to fflti.o(.text) for __aeabi_i2f
@@ -62,6 +57,12 @@ Section Cross References
     main.o(.text.do_mpa_task) refers to main.o(.bss.ram_space_pointer) for ram_space_pointer
     main.o(.text.do_mpa_task) refers to 1273pv19t.o(.bss.adc_1) for adc_1
     main.o(.ARM.exidx.text.do_mpa_task) refers to main.o(.text.do_mpa_task) for [Anonymous Symbol]
+    main.o(.text.request_data) refers to rs422_protocol.o(.text.receive_packet) for receive_packet
+    main.o(.text.request_data) refers to main.o(.text.do_mpa_task) for do_mpa_task
+    main.o(.text.request_data) refers to rs422_protocol.o(.text.protocol_do_cmds) for protocol_do_cmds
+    main.o(.text.request_data) refers to rs422_protocol.o(.text.transmit_packet) for transmit_packet
+    main.o(.text.request_data) refers to 1273pv19t.o(.bss.adc_1) for adc_1
+    main.o(.ARM.exidx.text.request_data) refers to main.o(.text.request_data) for [Anonymous Symbol]
     rs422_protocol.o(.text.transmit_packet) refers to rt_memcpy.o(.text) for __aeabi_memcpy
     rs422_protocol.o(.text.transmit_packet) refers to rs422_protocol.o(.text.crc32) for crc32
     rs422_protocol.o(.text.transmit_packet) refers to uart.o(.text.uart_write) for uart_write
@@ -243,13 +244,6 @@ Section Cross References
     spi.o(.text.dma_spi_rx_init) refers to mdr32fxqi_ssp.o(.text.SSP_DMACmd) for SSP_DMACmd
     spi.o(.text.dma_spi_rx_init) refers to mdr32fxqi_dma.o(.text.DMA_Cmd) for DMA_Cmd
     spi.o(.ARM.exidx.text.dma_spi_rx_init) refers to spi.o(.text.dma_spi_rx_init) for [Anonymous Symbol]
-    spi.o(.text.SSP1_IRQHandler) refers to mdr32fxqi_ssp.o(.text.SSP_GetFlagStatus) for SSP_GetFlagStatus
-    spi.o(.text.SSP1_IRQHandler) refers to abs.o(.text) for abs
-    spi.o(.text.SSP1_IRQHandler) refers to rt_memcpy.o(.text) for __aeabi_memcpy
-    spi.o(.text.SSP1_IRQHandler) refers to mdr32fxqi_ssp.o(.text.SSP_ClearITPendingBit) for SSP_ClearITPendingBit
-    spi.o(.text.SSP1_IRQHandler) refers to 1273pv19t.o(.bss.adc_1) for adc_1
-    spi.o(.text.SSP1_IRQHandler) refers to main.o(.bss.ram_space_pointer) for ram_space_pointer
-    spi.o(.ARM.exidx.text.SSP1_IRQHandler) refers to spi.o(.text.SSP1_IRQHandler) for [Anonymous Symbol]
     startup_mdr32f1qi.o(STACK) refers (Special) to heapauxi.o(.text) for __use_two_region_memory
     startup_mdr32f1qi.o(HEAP) refers (Special) to heapauxi.o(.text) for __use_two_region_memory
     startup_mdr32f1qi.o(RESET) refers (Special) to heapauxi.o(.text) for __use_two_region_memory
@@ -258,7 +252,6 @@ Section Cross References
     startup_mdr32f1qi.o(RESET) refers to dma.o(.text.DMA_IRQHandler) for DMA_IRQHandler
     startup_mdr32f1qi.o(RESET) refers to uart.o(.text.UART1_IRQHandler) for UART1_IRQHandler
     startup_mdr32f1qi.o(RESET) refers to uart.o(.text.UART2_IRQHandler) for UART2_IRQHandler
-    startup_mdr32f1qi.o(RESET) refers to spi.o(.text.SSP1_IRQHandler) for SSP1_IRQHandler
     startup_mdr32f1qi.o(RESET) refers to timer.o(.text.TIMER2_IRQHandler) for TIMER2_IRQHandler
     startup_mdr32f1qi.o(.text) refers (Special) to heapauxi.o(.text) for __use_two_region_memory
     startup_mdr32f1qi.o(.text) refers to system_mdr32f1qi.o(.text.SystemInit) for SystemInit
@@ -617,10 +610,9 @@ Removing Unused input sections from the image.
     Removing dma.o(.ARM.exidx.text.DMA_IRQHandler), (8 bytes).
     Removing main.o(.text), (0 bytes).
     Removing main.o(.ARM.exidx.text.main), (8 bytes).
+    Removing main.o(.ARM.exidx.text.do_mpa_task), (8 bytes).
     Removing main.o(.text.request_data), (152 bytes).
     Removing main.o(.ARM.exidx.text.request_data), (8 bytes).
-    Removing main.o(.text.do_mpa_task), (436 bytes).
-    Removing main.o(.ARM.exidx.text.do_mpa_task), (8 bytes).
     Removing main.o(.ARM.use_no_argv), (4 bytes).
     Removing rs422_protocol.o(.text), (0 bytes).
     Removing rs422_protocol.o(.text.transmit_packet), (356 bytes).
@@ -691,7 +683,6 @@ Removing Unused input sections from the image.
     Removing spi.o(.ARM.exidx.text.spi_receive_halfword), (8 bytes).
     Removing spi.o(.ARM.exidx.text.spi_clean_fifo_rx_buf), (8 bytes).
     Removing spi.o(.ARM.exidx.text.dma_spi_rx_init), (8 bytes).
-    Removing spi.o(.ARM.exidx.text.SSP1_IRQHandler), (8 bytes).
     Removing system_mdr32f1qi.o(.text), (0 bytes).
     Removing system_mdr32f1qi.o(.ARM.exidx.text.SystemCoreClockUpdate), (8 bytes).
     Removing system_mdr32f1qi.o(.ARM.exidx.text.SystemInit), (8 bytes).
@@ -872,6 +863,7 @@ Removing Unused input sections from the image.
     Removing mdr32fxqi_ssp.o(.ARM.exidx.text.SSP_GetITStatus), (8 bytes).
     Removing mdr32fxqi_ssp.o(.text.SSP_GetITStatusMasked), (50 bytes).
     Removing mdr32fxqi_ssp.o(.ARM.exidx.text.SSP_GetITStatusMasked), (8 bytes).
+    Removing mdr32fxqi_ssp.o(.text.SSP_ClearITPendingBit), (22 bytes).
     Removing mdr32fxqi_ssp.o(.ARM.exidx.text.SSP_ClearITPendingBit), (8 bytes).
     Removing mdr32fxqi_ssp.o(.ARM.exidx.text.SSP_DMACmd), (8 bytes).
     Removing mdr32fxqi_ssp.o(.ARM.exidx.text.SSP_SendData), (8 bytes).
@@ -1012,7 +1004,7 @@ Removing Unused input sections from the image.
     Removing mdr32fxqi_uart.o(.ARM.exidx.text.UART_GetFlagStatus), (8 bytes).
     Removing mdr32fxqi_uart.o(.ARM.exidx.text.UART_BRGInit), (8 bytes).
 
-401 unused section(s) (total 15802 bytes) removed from the image.
+400 unused section(s) (total 15380 bytes) removed from the image.
 
 ==============================================================================
 
@@ -1168,287 +1160,286 @@ Image Symbol Table
     .text                                    0x000002dc   Section        0  strncpy.o(.text)
     .text                                    0x00000348   Section      364  aeabi_sdiv.o(.text)
     .text                                    0x000004b4   Section        0  heapauxi.o(.text)
-    .text                                    0x000004ba   Section       62  sys_stackheap_outer.o(.text)
-    .text                                    0x000004f8   Section        0  exit.o(.text)
-    .text                                    0x00000508   Section        8  libspace.o(.text)
-    .text                                    0x00000510   Section        0  sys_exit.o(.text)
-    .text                                    0x0000051c   Section        2  use_no_semi.o(.text)
-    .text                                    0x0000051e   Section        0  indicate_semi.o(.text)
-    .text                                    0x0000051e   Section        0  __dczerorl.o(.text)
-    [Anonymous Symbol]                       0x00000558   Section        0  clock.o(.text.CLOCK_Init)
-    [Anonymous Symbol]                       0x000005b0   Section        0  mdr32fxqi_dma.o(.text.DMA_Cmd)
-    [Anonymous Symbol]                       0x000005e4   Section        0  mdr32fxqi_dma.o(.text.DMA_CtrlDataInit)
-    [Anonymous Symbol]                       0x00000684   Section        0  mdr32fxqi_dma.o(.text.DMA_DeInit)
-    __arm_cp.0_2                             0x000006c0   Number         4  mdr32fxqi_dma.o(.text.DMA_DeInit)
-    __arm_cp.0_5                             0x000006c4   Number         4  mdr32fxqi_dma.o(.text.DMA_DeInit)
-    [Anonymous Symbol]                       0x000006c8   Section        0  mdr32fxqi_dma.o(.text.DMA_GetFlagStatus)
-    __arm_cp.13_3                            0x000007b0   Number         4  mdr32fxqi_dma.o(.text.DMA_GetFlagStatus)
-    __arm_cp.13_4                            0x000007b4   Number         4  mdr32fxqi_dma.o(.text.DMA_GetFlagStatus)
-    __arm_cp.13_5                            0x000007b8   Number         4  mdr32fxqi_dma.o(.text.DMA_GetFlagStatus)
-    __arm_cp.13_6                            0x000007bc   Number         4  mdr32fxqi_dma.o(.text.DMA_GetFlagStatus)
-    __arm_cp.13_7                            0x000007c0   Number         4  mdr32fxqi_dma.o(.text.DMA_GetFlagStatus)
-    [Anonymous Symbol]                       0x000007c4   Section        0  dma.o(.text.DMA_IRQHandler)
-    __arm_cp.1_0                             0x000008d0   Number         4  dma.o(.text.DMA_IRQHandler)
-    __arm_cp.1_1                             0x000008d4   Number         4  dma.o(.text.DMA_IRQHandler)
-    __arm_cp.1_2                             0x000008d8   Number         4  dma.o(.text.DMA_IRQHandler)
-    __arm_cp.1_3                             0x000008dc   Number         4  dma.o(.text.DMA_IRQHandler)
-    __arm_cp.1_4                             0x000008e0   Number         4  dma.o(.text.DMA_IRQHandler)
-    __arm_cp.1_5                             0x000008e4   Number         4  dma.o(.text.DMA_IRQHandler)
-    [Anonymous Symbol]                       0x000008e8   Section        0  mdr32fxqi_dma.o(.text.DMA_Init)
-    __arm_cp.6_0                             0x000009d4   Number         4  mdr32fxqi_dma.o(.text.DMA_Init)
-    __arm_cp.6_1                             0x000009d8   Number         4  mdr32fxqi_dma.o(.text.DMA_Init)
-    __arm_cp.6_2                             0x000009dc   Number         4  mdr32fxqi_dma.o(.text.DMA_Init)
-    __arm_cp.6_3                             0x000009e0   Number         4  mdr32fxqi_dma.o(.text.DMA_Init)
-    __arm_cp.6_5                             0x000009e4   Number         4  mdr32fxqi_dma.o(.text.DMA_Init)
-    __arm_cp.6_7                             0x000009e8   Number         4  mdr32fxqi_dma.o(.text.DMA_Init)
-    __arm_cp.6_8                             0x000009ec   Number         4  mdr32fxqi_dma.o(.text.DMA_Init)
-    __arm_cp.6_9                             0x000009f0   Number         4  mdr32fxqi_dma.o(.text.DMA_Init)
-    __arm_cp.6_10                            0x000009f4   Number         4  mdr32fxqi_dma.o(.text.DMA_Init)
-    __arm_cp.6_11                            0x000009f8   Number         4  mdr32fxqi_dma.o(.text.DMA_Init)
-    [Anonymous Symbol]                       0x000009fc   Section        0  mdr32fxqi_dma.o(.text.DMA_StructInit)
-    [Anonymous Symbol]                       0x00000a20   Section        0  uart.o(.text.DMA_UART_RX_init)
-    __arm_cp.11_0                            0x00000acc   Number         4  uart.o(.text.DMA_UART_RX_init)
-    __arm_cp.11_1                            0x00000ad0   Number         4  uart.o(.text.DMA_UART_RX_init)
-    [Anonymous Symbol]                       0x00000ad4   Section        0  dma.o(.text.DMA_common_init)
-    __arm_cp.0_0                             0x00000afc   Number         4  dma.o(.text.DMA_common_init)
-    __arm_cp.0_1                             0x00000b00   Number         4  dma.o(.text.DMA_common_init)
-    __arm_cp.0_2                             0x00000b04   Number         4  dma.o(.text.DMA_common_init)
-    __arm_cp.0_3                             0x00000b08   Number         4  dma.o(.text.DMA_common_init)
-    __arm_cp.0_4                             0x00000b0c   Number         4  dma.o(.text.DMA_common_init)
-    __arm_cp.0_5                             0x00000b10   Number         4  dma.o(.text.DMA_common_init)
-    [Anonymous Symbol]                       0x00000b14   Section        0  mdr32fxqi_ebc.o(.text.EBC_Init)
-    __arm_cp.1_0                             0x00000b6c   Number         4  mdr32fxqi_ebc.o(.text.EBC_Init)
-    __arm_cp.1_1                             0x00000b70   Number         4  mdr32fxqi_ebc.o(.text.EBC_Init)
-    [Anonymous Symbol]                       0x00000b74   Section        0  mdr32fxqi_ebc.o(.text.EBC_MemRegionInit)
-    __arm_cp.7_0                             0x00000bb0   Number         4  mdr32fxqi_ebc.o(.text.EBC_MemRegionInit)
-    [Anonymous Symbol]                       0x00000bb4   Section        0  mdr32fxqi_ebc.o(.text.EBC_MemRegionStructInit)
-    [Anonymous Symbol]                       0x00000bd2   Section        0  mdr32fxqi_ebc.o(.text.EBC_StructInit)
-    [Anonymous Symbol]                       0x00000c0c   Section        0  mdr32fxqi_port.o(.text.PORT_Init)
-    __arm_cp.1_0                             0x00000d54   Number         4  mdr32fxqi_port.o(.text.PORT_Init)
-    [Anonymous Symbol]                       0x00000d58   Section        0  mdr32fxqi_port.o(.text.PORT_ResetBits)
-    [Anonymous Symbol]                       0x00000d68   Section        0  mdr32fxqi_port.o(.text.PORT_SetBits)
-    [Anonymous Symbol]                       0x00000d78   Section        0  mdr32fxqi_port.o(.text.PORT_StructInit)
-    __arm_cp.2_0                             0x00000dac   Number         4  mdr32fxqi_port.o(.text.PORT_StructInit)
-    [Anonymous Symbol]                       0x00000db0   Section        0  mdr32fxqi_port.o(.text.PORT_WriteBit)
-    [Anonymous Symbol]                       0x00000dd8   Section        0  mdr32fxqi_rst_clk.o(.text.RST_CLK_CPU_PLLcmd)
-    [Anonymous Symbol]                       0x00000e0c   Section        0  mdr32fxqi_rst_clk.o(.text.RST_CLK_CPU_PLLconfig)
-    __arm_cp.17_1                            0x00000e7c   Number         4  mdr32fxqi_rst_clk.o(.text.RST_CLK_CPU_PLLconfig)
-    [Anonymous Symbol]                       0x00000e80   Section        0  mdr32fxqi_rst_clk.o(.text.RST_CLK_CPU_PLLstatus)
-    [Anonymous Symbol]                       0x00000ee4   Section        0  mdr32fxqi_rst_clk.o(.text.RST_CLK_CPU_PLLuse)
-    [Anonymous Symbol]                       0x00000f1c   Section        0  mdr32fxqi_rst_clk.o(.text.RST_CLK_CPUclkPrescaler)
-    [Anonymous Symbol]                       0x00000f44   Section        0  mdr32fxqi_rst_clk.o(.text.RST_CLK_CPUclkSelection)
-    [Anonymous Symbol]                       0x00000f6c   Section        0  mdr32fxqi_rst_clk.o(.text.RST_CLK_DeInit)
-    [Anonymous Symbol]                       0x00000f90   Section        0  mdr32fxqi_rst_clk.o(.text.RST_CLK_GetClocksFreq)
-    __arm_cp.36_0                            0x000011e4   Number         4  mdr32fxqi_rst_clk.o(.text.RST_CLK_GetClocksFreq)
-    __arm_cp.36_1                            0x000011e8   Number         4  mdr32fxqi_rst_clk.o(.text.RST_CLK_GetClocksFreq)
-    __arm_cp.36_2                            0x000011ec   Number         4  mdr32fxqi_rst_clk.o(.text.RST_CLK_GetClocksFreq)
-    __arm_cp.36_3                            0x000011f0   Number         4  mdr32fxqi_rst_clk.o(.text.RST_CLK_GetClocksFreq)
-    __arm_cp.36_4                            0x000011f4   Number         4  mdr32fxqi_rst_clk.o(.text.RST_CLK_GetClocksFreq)
-    [Anonymous Symbol]                       0x000011f8   Section        0  mdr32fxqi_rst_clk.o(.text.RST_CLK_GetFlagStatus)
-    __arm_cp.8_1                             0x00001248   Number         4  mdr32fxqi_rst_clk.o(.text.RST_CLK_GetFlagStatus)
-    [Anonymous Symbol]                       0x0000124c   Section        0  mdr32fxqi_rst_clk.o(.text.RST_CLK_HSEconfig)
-    [Anonymous Symbol]                       0x00001290   Section        0  mdr32fxqi_rst_clk.o(.text.RST_CLK_HSEstatus)
-    [Anonymous Symbol]                       0x000012f4   Section        0  mdr32fxqi_rst_clk.o(.text.RST_CLK_HSIcmd)
-    __arm_cp.3_0                             0x00001330   Number         4  mdr32fxqi_rst_clk.o(.text.RST_CLK_HSIcmd)
-    [Anonymous Symbol]                       0x00001334   Section        0  mdr32fxqi_rst_clk.o(.text.RST_CLK_HSIstatus)
-    [Anonymous Symbol]                       0x00001398   Section        0  mdr32fxqi_rst_clk.o(.text.RST_CLK_PCLKcmd)
-    [Anonymous Symbol]                       0x000013c4   Section        0  mdr32fxqi_rst_clk.o(.text.RST_CLK_WarmDeInit)
-    __arm_cp.1_0                             0x00001428   Number         4  mdr32fxqi_rst_clk.o(.text.RST_CLK_WarmDeInit)
-    __arm_cp.1_1                             0x0000142c   Number         4  mdr32fxqi_rst_clk.o(.text.RST_CLK_WarmDeInit)
-    __arm_cp.1_2                             0x00001430   Number         4  mdr32fxqi_rst_clk.o(.text.RST_CLK_WarmDeInit)
-    __arm_cp.1_3                             0x00001434   Number         4  mdr32fxqi_rst_clk.o(.text.RST_CLK_WarmDeInit)
-    __arm_cp.1_4                             0x00001438   Number         4  mdr32fxqi_rst_clk.o(.text.RST_CLK_WarmDeInit)
-    __arm_cp.1_5                             0x0000143c   Number         4  mdr32fxqi_rst_clk.o(.text.RST_CLK_WarmDeInit)
-    __arm_cp.1_6                             0x00001440   Number         4  mdr32fxqi_rst_clk.o(.text.RST_CLK_WarmDeInit)
-    __arm_cp.1_7                             0x00001444   Number         4  mdr32fxqi_rst_clk.o(.text.RST_CLK_WarmDeInit)
-    __arm_cp.1_8                             0x00001448   Number         4  mdr32fxqi_rst_clk.o(.text.RST_CLK_WarmDeInit)
-    __arm_cp.1_9                             0x0000144c   Number         4  mdr32fxqi_rst_clk.o(.text.RST_CLK_WarmDeInit)
-    __arm_cp.1_10                            0x00001450   Number         4  mdr32fxqi_rst_clk.o(.text.RST_CLK_WarmDeInit)
-    __arm_cp.1_12                            0x00001454   Number         4  mdr32fxqi_rst_clk.o(.text.RST_CLK_WarmDeInit)
-    [Anonymous Symbol]                       0x00001458   Section        0  spi.o(.text.SSP1_IRQHandler)
-    __arm_cp.8_0                             0x00001610   Number         4  spi.o(.text.SSP1_IRQHandler)
-    __arm_cp.8_1                             0x00001614   Number         4  spi.o(.text.SSP1_IRQHandler)
-    __arm_cp.8_2                             0x00001618   Number         4  spi.o(.text.SSP1_IRQHandler)
-    __arm_cp.8_3                             0x0000161c   Number         4  spi.o(.text.SSP1_IRQHandler)
-    __arm_cp.8_4                             0x00001620   Number         4  spi.o(.text.SSP1_IRQHandler)
-    __arm_cp.8_5                             0x00001624   Number         4  spi.o(.text.SSP1_IRQHandler)
-    [Anonymous Symbol]                       0x00001628   Section        0  mdr32fxqi_ssp.o(.text.SSP_BRGInit)
-    __arm_cp.12_0                            0x000016c4   Number         4  mdr32fxqi_ssp.o(.text.SSP_BRGInit)
-    __arm_cp.12_1                            0x000016c8   Number         4  mdr32fxqi_ssp.o(.text.SSP_BRGInit)
-    __arm_cp.12_2                            0x000016cc   Number         4  mdr32fxqi_ssp.o(.text.SSP_BRGInit)
-    __arm_cp.12_3                            0x000016d0   Number         4  mdr32fxqi_ssp.o(.text.SSP_BRGInit)
-    [Anonymous Symbol]                       0x000016d4   Section        0  mdr32fxqi_ssp.o(.text.SSP_ClearITPendingBit)
-    [Anonymous Symbol]                       0x000016ec   Section        0  mdr32fxqi_ssp.o(.text.SSP_Cmd)
-    __arm_cp.3_0                             0x00001718   Number         4  mdr32fxqi_ssp.o(.text.SSP_Cmd)
-    [Anonymous Symbol]                       0x0000171c   Section        0  mdr32fxqi_ssp.o(.text.SSP_DMACmd)
-    [Anonymous Symbol]                       0x0000174c   Section        0  mdr32fxqi_ssp.o(.text.SSP_GetFlagStatus)
-    [Anonymous Symbol]                       0x0000177e   Section        0  mdr32fxqi_ssp.o(.text.SSP_ITConfig)
-    [Anonymous Symbol]                       0x000017ac   Section        0  mdr32fxqi_ssp.o(.text.SSP_Init)
-    [Anonymous Symbol]                       0x000017ec   Section        0  mdr32fxqi_ssp.o(.text.SSP_SendData)
-    [Anonymous Symbol]                       0x000017fe   Section        0  mdr32fxqi_ssp.o(.text.SSP_StructInit)
-    [Anonymous Symbol]                       0x0000182c   Section        0  system_mdr32f1qi.o(.text.SystemCoreClockUpdate)
-    __arm_cp.0_1                             0x000018dc   Number         4  system_mdr32f1qi.o(.text.SystemCoreClockUpdate)
-    __arm_cp.0_2                             0x000018e0   Number         4  system_mdr32f1qi.o(.text.SystemCoreClockUpdate)
-    __arm_cp.0_4                             0x000018e4   Number         4  system_mdr32f1qi.o(.text.SystemCoreClockUpdate)
-    __arm_cp.0_5                             0x000018e8   Number         4  system_mdr32f1qi.o(.text.SystemCoreClockUpdate)
-    [Anonymous Symbol]                       0x000018ec   Section        0  system_mdr32f1qi.o(.text.SystemInit)
-    __arm_cp.1_0                             0x00001928   Number         4  system_mdr32f1qi.o(.text.SystemInit)
-    __arm_cp.1_1                             0x0000192c   Number         4  system_mdr32f1qi.o(.text.SystemInit)
-    __arm_cp.1_2                             0x00001930   Number         4  system_mdr32f1qi.o(.text.SystemInit)
-    __arm_cp.1_3                             0x00001934   Number         4  system_mdr32f1qi.o(.text.SystemInit)
-    __arm_cp.1_4                             0x00001938   Number         4  system_mdr32f1qi.o(.text.SystemInit)
-    __arm_cp.1_5                             0x0000193c   Number         4  system_mdr32f1qi.o(.text.SystemInit)
-    __arm_cp.1_6                             0x00001940   Number         4  system_mdr32f1qi.o(.text.SystemInit)
-    __arm_cp.1_7                             0x00001944   Number         4  system_mdr32f1qi.o(.text.SystemInit)
-    __arm_cp.1_10                            0x00001948   Number         4  system_mdr32f1qi.o(.text.SystemInit)
-    __arm_cp.1_11                            0x0000194c   Number         4  system_mdr32f1qi.o(.text.SystemInit)
-    [Anonymous Symbol]                       0x00001950   Section        0  timer.o(.text.TIMER2_IRQHandler)
-    __arm_cp.5_0                             0x00001a68   Number         4  timer.o(.text.TIMER2_IRQHandler)
-    __arm_cp.5_1                             0x00001a6c   Number         4  timer.o(.text.TIMER2_IRQHandler)
-    __arm_cp.5_2                             0x00001a70   Number         4  timer.o(.text.TIMER2_IRQHandler)
-    __arm_cp.5_3                             0x00001a74   Number         4  timer.o(.text.TIMER2_IRQHandler)
-    __arm_cp.5_4                             0x00001a78   Number         4  timer.o(.text.TIMER2_IRQHandler)
-    [Anonymous Symbol]                       0x00001a7c   Section        0  mdr32fxqi_timer.o(.text.TIMER_BRGInit)
-    __arm_cp.57_0                            0x00001b70   Number         4  mdr32fxqi_timer.o(.text.TIMER_BRGInit)
-    __arm_cp.57_1                            0x00001b74   Number         4  mdr32fxqi_timer.o(.text.TIMER_BRGInit)
-    __arm_cp.57_2                            0x00001b78   Number         4  mdr32fxqi_timer.o(.text.TIMER_BRGInit)
-    __arm_cp.57_3                            0x00001b7c   Number         4  mdr32fxqi_timer.o(.text.TIMER_BRGInit)
-    __arm_cp.57_4                            0x00001b80   Number         4  mdr32fxqi_timer.o(.text.TIMER_BRGInit)
-    __arm_cp.57_5                            0x00001b84   Number         4  mdr32fxqi_timer.o(.text.TIMER_BRGInit)
-    [Anonymous Symbol]                       0x00001b88   Section        0  mdr32fxqi_timer.o(.text.TIMER_ChnCCR1_Cmd)
-    [Anonymous Symbol]                       0x00001bd8   Section        0  mdr32fxqi_timer.o(.text.TIMER_ChnInit)
-    [Anonymous Symbol]                       0x00001c52   Section        0  mdr32fxqi_timer.o(.text.TIMER_ChnStructInit)
-    [Anonymous Symbol]                       0x00001c8c   Section        0  mdr32fxqi_timer.o(.text.TIMER_ClearFlag)
-    [Anonymous Symbol]                       0x00001c9e   Section        0  mdr32fxqi_timer.o(.text.TIMER_Cmd)
-    [Anonymous Symbol]                       0x00001cd2   Section        0  mdr32fxqi_timer.o(.text.TIMER_CntInit)
-    [Anonymous Symbol]                       0x00001d2a   Section        0  mdr32fxqi_timer.o(.text.TIMER_CntStructInit)
-    [Anonymous Symbol]                       0x00001d64   Section        0  mdr32fxqi_timer.o(.text.TIMER_GetCounter)
-    [Anonymous Symbol]                       0x00001d70   Section        0  mdr32fxqi_timer.o(.text.TIMER_GetITStatus)
-    [Anonymous Symbol]                       0x00001daa   Section        0  mdr32fxqi_timer.o(.text.TIMER_ITConfig)
-    [Anonymous Symbol]                       0x00001de0   Section        0  mdr32fxqi_timer.o(.text.TIMER_SetCounter)
-    [Anonymous Symbol]                       0x00001df0   Section        0  uart.o(.text.UART1_IRQHandler)
-    __arm_cp.0_0                             0x00001e30   Number         4  uart.o(.text.UART1_IRQHandler)
-    [Anonymous Symbol]                       0x00001e34   Section        0  uart.o(.text.UART2_IRQHandler)
-    __arm_cp.1_0                             0x00001e74   Number         4  uart.o(.text.UART2_IRQHandler)
-    __arm_cp.1_1                             0x00001e78   Number         4  uart.o(.text.UART2_IRQHandler)
-    [Anonymous Symbol]                       0x00001e7c   Section        0  mdr32fxqi_uart.o(.text.UART_BRGInit)
-    __arm_cp.16_0                            0x00001eec   Number         4  mdr32fxqi_uart.o(.text.UART_BRGInit)
-    [Anonymous Symbol]                       0x00001ef0   Section        0  mdr32fxqi_uart.o(.text.UART_ClearITPendingBit)
-    [Anonymous Symbol]                       0x00001f04   Section        0  mdr32fxqi_uart.o(.text.UART_Cmd)
-    __arm_cp.3_0                             0x00001f30   Number         4  mdr32fxqi_uart.o(.text.UART_Cmd)
-    [Anonymous Symbol]                       0x00001f34   Section        0  mdr32fxqi_uart.o(.text.UART_DMACmd)
-    [Anonymous Symbol]                       0x00001f64   Section        0  mdr32fxqi_uart.o(.text.UART_GetFlagStatus)
-    [Anonymous Symbol]                       0x00001f96   Section        0  mdr32fxqi_uart.o(.text.UART_ITConfig)
-    [Anonymous Symbol]                       0x00001fc4   Section        0  mdr32fxqi_uart.o(.text.UART_Init)
-    __arm_cp.1_0                             0x000020c8   Number         4  mdr32fxqi_uart.o(.text.UART_Init)
-    __arm_cp.1_1                             0x000020cc   Number         4  mdr32fxqi_uart.o(.text.UART_Init)
-    __arm_cp.1_2                             0x000020d0   Number         4  mdr32fxqi_uart.o(.text.UART_Init)
-    __arm_cp.1_3                             0x000020d4   Number         4  mdr32fxqi_uart.o(.text.UART_Init)
-    [Anonymous Symbol]                       0x000020d8   Section        0  mdr32fxqi_uart.o(.text.UART_ReceiveData)
-    __NVIC_ClearPendingIRQ                   0x000020e9   Thumb Code    40  mdr32fxqi_dma.o(.text.__NVIC_ClearPendingIRQ)
-    [Anonymous Symbol]                       0x000020e8   Section        0  mdr32fxqi_dma.o(.text.__NVIC_ClearPendingIRQ)
-    __arm_cp.1_0                             0x00002110   Number         4  mdr32fxqi_dma.o(.text.__NVIC_ClearPendingIRQ)
-    __NVIC_DisableIRQ                        0x00002115   Thumb Code    48  spi.o(.text.__NVIC_DisableIRQ)
-    [Anonymous Symbol]                       0x00002114   Section        0  spi.o(.text.__NVIC_DisableIRQ)
-    __arm_cp.2_0                             0x00002144   Number         4  spi.o(.text.__NVIC_DisableIRQ)
-    __NVIC_EnableIRQ                         0x00002149   Thumb Code    40  timer.o(.text.__NVIC_EnableIRQ)
-    [Anonymous Symbol]                       0x00002148   Section        0  timer.o(.text.__NVIC_EnableIRQ)
-    __NVIC_EnableIRQ                         0x00002171   Thumb Code    40  uart.o(.text.__NVIC_EnableIRQ)
-    [Anonymous Symbol]                       0x00002170   Section        0  uart.o(.text.__NVIC_EnableIRQ)
-    __arm_cp.4_0                             0x00002198   Number         4  uart.o(.text.__NVIC_EnableIRQ)
-    [Anonymous Symbol]                       0x0000219c   Section        0  1273pv19t.o(.text.adc_gpio_config)
-    __arm_cp.0_0                             0x0000224c   Number         4  1273pv19t.o(.text.adc_gpio_config)
-    [Anonymous Symbol]                       0x00002250   Section        0  1273pv19t.o(.text.adc_init)
-    __arm_cp.1_1                             0x000022e0   Number         4  1273pv19t.o(.text.adc_init)
-    __arm_cp.1_2                             0x000022e4   Number         4  1273pv19t.o(.text.adc_init)
-    __arm_cp.1_3                             0x000022e8   Number         4  1273pv19t.o(.text.adc_init)
-    __arm_cp.1_4                             0x000022ec   Number         4  1273pv19t.o(.text.adc_init)
-    __arm_cp.1_5                             0x000022f0   Number         4  1273pv19t.o(.text.adc_init)
-    [Anonymous Symbol]                       0x000022f4   Section        0  1273pv19t.o(.text.adc_reset)
-    [Anonymous Symbol]                       0x00002318   Section        0  timer.o(.text.delay_micro)
-    __arm_cp.7_0                             0x00002344   Number         4  timer.o(.text.delay_micro)
-    [Anonymous Symbol]                       0x00002348   Section        0  timer.o(.text.delay_milli)
-    __arm_cp.6_0                             0x00002370   Number         4  timer.o(.text.delay_milli)
-    [Anonymous Symbol]                       0x00002374   Section        0  spi.o(.text.dma_spi_rx_init)
-    __arm_cp.7_0                             0x00002418   Number         4  spi.o(.text.dma_spi_rx_init)
-    __arm_cp.7_1                             0x0000241c   Number         4  spi.o(.text.dma_spi_rx_init)
-    [Anonymous Symbol]                       0x00002420   Section        0  ebc.o(.text.ebc_gpio_config)
-    __arm_cp.0_0                             0x00002518   Number         4  ebc.o(.text.ebc_gpio_config)
-    __arm_cp.0_1                             0x0000251c   Number         4  ebc.o(.text.ebc_gpio_config)
-    __arm_cp.0_2                             0x00002520   Number         4  ebc.o(.text.ebc_gpio_config)
-    __arm_cp.0_3                             0x00002524   Number         4  ebc.o(.text.ebc_gpio_config)
-    __arm_cp.0_4                             0x00002528   Number         4  ebc.o(.text.ebc_gpio_config)
-    __arm_cp.0_5                             0x0000252c   Number         4  ebc.o(.text.ebc_gpio_config)
-    __arm_cp.0_6                             0x00002530   Number         4  ebc.o(.text.ebc_gpio_config)
-    __arm_cp.0_7                             0x00002534   Number         4  ebc.o(.text.ebc_gpio_config)
-    [Anonymous Symbol]                       0x00002538   Section        0  ebc.o(.text.ebc_init)
-    [Anonymous Symbol]                       0x0000257c   Section        0  rs422_protocol.o(.text.fill_crc32_table)
-    __arm_cp.5_0                             0x000025f8   Number         4  rs422_protocol.o(.text.fill_crc32_table)
-    __arm_cp.5_1                             0x000025fc   Number         4  rs422_protocol.o(.text.fill_crc32_table)
-    __arm_cp.5_2                             0x00002600   Number         4  rs422_protocol.o(.text.fill_crc32_table)
-    [Anonymous Symbol]                       0x00002604   Section        0  external_ram.o(.text.find_max_halfword)
-    [Anonymous Symbol]                       0x00002650   Section        0  external_ram.o(.text.init_external_ram_space)
-    __arm_cp.0_17                            0x0000295c   Number         4  external_ram.o(.text.init_external_ram_space)
-    __arm_cp.0_18                            0x00002960   Number         4  external_ram.o(.text.init_external_ram_space)
-    __arm_cp.0_3                             0x00002ab8   Number         4  external_ram.o(.text.init_external_ram_space)
-    __arm_cp.0_4                             0x00002abc   Number         4  external_ram.o(.text.init_external_ram_space)
-    __arm_cp.0_5                             0x00002ac0   Number         4  external_ram.o(.text.init_external_ram_space)
-    __arm_cp.0_6                             0x00002ac4   Number         4  external_ram.o(.text.init_external_ram_space)
-    __arm_cp.0_7                             0x00002ac8   Number         4  external_ram.o(.text.init_external_ram_space)
-    __arm_cp.0_8                             0x00002acc   Number         4  external_ram.o(.text.init_external_ram_space)
-    __arm_cp.0_9                             0x00002ad0   Number         4  external_ram.o(.text.init_external_ram_space)
-    __arm_cp.0_10                            0x00002ad4   Number         4  external_ram.o(.text.init_external_ram_space)
-    __arm_cp.0_11                            0x00002ad8   Number         4  external_ram.o(.text.init_external_ram_space)
-    __arm_cp.0_12                            0x00002adc   Number         4  external_ram.o(.text.init_external_ram_space)
-    __arm_cp.0_13                            0x00002ae0   Number         4  external_ram.o(.text.init_external_ram_space)
-    __arm_cp.0_14                            0x00002ae4   Number         4  external_ram.o(.text.init_external_ram_space)
-    __arm_cp.0_15                            0x00002ae8   Number         4  external_ram.o(.text.init_external_ram_space)
-    [Anonymous Symbol]                       0x00002aec   Section        0  main.o(.text.main)
-    __arm_cp.0_0                             0x00002cb4   Number         4  main.o(.text.main)
-    __arm_cp.0_1                             0x00002cb8   Number         4  main.o(.text.main)
-    __arm_cp.0_2                             0x00002cbc   Number         4  main.o(.text.main)
-    __arm_cp.0_3                             0x00002cc0   Number         4  main.o(.text.main)
-    __arm_cp.0_4                             0x00002cc4   Number         4  main.o(.text.main)
-    __arm_cp.0_5                             0x00002cc8   Number         4  main.o(.text.main)
-    __arm_cp.0_6                             0x00002ccc   Number         4  main.o(.text.main)
-    __arm_cp.0_7                             0x00002cd0   Number         4  main.o(.text.main)
-    __arm_cp.0_8                             0x00002cd4   Number         4  main.o(.text.main)
-    __arm_cp.0_9                             0x00002cd8   Number         4  main.o(.text.main)
-    __arm_cp.0_10                            0x00002cdc   Number         4  main.o(.text.main)
-    __arm_cp.0_11                            0x00002ce0   Number         4  main.o(.text.main)
-    __arm_cp.0_12                            0x00002ce4   Number         4  main.o(.text.main)
-    __arm_cp.0_13                            0x00002ce8   Number         4  main.o(.text.main)
-    __arm_cp.0_14                            0x00002cec   Number         4  main.o(.text.main)
-    __arm_cp.0_15                            0x00002cf0   Number         4  main.o(.text.main)
-    __arm_cp.0_16                            0x00002cf4   Number         4  main.o(.text.main)
-    __arm_cp.0_17                            0x00002cf8   Number         4  main.o(.text.main)
-    __arm_cp.0_18                            0x00002cfc   Number         4  main.o(.text.main)
-    __arm_cp.0_19                            0x00002d00   Number         4  main.o(.text.main)
-    __arm_cp.0_20                            0x00002d04   Number         4  main.o(.text.main)
-    [Anonymous Symbol]                       0x00002d08   Section        0  spi.o(.text.spi_clean_fifo_rx_buf)
-    [Anonymous Symbol]                       0x00002d30   Section        0  spi.o(.text.spi_gpio_config)
-    __arm_cp.0_0                             0x00002dac   Number         4  spi.o(.text.spi_gpio_config)
-    [Anonymous Symbol]                       0x00002db0   Section        0  spi.o(.text.spi_init)
-    [Anonymous Symbol]                       0x00002e34   Section        0  timer.o(.text.timer1_init)
-    [Anonymous Symbol]                       0x00002e7e   Section        0  timer.o(.text.timer2_init)
-    [Anonymous Symbol]                       0x00002f46   Section        0  timer.o(.text.timer3_init)
-    [Anonymous Symbol]                       0x00002f90   Section        0  timer.o(.text.timer_init)
-    __arm_cp.4_0                             0x00002fdc   Number         4  timer.o(.text.timer_init)
-    __arm_cp.4_1                             0x00002fe0   Number         4  timer.o(.text.timer_init)
-    __arm_cp.4_2                             0x00002fe4   Number         4  timer.o(.text.timer_init)
-    [Anonymous Symbol]                       0x00002fe8   Section        0  uart.o(.text.uart_gpio_config)
-    __arm_cp.2_0                             0x000030b8   Number         4  uart.o(.text.uart_gpio_config)
-    __arm_cp.2_1                             0x000030bc   Number         4  uart.o(.text.uart_gpio_config)
-    __arm_cp.2_2                             0x000030c0   Number         4  uart.o(.text.uart_gpio_config)
-    [Anonymous Symbol]                       0x000030c4   Section        0  uart.o(.text.uart_init)
-    [Anonymous Symbol]                       0x00003172   Section        0  uart.o(.text.uart_set_read_timeout)
-    [Anonymous Symbol]                       0x00003188   Section        0  external_ram.o(.rodata.str1.1)
+    .text                                    0x000004ba   Section        0  fflti.o(.text)
+    .text                                    0x00000518   Section       62  sys_stackheap_outer.o(.text)
+    .text                                    0x00000556   Section        0  exit.o(.text)
+    .text                                    0x00000568   Section        8  libspace.o(.text)
+    .text                                    0x00000570   Section        0  sys_exit.o(.text)
+    .text                                    0x0000057c   Section        2  use_no_semi.o(.text)
+    .text                                    0x0000057e   Section        0  indicate_semi.o(.text)
+    .text                                    0x0000057e   Section        0  __dczerorl.o(.text)
+    [Anonymous Symbol]                       0x000005b8   Section        0  clock.o(.text.CLOCK_Init)
+    [Anonymous Symbol]                       0x00000610   Section        0  mdr32fxqi_dma.o(.text.DMA_Cmd)
+    [Anonymous Symbol]                       0x00000644   Section        0  mdr32fxqi_dma.o(.text.DMA_CtrlDataInit)
+    [Anonymous Symbol]                       0x000006e4   Section        0  mdr32fxqi_dma.o(.text.DMA_DeInit)
+    __arm_cp.0_2                             0x00000720   Number         4  mdr32fxqi_dma.o(.text.DMA_DeInit)
+    __arm_cp.0_5                             0x00000724   Number         4  mdr32fxqi_dma.o(.text.DMA_DeInit)
+    [Anonymous Symbol]                       0x00000728   Section        0  mdr32fxqi_dma.o(.text.DMA_GetFlagStatus)
+    __arm_cp.13_3                            0x00000810   Number         4  mdr32fxqi_dma.o(.text.DMA_GetFlagStatus)
+    __arm_cp.13_4                            0x00000814   Number         4  mdr32fxqi_dma.o(.text.DMA_GetFlagStatus)
+    __arm_cp.13_5                            0x00000818   Number         4  mdr32fxqi_dma.o(.text.DMA_GetFlagStatus)
+    __arm_cp.13_6                            0x0000081c   Number         4  mdr32fxqi_dma.o(.text.DMA_GetFlagStatus)
+    __arm_cp.13_7                            0x00000820   Number         4  mdr32fxqi_dma.o(.text.DMA_GetFlagStatus)
+    [Anonymous Symbol]                       0x00000824   Section        0  dma.o(.text.DMA_IRQHandler)
+    __arm_cp.1_0                             0x00000930   Number         4  dma.o(.text.DMA_IRQHandler)
+    __arm_cp.1_1                             0x00000934   Number         4  dma.o(.text.DMA_IRQHandler)
+    __arm_cp.1_2                             0x00000938   Number         4  dma.o(.text.DMA_IRQHandler)
+    __arm_cp.1_3                             0x0000093c   Number         4  dma.o(.text.DMA_IRQHandler)
+    __arm_cp.1_4                             0x00000940   Number         4  dma.o(.text.DMA_IRQHandler)
+    __arm_cp.1_5                             0x00000944   Number         4  dma.o(.text.DMA_IRQHandler)
+    [Anonymous Symbol]                       0x00000948   Section        0  mdr32fxqi_dma.o(.text.DMA_Init)
+    __arm_cp.6_0                             0x00000a34   Number         4  mdr32fxqi_dma.o(.text.DMA_Init)
+    __arm_cp.6_1                             0x00000a38   Number         4  mdr32fxqi_dma.o(.text.DMA_Init)
+    __arm_cp.6_2                             0x00000a3c   Number         4  mdr32fxqi_dma.o(.text.DMA_Init)
+    __arm_cp.6_3                             0x00000a40   Number         4  mdr32fxqi_dma.o(.text.DMA_Init)
+    __arm_cp.6_5                             0x00000a44   Number         4  mdr32fxqi_dma.o(.text.DMA_Init)
+    __arm_cp.6_7                             0x00000a48   Number         4  mdr32fxqi_dma.o(.text.DMA_Init)
+    __arm_cp.6_8                             0x00000a4c   Number         4  mdr32fxqi_dma.o(.text.DMA_Init)
+    __arm_cp.6_9                             0x00000a50   Number         4  mdr32fxqi_dma.o(.text.DMA_Init)
+    __arm_cp.6_10                            0x00000a54   Number         4  mdr32fxqi_dma.o(.text.DMA_Init)
+    __arm_cp.6_11                            0x00000a58   Number         4  mdr32fxqi_dma.o(.text.DMA_Init)
+    [Anonymous Symbol]                       0x00000a5c   Section        0  mdr32fxqi_dma.o(.text.DMA_StructInit)
+    [Anonymous Symbol]                       0x00000a80   Section        0  uart.o(.text.DMA_UART_RX_init)
+    __arm_cp.11_0                            0x00000b2c   Number         4  uart.o(.text.DMA_UART_RX_init)
+    __arm_cp.11_1                            0x00000b30   Number         4  uart.o(.text.DMA_UART_RX_init)
+    [Anonymous Symbol]                       0x00000b34   Section        0  dma.o(.text.DMA_common_init)
+    __arm_cp.0_0                             0x00000b5c   Number         4  dma.o(.text.DMA_common_init)
+    __arm_cp.0_1                             0x00000b60   Number         4  dma.o(.text.DMA_common_init)
+    __arm_cp.0_2                             0x00000b64   Number         4  dma.o(.text.DMA_common_init)
+    __arm_cp.0_3                             0x00000b68   Number         4  dma.o(.text.DMA_common_init)
+    __arm_cp.0_4                             0x00000b6c   Number         4  dma.o(.text.DMA_common_init)
+    __arm_cp.0_5                             0x00000b70   Number         4  dma.o(.text.DMA_common_init)
+    [Anonymous Symbol]                       0x00000b74   Section        0  mdr32fxqi_ebc.o(.text.EBC_Init)
+    __arm_cp.1_0                             0x00000bcc   Number         4  mdr32fxqi_ebc.o(.text.EBC_Init)
+    __arm_cp.1_1                             0x00000bd0   Number         4  mdr32fxqi_ebc.o(.text.EBC_Init)
+    [Anonymous Symbol]                       0x00000bd4   Section        0  mdr32fxqi_ebc.o(.text.EBC_MemRegionInit)
+    __arm_cp.7_0                             0x00000c10   Number         4  mdr32fxqi_ebc.o(.text.EBC_MemRegionInit)
+    [Anonymous Symbol]                       0x00000c14   Section        0  mdr32fxqi_ebc.o(.text.EBC_MemRegionStructInit)
+    [Anonymous Symbol]                       0x00000c32   Section        0  mdr32fxqi_ebc.o(.text.EBC_StructInit)
+    [Anonymous Symbol]                       0x00000c6c   Section        0  mdr32fxqi_port.o(.text.PORT_Init)
+    __arm_cp.1_0                             0x00000db4   Number         4  mdr32fxqi_port.o(.text.PORT_Init)
+    [Anonymous Symbol]                       0x00000db8   Section        0  mdr32fxqi_port.o(.text.PORT_ResetBits)
+    [Anonymous Symbol]                       0x00000dc8   Section        0  mdr32fxqi_port.o(.text.PORT_SetBits)
+    [Anonymous Symbol]                       0x00000dd8   Section        0  mdr32fxqi_port.o(.text.PORT_StructInit)
+    __arm_cp.2_0                             0x00000e0c   Number         4  mdr32fxqi_port.o(.text.PORT_StructInit)
+    [Anonymous Symbol]                       0x00000e10   Section        0  mdr32fxqi_port.o(.text.PORT_WriteBit)
+    [Anonymous Symbol]                       0x00000e38   Section        0  mdr32fxqi_rst_clk.o(.text.RST_CLK_CPU_PLLcmd)
+    [Anonymous Symbol]                       0x00000e6c   Section        0  mdr32fxqi_rst_clk.o(.text.RST_CLK_CPU_PLLconfig)
+    __arm_cp.17_1                            0x00000edc   Number         4  mdr32fxqi_rst_clk.o(.text.RST_CLK_CPU_PLLconfig)
+    [Anonymous Symbol]                       0x00000ee0   Section        0  mdr32fxqi_rst_clk.o(.text.RST_CLK_CPU_PLLstatus)
+    [Anonymous Symbol]                       0x00000f44   Section        0  mdr32fxqi_rst_clk.o(.text.RST_CLK_CPU_PLLuse)
+    [Anonymous Symbol]                       0x00000f7c   Section        0  mdr32fxqi_rst_clk.o(.text.RST_CLK_CPUclkPrescaler)
+    [Anonymous Symbol]                       0x00000fa4   Section        0  mdr32fxqi_rst_clk.o(.text.RST_CLK_CPUclkSelection)
+    [Anonymous Symbol]                       0x00000fcc   Section        0  mdr32fxqi_rst_clk.o(.text.RST_CLK_DeInit)
+    [Anonymous Symbol]                       0x00000ff0   Section        0  mdr32fxqi_rst_clk.o(.text.RST_CLK_GetClocksFreq)
+    __arm_cp.36_0                            0x00001244   Number         4  mdr32fxqi_rst_clk.o(.text.RST_CLK_GetClocksFreq)
+    __arm_cp.36_1                            0x00001248   Number         4  mdr32fxqi_rst_clk.o(.text.RST_CLK_GetClocksFreq)
+    __arm_cp.36_2                            0x0000124c   Number         4  mdr32fxqi_rst_clk.o(.text.RST_CLK_GetClocksFreq)
+    __arm_cp.36_3                            0x00001250   Number         4  mdr32fxqi_rst_clk.o(.text.RST_CLK_GetClocksFreq)
+    __arm_cp.36_4                            0x00001254   Number         4  mdr32fxqi_rst_clk.o(.text.RST_CLK_GetClocksFreq)
+    [Anonymous Symbol]                       0x00001258   Section        0  mdr32fxqi_rst_clk.o(.text.RST_CLK_GetFlagStatus)
+    __arm_cp.8_1                             0x000012a8   Number         4  mdr32fxqi_rst_clk.o(.text.RST_CLK_GetFlagStatus)
+    [Anonymous Symbol]                       0x000012ac   Section        0  mdr32fxqi_rst_clk.o(.text.RST_CLK_HSEconfig)
+    [Anonymous Symbol]                       0x000012f0   Section        0  mdr32fxqi_rst_clk.o(.text.RST_CLK_HSEstatus)
+    [Anonymous Symbol]                       0x00001354   Section        0  mdr32fxqi_rst_clk.o(.text.RST_CLK_HSIcmd)
+    __arm_cp.3_0                             0x00001390   Number         4  mdr32fxqi_rst_clk.o(.text.RST_CLK_HSIcmd)
+    [Anonymous Symbol]                       0x00001394   Section        0  mdr32fxqi_rst_clk.o(.text.RST_CLK_HSIstatus)
+    [Anonymous Symbol]                       0x000013f8   Section        0  mdr32fxqi_rst_clk.o(.text.RST_CLK_PCLKcmd)
+    [Anonymous Symbol]                       0x00001424   Section        0  mdr32fxqi_rst_clk.o(.text.RST_CLK_WarmDeInit)
+    __arm_cp.1_1                             0x00001488   Number         4  mdr32fxqi_rst_clk.o(.text.RST_CLK_WarmDeInit)
+    __arm_cp.1_2                             0x0000148c   Number         4  mdr32fxqi_rst_clk.o(.text.RST_CLK_WarmDeInit)
+    __arm_cp.1_3                             0x00001490   Number         4  mdr32fxqi_rst_clk.o(.text.RST_CLK_WarmDeInit)
+    __arm_cp.1_4                             0x00001494   Number         4  mdr32fxqi_rst_clk.o(.text.RST_CLK_WarmDeInit)
+    __arm_cp.1_5                             0x00001498   Number         4  mdr32fxqi_rst_clk.o(.text.RST_CLK_WarmDeInit)
+    __arm_cp.1_7                             0x0000149c   Number         4  mdr32fxqi_rst_clk.o(.text.RST_CLK_WarmDeInit)
+    [Anonymous Symbol]                       0x000014a0   Section        0  mdr32fxqi_ssp.o(.text.SSP_BRGInit)
+    __arm_cp.12_1                            0x0000153c   Number         4  mdr32fxqi_ssp.o(.text.SSP_BRGInit)
+    __arm_cp.12_2                            0x00001540   Number         4  mdr32fxqi_ssp.o(.text.SSP_BRGInit)
+    __arm_cp.12_3                            0x00001544   Number         4  mdr32fxqi_ssp.o(.text.SSP_BRGInit)
+    [Anonymous Symbol]                       0x00001548   Section        0  mdr32fxqi_ssp.o(.text.SSP_Cmd)
+    __arm_cp.3_0                             0x00001574   Number         4  mdr32fxqi_ssp.o(.text.SSP_Cmd)
+    [Anonymous Symbol]                       0x00001578   Section        0  mdr32fxqi_ssp.o(.text.SSP_DMACmd)
+    [Anonymous Symbol]                       0x000015a8   Section        0  mdr32fxqi_ssp.o(.text.SSP_GetFlagStatus)
+    [Anonymous Symbol]                       0x000015da   Section        0  mdr32fxqi_ssp.o(.text.SSP_ITConfig)
+    [Anonymous Symbol]                       0x00001608   Section        0  mdr32fxqi_ssp.o(.text.SSP_Init)
+    [Anonymous Symbol]                       0x00001648   Section        0  mdr32fxqi_ssp.o(.text.SSP_SendData)
+    [Anonymous Symbol]                       0x0000165a   Section        0  mdr32fxqi_ssp.o(.text.SSP_StructInit)
+    [Anonymous Symbol]                       0x00001688   Section        0  system_mdr32f1qi.o(.text.SystemCoreClockUpdate)
+    __arm_cp.0_1                             0x00001738   Number         4  system_mdr32f1qi.o(.text.SystemCoreClockUpdate)
+    __arm_cp.0_2                             0x0000173c   Number         4  system_mdr32f1qi.o(.text.SystemCoreClockUpdate)
+    __arm_cp.0_4                             0x00001740   Number         4  system_mdr32f1qi.o(.text.SystemCoreClockUpdate)
+    __arm_cp.0_5                             0x00001744   Number         4  system_mdr32f1qi.o(.text.SystemCoreClockUpdate)
+    [Anonymous Symbol]                       0x00001748   Section        0  system_mdr32f1qi.o(.text.SystemInit)
+    __arm_cp.1_0                             0x00001784   Number         4  system_mdr32f1qi.o(.text.SystemInit)
+    __arm_cp.1_1                             0x00001788   Number         4  system_mdr32f1qi.o(.text.SystemInit)
+    __arm_cp.1_2                             0x0000178c   Number         4  system_mdr32f1qi.o(.text.SystemInit)
+    __arm_cp.1_3                             0x00001790   Number         4  system_mdr32f1qi.o(.text.SystemInit)
+    __arm_cp.1_4                             0x00001794   Number         4  system_mdr32f1qi.o(.text.SystemInit)
+    __arm_cp.1_5                             0x00001798   Number         4  system_mdr32f1qi.o(.text.SystemInit)
+    __arm_cp.1_6                             0x0000179c   Number         4  system_mdr32f1qi.o(.text.SystemInit)
+    __arm_cp.1_7                             0x000017a0   Number         4  system_mdr32f1qi.o(.text.SystemInit)
+    __arm_cp.1_8                             0x000017a4   Number         4  system_mdr32f1qi.o(.text.SystemInit)
+    __arm_cp.1_9                             0x000017a8   Number         4  system_mdr32f1qi.o(.text.SystemInit)
+    __arm_cp.1_10                            0x000017ac   Number         4  system_mdr32f1qi.o(.text.SystemInit)
+    __arm_cp.1_11                            0x000017b0   Number         4  system_mdr32f1qi.o(.text.SystemInit)
+    [Anonymous Symbol]                       0x000017b4   Section        0  timer.o(.text.TIMER2_IRQHandler)
+    __arm_cp.5_0                             0x000018cc   Number         4  timer.o(.text.TIMER2_IRQHandler)
+    __arm_cp.5_1                             0x000018d0   Number         4  timer.o(.text.TIMER2_IRQHandler)
+    __arm_cp.5_2                             0x000018d4   Number         4  timer.o(.text.TIMER2_IRQHandler)
+    __arm_cp.5_3                             0x000018d8   Number         4  timer.o(.text.TIMER2_IRQHandler)
+    __arm_cp.5_4                             0x000018dc   Number         4  timer.o(.text.TIMER2_IRQHandler)
+    [Anonymous Symbol]                       0x000018e0   Section        0  mdr32fxqi_timer.o(.text.TIMER_BRGInit)
+    __arm_cp.57_0                            0x000019d4   Number         4  mdr32fxqi_timer.o(.text.TIMER_BRGInit)
+    __arm_cp.57_1                            0x000019d8   Number         4  mdr32fxqi_timer.o(.text.TIMER_BRGInit)
+    __arm_cp.57_2                            0x000019dc   Number         4  mdr32fxqi_timer.o(.text.TIMER_BRGInit)
+    __arm_cp.57_3                            0x000019e0   Number         4  mdr32fxqi_timer.o(.text.TIMER_BRGInit)
+    __arm_cp.57_4                            0x000019e4   Number         4  mdr32fxqi_timer.o(.text.TIMER_BRGInit)
+    __arm_cp.57_5                            0x000019e8   Number         4  mdr32fxqi_timer.o(.text.TIMER_BRGInit)
+    [Anonymous Symbol]                       0x000019ec   Section        0  mdr32fxqi_timer.o(.text.TIMER_ChnCCR1_Cmd)
+    [Anonymous Symbol]                       0x00001a3c   Section        0  mdr32fxqi_timer.o(.text.TIMER_ChnInit)
+    [Anonymous Symbol]                       0x00001ab6   Section        0  mdr32fxqi_timer.o(.text.TIMER_ChnStructInit)
+    [Anonymous Symbol]                       0x00001af0   Section        0  mdr32fxqi_timer.o(.text.TIMER_ClearFlag)
+    [Anonymous Symbol]                       0x00001b02   Section        0  mdr32fxqi_timer.o(.text.TIMER_Cmd)
+    [Anonymous Symbol]                       0x00001b36   Section        0  mdr32fxqi_timer.o(.text.TIMER_CntInit)
+    [Anonymous Symbol]                       0x00001b8e   Section        0  mdr32fxqi_timer.o(.text.TIMER_CntStructInit)
+    [Anonymous Symbol]                       0x00001bc8   Section        0  mdr32fxqi_timer.o(.text.TIMER_GetCounter)
+    [Anonymous Symbol]                       0x00001bd4   Section        0  mdr32fxqi_timer.o(.text.TIMER_GetITStatus)
+    [Anonymous Symbol]                       0x00001c0e   Section        0  mdr32fxqi_timer.o(.text.TIMER_ITConfig)
+    [Anonymous Symbol]                       0x00001c44   Section        0  mdr32fxqi_timer.o(.text.TIMER_SetCounter)
+    [Anonymous Symbol]                       0x00001c54   Section        0  uart.o(.text.UART1_IRQHandler)
+    __arm_cp.0_0                             0x00001c94   Number         4  uart.o(.text.UART1_IRQHandler)
+    [Anonymous Symbol]                       0x00001c98   Section        0  uart.o(.text.UART2_IRQHandler)
+    __arm_cp.1_0                             0x00001cd8   Number         4  uart.o(.text.UART2_IRQHandler)
+    __arm_cp.1_1                             0x00001cdc   Number         4  uart.o(.text.UART2_IRQHandler)
+    [Anonymous Symbol]                       0x00001ce0   Section        0  mdr32fxqi_uart.o(.text.UART_BRGInit)
+    __arm_cp.16_0                            0x00001d50   Number         4  mdr32fxqi_uart.o(.text.UART_BRGInit)
+    [Anonymous Symbol]                       0x00001d54   Section        0  mdr32fxqi_uart.o(.text.UART_ClearITPendingBit)
+    [Anonymous Symbol]                       0x00001d68   Section        0  mdr32fxqi_uart.o(.text.UART_Cmd)
+    __arm_cp.3_0                             0x00001d94   Number         4  mdr32fxqi_uart.o(.text.UART_Cmd)
+    [Anonymous Symbol]                       0x00001d98   Section        0  mdr32fxqi_uart.o(.text.UART_DMACmd)
+    [Anonymous Symbol]                       0x00001dc8   Section        0  mdr32fxqi_uart.o(.text.UART_GetFlagStatus)
+    [Anonymous Symbol]                       0x00001dfa   Section        0  mdr32fxqi_uart.o(.text.UART_ITConfig)
+    [Anonymous Symbol]                       0x00001e28   Section        0  mdr32fxqi_uart.o(.text.UART_Init)
+    __arm_cp.1_0                             0x00001f2c   Number         4  mdr32fxqi_uart.o(.text.UART_Init)
+    __arm_cp.1_1                             0x00001f30   Number         4  mdr32fxqi_uart.o(.text.UART_Init)
+    __arm_cp.1_2                             0x00001f34   Number         4  mdr32fxqi_uart.o(.text.UART_Init)
+    __arm_cp.1_3                             0x00001f38   Number         4  mdr32fxqi_uart.o(.text.UART_Init)
+    [Anonymous Symbol]                       0x00001f3c   Section        0  mdr32fxqi_uart.o(.text.UART_ReceiveData)
+    __NVIC_ClearPendingIRQ                   0x00001f4d   Thumb Code    40  mdr32fxqi_dma.o(.text.__NVIC_ClearPendingIRQ)
+    [Anonymous Symbol]                       0x00001f4c   Section        0  mdr32fxqi_dma.o(.text.__NVIC_ClearPendingIRQ)
+    __arm_cp.1_0                             0x00001f74   Number         4  mdr32fxqi_dma.o(.text.__NVIC_ClearPendingIRQ)
+    __NVIC_DisableIRQ                        0x00001f79   Thumb Code    48  spi.o(.text.__NVIC_DisableIRQ)
+    [Anonymous Symbol]                       0x00001f78   Section        0  spi.o(.text.__NVIC_DisableIRQ)
+    __arm_cp.2_0                             0x00001fa8   Number         4  spi.o(.text.__NVIC_DisableIRQ)
+    __NVIC_EnableIRQ                         0x00001fad   Thumb Code    40  timer.o(.text.__NVIC_EnableIRQ)
+    [Anonymous Symbol]                       0x00001fac   Section        0  timer.o(.text.__NVIC_EnableIRQ)
+    __NVIC_EnableIRQ                         0x00001fd5   Thumb Code    40  uart.o(.text.__NVIC_EnableIRQ)
+    [Anonymous Symbol]                       0x00001fd4   Section        0  uart.o(.text.__NVIC_EnableIRQ)
+    __arm_cp.4_0                             0x00001ffc   Number         4  uart.o(.text.__NVIC_EnableIRQ)
+    [Anonymous Symbol]                       0x00002000   Section        0  1273pv19t.o(.text.adc_gpio_config)
+    __arm_cp.0_0                             0x000020b0   Number         4  1273pv19t.o(.text.adc_gpio_config)
+    __arm_cp.0_2                             0x000020b4   Number         4  1273pv19t.o(.text.adc_gpio_config)
+    [Anonymous Symbol]                       0x000020b8   Section        0  1273pv19t.o(.text.adc_init)
+    __arm_cp.1_1                             0x00002148   Number         4  1273pv19t.o(.text.adc_init)
+    __arm_cp.1_2                             0x0000214c   Number         4  1273pv19t.o(.text.adc_init)
+    __arm_cp.1_3                             0x00002150   Number         4  1273pv19t.o(.text.adc_init)
+    __arm_cp.1_4                             0x00002154   Number         4  1273pv19t.o(.text.adc_init)
+    __arm_cp.1_5                             0x00002158   Number         4  1273pv19t.o(.text.adc_init)
+    [Anonymous Symbol]                       0x0000215c   Section        0  1273pv19t.o(.text.adc_reset)
+    __arm_cp.2_0                             0x00002180   Number         4  1273pv19t.o(.text.adc_reset)
+    [Anonymous Symbol]                       0x00002184   Section        0  timer.o(.text.delay_micro)
+    __arm_cp.7_0                             0x000021b0   Number         4  timer.o(.text.delay_micro)
+    [Anonymous Symbol]                       0x000021b4   Section        0  timer.o(.text.delay_milli)
+    __arm_cp.6_0                             0x000021dc   Number         4  timer.o(.text.delay_milli)
+    [Anonymous Symbol]                       0x000021e0   Section        0  spi.o(.text.dma_spi_rx_init)
+    __arm_cp.7_0                             0x00002284   Number         4  spi.o(.text.dma_spi_rx_init)
+    __arm_cp.7_1                             0x00002288   Number         4  spi.o(.text.dma_spi_rx_init)
+    [Anonymous Symbol]                       0x0000228c   Section        0  main.o(.text.do_mpa_task)
+    __arm_cp.1_1                             0x00002434   Number         4  main.o(.text.do_mpa_task)
+    __arm_cp.1_2                             0x00002438   Number         4  main.o(.text.do_mpa_task)
+    [Anonymous Symbol]                       0x0000243c   Section        0  ebc.o(.text.ebc_gpio_config)
+    __arm_cp.0_0                             0x00002534   Number         4  ebc.o(.text.ebc_gpio_config)
+    __arm_cp.0_1                             0x00002538   Number         4  ebc.o(.text.ebc_gpio_config)
+    __arm_cp.0_2                             0x0000253c   Number         4  ebc.o(.text.ebc_gpio_config)
+    __arm_cp.0_3                             0x00002540   Number         4  ebc.o(.text.ebc_gpio_config)
+    __arm_cp.0_4                             0x00002544   Number         4  ebc.o(.text.ebc_gpio_config)
+    __arm_cp.0_5                             0x00002548   Number         4  ebc.o(.text.ebc_gpio_config)
+    __arm_cp.0_6                             0x0000254c   Number         4  ebc.o(.text.ebc_gpio_config)
+    __arm_cp.0_7                             0x00002550   Number         4  ebc.o(.text.ebc_gpio_config)
+    [Anonymous Symbol]                       0x00002554   Section        0  ebc.o(.text.ebc_init)
+    [Anonymous Symbol]                       0x00002598   Section        0  rs422_protocol.o(.text.fill_crc32_table)
+    __arm_cp.5_0                             0x00002614   Number         4  rs422_protocol.o(.text.fill_crc32_table)
+    __arm_cp.5_1                             0x00002618   Number         4  rs422_protocol.o(.text.fill_crc32_table)
+    __arm_cp.5_2                             0x0000261c   Number         4  rs422_protocol.o(.text.fill_crc32_table)
+    [Anonymous Symbol]                       0x00002620   Section        0  external_ram.o(.text.find_max_halfword)
+    [Anonymous Symbol]                       0x0000266c   Section        0  external_ram.o(.text.init_external_ram_space)
+    __arm_cp.0_17                            0x00002978   Number         4  external_ram.o(.text.init_external_ram_space)
+    __arm_cp.0_18                            0x0000297c   Number         4  external_ram.o(.text.init_external_ram_space)
+    __arm_cp.0_3                             0x00002ad4   Number         4  external_ram.o(.text.init_external_ram_space)
+    __arm_cp.0_4                             0x00002ad8   Number         4  external_ram.o(.text.init_external_ram_space)
+    __arm_cp.0_5                             0x00002adc   Number         4  external_ram.o(.text.init_external_ram_space)
+    __arm_cp.0_6                             0x00002ae0   Number         4  external_ram.o(.text.init_external_ram_space)
+    __arm_cp.0_7                             0x00002ae4   Number         4  external_ram.o(.text.init_external_ram_space)
+    __arm_cp.0_8                             0x00002ae8   Number         4  external_ram.o(.text.init_external_ram_space)
+    __arm_cp.0_9                             0x00002aec   Number         4  external_ram.o(.text.init_external_ram_space)
+    __arm_cp.0_10                            0x00002af0   Number         4  external_ram.o(.text.init_external_ram_space)
+    __arm_cp.0_11                            0x00002af4   Number         4  external_ram.o(.text.init_external_ram_space)
+    __arm_cp.0_12                            0x00002af8   Number         4  external_ram.o(.text.init_external_ram_space)
+    __arm_cp.0_13                            0x00002afc   Number         4  external_ram.o(.text.init_external_ram_space)
+    __arm_cp.0_14                            0x00002b00   Number         4  external_ram.o(.text.init_external_ram_space)
+    __arm_cp.0_15                            0x00002b04   Number         4  external_ram.o(.text.init_external_ram_space)
+    [Anonymous Symbol]                       0x00002b08   Section        0  main.o(.text.main)
+    __arm_cp.0_0                             0x00002cc8   Number         4  main.o(.text.main)
+    __arm_cp.0_1                             0x00002ccc   Number         4  main.o(.text.main)
+    __arm_cp.0_2                             0x00002cd0   Number         4  main.o(.text.main)
+    __arm_cp.0_3                             0x00002cd4   Number         4  main.o(.text.main)
+    __arm_cp.0_4                             0x00002cd8   Number         4  main.o(.text.main)
+    __arm_cp.0_5                             0x00002cdc   Number         4  main.o(.text.main)
+    __arm_cp.0_6                             0x00002ce0   Number         4  main.o(.text.main)
+    __arm_cp.0_7                             0x00002ce4   Number         4  main.o(.text.main)
+    __arm_cp.0_8                             0x00002ce8   Number         4  main.o(.text.main)
+    __arm_cp.0_9                             0x00002cec   Number         4  main.o(.text.main)
+    __arm_cp.0_10                            0x00002cf0   Number         4  main.o(.text.main)
+    __arm_cp.0_11                            0x00002cf4   Number         4  main.o(.text.main)
+    __arm_cp.0_12                            0x00002cf8   Number         4  main.o(.text.main)
+    __arm_cp.0_13                            0x00002cfc   Number         4  main.o(.text.main)
+    __arm_cp.0_14                            0x00002d00   Number         4  main.o(.text.main)
+    __arm_cp.0_15                            0x00002d04   Number         4  main.o(.text.main)
+    __arm_cp.0_16                            0x00002d08   Number         4  main.o(.text.main)
+    __arm_cp.0_17                            0x00002d0c   Number         4  main.o(.text.main)
+    __arm_cp.0_18                            0x00002d10   Number         4  main.o(.text.main)
+    __arm_cp.0_19                            0x00002d14   Number         4  main.o(.text.main)
+    __arm_cp.0_20                            0x00002d18   Number         4  main.o(.text.main)
+    [Anonymous Symbol]                       0x00002d1c   Section        0  spi.o(.text.spi_clean_fifo_rx_buf)
+    [Anonymous Symbol]                       0x00002d44   Section        0  spi.o(.text.spi_gpio_config)
+    __arm_cp.0_0                             0x00002dc0   Number         4  spi.o(.text.spi_gpio_config)
+    [Anonymous Symbol]                       0x00002dc4   Section        0  spi.o(.text.spi_init)
+    [Anonymous Symbol]                       0x00002e48   Section        0  timer.o(.text.timer1_init)
+    [Anonymous Symbol]                       0x00002e92   Section        0  timer.o(.text.timer2_init)
+    [Anonymous Symbol]                       0x00002f5a   Section        0  timer.o(.text.timer3_init)
+    [Anonymous Symbol]                       0x00002fa4   Section        0  timer.o(.text.timer_init)
+    __arm_cp.4_0                             0x00002ff0   Number         4  timer.o(.text.timer_init)
+    __arm_cp.4_1                             0x00002ff4   Number         4  timer.o(.text.timer_init)
+    __arm_cp.4_2                             0x00002ff8   Number         4  timer.o(.text.timer_init)
+    [Anonymous Symbol]                       0x00002ffc   Section        0  uart.o(.text.uart_gpio_config)
+    __arm_cp.2_0                             0x000030cc   Number         4  uart.o(.text.uart_gpio_config)
+    __arm_cp.2_1                             0x000030d0   Number         4  uart.o(.text.uart_gpio_config)
+    __arm_cp.2_2                             0x000030d4   Number         4  uart.o(.text.uart_gpio_config)
+    [Anonymous Symbol]                       0x000030d8   Section        0  uart.o(.text.uart_init)
+    [Anonymous Symbol]                       0x00003186   Section        0  uart.o(.text.uart_set_read_timeout)
+    x$fpl$fadd                               0x0000319c   Section      140  faddsub.o(x$fpl$fadd)
+    _fadd1                                   0x000031a9   Thumb Code     0  faddsub.o(x$fpl$fadd)
+    x$fpl$fmul                               0x00003228   Section      176  fmul.o(x$fpl$fmul)
+    x$fpl$fsub                               0x000032d8   Section      208  faddsub.o(x$fpl$fsub)
+    _fsub1                                   0x000032e5   Thumb Code     0  faddsub.o(x$fpl$fsub)
+    [Anonymous Symbol]                       0x000033a8   Section        0  external_ram.o(.rodata.str1.1)
+    x$fpl$usenofp                            0x000033a8   Section        0  usenofp.o(x$fpl$usenofp)
     .bss                                     0x20000008   Section       96  libspace.o(.bss)
-    Heap_Mem                                 0x20000258   Data        4096  startup_mdr32f1qi.o(HEAP)
-    HEAP                                     0x20000258   Section     4096  startup_mdr32f1qi.o(HEAP)
-    Stack_Mem                                0x20001258   Data        4096  startup_mdr32f1qi.o(STACK)
-    STACK                                    0x20001258   Section     4096  startup_mdr32f1qi.o(STACK)
-    __initial_sp                             0x20002258   Data           0  startup_mdr32f1qi.o(STACK)
+    Heap_Mem                                 0x20000250   Data        4096  startup_mdr32f1qi.o(HEAP)
+    HEAP                                     0x20000250   Section     4096  startup_mdr32f1qi.o(HEAP)
+    Stack_Mem                                0x20001250   Data        4096  startup_mdr32f1qi.o(STACK)
+    STACK                                    0x20001250   Section     4096  startup_mdr32f1qi.o(STACK)
+    __initial_sp                             0x20002250   Data           0  startup_mdr32f1qi.o(STACK)
 
     Global Symbols
 
@@ -1547,6 +1538,7 @@ Image Symbol Table
     USB_IRQHandler                           0x000001b3   Thumb Code     2  startup_mdr32f1qi.o(.text)
     CAN1_IRQHandler                          0x000001b5   Thumb Code     2  startup_mdr32f1qi.o(.text)
     CAN2_IRQHandler                          0x000001b7   Thumb Code     2  startup_mdr32f1qi.o(.text)
+    SSP1_IRQHandler                          0x000001bf   Thumb Code     2  startup_mdr32f1qi.o(.text)
     BUSY_IRQHandler                          0x000001c1   Thumb Code     2  startup_mdr32f1qi.o(.text)
     ARINC429R_IRQHandler                     0x000001c3   Thumb Code     2  startup_mdr32f1qi.o(.text)
     POWER_IRQHandler                         0x000001c5   Thumb Code     2  startup_mdr32f1qi.o(.text)
@@ -1586,120 +1578,131 @@ Image Symbol Table
     __use_two_region_memory                  0x000004b5   Thumb Code     2  heapauxi.o(.text)
     __rt_heap_escrow$2region                 0x000004b7   Thumb Code     2  heapauxi.o(.text)
     __rt_heap_expand$2region                 0x000004b9   Thumb Code     2  heapauxi.o(.text)
-    __user_setup_stackheap                   0x000004bb   Thumb Code    62  sys_stackheap_outer.o(.text)
-    exit                                     0x000004f9   Thumb Code    16  exit.o(.text)
-    __user_libspace                          0x00000509   Thumb Code     8  libspace.o(.text)
-    __user_perproc_libspace                  0x00000509   Thumb Code     0  libspace.o(.text)
-    __user_perthread_libspace                0x00000509   Thumb Code     0  libspace.o(.text)
-    _sys_exit                                0x00000511   Thumb Code     8  sys_exit.o(.text)
-    __I$use$semihosting                      0x0000051d   Thumb Code     0  use_no_semi.o(.text)
-    __use_no_semihosting_swi                 0x0000051d   Thumb Code     2  use_no_semi.o(.text)
-    __decompress                             0x0000051f   Thumb Code     0  __dczerorl.o(.text)
-    __decompress0                            0x0000051f   Thumb Code    58  __dczerorl.o(.text)
-    __semihosting_library_function           0x0000051f   Thumb Code     0  indicate_semi.o(.text)
-    CLOCK_Init                               0x00000559   Thumb Code    86  clock.o(.text.CLOCK_Init)
-    DMA_Cmd                                  0x000005b1   Thumb Code    52  mdr32fxqi_dma.o(.text.DMA_Cmd)
-    DMA_CtrlDataInit                         0x000005e5   Thumb Code   158  mdr32fxqi_dma.o(.text.DMA_CtrlDataInit)
-    DMA_DeInit                               0x00000685   Thumb Code    60  mdr32fxqi_dma.o(.text.DMA_DeInit)
-    DMA_GetFlagStatus                        0x000006c9   Thumb Code   232  mdr32fxqi_dma.o(.text.DMA_GetFlagStatus)
-    DMA_IRQHandler                           0x000007c5   Thumb Code   268  dma.o(.text.DMA_IRQHandler)
-    DMA_Init                                 0x000008e9   Thumb Code   236  mdr32fxqi_dma.o(.text.DMA_Init)
-    DMA_StructInit                           0x000009fd   Thumb Code    34  mdr32fxqi_dma.o(.text.DMA_StructInit)
-    DMA_UART_RX_init                         0x00000a21   Thumb Code   172  uart.o(.text.DMA_UART_RX_init)
-    DMA_common_init                          0x00000ad5   Thumb Code    40  dma.o(.text.DMA_common_init)
-    EBC_Init                                 0x00000b15   Thumb Code    88  mdr32fxqi_ebc.o(.text.EBC_Init)
-    EBC_MemRegionInit                        0x00000b75   Thumb Code    60  mdr32fxqi_ebc.o(.text.EBC_MemRegionInit)
-    EBC_MemRegionStructInit                  0x00000bb5   Thumb Code    30  mdr32fxqi_ebc.o(.text.EBC_MemRegionStructInit)
-    EBC_StructInit                           0x00000bd3   Thumb Code    58  mdr32fxqi_ebc.o(.text.EBC_StructInit)
-    PORT_Init                                0x00000c0d   Thumb Code   328  mdr32fxqi_port.o(.text.PORT_Init)
-    PORT_ResetBits                           0x00000d59   Thumb Code    16  mdr32fxqi_port.o(.text.PORT_ResetBits)
-    PORT_SetBits                             0x00000d69   Thumb Code    16  mdr32fxqi_port.o(.text.PORT_SetBits)
-    PORT_StructInit                          0x00000d79   Thumb Code    52  mdr32fxqi_port.o(.text.PORT_StructInit)
-    PORT_WriteBit                            0x00000db1   Thumb Code    38  mdr32fxqi_port.o(.text.PORT_WriteBit)
-    RST_CLK_CPU_PLLcmd                       0x00000dd9   Thumb Code    52  mdr32fxqi_rst_clk.o(.text.RST_CLK_CPU_PLLcmd)
-    RST_CLK_CPU_PLLconfig                    0x00000e0d   Thumb Code   112  mdr32fxqi_rst_clk.o(.text.RST_CLK_CPU_PLLconfig)
-    RST_CLK_CPU_PLLstatus                    0x00000e81   Thumb Code   100  mdr32fxqi_rst_clk.o(.text.RST_CLK_CPU_PLLstatus)
-    RST_CLK_CPU_PLLuse                       0x00000ee5   Thumb Code    56  mdr32fxqi_rst_clk.o(.text.RST_CLK_CPU_PLLuse)
-    RST_CLK_CPUclkPrescaler                  0x00000f1d   Thumb Code    40  mdr32fxqi_rst_clk.o(.text.RST_CLK_CPUclkPrescaler)
-    RST_CLK_CPUclkSelection                  0x00000f45   Thumb Code    40  mdr32fxqi_rst_clk.o(.text.RST_CLK_CPUclkSelection)
-    RST_CLK_DeInit                           0x00000f6d   Thumb Code    36  mdr32fxqi_rst_clk.o(.text.RST_CLK_DeInit)
-    RST_CLK_GetClocksFreq                    0x00000f91   Thumb Code   596  mdr32fxqi_rst_clk.o(.text.RST_CLK_GetClocksFreq)
-    RST_CLK_GetFlagStatus                    0x000011f9   Thumb Code    80  mdr32fxqi_rst_clk.o(.text.RST_CLK_GetFlagStatus)
-    RST_CLK_HSEconfig                        0x0000124d   Thumb Code    68  mdr32fxqi_rst_clk.o(.text.RST_CLK_HSEconfig)
-    RST_CLK_HSEstatus                        0x00001291   Thumb Code   100  mdr32fxqi_rst_clk.o(.text.RST_CLK_HSEstatus)
-    RST_CLK_HSIcmd                           0x000012f5   Thumb Code    60  mdr32fxqi_rst_clk.o(.text.RST_CLK_HSIcmd)
-    RST_CLK_HSIstatus                        0x00001335   Thumb Code   100  mdr32fxqi_rst_clk.o(.text.RST_CLK_HSIstatus)
-    RST_CLK_PCLKcmd                          0x00001399   Thumb Code    44  mdr32fxqi_rst_clk.o(.text.RST_CLK_PCLKcmd)
-    RST_CLK_WarmDeInit                       0x000013c5   Thumb Code   100  mdr32fxqi_rst_clk.o(.text.RST_CLK_WarmDeInit)
-    SSP1_IRQHandler                          0x00001459   Thumb Code   440  spi.o(.text.SSP1_IRQHandler)
-    SSP_BRGInit                              0x00001629   Thumb Code   156  mdr32fxqi_ssp.o(.text.SSP_BRGInit)
-    SSP_ClearITPendingBit                    0x000016d5   Thumb Code    22  mdr32fxqi_ssp.o(.text.SSP_ClearITPendingBit)
-    SSP_Cmd                                  0x000016ed   Thumb Code    44  mdr32fxqi_ssp.o(.text.SSP_Cmd)
-    SSP_DMACmd                               0x0000171d   Thumb Code    48  mdr32fxqi_ssp.o(.text.SSP_DMACmd)
-    SSP_GetFlagStatus                        0x0000174d   Thumb Code    50  mdr32fxqi_ssp.o(.text.SSP_GetFlagStatus)
-    SSP_ITConfig                             0x0000177f   Thumb Code    46  mdr32fxqi_ssp.o(.text.SSP_ITConfig)
-    SSP_Init                                 0x000017ad   Thumb Code    64  mdr32fxqi_ssp.o(.text.SSP_Init)
-    SSP_SendData                             0x000017ed   Thumb Code    18  mdr32fxqi_ssp.o(.text.SSP_SendData)
-    SSP_StructInit                           0x000017ff   Thumb Code    46  mdr32fxqi_ssp.o(.text.SSP_StructInit)
-    SystemCoreClockUpdate                    0x0000182d   Thumb Code   176  system_mdr32f1qi.o(.text.SystemCoreClockUpdate)
-    SystemInit                               0x000018ed   Thumb Code    60  system_mdr32f1qi.o(.text.SystemInit)
-    TIMER2_IRQHandler                        0x00001951   Thumb Code   280  timer.o(.text.TIMER2_IRQHandler)
-    TIMER_BRGInit                            0x00001a7d   Thumb Code   244  mdr32fxqi_timer.o(.text.TIMER_BRGInit)
-    TIMER_ChnCCR1_Cmd                        0x00001b89   Thumb Code    80  mdr32fxqi_timer.o(.text.TIMER_ChnCCR1_Cmd)
-    TIMER_ChnInit                            0x00001bd9   Thumb Code   122  mdr32fxqi_timer.o(.text.TIMER_ChnInit)
-    TIMER_ChnStructInit                      0x00001c53   Thumb Code    58  mdr32fxqi_timer.o(.text.TIMER_ChnStructInit)
-    TIMER_ClearFlag                          0x00001c8d   Thumb Code    18  mdr32fxqi_timer.o(.text.TIMER_ClearFlag)
-    TIMER_Cmd                                0x00001c9f   Thumb Code    52  mdr32fxqi_timer.o(.text.TIMER_Cmd)
-    TIMER_CntInit                            0x00001cd3   Thumb Code    88  mdr32fxqi_timer.o(.text.TIMER_CntInit)
-    TIMER_CntStructInit                      0x00001d2b   Thumb Code    58  mdr32fxqi_timer.o(.text.TIMER_CntStructInit)
-    TIMER_GetCounter                         0x00001d65   Thumb Code    12  mdr32fxqi_timer.o(.text.TIMER_GetCounter)
-    TIMER_GetITStatus                        0x00001d71   Thumb Code    58  mdr32fxqi_timer.o(.text.TIMER_GetITStatus)
-    TIMER_ITConfig                           0x00001dab   Thumb Code    54  mdr32fxqi_timer.o(.text.TIMER_ITConfig)
-    TIMER_SetCounter                         0x00001de1   Thumb Code    16  mdr32fxqi_timer.o(.text.TIMER_SetCounter)
-    UART1_IRQHandler                         0x00001df1   Thumb Code    64  uart.o(.text.UART1_IRQHandler)
-    UART2_IRQHandler                         0x00001e35   Thumb Code    64  uart.o(.text.UART2_IRQHandler)
-    UART_BRGInit                             0x00001e7d   Thumb Code   112  mdr32fxqi_uart.o(.text.UART_BRGInit)
-    UART_ClearITPendingBit                   0x00001ef1   Thumb Code    20  mdr32fxqi_uart.o(.text.UART_ClearITPendingBit)
-    UART_Cmd                                 0x00001f05   Thumb Code    44  mdr32fxqi_uart.o(.text.UART_Cmd)
-    UART_DMACmd                              0x00001f35   Thumb Code    48  mdr32fxqi_uart.o(.text.UART_DMACmd)
-    UART_GetFlagStatus                       0x00001f65   Thumb Code    50  mdr32fxqi_uart.o(.text.UART_GetFlagStatus)
-    UART_ITConfig                            0x00001f97   Thumb Code    46  mdr32fxqi_uart.o(.text.UART_ITConfig)
-    UART_Init                                0x00001fc5   Thumb Code   260  mdr32fxqi_uart.o(.text.UART_Init)
-    UART_ReceiveData                         0x000020d9   Thumb Code    14  mdr32fxqi_uart.o(.text.UART_ReceiveData)
-    adc_gpio_config                          0x0000219d   Thumb Code   176  1273pv19t.o(.text.adc_gpio_config)
-    adc_init                                 0x00002251   Thumb Code   144  1273pv19t.o(.text.adc_init)
-    adc_reset                                0x000022f5   Thumb Code    36  1273pv19t.o(.text.adc_reset)
-    delay_micro                              0x00002319   Thumb Code    44  timer.o(.text.delay_micro)
-    delay_milli                              0x00002349   Thumb Code    40  timer.o(.text.delay_milli)
-    dma_spi_rx_init                          0x00002375   Thumb Code   164  spi.o(.text.dma_spi_rx_init)
-    ebc_gpio_config                          0x00002421   Thumb Code   248  ebc.o(.text.ebc_gpio_config)
-    ebc_init                                 0x00002539   Thumb Code    68  ebc.o(.text.ebc_init)
-    fill_crc32_table                         0x0000257d   Thumb Code   124  rs422_protocol.o(.text.fill_crc32_table)
-    find_max_halfword                        0x00002605   Thumb Code    76  external_ram.o(.text.find_max_halfword)
-    init_external_ram_space                  0x00002651   Thumb Code  1128  external_ram.o(.text.init_external_ram_space)
-    main                                     0x00002aed   Thumb Code   456  main.o(.text.main)
-    spi_clean_fifo_rx_buf                    0x00002d09   Thumb Code    40  spi.o(.text.spi_clean_fifo_rx_buf)
-    spi_gpio_config                          0x00002d31   Thumb Code   124  spi.o(.text.spi_gpio_config)
-    spi_init                                 0x00002db1   Thumb Code   132  spi.o(.text.spi_init)
-    timer1_init                              0x00002e35   Thumb Code    74  timer.o(.text.timer1_init)
-    timer2_init                              0x00002e7f   Thumb Code   200  timer.o(.text.timer2_init)
-    timer3_init                              0x00002f47   Thumb Code    74  timer.o(.text.timer3_init)
-    timer_init                               0x00002f91   Thumb Code    76  timer.o(.text.timer_init)
-    uart_gpio_config                         0x00002fe9   Thumb Code   208  uart.o(.text.uart_gpio_config)
-    uart_init                                0x000030c5   Thumb Code   174  uart.o(.text.uart_init)
-    uart_set_read_timeout                    0x00003173   Thumb Code    22  uart.o(.text.uart_set_read_timeout)
-    Region$$Table$$Base                      0x0000318c   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x000031bc   Number         0  anon$$obj.o(Region$$Table)
+    __aeabi_i2f_normalise                    0x000004bb   Thumb Code    72  fflti.o(.text)
+    __aeabi_i2f                              0x00000503   Thumb Code    16  fflti.o(.text)
+    _fflt                                    0x00000503   Thumb Code     0  fflti.o(.text)
+    __aeabi_ui2f                             0x00000513   Thumb Code     6  fflti.o(.text)
+    _ffltu                                   0x00000513   Thumb Code     0  fflti.o(.text)
+    __user_setup_stackheap                   0x00000519   Thumb Code    62  sys_stackheap_outer.o(.text)
+    exit                                     0x00000557   Thumb Code    16  exit.o(.text)
+    __user_libspace                          0x00000569   Thumb Code     8  libspace.o(.text)
+    __user_perproc_libspace                  0x00000569   Thumb Code     0  libspace.o(.text)
+    __user_perthread_libspace                0x00000569   Thumb Code     0  libspace.o(.text)
+    _sys_exit                                0x00000571   Thumb Code     8  sys_exit.o(.text)
+    __I$use$semihosting                      0x0000057d   Thumb Code     0  use_no_semi.o(.text)
+    __use_no_semihosting_swi                 0x0000057d   Thumb Code     2  use_no_semi.o(.text)
+    __decompress                             0x0000057f   Thumb Code     0  __dczerorl.o(.text)
+    __decompress0                            0x0000057f   Thumb Code    58  __dczerorl.o(.text)
+    __semihosting_library_function           0x0000057f   Thumb Code     0  indicate_semi.o(.text)
+    CLOCK_Init                               0x000005b9   Thumb Code    86  clock.o(.text.CLOCK_Init)
+    DMA_Cmd                                  0x00000611   Thumb Code    52  mdr32fxqi_dma.o(.text.DMA_Cmd)
+    DMA_CtrlDataInit                         0x00000645   Thumb Code   158  mdr32fxqi_dma.o(.text.DMA_CtrlDataInit)
+    DMA_DeInit                               0x000006e5   Thumb Code    60  mdr32fxqi_dma.o(.text.DMA_DeInit)
+    DMA_GetFlagStatus                        0x00000729   Thumb Code   232  mdr32fxqi_dma.o(.text.DMA_GetFlagStatus)
+    DMA_IRQHandler                           0x00000825   Thumb Code   268  dma.o(.text.DMA_IRQHandler)
+    DMA_Init                                 0x00000949   Thumb Code   236  mdr32fxqi_dma.o(.text.DMA_Init)
+    DMA_StructInit                           0x00000a5d   Thumb Code    34  mdr32fxqi_dma.o(.text.DMA_StructInit)
+    DMA_UART_RX_init                         0x00000a81   Thumb Code   172  uart.o(.text.DMA_UART_RX_init)
+    DMA_common_init                          0x00000b35   Thumb Code    40  dma.o(.text.DMA_common_init)
+    EBC_Init                                 0x00000b75   Thumb Code    88  mdr32fxqi_ebc.o(.text.EBC_Init)
+    EBC_MemRegionInit                        0x00000bd5   Thumb Code    60  mdr32fxqi_ebc.o(.text.EBC_MemRegionInit)
+    EBC_MemRegionStructInit                  0x00000c15   Thumb Code    30  mdr32fxqi_ebc.o(.text.EBC_MemRegionStructInit)
+    EBC_StructInit                           0x00000c33   Thumb Code    58  mdr32fxqi_ebc.o(.text.EBC_StructInit)
+    PORT_Init                                0x00000c6d   Thumb Code   328  mdr32fxqi_port.o(.text.PORT_Init)
+    PORT_ResetBits                           0x00000db9   Thumb Code    16  mdr32fxqi_port.o(.text.PORT_ResetBits)
+    PORT_SetBits                             0x00000dc9   Thumb Code    16  mdr32fxqi_port.o(.text.PORT_SetBits)
+    PORT_StructInit                          0x00000dd9   Thumb Code    52  mdr32fxqi_port.o(.text.PORT_StructInit)
+    PORT_WriteBit                            0x00000e11   Thumb Code    38  mdr32fxqi_port.o(.text.PORT_WriteBit)
+    RST_CLK_CPU_PLLcmd                       0x00000e39   Thumb Code    52  mdr32fxqi_rst_clk.o(.text.RST_CLK_CPU_PLLcmd)
+    RST_CLK_CPU_PLLconfig                    0x00000e6d   Thumb Code   112  mdr32fxqi_rst_clk.o(.text.RST_CLK_CPU_PLLconfig)
+    RST_CLK_CPU_PLLstatus                    0x00000ee1   Thumb Code   100  mdr32fxqi_rst_clk.o(.text.RST_CLK_CPU_PLLstatus)
+    RST_CLK_CPU_PLLuse                       0x00000f45   Thumb Code    56  mdr32fxqi_rst_clk.o(.text.RST_CLK_CPU_PLLuse)
+    RST_CLK_CPUclkPrescaler                  0x00000f7d   Thumb Code    40  mdr32fxqi_rst_clk.o(.text.RST_CLK_CPUclkPrescaler)
+    RST_CLK_CPUclkSelection                  0x00000fa5   Thumb Code    40  mdr32fxqi_rst_clk.o(.text.RST_CLK_CPUclkSelection)
+    RST_CLK_DeInit                           0x00000fcd   Thumb Code    36  mdr32fxqi_rst_clk.o(.text.RST_CLK_DeInit)
+    RST_CLK_GetClocksFreq                    0x00000ff1   Thumb Code   596  mdr32fxqi_rst_clk.o(.text.RST_CLK_GetClocksFreq)
+    RST_CLK_GetFlagStatus                    0x00001259   Thumb Code    80  mdr32fxqi_rst_clk.o(.text.RST_CLK_GetFlagStatus)
+    RST_CLK_HSEconfig                        0x000012ad   Thumb Code    68  mdr32fxqi_rst_clk.o(.text.RST_CLK_HSEconfig)
+    RST_CLK_HSEstatus                        0x000012f1   Thumb Code   100  mdr32fxqi_rst_clk.o(.text.RST_CLK_HSEstatus)
+    RST_CLK_HSIcmd                           0x00001355   Thumb Code    60  mdr32fxqi_rst_clk.o(.text.RST_CLK_HSIcmd)
+    RST_CLK_HSIstatus                        0x00001395   Thumb Code   100  mdr32fxqi_rst_clk.o(.text.RST_CLK_HSIstatus)
+    RST_CLK_PCLKcmd                          0x000013f9   Thumb Code    44  mdr32fxqi_rst_clk.o(.text.RST_CLK_PCLKcmd)
+    RST_CLK_WarmDeInit                       0x00001425   Thumb Code   100  mdr32fxqi_rst_clk.o(.text.RST_CLK_WarmDeInit)
+    SSP_BRGInit                              0x000014a1   Thumb Code   156  mdr32fxqi_ssp.o(.text.SSP_BRGInit)
+    SSP_Cmd                                  0x00001549   Thumb Code    44  mdr32fxqi_ssp.o(.text.SSP_Cmd)
+    SSP_DMACmd                               0x00001579   Thumb Code    48  mdr32fxqi_ssp.o(.text.SSP_DMACmd)
+    SSP_GetFlagStatus                        0x000015a9   Thumb Code    50  mdr32fxqi_ssp.o(.text.SSP_GetFlagStatus)
+    SSP_ITConfig                             0x000015db   Thumb Code    46  mdr32fxqi_ssp.o(.text.SSP_ITConfig)
+    SSP_Init                                 0x00001609   Thumb Code    64  mdr32fxqi_ssp.o(.text.SSP_Init)
+    SSP_SendData                             0x00001649   Thumb Code    18  mdr32fxqi_ssp.o(.text.SSP_SendData)
+    SSP_StructInit                           0x0000165b   Thumb Code    46  mdr32fxqi_ssp.o(.text.SSP_StructInit)
+    SystemCoreClockUpdate                    0x00001689   Thumb Code   176  system_mdr32f1qi.o(.text.SystemCoreClockUpdate)
+    SystemInit                               0x00001749   Thumb Code    60  system_mdr32f1qi.o(.text.SystemInit)
+    TIMER2_IRQHandler                        0x000017b5   Thumb Code   280  timer.o(.text.TIMER2_IRQHandler)
+    TIMER_BRGInit                            0x000018e1   Thumb Code   244  mdr32fxqi_timer.o(.text.TIMER_BRGInit)
+    TIMER_ChnCCR1_Cmd                        0x000019ed   Thumb Code    80  mdr32fxqi_timer.o(.text.TIMER_ChnCCR1_Cmd)
+    TIMER_ChnInit                            0x00001a3d   Thumb Code   122  mdr32fxqi_timer.o(.text.TIMER_ChnInit)
+    TIMER_ChnStructInit                      0x00001ab7   Thumb Code    58  mdr32fxqi_timer.o(.text.TIMER_ChnStructInit)
+    TIMER_ClearFlag                          0x00001af1   Thumb Code    18  mdr32fxqi_timer.o(.text.TIMER_ClearFlag)
+    TIMER_Cmd                                0x00001b03   Thumb Code    52  mdr32fxqi_timer.o(.text.TIMER_Cmd)
+    TIMER_CntInit                            0x00001b37   Thumb Code    88  mdr32fxqi_timer.o(.text.TIMER_CntInit)
+    TIMER_CntStructInit                      0x00001b8f   Thumb Code    58  mdr32fxqi_timer.o(.text.TIMER_CntStructInit)
+    TIMER_GetCounter                         0x00001bc9   Thumb Code    12  mdr32fxqi_timer.o(.text.TIMER_GetCounter)
+    TIMER_GetITStatus                        0x00001bd5   Thumb Code    58  mdr32fxqi_timer.o(.text.TIMER_GetITStatus)
+    TIMER_ITConfig                           0x00001c0f   Thumb Code    54  mdr32fxqi_timer.o(.text.TIMER_ITConfig)
+    TIMER_SetCounter                         0x00001c45   Thumb Code    16  mdr32fxqi_timer.o(.text.TIMER_SetCounter)
+    UART1_IRQHandler                         0x00001c55   Thumb Code    64  uart.o(.text.UART1_IRQHandler)
+    UART2_IRQHandler                         0x00001c99   Thumb Code    64  uart.o(.text.UART2_IRQHandler)
+    UART_BRGInit                             0x00001ce1   Thumb Code   112  mdr32fxqi_uart.o(.text.UART_BRGInit)
+    UART_ClearITPendingBit                   0x00001d55   Thumb Code    20  mdr32fxqi_uart.o(.text.UART_ClearITPendingBit)
+    UART_Cmd                                 0x00001d69   Thumb Code    44  mdr32fxqi_uart.o(.text.UART_Cmd)
+    UART_DMACmd                              0x00001d99   Thumb Code    48  mdr32fxqi_uart.o(.text.UART_DMACmd)
+    UART_GetFlagStatus                       0x00001dc9   Thumb Code    50  mdr32fxqi_uart.o(.text.UART_GetFlagStatus)
+    UART_ITConfig                            0x00001dfb   Thumb Code    46  mdr32fxqi_uart.o(.text.UART_ITConfig)
+    UART_Init                                0x00001e29   Thumb Code   260  mdr32fxqi_uart.o(.text.UART_Init)
+    UART_ReceiveData                         0x00001f3d   Thumb Code    14  mdr32fxqi_uart.o(.text.UART_ReceiveData)
+    adc_gpio_config                          0x00002001   Thumb Code   176  1273pv19t.o(.text.adc_gpio_config)
+    adc_init                                 0x000020b9   Thumb Code   144  1273pv19t.o(.text.adc_init)
+    adc_reset                                0x0000215d   Thumb Code    36  1273pv19t.o(.text.adc_reset)
+    delay_micro                              0x00002185   Thumb Code    44  timer.o(.text.delay_micro)
+    delay_milli                              0x000021b5   Thumb Code    40  timer.o(.text.delay_milli)
+    dma_spi_rx_init                          0x000021e1   Thumb Code   164  spi.o(.text.dma_spi_rx_init)
+    do_mpa_task                              0x0000228d   Thumb Code   424  main.o(.text.do_mpa_task)
+    ebc_gpio_config                          0x0000243d   Thumb Code   248  ebc.o(.text.ebc_gpio_config)
+    ebc_init                                 0x00002555   Thumb Code    68  ebc.o(.text.ebc_init)
+    fill_crc32_table                         0x00002599   Thumb Code   124  rs422_protocol.o(.text.fill_crc32_table)
+    find_max_halfword                        0x00002621   Thumb Code    76  external_ram.o(.text.find_max_halfword)
+    init_external_ram_space                  0x0000266d   Thumb Code  1128  external_ram.o(.text.init_external_ram_space)
+    main                                     0x00002b09   Thumb Code   448  main.o(.text.main)
+    spi_clean_fifo_rx_buf                    0x00002d1d   Thumb Code    40  spi.o(.text.spi_clean_fifo_rx_buf)
+    spi_gpio_config                          0x00002d45   Thumb Code   124  spi.o(.text.spi_gpio_config)
+    spi_init                                 0x00002dc5   Thumb Code   132  spi.o(.text.spi_init)
+    timer1_init                              0x00002e49   Thumb Code    74  timer.o(.text.timer1_init)
+    timer2_init                              0x00002e93   Thumb Code   200  timer.o(.text.timer2_init)
+    timer3_init                              0x00002f5b   Thumb Code    74  timer.o(.text.timer3_init)
+    timer_init                               0x00002fa5   Thumb Code    76  timer.o(.text.timer_init)
+    uart_gpio_config                         0x00002ffd   Thumb Code   208  uart.o(.text.uart_gpio_config)
+    uart_init                                0x000030d9   Thumb Code   174  uart.o(.text.uart_init)
+    uart_set_read_timeout                    0x00003187   Thumb Code    22  uart.o(.text.uart_set_read_timeout)
+    __aeabi_fadd                             0x0000319d   Thumb Code     0  faddsub.o(x$fpl$fadd)
+    _fadd                                    0x0000319d   Thumb Code   134  faddsub.o(x$fpl$fadd)
+    __aeabi_fmul                             0x00003229   Thumb Code     0  fmul.o(x$fpl$fmul)
+    _fmul                                    0x00003229   Thumb Code   172  fmul.o(x$fpl$fmul)
+    __aeabi_fsub                             0x000032d9   Thumb Code     0  faddsub.o(x$fpl$fsub)
+    _fsub                                    0x000032d9   Thumb Code   204  faddsub.o(x$fpl$fsub)
+    __I$use$fp                               0x000033a8   Number         0  usenofp.o(x$fpl$usenofp)
+    Region$$Table$$Base                      0x000033ac   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x000033dc   Number         0  anon$$obj.o(Region$$Table)
     SystemCoreClock                          0x20000000   Data           4  system_mdr32f1qi.o(.data.SystemCoreClock)
     __libspace_start                         0x20000008   Data          96  libspace.o(.bss)
     UART1                                    0x20000068   Data         120  uart.o(.bss.UART1)
     __temporary_stack_top$libspace           0x20000068   Data           0  libspace.o(.bss)
     UART2                                    0x200000e0   Data         120  uart.o(.bss.UART2)
-    adc_1                                    0x20000158   Data          24  1273pv19t.o(.bss.adc_1)
-    ram_space_pointer                        0x20000170   Data           4  main.o(.bss.ram_space_pointer)
-    timer_1                                  0x20000174   Data          76  timer.o(.bss.timer_1)
-    timer_2                                  0x200001c0   Data          76  timer.o(.bss.timer_2)
-    timer_3                                  0x2000020c   Data          76  timer.o(.bss.timer_3)
+    adc_1                                    0x20000158   Data          16  1273pv19t.o(.bss.adc_1)
+    ram_space_pointer                        0x20000168   Data           4  main.o(.bss.ram_space_pointer)
+    timer_1                                  0x2000016c   Data          76  timer.o(.bss.timer_1)
+    timer_2                                  0x200001b8   Data          76  timer.o(.bss.timer_2)
+    timer_3                                  0x20000204   Data          76  timer.o(.bss.timer_3)
     spi_1                                    0x20100000   Data          84  spi.o(EXECUTABLE_MEMORY_SECTION)
     spi_2                                    0x20100054   Data          84  spi.o(EXECUTABLE_MEMORY_SECTION)
     DMA_ControlTable                         0x20100400   Data        1024  mdr32fxqi_dma.o(EXECUTABLE_MEMORY_SECTION)
@@ -1714,205 +1717,209 @@ Memory Map of the image
 
   Load Region LR_IROM1 (Base: 0x00000000, Size: 0x00003c00, Max: 0x00020000, ABSOLUTE, COMPRESSED[0x00003414])
 
-    Execution Region ER_IROM1 (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x000031bc, Max: 0x00020000, ABSOLUTE)
+    Execution Region ER_IROM1 (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x000033dc, Max: 0x00020000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x00000000   0x00000000   0x000000c0   Data   RO          186    RESET               startup_mdr32f1qi.o
-    0x000000c0   0x000000c0   0x00000008   Code   RO          657  * !!!main             c_p.l(__main.o)
-    0x000000c8   0x000000c8   0x0000003c   Code   RO          847    !!!scatter          c_p.l(__scatter.o)
-    0x00000104   0x00000104   0x0000001a   Code   RO          849    !!handler_copy      c_p.l(__scatter_copy.o)
+    0x00000000   0x00000000   0x000000c0   Data   RO          184    RESET               startup_mdr32f1qi.o
+    0x000000c0   0x000000c0   0x00000008   Code   RO          655  * !!!main             c_p.l(__main.o)
+    0x000000c8   0x000000c8   0x0000003c   Code   RO          845    !!!scatter          c_p.l(__scatter.o)
+    0x00000104   0x00000104   0x0000001a   Code   RO          847    !!handler_copy      c_p.l(__scatter_copy.o)
     0x0000011e   0x0000011e   0x00000002   PAD
-    0x00000120   0x00000120   0x0000001c   Code   RO          851    !!handler_zi        c_p.l(__scatter_zi.o)
-    0x0000013c   0x0000013c   0x00000002   Code   RO          706    .ARM.Collect$$libinit$$00000000  c_p.l(libinit.o)
-    0x0000013e   0x0000013e   0x00000000   Code   RO          720    .ARM.Collect$$libinit$$00000002  c_p.l(libinit2.o)
-    0x0000013e   0x0000013e   0x00000000   Code   RO          722    .ARM.Collect$$libinit$$00000004  c_p.l(libinit2.o)
-    0x0000013e   0x0000013e   0x00000000   Code   RO          724    .ARM.Collect$$libinit$$00000006  c_p.l(libinit2.o)
-    0x0000013e   0x0000013e   0x00000000   Code   RO          727    .ARM.Collect$$libinit$$0000000C  c_p.l(libinit2.o)
-    0x0000013e   0x0000013e   0x00000000   Code   RO          729    .ARM.Collect$$libinit$$0000000E  c_p.l(libinit2.o)
-    0x0000013e   0x0000013e   0x00000000   Code   RO          731    .ARM.Collect$$libinit$$00000010  c_p.l(libinit2.o)
-    0x0000013e   0x0000013e   0x00000000   Code   RO          734    .ARM.Collect$$libinit$$00000013  c_p.l(libinit2.o)
-    0x0000013e   0x0000013e   0x00000000   Code   RO          736    .ARM.Collect$$libinit$$00000015  c_p.l(libinit2.o)
-    0x0000013e   0x0000013e   0x00000000   Code   RO          738    .ARM.Collect$$libinit$$00000017  c_p.l(libinit2.o)
-    0x0000013e   0x0000013e   0x00000000   Code   RO          740    .ARM.Collect$$libinit$$00000019  c_p.l(libinit2.o)
-    0x0000013e   0x0000013e   0x00000000   Code   RO          742    .ARM.Collect$$libinit$$0000001B  c_p.l(libinit2.o)
-    0x0000013e   0x0000013e   0x00000000   Code   RO          744    .ARM.Collect$$libinit$$0000001D  c_p.l(libinit2.o)
-    0x0000013e   0x0000013e   0x00000000   Code   RO          746    .ARM.Collect$$libinit$$0000001F  c_p.l(libinit2.o)
-    0x0000013e   0x0000013e   0x00000000   Code   RO          748    .ARM.Collect$$libinit$$00000021  c_p.l(libinit2.o)
-    0x0000013e   0x0000013e   0x00000000   Code   RO          750    .ARM.Collect$$libinit$$00000023  c_p.l(libinit2.o)
-    0x0000013e   0x0000013e   0x00000000   Code   RO          752    .ARM.Collect$$libinit$$00000025  c_p.l(libinit2.o)
-    0x0000013e   0x0000013e   0x00000000   Code   RO          754    .ARM.Collect$$libinit$$00000027  c_p.l(libinit2.o)
-    0x0000013e   0x0000013e   0x00000000   Code   RO          758    .ARM.Collect$$libinit$$0000002E  c_p.l(libinit2.o)
-    0x0000013e   0x0000013e   0x00000000   Code   RO          760    .ARM.Collect$$libinit$$00000030  c_p.l(libinit2.o)
-    0x0000013e   0x0000013e   0x00000000   Code   RO          762    .ARM.Collect$$libinit$$00000032  c_p.l(libinit2.o)
-    0x0000013e   0x0000013e   0x00000000   Code   RO          764    .ARM.Collect$$libinit$$00000034  c_p.l(libinit2.o)
-    0x0000013e   0x0000013e   0x00000002   Code   RO          765    .ARM.Collect$$libinit$$00000035  c_p.l(libinit2.o)
-    0x00000140   0x00000140   0x00000002   Code   RO          800    .ARM.Collect$$libshutdown$$00000000  c_p.l(libshutdown.o)
-    0x00000142   0x00000142   0x00000000   Code   RO          828    .ARM.Collect$$libshutdown$$00000002  c_p.l(libshutdown2.o)
-    0x00000142   0x00000142   0x00000000   Code   RO          830    .ARM.Collect$$libshutdown$$00000004  c_p.l(libshutdown2.o)
-    0x00000142   0x00000142   0x00000000   Code   RO          833    .ARM.Collect$$libshutdown$$00000007  c_p.l(libshutdown2.o)
-    0x00000142   0x00000142   0x00000000   Code   RO          836    .ARM.Collect$$libshutdown$$0000000A  c_p.l(libshutdown2.o)
-    0x00000142   0x00000142   0x00000000   Code   RO          838    .ARM.Collect$$libshutdown$$0000000C  c_p.l(libshutdown2.o)
-    0x00000142   0x00000142   0x00000000   Code   RO          841    .ARM.Collect$$libshutdown$$0000000F  c_p.l(libshutdown2.o)
-    0x00000142   0x00000142   0x00000002   Code   RO          842    .ARM.Collect$$libshutdown$$00000010  c_p.l(libshutdown2.o)
-    0x00000144   0x00000144   0x00000000   Code   RO          669    .ARM.Collect$$rtentry$$00000000  c_p.l(__rtentry.o)
-    0x00000144   0x00000144   0x00000000   Code   RO          676    .ARM.Collect$$rtentry$$00000002  c_p.l(__rtentry2.o)
-    0x00000144   0x00000144   0x00000006   Code   RO          688    .ARM.Collect$$rtentry$$00000004  c_p.l(__rtentry4.o)
-    0x0000014a   0x0000014a   0x00000000   Code   RO          678    .ARM.Collect$$rtentry$$00000009  c_p.l(__rtentry2.o)
-    0x0000014a   0x0000014a   0x00000004   Code   RO          679    .ARM.Collect$$rtentry$$0000000A  c_p.l(__rtentry2.o)
-    0x0000014e   0x0000014e   0x00000000   Code   RO          681    .ARM.Collect$$rtentry$$0000000C  c_p.l(__rtentry2.o)
-    0x0000014e   0x0000014e   0x00000008   Code   RO          682    .ARM.Collect$$rtentry$$0000000D  c_p.l(__rtentry2.o)
-    0x00000156   0x00000156   0x00000002   Code   RO          711    .ARM.Collect$$rtexit$$00000000  c_p.l(rtexit.o)
-    0x00000158   0x00000158   0x00000000   Code   RO          771    .ARM.Collect$$rtexit$$00000002  c_p.l(rtexit2.o)
-    0x00000158   0x00000158   0x00000004   Code   RO          772    .ARM.Collect$$rtexit$$00000003  c_p.l(rtexit2.o)
-    0x0000015c   0x0000015c   0x00000006   Code   RO          773    .ARM.Collect$$rtexit$$00000004  c_p.l(rtexit2.o)
+    0x00000120   0x00000120   0x0000001c   Code   RO          849    !!handler_zi        c_p.l(__scatter_zi.o)
+    0x0000013c   0x0000013c   0x00000002   Code   RO          704    .ARM.Collect$$libinit$$00000000  c_p.l(libinit.o)
+    0x0000013e   0x0000013e   0x00000000   Code   RO          718    .ARM.Collect$$libinit$$00000002  c_p.l(libinit2.o)
+    0x0000013e   0x0000013e   0x00000000   Code   RO          720    .ARM.Collect$$libinit$$00000004  c_p.l(libinit2.o)
+    0x0000013e   0x0000013e   0x00000000   Code   RO          722    .ARM.Collect$$libinit$$00000006  c_p.l(libinit2.o)
+    0x0000013e   0x0000013e   0x00000000   Code   RO          725    .ARM.Collect$$libinit$$0000000C  c_p.l(libinit2.o)
+    0x0000013e   0x0000013e   0x00000000   Code   RO          727    .ARM.Collect$$libinit$$0000000E  c_p.l(libinit2.o)
+    0x0000013e   0x0000013e   0x00000000   Code   RO          729    .ARM.Collect$$libinit$$00000010  c_p.l(libinit2.o)
+    0x0000013e   0x0000013e   0x00000000   Code   RO          732    .ARM.Collect$$libinit$$00000013  c_p.l(libinit2.o)
+    0x0000013e   0x0000013e   0x00000000   Code   RO          734    .ARM.Collect$$libinit$$00000015  c_p.l(libinit2.o)
+    0x0000013e   0x0000013e   0x00000000   Code   RO          736    .ARM.Collect$$libinit$$00000017  c_p.l(libinit2.o)
+    0x0000013e   0x0000013e   0x00000000   Code   RO          738    .ARM.Collect$$libinit$$00000019  c_p.l(libinit2.o)
+    0x0000013e   0x0000013e   0x00000000   Code   RO          740    .ARM.Collect$$libinit$$0000001B  c_p.l(libinit2.o)
+    0x0000013e   0x0000013e   0x00000000   Code   RO          742    .ARM.Collect$$libinit$$0000001D  c_p.l(libinit2.o)
+    0x0000013e   0x0000013e   0x00000000   Code   RO          744    .ARM.Collect$$libinit$$0000001F  c_p.l(libinit2.o)
+    0x0000013e   0x0000013e   0x00000000   Code   RO          746    .ARM.Collect$$libinit$$00000021  c_p.l(libinit2.o)
+    0x0000013e   0x0000013e   0x00000000   Code   RO          748    .ARM.Collect$$libinit$$00000023  c_p.l(libinit2.o)
+    0x0000013e   0x0000013e   0x00000000   Code   RO          750    .ARM.Collect$$libinit$$00000025  c_p.l(libinit2.o)
+    0x0000013e   0x0000013e   0x00000000   Code   RO          752    .ARM.Collect$$libinit$$00000027  c_p.l(libinit2.o)
+    0x0000013e   0x0000013e   0x00000000   Code   RO          756    .ARM.Collect$$libinit$$0000002E  c_p.l(libinit2.o)
+    0x0000013e   0x0000013e   0x00000000   Code   RO          758    .ARM.Collect$$libinit$$00000030  c_p.l(libinit2.o)
+    0x0000013e   0x0000013e   0x00000000   Code   RO          760    .ARM.Collect$$libinit$$00000032  c_p.l(libinit2.o)
+    0x0000013e   0x0000013e   0x00000000   Code   RO          762    .ARM.Collect$$libinit$$00000034  c_p.l(libinit2.o)
+    0x0000013e   0x0000013e   0x00000002   Code   RO          763    .ARM.Collect$$libinit$$00000035  c_p.l(libinit2.o)
+    0x00000140   0x00000140   0x00000002   Code   RO          798    .ARM.Collect$$libshutdown$$00000000  c_p.l(libshutdown.o)
+    0x00000142   0x00000142   0x00000000   Code   RO          826    .ARM.Collect$$libshutdown$$00000002  c_p.l(libshutdown2.o)
+    0x00000142   0x00000142   0x00000000   Code   RO          828    .ARM.Collect$$libshutdown$$00000004  c_p.l(libshutdown2.o)
+    0x00000142   0x00000142   0x00000000   Code   RO          831    .ARM.Collect$$libshutdown$$00000007  c_p.l(libshutdown2.o)
+    0x00000142   0x00000142   0x00000000   Code   RO          834    .ARM.Collect$$libshutdown$$0000000A  c_p.l(libshutdown2.o)
+    0x00000142   0x00000142   0x00000000   Code   RO          836    .ARM.Collect$$libshutdown$$0000000C  c_p.l(libshutdown2.o)
+    0x00000142   0x00000142   0x00000000   Code   RO          839    .ARM.Collect$$libshutdown$$0000000F  c_p.l(libshutdown2.o)
+    0x00000142   0x00000142   0x00000002   Code   RO          840    .ARM.Collect$$libshutdown$$00000010  c_p.l(libshutdown2.o)
+    0x00000144   0x00000144   0x00000000   Code   RO          667    .ARM.Collect$$rtentry$$00000000  c_p.l(__rtentry.o)
+    0x00000144   0x00000144   0x00000000   Code   RO          674    .ARM.Collect$$rtentry$$00000002  c_p.l(__rtentry2.o)
+    0x00000144   0x00000144   0x00000006   Code   RO          686    .ARM.Collect$$rtentry$$00000004  c_p.l(__rtentry4.o)
+    0x0000014a   0x0000014a   0x00000000   Code   RO          676    .ARM.Collect$$rtentry$$00000009  c_p.l(__rtentry2.o)
+    0x0000014a   0x0000014a   0x00000004   Code   RO          677    .ARM.Collect$$rtentry$$0000000A  c_p.l(__rtentry2.o)
+    0x0000014e   0x0000014e   0x00000000   Code   RO          679    .ARM.Collect$$rtentry$$0000000C  c_p.l(__rtentry2.o)
+    0x0000014e   0x0000014e   0x00000008   Code   RO          680    .ARM.Collect$$rtentry$$0000000D  c_p.l(__rtentry2.o)
+    0x00000156   0x00000156   0x00000002   Code   RO          709    .ARM.Collect$$rtexit$$00000000  c_p.l(rtexit.o)
+    0x00000158   0x00000158   0x00000000   Code   RO          769    .ARM.Collect$$rtexit$$00000002  c_p.l(rtexit2.o)
+    0x00000158   0x00000158   0x00000004   Code   RO          770    .ARM.Collect$$rtexit$$00000003  c_p.l(rtexit2.o)
+    0x0000015c   0x0000015c   0x00000006   Code   RO          771    .ARM.Collect$$rtexit$$00000004  c_p.l(rtexit2.o)
     0x00000162   0x00000162   0x00000002   PAD
-    0x00000164   0x00000164   0x00000038   Code   RO          643    .emb_text           c_p.l(rt_memcpy.o)
-    0x0000019c   0x0000019c   0x00000074   Code   RO          187    .text               startup_mdr32f1qi.o
-    0x00000210   0x00000210   0x00000008   Code   RO          641    .text               c_p.l(abs.o)
-    0x00000218   0x00000218   0x00000082   Code   RO          644    .text               c_p.l(rt_memcpy.o)
-    0x0000029a   0x0000029a   0x00000040   Code   RO          647    .text               c_p.l(rt_memclr.o)
+    0x00000164   0x00000164   0x00000038   Code   RO          641    .emb_text           c_p.l(rt_memcpy.o)
+    0x0000019c   0x0000019c   0x00000074   Code   RO          185    .text               startup_mdr32f1qi.o
+    0x00000210   0x00000210   0x00000008   Code   RO          639    .text               c_p.l(abs.o)
+    0x00000218   0x00000218   0x00000082   Code   RO          642    .text               c_p.l(rt_memcpy.o)
+    0x0000029a   0x0000029a   0x00000040   Code   RO          645    .text               c_p.l(rt_memclr.o)
     0x000002da   0x000002da   0x00000002   PAD
-    0x000002dc   0x000002dc   0x0000006c   Code   RO          649    .text               c_p.l(strncpy.o)
-    0x00000348   0x00000348   0x0000016c   Code   RO          651    .text               c_p.l(aeabi_sdiv.o)
-    0x000004b4   0x000004b4   0x00000006   Code   RO          655    .text               c_p.l(heapauxi.o)
-    0x000004ba   0x000004ba   0x0000003e   Code   RO          692    .text               c_p.l(sys_stackheap_outer.o)
-    0x000004f8   0x000004f8   0x00000010   Code   RO          695    .text               c_p.l(exit.o)
-    0x00000508   0x00000508   0x00000008   Code   RO          707    .text               c_p.l(libspace.o)
-    0x00000510   0x00000510   0x0000000c   Code   RO          766    .text               c_p.l(sys_exit.o)
-    0x0000051c   0x0000051c   0x00000002   Code   RO          789    .text               c_p.l(use_no_semi.o)
-    0x0000051e   0x0000051e   0x00000000   Code   RO          791    .text               c_p.l(indicate_semi.o)
-    0x0000051e   0x0000051e   0x0000003a   Code   RO          845    .text               c_p.l(__dczerorl.o)
-    0x00000558   0x00000558   0x00000056   Code   RO            2    .text.CLOCK_Init    clock.o
-    0x000005ae   0x000005ae   0x00000002   PAD
-    0x000005b0   0x000005b0   0x00000034   Code   RO          277    .text.DMA_Cmd       mdr32fxqi_dma.o
-    0x000005e4   0x000005e4   0x0000009e   Code   RO          263    .text.DMA_CtrlDataInit  mdr32fxqi_dma.o
-    0x00000682   0x00000682   0x00000002   PAD
-    0x00000684   0x00000684   0x00000044   Code   RO          259    .text.DMA_DeInit    mdr32fxqi_dma.o
-    0x000006c8   0x000006c8   0x000000fc   Code   RO          285    .text.DMA_GetFlagStatus  mdr32fxqi_dma.o
-    0x000007c4   0x000007c4   0x00000124   Code   RO           12    .text.DMA_IRQHandler  dma.o
-    0x000008e8   0x000008e8   0x00000114   Code   RO          271    .text.DMA_Init      mdr32fxqi_dma.o
-    0x000009fc   0x000009fc   0x00000022   Code   RO          273    .text.DMA_StructInit  mdr32fxqi_dma.o
-    0x00000a1e   0x00000a1e   0x00000002   PAD
-    0x00000a20   0x00000a20   0x000000b4   Code   RO          107    .text.DMA_UART_RX_init  uart.o
-    0x00000ad4   0x00000ad4   0x00000040   Code   RO           10    .text.DMA_common_init  dma.o
-    0x00000b14   0x00000b14   0x00000060   Code   RO          297    .text.EBC_Init      mdr32fxqi_ebc.o
-    0x00000b74   0x00000b74   0x00000040   Code   RO          309    .text.EBC_MemRegionInit  mdr32fxqi_ebc.o
-    0x00000bb4   0x00000bb4   0x0000001e   Code   RO          307    .text.EBC_MemRegionStructInit  mdr32fxqi_ebc.o
-    0x00000bd2   0x00000bd2   0x0000003a   Code   RO          299    .text.EBC_StructInit  mdr32fxqi_ebc.o
-    0x00000c0c   0x00000c0c   0x0000014c   Code   RO          339    .text.PORT_Init     mdr32fxqi_port.o
-    0x00000d58   0x00000d58   0x00000010   Code   RO          349    .text.PORT_ResetBits  mdr32fxqi_port.o
-    0x00000d68   0x00000d68   0x00000010   Code   RO          347    .text.PORT_SetBits  mdr32fxqi_port.o
-    0x00000d78   0x00000d78   0x00000038   Code   RO          341    .text.PORT_StructInit  mdr32fxqi_port.o
-    0x00000db0   0x00000db0   0x00000026   Code   RO          351    .text.PORT_WriteBit  mdr32fxqi_port.o
-    0x00000dd6   0x00000dd6   0x00000002   PAD
-    0x00000dd8   0x00000dd8   0x00000034   Code   RO          400    .text.RST_CLK_CPU_PLLcmd  mdr32fxqi_rst_clk.o
-    0x00000e0c   0x00000e0c   0x00000074   Code   RO          396    .text.RST_CLK_CPU_PLLconfig  mdr32fxqi_rst_clk.o
-    0x00000e80   0x00000e80   0x00000064   Code   RO          402    .text.RST_CLK_CPU_PLLstatus  mdr32fxqi_rst_clk.o
-    0x00000ee4   0x00000ee4   0x00000038   Code   RO          398    .text.RST_CLK_CPU_PLLuse  mdr32fxqi_rst_clk.o
-    0x00000f1c   0x00000f1c   0x00000028   Code   RO          404    .text.RST_CLK_CPUclkPrescaler  mdr32fxqi_rst_clk.o
-    0x00000f44   0x00000f44   0x00000028   Code   RO          372    .text.RST_CLK_CPUclkSelection  mdr32fxqi_rst_clk.o
-    0x00000f6c   0x00000f6c   0x00000024   Code   RO          362    .text.RST_CLK_DeInit  mdr32fxqi_rst_clk.o
-    0x00000f90   0x00000f90   0x00000268   Code   RO          434    .text.RST_CLK_GetClocksFreq  mdr32fxqi_rst_clk.o
-    0x000011f8   0x000011f8   0x00000054   Code   RO          378    .text.RST_CLK_GetFlagStatus  mdr32fxqi_rst_clk.o
-    0x0000124c   0x0000124c   0x00000044   Code   RO          374    .text.RST_CLK_HSEconfig  mdr32fxqi_rst_clk.o
-    0x00001290   0x00001290   0x00000064   Code   RO          376    .text.RST_CLK_HSEstatus  mdr32fxqi_rst_clk.o
-    0x000012f4   0x000012f4   0x00000040   Code   RO          368    .text.RST_CLK_HSIcmd  mdr32fxqi_rst_clk.o
-    0x00001334   0x00001334   0x00000064   Code   RO          370    .text.RST_CLK_HSIstatus  mdr32fxqi_rst_clk.o
-    0x00001398   0x00001398   0x0000002c   Code   RO          366    .text.RST_CLK_PCLKcmd  mdr32fxqi_rst_clk.o
-    0x000013c4   0x000013c4   0x00000094   Code   RO          364    .text.RST_CLK_WarmDeInit  mdr32fxqi_rst_clk.o
-    0x00001458   0x00001458   0x000001d0   Code   RO          175    .text.SSP1_IRQHandler  spi.o
-    0x00001628   0x00001628   0x000000ac   Code   RO          467    .text.SSP_BRGInit   mdr32fxqi_ssp.o
-    0x000016d4   0x000016d4   0x00000016   Code   RO          457    .text.SSP_ClearITPendingBit  mdr32fxqi_ssp.o
-    0x000016ea   0x000016ea   0x00000002   PAD
-    0x000016ec   0x000016ec   0x00000030   Code   RO          449    .text.SSP_Cmd       mdr32fxqi_ssp.o
-    0x0000171c   0x0000171c   0x00000030   Code   RO          459    .text.SSP_DMACmd    mdr32fxqi_ssp.o
-    0x0000174c   0x0000174c   0x00000032   Code   RO          465    .text.SSP_GetFlagStatus  mdr32fxqi_ssp.o
-    0x0000177e   0x0000177e   0x0000002e   Code   RO          451    .text.SSP_ITConfig  mdr32fxqi_ssp.o
-    0x000017ac   0x000017ac   0x00000040   Code   RO          445    .text.SSP_Init      mdr32fxqi_ssp.o
-    0x000017ec   0x000017ec   0x00000012   Code   RO          461    .text.SSP_SendData  mdr32fxqi_ssp.o
-    0x000017fe   0x000017fe   0x0000002e   Code   RO          447    .text.SSP_StructInit  mdr32fxqi_ssp.o
-    0x0000182c   0x0000182c   0x000000c0   Code   RO          194    .text.SystemCoreClockUpdate  system_mdr32f1qi.o
-    0x000018ec   0x000018ec   0x00000064   Code   RO          196    .text.SystemInit    system_mdr32f1qi.o
-    0x00001950   0x00001950   0x0000012c   Code   RO           69    .text.TIMER2_IRQHandler  timer.o
-    0x00001a7c   0x00001a7c   0x0000010c   Code   RO          590    .text.TIMER_BRGInit  mdr32fxqi_timer.o
-    0x00001b88   0x00001b88   0x00000050   Code   RO          554    .text.TIMER_ChnCCR1_Cmd  mdr32fxqi_timer.o
-    0x00001bd8   0x00001bd8   0x0000007a   Code   RO          520    .text.TIMER_ChnInit  mdr32fxqi_timer.o
-    0x00001c52   0x00001c52   0x0000003a   Code   RO          522    .text.TIMER_ChnStructInit  mdr32fxqi_timer.o
-    0x00001c8c   0x00001c8c   0x00000012   Code   RO          582    .text.TIMER_ClearFlag  mdr32fxqi_timer.o
-    0x00001c9e   0x00001c9e   0x00000034   Code   RO          482    .text.TIMER_Cmd     mdr32fxqi_timer.o
-    0x00001cd2   0x00001cd2   0x00000058   Code   RO          478    .text.TIMER_CntInit  mdr32fxqi_timer.o
-    0x00001d2a   0x00001d2a   0x0000003a   Code   RO          480    .text.TIMER_CntStructInit  mdr32fxqi_timer.o
-    0x00001d64   0x00001d64   0x0000000c   Code   RO          486    .text.TIMER_GetCounter  mdr32fxqi_timer.o
-    0x00001d70   0x00001d70   0x0000003a   Code   RO          588    .text.TIMER_GetITStatus  mdr32fxqi_timer.o
-    0x00001daa   0x00001daa   0x00000036   Code   RO          586    .text.TIMER_ITConfig  mdr32fxqi_timer.o
-    0x00001de0   0x00001de0   0x00000010   Code   RO          484    .text.TIMER_SetCounter  mdr32fxqi_timer.o
-    0x00001df0   0x00001df0   0x00000044   Code   RO           85    .text.UART1_IRQHandler  uart.o
-    0x00001e34   0x00001e34   0x00000048   Code   RO           87    .text.UART2_IRQHandler  uart.o
-    0x00001e7c   0x00001e7c   0x00000074   Code   RO          631    .text.UART_BRGInit  mdr32fxqi_uart.o
-    0x00001ef0   0x00001ef0   0x00000014   Code   RO          613    .text.UART_ClearITPendingBit  mdr32fxqi_uart.o
-    0x00001f04   0x00001f04   0x00000030   Code   RO          605    .text.UART_Cmd      mdr32fxqi_uart.o
-    0x00001f34   0x00001f34   0x00000030   Code   RO          617    .text.UART_DMACmd   mdr32fxqi_uart.o
-    0x00001f64   0x00001f64   0x00000032   Code   RO          629    .text.UART_GetFlagStatus  mdr32fxqi_uart.o
-    0x00001f96   0x00001f96   0x0000002e   Code   RO          607    .text.UART_ITConfig  mdr32fxqi_uart.o
-    0x00001fc4   0x00001fc4   0x00000114   Code   RO          601    .text.UART_Init     mdr32fxqi_uart.o
-    0x000020d8   0x000020d8   0x0000000e   Code   RO          621    .text.UART_ReceiveData  mdr32fxqi_uart.o
-    0x000020e6   0x000020e6   0x00000002   PAD
-    0x000020e8   0x000020e8   0x0000002c   Code   RO          261    .text.__NVIC_ClearPendingIRQ  mdr32fxqi_dma.o
-    0x00002114   0x00002114   0x00000034   Code   RO          163    .text.__NVIC_DisableIRQ  spi.o
-    0x00002148   0x00002148   0x00000028   Code   RO           65    .text.__NVIC_EnableIRQ  timer.o
-    0x00002170   0x00002170   0x0000002c   Code   RO           93    .text.__NVIC_EnableIRQ  uart.o
-    0x0000219c   0x0000219c   0x000000b4   Code   RO          145    .text.adc_gpio_config  1273pv19t.o
-    0x00002250   0x00002250   0x000000a4   Code   RO          147    .text.adc_init      1273pv19t.o
-    0x000022f4   0x000022f4   0x00000024   Code   RO          149    .text.adc_reset     1273pv19t.o
-    0x00002318   0x00002318   0x00000030   Code   RO           73    .text.delay_micro   timer.o
-    0x00002348   0x00002348   0x0000002c   Code   RO           71    .text.delay_milli   timer.o
-    0x00002374   0x00002374   0x000000ac   Code   RO          173    .text.dma_spi_rx_init  spi.o
-    0x00002420   0x00002420   0x00000118   Code   RO          122    .text.ebc_gpio_config  ebc.o
-    0x00002538   0x00002538   0x00000044   Code   RO          124    .text.ebc_init      ebc.o
-    0x0000257c   0x0000257c   0x00000088   Code   RO           46    .text.fill_crc32_table  rs422_protocol.o
-    0x00002604   0x00002604   0x0000004c   Code   RO          135    .text.find_max_halfword  external_ram.o
-    0x00002650   0x00002650   0x0000049c   Code   RO          133    .text.init_external_ram_space  external_ram.o
-    0x00002aec   0x00002aec   0x0000021c   Code   RO           21    .text.main          main.o
-    0x00002d08   0x00002d08   0x00000028   Code   RO          171    .text.spi_clean_fifo_rx_buf  spi.o
-    0x00002d30   0x00002d30   0x00000080   Code   RO          159    .text.spi_gpio_config  spi.o
-    0x00002db0   0x00002db0   0x00000084   Code   RO          161    .text.spi_init      spi.o
-    0x00002e34   0x00002e34   0x0000004a   Code   RO           59    .text.timer1_init   timer.o
-    0x00002e7e   0x00002e7e   0x000000c8   Code   RO           63    .text.timer2_init   timer.o
-    0x00002f46   0x00002f46   0x0000004a   Code   RO           61    .text.timer3_init   timer.o
-    0x00002f90   0x00002f90   0x00000058   Code   RO           67    .text.timer_init    timer.o
-    0x00002fe8   0x00002fe8   0x000000dc   Code   RO           89    .text.uart_gpio_config  uart.o
-    0x000030c4   0x000030c4   0x000000ae   Code   RO           91    .text.uart_init     uart.o
-    0x00003172   0x00003172   0x00000016   Code   RO          109    .text.uart_set_read_timeout  uart.o
-    0x00003188   0x00003188   0x00000004   Data   RO          137    .rodata.str1.1      external_ram.o
-    0x0000318c   0x0000318c   0x00000030   Data   RO          844    Region$$Table       anon$$obj.o
+    0x000002dc   0x000002dc   0x0000006c   Code   RO          647    .text               c_p.l(strncpy.o)
+    0x00000348   0x00000348   0x0000016c   Code   RO          649    .text               c_p.l(aeabi_sdiv.o)
+    0x000004b4   0x000004b4   0x00000006   Code   RO          653    .text               c_p.l(heapauxi.o)
+    0x000004ba   0x000004ba   0x0000005e   Code   RO          663    .text               fz_ps.l(fflti.o)
+    0x00000518   0x00000518   0x0000003e   Code   RO          690    .text               c_p.l(sys_stackheap_outer.o)
+    0x00000556   0x00000556   0x00000010   Code   RO          693    .text               c_p.l(exit.o)
+    0x00000566   0x00000566   0x00000002   PAD
+    0x00000568   0x00000568   0x00000008   Code   RO          705    .text               c_p.l(libspace.o)
+    0x00000570   0x00000570   0x0000000c   Code   RO          764    .text               c_p.l(sys_exit.o)
+    0x0000057c   0x0000057c   0x00000002   Code   RO          787    .text               c_p.l(use_no_semi.o)
+    0x0000057e   0x0000057e   0x00000000   Code   RO          789    .text               c_p.l(indicate_semi.o)
+    0x0000057e   0x0000057e   0x0000003a   Code   RO          843    .text               c_p.l(__dczerorl.o)
+    0x000005b8   0x000005b8   0x00000056   Code   RO            2    .text.CLOCK_Init    clock.o
+    0x0000060e   0x0000060e   0x00000002   PAD
+    0x00000610   0x00000610   0x00000034   Code   RO          275    .text.DMA_Cmd       mdr32fxqi_dma.o
+    0x00000644   0x00000644   0x0000009e   Code   RO          261    .text.DMA_CtrlDataInit  mdr32fxqi_dma.o
+    0x000006e2   0x000006e2   0x00000002   PAD
+    0x000006e4   0x000006e4   0x00000044   Code   RO          257    .text.DMA_DeInit    mdr32fxqi_dma.o
+    0x00000728   0x00000728   0x000000fc   Code   RO          283    .text.DMA_GetFlagStatus  mdr32fxqi_dma.o
+    0x00000824   0x00000824   0x00000124   Code   RO           12    .text.DMA_IRQHandler  dma.o
+    0x00000948   0x00000948   0x00000114   Code   RO          269    .text.DMA_Init      mdr32fxqi_dma.o
+    0x00000a5c   0x00000a5c   0x00000022   Code   RO          271    .text.DMA_StructInit  mdr32fxqi_dma.o
+    0x00000a7e   0x00000a7e   0x00000002   PAD
+    0x00000a80   0x00000a80   0x000000b4   Code   RO          107    .text.DMA_UART_RX_init  uart.o
+    0x00000b34   0x00000b34   0x00000040   Code   RO           10    .text.DMA_common_init  dma.o
+    0x00000b74   0x00000b74   0x00000060   Code   RO          295    .text.EBC_Init      mdr32fxqi_ebc.o
+    0x00000bd4   0x00000bd4   0x00000040   Code   RO          307    .text.EBC_MemRegionInit  mdr32fxqi_ebc.o
+    0x00000c14   0x00000c14   0x0000001e   Code   RO          305    .text.EBC_MemRegionStructInit  mdr32fxqi_ebc.o
+    0x00000c32   0x00000c32   0x0000003a   Code   RO          297    .text.EBC_StructInit  mdr32fxqi_ebc.o
+    0x00000c6c   0x00000c6c   0x0000014c   Code   RO          337    .text.PORT_Init     mdr32fxqi_port.o
+    0x00000db8   0x00000db8   0x00000010   Code   RO          347    .text.PORT_ResetBits  mdr32fxqi_port.o
+    0x00000dc8   0x00000dc8   0x00000010   Code   RO          345    .text.PORT_SetBits  mdr32fxqi_port.o
+    0x00000dd8   0x00000dd8   0x00000038   Code   RO          339    .text.PORT_StructInit  mdr32fxqi_port.o
+    0x00000e10   0x00000e10   0x00000026   Code   RO          349    .text.PORT_WriteBit  mdr32fxqi_port.o
+    0x00000e36   0x00000e36   0x00000002   PAD
+    0x00000e38   0x00000e38   0x00000034   Code   RO          398    .text.RST_CLK_CPU_PLLcmd  mdr32fxqi_rst_clk.o
+    0x00000e6c   0x00000e6c   0x00000074   Code   RO          394    .text.RST_CLK_CPU_PLLconfig  mdr32fxqi_rst_clk.o
+    0x00000ee0   0x00000ee0   0x00000064   Code   RO          400    .text.RST_CLK_CPU_PLLstatus  mdr32fxqi_rst_clk.o
+    0x00000f44   0x00000f44   0x00000038   Code   RO          396    .text.RST_CLK_CPU_PLLuse  mdr32fxqi_rst_clk.o
+    0x00000f7c   0x00000f7c   0x00000028   Code   RO          402    .text.RST_CLK_CPUclkPrescaler  mdr32fxqi_rst_clk.o
+    0x00000fa4   0x00000fa4   0x00000028   Code   RO          370    .text.RST_CLK_CPUclkSelection  mdr32fxqi_rst_clk.o
+    0x00000fcc   0x00000fcc   0x00000024   Code   RO          360    .text.RST_CLK_DeInit  mdr32fxqi_rst_clk.o
+    0x00000ff0   0x00000ff0   0x00000268   Code   RO          432    .text.RST_CLK_GetClocksFreq  mdr32fxqi_rst_clk.o
+    0x00001258   0x00001258   0x00000054   Code   RO          376    .text.RST_CLK_GetFlagStatus  mdr32fxqi_rst_clk.o
+    0x000012ac   0x000012ac   0x00000044   Code   RO          372    .text.RST_CLK_HSEconfig  mdr32fxqi_rst_clk.o
+    0x000012f0   0x000012f0   0x00000064   Code   RO          374    .text.RST_CLK_HSEstatus  mdr32fxqi_rst_clk.o
+    0x00001354   0x00001354   0x00000040   Code   RO          366    .text.RST_CLK_HSIcmd  mdr32fxqi_rst_clk.o
+    0x00001394   0x00001394   0x00000064   Code   RO          368    .text.RST_CLK_HSIstatus  mdr32fxqi_rst_clk.o
+    0x000013f8   0x000013f8   0x0000002c   Code   RO          364    .text.RST_CLK_PCLKcmd  mdr32fxqi_rst_clk.o
+    0x00001424   0x00001424   0x0000007c   Code   RO          362    .text.RST_CLK_WarmDeInit  mdr32fxqi_rst_clk.o
+    0x000014a0   0x000014a0   0x000000a8   Code   RO          465    .text.SSP_BRGInit   mdr32fxqi_ssp.o
+    0x00001548   0x00001548   0x00000030   Code   RO          447    .text.SSP_Cmd       mdr32fxqi_ssp.o
+    0x00001578   0x00001578   0x00000030   Code   RO          457    .text.SSP_DMACmd    mdr32fxqi_ssp.o
+    0x000015a8   0x000015a8   0x00000032   Code   RO          463    .text.SSP_GetFlagStatus  mdr32fxqi_ssp.o
+    0x000015da   0x000015da   0x0000002e   Code   RO          449    .text.SSP_ITConfig  mdr32fxqi_ssp.o
+    0x00001608   0x00001608   0x00000040   Code   RO          443    .text.SSP_Init      mdr32fxqi_ssp.o
+    0x00001648   0x00001648   0x00000012   Code   RO          459    .text.SSP_SendData  mdr32fxqi_ssp.o
+    0x0000165a   0x0000165a   0x0000002e   Code   RO          445    .text.SSP_StructInit  mdr32fxqi_ssp.o
+    0x00001688   0x00001688   0x000000c0   Code   RO          192    .text.SystemCoreClockUpdate  system_mdr32f1qi.o
+    0x00001748   0x00001748   0x0000006c   Code   RO          194    .text.SystemInit    system_mdr32f1qi.o
+    0x000017b4   0x000017b4   0x0000012c   Code   RO           69    .text.TIMER2_IRQHandler  timer.o
+    0x000018e0   0x000018e0   0x0000010c   Code   RO          588    .text.TIMER_BRGInit  mdr32fxqi_timer.o
+    0x000019ec   0x000019ec   0x00000050   Code   RO          552    .text.TIMER_ChnCCR1_Cmd  mdr32fxqi_timer.o
+    0x00001a3c   0x00001a3c   0x0000007a   Code   RO          518    .text.TIMER_ChnInit  mdr32fxqi_timer.o
+    0x00001ab6   0x00001ab6   0x0000003a   Code   RO          520    .text.TIMER_ChnStructInit  mdr32fxqi_timer.o
+    0x00001af0   0x00001af0   0x00000012   Code   RO          580    .text.TIMER_ClearFlag  mdr32fxqi_timer.o
+    0x00001b02   0x00001b02   0x00000034   Code   RO          480    .text.TIMER_Cmd     mdr32fxqi_timer.o
+    0x00001b36   0x00001b36   0x00000058   Code   RO          476    .text.TIMER_CntInit  mdr32fxqi_timer.o
+    0x00001b8e   0x00001b8e   0x0000003a   Code   RO          478    .text.TIMER_CntStructInit  mdr32fxqi_timer.o
+    0x00001bc8   0x00001bc8   0x0000000c   Code   RO          484    .text.TIMER_GetCounter  mdr32fxqi_timer.o
+    0x00001bd4   0x00001bd4   0x0000003a   Code   RO          586    .text.TIMER_GetITStatus  mdr32fxqi_timer.o
+    0x00001c0e   0x00001c0e   0x00000036   Code   RO          584    .text.TIMER_ITConfig  mdr32fxqi_timer.o
+    0x00001c44   0x00001c44   0x00000010   Code   RO          482    .text.TIMER_SetCounter  mdr32fxqi_timer.o
+    0x00001c54   0x00001c54   0x00000044   Code   RO           85    .text.UART1_IRQHandler  uart.o
+    0x00001c98   0x00001c98   0x00000048   Code   RO           87    .text.UART2_IRQHandler  uart.o
+    0x00001ce0   0x00001ce0   0x00000074   Code   RO          629    .text.UART_BRGInit  mdr32fxqi_uart.o
+    0x00001d54   0x00001d54   0x00000014   Code   RO          611    .text.UART_ClearITPendingBit  mdr32fxqi_uart.o
+    0x00001d68   0x00001d68   0x00000030   Code   RO          603    .text.UART_Cmd      mdr32fxqi_uart.o
+    0x00001d98   0x00001d98   0x00000030   Code   RO          615    .text.UART_DMACmd   mdr32fxqi_uart.o
+    0x00001dc8   0x00001dc8   0x00000032   Code   RO          627    .text.UART_GetFlagStatus  mdr32fxqi_uart.o
+    0x00001dfa   0x00001dfa   0x0000002e   Code   RO          605    .text.UART_ITConfig  mdr32fxqi_uart.o
+    0x00001e28   0x00001e28   0x00000114   Code   RO          599    .text.UART_Init     mdr32fxqi_uart.o
+    0x00001f3c   0x00001f3c   0x0000000e   Code   RO          619    .text.UART_ReceiveData  mdr32fxqi_uart.o
+    0x00001f4a   0x00001f4a   0x00000002   PAD
+    0x00001f4c   0x00001f4c   0x0000002c   Code   RO          259    .text.__NVIC_ClearPendingIRQ  mdr32fxqi_dma.o
+    0x00001f78   0x00001f78   0x00000034   Code   RO          163    .text.__NVIC_DisableIRQ  spi.o
+    0x00001fac   0x00001fac   0x00000028   Code   RO           65    .text.__NVIC_EnableIRQ  timer.o
+    0x00001fd4   0x00001fd4   0x0000002c   Code   RO           93    .text.__NVIC_EnableIRQ  uart.o
+    0x00002000   0x00002000   0x000000b8   Code   RO          145    .text.adc_gpio_config  1273pv19t.o
+    0x000020b8   0x000020b8   0x000000a4   Code   RO          147    .text.adc_init      1273pv19t.o
+    0x0000215c   0x0000215c   0x00000028   Code   RO          149    .text.adc_reset     1273pv19t.o
+    0x00002184   0x00002184   0x00000030   Code   RO           73    .text.delay_micro   timer.o
+    0x000021b4   0x000021b4   0x0000002c   Code   RO           71    .text.delay_milli   timer.o
+    0x000021e0   0x000021e0   0x000000ac   Code   RO          173    .text.dma_spi_rx_init  spi.o
+    0x0000228c   0x0000228c   0x000001b0   Code   RO           23    .text.do_mpa_task   main.o
+    0x0000243c   0x0000243c   0x00000118   Code   RO          122    .text.ebc_gpio_config  ebc.o
+    0x00002554   0x00002554   0x00000044   Code   RO          124    .text.ebc_init      ebc.o
+    0x00002598   0x00002598   0x00000088   Code   RO           46    .text.fill_crc32_table  rs422_protocol.o
+    0x00002620   0x00002620   0x0000004c   Code   RO          135    .text.find_max_halfword  external_ram.o
+    0x0000266c   0x0000266c   0x0000049c   Code   RO          133    .text.init_external_ram_space  external_ram.o
+    0x00002b08   0x00002b08   0x00000214   Code   RO           21    .text.main          main.o
+    0x00002d1c   0x00002d1c   0x00000028   Code   RO          171    .text.spi_clean_fifo_rx_buf  spi.o
+    0x00002d44   0x00002d44   0x00000080   Code   RO          159    .text.spi_gpio_config  spi.o
+    0x00002dc4   0x00002dc4   0x00000084   Code   RO          161    .text.spi_init      spi.o
+    0x00002e48   0x00002e48   0x0000004a   Code   RO           59    .text.timer1_init   timer.o
+    0x00002e92   0x00002e92   0x000000c8   Code   RO           63    .text.timer2_init   timer.o
+    0x00002f5a   0x00002f5a   0x0000004a   Code   RO           61    .text.timer3_init   timer.o
+    0x00002fa4   0x00002fa4   0x00000058   Code   RO           67    .text.timer_init    timer.o
+    0x00002ffc   0x00002ffc   0x000000dc   Code   RO           89    .text.uart_gpio_config  uart.o
+    0x000030d8   0x000030d8   0x000000ae   Code   RO           91    .text.uart_init     uart.o
+    0x00003186   0x00003186   0x00000016   Code   RO          109    .text.uart_set_read_timeout  uart.o
+    0x0000319c   0x0000319c   0x0000008c   Code   RO          657    x$fpl$fadd          fz_ps.l(faddsub.o)
+    0x00003228   0x00003228   0x000000b0   Code   RO          665    x$fpl$fmul          fz_ps.l(fmul.o)
+    0x000032d8   0x000032d8   0x000000d0   Code   RO          659    x$fpl$fsub          fz_ps.l(faddsub.o)
+    0x000033a8   0x000033a8   0x00000000   Code   RO          672    x$fpl$usenofp       fz_ps.l(usenofp.o)
+    0x000033a8   0x000033a8   0x00000004   Data   RO          137    .rodata.str1.1      external_ram.o
+    0x000033ac   0x000033ac   0x00000030   Data   RO          842    Region$$Table       anon$$obj.o
 
 
-    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x000031c0, Size: 0x00002258, Max: 0x00008000, ABSOLUTE)
+    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x000033e0, Size: 0x00002250, Max: 0x00008000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000000   0x000031c0   0x00000004   Data   RW          198    .data.SystemCoreClock  system_mdr32f1qi.o
-    0x20000004   0x000031c4   0x00000004   PAD
-    0x20000008        -       0x00000060   Zero   RW          708    .bss                c_p.l(libspace.o)
+    0x20000000   0x000033e0   0x00000004   Data   RW          196    .data.SystemCoreClock  system_mdr32f1qi.o
+    0x20000004   0x000033e4   0x00000004   PAD
+    0x20000008        -       0x00000060   Zero   RW          706    .bss                c_p.l(libspace.o)
     0x20000068        -       0x00000078   Zero   RW          113    .bss.UART1          uart.o
     0x200000e0        -       0x00000078   Zero   RW          114    .bss.UART2          uart.o
-    0x20000158        -       0x00000018   Zero   RW          151    .bss.adc_1          1273pv19t.o
-    0x20000170        -       0x00000004   Zero   RW           27    .bss.ram_space_pointer  main.o
-    0x20000174        -       0x0000004c   Zero   RW           76    .bss.timer_1        timer.o
-    0x200001c0        -       0x0000004c   Zero   RW           75    .bss.timer_2        timer.o
-    0x2000020c        -       0x0000004c   Zero   RW           77    .bss.timer_3        timer.o
-    0x20000258        -       0x00001000   Zero   RW          185    HEAP                startup_mdr32f1qi.o
-    0x20001258        -       0x00001000   Zero   RW          184    STACK               startup_mdr32f1qi.o
+    0x20000158        -       0x00000010   Zero   RW          151    .bss.adc_1          1273pv19t.o
+    0x20000168        -       0x00000004   Zero   RW           27    .bss.ram_space_pointer  main.o
+    0x2000016c        -       0x0000004c   Zero   RW           76    .bss.timer_1        timer.o
+    0x200001b8        -       0x0000004c   Zero   RW           75    .bss.timer_2        timer.o
+    0x20000204        -       0x0000004c   Zero   RW           77    .bss.timer_3        timer.o
+    0x20000250        -       0x00001000   Zero   RW          183    HEAP                startup_mdr32f1qi.o
+    0x20001250        -       0x00001000   Zero   RW          182    STACK               startup_mdr32f1qi.o
 
 
     Execution Region RW_IRAM2 (Exec base: 0x20100000, Load base: 0x00003400, Size: 0x00000800, Max: 0x00004000, ABSOLUTE, COMPRESSED[0x00000014])
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20100000   COMPRESSED   0x000000a8   Data   RW          177    EXECUTABLE_MEMORY_SECTION  spi.o
+    0x20100000   COMPRESSED   0x000000a8   Data   RW          175    EXECUTABLE_MEMORY_SECTION  spi.o
     0x201000a8   COMPRESSED   0x00000358   PAD
-    0x20100400   COMPRESSED   0x00000400   Data   RW          287    EXECUTABLE_MEMORY_SECTION  mdr32fxqi_dma.o
+    0x20100400   COMPRESSED   0x00000400   Data   RW          285    EXECUTABLE_MEMORY_SECTION  mdr32fxqi_dma.o
 
 
 ==============================================================================
@@ -1922,30 +1929,30 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
-       380         24          0          0         24      10667   1273pv19t.o
+       388         32          0          0         16      10583   1273pv19t.o
         86          0          0          0          0       1323   clock.o
        356         48          0          0          0       4461   dma.o
        348         32          0          0          0       5583   ebc.o
       1256         64          4          0          0       7062   external_ram.o
-       540         84          0          0          4      19092   main.o
+       964         92          0          0          4      19011   main.o
        884        104          0       1024          0       8613   mdr32fxqi_dma.o
        248         12          0          0          0       5994   mdr32fxqi_ebc.o
        458          8          0          0          0       4906   mdr32fxqi_port.o
-      1664         80          0          0          0      12829   mdr32fxqi_rst_clk.o
-       514         20          0          0          0       5616   mdr32fxqi_ssp.o
+      1640         56          0          0          0      12829   mdr32fxqi_rst_clk.o
+       488         16          0          0          0       5616   mdr32fxqi_ssp.o
        884         24          0          0          0      21062   mdr32fxqi_timer.o
        618         24          0          0          0       7536   mdr32fxqi_uart.o
        136         12          0          0          0      13047   rs422_protocol.o
-       988         40          0        168          0      10893   spi.o
+       524         16          0        168          0      10345   spi.o
        116         28        192          0       8192       1944   startup_mdr32f1qi.o
-       292         56          0          4          0       1557   system_mdr32f1qi.o
+       300         64          0          4          0       1557   system_mdr32f1qi.o
        868         40          0          0        228       6762   timer.o
        780         36          0          0        240      14636   uart.o
 
     ----------------------------------------------------------------------
-     11428        736        244       2052       8692     163583   Object Totals
+     11352        708        244       2052       8684     162870   Object Totals
          0          0         48          0          0          0   (incl. Generated)
-        12          0          0        856          4          0   (incl. Padding)
+        10          0          0        856          4          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -1977,19 +1984,24 @@ Image component sizes
         12          4          0          0          0         60   sys_exit.o
         62          0          0          0          0         80   sys_stackheap_outer.o
          2          0          0          0          0         68   use_no_semi.o
+       348          8          0          0          0        160   faddsub.o
+        94          0          0          0          0         92   fflti.o
+       176          4          0          0          0         80   fmul.o
+         0          0          0          0          0          0   usenofp.o
 
     ----------------------------------------------------------------------
-      1060         24          0          0         96       1028   Library Totals
-         6          0          0          0          0          0   (incl. Padding)
+      1680         36          0          0         96       1360   Library Totals
+         8          0          0          0          0          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Library Name
 
       1054         24          0          0         96       1028   c_p.l
+       618         12          0          0          0        332   fz_ps.l
 
     ----------------------------------------------------------------------
-      1060         24          0          0         96       1028   Library Totals
+      1680         36          0          0         96       1360   Library Totals
 
     ----------------------------------------------------------------------
 
@@ -1998,15 +2010,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     12488        760        244       2052       8788     163971   Grand Totals
-     12488        760        244         24       8788     163971   ELF Image Totals (compressed)
-     12488        760        244         24          0          0   ROM Totals
+     13032        744        244       2052       8780     163390   Grand Totals
+     13032        744        244         24       8780     163390   ELF Image Totals (compressed)
+     13032        744        244         24          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                12732 (  12.43kB)
-    Total RW  Size (RW Data + ZI Data)             10840 (  10.59kB)
-    Total ROM Size (Code + RO Data + RW Data)      12756 (  12.46kB)
+    Total RO  Size (Code + RO Data)                13276 (  12.96kB)
+    Total RW  Size (RW Data + ZI Data)             10832 (  10.58kB)
+    Total ROM Size (Code + RO Data + RW Data)      13300 (  12.99kB)
 
 ==============================================================================
 
