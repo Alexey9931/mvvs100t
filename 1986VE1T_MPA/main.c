@@ -121,22 +121,21 @@ int main(void)
 	UART2.UARTx_timeouts.timer_n_timeout = &timer_3;
 
 	//uart_set_read_timeout(&UART1, 300);
-	uart_set_read_timeout(&UART2, 900);
+	uart_set_read_timeout(&UART2, 300);
 
 //	uart_init(&UART1);
 //	DMA_UART_RX_init(&UART1);
 	uart_init(&UART2);
 	DMA_UART_RX_init(&UART2);
-	
 
 	while(1)
 	{		
-		delay_milli(100);
-		do_mpa_task(&adc_1);
+//		delay_milli(100);
+//		do_mpa_task(&adc_1);
 		//запрос пакета по ШИНЕ1
 		//request_data(&UART1);
 		//запрос пакета по ШИНЕ2
-//		request_data(&UART2);
+		request_data(&UART2);
 		//delay_milli(10);
 		//do_mpa_task(&adc_1);
 	}

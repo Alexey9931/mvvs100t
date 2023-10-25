@@ -97,8 +97,10 @@ void timer2_init(timer_n *timer_struct)
 	TIMER_ChnCCR1_Cmd(timer_struct->TIMERx, sTIM2_ChnInit.TIMER_CH_Number, ENABLE);
 
 	TIMER_ITConfig(timer_struct->TIMERx, timer_struct->TIMER_STATUS, ENABLE);
+	TIMER_ClearITPendingBit(timer_2.TIMERx, TIMER_STATUS_CNT_ARR);
+	TIMER_ITConfig(timer_2.TIMERx, TIMER_STATUS_CNT_ARR, DISABLE);
 	NVIC_EnableIRQ(timer_struct->IRQn);
-//	NVIC_SetPriority(timer_struct->IRQn, 0);
+	//NVIC_SetPriority(timer_struct->IRQn, 0);
 
 	/* Enable TIMER2 clock */
   TIMER_BRGInit(timer_struct->TIMERx,timer_struct->TIMER_HCLKdiv);
@@ -151,27 +153,32 @@ void TIMER2_IRQHandler(void)
 				spi_1.buffer_counter += CHANEL_NUMBER;
 				if (adc_1.spi_struct->buffer_counter >= (CHANEL_NUMBER*adc_1.avg_num))
 				{
+					PORT_ADC_MODE->SETTX = PIN_ADC_MODE_A1;
+				PORT_ADC_MODE->CLRTX = PIN_ADC_MODE_A1;
 					adc_1.spi_struct->buffer_counter = 0;
 				}
 			}
+			adc_1.ch_rx_num = 0;
 		}
-		TIMER_ClearITPendingBit(timer_2.TIMERx, timer_2.TIMER_STATUS);
+		TIMER_ClearITPendingBit(timer_2.TIMERx, TIMER_STATUS_CNT_ARR);
 	}
 	//если сработало прерывание по срабатыванию захвата по 2 каналу Timer2
-	if (TIMER_GetITStatus(timer_2.TIMERx, TIMER_STATUS_CCR_CAP1_CH2) == SET)
+	else if (TIMER_GetITStatus(timer_2.TIMERx, TIMER_STATUS_CCR_CAP1_CH2) == SET)
 	{
 			//только если инициализирован АЦП
 			if ((adc_1.init_flag == 1))
 			{
+					TIMER_ITConfig(timer_2.TIMERx, TIMER_STATUS_CNT_ARR, DISABLE);
 					adc_1.ch_rx_num++;
 					if (adc_1.ch_rx_num == (CHANEL_NUMBER+1))
 					{
 						adc_1.ch_rx_num = 1;
 					}
-					TIMER_ITConfig(timer_2.TIMERx, TIMER_STATUS_CNT_ARR, ENABLE);
-					TIMER_SetCounter(MDR_TIMER2, 0);				
+					TIMER_SetCounter(timer_2.TIMERx, 0);	
+					TIMER_ClearITPendingBit(timer_2.TIMERx, TIMER_STATUS_CNT_ARR);
+					TIMER_ITConfig(timer_2.TIMERx, TIMER_STATUS_CNT_ARR, ENABLE);			
 			}
-			TIMER_ClearITPendingBit(timer_2.TIMERx, timer_2.TIMER_STATUS);
+			TIMER_ClearITPendingBit(timer_2.TIMERx, TIMER_STATUS_CCR_CAP1_CH2);
 	}
 }
 /*

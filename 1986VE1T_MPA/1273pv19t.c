@@ -148,7 +148,7 @@ void adc_init(adc_n *adc_struct)
 	
 	//режим control, запись в регистр А - перевод в режим данных
 	SSP_SendData(adc_struct->spi_struct->SSPx, 0x8001);
-	delay_micro(15);
+	delay_micro(10);
 	
 	//очистка буфера FIFO передатчика
 	spi_clean_fifo_rx_buf(adc_struct->spi_struct);

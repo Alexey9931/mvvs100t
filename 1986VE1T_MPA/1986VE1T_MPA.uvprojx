@@ -489,6 +489,26 @@
               <FileType>5</FileType>
               <FilePath>.\SPI.h</FilePath>
             </File>
+            <File>
+              <FileName>SystemFont5x7R.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\SystemFont5x7R.c</FilePath>
+            </File>
+            <File>
+              <FileName>SystemFont5x7R.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\SystemFont5x7R.h</FilePath>
+            </File>
+            <File>
+              <FileName>MT-12864Av6.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\MT-12864Av6.c</FilePath>
+            </File>
+            <File>
+              <FileName>MT-12864Av6.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\MT-12864Av6.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

@@ -9,6 +9,8 @@
 ".\objects\external_ram.o"
 ".\objects\1273pv19t.o"
 ".\objects\spi.o"
+".\objects\systemfont5x7r.o"
+".\objects\mt-12864av6.o"
 ".\objects\startup_mdr32f1qi.o"
 ".\objects\system_mdr32f1qi.o"
 ".\objects\mdr32fxqi_bkp.o"
