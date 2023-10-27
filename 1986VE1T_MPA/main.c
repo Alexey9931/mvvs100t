@@ -27,6 +27,7 @@ int main(void)
 	DMA_common_init();
 	ebc_init();
 	init_external_ram_space();
+	leds_gpio_config();
 	
 	//инициализация SSI1
 	spi_1.SSPx = MDR_SSP1;
@@ -121,7 +122,7 @@ int main(void)
 	UART2.UARTx_timeouts.timer_n_timeout = &timer_3;
 
 	//uart_set_read_timeout(&UART1, 300);
-	uart_set_read_timeout(&UART2, 300);
+	uart_set_read_timeout(&UART2, 900);
 
 //	uart_init(&UART1);
 //	DMA_UART_RX_init(&UART1);
@@ -130,8 +131,6 @@ int main(void)
 
 	while(1)
 	{		
-//		delay_milli(100);
-//		do_mpa_task(&adc_1);
 		//запрос пакета по ШИНЕ1
 		//request_data(&UART1);
 		//запрос пакета по ШИНЕ2

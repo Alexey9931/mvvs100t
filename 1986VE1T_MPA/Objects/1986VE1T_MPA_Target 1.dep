@@ -23,7 +23,7 @@ I (C:\Users\shishov\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.0\Libraries\SPL\
 F (.\CLOCK.h)(0x64C916CB)()
 F (.\DMA.c)(0x6526CC31)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m1 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O0 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier-I./RTE/Device/MDR32F1QI-I./RTE/_Target_1-IC:/Users/shishov/AppData/Local/Arm/Packs/ARM/CMSIS/5.9.0/CMSIS/Core/Include-IC:/Users/shishov/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.0/Libraries/CMSIS/MDR32FxQI/CoreSupport/CM1-IC:/Users/shishov/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.0/Libraries/CMSIS/MDR32FxQI/DeviceSupport/MDR32F1QI/inc-IC:/Users/shishov/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.0/Libraries/SPL/MDR32FxQI/inc-D__UVISION_VERSION="537" -D_RTE_ -D_RTE_-o ./objects/dma.o -MD)
 I (DMA.h)(0x64CA0567)
-I (UART.h)(0x6526CC31)
+I (UART.h)(0x653B4D13)
 I (MDR32_Drivers.h)(0x6537D453)
 I (C:\Users\shishov\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.0\Libraries\CMSIS\MDR32FxQI\DeviceSupport\MDR32F1QI\inc\MDR32F1QI.h)(0x624C4A6A)
 I (RTE\Device\MDR32F1QI\MDR32FxQI_config.h)(0x6523AAF2)
@@ -46,11 +46,11 @@ I (TIMER.h)(0x6537D3CC)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x6252A726)
 I (C:\Keil_v5\ARM\ARMCLANG\include\string.h)(0x6252A726)
 I (SPI.h)(0x6527FC8C)
-I (1273pv19t.h)(0x6537D355)
+I (1273pv19t.h)(0x653A30BF)
 F (.\DMA.h)(0x64CA0567)()
-F (.\main.c)(0x6539320D)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m1 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O0 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier-I./RTE/Device/MDR32F1QI-I./RTE/_Target_1-IC:/Users/shishov/AppData/Local/Arm/Packs/ARM/CMSIS/5.9.0/CMSIS/Core/Include-IC:/Users/shishov/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.0/Libraries/CMSIS/MDR32FxQI/CoreSupport/CM1-IC:/Users/shishov/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.0/Libraries/CMSIS/MDR32FxQI/DeviceSupport/MDR32F1QI/inc-IC:/Users/shishov/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.0/Libraries/SPL/MDR32FxQI/inc-D__UVISION_VERSION="537" -D_RTE_ -D_RTE_-o ./objects/main.o -MD)
-I (main.h)(0x65392D06)
-I (1273pv19t.h)(0x6537D355)
+F (.\main.c)(0x653A4829)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m1 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O0 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier-I./RTE/Device/MDR32F1QI-I./RTE/_Target_1-IC:/Users/shishov/AppData/Local/Arm/Packs/ARM/CMSIS/5.9.0/CMSIS/Core/Include-IC:/Users/shishov/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.0/Libraries/CMSIS/MDR32FxQI/CoreSupport/CM1-IC:/Users/shishov/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.0/Libraries/CMSIS/MDR32FxQI/DeviceSupport/MDR32F1QI/inc-IC:/Users/shishov/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.0/Libraries/SPL/MDR32FxQI/inc-D__UVISION_VERSION="537" -D_RTE_ -D_RTE_-o ./objects/main.o -MD)
+I (main.h)(0x653A3523)
+I (1273pv19t.h)(0x653A30BF)
 I (MDR32_Drivers.h)(0x6537D453)
 I (C:\Users\shishov\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.0\Libraries\CMSIS\MDR32FxQI\DeviceSupport\MDR32F1QI\inc\MDR32F1QI.h)(0x624C4A6A)
 I (RTE\Device\MDR32F1QI\MDR32FxQI_config.h)(0x6523AAF2)
@@ -72,7 +72,7 @@ I (C:\Users\shishov\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.0\Libraries\SPL\
 I (SPI.h)(0x6527FC8C)
 I (TIMER.h)(0x6537D3CC)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x6252A726)
-I (UART.h)(0x6526CC31)
+I (UART.h)(0x653B4D13)
 I (C:\Keil_v5\ARM\ARMCLANG\include\string.h)(0x6252A726)
 I (rs422_protocol.h)(0x652023BB)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stddef.h)(0x6252A726)
@@ -85,11 +85,12 @@ I (MT-12864Av6.h)(0x64C8BA18)
 I (SystemFont5x7R.h)(0x64B4F85A)
 I (C:\Keil_v5\ARM\ARMCLANG\include\wchar.h)(0x6252A726)
 I (C:\Keil_v5\ARM\ARMCLANG\include\wctype.h)(0x6252A726)
-F (.\main.h)(0x65392D06)()
+I (leds.h)(0x653A47AC)
+F (.\main.h)(0x653A3523)()
 F (.\MDR32_Drivers.h)(0x6537D453)()
-F (.\rs422_protocol.c)(0x652023FC)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m1 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O0 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier-I./RTE/Device/MDR32F1QI-I./RTE/_Target_1-IC:/Users/shishov/AppData/Local/Arm/Packs/ARM/CMSIS/5.9.0/CMSIS/Core/Include-IC:/Users/shishov/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.0/Libraries/CMSIS/MDR32FxQI/CoreSupport/CM1-IC:/Users/shishov/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.0/Libraries/CMSIS/MDR32FxQI/DeviceSupport/MDR32F1QI/inc-IC:/Users/shishov/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.0/Libraries/SPL/MDR32FxQI/inc-D__UVISION_VERSION="537" -D_RTE_ -D_RTE_-o ./objects/rs422_protocol.o -MD)
+F (.\rs422_protocol.c)(0x653A47AC)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m1 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O0 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier-I./RTE/Device/MDR32F1QI-I./RTE/_Target_1-IC:/Users/shishov/AppData/Local/Arm/Packs/ARM/CMSIS/5.9.0/CMSIS/Core/Include-IC:/Users/shishov/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.0/Libraries/CMSIS/MDR32FxQI/CoreSupport/CM1-IC:/Users/shishov/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.0/Libraries/CMSIS/MDR32FxQI/DeviceSupport/MDR32F1QI/inc-IC:/Users/shishov/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.0/Libraries/SPL/MDR32FxQI/inc-D__UVISION_VERSION="537" -D_RTE_ -D_RTE_-o ./objects/rs422_protocol.o -MD)
 I (rs422_protocol.h)(0x652023BB)
-I (UART.h)(0x6526CC31)
+I (UART.h)(0x653B4D13)
 I (MDR32_Drivers.h)(0x6537D453)
 I (C:\Users\shishov\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.0\Libraries\CMSIS\MDR32FxQI\DeviceSupport\MDR32F1QI\inc\MDR32F1QI.h)(0x624C4A6A)
 I (RTE\Device\MDR32F1QI\MDR32FxQI_config.h)(0x6523AAF2)
@@ -115,8 +116,9 @@ I (C:\Keil_v5\ARM\ARMCLANG\include\stddef.h)(0x6252A726)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdlib.h)(0x6252A726)
 I (external_ram.h)(0x6528076B)
 I (SPI.h)(0x6527FC8C)
+I (leds.h)(0x653A47AC)
 F (.\rs422_protocol.h)(0x652023BB)()
-F (.\TIMER.c)(0x65393D93)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m1 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O0 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier-I./RTE/Device/MDR32F1QI-I./RTE/_Target_1-IC:/Users/shishov/AppData/Local/Arm/Packs/ARM/CMSIS/5.9.0/CMSIS/Core/Include-IC:/Users/shishov/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.0/Libraries/CMSIS/MDR32FxQI/CoreSupport/CM1-IC:/Users/shishov/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.0/Libraries/CMSIS/MDR32FxQI/DeviceSupport/MDR32F1QI/inc-IC:/Users/shishov/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.0/Libraries/SPL/MDR32FxQI/inc-D__UVISION_VERSION="537" -D_RTE_ -D_RTE_-o ./objects/timer.o -MD)
+F (.\TIMER.c)(0x65393FC7)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m1 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O0 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier-I./RTE/Device/MDR32F1QI-I./RTE/_Target_1-IC:/Users/shishov/AppData/Local/Arm/Packs/ARM/CMSIS/5.9.0/CMSIS/Core/Include-IC:/Users/shishov/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.0/Libraries/CMSIS/MDR32FxQI/CoreSupport/CM1-IC:/Users/shishov/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.0/Libraries/CMSIS/MDR32FxQI/DeviceSupport/MDR32F1QI/inc-IC:/Users/shishov/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.0/Libraries/SPL/MDR32FxQI/inc-D__UVISION_VERSION="537" -D_RTE_ -D_RTE_-o ./objects/timer.o -MD)
 I (TIMER.h)(0x6537D3CC)
 I (MDR32_Drivers.h)(0x6537D453)
 I (C:\Users\shishov\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.0\Libraries\CMSIS\MDR32FxQI\DeviceSupport\MDR32F1QI\inc\MDR32F1QI.h)(0x624C4A6A)
@@ -138,17 +140,17 @@ I (C:\Users\shishov\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.0\Libraries\SPL\
 I (C:\Users\shishov\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.0\Libraries\SPL\MDR32FxQI\inc\MDR32FxQI_bkp.h)(0x624C4A6A)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x6252A726)
 I (SPI.h)(0x6527FC8C)
-I (1273pv19t.h)(0x6537D355)
+I (1273pv19t.h)(0x653A30BF)
 I (external_ram.h)(0x6528076B)
 I (rs422_protocol.h)(0x652023BB)
-I (UART.h)(0x6526CC31)
+I (UART.h)(0x653B4D13)
 I (C:\Keil_v5\ARM\ARMCLANG\include\string.h)(0x6252A726)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stddef.h)(0x6252A726)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdlib.h)(0x6252A726)
 I (C:\Keil_v5\ARM\ARMCLANG\include\math.h)(0x6252A726)
 F (.\TIMER.h)(0x6537D3CC)()
-F (.\UART.c)(0x65314067)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m1 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O0 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier-I./RTE/Device/MDR32F1QI-I./RTE/_Target_1-IC:/Users/shishov/AppData/Local/Arm/Packs/ARM/CMSIS/5.9.0/CMSIS/Core/Include-IC:/Users/shishov/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.0/Libraries/CMSIS/MDR32FxQI/CoreSupport/CM1-IC:/Users/shishov/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.0/Libraries/CMSIS/MDR32FxQI/DeviceSupport/MDR32F1QI/inc-IC:/Users/shishov/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.0/Libraries/SPL/MDR32FxQI/inc-D__UVISION_VERSION="537" -D_RTE_ -D_RTE_-o ./objects/uart.o -MD)
-I (UART.h)(0x6526CC31)
+F (.\UART.c)(0x653B4CDE)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m1 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O0 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier-I./RTE/Device/MDR32F1QI-I./RTE/_Target_1-IC:/Users/shishov/AppData/Local/Arm/Packs/ARM/CMSIS/5.9.0/CMSIS/Core/Include-IC:/Users/shishov/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.0/Libraries/CMSIS/MDR32FxQI/CoreSupport/CM1-IC:/Users/shishov/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.0/Libraries/CMSIS/MDR32FxQI/DeviceSupport/MDR32F1QI/inc-IC:/Users/shishov/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.0/Libraries/SPL/MDR32FxQI/inc-D__UVISION_VERSION="537" -D_RTE_ -D_RTE_-o ./objects/uart.o -MD)
+I (UART.h)(0x653B4D13)
 I (MDR32_Drivers.h)(0x6537D453)
 I (C:\Users\shishov\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.0\Libraries\CMSIS\MDR32FxQI\DeviceSupport\MDR32F1QI\inc\MDR32F1QI.h)(0x624C4A6A)
 I (RTE\Device\MDR32F1QI\MDR32FxQI_config.h)(0x6523AAF2)
@@ -170,7 +172,7 @@ I (C:\Users\shishov\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.0\Libraries\SPL\
 I (TIMER.h)(0x6537D3CC)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x6252A726)
 I (C:\Keil_v5\ARM\ARMCLANG\include\string.h)(0x6252A726)
-F (.\UART.h)(0x6526CC31)()
+F (.\UART.h)(0x653B4D13)()
 F (.\EBC.c)(0x651AD1DF)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m1 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O0 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier-I./RTE/Device/MDR32F1QI-I./RTE/_Target_1-IC:/Users/shishov/AppData/Local/Arm/Packs/ARM/CMSIS/5.9.0/CMSIS/Core/Include-IC:/Users/shishov/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.0/Libraries/CMSIS/MDR32FxQI/CoreSupport/CM1-IC:/Users/shishov/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.0/Libraries/CMSIS/MDR32FxQI/DeviceSupport/MDR32F1QI/inc-IC:/Users/shishov/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.0/Libraries/SPL/MDR32FxQI/inc-D__UVISION_VERSION="537" -D_RTE_ -D_RTE_-o ./objects/ebc.o -MD)
 I (EBC.h)(0x651ACD3B)
 I (MDR32_Drivers.h)(0x6537D453)
@@ -213,7 +215,7 @@ I (C:\Users\shishov\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.0\Libraries\SPL\
 I (C:\Users\shishov\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.0\Libraries\SPL\MDR32FxQI\inc\MDR32FxQI_ebc.h)(0x624C4A6A)
 I (C:\Users\shishov\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.0\Libraries\SPL\MDR32FxQI\inc\MDR32FxQI_bkp.h)(0x624C4A6A)
 I (rs422_protocol.h)(0x652023BB)
-I (UART.h)(0x6526CC31)
+I (UART.h)(0x653B4D13)
 I (TIMER.h)(0x6537D3CC)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x6252A726)
 I (C:\Keil_v5\ARM\ARMCLANG\include\string.h)(0x6252A726)
@@ -224,7 +226,7 @@ I (C:\Keil_v5\ARM\ARMCLANG\include\math.h)(0x6252A726)
 F (.\external_ram.h)(0x6528076B)()
 F (.\1273pv19t.c)(0x653925AB)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m1 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O0 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier-I./RTE/Device/MDR32F1QI-I./RTE/_Target_1-IC:/Users/shishov/AppData/Local/Arm/Packs/ARM/CMSIS/5.9.0/CMSIS/Core/Include-IC:/Users/shishov/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.0/Libraries/CMSIS/MDR32FxQI/CoreSupport/CM1-IC:/Users/shishov/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.0/Libraries/CMSIS/MDR32FxQI/DeviceSupport/MDR32F1QI/inc-IC:/Users/shishov/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.0/Libraries/SPL/MDR32FxQI/inc-D__UVISION_VERSION="537" -D_RTE_ -D_RTE_-o ./objects/1273pv19t.o -MD)
 I (C:\Keil_v5\ARM\ARMCLANG\include\math.h)(0x6252A726)
-I (1273pv19t.h)(0x6537D355)
+I (1273pv19t.h)(0x653A30BF)
 I (MDR32_Drivers.h)(0x6537D453)
 I (C:\Users\shishov\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.0\Libraries\CMSIS\MDR32FxQI\DeviceSupport\MDR32F1QI\inc\MDR32F1QI.h)(0x624C4A6A)
 I (RTE\Device\MDR32F1QI\MDR32FxQI_config.h)(0x6523AAF2)
@@ -248,11 +250,11 @@ I (TIMER.h)(0x6537D3CC)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x6252A726)
 I (external_ram.h)(0x6528076B)
 I (rs422_protocol.h)(0x652023BB)
-I (UART.h)(0x6526CC31)
+I (UART.h)(0x653B4D13)
 I (C:\Keil_v5\ARM\ARMCLANG\include\string.h)(0x6252A726)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stddef.h)(0x6252A726)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdlib.h)(0x6252A726)
-F (.\1273pv19t.h)(0x6537D355)()
+F (.\1273pv19t.h)(0x653A30BF)()
 F (.\SPI.c)(0x6537D121)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m1 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O0 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier-I./RTE/Device/MDR32F1QI-I./RTE/_Target_1-IC:/Users/shishov/AppData/Local/Arm/Packs/ARM/CMSIS/5.9.0/CMSIS/Core/Include-IC:/Users/shishov/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.0/Libraries/CMSIS/MDR32FxQI/CoreSupport/CM1-IC:/Users/shishov/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.0/Libraries/CMSIS/MDR32FxQI/DeviceSupport/MDR32F1QI/inc-IC:/Users/shishov/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.0/Libraries/SPL/MDR32FxQI/inc-D__UVISION_VERSION="537" -D_RTE_ -D_RTE_-o ./objects/spi.o -MD)
 I (SPI.h)(0x6527FC8C)
 I (MDR32_Drivers.h)(0x6537D453)
@@ -273,12 +275,12 @@ I (C:\Users\shishov\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.0\Libraries\SPL\
 I (C:\Users\shishov\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.0\Libraries\SPL\MDR32FxQI\inc\MDR32FxQI_timer.h)(0x624C4A6A)
 I (C:\Users\shishov\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.0\Libraries\SPL\MDR32FxQI\inc\MDR32FxQI_ebc.h)(0x624C4A6A)
 I (C:\Users\shishov\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.0\Libraries\SPL\MDR32FxQI\inc\MDR32FxQI_bkp.h)(0x624C4A6A)
-I (1273pv19t.h)(0x6537D355)
+I (1273pv19t.h)(0x653A30BF)
 I (TIMER.h)(0x6537D3CC)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x6252A726)
 I (external_ram.h)(0x6528076B)
 I (rs422_protocol.h)(0x652023BB)
-I (UART.h)(0x6526CC31)
+I (UART.h)(0x653B4D13)
 I (C:\Keil_v5\ARM\ARMCLANG\include\string.h)(0x6252A726)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stddef.h)(0x6252A726)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdlib.h)(0x6252A726)
@@ -323,6 +325,27 @@ I (C:\Users\shishov\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.0\Libraries\SPL\
 I (C:\Users\shishov\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.0\Libraries\SPL\MDR32FxQI\inc\MDR32FxQI_bkp.h)(0x624C4A6A)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x6252A726)
 F (.\MT-12864Av6.h)(0x64C8BA18)()
+F (.\leds.c)(0x653A47AC)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m1 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O0 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier-I./RTE/Device/MDR32F1QI-I./RTE/_Target_1-IC:/Users/shishov/AppData/Local/Arm/Packs/ARM/CMSIS/5.9.0/CMSIS/Core/Include-IC:/Users/shishov/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.0/Libraries/CMSIS/MDR32FxQI/CoreSupport/CM1-IC:/Users/shishov/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.0/Libraries/CMSIS/MDR32FxQI/DeviceSupport/MDR32F1QI/inc-IC:/Users/shishov/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.0/Libraries/SPL/MDR32FxQI/inc-D__UVISION_VERSION="537" -D_RTE_ -D_RTE_-o ./objects/leds.o -MD)
+I (leds.h)(0x653A47AC)
+I (MDR32_Drivers.h)(0x6537D453)
+I (C:\Users\shishov\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.0\Libraries\CMSIS\MDR32FxQI\DeviceSupport\MDR32F1QI\inc\MDR32F1QI.h)(0x624C4A6A)
+I (RTE\Device\MDR32F1QI\MDR32FxQI_config.h)(0x6523AAF2)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x6252A728)
+I (RTE\_Target_1\RTE_Components.h)(0x651C28EB)
+I (C:\Users\shishov\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\core_cm1.h)(0x626F912E)
+I (C:\Users\shishov\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_version.h)(0x626F912E)
+I (C:\Users\shishov\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_compiler.h)(0x626F912E)
+I (C:\Users\shishov\AppData\Local\Arm\Packs\ARM\CMSIS\5.9.0\CMSIS\Core\Include\cmsis_armclang.h)(0x626F912E)
+I (RTE\Device\MDR32F1QI\system_MDR32F1QI.h)(0x624C4A6A)
+I (C:\Users\shishov\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.0\Libraries\SPL\MDR32FxQI\inc\MDR32FxQI_rst_clk.h)(0x624C4A6A)
+I (C:\Users\shishov\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.0\Libraries\SPL\MDR32FxQI\inc\MDR32FxQI_uart.h)(0x624C4A6A)
+I (C:\Users\shishov\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.0\Libraries\SPL\MDR32FxQI\inc\MDR32FxQI_ssp.h)(0x624C4A6A)
+I (C:\Users\shishov\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.0\Libraries\SPL\MDR32FxQI\inc\MDR32FxQI_port.h)(0x624C4A6A)
+I (C:\Users\shishov\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.0\Libraries\SPL\MDR32FxQI\inc\MDR32FxQI_dma.h)(0x624C4A6A)
+I (C:\Users\shishov\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.0\Libraries\SPL\MDR32FxQI\inc\MDR32FxQI_timer.h)(0x624C4A6A)
+I (C:\Users\shishov\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.0\Libraries\SPL\MDR32FxQI\inc\MDR32FxQI_ebc.h)(0x624C4A6A)
+I (C:\Users\shishov\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.0\Libraries\SPL\MDR32FxQI\inc\MDR32FxQI_bkp.h)(0x624C4A6A)
+F (.\leds.h)(0x653A47AC)()
 F (RTE/Device/MDR32F1QI/MDR32F1QI.sct)(0x624C4A6A)()
 F (RTE/Device/MDR32F1QI/MDR32FxQI_config.h)(0x6523AAF2)()
 F (RTE/Device/MDR32F1QI/startup_MDR32F1QI.S)(0x624C4A50)(--target=arm-arm-none-eabi -mcpu=cortex-m1 -masm=auto -c-gdwarf-4 -D__EVAL-I./RTE/Device/MDR32F1QI-I./RTE/_Target_1-IC:/Users/shishov/AppData/Local/Arm/Packs/ARM/CMSIS/5.9.0/CMSIS/Core/Include-IC:/Users/shishov/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.0/Libraries/CMSIS/MDR32FxQI/CoreSupport/CM1-IC:/Users/shishov/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.0/Libraries/CMSIS/MDR32FxQI/DeviceSupport/MDR32F1QI/inc-IC:/Users/shishov/AppData/Local/Arm/Packs/Milandr/MDR32FxQI/1.0/Libraries/SPL/MDR32FxQI/inc-D__UVISION_VERSION=537 -D_RTE_ -D_RTE_-o ./objects/startup_mdr32f1qi.o)

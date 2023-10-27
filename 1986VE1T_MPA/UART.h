@@ -23,7 +23,7 @@
 #define PIN_UART1_EN PORT_Pin_10
 #define PIN_UART2_EN PORT_Pin_12
 
-#define UART_BUFFER_SIZE 4096             		///< Размер кольцевого буфера UARTn (в кБАйтах)
+#define UART_BUFFER_SIZE 16384             		///< Размер кольцевого буфера UARTn (в кБАйтах)
 #define BUFFER_MASK (UART_BUFFER_SIZE-1)			///< Маска, необходимая для корректной работы кольцевого буфера
 
 ///Коды ошибок работы UART

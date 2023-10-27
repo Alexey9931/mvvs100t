@@ -11,6 +11,7 @@
 #include "EBC.h"
 #include "external_ram.h"
 #include "MT-12864Av6.h"
+#include "leds.h"
 
 /*
 Функция для запроса данных

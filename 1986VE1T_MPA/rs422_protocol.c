@@ -1,5 +1,6 @@
 #include "rs422_protocol.h"
 #include "external_ram.h"
+#include "leds.h"
 
 extern ram_data *ram_space_pointer;
 /*
@@ -411,6 +412,8 @@ void error_handler(protocol_error error, uint8_t ext_bus)
 	switch ((uint8_t)error)
 	{
 			case NO_ERROR:
+					SET_LED_OK_WORK()
+					RESET_LED_ERROR_WORK()
 					switch (ext_bus)
 					{
 							case 1:
@@ -435,6 +438,9 @@ void error_handler(protocol_error error, uint8_t ext_bus)
 					break;
 					
 				case UART_ERROR:
+						RESET_LED_OK_WORK()
+						SET_LED_ERROR_WORK()
+				
 						switch (ext_bus)
 						{
 								case 1:
@@ -455,6 +461,9 @@ void error_handler(protocol_error error, uint8_t ext_bus)
 						break;
 						
 				case CRC_ERROR:
+						RESET_LED_OK_WORK()
+						SET_LED_ERROR_WORK()
+				
 						switch (ext_bus)
 						{
 								case 1:

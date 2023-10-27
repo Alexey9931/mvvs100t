@@ -22,4 +22,4 @@
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdlib.h CLOCK.h DMA.h EBC.h \
   external_ram.h MT-12864Av6.h SystemFont5x7R.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\wchar.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\wctype.h
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\wctype.h leds.h

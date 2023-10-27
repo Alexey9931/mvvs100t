@@ -32,7 +32,6 @@ typedef struct adc_config_data
 	uint8_t  	init_flag;					///< Флаг инициализации АЦП
 	uint16_t 	avg_num;						///< Кол-во выборок для усреднения	
 	uint8_t   ch_rx_num;					///< Кол-во принятых каналов в одном пакете из CHANEL_NUMBER возможных
-
 } adc_n;	
 
 /*!

@@ -153,8 +153,6 @@ void TIMER2_IRQHandler(void)
 				spi_1.buffer_counter += CHANEL_NUMBER;
 				if (adc_1.spi_struct->buffer_counter >= (CHANEL_NUMBER*adc_1.avg_num))
 				{
-					PORT_ADC_MODE->SETTX = PIN_ADC_MODE_A1;
-				PORT_ADC_MODE->CLRTX = PIN_ADC_MODE_A1;
 					adc_1.spi_struct->buffer_counter = 0;
 				}
 			}
