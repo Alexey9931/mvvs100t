@@ -1,6 +1,7 @@
 #include "rs422_protocol.h"
 #include "external_ram.h"
 #include "leds.h"
+extern UARTn UART1;
 
 extern ram_data *ram_space_pointer;
 /*
@@ -50,74 +51,91 @@ protocol_error transmit_packet(UARTn *UART_struct, uint8_t ext_bus)
 protocol_error receive_packet(UARTn *UART_struct, uint8_t ext_bus)
 {
 	fields_packet *rx_pack_ptr = &(ram_space_pointer->rx_packet_struct); //указатель на структуру с принимаемым пакетом
+	uint32_t current_rx_packet = 0;
 	
 	protocol_error error;
 	uart_errors uart_error;
+	uint8_t packet_head;
 	
 	//очистка всех структур данных связанных с принимаемым и отправляемым пакетом
 	memset(rx_pack_ptr, 0, sizeof(ram_space_pointer->rx_packet_struct) + sizeof(ram_space_pointer->tx_packet_struct) + 
-	+ sizeof(ram_space_pointer->tx_data) + sizeof(ram_space_pointer->packet_tx) + sizeof(ram_space_pointer->packet_rx));
+		sizeof(ram_space_pointer->tx_data) + sizeof(ram_space_pointer->packet_tx) + sizeof(ram_space_pointer->packet_rx));
 	
-	//считываем первый байт и проверяем на 0x55
-	uart_error = uart_read(UART_struct, sizeof(rx_pack_ptr->packet_header.header),  ram_space_pointer->packet_rx);
-	if (uart_error != 0)
+	while (1)
 	{
-		error = UART_ERROR;
-		error_handler(error, ext_bus);
-		return error;
-	}
-	
-	//rx_pack_ptr->packet_header = *(fields_packet_header*)(ram_space_pointer->packet_rx);
-	memcpy(&(rx_pack_ptr->packet_header.header), ram_space_pointer->packet_rx, sizeof(rx_pack_ptr->packet_header.header));
-	if (ram_space_pointer->rx_packet_struct.packet_header.header != 0x55)
-	{
-		error = PACKET_ERROR;
-		return error;
-	}
-	
-	//считываем заголовок телеграммы
-	uart_error = uart_read(UART_struct, sizeof(rx_pack_ptr->packet_header) - sizeof(rx_pack_ptr->packet_header.header),  (ram_space_pointer->packet_rx)+sizeof(rx_pack_ptr->packet_header.header));
-	if (uart_error != 0)
-	{
-		error = UART_ERROR;
-		error_handler(error, ext_bus);
-		return error;
-	}
-	memcpy(&(rx_pack_ptr->packet_header), ram_space_pointer->packet_rx, sizeof(rx_pack_ptr->packet_header));
-	//rx_pack_ptr->packet_header = *(fields_packet_header*)(ram_space_pointer->packet_rx);
-	
-	//считываем весь пакет вычисленной длины
-	uart_error = uart_read(UART_struct, (rx_pack_ptr->packet_header.packet_length)-sizeof(rx_pack_ptr->packet_header)+ sizeof(rx_pack_ptr->packet_header.header)+sizeof(rx_pack_ptr->packet_tail.end), 
-		(ram_space_pointer->packet_rx) + sizeof(fields_packet_header));
-	if (uart_error != 0)
-	{
-		error = UART_ERROR;
-		error_handler(error, ext_bus);
-		return error;
+		if (UART_struct->read_pos < UART_BUFFER_SIZE)
+		{
+			memcpy(&packet_head, (uint8_t*)(UART_struct->buffer + UART_struct->read_pos), sizeof(packet_head));
+		}
+		else
+		{
+			memcpy(&packet_head, (uint8_t*)(UART_struct->buffer), sizeof(packet_head));
+		}
+		
+		//если уже были разобраны какие то пакеты, а начала следующего пакета (0x55) в буфере нет, это означает что крайний разобранный пакет оказался последним и выходим из цикла
+		if ((current_rx_packet != 0) && (packet_head != 0x55))
+		{
+			memset(UART_struct->buffer, 0, UART_BUFFER_SIZE);	
+			break;
+		}
+		
+		//считываем первый байт и проверяем на 0x55
+		uart_error = uart_read(UART_struct, sizeof(rx_pack_ptr->packet_header.header),  ram_space_pointer->packet_rx);
+		if (uart_error != 0)
+		{
+			error = UART_ERROR;
+			error_handler(error, ext_bus);
+			return error;
+		}
+		
+		memcpy(&(rx_pack_ptr->packet_header.header), ram_space_pointer->packet_rx, sizeof(rx_pack_ptr->packet_header.header));
+		if (ram_space_pointer->rx_packet_struct.packet_header.header != 0x55)
+		{
+			error = PACKET_ERROR;
+			return error;
+		}
+		
+		//считываем заголовок телеграммы
+		uart_error = uart_read(UART_struct, sizeof(rx_pack_ptr->packet_header) - sizeof(rx_pack_ptr->packet_header.header),  (ram_space_pointer->packet_rx)+sizeof(rx_pack_ptr->packet_header.header));
+		if (uart_error != 0)
+		{
+			error = UART_ERROR;
+			error_handler(error, ext_bus);
+			return error;
+		}
+		memcpy(&(rx_pack_ptr->packet_header), ram_space_pointer->packet_rx, sizeof(rx_pack_ptr->packet_header));
+		
+		//считываем весь пакет вычисленной длины
+		uart_error = uart_read(UART_struct, (rx_pack_ptr->packet_header.packet_length)-sizeof(rx_pack_ptr->packet_header)+ sizeof(rx_pack_ptr->packet_header.header)+sizeof(rx_pack_ptr->packet_tail.end), 
+			(ram_space_pointer->packet_rx) + sizeof(fields_packet_header));
+		if (uart_error != 0)
+		{
+			error = UART_ERROR;
+			error_handler(error, ext_bus);
+			return error;
+		}
+
+		//считываем хвост пакета
+		memcpy(&(rx_pack_ptr->packet_tail), ram_space_pointer->packet_rx + (rx_pack_ptr->packet_header.packet_length) - sizeof(rx_pack_ptr->packet_tail.checksum) + sizeof(rx_pack_ptr->packet_header.header), sizeof(rx_pack_ptr->packet_tail));
+		
+		//вторая обязательная проверка - последние 2 байта должны быть 0xAA
+		if (rx_pack_ptr->packet_tail.end != 0xAAAA)
+		{
+			error = PACKET_ERROR;
+			return error;
+		}
+			
+		current_rx_packet++;
 	}
 	
 	//распознавание сервисного байта УМ
-	//ram_space_pointer->service_byte_um = *(service_struct_um*)(rx_pack_ptr->packet_header.service_byte);
 	memcpy(&(ram_space_pointer->service_byte_um), &(rx_pack_ptr->packet_header.service_byte), sizeof(rx_pack_ptr->packet_header.service_byte));
-	
-	//считываем хвост пакета
-//	rx_pack_ptr->packet_tail = *(fields_packet_tail*)(ram_space_pointer->packet_rx + (rx_pack_ptr->packet_header.packet_length)
-//		- sizeof(rx_pack_ptr->packet_tail.checksum) + sizeof(rx_pack_ptr->packet_header.header));
-	memcpy(&(rx_pack_ptr->packet_tail), ram_space_pointer->packet_rx + (rx_pack_ptr->packet_header.packet_length) - sizeof(rx_pack_ptr->packet_tail.checksum) + sizeof(rx_pack_ptr->packet_header.header), sizeof(rx_pack_ptr->packet_tail));
-	
-	//вторая обязательная проверка - последние 2 байта должны быть 0xAA
-	if (rx_pack_ptr->packet_tail.end != 0xAAAA)
-	{
-		error = PACKET_ERROR;
-		return error;
-	}
 	//считываем массив команд (команда - данные)
 	uint16_t buffer_offset = 0; //перемешение по буферу
 	for (uint32_t i = 0; i < (rx_pack_ptr->packet_header.cmd_number); i++)
 	{
 		//считываем заголовок - команда, результат, данные
 		memcpy(&(rx_pack_ptr->cmd_with_data[i].header), ram_space_pointer->packet_rx + sizeof(rx_pack_ptr->packet_header) + buffer_offset, sizeof(rx_pack_ptr->cmd_with_data[i].header));
-		//rx_pack_ptr->cmd_with_data[i].header = *(fields_cmd_header*)(ram_space_pointer->packet_rx + sizeof(rx_pack_ptr->packet_header) + buffer_offset);
 		//считываем указатель на данные
 		rx_pack_ptr->cmd_with_data[i].data = ram_space_pointer->packet_rx + sizeof(rx_pack_ptr->packet_header) + buffer_offset + sizeof(rx_pack_ptr->cmd_with_data[i].header);
 		buffer_offset += rx_pack_ptr->cmd_with_data[i].header.length;

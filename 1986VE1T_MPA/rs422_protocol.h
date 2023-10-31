@@ -11,6 +11,7 @@
 #include <stdint.h>
 #include <stddef.h>
 #include <stdlib.h>
+#include <math.h>
 
 #define NUMBER_CMDS_IN_PACKET 255             		///< ћаксимальное число команд в одном пакете
 

@@ -168,7 +168,7 @@ uint8_t uart_init(UARTn *UART_struct)
 	}
 
 	//Включение прерываний UART
-	//NVIC_SetPriority (UART_struct->IRQn, 0);
+	NVIC_SetPriority (UART_struct->IRQn, 0);
 	UART_ITConfig( UART_struct->UARTx, UART_IT_RX, ENABLE );
 	
 	// Включить сконфигурированный UART
@@ -245,8 +245,40 @@ uint8_t uart_read(UARTn *UART_struct, uint32_t len, uint8_t *data)
 	if (len > UART_BUFFER_SIZE)
 	{
 		error = SIZE_ERROR;
+		UART_struct->read_pos++;
 		return error;
 	}
+//	//если пакет вызодит за гарницы буфера
+//	if (((UART_struct->read_pos)+len) > UART_BUFFER_SIZE)
+//	{
+//		UART_struct->read_pos = 0;
+//		error = SIZE_ERROR;
+//		return error;
+//	}
+//	
+//	//если задан таймаут 
+//	if (UART_struct->UARTx_timeouts.read_timeout_flag == 1)
+//	{
+//		TIMER_SetCounter(UART_struct->UARTx_timeouts.timer_n_timeout->TIMERx, 0);
+//		while (((UART_struct->buffer_count) - (UART_struct->read_pos)) < len)
+//		{
+//			timer_cnt = TIMER_GetCounter(UART_struct->UARTx_timeouts.timer_n_timeout->TIMERx);
+// 			if (timer_cnt >= (UART_struct->UARTx_timeouts.read_val_timeout*50))
+//			{				
+//				error = READ_TIMEOUT_ERROR;
+//				return error;
+//			}
+//		}
+//	}
+//		
+//	if (((UART_struct->buffer_count) - (UART_struct->read_pos)) < len) 
+//	{
+//		error = SIZE_ERROR;
+//		return error;
+//	}
+//	memcpy(data, (UART_struct->buffer) + (UART_struct->read_pos), len);
+//	UART_struct->read_pos = (UART_struct->read_pos) + len;
+	
 	//если последний принятый байт перевалит границу буфера и байты будут перезаписываться в буфере с самого начала
 	if (((UART_struct->read_pos)+len) > UART_BUFFER_SIZE)
 	{
@@ -354,7 +386,7 @@ uint32_t uart_get_buf_counter(UARTn *UART_struct)
 */
 void uart_clean(UARTn *UART_struct)
 {
-	memset(UART_struct->buffer, 0, sizeof(UART_struct->buffer));
+	memset(UART_struct->buffer, 0, UART_BUFFER_SIZE);
 }
 /*
 Функция инициализации n-го канала DMA  на запрос от приемника UARTn
@@ -390,7 +422,7 @@ void DMA_UART_RX_init(UARTn *UART_struct)
 	// Разрешить работу DMA с UART
 	DMA_Cmd (UART_struct->uart_dma_ch.dma_channel, ENABLE);
 	
-	//NVIC_SetPriority (DMA_IRQn, 0);
+	NVIC_SetPriority (DMA_IRQn, 1);
 	NVIC_EnableIRQ(DMA_IRQn);
 }
 /*

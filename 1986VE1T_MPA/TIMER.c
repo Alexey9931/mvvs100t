@@ -193,9 +193,10 @@ void delay_milli(uint32_t time_milli)//задержка в мс
 */
 void delay_micro(uint32_t time_micro)//задержка в мкс (максимум 10мс -> time_micro=9999)
 { 
-	//TIMER_SetCounter(MDR_TIMER1, 0);
-	uint32_t timer_cnt = TIMER_GetCounter(MDR_TIMER1);
-	while(abs(TIMER_GetCounter(MDR_TIMER1) - timer_cnt) <= time_micro);
+	TIMER_SetCounter(MDR_TIMER1, 0);
+	//uint32_t timer_cnt = TIMER_GetCounter(MDR_TIMER1);
+	//while(abs(TIMER_GetCounter(MDR_TIMER1) - timer_cnt) <= time_micro);
+	while (TIMER_GetCounter(MDR_TIMER1) <= time_micro);
 }
 
 

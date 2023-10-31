@@ -93,7 +93,7 @@ int main(void)
 	UART1.uart_dma_ch.dma_channel = DMA_Channel_REQ_UART1_RX;
 	UART1.IRQn = UART1_IRQn;
 	UART1.RST_CLK_PCLK_UARTn = RST_CLK_PCLK_UART1;
-	UART1.UART.UART_BaudRate = 921600;
+	UART1.UART.UART_BaudRate = 115200;
 	UART1.UART.UART_WordLength = UART_WordLength8b;
 	UART1.UART.UART_StopBits = UART_StopBits1;
 	UART1.UART.UART_Parity = UART_Parity_No;
@@ -122,10 +122,10 @@ int main(void)
 	UART2.UARTx_timeouts.timer_n_timeout = &timer_3;
 
 	//uart_set_read_timeout(&UART1, 300);
-	uart_set_read_timeout(&UART2, 900);
+	uart_set_read_timeout(&UART2, 300);
 
-//	uart_init(&UART1);
-//	DMA_UART_RX_init(&UART1);
+	uart_init(&UART1);
+	//DMA_UART_RX_init(&UART1);
 	uart_init(&UART2);
 	DMA_UART_RX_init(&UART2);
 
@@ -135,7 +135,8 @@ int main(void)
 		//request_data(&UART1);
 		//запрос пакета по ШИНЕ2
 		request_data(&UART2);
-		//delay_milli(10);
+//		delay_milli(100);
+//			memset(data, 0, sizeof(data));
 		//do_mpa_task(&adc_1);
 	}
 }
@@ -154,7 +155,9 @@ uint8_t request_data(UARTn *UART_struct)
 		ext_bus = 2;
 	}
 	
-	if((receive_packet(UART_struct, ext_bus)) != NO_ERROR)
+	protocol_error error;
+	error = receive_packet(UART_struct, ext_bus);
+	if(error != NO_ERROR)
 	{
 		return 1;
 	}

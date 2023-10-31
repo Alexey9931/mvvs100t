@@ -57,6 +57,7 @@ void DMA_IRQHandler(void)
 		{
 			DMA_UART_RX_init(&UART1);
 			UART1.uart_dma_ch.dma_irq_counter = 0;
+			UART2.buffer_count = 0;
 		}
 	  else
 		{
@@ -69,6 +70,19 @@ void DMA_IRQHandler(void)
 	//если сработало прерывание при заполнении буфера приемника UART2
 	if(DMA_GetFlagStatus(DMA_Channel_REQ_UART2_RX, DMA_FLAG_CHNL_ENA) == 0)
 	{
+//		if (UART2.uart_dma_ch.dma_irq_counter == UART_BUFFER_SIZE)
+//		{
+//			DMA_UART_RX_init(&UART2);
+//			UART2.uart_dma_ch.dma_irq_counter = 0;
+//		}
+//	  else
+//		{
+//			UART2.uart_dma_ch.DMA_InitStructure_UART_RX.DMA_DestBaseAddr++;
+//			UART2.buffer_count++;
+//			 //Инициализировать канал
+//			DMA_Init(UART2.uart_dma_ch.dma_channel, &UART2.uart_dma_ch.DMA_Channel_UART_RX);
+//			UART2.uart_dma_ch.dma_irq_counter++;
+//		}
 		if (UART2.uart_dma_ch.dma_irq_counter == ((UART_BUFFER_SIZE/1024) - 1))
 		{
 			DMA_UART_RX_init(&UART2);
@@ -82,31 +96,31 @@ void DMA_IRQHandler(void)
 			UART2.uart_dma_ch.dma_irq_counter++;
 		}
 	}
-	//если сработало прерывание от SPI1
-	if(DMA_GetFlagStatus(DMA_Channel_REQ_SSP1_RX, DMA_FLAG_CHNL_ENA) == 0)
-	{
-		MDR_PORTE->SETTX |= PORT_Pin_11;
-		if ((adc_1.init_flag == 1))
-		{		
-			if (spi_1.spi_dma_ch.dma_irq_counter == (CHANEL_NUMBER-1))
-			{				
-				dma_spi_rx_init(&spi_1);
-				spi_1.spi_dma_ch.dma_irq_counter = 0;
-				//MDR_PORTE->CLRTX = PORT_Pin_11;
-			}
-			else
-			{
-				spi_1.spi_dma_ch.DMA_InitStructure_SPI_RX.DMA_DestBaseAddr += spi_1.spi_dma_ch.DMA_InitStructure_SPI_RX.DMA_CycleSize*2;
-				DMA_Init(spi_1.spi_dma_ch.dma_channel, &spi_1.spi_dma_ch.DMA_Channel_SPI_RX);
-				spi_1.spi_dma_ch.dma_irq_counter++;
-				//MDR_PORTE->CLRTX = PORT_Pin_11;
-			}
-			//spi_1.SSPx->DR = 0x7FFF;
-			//выключение SPI
-  		//spi_1.SSPx->CR1 &= 0xFFFD;
-		}
-		MDR_PORTE->CLRTX = PORT_Pin_11;
-	}
+//	//если сработало прерывание от SPI1
+//	if(DMA_GetFlagStatus(DMA_Channel_REQ_SSP1_RX, DMA_FLAG_CHNL_ENA) == 0)
+//	{
+//		MDR_PORTE->SETTX |= PORT_Pin_11;
+//		if ((adc_1.init_flag == 1))
+//		{		
+//			if (spi_1.spi_dma_ch.dma_irq_counter == (CHANEL_NUMBER-1))
+//			{				
+//				dma_spi_rx_init(&spi_1);
+//				spi_1.spi_dma_ch.dma_irq_counter = 0;
+//				//MDR_PORTE->CLRTX = PORT_Pin_11;
+//			}
+//			else
+//			{
+//				spi_1.spi_dma_ch.DMA_InitStructure_SPI_RX.DMA_DestBaseAddr += spi_1.spi_dma_ch.DMA_InitStructure_SPI_RX.DMA_CycleSize*2;
+//				DMA_Init(spi_1.spi_dma_ch.dma_channel, &spi_1.spi_dma_ch.DMA_Channel_SPI_RX);
+//				spi_1.spi_dma_ch.dma_irq_counter++;
+//				//MDR_PORTE->CLRTX = PORT_Pin_11;
+//			}
+//			//spi_1.SSPx->DR = 0x7FFF;
+//			//выключение SPI
+//  		//spi_1.SSPx->CR1 &= 0xFFFD;
+//		}
+//		MDR_PORTE->CLRTX = PORT_Pin_11;
+//	}
 	#endif
 	#ifdef K1986VE3T
 	//если сработало прерывание при заполнении буфера приемника UART1
