@@ -1,15 +1,26 @@
+/*!
+ \file
+ \brief Файл с реализацией API для работы с областью памяти внешнего ОЗУ
+*/
 #include "external_ram.h"
+#include "EBC.h"
 #include <string.h>
 #include <math.h>
 
 extern ram_data *ram_space_pointer;
+extern rom_data *rom_space_pointer;
 
 /*!
 	Функция инициализации области памяти внешнего ОЗУ
 */
 void init_external_ram_space(void)
 {
+	common_rom_registers 	common_regs;
+	mpa_rom_registers			mpa_regs;
+	
 	ram_space_pointer = (ram_data*)EXT_RAM_START_ADDR;
+	rom_space_pointer = (rom_data*)EXT_ROM_START_ADDR;
+	
 	//первичная очистка используемого куска памяти ОЗУ
 	memset(ram_space_pointer, 0, sizeof(ram_data));
 	//инициализации структуры, которая лежит в начале ОЗУ
@@ -31,7 +42,7 @@ void init_external_ram_space(void)
 	ram_space_pointer->start_struct.ranges_in_start_struct[2].size = 8;
 	
 	//кладем карту регистров по адресу 200 во внешней ОЗУ и инциализируем ее
-	strncpy(&(ram_space_pointer->common_ram_register_space.PLC_DeviceInfo),"MPA",sizeof("MPA"));
+	//кладем регистры, которые инициализируются в ПО
 	ram_space_pointer->common_ram_register_space.PLC_SoftVer.revision = 1;
 	ram_space_pointer->common_ram_register_space.PLC_SoftVer.modification = 2;
 	ram_space_pointer->common_ram_register_space.PLC_SoftVer.type = MPA;
@@ -45,44 +56,14 @@ void init_external_ram_space(void)
 	ram_space_pointer->common_ram_register_space.PLC_Config.add_switch_2 = 2;
 	ram_space_pointer->common_ram_register_space.PLC_Config.reserv = 1;
 	ram_space_pointer->common_ram_register_space.PLC_CM_State = 0x01;
-	ram_space_pointer->common_ram_register_space.PLC_DeviceType.revision = 1;
-	ram_space_pointer->common_ram_register_space.PLC_DeviceType.modification = 2;
-	ram_space_pointer->common_ram_register_space.PLC_DeviceType.type = MPA;
-	ram_space_pointer->common_ram_register_space.PLC_DeviceType.batch = 1;
-	ram_space_pointer->common_ram_register_space.PLC_DeviceType.reserv = 20;
-	
-	ram_space_pointer->common_ram_register_space.PLC_SerialNumber = 1717986918;
-	//ram_space_pointer->ram_register_space.PLC_BusConfig_B1 = 0x66847485;
-	//ram_space_pointer->ram_register_space.PLC_BusConfig_B2 = 0x100271355;
-	ram_space_pointer->common_ram_register_space.PLC_TimeoutForDefect_B1 = 200;
-	ram_space_pointer->common_ram_register_space.PLC_TimeoutForDefect_B2 = 200;
-	ram_space_pointer->common_ram_register_space.PLC_NumCrcErrorsForDefect_B1 = 6;
-	ram_space_pointer->common_ram_register_space.PLC_NumCrcErrorsForDefect_B2 = 6;
-	ram_space_pointer->common_ram_register_space.PLC_TimeToRepair = 65535;
-	ram_space_pointer->common_ram_register_space.PLC_TimeSoloWork = 61166;
-	ram_space_pointer->common_ram_register_space.PLC_DualControl = 56797;
-	memset(&(ram_space_pointer->common_ram_register_space.Reserv_2), 0, sizeof(ram_space_pointer->common_ram_register_space.Reserv_2));
-	
-	//инциализация регистров МПА
-	for (uint8_t i = 0; i < MAX_CHANEL_NUMBER; i++)
-	{
-		RESET_BIT(i, ram_space_pointer->mpa_ram_register_space.AI_OperMode.adc_chs_mode);
-		ram_space_pointer->mpa_ram_register_space.AI_NumForAverag[i] = 10;
-		ram_space_pointer->mpa_ram_register_space.AI_MinCodeADC[i] = 0;
-		ram_space_pointer->mpa_ram_register_space.AI_MaxCodeADC[i] = 65535;
-		//такие значения коэф. полиномов только для напряжения 0-10В
-		ram_space_pointer->mpa_ram_register_space.AI_PolynConst0[i] = 4.972769f;
-		ram_space_pointer->mpa_ram_register_space.AI_PolynConst1[i] = 0.000161f;
-		ram_space_pointer->mpa_ram_register_space.AI_PolynConst2[i] = 0.0f;
-		ram_space_pointer->mpa_ram_register_space.AI_PolynConst3[i] = 0.0f;
-		ram_space_pointer->mpa_ram_register_space.AI_PolynConst4[i] = 0.0f; 
-		ram_space_pointer->mpa_ram_register_space.AI_PolynConst5[i] = 0.0f;
-		ram_space_pointer->mpa_ram_register_space.AI_PolynConst6[i] = 0.0f;
-		ram_space_pointer->mpa_ram_register_space.AI_MetrologDat[i] = 0.0f;
-	}
-	memset(ram_space_pointer->mpa_ram_register_space.AI_MetrologDat, 0, sizeof(ram_space_pointer->mpa_ram_register_space.AI_MetrologDat));
-	memset(ram_space_pointer->mpa_ram_register_space.Reserv_4, 0, sizeof(ram_space_pointer->mpa_ram_register_space.Reserv_4));
-	memset(ram_space_pointer->mpa_ram_register_space.Reserv_5, 0, sizeof(ram_space_pointer->mpa_ram_register_space.Reserv_5));
+	//кладем регистры, которые берутся из ПЗУ
+	ebc_init(EBC_ROM);
+	memcpy(&common_regs, &rom_space_pointer->common_rom_registers_space, sizeof(common_regs));
+	memcpy(&mpa_regs, &rom_space_pointer->mpa_rom_registers_space, sizeof(mpa_regs));
+	ebc_init(EBC_RAM);
+
+	memcpy(&ram_space_pointer->common_ram_register_space.PLC_CommonRomRegs, &common_regs, sizeof(common_regs));
+	memcpy(&ram_space_pointer->mpa_ram_register_space.AI_RomRegs, &mpa_regs, sizeof(mpa_regs));
 	
 	//Заполянем таблицу CRC32
 	fill_crc32_table();
@@ -91,6 +72,7 @@ void init_external_ram_space(void)
 /*!
 	Функция нахождения максимального элемента массива 
 */
+uint16_t find_max_halfword(uint16_t *array, uint32_t array_size);
 uint16_t find_max_halfword(uint16_t *array, uint32_t array_size)
 {
 	uint16_t result = 0;

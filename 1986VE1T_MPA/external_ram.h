@@ -9,9 +9,10 @@
 #include "MDR32_Drivers.h"
 #include "rs422_protocol.h"
 #include "SPI.h"
+#include "external_rom.h"
 
-#define EXT_RAM_START_ADDR 0x50200000		///< Адрес в памяти МК, с которой начинается обращение к внешней ОЗУ
-#define REGISTER_SPACE_START_ADDR 200		///< Стартовый адрес карты регистров в ОЗУ
+#define EXT_RAM_START_ADDR 							0x50200000	///< Адрес в памяти МК, с которой начинается обращение к внешней ОЗУ
+#define RAM_REGISTER_SPACE_START_ADDR 	200					///< Стартовый адрес карты регистров в ОЗУ
 
 #define TEST_BIT(num, value) ((value>>num)&0x1)
 #define SET_BIT(num, value) (value |= (1<<num))
@@ -44,16 +45,6 @@ typedef struct plc_sof_ver_struct
 	unsigned develop: 1;														///< 1=ПО в процессе разработки
 }__attribute__((packed)) plc_soft_ver;
 
-///Структура с битовыми полями для регистра тип устройства
-typedef struct device_type_struct
-{
-	unsigned revision: 4;														///< Ревизия модуля
-	unsigned modification: 4;												///< Модификация модуля
-	unsigned type: 9;																///< Тип модуля
-	unsigned batch: 5;															///< Партия
-	unsigned use_object: 5;													///< Объект применения
-	unsigned reserv: 5;															///< Резерв
-}__attribute__((packed)) device_type;
 
 ///Структура с битовыми полями для регистра адрес устройства
 typedef struct device_address_struct
@@ -105,13 +96,6 @@ typedef struct self_diag_struct
 	unsigned reserv1:											8;										///< Резерв
 }__attribute__((packed)) self_diag;
 
-///Структура с битовыми полями для регистра режим работы канала
-typedef struct ai_oper_mode_struct
-{
-	unsigned 	adc_chs_mode:						8;			///< Режим работы каналов
-	unsigned 	reserv1:								8;			///< Резерв
-}__attribute__((packed)) ai_oper_mode;
-
 ///Структура одного диапазона для стартовой структуры
 typedef struct range_start_struct
 {
@@ -134,62 +118,38 @@ typedef struct start_struct_ext_ram
 ///органиация пространства общих регистров во внешнем ОЗУ
 typedef struct common_register_space_ext_ram
 {
-	plc_soft_ver 		PLC_SoftVer;																	
-	device_config		PLC_Config;
-	device_address	PLC_PMAddr;
-	uint32_t				PLC_Durat;
-	uint32_t				PLC_CM_State;
-	uint32_t				PLC_CorrPackFromDevice_B1;
-	uint32_t				PLC_CorrPackToDevice_B1;
-	uint32_t				PLC_ErrPackToDevice_B1;
-	uint32_t				PLC_ErrPackFromDevice_B1;
-	uint32_t				PLC_CorrPackFromDevice_B2;
-	uint32_t				PLC_CorrPackToDevice_B2;
-	uint32_t				PLC_ErrPackToDevice_B2;
-	uint32_t				PLC_ErrPackFromDevice_B2;
-	power_failure		PLC_PowerDefect;
-	bus_defect			PLC_BusDefect_B1;
-	bus_defect  		PLC_BusDefect_B2;
-	self_diag	  		PLC_SelfDiagDefect;
-	uint8_t	  			Reserv_1[68];
-	uint8_t					PLC_DeviceInfo[1024];
-	device_type			PLC_DeviceType;
-	uint32_t				PLC_SerialNumber;
-	uint32_t				PLC_BusConfig_B1;
-	uint32_t				PLC_BusConfig_B2;
-	uint32_t				PLC_TimeoutForDefect_B1;
-	uint32_t				PLC_TimeoutForDefect_B2;
-	uint16_t				PLC_NumCrcErrorsForDefect_B1;
-	uint16_t				PLC_NumCrcErrorsForDefect_B2;
-	uint16_t				PLC_TimeToRepair;
-	uint16_t				PLC_TimeSoloWork;
-	uint16_t				PLC_DualControl;
-	uint8_t	  			Reserv_2[64];
+	plc_soft_ver 						PLC_SoftVer;																	
+	device_config						PLC_Config;
+	device_address					PLC_PMAddr;
+	uint32_t								PLC_Durat;
+	uint32_t								PLC_CM_State;
+	uint32_t								PLC_CorrPackFromDevice_B1;
+	uint32_t								PLC_CorrPackToDevice_B1;
+	uint32_t								PLC_ErrPackToDevice_B1;
+	uint32_t								PLC_ErrPackFromDevice_B1;
+	uint32_t								PLC_CorrPackFromDevice_B2;
+	uint32_t								PLC_CorrPackToDevice_B2;
+	uint32_t								PLC_ErrPackToDevice_B2;
+	uint32_t								PLC_ErrPackFromDevice_B2;
+	power_failure						PLC_PowerDefect;
+	bus_defect							PLC_BusDefect_B1;
+	bus_defect  						PLC_BusDefect_B2;
+	self_diag	  						PLC_SelfDiagDefect;
+	uint8_t	  							Reserv_1[68];
+	common_rom_registers	 	PLC_CommonRomRegs;
 }__attribute__((packed)) common_ram_registers;
+
 ///органиация пространства регистров МПА во внешнем ОЗУ
 typedef struct mpa_register_space_ext_ram
 {
-	ai_oper_mode	AI_OperMode;
-	uint16_t			AI_NumForAverag[MAX_CHANEL_NUMBER];
-	int16_t				AI_MinCodeADC[MAX_CHANEL_NUMBER];
-	int16_t				AI_MaxCodeADC[MAX_CHANEL_NUMBER];
-	uint8_t				Reserv_3[32];
-  float					AI_PolynConst0[MAX_CHANEL_NUMBER];
-	float					AI_PolynConst1[MAX_CHANEL_NUMBER];
-  float					AI_PolynConst2[MAX_CHANEL_NUMBER];
-  float					AI_PolynConst3[MAX_CHANEL_NUMBER];
-	float					AI_PolynConst4[MAX_CHANEL_NUMBER];
-	float					AI_PolynConst5[MAX_CHANEL_NUMBER];
-	float					AI_PolynConst6[MAX_CHANEL_NUMBER];
-	uint8_t				AI_MetrologDat[32];
-	uint8_t				Reserv_4[32];
-	uint8_t				Reserv_5[32];
-	uint16_t			AI_SignalChanged;
-	int16_t				AI_CodeADC[MAX_CHANEL_NUMBER];
-	float					AI_PhysQuantFloat[MAX_CHANEL_NUMBER];
-	uint8_t				AI_DiagnosticChannel[MAX_CHANEL_NUMBER];
-	uint8_t				Reserv_6[2];
+	mpa_rom_registers 	AI_RomRegs;
+	uint16_t						AI_SignalChanged;
+	int16_t							AI_CodeADC[MAX_CHANEL_NUMBER];
+	float								AI_PhysQuantFloat[MAX_CHANEL_NUMBER];
+	uint8_t							AI_DiagnosticChannel[MAX_CHANEL_NUMBER];
+	uint8_t							Reserv_6[2];
 }__attribute__((packed)) mpa_ram_registers;
+
 ///Структура с битовыми полями для сервисного байта ПМ
 typedef struct service_byte_struct_pm
 {
@@ -202,6 +162,7 @@ typedef struct service_byte_struct_pm
 	unsigned both_control: 1;													///< Признак одновременного управления
 	unsigned master: 1;																///< Ведущий мастер (0 – первый, 1 – второй)
 }__attribute__((packed)) service_struct_pm;
+
 ///Структура с битовыми полями для сервисного байта УМ
 typedef struct service_byte_struct_um
 {
@@ -209,11 +170,12 @@ typedef struct service_byte_struct_um
 	unsigned reserv: 6;																///< Резерв
 	unsigned ready_to_control: 1;											///< Флаг «Готовность выполнять управление»
 }__attribute__((packed)) service_struct_um;
+
 ///Структура организующая память во внешнем ОЗУ
 typedef struct ram_data_struct
 {
 	ram_start_struct 				start_struct;																											///< Структура по умолчанию, которая должна находиться в начале ОЗУ
-	uint8_t 								Reserv[REGISTER_SPACE_START_ADDR - sizeof(ram_start_struct)];			///< Зарезервированное место
+	uint8_t 								Reserv[RAM_REGISTER_SPACE_START_ADDR - sizeof(ram_start_struct)];			///< Зарезервированное место
 	common_ram_registers		common_ram_register_space;																				///< Карта общих регистров начиная с адреса REGISTER_SPACE_START_ADDR
 	mpa_ram_registers				mpa_ram_register_space;																						///< Карта регистров МПА начиная с адреса REGISTER_SPACE_START_ADDR
 	fields_packet 					rx_packet_struct;																									///< Принятый пакет с идентифицированными полями
@@ -231,15 +193,8 @@ typedef struct ram_data_struct
 
 /*!
  *	\brief Инициализацирует область памяти внешнего ОЗУ
- *	\param *ram_space_pointer - указатель на область внешнего ОЗУ
 */
 void init_external_ram_space(void);
 
-/*!
- *	\brief Находит максимальный элемент массива
- *	\param *array - указатель на массив поиска
- *	\param array_size - размер массива
-*/
-uint16_t find_max_halfword(uint16_t *array, uint32_t array_size);
 	
 #endif /*__EXTERNAL_RAM_H */

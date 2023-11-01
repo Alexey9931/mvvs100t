@@ -1,9 +1,15 @@
+/*!
+ \file
+ \brief Файл с реализацией API протокола обмена данными по интерфейсу RS-422
+*/
 #include "rs422_protocol.h"
 #include "external_ram.h"
+#include "EBC.h"
 #include "leds.h"
 extern UARTn UART1;
 
 extern ram_data *ram_space_pointer;
+extern rom_data *rom_space_pointer;
 /*
 Функция для отправки пакета данных
 */
@@ -61,6 +67,7 @@ protocol_error receive_packet(UARTn *UART_struct, uint8_t ext_bus)
 	memset(rx_pack_ptr, 0, sizeof(ram_space_pointer->rx_packet_struct) + sizeof(ram_space_pointer->tx_packet_struct) + 
 		sizeof(ram_space_pointer->tx_data) + sizeof(ram_space_pointer->packet_tx) + sizeof(ram_space_pointer->packet_rx));
 	
+	//здесь в цикле нужно поймать и обработать последний пакет в буфере приемника UART
 	while (1)
 	{
 		if (UART_struct->read_pos < UART_BUFFER_SIZE)
@@ -75,7 +82,7 @@ protocol_error receive_packet(UARTn *UART_struct, uint8_t ext_bus)
 		//если уже были разобраны какие то пакеты, а начала следующего пакета (0x55) в буфере нет, это означает что крайний разобранный пакет оказался последним и выходим из цикла
 		if ((current_rx_packet != 0) && (packet_head != 0x55))
 		{
-			memset(UART_struct->buffer, 0, UART_BUFFER_SIZE);	
+			uart_clean(UART_struct);
 			break;
 		}
 		
@@ -168,6 +175,9 @@ protocol_error receive_packet(UARTn *UART_struct, uint8_t ext_bus)
 */
 uint8_t protocol_do_cmds(uint8_t ext_bus)
 {
+	common_ram_registers *common_ram_reg_space_ptr = &ram_space_pointer->common_ram_register_space; //указатель на область памяти внешнего ОЗУ с общими регистрами
+	common_rom_registers 	common_regs;	//экземпляр структуры с общими регистрами для хранения в ПЗУ
+	mpa_rom_registers			mpa_regs;	//экземпляр структуры с регистрами МПА для хранения в ПЗУ
 	uint32_t offset = 0; //указатель на данные для каждой команды
 	uint16_t start_addr = 0; //начальный адрес для чтения/записи регистров
 	uint16_t size = 0;	//кол-во байт для чтения/записи
@@ -180,24 +190,20 @@ uint8_t protocol_do_cmds(uint8_t ext_bus)
 						//по команде TYPE кладем в поле дата регистры PLC_SoftVer, PLC_Config, PLC_DeviceType, PLC_SerialNumber
 						ram_space_pointer->tx_packet_struct.cmd_with_data[i].data = (ram_space_pointer->tx_data) + offset;
 						
-						//*(plc_soft_ver*)((ram_space_pointer->tx_data) + offset) = ram_space_pointer->common_ram_register_space.PLC_SoftVer;
-						memcpy((ram_space_pointer->tx_data) + offset, &(ram_space_pointer->common_ram_register_space.PLC_SoftVer), sizeof(ram_space_pointer->common_ram_register_space.PLC_SoftVer));
-						offset += sizeof(ram_space_pointer->common_ram_register_space.PLC_SoftVer);
-						memcpy((ram_space_pointer->tx_data) + offset, &(ram_space_pointer->common_ram_register_space.PLC_Config), sizeof(ram_space_pointer->common_ram_register_space.PLC_Config));
-						//*(device_config*)((ram_space_pointer->tx_data) + offset) = ram_space_pointer->common_ram_register_space.PLC_Config;
-						offset += sizeof(ram_space_pointer->common_ram_register_space.PLC_Config);
-						memcpy((ram_space_pointer->tx_data) + offset, &(ram_space_pointer->common_ram_register_space.PLC_DeviceType), sizeof(ram_space_pointer->common_ram_register_space.PLC_DeviceType));
-						//*(device_type*)((ram_space_pointer->tx_data) + offset) = ram_space_pointer->common_ram_register_space.PLC_DeviceType;
-						offset += sizeof(ram_space_pointer->common_ram_register_space.PLC_DeviceType);
-						memcpy((ram_space_pointer->tx_data) + offset, &(ram_space_pointer->common_ram_register_space.PLC_SerialNumber), sizeof(ram_space_pointer->common_ram_register_space.PLC_SerialNumber)  );
-						//*(uint32_t*)((ram_space_pointer->tx_data) + offset) = ram_space_pointer->common_ram_register_space.PLC_SerialNumber;
-						offset += sizeof(ram_space_pointer->common_ram_register_space.PLC_SerialNumber);
+						memcpy((ram_space_pointer->tx_data) + offset, &(common_ram_reg_space_ptr->PLC_SoftVer), sizeof(common_ram_reg_space_ptr->PLC_SoftVer));
+						offset += sizeof(common_ram_reg_space_ptr->PLC_SoftVer);
+						memcpy((ram_space_pointer->tx_data) + offset, &(common_ram_reg_space_ptr->PLC_Config), sizeof(common_ram_reg_space_ptr->PLC_Config));
+						offset += sizeof(common_ram_reg_space_ptr->PLC_Config);
+						memcpy((ram_space_pointer->tx_data) + offset, &(common_ram_reg_space_ptr->PLC_CommonRomRegs.PLC_DeviceType), sizeof(common_ram_reg_space_ptr->PLC_CommonRomRegs.PLC_DeviceType));
+						offset += sizeof(common_ram_reg_space_ptr->PLC_CommonRomRegs.PLC_DeviceType);
+						memcpy((ram_space_pointer->tx_data) + offset, &(common_ram_reg_space_ptr->PLC_CommonRomRegs.PLC_SerialNumber), sizeof(common_ram_reg_space_ptr->PLC_CommonRomRegs.PLC_SerialNumber));
+						offset += sizeof(common_ram_reg_space_ptr->PLC_CommonRomRegs.PLC_SerialNumber);
 						
 						ram_space_pointer->tx_packet_struct.cmd_with_data[i].header.cmd = TYPE_CMD;
 						//TODO:разобраться для чего поле result
 						ram_space_pointer->tx_packet_struct.cmd_with_data[i].header.result = 0;
-						ram_space_pointer->tx_packet_struct.cmd_with_data[i].header.length = sizeof(fields_cmd_header) + sizeof(ram_space_pointer->common_ram_register_space.PLC_SoftVer) + 
-							sizeof(ram_space_pointer->common_ram_register_space.PLC_Config) + sizeof(ram_space_pointer->common_ram_register_space.PLC_DeviceType) + sizeof(ram_space_pointer->common_ram_register_space.PLC_SerialNumber);
+						ram_space_pointer->tx_packet_struct.cmd_with_data[i].header.length = sizeof(fields_cmd_header) + sizeof(common_ram_reg_space_ptr->PLC_SoftVer) + 
+							sizeof(ram_space_pointer->common_ram_register_space.PLC_Config) + sizeof(common_ram_reg_space_ptr->PLC_CommonRomRegs.PLC_DeviceType) + sizeof(common_ram_reg_space_ptr->PLC_CommonRomRegs.PLC_SerialNumber);
 						break;
 					
 				case INIT_CMD:
@@ -205,13 +211,13 @@ uint8_t protocol_do_cmds(uint8_t ext_bus)
 						switch (ext_bus)
 						{
 								case 1:
-										if((ram_space_pointer->service_byte_um.ready_to_control == 1) && (ram_space_pointer->service_byte_pm.fail_bus_1 == 0) && (ram_space_pointer->common_ram_register_space.PLC_CM_State != 0x09))
+										if((ram_space_pointer->service_byte_um.ready_to_control == 1) && (ram_space_pointer->service_byte_pm.fail_bus_1 == 0) && (common_ram_reg_space_ptr->PLC_CM_State != 0x09))
 										{
 											//заносим инфу в сервисный байт ПМ
 											ram_space_pointer->service_byte_pm.init = 1;
 											ram_space_pointer->service_byte_pm.master = 0;
 											//заносим инфу в регистры
-											ram_space_pointer->common_ram_register_space.PLC_CM_State = 0x04;
+											common_ram_reg_space_ptr->PLC_CM_State = 0x04;
 										}
 										else
 										{
@@ -220,13 +226,13 @@ uint8_t protocol_do_cmds(uint8_t ext_bus)
 										break;
 										
 								case 2:
-										if((ram_space_pointer->service_byte_um.ready_to_control == 1) && (ram_space_pointer->service_byte_pm.fail_bus_2 == 0) && (ram_space_pointer->common_ram_register_space.PLC_CM_State != 0x04))
+										if((ram_space_pointer->service_byte_um.ready_to_control == 1) && (ram_space_pointer->service_byte_pm.fail_bus_2 == 0) && (common_ram_reg_space_ptr->PLC_CM_State != 0x04))
 										{
 											//заносим инфу в сервисный байт ПМ
 											ram_space_pointer->service_byte_pm.init = 1;
 											ram_space_pointer->service_byte_pm.master = 1;
 											//заносим инфу в регистры
-											ram_space_pointer->common_ram_register_space.PLC_CM_State = 0x09;
+											common_ram_reg_space_ptr->PLC_CM_State = 0x09;
 										}	
 										else
 										{
@@ -237,14 +243,13 @@ uint8_t protocol_do_cmds(uint8_t ext_bus)
 								default:
 										break;
 						}		
-						memcpy((ram_space_pointer->tx_data) + offset, &(ram_space_pointer->common_ram_register_space.PLC_SerialNumber), sizeof(ram_space_pointer->common_ram_register_space.PLC_SerialNumber));
-						//*(uint32_t*)((ram_space_pointer->tx_data) + offset) = ram_space_pointer->common_ram_register_space.PLC_SerialNumber;
+						memcpy((ram_space_pointer->tx_data) + offset, &(common_ram_reg_space_ptr->PLC_CommonRomRegs.PLC_SerialNumber), sizeof(common_ram_reg_space_ptr->PLC_CommonRomRegs.PLC_SerialNumber));
 						ram_space_pointer->tx_packet_struct.cmd_with_data[i].data = (ram_space_pointer->tx_data) + offset;
-						offset += sizeof(ram_space_pointer->common_ram_register_space.PLC_SerialNumber);
+						offset += sizeof(common_ram_reg_space_ptr->PLC_CommonRomRegs.PLC_SerialNumber);
 						ram_space_pointer->tx_packet_struct.cmd_with_data[i].header.cmd = INIT_CMD;
 						//TODO:разобраться для чего поле result
 						ram_space_pointer->tx_packet_struct.cmd_with_data[i].header.result = 0;
-						ram_space_pointer->tx_packet_struct.cmd_with_data[i].header.length = sizeof(fields_cmd_header)+ sizeof(ram_space_pointer->common_ram_register_space.PLC_SerialNumber);
+						ram_space_pointer->tx_packet_struct.cmd_with_data[i].header.length = sizeof(fields_cmd_header)+ sizeof(common_ram_reg_space_ptr->PLC_CommonRomRegs.PLC_SerialNumber);
 						break;
 					
 				case READ_CMD:
@@ -284,12 +289,9 @@ uint8_t protocol_do_cmds(uint8_t ext_bus)
 						}
 						memcpy(&start_addr, ram_space_pointer->rx_packet_struct.cmd_with_data[i].data, sizeof(start_addr));
 						memcpy(&size, (ram_space_pointer->rx_packet_struct.cmd_with_data[i].data) + sizeof(start_addr), sizeof(size));
-						//start_addr = *(ram_space_pointer->rx_packet_struct.cmd_with_data[i].data);
-						//size = *((ram_space_pointer->rx_packet_struct.cmd_with_data[i].data) + sizeof(start_addr));
 						//по команде WRITE кладем по адресу start_addr size принятых байт для записи и в поле данных кладем код команды
 						memcpy((void*)(&(ram_space_pointer->start_struct)) + start_addr, (ram_space_pointer->rx_packet_struct.cmd_with_data[i].data) + sizeof(start_addr) + sizeof(size), size);
 						memset((ram_space_pointer->tx_data) + offset, WRITE_CMD, 1);
-						//*(uint8_t*)((ram_space_pointer->tx_data) + offset) = WRITE;
 						ram_space_pointer->tx_packet_struct.cmd_with_data[i].data = (ram_space_pointer->tx_data) + offset;
 						offset++;
 						ram_space_pointer->tx_packet_struct.cmd_with_data[i].header.cmd = WRITE_CMD;
@@ -303,14 +305,14 @@ uint8_t protocol_do_cmds(uint8_t ext_bus)
 					switch (ext_bus)
 					{
 							case 1:
-									if(ram_space_pointer->common_ram_register_space.PLC_CM_State != 0x04)
+									if(common_ram_reg_space_ptr->PLC_CM_State != 0x04)
 									{
 										continue;
 									}
 									break;
 									
 							case 2:
-									if(ram_space_pointer->common_ram_register_space.PLC_CM_State != 0x09)
+									if(common_ram_reg_space_ptr->PLC_CM_State != 0x09)
 									{
 										continue;
 									}
@@ -322,7 +324,6 @@ uint8_t protocol_do_cmds(uint8_t ext_bus)
 					//по команде RESET сбрасываем регистры и в поле данных кладем код команды
 					init_external_ram_space();
 					memset((ram_space_pointer->tx_data) + offset, RESET, 1);
-					//*(uint8_t*)((ram_space_pointer->tx_data) + offset) = RESET;
 					ram_space_pointer->tx_packet_struct.cmd_with_data[i].data = (ram_space_pointer->tx_data) + offset;
 					offset++;
 					ram_space_pointer->tx_packet_struct.cmd_with_data[i].header.cmd = RESET;
@@ -336,14 +337,14 @@ uint8_t protocol_do_cmds(uint8_t ext_bus)
 					switch (ext_bus)
 					{
 							case 1:
-									if(ram_space_pointer->common_ram_register_space.PLC_CM_State != 0x04)
+									if(common_ram_reg_space_ptr->PLC_CM_State != 0x04)
 									{
 										continue;
 									}
 									break;
 									
 							case 2:
-									if(ram_space_pointer->common_ram_register_space.PLC_CM_State != 0x09)
+									if(common_ram_reg_space_ptr->PLC_CM_State != 0x09)
 									{
 										continue;
 									}
@@ -353,19 +354,22 @@ uint8_t protocol_do_cmds(uint8_t ext_bus)
 									break;
 					}
 					//проверка на то, что ПМ находится в сервисном режиме
-					if (ram_space_pointer->common_ram_register_space.PLC_PMAddr.module_addr != 0x00)
+					if (common_ram_reg_space_ptr->PLC_PMAddr.module_addr != 0x00)
 					{
 						break;
 					}
 					//по команде CONFIG регистры зеркализируются в ПЗУ и в поле данных кладем код команды
 					memcpy(&start_addr, ram_space_pointer->rx_packet_struct.cmd_with_data[i].data, sizeof(start_addr));
 					memcpy(&size, ram_space_pointer->rx_packet_struct.cmd_with_data[i].data + sizeof(start_addr), sizeof(size));
-					//start_addr = *(ram_space_pointer->rx_packet_struct.cmd_with_data[i].data);
-					//size = *((ram_space_pointer->rx_packet_struct.cmd_with_data[i].data) + sizeof(start_addr));
 					//запись данных в ПЗУ
-					//TODO: добавить работу с ПЗУ
+					memcpy(&common_regs, &ram_space_pointer->common_ram_register_space.PLC_CommonRomRegs, sizeof(common_regs));
+					memcpy(&mpa_regs, &ram_space_pointer->mpa_ram_register_space.AI_RomRegs, sizeof(mpa_regs));
+					ebc_init(EBC_ROM);
+					memcpy(&rom_space_pointer->common_rom_registers_space, &common_regs, sizeof(common_regs));
+					memcpy(&rom_space_pointer->mpa_rom_registers_space, &mpa_regs, sizeof(mpa_regs));
+					ebc_init(EBC_RAM);
+					
 					memset((ram_space_pointer->tx_data) + offset, CONFIG, 1);
-					//*(uint8_t*)((ram_space_pointer->tx_data) + offset) = CONFIG;
 					ram_space_pointer->tx_packet_struct.cmd_with_data[i].data = (ram_space_pointer->tx_data) + offset;
 					offset++;
 					ram_space_pointer->tx_packet_struct.cmd_with_data[i].header.cmd = CONFIG;
@@ -427,6 +431,8 @@ void fill_crc32_table(void)
 */
 void error_handler(protocol_error error, uint8_t ext_bus)
 {
+	common_ram_registers *common_ram_reg_space_ptr = &ram_space_pointer->common_ram_register_space; //указатель на область памяти внешнего ОЗУ с общими регистрами
+	
 	switch ((uint8_t)error)
 	{
 			case NO_ERROR:
@@ -435,19 +441,19 @@ void error_handler(protocol_error error, uint8_t ext_bus)
 					switch (ext_bus)
 					{
 							case 1:
-									(ram_space_pointer->common_ram_register_space.PLC_CorrPackToDevice_B1)++; //увеличиваем счетчик корректно принятых пакетов
-									ram_space_pointer->common_ram_register_space.PLC_ErrPackToDevice_B1 = 0;//кол-во поврежденных пакетов подряд 
+									common_ram_reg_space_ptr->PLC_CorrPackToDevice_B1++; //увеличиваем счетчик корректно принятых пакетов
+									common_ram_reg_space_ptr->PLC_ErrPackToDevice_B1 = 0;//кол-во поврежденных пакетов подряд 
 									ram_space_pointer->service_byte_pm.fail_bus_1 = 0; //снятие в сервисном байте ПМ бита несиправности шины
-									ram_space_pointer->common_ram_register_space.PLC_BusDefect_B1.many_fail_packet = 0; //снятие в регистре неисправности шины бита "кол-во битых пакетов больше установленного"
-									ram_space_pointer->common_ram_register_space.PLC_BusDefect_B1.fail_timeout = 0; //снятие в регистре неисправности шины бита "неисправность по таймауту"
+									common_ram_reg_space_ptr->PLC_BusDefect_B1.many_fail_packet = 0; //снятие в регистре неисправности шины бита "кол-во битых пакетов больше установленного"
+									common_ram_reg_space_ptr->PLC_BusDefect_B1.fail_timeout = 0; //снятие в регистре неисправности шины бита "неисправность по таймауту"
 									break;
 								
 							case 2:
-									(ram_space_pointer->common_ram_register_space.PLC_CorrPackToDevice_B2)++; //увеличиваем счетчик корректно принятых пакетов
-									ram_space_pointer->common_ram_register_space.PLC_ErrPackToDevice_B2 = 0;//кол-во поврежденных пакетов подряд 
+									common_ram_reg_space_ptr->PLC_CorrPackToDevice_B2++; //увеличиваем счетчик корректно принятых пакетов
+									common_ram_reg_space_ptr->PLC_ErrPackToDevice_B2 = 0;//кол-во поврежденных пакетов подряд 
 									ram_space_pointer->service_byte_pm.fail_bus_2 = 0;	//снятие в сервисном байте ПМ бита несиправности шины
-									ram_space_pointer->common_ram_register_space.PLC_BusDefect_B2.many_fail_packet = 0; //снятие в регистре неисправности шины бита "кол-во битых пакетов больше установленного"
-									ram_space_pointer->common_ram_register_space.PLC_BusDefect_B2.fail_timeout = 0; //снятие в регистре неисправности шины бита "неисправность по таймауту"
+									common_ram_reg_space_ptr->PLC_BusDefect_B2.many_fail_packet = 0; //снятие в регистре неисправности шины бита "кол-во битых пакетов больше установленного"
+									common_ram_reg_space_ptr->PLC_BusDefect_B2.fail_timeout = 0; //снятие в регистре неисправности шины бита "неисправность по таймауту"
 									break;
 								
 							default:
@@ -463,14 +469,14 @@ void error_handler(protocol_error error, uint8_t ext_bus)
 						{
 								case 1:
 										ram_space_pointer->service_byte_pm.fail_bus_1 = 1;	//запись в сервисный байт ПМ бита несиправности шины, если превышен таймаут
-										ram_space_pointer->common_ram_register_space.PLC_BusDefect_B1.fail_timeout = 1; //запись в регистр неисправности шины бита "неисправность по таймауту"
-										ram_space_pointer->common_ram_register_space.PLC_CM_State = 0x05; // снятие инициализации
+										common_ram_reg_space_ptr->PLC_BusDefect_B1.fail_timeout = 1; //запись в регистр неисправности шины бита "неисправность по таймауту"
+										common_ram_reg_space_ptr->PLC_CM_State = 0x05; // снятие инициализации
 										break;
 								
 								case 2:
 										ram_space_pointer->service_byte_pm.fail_bus_2 = 1;	//запись в сервисный байт ПМ бита несиправности шины, если превышен таймаут
-										ram_space_pointer->common_ram_register_space.PLC_BusDefect_B2.fail_timeout = 1; //запись в регистр неисправности шины бита "неисправность по таймауту"
-										ram_space_pointer->common_ram_register_space.PLC_CM_State = 0x05; // снятие инициализации
+										common_ram_reg_space_ptr->PLC_BusDefect_B2.fail_timeout = 1; //запись в регистр неисправности шины бита "неисправность по таймауту"
+										common_ram_reg_space_ptr->PLC_CM_State = 0x05; // снятие инициализации
 										break;
 								
 								default:
@@ -485,22 +491,22 @@ void error_handler(protocol_error error, uint8_t ext_bus)
 						switch (ext_bus)
 						{
 								case 1:
-										(ram_space_pointer->common_ram_register_space.PLC_ErrPackToDevice_B1)++;//кол-во поврежденных пакетов подряд 
-										if ((ram_space_pointer->common_ram_register_space.PLC_ErrPackToDevice_B1) >= (ram_space_pointer->common_ram_register_space.PLC_NumCrcErrorsForDefect_B1))
+										common_ram_reg_space_ptr->PLC_ErrPackToDevice_B1++;//кол-во поврежденных пакетов подряд 
+										if (common_ram_reg_space_ptr->PLC_ErrPackToDevice_B1 >=  common_ram_reg_space_ptr->PLC_CommonRomRegs.PLC_NumCrcErrorsForDefect_B1)
 										{
 											ram_space_pointer->service_byte_pm.fail_bus_1 = 1;	//запись в сервисный байт ПМ бита несиправности шины, если кол-во подряд поврежденных пакетов больше установленного
-											ram_space_pointer->common_ram_register_space.PLC_BusDefect_B1.many_fail_packet = 1; //запись в регистр неисправности шины бита "кол-во битых пакетов больше установленного"
-											ram_space_pointer->common_ram_register_space.PLC_CM_State = 0x05; // снятие инициализации
+											common_ram_reg_space_ptr->PLC_BusDefect_B1.many_fail_packet = 1; //запись в регистр неисправности шины бита "кол-во битых пакетов больше установленного"
+											common_ram_reg_space_ptr->PLC_CM_State = 0x05; // снятие инициализации
 										}
 										break;
 										
 								case 2:
-										(ram_space_pointer->common_ram_register_space.PLC_ErrPackToDevice_B2)++;//кол-во поврежденных пакетов подряд 
-										if (ram_space_pointer->common_ram_register_space.PLC_ErrPackToDevice_B2 >= ram_space_pointer->common_ram_register_space.PLC_NumCrcErrorsForDefect_B2)
+										common_ram_reg_space_ptr->PLC_ErrPackToDevice_B2++;//кол-во поврежденных пакетов подряд 
+										if (common_ram_reg_space_ptr->PLC_ErrPackToDevice_B2 >= common_ram_reg_space_ptr->PLC_CommonRomRegs.PLC_NumCrcErrorsForDefect_B2)
 										{
 											ram_space_pointer->service_byte_pm.fail_bus_2 = 1;  	//запись в сервисный байт ПМ бита несиправности шины, если кол-во подряд поврежденных пакетов больше установленного
-											ram_space_pointer->common_ram_register_space.PLC_BusDefect_B2.many_fail_packet = 1; //запись в регистр неисправности шины бита "кол-во битых пакетов больше установленного"
-											ram_space_pointer->common_ram_register_space.PLC_CM_State = 0x05; // снятие инициализации
+											common_ram_reg_space_ptr->PLC_BusDefect_B2.many_fail_packet = 1; //запись в регистр неисправности шины бита "кол-во битых пакетов больше установленного"
+											common_ram_reg_space_ptr->PLC_CM_State = 0x05; // снятие инициализации
 										}
 										break;
 										

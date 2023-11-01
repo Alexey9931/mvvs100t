@@ -18,6 +18,8 @@ extern UARTn UART4;
 
 //указатель для обращения к внешнему ОЗУ
 ram_data *ram_space_pointer;
+//указатель для обращения к внешнему ПЗУ
+rom_data *rom_space_pointer;
 
 
 int main(void)
@@ -25,7 +27,9 @@ int main(void)
 	CLOCK_Init();
 	
 	DMA_common_init();
-	ebc_init();
+	ebc_init(EBC_ROM);
+	init_external_rom_space();
+	ebc_init(EBC_RAM);
 	init_external_ram_space();
 	leds_gpio_config();
 	
@@ -62,30 +66,30 @@ int main(void)
 	
 	timer_init(&timer_3);
 	
-	//инициализация Timer2 (настроен для режима захвата по 2 каналу таймера - для нужд АЦП, также настроен на период 10мкс)
-	timer_2.RST_CLK_PCLK_TIMERn = RST_CLK_PCLK_TIMER2;
-	timer_2.TIMERInitStruct.TIMER_Period = 10 + 1;
-	timer_2.TIMERInitStruct.TIMER_Prescaler = WORK_FREQ + 1;
-	timer_2.TIMERx = MDR_TIMER2;
-	timer_2.TIMER_HCLKdiv = TIMER_HCLKdiv1;
-	timer_2.sTIM_ChnInit.TIMER_CH_Number = TIMER_CHANNEL2;
-	timer_2.sTIM_ChnInit.TIMER_CH_Mode = TIMER_CH_MODE_CAPTURE;
-	timer_2.sTIM_ChnInit.TIMER_CH_EventSource = TIMER_CH_EvSrc_PE;
-	timer_2.IRQn = TIMER2_IRQn;
-	timer_2.TIMER_STATUS = TIMER_STATUS_CCR_CAP1_CH2 | TIMER_STATUS_CNT_ARR;
-	timer_2.TIMERx->CNT = 0;
+//	//инициализация Timer2 (настроен для режима захвата по 2 каналу таймера - для нужд АЦП, также настроен на период 10мкс)
+//	timer_2.RST_CLK_PCLK_TIMERn = RST_CLK_PCLK_TIMER2;
+//	timer_2.TIMERInitStruct.TIMER_Period = 10 + 1;
+//	timer_2.TIMERInitStruct.TIMER_Prescaler = WORK_FREQ + 1;
+//	timer_2.TIMERx = MDR_TIMER2;
+//	timer_2.TIMER_HCLKdiv = TIMER_HCLKdiv1;
+//	timer_2.sTIM_ChnInit.TIMER_CH_Number = TIMER_CHANNEL2;
+//	timer_2.sTIM_ChnInit.TIMER_CH_Mode = TIMER_CH_MODE_CAPTURE;
+//	timer_2.sTIM_ChnInit.TIMER_CH_EventSource = TIMER_CH_EvSrc_PE;
+//	timer_2.IRQn = TIMER2_IRQn;
+//	timer_2.TIMER_STATUS = TIMER_STATUS_CCR_CAP1_CH2 | TIMER_STATUS_CNT_ARR;
+//	timer_2.TIMERx->CNT = 0;
+//	
+//	timer_init(&timer_2);
 	
-	timer_init(&timer_2);
-	
-	//инициализация АЦП1
-	adc_1.spi_struct = &spi_1;
-	adc_1.spi_struct->buffer_counter = 0;
-	adc_1.timer_n_capture = &timer_2;
-	adc_1.avg_num = find_max_halfword(ram_space_pointer->mpa_ram_register_space.AI_NumForAverag, CHANEL_NUMBER);
-	adc_1.ch_rx_num = 0;
-	adc_1.init_flag = 0;
-	
-	adc_init(&adc_1);
+//	//инициализация АЦП1
+//	adc_1.spi_struct = &spi_1;
+//	adc_1.spi_struct->buffer_counter = 0;
+//	adc_1.timer_n_capture = &timer_2;
+//	adc_1.avg_num = find_max_halfword(ram_space_pointer->mpa_ram_register_space.AI_RomRegs.AI_NumForAverag, CHANEL_NUMBER);
+//	adc_1.ch_rx_num = 0;
+//	adc_1.init_flag = 0;
+//	
+//	adc_init(&adc_1);
 	
 
 	//Инициализация UART1-2:
@@ -135,9 +139,6 @@ int main(void)
 		//request_data(&UART1);
 		//запрос пакета по ШИНЕ2
 		request_data(&UART2);
-//		delay_milli(100);
-//			memset(data, 0, sizeof(data));
-		//do_mpa_task(&adc_1);
 	}
 }
 /*
@@ -155,9 +156,7 @@ uint8_t request_data(UARTn *UART_struct)
 		ext_bus = 2;
 	}
 	
-	protocol_error error;
-	error = receive_packet(UART_struct, ext_bus);
-	if(error != NO_ERROR)
+	if(receive_packet(UART_struct, ext_bus) != NO_ERROR)
 	{
 		return 1;
 	}
@@ -205,22 +204,22 @@ void do_mpa_task(adc_n *adc_struct)
 //		delta = 6.6962f*pow(10,-6)*adc_code + 0.4252307f;
 
 	//делаем усреднение по максим кол-ву выборок если выборки различаются для разных каналов
-	adc_1.avg_num = find_max_halfword(ram_space_pointer->mpa_ram_register_space.AI_NumForAverag, CHANEL_NUMBER);
+	adc_1.avg_num = find_max_halfword(ptr->AI_RomRegs.AI_NumForAverag, CHANEL_NUMBER);
 	
 	for (uint8_t k = 0; k < CHANEL_NUMBER; k++)
 	{
-		for (uint8_t i = 0; i < ptr->AI_NumForAverag[k]; i++)
+		for (uint8_t i = 0; i < ptr->AI_RomRegs.AI_NumForAverag[k]; i++)
 		{		
 			memcpy(&unused_value, adc_struct->spi_struct->buffer + (i*CHANEL_NUMBER) + k, sizeof(unused_value));
 			adc_code[k] += (int16_t)(~unused_value + 1);	
 		}
-		adc_code[k] /= ptr->AI_NumForAverag[k];
+		adc_code[k] /= ptr->AI_RomRegs.AI_NumForAverag[k];
 		memcpy(&(ptr->AI_CodeADC[k]), &adc_code[k], sizeof(adc_code[k]));
-		switch ( TEST_BIT(k, ptr->AI_OperMode.adc_chs_mode))
+		switch ( TEST_BIT(k, ptr->AI_RomRegs.AI_OperMode.adc_chs_mode))
 		{
 			case 0:
 					//напряжение 0-10В
-					ptr->AI_PhysQuantFloat[k] = ptr->AI_PolynConst0[k] + (ptr->AI_PolynConst1[k])*(ptr->AI_CodeADC[k]);
+					ptr->AI_PhysQuantFloat[k] = ptr->AI_RomRegs.AI_PolynConst0[k] + (ptr->AI_RomRegs.AI_PolynConst1[k])*(ptr->AI_CodeADC[k]);
 					break;
 			
 			case 1:

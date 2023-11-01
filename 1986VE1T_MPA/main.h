@@ -10,7 +10,7 @@
 #include "DMA.h"
 #include "EBC.h"
 #include "external_ram.h"
-#include "MT-12864Av6.h"
+#include "external_rom.h"
 #include "leds.h"
 
 /*
