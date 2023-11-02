@@ -3,12 +3,11 @@
  \brief Заголовочный файл с описанием API для работы с таймерами
 */
 
-#ifndef __TIMER_H
-#define __TIMER_H
+#ifndef __TIMERS_H
+#define __TIMERS_H
 
-#include "MDR32_Drivers.h"
+#include "mdr32_drivers.h"
 #include <stdio.h>
-
 
 ///Структура с конфигурационными параметрами Таймеров 
 typedef struct timer_config_struct
@@ -22,7 +21,6 @@ typedef struct timer_config_struct
 	TIMER_Status_Flags_TypeDef		TIMER_STATUS;										///< Настрока событий, по которому происходит прерывание блока TIMER	
 	uint32_t											timer_cnt;											///< Счетчик для TIMER (может быть использован для разных целей)	
 } timer_n;	
-
 
 /*!
  *	\brief Инициализацирует выбранный Timer
@@ -43,4 +41,4 @@ void delay_milli(uint32_t time_milli);
 void delay_micro(uint32_t time_micro);
 
 
-#endif /*__TIMER_H */
+#endif /*__TIMERS_H */

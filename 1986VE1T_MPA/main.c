@@ -9,11 +9,11 @@ extern timer_n timer_3;
 extern spi_n spi_1;
 extern spi_n spi_2;
 
-extern UARTn UART1;
-extern UARTn UART2;
+extern uart_n uart_1;
+extern uart_n uart_2;
 #ifdef K1986VE3T
-extern UARTn UART3;
-extern UARTn UART4;
+extern uart_n uart_3;
+extern uart_n uart_4;
 #endif
 
 //указатель для обращения к внешнему ОЗУ
@@ -24,9 +24,9 @@ rom_data *rom_space_pointer;
 
 int main(void)
 {	
-	CLOCK_Init();
+	clock_init();
 	
-	DMA_common_init();
+	dma_common_init();
 	ebc_init(EBC_ROM);
 	init_external_rom_space();
 	ebc_init(EBC_RAM);
@@ -66,97 +66,97 @@ int main(void)
 	
 	timer_init(&timer_3);
 	
-//	//инициализация Timer2 (настроен для режима захвата по 2 каналу таймера - для нужд АЦП, также настроен на период 10мкс)
-//	timer_2.RST_CLK_PCLK_TIMERn = RST_CLK_PCLK_TIMER2;
-//	timer_2.TIMERInitStruct.TIMER_Period = 10 + 1;
-//	timer_2.TIMERInitStruct.TIMER_Prescaler = WORK_FREQ + 1;
-//	timer_2.TIMERx = MDR_TIMER2;
-//	timer_2.TIMER_HCLKdiv = TIMER_HCLKdiv1;
-//	timer_2.sTIM_ChnInit.TIMER_CH_Number = TIMER_CHANNEL2;
-//	timer_2.sTIM_ChnInit.TIMER_CH_Mode = TIMER_CH_MODE_CAPTURE;
-//	timer_2.sTIM_ChnInit.TIMER_CH_EventSource = TIMER_CH_EvSrc_PE;
-//	timer_2.IRQn = TIMER2_IRQn;
-//	timer_2.TIMER_STATUS = TIMER_STATUS_CCR_CAP1_CH2 | TIMER_STATUS_CNT_ARR;
-//	timer_2.TIMERx->CNT = 0;
-//	
-//	timer_init(&timer_2);
+	//инициализация Timer2 (настроен для режима захвата по 2 каналу таймера - для нужд АЦП, также настроен на период 10мкс)
+	timer_2.RST_CLK_PCLK_TIMERn = RST_CLK_PCLK_TIMER2;
+	timer_2.TIMERInitStruct.TIMER_Period = 10 + 1;
+	timer_2.TIMERInitStruct.TIMER_Prescaler = WORK_FREQ + 1;
+	timer_2.TIMERx = MDR_TIMER2;
+	timer_2.TIMER_HCLKdiv = TIMER_HCLKdiv1;
+	timer_2.sTIM_ChnInit.TIMER_CH_Number = TIMER_CHANNEL2;
+	timer_2.sTIM_ChnInit.TIMER_CH_Mode = TIMER_CH_MODE_CAPTURE;
+	timer_2.sTIM_ChnInit.TIMER_CH_EventSource = TIMER_CH_EvSrc_PE;
+	timer_2.IRQn = TIMER2_IRQn;
+	timer_2.TIMER_STATUS = TIMER_STATUS_CCR_CAP1_CH2 | TIMER_STATUS_CNT_ARR;
+	timer_2.TIMERx->CNT = 0;
 	
-//	//инициализация АЦП1
-//	adc_1.spi_struct = &spi_1;
-//	adc_1.spi_struct->buffer_counter = 0;
-//	adc_1.timer_n_capture = &timer_2;
-//	adc_1.avg_num = find_max_halfword(ram_space_pointer->mpa_ram_register_space.AI_RomRegs.AI_NumForAverag, CHANEL_NUMBER);
-//	adc_1.ch_rx_num = 0;
-//	adc_1.init_flag = 0;
-//	
-//	adc_init(&adc_1);
+	timer_init(&timer_2);
+	
+	//инициализация АЦП1
+	adc_1.spi_struct = &spi_1;
+	adc_1.spi_struct->buffer_counter = 0;
+	adc_1.timer_n_capture = &timer_2;
+	adc_1.avg_num = find_max_halfword(ram_space_pointer->mpa_ram_register_space.AI_RomRegs.AI_NumForAverag, CHANEL_NUMBER);
+	adc_1.ch_rx_num = 0;
+	adc_1.init_flag = 0;
+	
+	adc_init(&adc_1);
 	
 
 	//Инициализация UART1-2:
-	UART1.UARTx = MDR_UART1;
-	UART1.uart_dma_ch.dma_channel = DMA_Channel_REQ_UART1_RX;
-	UART1.IRQn = UART1_IRQn;
-	UART1.RST_CLK_PCLK_UARTn = RST_CLK_PCLK_UART1;
-	UART1.UART.UART_BaudRate = 115200;
-	UART1.UART.UART_WordLength = UART_WordLength8b;
-	UART1.UART.UART_StopBits = UART_StopBits1;
-	UART1.UART.UART_Parity = UART_Parity_No;
-	UART1.UART.UART_FIFOMode = UART_FIFO_OFF;
-	UART1.UART.UART_HardwareFlowControl = UART_HardwareFlowControl_RXE | UART_HardwareFlowControl_TXE;
-	UART1.UART_HCLKdiv = UART_HCLKdiv1;
-	UART1.buffer = (uint8_t*)(ram_space_pointer->uart1_rx_buffer);
-	UART1.buffer_count = 0;
-	UART1.read_pos = 0;
-	UART1.UARTx_timeouts.timer_n_timeout = &timer_3;
+	uart_1.UARTx = MDR_UART1;
+	uart_1.uart_dma_ch.dma_channel = DMA_Channel_REQ_UART1_RX;
+	uart_1.IRQn = UART1_IRQn;
+	uart_1.RST_CLK_PCLK_UARTn = RST_CLK_PCLK_UART1;
+	uart_1.UART.UART_BaudRate = 115200;
+	uart_1.UART.UART_WordLength = UART_WordLength8b;
+	uart_1.UART.UART_StopBits = UART_StopBits1;
+	uart_1.UART.UART_Parity = UART_Parity_No;
+	uart_1.UART.UART_FIFOMode = UART_FIFO_OFF;
+	uart_1.UART.UART_HardwareFlowControl = UART_HardwareFlowControl_RXE | UART_HardwareFlowControl_TXE;
+	uart_1.UART_HCLKdiv = UART_HCLKdiv1;
+	uart_1.buffer = (uint8_t*)(ram_space_pointer->uart1_rx_buffer);
+	uart_1.buffer_count = 0;
+	uart_1.read_pos = 0;
+	uart_1.uart_timeouts.timer_n_timeout = &timer_3;
 
-	UART2.UARTx = MDR_UART2;
-	UART2.uart_dma_ch.dma_channel = DMA_Channel_REQ_UART2_RX;
-	UART2.IRQn = UART2_IRQn;
-	UART2.RST_CLK_PCLK_UARTn = RST_CLK_PCLK_UART2;
-	UART2.UART.UART_BaudRate = 921600;
-	UART2.UART.UART_WordLength = UART_WordLength8b;
-	UART2.UART.UART_StopBits = UART_StopBits1;
-	UART2.UART.UART_Parity = UART_Parity_No;
-	UART2.UART.UART_FIFOMode = UART_FIFO_OFF;
-	UART2.UART.UART_HardwareFlowControl = UART_HardwareFlowControl_RXE | UART_HardwareFlowControl_TXE;
-	UART2.UART_HCLKdiv = UART_HCLKdiv1;
-	UART2.buffer = (uint8_t*)(ram_space_pointer->uart2_rx_buffer);
-	UART2.buffer_count = 0;
-	UART2.read_pos = 0;
-	UART2.UARTx_timeouts.timer_n_timeout = &timer_3;
+	uart_2.UARTx = MDR_UART2;
+	uart_2.uart_dma_ch.dma_channel = DMA_Channel_REQ_UART2_RX;
+	uart_2.IRQn = UART2_IRQn;
+	uart_2.RST_CLK_PCLK_UARTn = RST_CLK_PCLK_UART2;
+	uart_2.UART.UART_BaudRate = 921600;
+	uart_2.UART.UART_WordLength = UART_WordLength8b;
+	uart_2.UART.UART_StopBits = UART_StopBits1;
+	uart_2.UART.UART_Parity = UART_Parity_No;
+	uart_2.UART.UART_FIFOMode = UART_FIFO_OFF;
+	uart_2.UART.UART_HardwareFlowControl = UART_HardwareFlowControl_RXE | UART_HardwareFlowControl_TXE;
+	uart_2.UART_HCLKdiv = UART_HCLKdiv1;
+	uart_2.buffer = (uint8_t*)(ram_space_pointer->uart2_rx_buffer);
+	uart_2.buffer_count = 0;
+	uart_2.read_pos = 0;
+	uart_2.uart_timeouts.timer_n_timeout = &timer_3;
 
-	//uart_set_read_timeout(&UART1, 300);
-	uart_set_read_timeout(&UART2, 300);
+	//uart_set_read_timeout(&uart_1, 300);
+	uart_set_read_timeout(&uart_2, 300);
 
-	uart_init(&UART1);
+	//uart_init(&uart_1);
 	//DMA_UART_RX_init(&UART1);
-	uart_init(&UART2);
-	DMA_UART_RX_init(&UART2);
+	uart_init(&uart_2);
+	DMA_UART_RX_init(&uart_2);
 
 	while(1)
 	{		
 		//запрос пакета по ШИНЕ1
-		//request_data(&UART1);
+		//request_data(&uart_1);
 		//запрос пакета по ШИНЕ2
-		request_data(&UART2);
+		request_data(&uart_2);
 	}
 }
 /*
 Функция для запроса данных
 */
-uint8_t request_data(UARTn *UART_struct)
+uint8_t request_data(uart_n *uart_struct)
 {
 	uint8_t ext_bus; //определение шины, по которой идет обмен данными
-	if(UART_struct->UARTx == MDR_UART1)
+	if(uart_struct->UARTx == MDR_UART1)
 	{
 		ext_bus = 1;
 	}
-	else if(UART_struct->UARTx == MDR_UART2)
+	else if(uart_struct->UARTx == MDR_UART2)
 	{
 		ext_bus = 2;
 	}
 	
-	if(receive_packet(UART_struct, ext_bus) != NO_ERROR)
+	if(receive_packet(uart_struct, ext_bus) != NO_ERROR)
 	{
 		return 1;
 	}
@@ -168,7 +168,7 @@ uint8_t request_data(UARTn *UART_struct)
 	{
 		return 1; 
 	}
-	if(transmit_packet(UART_struct, ext_bus) != NO_ERROR)
+	if(transmit_packet(uart_struct, ext_bus) != NO_ERROR)
 	{
 		return 1;
 	}

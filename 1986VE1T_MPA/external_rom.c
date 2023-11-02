@@ -2,11 +2,16 @@
  \file
  \brief Файл с реализацией API для работы с областью памяти внешнего ПЗУ
 */
+
+/*
+ *	Внешняя память ПЗУ 1636Р1 подключается по внешней системной шине в 8-битном режиме данных.
+ *	Сдвиг адресации делать не нужно A0->A0, A1->A1 и тд (т.к. 8 битный режим EBC)
+*/
+
 #include "external_ram.h"
-#include "EBC.h"
+#include "ebc.h"
 
-//#define FIRST_TIME_INIT
-
+//#define FIRST_TIME_INIT //макрос для записи данных в ПЗУ в первый раз
 
 /*!
 	Функция инициализации области памяти внешнего ПЗУ
@@ -64,6 +69,9 @@ void init_external_rom_space(void)
 	#endif
 }
 
+/*!
+	Функция записи байта в ПЗУ
+*/
 uint8_t write_byte_rom(uint32_t dest_addr, uint8_t byte)
 {		  
 	uint8_t status;
@@ -101,11 +109,18 @@ uint8_t write_byte_rom(uint32_t dest_addr, uint8_t byte)
 	return 2; // Unknow state
 }
 
+/*!
+	Функция чтения байта из ПЗУ
+*/
 uint8_t read_byte_rom(uint32_t dest_addr)
 { 
 	MDR_PORTA->OE = 0x00000000;	
 	return (HWREG(dest_addr));
 }
+
+/*!
+	Функция копирования области памяти в ПЗУ
+*/
 void memcpy_to_rom(uint32_t dest_addr, void *src_addr, uint32_t size)
 {
 	for (uint32_t i = 0; i < size; i++)
@@ -113,6 +128,10 @@ void memcpy_to_rom(uint32_t dest_addr, void *src_addr, uint32_t size)
 		write_byte_rom(dest_addr + i, *((uint8_t*)src_addr+i));
 	}
 }
+
+/*!
+	Функция очистки памяти ПЗУ
+*/
 void erase_rom(void)
 {
 	uint8_t status;

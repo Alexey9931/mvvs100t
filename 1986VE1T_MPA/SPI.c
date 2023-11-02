@@ -2,11 +2,11 @@
  \file
  \brief Файл с реализацией API для работы с SPI
 */
-#include "SPI.h"
+#include "spi.h"
 #include "1273pv19t.h"
 #include "external_ram.h"
 
-/*Глобальные экземпляры структур с конфигурационными параметрами SPI и буфером приема 
+/*Глобальные экземпляры структур с конфигурационными параметрами 2 и буфером приема 
  *(необходимо добавить аттрибут, который прописан в файле Objects/.sct,
  * т.к. для работы с DMA адрес буфера назначения должен лежать в определенной области памяти)
  */
@@ -16,8 +16,8 @@ spi_n spi_2 IAR_SECTION ("EXECUTABLE_MEMORY_SECTION") __attribute__((section("EX
 extern adc_n adc_1;
 extern ram_data *ram_space_pointer;
 
-extern UARTn UART1;
-extern UARTn UART2;
+extern uart_n uart_1;
+extern uart_n uart_2;
 
 /*
 Функция конфигурирования выводов МК для SPI

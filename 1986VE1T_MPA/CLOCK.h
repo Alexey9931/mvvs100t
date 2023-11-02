@@ -1,8 +1,16 @@
+/*!
+ \file
+ \brief Заголовочный файл с описанием API для настройки тактирования МК
+*/
+
 #ifndef __CLOCK_H
 #define __CLOCK_H
 
-#include "MDR32_Drivers.h"
+#include "mdr32_drivers.h"
 
-void CLOCK_Init(void);
+/*!
+ *	\brief Настраивает тактирование МК
+*/
+void clock_init(void);
 
 #endif /*__CLOCK_H */

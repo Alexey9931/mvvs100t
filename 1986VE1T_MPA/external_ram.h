@@ -6,17 +6,17 @@
 #ifndef __EXTERNAL_RAM_H
 #define __EXTERNAL_RAM_H
 
-#include "MDR32_Drivers.h"
+#include "mdr32_drivers.h"
 #include "rs422_protocol.h"
-#include "SPI.h"
+#include "spi.h"
 #include "external_rom.h"
 
 #define EXT_RAM_START_ADDR 							0x50200000	///< Адрес в памяти МК, с которой начинается обращение к внешней ОЗУ
 #define RAM_REGISTER_SPACE_START_ADDR 	200					///< Стартовый адрес карты регистров в ОЗУ
 
-#define TEST_BIT(num, value) ((value>>num)&0x1)
-#define SET_BIT(num, value) (value |= (1<<num))
-#define RESET_BIT(num, value) (value &= ~(1<<num))
+#define TEST_BIT(num, value) ((value>>num)&0x1)			///< Макрос проверки бита (0 или 1) в байте
+#define SET_BIT(num, value) (value |= (1<<num))			///< Макрос установки бита в байте в 1
+#define RESET_BIT(num, value) (value &= ~(1<<num))	///< Макрос сброса бита в байте в 0
 
 ///Типы модулей
 typedef enum type_of_module
@@ -37,30 +37,30 @@ typedef enum type_of_module
 ///Структура с битовыми полями для регистра версия ПО
 typedef struct plc_sof_ver_struct
 {
-	unsigned revision: 4;														///< Ревизия модуля
-	unsigned modification: 4;												///< Модификация модуля
-	unsigned type: 9;																///< Тип модуля
-	unsigned soft_ver: 10;													///< Версия ПО
-	unsigned add_info: 4;														///< Дополнительная информация
-	unsigned develop: 1;														///< 1=ПО в процессе разработки
+	unsigned revision: 4;											///< Ревизия модуля
+	unsigned modification: 4;									///< Модификация модуля
+	unsigned type: 9;													///< Тип модуля
+	unsigned soft_ver: 10;										///< Версия ПО
+	unsigned add_info: 4;											///< Дополнительная информация
+	unsigned develop: 1;											///< 1=ПО в процессе разработки
 }__attribute__((packed)) plc_soft_ver;
 
 
 ///Структура с битовыми полями для регистра адрес устройства
 typedef struct device_address_struct
 {
-	unsigned module_addr: 	4;										///< Адрес модуля
-	unsigned chassis_addr: 	4;										///< Адрес шасси
-	unsigned reserv:				8;										///< Резерв
+	unsigned module_addr: 	4;								///< Адрес модуля
+	unsigned chassis_addr: 	4;								///< Адрес шасси
+	unsigned reserv:				8;								///< Резерв
 }__attribute__((packed)) device_address;
 
 ///Структура с битовыми полями для регистра конфигурация
 typedef struct config_struct
 {
-	unsigned main_switch: 	4;										///< Основной свитч
-	unsigned add_switch_1: 	4;										///< Доп свитч 1
-	unsigned add_switch_2: 	4;										///< Доп свитч 2
-	unsigned reserv:				4;										///< Резерв
+	unsigned main_switch: 	4;							  ///< Основной свитч
+	unsigned add_switch_1: 	4;								///< Доп свитч 1
+	unsigned add_switch_2: 	4;								///< Доп свитч 2
+	unsigned reserv:				4;								///< Резерв
 }__attribute__((packed)) device_config;
 
 ///Структура с битовыми полями для регистра неисправность питания
@@ -76,33 +76,33 @@ typedef struct power_failure_struct
 ///Структура с битовыми полями для регистра неисправность шины
 typedef struct bus_defect_struct
 {
-	unsigned many_fail_packet: 1;										///< Количество битых пакетов подряд > уст. значения
-	unsigned fail_timeout: 1;												///< Неисправность по таймауту
-	unsigned reserv: 14;														///< Резерв
+	unsigned many_fail_packet: 1;							///< Количество битых пакетов подряд > уст. значения
+	unsigned fail_timeout: 1;									///< Неисправность по таймауту
+	unsigned reserv: 14;											///< Резерв
 }__attribute__((packed)) bus_defect;
 
 ///Структура с битовыми полями для регистра неисправность самодиагностики
 typedef struct self_diag_struct
 {
-	unsigned fail_crc_firmware: 					1;										///< Некорректная ЦРЦ прошивки
-	unsigned power_fail: 									1;										///< Неисправность питания
-	unsigned fail_download_rom: 					1;										///< Ошибка при загрузке данных из ПЗУ
-	unsigned fail_soft_ver:								1;										///< Версия ПО и тип модуля не совпадают
-	unsigned fail_firmware_ram:						1;										///< Неисправность  в ПО арбитра ОЗУ
-	unsigned fail_firmware_2_bus:					1;										///< Неисправность  в ПО 2ой шины
-	unsigned fail_firmware_1_bus:					1;										///< Неисправность  в ПО 1ой шины
-	unsigned reserv:											1;										///< Резерв
-	uint8_t fail_chanels[8];																		///< Неисправность в каналах
-	unsigned reserv1:											8;										///< Резерв
+	unsigned fail_crc_firmware: 				1;		///< Некорректная ЦРЦ прошивки
+	unsigned power_fail: 								1;		///< Неисправность питания
+	unsigned fail_download_rom: 				1;		///< Ошибка при загрузке данных из ПЗУ
+	unsigned fail_soft_ver:							1;		///< Версия ПО и тип модуля не совпадают
+	unsigned fail_firmware_ram:					1;	  ///< Неисправность  в ПО арбитра ОЗУ
+	unsigned fail_firmware_2_bus:				1;	  ///< Неисправность  в ПО 2ой шины
+	unsigned fail_firmware_1_bus:				1;		///< Неисправность  в ПО 1ой шины
+	unsigned reserv:										1;		///< Резерв
+	uint8_t fail_chanels[8];									///< Неисправность в каналах
+	unsigned reserv1:										8;		///< Резерв
 }__attribute__((packed)) self_diag;
 
 ///Структура одного диапазона для стартовой структуры
 typedef struct range_start_struct
 {
-	uint16_t	range_type;										///< Тип диапазона (h) и тип операции (l)
-	uint16_t	start_channel_num;						///< Стартовый номер канала (h) и номер диапазона (l)
-	uint16_t	address;											///< Адрес
-	uint16_t	size;													///< Количество байт
+	uint16_t	range_type;										  ///< Тип диапазона (h) и тип операции (l)
+	uint16_t	start_channel_num;						  ///< Стартовый номер канала (h) и номер диапазона (l)
+	uint16_t	address;											  ///< Адрес
+	uint16_t	size;													  ///< Количество байт
 }__attribute__((packed)) range;
 
 ///структура, которая лежит в начале ОЗУ любого модуля
@@ -118,37 +118,37 @@ typedef struct start_struct_ext_ram
 ///органиация пространства общих регистров во внешнем ОЗУ
 typedef struct common_register_space_ext_ram
 {
-	plc_soft_ver 						PLC_SoftVer;																	
-	device_config						PLC_Config;
-	device_address					PLC_PMAddr;
-	uint32_t								PLC_Durat;
-	uint32_t								PLC_CM_State;
-	uint32_t								PLC_CorrPackFromDevice_B1;
-	uint32_t								PLC_CorrPackToDevice_B1;
-	uint32_t								PLC_ErrPackToDevice_B1;
-	uint32_t								PLC_ErrPackFromDevice_B1;
-	uint32_t								PLC_CorrPackFromDevice_B2;
-	uint32_t								PLC_CorrPackToDevice_B2;
-	uint32_t								PLC_ErrPackToDevice_B2;
-	uint32_t								PLC_ErrPackFromDevice_B2;
-	power_failure						PLC_PowerDefect;
-	bus_defect							PLC_BusDefect_B1;
-	bus_defect  						PLC_BusDefect_B2;
-	self_diag	  						PLC_SelfDiagDefect;
-	uint8_t	  							Reserv_1[68];
-	common_rom_registers	 	PLC_CommonRomRegs;
+	plc_soft_ver 						PLC_SoftVer;									///< Версия ПО									
+	device_config						PLC_Config;										///< Конфигурация устройства
+	device_address					PLC_PMAddr;										///< Адрес устройства
+	uint32_t								PLC_Durat;										///< Время с момента запуска, с
+	uint32_t								PLC_CM_State;									///< Состояние автомата выбора УМ
+	uint32_t								PLC_CorrPackFromDevice_B1;		///< Корректных пакетов по Ш1, от устройства
+	uint32_t								PLC_CorrPackToDevice_B1;			///< Корректных пакетов по Ш1, к устройству
+	uint32_t								PLC_ErrPackToDevice_B1;				///< Ошибок приема пакета по Ш1
+	uint32_t								PLC_ErrPackFromDevice_B1;			///< Ошибок отправки пакета по Ш1
+	uint32_t								PLC_CorrPackFromDevice_B2;		///< Корректных пакетов по Ш2, от устройства
+	uint32_t								PLC_CorrPackToDevice_B2;			///< Корректных пакетов по Ш2, к устройству
+	uint32_t								PLC_ErrPackToDevice_B2;				///< Ошибок приема пакета по Ш2
+	uint32_t								PLC_ErrPackFromDevice_B2;			///< Ошибок отправки пакета по Ш2
+	power_failure						PLC_PowerDefect;							///< Неиспр питания
+	bus_defect							PLC_BusDefect_B1;							///< Неиспр 1 шины
+	bus_defect  						PLC_BusDefect_B2;							///< Неиспр 2 шины
+	self_diag	  						PLC_SelfDiagDefect;						///< Неиспр самодиагностики
+	uint8_t	  							Reserv_1[68];									///< РЕЗЕРВ
+	common_rom_registers	 	PLC_CommonRomRegs;						///< Общие регистры, которые храняться в ПЗУ
 }__attribute__((packed)) common_ram_registers;
 
 ///органиация пространства регистров МПА во внешнем ОЗУ
 typedef struct mpa_register_space_ext_ram
 {
-	mpa_rom_registers 	AI_RomRegs;
-	uint16_t						AI_SignalChanged;
-	int16_t							AI_CodeADC[MAX_CHANEL_NUMBER];
-	float								AI_PhysQuantFloat[MAX_CHANEL_NUMBER];
-	uint8_t							AI_DiagnosticChannel[MAX_CHANEL_NUMBER];
-	uint8_t							Reserv_6[2];
-}__attribute__((packed)) mpa_ram_registers;
+	mpa_rom_registers 	AI_RomRegs;																	///< Регистры МПА, которые храняться в ПЗУ
+	uint16_t						AI_SignalChanged;														///< Изменялся ли сигнал с последнего опроса 
+	int16_t							AI_CodeADC[MAX_CHANEL_NUMBER];							///< Сырые данные, код АЦП
+	float								AI_PhysQuantFloat[MAX_CHANEL_NUMBER];				///< Физическая величина (число с плавающей точкой)
+	uint8_t							AI_DiagnosticChannel[MAX_CHANEL_NUMBER];		///< Самодиагностика каналов
+	uint8_t							Reserv_6[2];																///< Резерв
+}__attribute__((packed)) mpa_ram_registers;	
 
 ///Структура с битовыми полями для сервисного байта ПМ
 typedef struct service_byte_struct_pm
@@ -175,7 +175,7 @@ typedef struct service_byte_struct_um
 typedef struct ram_data_struct
 {
 	ram_start_struct 				start_struct;																											///< Структура по умолчанию, которая должна находиться в начале ОЗУ
-	uint8_t 								Reserv[RAM_REGISTER_SPACE_START_ADDR - sizeof(ram_start_struct)];			///< Зарезервированное место
+	uint8_t 								Reserv[RAM_REGISTER_SPACE_START_ADDR - sizeof(ram_start_struct)];	///< Зарезервированное место
 	common_ram_registers		common_ram_register_space;																				///< Карта общих регистров начиная с адреса REGISTER_SPACE_START_ADDR
 	mpa_ram_registers				mpa_ram_register_space;																						///< Карта регистров МПА начиная с адреса REGISTER_SPACE_START_ADDR
 	fields_packet 					rx_packet_struct;																									///< Принятый пакет с идентифицированными полями

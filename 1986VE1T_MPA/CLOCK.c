@@ -1,7 +1,14 @@
-#include "CLOCK.h"
+/*!
+ \file
+ \brief Заголовочный файл с реализацией API для настройки тактирования МК
+*/
 
+#include "clock.h"
 
-void CLOCK_Init(void) // тактирование WORK_FREQ МГц
+/*
+Функция настройки тактирования МК
+*/
+void clock_init(void) // тактирование WORK_FREQ МГц
 {
 	// Сброс настроек системы тактирования
   RST_CLK_DeInit();
@@ -12,7 +19,7 @@ void CLOCK_Init(void) // тактирование WORK_FREQ МГц
 	while (RST_CLK_HSEstatus () != SUCCESS);
 	
 	// Настраиваем источник и коэффициент умножения PLL
-	//(CPU_C1_SEL = HSE / 1 * 9 = 128 МГц )
+	//(CPU_C1_SEL = HSE / 1 * 12 = 144 МГц )
 	RST_CLK_CPU_PLLconfig ( RST_CLK_CPU_PLLsrcHSEdiv1,11);
 	
 	// Включаем PLL, но еще не подключаем к кристаллу (PLL умножает частоту тактирования)

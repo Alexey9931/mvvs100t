@@ -1,5 +1,5 @@
-#ifndef __MDR32_Drivers_H
-#define __MDR32_Drivers_H
+#ifndef __MDR32_DRIVERS_H
+#define __MDR32_DRIVERS_H
 
 #define K1986VE1T
 //#define K1986VE3T
@@ -28,8 +28,8 @@
 	#include <MDR32F9Qx_bkp.h>  	
 #endif
 
-#define HSE_OSC ((uint32_t)12000000) //частота внешнего тактового генератора (!также изменить в MDR32_config.h)
-#define WORK_FREQ 144 //рабочая частота в МГц
+#define HSE_OSC ((uint32_t)12000000) 		///< Частота внешнего тактового генератора (!также изменить в MDR32_config.h)
+#define WORK_FREQ 144 									///< Рабочая частота в МГц
 
 #define CHANEL_NUMBER 6									///< Кол-во каналов в МПА
 #define MAX_CHANEL_NUMBER 8							///< Максимальное кол-во каналов в МПА
@@ -38,4 +38,4 @@
 #define NUMBER_OF_RANGES 3							///< Кол-во диапазонов в стартовой структуре
 
 
-#endif /*__MDR32_Drivers_H */
+#endif /*__MDR32_DRIVERS_H */

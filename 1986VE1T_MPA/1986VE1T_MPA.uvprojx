@@ -385,26 +385,6 @@
           <GroupName>Source Group 1</GroupName>
           <Files>
             <File>
-              <FileName>CLOCK.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\CLOCK.c</FilePath>
-            </File>
-            <File>
-              <FileName>CLOCK.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\CLOCK.h</FilePath>
-            </File>
-            <File>
-              <FileName>DMA.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\DMA.c</FilePath>
-            </File>
-            <File>
-              <FileName>DMA.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\DMA.h</FilePath>
-            </File>
-            <File>
               <FileName>main.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\main.c</FilePath>
@@ -415,11 +395,6 @@
               <FilePath>.\main.h</FilePath>
             </File>
             <File>
-              <FileName>MDR32_Drivers.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\MDR32_Drivers.h</FilePath>
-            </File>
-            <File>
               <FileName>rs422_protocol.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\rs422_protocol.c</FilePath>
@@ -428,36 +403,6 @@
               <FileName>rs422_protocol.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\rs422_protocol.h</FilePath>
-            </File>
-            <File>
-              <FileName>TIMER.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\TIMER.c</FilePath>
-            </File>
-            <File>
-              <FileName>TIMER.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\TIMER.h</FilePath>
-            </File>
-            <File>
-              <FileName>UART.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\UART.c</FilePath>
-            </File>
-            <File>
-              <FileName>UART.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\UART.h</FilePath>
-            </File>
-            <File>
-              <FileName>EBC.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\EBC.c</FilePath>
-            </File>
-            <File>
-              <FileName>EBC.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\EBC.h</FilePath>
             </File>
             <File>
               <FileName>external_ram.c</FileName>
@@ -480,16 +425,6 @@
               <FilePath>.\1273pv19t.h</FilePath>
             </File>
             <File>
-              <FileName>SPI.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\SPI.c</FilePath>
-            </File>
-            <File>
-              <FileName>SPI.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\SPI.h</FilePath>
-            </File>
-            <File>
               <FileName>leds.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\leds.c</FilePath>
@@ -508,6 +443,71 @@
               <FileName>external_rom.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\external_rom.h</FilePath>
+            </File>
+            <File>
+              <FileName>spi.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\spi.c</FilePath>
+            </File>
+            <File>
+              <FileName>spi.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\spi.h</FilePath>
+            </File>
+            <File>
+              <FileName>uart.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\uart.c</FilePath>
+            </File>
+            <File>
+              <FileName>uart.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\uart.h</FilePath>
+            </File>
+            <File>
+              <FileName>dma.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\dma.c</FilePath>
+            </File>
+            <File>
+              <FileName>dma.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\dma.h</FilePath>
+            </File>
+            <File>
+              <FileName>ebc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\ebc.c</FilePath>
+            </File>
+            <File>
+              <FileName>ebc.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\ebc.h</FilePath>
+            </File>
+            <File>
+              <FileName>clock.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\clock.c</FilePath>
+            </File>
+            <File>
+              <FileName>clock.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\clock.h</FilePath>
+            </File>
+            <File>
+              <FileName>timers.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\timers.c</FilePath>
+            </File>
+            <File>
+              <FileName>timers.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\timers.h</FilePath>
+            </File>
+            <File>
+              <FileName>mdr32_drivers.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\mdr32_drivers.h</FilePath>
             </File>
           </Files>
         </Group>

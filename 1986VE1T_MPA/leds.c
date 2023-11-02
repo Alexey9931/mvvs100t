@@ -32,6 +32,4 @@ void leds_gpio_config(void)
 	gpio_init_struct_leds.PORT_MODE = PORT_MODE_DIGITAL;
 	gpio_init_struct_leds.PORT_SPEED = PORT_SPEED_MAXFAST;
 	PORT_Init(PORT_LEDS, &gpio_init_struct_leds);
-	
 }
-

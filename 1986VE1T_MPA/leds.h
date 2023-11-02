@@ -6,7 +6,7 @@
 #ifndef __LEDS_H
 #define __LEDS_H
 
-#include "MDR32_Drivers.h"
+#include "mdr32_drivers.h"
 
 #define PORT_LEDS MDR_PORTD
 #define CLOCK_LEDS RST_CLK_PCLK_PORTD
@@ -22,8 +22,6 @@
 
 #define SET_LED_ERROR_WORK() 		{PORT_LEDS->SETTX = PIN_LED_ERROR_WORK;}
 #define RESET_LED_ERROR_WORK() 	{PORT_LEDS->CLRTX = PIN_LED_ERROR_WORK;}
-
-
 
 /*!
  *	\brief Конфигурирует выводы МК для светодиодных индикаторов

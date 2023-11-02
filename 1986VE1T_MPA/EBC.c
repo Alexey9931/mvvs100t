@@ -6,7 +6,7 @@
 #ifndef __CONFIG_C
 #define __CONFIG_C
 
-#include "EBC.h"
+#include "ebc.h"
 
 /*
 Функция конфигурирования выводов МК EBC для внешнего ОЗУ или ПЗУ

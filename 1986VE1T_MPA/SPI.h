@@ -6,8 +6,7 @@
 #ifndef __SPI_H
 #define __SPI_H
 
-#include "MDR32_Drivers.h"
-
+#include "mdr32_drivers.h"
 
 ///ножки для SSP1
 #define PORT_SSP1 MDR_PORTD
@@ -16,11 +15,9 @@
 #define PIN_SSP1_TX PORT_Pin_2
 #define PIN_SSP1_SS PORT_Pin_5
 
-
-#define FIFO_SIZE 8
-#define SPI_BUFFER_SIZE 512
-
-
+#define FIFO_SIZE 8						///< Размер буфера FIFO SSP в полусловах (16 бит)
+#define SPI_BUFFER_SIZE 512		///< Буфер приемника SSP
+	
 ///Структура с параметрами DMA канала SPIn
 typedef struct spi_dma_params
 {
@@ -44,7 +41,7 @@ typedef struct spi_config_data
 
 /*!
  *	\brief Инициализацирует выбранный  SPIn
- *	\param *SPI_struct - Выбранный SPI для инициализации
+ *	\param *spi_struct - Выбранный SPI для инициализации
 */
 void spi_init(spi_n *spi_struct);
 

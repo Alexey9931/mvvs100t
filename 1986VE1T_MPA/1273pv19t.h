@@ -6,9 +6,9 @@
 #ifndef __1273PV19T_H
 #define __1273PV19T_H
 
-#include "MDR32_Drivers.h"
-#include "SPI.h"
-#include "TIMER.h"
+#include "mdr32_drivers.h"
+#include "spi.h"
+#include "timers.h"
 
 ///управляющая ножка для аппаратного сброса микросхемы АЦП
 #define PORT_ADC_RST MDR_PORTD

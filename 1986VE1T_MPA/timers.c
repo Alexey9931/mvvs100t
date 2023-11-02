@@ -3,8 +3,8 @@
  \brief Файл с реализацией API для работы с таймерами
 */
 
-#include "TIMER.h"
-#include "SPI.h"
+#include "timers.h"
+#include "spi.h"
 #include "1273pv19t.h"
 #include "external_ram.h"
 #include <math.h>
@@ -195,8 +195,5 @@ void delay_micro(uint32_t time_micro)//задержка в мкс (максим�
 { 
 	TIMER_SetCounter(MDR_TIMER1, 0);
 	//uint32_t timer_cnt = TIMER_GetCounter(MDR_TIMER1);
-	//while(abs(TIMER_GetCounter(MDR_TIMER1) - timer_cnt) <= time_micro);
 	while (TIMER_GetCounter(MDR_TIMER1) <= time_micro);
 }
-
-

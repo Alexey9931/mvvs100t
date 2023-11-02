@@ -1,5 +1,5 @@
-./objects/rs422_protocol.o: rs422_protocol.c rs422_protocol.h UART.h \
-  MDR32_Drivers.h \
+./objects/rs422_protocol.o: rs422_protocol.c rs422_protocol.h uart.h \
+  mdr32_drivers.h \
   C:\Users\shishov\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.0\Libraries\CMSIS\MDR32FxQI\DeviceSupport\MDR32F1QI\inc\MDR32F1QI.h \
   RTE\Device\MDR32F1QI\MDR32FxQI_config.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdint.h \
@@ -17,9 +17,9 @@
   C:\Users\shishov\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.0\Libraries\SPL\MDR32FxQI\inc\MDR32FxQI_timer.h \
   C:\Users\shishov\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.0\Libraries\SPL\MDR32FxQI\inc\MDR32FxQI_ebc.h \
   C:\Users\shishov\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.0\Libraries\SPL\MDR32FxQI\inc\MDR32FxQI_bkp.h \
-  TIMER.h C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h \
+  timers.h C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stddef.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdlib.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\math.h external_ram.h SPI.h \
-  external_rom.h EBC.h leds.h
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\math.h external_ram.h spi.h \
+  external_rom.h ebc.h leds.h

@@ -1,4 +1,4 @@
-./objects/clock.o: CLOCK.c CLOCK.h MDR32_Drivers.h \
+./objects/clock.o: clock.c clock.h mdr32_drivers.h \
   C:\Users\shishov\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.0\Libraries\CMSIS\MDR32FxQI\DeviceSupport\MDR32F1QI\inc\MDR32F1QI.h \
   RTE\Device\MDR32F1QI\MDR32FxQI_config.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdint.h \

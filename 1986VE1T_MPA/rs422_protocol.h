@@ -6,7 +6,7 @@
 #ifndef __PROTOCOL_H
 #define __PROTOCOL_H
 
-#include "UART.h"
+#include "uart.h"
 #include <stdio.h>
 #include <stdint.h>
 #include <stddef.h>
@@ -74,27 +74,26 @@ typedef struct tx_rx_packet_struct
 	fields_packet_tail 		packet_tail;																		///< Поля хвоста пакета
 }__attribute__((packed)) fields_packet;
 
-
 /*!
  *	\brief Отправляет пакет данных
- *	\param *UART_struct - Выбранный UART 
- *	\param ext_bus - Номер шины
- *	\return Сообщение с результатом (0 - успех, 1- ошибка)
-*/
-protocol_error transmit_packet(UARTn *UART_struct, uint8_t ext_bus);
-
-/*!
- *	\brief Читает пакет данных
- *	\param *UART_struct - Выбранный UART 
+ *	\param *uart_struct - Выбранный UART 
  *	\param ext_bus - Номер шины
  *	\return Код ошибки protocol_error
 */
-protocol_error receive_packet(UARTn *UART_struct, uint8_t ext_bus);
+protocol_error transmit_packet(uart_n *uart_struct, uint8_t ext_bus);
+
+/*!
+ *	\brief Читает пакет данных
+ *	\param *uart_struct - Выбранный UART 
+ *	\param ext_bus - Номер шины
+ *	\return Код ошибки protocol_error
+*/
+protocol_error receive_packet(uart_n *uart_struct, uint8_t ext_bus);
 
 /*!
  *	\brief Выполняет требуемые команды
  *	\param ext_bus - Номер шины
- *	\return Сообщение с результатом (0 - успех, 1- ошибка)
+ *	\return Код ошибки protocol_error
 */
 uint8_t protocol_do_cmds(uint8_t ext_bus);
 

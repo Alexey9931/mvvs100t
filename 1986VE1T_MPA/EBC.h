@@ -6,7 +6,7 @@
 #ifndef __CONFIG_H
 #define __CONFIG_H
 
-#include "MDR32_Drivers.h"
+#include "mdr32_drivers.h"
 
 ///Типы устройств для подключение по EBC
 typedef enum devices

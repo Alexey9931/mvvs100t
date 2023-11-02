@@ -1,12 +1,17 @@
+/*!
+ \file
+ \brief Заголовочный файл с описанием API для работы с DMA
+*/
+
 #ifndef __DMA_H
 #define __DMA_H
 
-#include "UART.h"
-#include "MDR32_Drivers.h"
+#include "uart.h"
+#include "mdr32_drivers.h"
 
-/*
-Функция инициализация DMA
+/*!
+ *	\brief Выполняет общую инициализацию DMA
 */
-void DMA_common_init(void);
+void dma_common_init(void);
 
 #endif /*__DMA_H */
