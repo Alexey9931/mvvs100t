@@ -48,6 +48,8 @@ typedef struct cmd_struct
 	uint8_t 						*data;		///< Данные
 }__attribute__((packed)) fields_cmd;
 
+///@todo
+///1. Создай структуру с битовыми полями для сервис байта, 
 ///Структура с полями заголовка пакета
 typedef struct packet_header_struct
 {

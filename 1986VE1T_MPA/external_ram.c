@@ -27,6 +27,8 @@ void init_external_ram_space(void)
 	ram_space_pointer = (ram_data*)EXT_RAM_START_ADDR;
 	rom_space_pointer = (rom_data*)EXT_ROM_START_ADDR;
 	
+	///@todo
+	///1. Add more defines below
 	//первичная очистка используемого куска памяти ОЗУ
 	memset(ram_space_pointer, 0, sizeof(ram_data));
 	//инициализации структуры, которая лежит в начале ОЗУ

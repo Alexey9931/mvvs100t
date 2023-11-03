@@ -76,6 +76,8 @@ protocol_error receive_packet(uart_n *uart_struct, uint8_t ext_bus)
 			memcpy(&packet_head, (uint8_t*)(uart_struct->buffer), sizeof(packet_head));
 		}
 		
+		///@todo
+		///1. Add head (0x55) and tail (0xaaaa) definitions.
 		//если уже были разобраны какие то пакеты, а начала следующего пакета (0x55) в буфере нет, это означает что крайний разобранный пакет оказался последним и выходим из цикла
 		if ((current_rx_packet != 0) && (packet_head != 0x55))
 		{
@@ -132,6 +134,9 @@ protocol_error receive_packet(uart_n *uart_struct, uint8_t ext_bus)
 		current_rx_packet++;
 	}
 	
+	///@todo
+	///1. Необходимо проводить обработку сервисного байта (ready_to_get_control)
+	///2. Анализ размера пакетов и командных фреймов.
 	//распознавание сервисного байта УМ
 	memcpy(&(ram_space_pointer->service_byte_um), &(rx_pack_ptr->packet_header.service_byte), sizeof(rx_pack_ptr->packet_header.service_byte));
 	//считываем массив команд (команда - данные)
@@ -172,6 +177,8 @@ protocol_error receive_packet(uart_n *uart_struct, uint8_t ext_bus)
 */
 uint8_t protocol_do_cmds(uint8_t ext_bus)
 {
+	///@todo
+	///1. Создать больше подобных указателей.
 	common_ram_registers *common_ram_reg_space_ptr = &ram_space_pointer->common_ram_register_space; //указатель на область памяти внешнего ОЗУ с общими регистрами
 	common_rom_registers 	common_regs;	//экземпляр структуры с общими регистрами для хранения в ПЗУ
 	mpa_rom_registers			mpa_regs;	//экземпляр структуры с регистрами МПА для хранения в ПЗУ
@@ -206,7 +213,7 @@ uint8_t protocol_do_cmds(uint8_t ext_bus)
 				case INIT_CMD:
 						//по команде INIT кладем в поле дата регистр PLC_SerialNumber, если выполнен ряд условий
 						switch (ext_bus)
-						{
+						{cmd_with_data
 								case 1:
 										if((ram_space_pointer->service_byte_um.ready_to_control == 1) && (ram_space_pointer->service_byte_pm.fail_bus_1 == 0) && (common_ram_reg_space_ptr->PLC_CM_State != 0x09))
 										{
@@ -265,6 +272,8 @@ uint8_t protocol_do_cmds(uint8_t ext_bus)
 				
 				case WRITE_CMD:
 						//проверка того, что установлено соединение по выбранной шине
+						///@todo
+						///1. Definitions for 0x04, 0x09.
 						switch (ext_bus)
 						{
 								case 1:
@@ -299,6 +308,8 @@ uint8_t protocol_do_cmds(uint8_t ext_bus)
 					
 			case RESET_CMD:
 					//проверка того, что установлено соединение по выбранной шине
+					///@todo
+					///1. Definitions for 0x04, 0x09.
 					switch (ext_bus)
 					{
 							case 1:
@@ -331,6 +342,8 @@ uint8_t protocol_do_cmds(uint8_t ext_bus)
 				
 			case CONFIG:
 					//проверка того, что установлено соединение по выбранной шине
+					///@todo
+					///1. Definitions for 0x04, 0x09.
 					switch (ext_bus)
 					{
 							case 1:

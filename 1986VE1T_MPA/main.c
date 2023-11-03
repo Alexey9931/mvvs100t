@@ -90,6 +90,9 @@ int main(void)
 	
 	adc_init(&adc_1);
 
+	///@todo
+	///1. Убрать конфигурацию лишних полей (спрятать в uart_init()).
+	///2. Сделать это для всех подобных случаев.
 	//Инициализация UART1-2:
 	uart_1.UARTx = MDR_UART1;
 	uart_1.uart_dma_ch.dma_channel = DMA_Channel_REQ_UART1_RX;
@@ -145,6 +148,8 @@ int main(void)
 uint8_t request_data(uart_n *uart_struct)
 {
 	uint8_t ext_bus; 
+	///@todo
+	///1. Нарушение инкапсуляции в API (продумай стандартный набор макросов для получения необходимых параметров)
 	//определение шины, по которой идет обмен данными
 	if(uart_struct->UARTx == MDR_UART1)
 	{
@@ -180,6 +185,8 @@ uint8_t request_data(uart_n *uart_struct)
 void do_mpa_task(adc_n *adc_struct)
 {
 	int adc_code[MAX_CHANEL_NUMBER] = {0};
+	///@todo
+	///1. Change the name.
 	int16_t unused_value;
 	//TODO: пока что читает каналы МПА только для напряжений 0-10В (для тока в карту регистров надо добавлять свои полиномы)
 	
