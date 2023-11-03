@@ -33,7 +33,7 @@ void init_external_ram_space(void)
 	ram_space_pointer->start_struct.length = 32;
 	ram_space_pointer->start_struct.text_info = 332;
 	ram_space_pointer->start_struct.flag_change_struct = 0;
-	ram_space_pointer->start_struct.number_of_ranges = 3;
+	ram_space_pointer->start_struct.number_of_ranges = NUMBER_OF_RANGES;
 	ram_space_pointer->start_struct.ranges_in_start_struct[0].range_type = 0x0100;
 	ram_space_pointer->start_struct.ranges_in_start_struct[0].start_channel_num = 0x0000;
 	ram_space_pointer->start_struct.ranges_in_start_struct[0].address = 1874;

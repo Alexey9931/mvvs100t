@@ -25,7 +25,6 @@ rom_data *rom_space_pointer;
 int main(void)
 {	
 	clock_init();
-	
 	dma_common_init();
 	ebc_init(EBC_ROM);
 	init_external_rom_space();
@@ -90,7 +89,6 @@ int main(void)
 	adc_1.init_flag = 0;
 	
 	adc_init(&adc_1);
-	
 
 	//Инициализация UART1-2:
 	uart_1.UARTx = MDR_UART1;
@@ -146,7 +144,8 @@ int main(void)
 */
 uint8_t request_data(uart_n *uart_struct)
 {
-	uint8_t ext_bus; //определение шины, по которой идет обмен данными
+	uint8_t ext_bus; 
+	//определение шины, по которой идет обмен данными
 	if(uart_struct->UARTx == MDR_UART1)
 	{
 		ext_bus = 1;

@@ -6,12 +6,8 @@
 #include "1273pv19t.h"
 #include "external_ram.h"
 
-/*√лобальные экземпл€ры структур с конфигурационными параметрами 2 и буфером приема 
- *(необходимо добавить аттрибут, который прописан в файле Objects/.sct,
- * т.к. дл€ работы с DMA адрес буфера назначени€ должен лежать в определенной области пам€ти)
- */
-spi_n spi_1 IAR_SECTION ("EXECUTABLE_MEMORY_SECTION") __attribute__((section("EXECUTABLE_MEMORY_SECTION")));
-spi_n spi_2 IAR_SECTION ("EXECUTABLE_MEMORY_SECTION") __attribute__((section("EXECUTABLE_MEMORY_SECTION")));
+spi_n spi_1;
+spi_n spi_2;
 
 extern adc_n adc_1;
 extern ram_data *ram_space_pointer;

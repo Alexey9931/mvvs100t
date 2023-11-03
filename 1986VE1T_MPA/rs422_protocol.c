@@ -362,8 +362,8 @@ uint8_t protocol_do_cmds(uint8_t ext_bus)
 					memcpy(&common_regs, &ram_space_pointer->common_ram_register_space.PLC_CommonRomRegs, sizeof(common_regs));
 					memcpy(&mpa_regs, &ram_space_pointer->mpa_ram_register_space.AI_RomRegs, sizeof(mpa_regs));
 					ebc_init(EBC_ROM);
-					memcpy(&rom_space_pointer->common_rom_registers_space, &common_regs, sizeof(common_regs));
-					memcpy(&rom_space_pointer->mpa_rom_registers_space, &mpa_regs, sizeof(mpa_regs));
+					memcpy_to_rom(ROM_REGISTER_SPACE_START_ADDR, &common_regs, sizeof(common_regs));
+					memcpy_to_rom(ROM_REGISTER_SPACE_START_ADDR + sizeof(common_regs), &mpa_regs, sizeof(mpa_regs));
 					ebc_init(EBC_RAM);
 					
 					memset((ram_space_pointer->tx_data) + offset, CONFIG, 1);
