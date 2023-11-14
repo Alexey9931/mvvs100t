@@ -15,12 +15,24 @@ typedef struct timer_config_struct
 	MDR_TIMER_TypeDef* 						TIMERx;            							///< Библиотечная структура с периферийными регистрами блока TIMER
 	TIMER_CntInitTypeDef 					TIMERInitStruct;            		///< Библиотечная структура с конфигурационными параметрами блока TIMER
 	TIMER_ChnInitTypeDef 					sTIM_ChnInit;										///< Библиотечная структура с конфигурационными параметрами каналов блока TIMER (используются например для режима захвата)
-	uint32_t 											RST_CLK_PCLK_TIMERn;						///< Включение тактирования для блока TIMER
-	TIMER_Clock_BRG_TypeDef 			TIMER_HCLKdiv;									///< Выбор делителя тактовой частоты для тактирования блока TIMER	
-	IRQn_Type 										IRQn;														///< Выбор обработчика прерываний блока TIMER
 	TIMER_Status_Flags_TypeDef		TIMER_STATUS;										///< Настрока событий, по которому происходит прерывание блока TIMER	
 	uint32_t											timer_cnt;											///< Счетчик для TIMER (может быть использован для разных целей)	
-} timer_n;	
+} __attribute__((packed)) timer_n;	
+
+///описание односвязанного списка
+typedef struct list_head_struct 
+{
+	struct list_head *next;
+} __attribute__((packed)) list_head;
+
+///структура-реализация односвязанного списка обработчиков прерываний таймеров
+typedef struct timer_irq_list_struct
+{
+	void(*handler)(void*);						///< Указатель на функцию-обработчик прерывания			
+	TIMER_Status_Flags_TypeDef event;	///< Событие, по которому срабатывает прерывание
+	void *data;												///< Указатель на данные, передаваемые в обработчик (при необходимости)
+	list_head list;										///< Список прерываний
+} __attribute__((packed)) timer_irq_list;
 
 /*!
  *	\brief Инициализацирует выбранный Timer
@@ -40,5 +52,10 @@ void delay_milli(uint32_t time_milli);
 */
 void delay_micro(uint32_t time_micro);
 
+void add_tmr_handler(uint8_t tmr_num, void (*func_ptr)(void*), void *data, TIMER_Status_Flags_TypeDef event);
+
+void list_add_end(timer_irq_list *list_head, void (*func_ptr)(void*), void *data, TIMER_Status_Flags_TypeDef event);
+
+timer_irq_list *create(uint8_t tmr_num, void (*func_ptr)(void*), void *data, TIMER_Status_Flags_TypeDef event);
 
 #endif /*__TIMERS_H */

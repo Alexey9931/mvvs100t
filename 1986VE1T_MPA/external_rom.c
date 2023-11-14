@@ -11,7 +11,7 @@
 #include "external_ram.h"
 #include "ebc.h"
 
-//#define FIRST_TIME_INIT //макрос для записи данных (по умолчанию) в ПЗУ в первый раз
+#define FIRST_TIME_INIT //макрос для записи данных (по умолчанию) в ПЗУ в первый раз
 
 /*!
 	Функция инициализации области памяти внешнего ПЗУ
@@ -25,38 +25,38 @@ void init_external_rom_space(void)
 		erase_rom();
 		
 		//инициализация общих регистров
-		strncpy(&common_regs.PLC_DeviceInfo,"MPA",sizeof("MPA"));	
-		common_regs.PLC_DeviceType.revision = 1;
-		common_regs.PLC_DeviceType.modification = 2;
-		common_regs.PLC_DeviceType.type = MPA;
-		common_regs.PLC_DeviceType.batch = 1;
-		common_regs.PLC_DeviceType.reserv = 20;
-		common_regs.PLC_SerialNumber = 1717986918;
-		common_regs.PLC_TimeoutForDefect_B1 = 200;
-		common_regs.PLC_TimeoutForDefect_B2 = 200;
-		common_regs.PLC_NumCrcErrorsForDefect_B1 = 6;
-		common_regs.PLC_NumCrcErrorsForDefect_B2 = 6;
-		common_regs.PLC_TimeToRepair = 65535;
-		common_regs.PLC_TimeSoloWork = 61166;
-		common_regs.PLC_DualControl = 56797;
+		strncpy(&common_regs.PLC_DeviceInfo,DEV_INFO,sizeof(DEV_INFO));	
+		common_regs.PLC_DeviceType.revision = REVISION;
+		common_regs.PLC_DeviceType.modification = MODIFICATION;
+		common_regs.PLC_DeviceType.type = DEV_TYPE;
+		common_regs.PLC_DeviceType.batch = BATCH;
+		common_regs.PLC_DeviceType.reserv = DEV_TYPE_RESERV;
+		common_regs.PLC_SerialNumber = SERIAL_NUMBER;
+		common_regs.PLC_TimeoutForDefect_B1 = TIMEOUT_FOR_DEFECT_B1;
+		common_regs.PLC_TimeoutForDefect_B2 = TIMEOUT_FOR_DEFECT_B2;
+		common_regs.PLC_NumCrcErrorsForDefect_B1 = NUM_CRC_ERRORS_FOR_DEFECT_B1;
+		common_regs.PLC_NumCrcErrorsForDefect_B2 = NUM_CRC_ERRORS_FOR_DEFECT_B2;
+		common_regs.PLC_TimeToRepair = TIME_TO_REPAIR;
+		common_regs.PLC_TimeSoloWork = TIME_SOLO_WORK;
+		common_regs.PLC_DualControl = DUAL_CONTROL;
 		memset(&common_regs.Reserv_2, 0, sizeof(common_regs.Reserv_2));
 		
 		//инциализация регистров МПА
 		for (uint8_t i = 0; i < MAX_CHANEL_NUMBER; i++)
 		{
 			RESET_BIT(i, mpa_regs.AI_OperMode.adc_chs_mode);
-			mpa_regs.AI_NumForAverag[i] = 10;
-			mpa_regs.AI_MinCodeADC[i] = 0;
-			mpa_regs.AI_MaxCodeADC[i] = 65535;
+			mpa_regs.AI_NumForAverag[i] = NUM_FOR_AVERAGE;
+			mpa_regs.AI_MinCodeADC[i] = MIN_CODE_ADC;
+			mpa_regs.AI_MaxCodeADC[i] = MAX_CODE_ADC;
 			//такие значения коэф. полиномов только для напряжения 0-10В
-			mpa_regs.AI_PolynConst0[i] = 4.972769f;
-			mpa_regs.AI_PolynConst1[i] = 0.000161f;
-			mpa_regs.AI_PolynConst2[i] = 0.0f;
-			mpa_regs.AI_PolynConst3[i] = 0.0f;
-			mpa_regs.AI_PolynConst4[i] = 0.0f; 
-			mpa_regs.AI_PolynConst5[i] = 0.0f;
-			mpa_regs.AI_PolynConst6[i] = 0.0f;
-			mpa_regs.AI_MetrologDat[i] = 0.0f;
+			mpa_regs.AI_PolynConst0[i] = POLYN_CONST_0;
+			mpa_regs.AI_PolynConst1[i] = POLYN_CONST_1;
+			mpa_regs.AI_PolynConst2[i] = POLYN_CONST_2;
+			mpa_regs.AI_PolynConst3[i] = POLYN_CONST_3;
+			mpa_regs.AI_PolynConst4[i] = POLYN_CONST_4; 
+			mpa_regs.AI_PolynConst5[i] = POLYN_CONST_5;
+			mpa_regs.AI_PolynConst6[i] = POLYN_CONST_6;
+			mpa_regs.AI_MetrologDat[i] = METROLOG_DAT;
 		}
 		memset(mpa_regs.AI_MetrologDat, 0, sizeof(mpa_regs.AI_MetrologDat));
 		memset(mpa_regs.Reserv_4, 0, sizeof(mpa_regs.Reserv_4));

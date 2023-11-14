@@ -24,5 +24,13 @@ uint8_t request_data(uart_n *uart_struct);
 Функция для выполнения периферийной задачи МПА
 */
 void do_mpa_task(adc_n *adc_struct);
+/*
+Функция синхронизации каналов АЦП (выполняется при срабатывании прерывания Timer2 по переполнению счетчика CNT)
+*/
+void sync_adc_chanels(void *data);
+/*
+Функция приема пакета с результатами измерений одного канала (выполняется при срабатывании прерывания Timer2 по захвату)
+*/
+void receive_adc_chanel_pack(void *data);
 
 #endif /*__MAIN_H */

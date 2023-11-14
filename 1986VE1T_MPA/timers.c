@@ -8,9 +8,13 @@
 #include "1273pv19t.h"
 #include "external_ram.h"
 #include <math.h>
+#include "main.h"
 
 extern adc_n adc_1;
 extern ram_data *ram_space_pointer;
+
+
+timer_irq_list *tmr_handler_head[TIMER_NUM];
 
 timer_n timer_1;
 timer_n timer_2;
@@ -26,19 +30,18 @@ void timer1_init(timer_n *timer_struct)
 {
 	TIMER_CntInitTypeDef TIMER1InitStruct;
 	
-  RST_CLK_PCLKcmd (timer_struct->RST_CLK_PCLK_TIMERn, ENABLE);
-	/* Initializes the TIMERx Counter */
+  RST_CLK_PCLKcmd (RST_CLK_PCLK_TIMER1, ENABLE);
+
 	TIMER_CntStructInit(&TIMER1InitStruct);
 	TIMER1InitStruct.TIMER_Period = timer_struct->TIMERInitStruct.TIMER_Period;
 	TIMER1InitStruct.TIMER_Prescaler = timer_struct->TIMERInitStruct.TIMER_Prescaler;
 	 
-	TIMER_CntInit(timer_struct->TIMERx, &TIMER1InitStruct);
+	TIMER_CntInit(MDR_TIMER1, &TIMER1InitStruct);
 	
-  /* Enable TIMER1 clock */
-  TIMER_BRGInit(timer_struct->TIMERx,timer_struct->TIMER_HCLKdiv);
+  TIMER_BRGInit(MDR_TIMER1,TIMER_HCLKdiv1);
 
-	/* Enable TIMER1 */
-  TIMER_Cmd(timer_struct->TIMERx,ENABLE);
+  TIMER_Cmd(MDR_TIMER1,ENABLE);
+	TIMER_SetCounter(MDR_TIMER1, 0);
 }
 /*
 Функция инициализации Timer3 
@@ -48,19 +51,18 @@ void timer3_init(timer_n *timer_struct)
 {
 	TIMER_CntInitTypeDef TIMER3InitStruct;
 	
-  RST_CLK_PCLKcmd (timer_struct->RST_CLK_PCLK_TIMERn, ENABLE);
-	/* Initializes the TIMERx Counter */
+  RST_CLK_PCLKcmd (RST_CLK_PCLK_TIMER3, ENABLE);
+
 	TIMER_CntStructInit(&TIMER3InitStruct);
 	TIMER3InitStruct.TIMER_Period = timer_struct->TIMERInitStruct.TIMER_Period;
 	TIMER3InitStruct.TIMER_Prescaler = timer_struct->TIMERInitStruct.TIMER_Prescaler;
 	 
-	TIMER_CntInit(timer_struct->TIMERx, &TIMER3InitStruct);
+	TIMER_CntInit(MDR_TIMER3, &TIMER3InitStruct);
 	
-  /* Enable TIMER3 clock */
-  TIMER_BRGInit(timer_struct->TIMERx,timer_struct->TIMER_HCLKdiv);
+  TIMER_BRGInit(MDR_TIMER3, TIMER_HCLKdiv1);
 
-	/* Enable TIMER3 */
-  TIMER_Cmd(timer_struct->TIMERx,ENABLE);
+  TIMER_Cmd(MDR_TIMER3, ENABLE);
+	TIMER_SetCounter(MDR_TIMER3, 0);
 }
 /*
 Функция инициализации Timer2
@@ -71,9 +73,8 @@ void timer2_init(timer_n *timer_struct)
 	TIMER_CntInitTypeDef TIMER2InitStruct;
 	TIMER_ChnInitTypeDef sTIM2_ChnInit;
 
-	RST_CLK_PCLKcmd (timer_struct->RST_CLK_PCLK_TIMERn, ENABLE);
+	RST_CLK_PCLKcmd (RST_CLK_PCLK_TIMER2, ENABLE);
 
-	/* Initializes the TIMERx Counter */
 	TIMER_CntStructInit(&TIMER2InitStruct);
 	TIMER2InitStruct.TIMER_Prescaler = timer_struct->TIMERInitStruct.TIMER_Prescaler;
 	TIMER2InitStruct.TIMER_Period = timer_struct->TIMERInitStruct.TIMER_Period;
@@ -86,28 +87,27 @@ void timer2_init(timer_n *timer_struct)
 	TIMER2InitStruct.TIMER_ETR_Prescaler = timer_struct->TIMERInitStruct.TIMER_ETR_Prescaler;
 	TIMER2InitStruct.TIMER_ETR_Polarity = timer_struct->TIMERInitStruct.TIMER_ETR_Polarity;
 	TIMER2InitStruct.TIMER_BRK_Polarity = timer_struct->TIMERInitStruct.TIMER_BRK_Polarity;
-	TIMER_CntInit (timer_struct->TIMERx, &TIMER2InitStruct);
+	TIMER_CntInit (MDR_TIMER2, &TIMER2InitStruct);
 	
 	TIMER_ChnStructInit (&sTIM2_ChnInit);
 	sTIM2_ChnInit.TIMER_CH_Number = timer_struct->sTIM_ChnInit.TIMER_CH_Number;
   sTIM2_ChnInit.TIMER_CH_Mode = timer_struct->sTIM_ChnInit.TIMER_CH_Mode;
   sTIM2_ChnInit.TIMER_CH_EventSource = timer_struct->sTIM_ChnInit.TIMER_CH_EventSource;
-  TIMER_ChnInit (timer_struct->TIMERx, &sTIM2_ChnInit);
+  TIMER_ChnInit (MDR_TIMER2, &sTIM2_ChnInit);
 	 
-	TIMER_ChnCCR1_Cmd(timer_struct->TIMERx, sTIM2_ChnInit.TIMER_CH_Number, ENABLE);
+	TIMER_ChnCCR1_Cmd(MDR_TIMER2, sTIM2_ChnInit.TIMER_CH_Number, ENABLE);
 
-	TIMER_ITConfig(timer_struct->TIMERx, timer_struct->TIMER_STATUS, ENABLE);
-	TIMER_ClearITPendingBit(timer_2.TIMERx, TIMER_STATUS_CNT_ARR);
-	TIMER_ITConfig(timer_2.TIMERx, TIMER_STATUS_CNT_ARR, DISABLE);
-	NVIC_EnableIRQ(timer_struct->IRQn);
+	TIMER_ITConfig(MDR_TIMER2, timer_struct->TIMER_STATUS, ENABLE);
+	TIMER_ClearITPendingBit(MDR_TIMER2, TIMER_STATUS_CNT_ARR);
+	TIMER_ITConfig(MDR_TIMER2, TIMER_STATUS_CNT_ARR, DISABLE);
+	NVIC_EnableIRQ(TIMER2_IRQn);
 	//NVIC_SetPriority(timer_struct->IRQn, 0);
 
-	/* Enable TIMER2 clock */
-  TIMER_BRGInit(timer_struct->TIMERx,timer_struct->TIMER_HCLKdiv);
-	/* Enable TIMER2 */
-  TIMER_Cmd(timer_struct->TIMERx,ENABLE);
 
-	
+  TIMER_BRGInit(MDR_TIMER2,TIMER_HCLKdiv1);
+
+  TIMER_Cmd(MDR_TIMER2,ENABLE);
+	TIMER_SetCounter(MDR_TIMER2, 0);
 }
 /*
 Функция инициализации выбранного Timer 
@@ -133,51 +133,62 @@ void timer_init(timer_n *timer_struct)
 void TIMER2_IRQHandler(void);
 void TIMER2_IRQHandler(void)
 {
-	//если сработало прерывание по переполнению счетчика CNT (CNT=ARR)
-	if (TIMER_GetITStatus(timer_2.TIMERx, TIMER_STATUS_CNT_ARR) == SET)
+//	sync_adc_chanels(NULL);
+//	receive_adc_chanel_pack(NULL);
+	timer_irq_list *el = tmr_handler_head[1];
+	
+	while(el != NULL)
 	{
-		//только если инициализирован АЦП
-		if ((adc_1.init_flag == 1))
-		{
-			TIMER_ITConfig(timer_2.TIMERx, TIMER_STATUS_CNT_ARR, DISABLE);	
-			//считываем FIFO буфер SPI
-			uint16_t spi_rx_value[FIFO_SIZE];
-			for (uint8_t i = 0; i < FIFO_SIZE; i++)
-			{
-				spi_rx_value[i] = adc_1.spi_struct->SSPx->DR;
-			}
-			//только если пришли все каналы, то записываем в буфер SPI
-			if (adc_1.ch_rx_num == CHANEL_NUMBER)
-			{
-				memcpy(ram_space_pointer->spi_1_rx_buffer + spi_1.buffer_counter, spi_rx_value, CHANEL_NUMBER*sizeof(spi_rx_value[0]));
-				spi_1.buffer_counter += CHANEL_NUMBER;
-				if (adc_1.spi_struct->buffer_counter >= (CHANEL_NUMBER*adc_1.avg_num))
-				{
-					adc_1.spi_struct->buffer_counter = 0;
-				}
-			}
-			adc_1.ch_rx_num = 0;
-		}
-		TIMER_ClearITPendingBit(timer_2.TIMERx, TIMER_STATUS_CNT_ARR);
+		el->handler(el->data);
+		el = el->list.next;
 	}
-	//если сработало прерывание по срабатыванию захвата по 2 каналу Timer2
-	else if (TIMER_GetITStatus(timer_2.TIMERx, TIMER_STATUS_CCR_CAP1_CH2) == SET)
-	{
-			//только если инициализирован АЦП
-			if ((adc_1.init_flag == 1))
-			{
-					TIMER_ITConfig(timer_2.TIMERx, TIMER_STATUS_CNT_ARR, DISABLE);
-					adc_1.ch_rx_num++;
-					if (adc_1.ch_rx_num == (CHANEL_NUMBER+1))
-					{
-						adc_1.ch_rx_num = 1;
-					}
-					TIMER_SetCounter(timer_2.TIMERx, 0);	
-					TIMER_ClearITPendingBit(timer_2.TIMERx, TIMER_STATUS_CNT_ARR);
-					TIMER_ITConfig(timer_2.TIMERx, TIMER_STATUS_CNT_ARR, ENABLE);			
-			}
-			TIMER_ClearITPendingBit(timer_2.TIMERx, TIMER_STATUS_CCR_CAP1_CH2);
-	}
+//	//если сработало прерывание по переполнению счетчика CNT (CNT=ARR)
+//	if (TIMER_GetITStatus(timer_2.TIMERx, TIMER_STATUS_CNT_ARR) == SET)
+//	{
+//		//только если инициализирован АЦП
+//		if ((adc_1.init_flag == 1))
+//		{
+//			TIMER_ITConfig(timer_2.TIMERx, TIMER_STATUS_CNT_ARR, DISABLE);	
+//			//считываем FIFO буфер SPI
+//			uint16_t spi_rx_value[FIFO_SIZE];
+//			for (uint8_t i = 0; i < FIFO_SIZE; i++)
+//			{
+//				spi_rx_value[i] = adc_1.spi_struct->SSPx->DR;
+//			}
+//			//только если пришли все каналы, то записываем в буфер SPI
+//			if (adc_1.ch_rx_num == CHANEL_NUMBER)
+//			{
+//				memcpy(ram_space_pointer->spi_1_rx_buffer + spi_1.buffer_counter, spi_rx_value, CHANEL_NUMBER*sizeof(spi_rx_value[0]));
+//				spi_1.buffer_counter += CHANEL_NUMBER;
+//				if (adc_1.spi_struct->buffer_counter >= (CHANEL_NUMBER*adc_1.avg_num))
+//				{
+//					adc_1.spi_struct->buffer_counter = 0;
+//				}
+//			}
+//			adc_1.ch_rx_num = 0;
+//		}
+//		TIMER_ClearITPendingBit(timer_2.TIMERx, TIMER_STATUS_CNT_ARR);
+//	}
+//	//если сработало прерывание по срабатыванию захвата по 2 каналу Timer2
+//	else if (TIMER_GetITStatus(timer_2.TIMERx, TIMER_STATUS_CCR_CAP1_CH4) == SET)
+//	{
+//		//PORT_WriteBit(PORT_ADC_MODE, PIN_ADC_MODE_A0, 1);
+//			//только если инициализирован АЦП
+//			if ((adc_1.init_flag == 1))
+//			{
+//					TIMER_ITConfig(timer_2.TIMERx, TIMER_STATUS_CNT_ARR, DISABLE);
+//					adc_1.ch_rx_num++;
+//					if (adc_1.ch_rx_num == (CHANEL_NUMBER+1))
+//					{
+//						adc_1.ch_rx_num = 1;
+//					}
+//					TIMER_SetCounter(timer_2.TIMERx, 0);	
+//					TIMER_ClearITPendingBit(timer_2.TIMERx, TIMER_STATUS_CNT_ARR);
+//					TIMER_ITConfig(timer_2.TIMERx, TIMER_STATUS_CNT_ARR, ENABLE);			
+//			}
+//			TIMER_ClearITPendingBit(timer_2.TIMERx, TIMER_STATUS_CCR_CAP1_CH4);
+//			//PORT_WriteBit(PORT_ADC_MODE, PIN_ADC_MODE_A0, 0);
+//	}
 }
 /*
 Функция реализации задержки в мс
@@ -196,4 +207,40 @@ void delay_micro(uint32_t time_micro)//задержка в мкс (максим�
 	TIMER_SetCounter(MDR_TIMER1, 0);
 	//uint32_t timer_cnt = TIMER_GetCounter(MDR_TIMER1);
 	while (TIMER_GetCounter(MDR_TIMER1) <= time_micro);
+}
+
+void add_tmr_handler(uint8_t tmr_num, void (*func_ptr)(void*), void *data, TIMER_Status_Flags_TypeDef event)
+{
+	list_add_end(tmr_handler_head[tmr_num], func_ptr, data, event);
+}
+
+void list_add_end(timer_irq_list *list_head, void (*func_ptr)(void*), void *data, TIMER_Status_Flags_TypeDef event)
+{
+	//выделяем память для нового указателя
+	timer_irq_list *ptr = (timer_irq_list*)malloc_ram_pages(sizeof(timer_irq_list));
+	//инициализируем элемент списка
+	ptr->data = data;
+	ptr->event = event;
+	ptr->handler = func_ptr;
+	ptr->list.next = NULL;
+		
+	timer_irq_list *head_ptr = list_head;
+	while (head_ptr->list.next != NULL)
+	{
+		head_ptr = head_ptr->list.next;
+	}
+	head_ptr->list.next = ptr;
+}
+
+timer_irq_list *create(uint8_t tmr_num, void (*func_ptr)(void*), void *data, TIMER_Status_Flags_TypeDef event)
+{
+	// Выделение памяти под корень списка
+	timer_irq_list *ptr = (timer_irq_list*)malloc_ram_pages(sizeof(timer_irq_list));
+	//инициализируем элемент списка
+	ptr->data = data;
+	ptr->event = event;
+	ptr->handler = func_ptr;
+	ptr->list.next = NULL;
+	
+	return(ptr);
 }

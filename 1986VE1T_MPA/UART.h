@@ -26,6 +26,7 @@
 #define UART_BUFFER_SIZE 	16384             				///< Размер кольцевого буфера UARTn (в кБАйтах)
 #define BUFFER_MASK 			(UART_BUFFER_SIZE-1)			///< Маска, необходимая для корректной работы кольцевого буфера
 
+
 ///Коды ошибок работы UART
 typedef enum errors
 {
@@ -143,5 +144,14 @@ void uart_set_read_timeout(uart_n *uart_struct, uint32_t read_timeout);
  * \param write_timeout - Таймаут на запись (в мс)
 */
 void uart_set_write_timeout(uart_n *uart_struct, uint32_t write_timeout);
+
+/// Макрос для определения по какой шине идет обмен данными
+#define RECOGNIZE_BUS(ext_bus, uart_struct) ({\
+	if(uart_struct->UARTx == MDR_UART1) ext_bus = 1;\
+	else if(uart_struct->UARTx == MDR_UART2) ext_bus = 2;\
+})
+
+/// Макрос возвращающий указатель на буфер UART
+#define GET_UART_BUF_PTR uart_struct->buffer
 
 #endif /*__UART_H */

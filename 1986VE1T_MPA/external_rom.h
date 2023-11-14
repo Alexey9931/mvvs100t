@@ -7,12 +7,41 @@
 #define __EXTERNAL_ROM_H
 
 #include "mdr32_drivers.h"
-#include "external_ram.h"
+
+//#define ROM_IS_USED //макрос использования ПЗУ, т.е. регистры которые должны хранится в ПЗУ хранятся в ПЗУ, а не в ОЗУ
 
 #define HWREG(x) (*(( unsigned char *)(x)))
 
 #define EXT_ROM_START_ADDR					 		0x00100000	///< Адрес в памяти МК, с которой начинается обращение к внешней ПЗУ
 #define ROM_REGISTER_SPACE_START_ADDR 	0						///< Стартовый адрес карты регистров в ПЗУ
+
+#define DEV_TYPE MPA
+#define DEV_INFO "MPA"
+#define REVISION 1
+#define MODIFICATION 2
+#define BATCH 1
+#define DEV_TYPE_RESERV 20
+#define SERIAL_NUMBER 1717986918
+#define TIMEOUT_FOR_DEFECT_B1 200
+#define TIMEOUT_FOR_DEFECT_B2 200
+#define NUM_CRC_ERRORS_FOR_DEFECT_B1 6
+#define NUM_CRC_ERRORS_FOR_DEFECT_B2 6
+#define TIME_TO_REPAIR 65535
+#define TIME_SOLO_WORK 61166
+#define DUAL_CONTROL 56797
+
+#define NUM_FOR_AVERAGE 10
+#define MIN_CODE_ADC 0
+#define MAX_CODE_ADC 65535
+#define POLYN_CONST_0 4.972769f
+#define POLYN_CONST_1 0.0f
+#define POLYN_CONST_2 0.0f
+#define POLYN_CONST_3 0.0f
+#define POLYN_CONST_4 0.0f
+#define POLYN_CONST_5 0.0f
+#define POLYN_CONST_6 0.0f
+#define METROLOG_DAT 0.0f
+
 
 ///Структура с битовыми полями для регистра тип устройства
 typedef struct device_type_struct

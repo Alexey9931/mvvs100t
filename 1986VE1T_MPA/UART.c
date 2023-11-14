@@ -138,9 +138,18 @@ uint8_t uart_init(uart_n *uart_struct)
 	uint8_t res = 0;
 	
 	// Включение тактирования UART
+	if(uart_struct->UARTx == MDR_UART1)
+	{
+		uart_struct->RST_CLK_PCLK_UARTn = RST_CLK_PCLK_UART1;
+	}
+	else if(uart_struct->UARTx == MDR_UART2)
+	{
+		uart_struct->RST_CLK_PCLK_UARTn = RST_CLK_PCLK_UART2;
+	}
 	RST_CLK_PCLKcmd(uart_struct->RST_CLK_PCLK_UARTn, ENABLE);
 
 	// Делитель тактовой частоты UART
+	uart_struct->UART_HCLKdiv = UART_HCLKdiv1;
 	UART_BRGInit(uart_struct->UARTx, uart_struct->UART_HCLKdiv);
 
 	NVIC_EnableIRQ(uart_struct->IRQn);

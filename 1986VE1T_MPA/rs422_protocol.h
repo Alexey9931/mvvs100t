@@ -15,7 +15,20 @@
 
 #define NUMBER_CMDS_IN_PACKET 255             		///< Максимальное число команд в одном пакете
 
-////все поддерживаемые протоколом команды
+///Заголовок пакета
+#define PACKET_HEAD 0x55	
+///Хвост пакета
+#define PACKET_TAIL 0xAAAA
+
+///Состояния автомата выбора УМ
+#define PLC_CM_UNKNOWN_STATE 		0x10	///<Неизвестное состояние
+#define PLC_CM_INIT_2_BUS 			0x09	///<Модуль инициализирован, управление по шине 2
+#define PLC_CM_CRITICAL_FAULT 	0x06	///<Критическая неисправность
+#define PLC_CM_REMOVE_INIT 			0x05	///<Управление не осуществляется (снятие инициализации)
+#define PLC_CM_INIT_1_BUS 			0x04	///<Модуль инициализирован, управление по шине 1
+#define PLC_CM_NOT_INIT 				0x01	///<Модуль не инициализирован
+
+///все поддерживаемые протоколом команды
 #define TYPE_CMD 0x00
 #define INIT_CMD 0x01
 #define READ_CMD 0x02
@@ -48,8 +61,6 @@ typedef struct cmd_struct
 	uint8_t 						*data;		///< Данные
 }__attribute__((packed)) fields_cmd;
 
-///@todo
-///1. Создай структуру с битовыми полями для сервис байта, 
 ///Структура с полями заголовка пакета
 typedef struct packet_header_struct
 {
@@ -113,11 +124,17 @@ uint_least32_t crc32(uint8_t *buf, size_t len);
 void fill_crc32_table(void);
 
 /*!
- *	\brief Обрабатывает ошибки
+ *	\brief Обрабатывает ошибки приема пакетов
  *	\param error - Код ошибки
  *	\param ext_bus - Номер шины
 */
-void error_handler(protocol_error error, uint8_t ext_bus);
+void rx_error_handler(protocol_error error, uint8_t ext_bus);
+
+/*!
+ *	\brief Обрабатывает сервисного байта УМ
+ *	\param ext_bus - Номер шины
+*/
+void um_service_byte_handler(uint8_t ext_bus);
 
 /*!
  *	\brief Преобразует слово для передачи в сеть

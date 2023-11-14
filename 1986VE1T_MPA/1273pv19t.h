@@ -22,7 +22,7 @@
 #define PIN_ADC_NSS PORT_Pin_1
 ///ножка на вход прерывания SDIFS/SDOFS от АЦП (канал захвата для таймера)
 #define PORT_ADC_SDIFS_IRQ MDR_PORTE
-#define PIN_ADC_SDIFS_IRQ PORT_Pin_8
+#define PIN_ADC_SDIFS_IRQ PORT_Pin_10
 
 ///Структура с конфигурационными параметрами АЦП
 typedef struct adc_config_data

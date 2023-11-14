@@ -66,7 +66,7 @@ void spi_init(spi_n *spi_struct)
 
 	SSP_StructInit(&SSP_InitStruct);
 	
-	SSP_BRGInit(spi_struct->SSPx, spi_struct->SSP_HCLKdiv);
+	SSP_BRGInit(spi_struct->SSPx, SSP_HCLKdiv1);
 	
 	SSP_InitStruct.SSP_WordLength = spi_struct->SPI.SSP_WordLength;
 	SSP_InitStruct.SSP_Mode = spi_struct->SPI.SSP_Mode;
@@ -77,13 +77,11 @@ void spi_init(spi_n *spi_struct)
   SSP_InitStruct.SSP_CPSDVSR = spi_struct->SPI.SSP_CPSDVSR;//частота обмена 2МГц 
 	SSP_Init(spi_struct->SSPx,&SSP_InitStruct);
 	
-//	NVIC_SetPriority (SSP1_IRQn, 1);
-	NVIC_DisableIRQ(SSP1_IRQn);
+	NVIC_DisableIRQ(spi_struct->IRQn);
 	// Выбор источников прерываний (прием и передача данных)
   SSP_ITConfig (spi_struct->SSPx, SSP_IT_RX, DISABLE);
 	
-	SSP_Cmd(spi_struct->SSPx, ENABLE);
-	
+	SSP_Cmd(spi_struct->SSPx, ENABLE);	
 }
 /*
 Функция передачи полуслова по SPI

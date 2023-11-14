@@ -35,7 +35,6 @@
 #define MAX_CHANEL_NUMBER 8							///< Максимальное кол-во каналов в МПА
 #define PM_DEV_ADDR 0										///< Адрес модуля
 #define PM_CHASSIS_ADDR 0								///< Адрес шасси
-#define NUMBER_OF_RANGES 3							///< Кол-во диапазонов в стартовой структуре
 
 
 #endif /*__MDR32_DRIVERS_H */

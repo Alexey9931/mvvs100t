@@ -61,7 +61,7 @@ void ebc_gpio_config(ebc_devices device)
 		PORT_Init(MDR_PORTB, &ExtBusInitStruct);
 		
 		//Config ~OE, ~WE
-		ExtBusInitStruct.PORT_Pin = (PORT_Pin_0 | PORT_Pin_1  );
+		ExtBusInitStruct.PORT_Pin = (PORT_Pin_0 | PORT_Pin_1);
 		ExtBusInitStruct.PORT_FUNC = PORT_FUNC_MAIN;
 		ExtBusInitStruct.PORT_MODE = PORT_MODE_DIGITAL;
 		ExtBusInitStruct.PORT_SPEED = PORT_SPEED_FAST;
@@ -77,7 +77,7 @@ void ebc_gpio_config(ebc_devices device)
 		PORT_Init(MDR_PORTC, &ExtBusInitStruct);
 
 		/* Configure PORTF pins 3..15 for output ExtBus adress  A0-A12*/ 
-		ExtBusInitStruct.PORT_Pin   = (PORT_Pin_3 | PORT_Pin_4 | PORT_Pin_5 | PORT_Pin_6 | PORT_Pin_7 | PORT_Pin_8 | PORT_Pin_9 | PORT_Pin_10 | PORT_Pin_11 | PORT_Pin_12 | PORT_Pin_13 | PORT_Pin_14 | PORT_Pin_15);
+		
 		if (device == EBC_RAM)
 		{
 			//A2->A0
@@ -117,6 +117,7 @@ void ebc_gpio_config(ebc_devices device)
 		ExtBusInitStruct.PORT_SPEED = PORT_SPEED_FAST;
 
 		PORT_Init(MDR_PORTE, &ExtBusInitStruct);
+		//PORT_WriteBit(MDR_PORTE, PORT_Pin_6, 0);
 		
 		/* Configure PORTE pin 8 for output CS2 (A22)  (Ножка выбора ПЗУ)*/
 		ExtBusInitStruct.PORT_Pin = PORT_Pin_8;
@@ -136,7 +137,7 @@ void ebc_gpio_config(ebc_devices device)
 device: 0-RAM, 1-ROM 
 */
 void ebc_init(ebc_devices device)
-{
+ {
 		ebc_gpio_config(device);
 	
 		EBC_InitTypeDef EBC_InitStruct;
@@ -169,15 +170,15 @@ void ebc_init(ebc_devices device)
 			MDR_EBC->CONTROL |= (1<<5);//8-битный режим данных
 		}
 
-//    /* Initializes the EBC memory region 0х50000000-0х5FFFFFFF */
-//    /* Struct init */
-//    EBC_MemRegionStructInit(&EBC_MemRegionInitStruct);
-//    EBC_MemRegionInitStruct.WS_Setup    = 3;
-//    EBC_MemRegionInitStruct.WS_Active   = 9;
-//    EBC_MemRegionInitStruct.WS_Hold     = 3;
-//    EBC_MemRegionInitStruct.Enable_Tune = ENABLE;
-//    /* Initializes the EBC memory region  */
-//    EBC_MemRegionInit(&EBC_MemRegionInitStruct, EBC_MEM_REGION_50000000);
+    /* Initializes the EBC memory region 0х50000000-0х5FFFFFFF */
+    /* Struct init */
+    EBC_MemRegionStructInit(&EBC_MemRegionInitStruct);
+    EBC_MemRegionInitStruct.WS_Setup    = 3;
+    EBC_MemRegionInitStruct.WS_Active   = 9;
+    EBC_MemRegionInitStruct.WS_Hold     = 3;
+    EBC_MemRegionInitStruct.Enable_Tune = ENABLE;
+    /* Initializes the EBC memory region  */
+    EBC_MemRegionInit(&EBC_MemRegionInitStruct, EBC_MEM_REGION_50000000);
 }
 
 #endif	//__CONFIG_C

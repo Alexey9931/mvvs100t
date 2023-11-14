@@ -34,7 +34,7 @@ typedef struct spi_config_data
 	spi_n_dma_ch_params 		spi_dma_ch;									///< Структура с параметрами канала DMA для SPI
 	uint32_t 								RST_CLK_PCLK_SPIn;					///< Включение тактирования для SPIn
 	SSP_InitTypeDef 				SPI;												///< Библиотечная структура с конфигурационными параметрами SPI
-	SSP_Clock_BRG_TypeDef 	SSP_HCLKdiv;								///< Выбор делителя тактовой частоты для тактирования блока SPIn	
+	IRQn_Type 							IRQn;												///< Выбор обработчика прерываний блока SPI
 	uint8_t 								buffer_counter;							///< Счетчик слов в приемнике SPI
 	uint16_t								*buffer;										///< Указатель на буфер приемника SPI
 } spi_n;
