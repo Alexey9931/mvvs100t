@@ -8,6 +8,7 @@
 
 #include "mdr32_drivers.h"
 #include <stdio.h>
+#include "list.h"
 
 ///Структура с конфигурационными параметрами Таймеров 
 typedef struct timer_config_struct
@@ -19,11 +20,6 @@ typedef struct timer_config_struct
 	uint32_t											timer_cnt;											///< Счетчик для TIMER (может быть использован для разных целей)	
 } __attribute__((packed)) timer_n;	
 
-///описание односвязанного списка
-typedef struct list_head_struct 
-{
-	struct list_head *next;
-} __attribute__((packed)) list_head;
 
 ///структура-реализация односвязанного списка обработчиков прерываний таймеров
 typedef struct timer_irq_list_struct
@@ -52,10 +48,19 @@ void delay_milli(uint32_t time_milli);
 */
 void delay_micro(uint32_t time_micro);
 
-void add_tmr_handler(uint8_t tmr_num, void (*func_ptr)(void*), void *data, TIMER_Status_Flags_TypeDef event);
+/*!
+ *	\brief Добавляет обработчик прерывания таймера в список обработчиков
+ *	\param tmr_num - Номер таймера
+ *	\param func_ptr - Указатель на функцию-обработчик прерывания
+ *	\param data - Указатель на данные в обработчике прерывания
+ *	\param event - Событие, по которому вызывается данное прерывание
+*/
+void list_tmr_handler_add_tail(uint8_t tmr_num, void (*func_ptr)(void*), void *data, TIMER_Status_Flags_TypeDef event);
 
-void list_add_end(timer_irq_list *list_head, void (*func_ptr)(void*), void *data, TIMER_Status_Flags_TypeDef event);
-
-timer_irq_list *create(uint8_t tmr_num, void (*func_ptr)(void*), void *data, TIMER_Status_Flags_TypeDef event);
+/*!
+ *	\brief Инициализирует список обработчиков прерываний таймера
+ *	\param tmr_num - Номер таймера, для которого инициализируется список
+*/
+void list_tmr_handler_init(uint8_t tmr_num);
 
 #endif /*__TIMERS_H */

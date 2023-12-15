@@ -1,5 +1,4 @@
-./objects/1273pv19t.o: 1273pv19t.c \
-  D:\Keil\ARM\ARMCLANG\Bin\..\include\math.h 1273pv19t.h mdr32_drivers.h \
+./objects/internal_ram.o: internal_ram.c internal_ram.h mdr32_drivers.h \
   C:\Users\user\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.1\Libraries\CMSIS\MDR32FxQI\DeviceSupport\MDR32F1QI\inc\MDR32F1QI.h \
   RTE\Device\MDR32F1QI\MDR32FxQI_config.h \
   D:\Keil\ARM\ARMCLANG\Bin\..\include\stdint.h \
@@ -16,8 +15,4 @@
   C:\Users\user\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.1\Libraries\SPL\MDR32FxQI\inc\MDR32FxQI_dma.h \
   C:\Users\user\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.1\Libraries\SPL\MDR32FxQI\inc\MDR32FxQI_timer.h \
   C:\Users\user\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.1\Libraries\SPL\MDR32FxQI\inc\MDR32FxQI_ebc.h \
-  C:\Users\user\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.1\Libraries\SPL\MDR32FxQI\inc\MDR32FxQI_bkp.h \
-  spi.h timers.h D:\Keil\ARM\ARMCLANG\Bin\..\include\stdio.h list.h \
-  D:\Keil\ARM\ARMCLANG\Bin\..\include\stddef.h external_ram.h \
-  rs422_protocol.h uart.h D:\Keil\ARM\ARMCLANG\Bin\..\include\string.h \
-  D:\Keil\ARM\ARMCLANG\Bin\..\include\stdlib.h external_rom.h
+  C:\Users\user\AppData\Local\Arm\Packs\Milandr\MDR32FxQI\1.1\Libraries\SPL\MDR32FxQI\inc\MDR32FxQI_bkp.h

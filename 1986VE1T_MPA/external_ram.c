@@ -16,6 +16,16 @@
 extern ram_data *ram_space_pointer;
 extern rom_data *rom_space_pointer;
 
+//константы полиномов
+float polyn_ch_consts[MAX_CHANEL_NUMBER][7] = {
+	{4.94072982f, 0.00015744f, 	0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+	{4.92697692f, 0.00015771f, 	0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+	{0.0f, 				0.0f, 				0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+	{0.0f, 				0.0f, 				0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+	{0.0f, 				0.0f, 				0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+	{0.0f, 				0.0f, 				0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+	{0.0f, 				0.0f, 				0.0f, 0.0f, 0.0f, 0.0f, 0.0f}	
+};
 
 /*!
 	Функция инициализации области памяти внешнего ОЗУ
@@ -105,13 +115,13 @@ void init_external_ram_space(void)
 			mpa_rom_reg_ptr->AI_MinCodeADC[i] = MIN_CODE_ADC;
 			mpa_rom_reg_ptr->AI_MaxCodeADC[i] = MAX_CODE_ADC;
 			//такие значения коэф. полиномов только для напряжения 0-10В
-			mpa_rom_reg_ptr->AI_PolynConst0[i] = POLYN_CONST_0;
-			mpa_rom_reg_ptr->AI_PolynConst1[i] = POLYN_CONST_1;
-			mpa_rom_reg_ptr->AI_PolynConst2[i] = POLYN_CONST_2;
-			mpa_rom_reg_ptr->AI_PolynConst3[i] = POLYN_CONST_3;
-			mpa_rom_reg_ptr->AI_PolynConst4[i] = POLYN_CONST_4; 
-			mpa_rom_reg_ptr->AI_PolynConst5[i] = POLYN_CONST_5;
-			mpa_rom_reg_ptr->AI_PolynConst6[i] = POLYN_CONST_6;
+			mpa_rom_reg_ptr->AI_PolynConst0[i] = polyn_ch_consts[i][0];
+			mpa_rom_reg_ptr->AI_PolynConst1[i] = polyn_ch_consts[i][1];
+			mpa_rom_reg_ptr->AI_PolynConst2[i] = polyn_ch_consts[i][2];
+			mpa_rom_reg_ptr->AI_PolynConst3[i] = polyn_ch_consts[i][3];
+			mpa_rom_reg_ptr->AI_PolynConst4[i] = polyn_ch_consts[i][4];
+			mpa_rom_reg_ptr->AI_PolynConst5[i] = polyn_ch_consts[i][5];
+			mpa_rom_reg_ptr->AI_PolynConst6[i] = polyn_ch_consts[i][6];
 			mpa_rom_reg_ptr->AI_MetrologDat[i] = METROLOG_DAT;
 		}
 		memset(mpa_rom_reg_ptr->AI_MetrologDat, 0, sizeof(mpa_rom_reg_ptr->AI_MetrologDat));
@@ -142,59 +152,5 @@ uint16_t find_max_halfword(uint16_t *array, uint32_t array_size)
 	}
 	
 	return result;
-}
-/*!
-	Функция выделения свободной памяти во внешнем ОЗУ (страниц памяти)
-*/
-uint8_t* malloc_ram_pages(uint32_t size)
-{
-	uint32_t page_num = size/PAGE_SIZE + 1; //кол-во выделяемых страниц
-	uint32_t page_cnt; //счетчик страниц
-	uint32_t consecutive_page_cnt; //счетчик подряд идущих пустых страниц
-	 
-	for (page_cnt = 0; (page_cnt + page_num) < PAGE_SIZE; page_cnt++)
-	{
-		//проверяем что подряд идут пустые страницы памяти
-		for (consecutive_page_cnt = 0; consecutive_page_cnt < page_num; consecutive_page_cnt++)
-		{
-			if (ram_space_pointer->memory_page_status[page_cnt + consecutive_page_cnt] != 0)
-			{
-				page_cnt += consecutive_page_cnt;
-				break;
-			}
-		}
-		//если удалось найти требуемое кол-во подряд идущих пустых страницы, то возвращаяем указатель
-		if (consecutive_page_cnt == page_num)	
-		{
-			//обновляем статус страниц
-			for (consecutive_page_cnt = 0; consecutive_page_cnt < page_num; consecutive_page_cnt++)
-			{
-				memset(&ram_space_pointer->memory_page_status[page_cnt + consecutive_page_cnt], 1, sizeof(ram_space_pointer->memory_page_status[page_cnt + consecutive_page_cnt]));
-			}
-			return &ram_space_pointer->memory_page_space[page_cnt][0];
-		}
-	}
-	
-	return NULL;
-}
-/*!
-	Функция освобождения памяти во внешнем ОЗУ (страниц памяти)
-*/
-void free_ram_pages(uint8_t *page_addr, uint32_t size)
-{
-	uint32_t page_num = size/PAGE_SIZE + 1; //кол-во освобождаемых страниц
-	uint32_t page_cnt; //счетчик страниц
-	 
-	for (page_cnt = 0; (page_cnt + page_num) < PAGE_SIZE; page_cnt++)
-	{
-		if (page_addr == &ram_space_pointer->memory_page_space[page_cnt][PAGE_SIZE])
-		{
-			//обновляем статус страниц
-			for (uint32_t i = 0; i < page_num; i++)
-			{
-				memset(&ram_space_pointer->memory_page_status[page_cnt + i], 0, sizeof(ram_space_pointer->memory_page_status[page_cnt + i]));
-			}
-		}
-	}
 }
 

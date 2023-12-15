@@ -13,6 +13,7 @@
 
 #define FIRST_TIME_INIT //макрос для записи данных (по умолчанию) в ПЗУ в первый раз
 
+extern float polyn_ch_consts[MAX_CHANEL_NUMBER][7];
 /*!
 	Функция инициализации области памяти внешнего ПЗУ
 */
@@ -49,13 +50,13 @@ void init_external_rom_space(void)
 			mpa_regs.AI_MinCodeADC[i] = MIN_CODE_ADC;
 			mpa_regs.AI_MaxCodeADC[i] = MAX_CODE_ADC;
 			//такие значения коэф. полиномов только для напряжения 0-10В
-			mpa_regs.AI_PolynConst0[i] = POLYN_CONST_0;
-			mpa_regs.AI_PolynConst1[i] = POLYN_CONST_1;
-			mpa_regs.AI_PolynConst2[i] = POLYN_CONST_2;
-			mpa_regs.AI_PolynConst3[i] = POLYN_CONST_3;
-			mpa_regs.AI_PolynConst4[i] = POLYN_CONST_4; 
-			mpa_regs.AI_PolynConst5[i] = POLYN_CONST_5;
-			mpa_regs.AI_PolynConst6[i] = POLYN_CONST_6;
+			mpa_regs.AI_PolynConst0[i] = polyn_ch_consts[i][0];
+			mpa_regs.AI_PolynConst1[i] = polyn_ch_consts[i][1];
+			mpa_regs.AI_PolynConst2[i] = polyn_ch_consts[i][2];
+			mpa_regs.AI_PolynConst3[i] = polyn_ch_consts[i][3];
+			mpa_regs.AI_PolynConst4[i] = polyn_ch_consts[i][4];
+			mpa_regs.AI_PolynConst5[i] = polyn_ch_consts[i][5];
+			mpa_regs.AI_PolynConst6[i] = polyn_ch_consts[i][6];
 			mpa_regs.AI_MetrologDat[i] = METROLOG_DAT;
 		}
 		memset(mpa_regs.AI_MetrologDat, 0, sizeof(mpa_regs.AI_MetrologDat));

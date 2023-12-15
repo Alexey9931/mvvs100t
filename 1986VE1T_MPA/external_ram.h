@@ -14,8 +14,6 @@
 #define EXT_RAM_START_ADDR 							0x50200000	///< Адрес в памяти МК, с которой начинается обращение к внешней ОЗУ      
 #define RAM_REGISTER_SPACE_START_ADDR 	200					///< Стартовый адрес карты регистров в ОЗУ    
 
-#define PAGE_NUM 	256			///< Кол-во страниц "свободной" памяти
-#define PAGE_SIZE 64			///< Размер страницы "свободной" памяти
 #define TIMER_NUM	4				///< Кол-во таймеров в МК
 
 #define TEST_BIT(num, value) ((value>>num)&0x1)			///< Макрос проверки бита (0 или 1) в байте
@@ -225,28 +223,12 @@ typedef struct ram_data_struct
 	uint8_t 								uart1_rx_buffer[UART_BUFFER_SIZE];																///< Буфер приемника UART1
 	uint8_t 								uart2_rx_buffer[UART_BUFFER_SIZE];																///< Буфер приемника UART2
 	uint16_t 								spi_1_rx_buffer[SPI_BUFFER_SIZE];																	///< Буфер приемника SPI1
-	uint8_t                 memory_page_status[PAGE_NUM];																			///< Статус каждой страница 0-свободна, 1-занята
-	uint8_t 								memory_page_space[PAGE_NUM][PAGE_SIZE];														///< Место памяти разбитой на 32 страницы по 64 байта
-}__attribute__((packed)) ram_data;
+}__attribute__((packed)) 	ram_data;
 
 /*!
  *	\brief Инициализацирует область памяти внешнего ОЗУ     
 */
 void init_external_ram_space(void);
-
-/*!
- *	\brief Выделяет свободную память во внешнем ОЗУ (страницы памяти)
- *	\param size - размер выделяемой памяти 
- *	\return Указатель на начало выделяемой памяти или NULL, если нет свободного места
-*/
-uint8_t* malloc_ram_pages(uint32_t size);
-
-/*!
- *	\brief Освобождает память во внешнем ОЗУ (страницы памяти)
- *	\param page_addr - адрес стартовой страницы
- *	\param size - размер освобождаемой памяти 
-*/
-void free_ram_pages(uint8_t *page_addr, uint32_t size);
 
 	
 #endif /*__EXTERNAL_RAM_H */

@@ -9,9 +9,11 @@
 #include "clock.h"
 #include "dma.h"
 #include "ebc.h"
+#include "internal_ram.h"
 #include "external_ram.h"
 #include "external_rom.h"
 #include "leds.h"
+#include "list.h"
 
 /*
 Функция для запроса данных

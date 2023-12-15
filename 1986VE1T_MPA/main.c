@@ -5,8 +5,9 @@ extern adc_n adc_1;
 extern timer_n timer_1;
 extern timer_n timer_2;
 extern timer_n timer_3;
+
 //массив указателей на head списков обработчиков прерываний таймеров
-extern timer_irq_list *tmr_handler_head[TIMER_NUM];
+extern list_head *tmr_handler_head[TIMER_NUM];
 
 extern spi_n spi_1;
 extern spi_n spi_2;
@@ -23,7 +24,10 @@ ram_data *ram_space_pointer;
 //указатель для обращения к внешнему ПЗУ
 rom_data *rom_space_pointer;
 
-
+//выделение памяти во внутр ОЗУ для кучи
+int_ram_heap heap;
+//указатель на кучу
+int_ram_heap *heap_ptr = &heap;
 
 int main(void)
 {	
@@ -37,14 +41,10 @@ int main(void)
 	init_external_ram_space(); 
 	leds_gpio_config();
 		
-	//инициализация списков обработчиков перываний таймеров
-	for (uint8_t i = 0; i < TIMER_NUM; i++)
-	{
-		tmr_handler_head[i] = NULL;
-	}
-	tmr_handler_head[1] = create(1, sync_adc_chanels, NULL, TIMER_STATUS_CNT_ARR);
-	add_tmr_handler(1, receive_adc_chanel_pack, NULL, TIMER_STATUS_CCR_CAP1_CH2);
-	
+	//инициализация и создание списков обработчиков перываний таймеров
+	list_tmr_handler_init(1);
+	list_tmr_handler_add_tail(1, sync_adc_chanels, NULL, TIMER_STATUS_CNT_ARR);
+	list_tmr_handler_add_tail(1, receive_adc_chanel_pack, NULL, TIMER_STATUS_CCR_CAP1_CH4);
 	
 	//инициализация SSI1
 	spi_1.SSPx = MDR_SSP1;
@@ -60,7 +60,6 @@ int main(void)
 	spi_1.buffer = ram_space_pointer->spi_1_rx_buffer;
 	
 	spi_init(&spi_1);
-	
 	
 	//инициализация Timer1 (настроен на период 10мс)
 	timer_1.TIMERInitStruct.TIMER_Period = 0x270F;//10000-1
@@ -136,12 +135,12 @@ int main(void)
 
 	while(1)
 	{		
-		do_mpa_task(&adc_1);
-		delay_milli(10);
+		//do_mpa_task(&adc_1);
+		//delay_milli(10);
 		//запрос пакета по ШИНЕ1
 		//request_data(&uart_1);
 		//запрос пакета по ШИНЕ2
-		//request_data(&uart_2);
+		request_data(&uart_2);
 	}
 }
 /*
@@ -220,8 +219,8 @@ void do_mpa_task(adc_n *adc_struct)
 					break;
 			
 			case 1:
-					//ток 4-20мА
-			
+					//ток 0-20мА
+					ptr->AI_PhysQuantFloat[k] = 4.004f*(ptr->AI_RomRegs.AI_PolynConst0[k] + (ptr->AI_RomRegs.AI_PolynConst1[k])*(ptr->AI_CodeADC[k]));
 					break;
 			
 			default:
@@ -234,8 +233,8 @@ void do_mpa_task(adc_n *adc_struct)
 */
 void sync_adc_chanels(void *data)
 {
-	if (TIMER_GetITStatus(adc_1.timer_n_capture->TIMERx, TIMER_STATUS_CNT_ARR) == SET)
-	{
+	//if (TIMER_GetITStatus(adc_1.timer_n_capture->TIMERx, TIMER_STATUS_CNT_ARR) == SET)
+	//{
 		//только если инициализирован АЦП
 		if ((adc_1.init_flag == 1))
 		{
@@ -259,16 +258,16 @@ void sync_adc_chanels(void *data)
 			adc_1.ch_rx_num = 0;
 		}
 		TIMER_ClearITPendingBit(adc_1.timer_n_capture->TIMERx, TIMER_STATUS_CNT_ARR);
-	}
+	//}
 }
 /*
 Функция приема пакета с результатами измерений одного канала (выполняется при срабатывании прерывания Timer2 по захвату)
 */
 void receive_adc_chanel_pack(void *data)
 {
-	if (TIMER_GetITStatus(adc_1.timer_n_capture->TIMERx, TIMER_STATUS_CCR_CAP1_CH4) == SET)
-	{   
-		PORT_WriteBit(PORT_ADC_MODE, PIN_ADC_MODE_A0, 1);
+	//if (TIMER_GetITStatus(adc_1.timer_n_capture->TIMERx, TIMER_STATUS_CCR_CAP1_CH4) == SET)
+	//{   
+		//PORT_WriteBit(PORT_ADC_MODE, PIN_ADC_MODE_A0, 1);
 		//только если инициализирован АЦП
 		if ((adc_1.init_flag == 1))
 		{
@@ -283,6 +282,6 @@ void receive_adc_chanel_pack(void *data)
 			TIMER_ITConfig(adc_1.timer_n_capture->TIMERx, TIMER_STATUS_CNT_ARR, ENABLE);			
 		}
 		TIMER_ClearITPendingBit(adc_1.timer_n_capture->TIMERx, TIMER_STATUS_CCR_CAP1_CH4);
-		PORT_WriteBit(PORT_ADC_MODE, PIN_ADC_MODE_A0, 0);
-	}
+		//PORT_WriteBit(PORT_ADC_MODE, PIN_ADC_MODE_A0, 0);
+	//}
 }

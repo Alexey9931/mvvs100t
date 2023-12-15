@@ -14,7 +14,7 @@ extern adc_n adc_1;
 extern ram_data *ram_space_pointer;
 
 
-timer_irq_list *tmr_handler_head[TIMER_NUM];
+list_head tmr_handler_head[TIMER_NUM];//указатели на списки обработчиков таймеров
 
 timer_n timer_1;
 timer_n timer_2;
@@ -133,15 +133,26 @@ void timer_init(timer_n *timer_struct)
 void TIMER2_IRQHandler(void);
 void TIMER2_IRQHandler(void)
 {
-//	sync_adc_chanels(NULL);
-//	receive_adc_chanel_pack(NULL);
-	timer_irq_list *el = tmr_handler_head[1];
 	
-	while(el != NULL)
+//	timer_irq_list *el = tmr_handler_head[1];
+//	while(el != NULL)
+//	{
+//		if (TIMER_GetITStatus(timer_2.TIMERx, el->event) == SET)
+//		{
+//			el->handler(el->data);
+//		}
+//		el = el->list.next;
+//	}
+	timer_irq_list *ep;
+	list_for_each_entry(ep, &tmr_handler_head[1], list)
 	{
-		el->handler(el->data);
-		el = el->list.next;
+		if (TIMER_GetITStatus(timer_2.TIMERx, ep->event) == SET)
+		{
+			ep->handler(ep->data);
+		}
 	}
+	
+	
 //	//если сработало прерывание по переполнению счетчика CNT (CNT=ARR)
 //	if (TIMER_GetITStatus(timer_2.TIMERx, TIMER_STATUS_CNT_ARR) == SET)
 //	{
@@ -208,13 +219,10 @@ void delay_micro(uint32_t time_micro)//задержка в мкс (максим�
 	//uint32_t timer_cnt = TIMER_GetCounter(MDR_TIMER1);
 	while (TIMER_GetCounter(MDR_TIMER1) <= time_micro);
 }
-
-void add_tmr_handler(uint8_t tmr_num, void (*func_ptr)(void*), void *data, TIMER_Status_Flags_TypeDef event)
-{
-	list_add_end(tmr_handler_head[tmr_num], func_ptr, data, event);
-}
-
-void list_add_end(timer_irq_list *list_head, void (*func_ptr)(void*), void *data, TIMER_Status_Flags_TypeDef event)
+/*
+Функция добавления обработчиков прерываний таймеров в список обработчиков
+*/
+void list_tmr_handler_add_tail(uint8_t tmr_num, void (*func_ptr)(void*), void *data, TIMER_Status_Flags_TypeDef event)
 {
 	//выделяем память для нового указателя
 	timer_irq_list *ptr = (timer_irq_list*)malloc_ram_pages(sizeof(timer_irq_list));
@@ -222,25 +230,11 @@ void list_add_end(timer_irq_list *list_head, void (*func_ptr)(void*), void *data
 	ptr->data = data;
 	ptr->event = event;
 	ptr->handler = func_ptr;
-	ptr->list.next = NULL;
-		
-	timer_irq_list *head_ptr = list_head;
-	while (head_ptr->list.next != NULL)
-	{
-		head_ptr = head_ptr->list.next;
-	}
-	head_ptr->list.next = ptr;
+	
+	list_add_tail(&ptr->list, &tmr_handler_head[tmr_num]);
 }
 
-timer_irq_list *create(uint8_t tmr_num, void (*func_ptr)(void*), void *data, TIMER_Status_Flags_TypeDef event)
+void list_tmr_handler_init(uint8_t tmr_num)
 {
-	// Выделение памяти под корень списка
-	timer_irq_list *ptr = (timer_irq_list*)malloc_ram_pages(sizeof(timer_irq_list));
-	//инициализируем элемент списка
-	ptr->data = data;
-	ptr->event = event;
-	ptr->handler = func_ptr;
-	ptr->list.next = NULL;
-	
-	return(ptr);
+	init_list_head(&tmr_handler_head[tmr_num]);
 }

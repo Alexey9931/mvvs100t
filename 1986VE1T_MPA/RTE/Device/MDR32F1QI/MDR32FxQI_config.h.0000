@@ -2,19 +2,19 @@
   ******************************************************************************
   * @file    MDR32FxQI_config.h
   * @author  Milandr Application Team
-  * @version V2.1.0i
-  * @date    27/06/2023
+  * @version V2.0.2i
+  * @date    10/03/2022
   * @brief   Library configuration file.
   ******************************************************************************
   * <br><br>
-  * THE PRESENT FIRMWARE IS FOR GUIDANCE ONLY. IT AIMS AT PROVIDING CUSTOMERS
-  * WITH CODING INFORMATION REGARDING MILANDR'S PRODUCTS IN ORDER TO FACILITATE
-  * THE USE AND SAVE TIME. MILANDR SHALL NOT BE HELD LIABLE FOR ANY
-  * DIRECT, INDIRECT OR CONSEQUENTIAL DAMAGES RESULTING
-  * FROM THE CONTENT OF SUCH FIRMWARE AND/OR A USE MADE BY CUSTOMERS OF THE
-  * CODING INFORMATION CONTAINED HEREIN IN THEIR PRODUCTS.
+  * THE PRESENT FIRMWARE WHICH IS FOR GUIDANCE ONLY AIMS AT PROVIDING CUSTOMERS
+  * WITH CODING INFORMATION REGARDING THEIR PRODUCTS IN ORDER FOR THEM TO SAVE
+  * TIME. AS A RESULT, MILANDR SHALL NOT BE HELD LIABLE FOR ANY
+  * DIRECT, INDIRECT OR CONSEQUENTIAL DAMAGES WITH RESPECT TO ANY CLAIMS ARISING
+  * FROM THE CONTENT OF SUCH FIRMWARE AND/OR THE USE MADE BY CUSTOMERS OF THE
+  * CODING INFORMATION CONTAINED HEREIN IN CONNECTION WITH THEIR PRODUCTS.
   *
-  * <h2><center>&copy; COPYRIGHT 2023 Milandr</center></h2>
+  * <h2><center>&copy; COPYRIGHT 2022 Milandr</center></h2>
   */
 
 /**
@@ -49,16 +49,6 @@ extern "C" {
 /* Includes ------------------------------------------------------------------*/
 #include <stdint.h>
 #include <RTE_Components.h> // Keil uVision specific inclusion
-
-/* MDR32FxQI SPL version numbers - major, minor, patch */
-#define _MDR32FxQI_SPL_VERSION_MAJOR (1U) /*!< [23:16] major version */
-#define _MDR32FxQI_SPL_VERSION_MINOR (1U) /*!< [15:8]  minor version */
-#define _MDR32FxQI_SPL_VERSION_PATCH (0U) /*!< [7:0]   patch version */
-
-/* MDR32FxQI SPL version number (combined value) */
-#define MDR32FxQI_SPL_VERSION ((_MDR32FxQI_SPL_VERSION_MAJOR << 16) | \
-                              (_MDR32FxQI_SPL_VERSION_MINOR << 8) |  \
-                              (_MDR32FxQI_SPL_VERSION_PATCH))
 
 /* Uncomment the line corresponding to the target microcontroller */
 /* When using Keil uVision, the definition is set automatically
@@ -108,7 +98,7 @@ extern "C" {
 #define HSI_Value       ((uint32_t)8000000)
 // <o> HSE clock value [Hz]
 // <i> Default: 8000000 (8MHz)
-#define HSE_Value       ((uint32_t)8000000)
+#define HSE_Value       ((uint32_t)12000000)
 // <o> HSE2 clock value [Hz] for MDR32F1QI
 // <i> Default: 25000000 (25MHz)
 #define HSE2_Value      ((uint32_t)25000000)
@@ -156,75 +146,58 @@ extern "C" {
 
 // <h> Controller blocks settings
 // <h> DMA configuration parameters
+// <o.0..5> Number of DMA channels to use
+// <i> This parameter is in range 1..32
+// <i> Default: 32
+#define DMA_Channels_Number   32
 
 // <o> Alternate Control Data Structure Usage
 //   <0=> 0: DMA_ALternateDataDisabled
 //   <1=> 1: DMA_ALternateDataEnabled
 // <i> Default: 1 (DMA_ALternateDataEnabled)
-#define DMA_AlternateData       1
-
-#if (DMA_AlternateData != 0) && (DMA_AlternateData != 1)
-#error "DMA_AlternateData  should be 0 (DMA_ALternateDataDisabled) or 1 (DMA_ALternateDataEnabled)"
-#endif
-
-#if (DMA_AlternateData == 0)
-// <o.0..5> Number of DMA channels to use.
-// <i> Specifies size of structure table for channels in range [0; DMA_Channels_Number-1] where 0 is channel 0.
-// <i> Could be changed ONLY IF DMA_AlternateData = 0 to reduce RAM usage.
-// <i> If DMA_AlternateData = 1, 32 channels are always used.
-// <i> This parameter is in range [1; 32]
-// <i> Default: 32
-#define DMA_Channels_Number     32
-
-#if (DMA_Channels_Number < 1) || (DMA_Channels_Number > 32)
-#error "DMA_Channels_Number should be in range [1; 32]"
-#endif
-
-#endif
-
-// </h>
+#define DMA_AlternateData     1
 // </h>
 
+// </h>
 
-// <h> Retarget standard input/output (STDIO)
-// <c1> Use retarget STDIO via UART
-// <i> Default: _USE_DEBUG_UART_ commented/not defined
+// <h> Examples settings
+// <c2> Use debug UART
+// <i> Definition used in examples
+// <i> Default: commented/not defined
     //#define _USE_DEBUG_UART_
 // </c>
-#if defined (_USE_DEBUG_UART_)
 
-#define DEBUG_BAUD_RATE                 115200
-#define DEBUG_WORD_LENGTH               UART_WordLength8b
-#define DEBUG_STOP_BITS                 UART_StopBits1
-#define DEBUG_BAUD_PARITY               UART_Parity_No
+#if defined (_USE_DEBUG_UART_)
 
 #if defined (USE_MDR32F1QI)
     #define DEBUG_UART                  MDR_UART1
     #define DEBUG_UART_PORT             MDR_PORTC
     #define DEBUG_UART_PINS             (PORT_Pin_3 | PORT_Pin_4)
     #define DEBUG_UART_PINS_FUNCTION    PORT_FUNC_MAIN
+    #define DEBUG_BAUD_RATE             115200
 #elif defined (USE_MDR32F9Q2I)
     #define DEBUG_UART                  MDR_UART2
     #define DEBUG_UART_PORT             MDR_PORTF
     #define DEBUG_UART_PINS             (PORT_Pin_0 | PORT_Pin_1)
     #define DEBUG_UART_PINS_FUNCTION    PORT_FUNC_OVERRID
+    #define DEBUG_BAUD_RATE             115200
 #elif defined (USE_MDR32FG16S1QI)
     #define DEBUG_UART                  MDR_UART3
     #define DEBUG_UART_PORT             MDR_PORTF
     #define DEBUG_UART_PINS             (PORT_Pin_0 | PORT_Pin_1)
     #define DEBUG_UART_PINS_FUNCTION    PORT_FUNC_ALTER
+    #define DEBUG_BAUD_RATE             115200
 #endif
 
 #endif /* #if defined (_USE_DEBUG_UART_) */
-// </h>
 
 
-// <h> Examples settings
 #if defined (USE_MDR32F1QI)
     // <o> MIL STD 1553 terminal address for MDR32F1QI
     // <i> Default: 0x01
     #define MIL_STD_1553_TERMINAL_ADDRESS    0x01
 #endif /* #if defined (USE_MDR32F1QI) */
+
 
 // <h> RTC configuration parameters
 // <o> RTC calibration value
@@ -281,15 +254,9 @@ extern "C" {
 // <i> Default: not commented/defined
 #define WORKAROUND_MDR32F9QX_ERROR_0002
 // </c>
-// <c2> MDR32F1QI Series Errata Notice, ETH PHY data inversion error in 10Base-T mode
-// <i>  Workaround for "10Base-T HD/FD transmitted data inverted after EthernetPHY reset" error
-// <i> Default: not commented/defined
-#define WORKAROUND_MDR32F1QI_ERROR_ETH_PHY_10BASE_T_DATA_INVERSION
-// </c>
 // </h>
 
-
-#if defined (__ICCARM__) /* IAR Compiler */
+#if defined (__ICCARM__)
     #define __attribute__(name_section)
     #if defined (USE_MDR32F1QI)
         #pragma section = "EXECUTABLE_MEMORY_SECTION"
@@ -297,16 +264,13 @@ extern "C" {
     #elif defined (USE_MDR32F9Q2I)
         #define IAR_SECTION(section)
     #endif
-    #define __RAMFUNC __ramfunc
 #endif
-#if defined (__CMCARM__) /* Phyton CMC-ARM Compiler */
+#if defined (__CMCARM__)
     #define __attribute__(name_section)
     #define IAR_SECTION(section)
-    #define __RAMFUNC __ramfunc
 #endif
-#if defined (__ARMCC_VERSION) /* ARM Compiler */
+#if defined (__ARMCC_VERSION)
     #define IAR_SECTION(section)
-    #define __RAMFUNC
 #endif
 
 
@@ -347,7 +311,7 @@ extern "C" {
 
 #endif /* __MDR32FxQI_CONFIG_H */
 
-/*********************** (C) COPYRIGHT 2023 Milandr ****************************
+/*********************** (C) COPYRIGHT 2022 Milandr ****************************
 *
 * END OF FILE MDR32FxQI_config.h */
 

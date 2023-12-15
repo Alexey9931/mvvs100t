@@ -33,13 +33,6 @@
 #define NUM_FOR_AVERAGE 10
 #define MIN_CODE_ADC 0
 #define MAX_CODE_ADC 65535
-#define POLYN_CONST_0 4.972769f
-#define POLYN_CONST_1 0.0f
-#define POLYN_CONST_2 0.0f
-#define POLYN_CONST_3 0.0f
-#define POLYN_CONST_4 0.0f
-#define POLYN_CONST_5 0.0f
-#define POLYN_CONST_6 0.0f
 #define METROLOG_DAT 0.0f
 
 
