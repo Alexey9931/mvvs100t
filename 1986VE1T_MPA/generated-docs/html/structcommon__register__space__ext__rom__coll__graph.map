@@ -1,0 +1,4 @@
+<map id="common_register_space_ext_rom" name="common_register_space_ext_rom">
+<area shape="rect" id="node1" title="Органиация пространства общих регистров для зеркализации во внешнем ПЗУ" alt="" coords="5,95,187,136"/>
+<area shape="rect" id="node2" href="$structdevice__type__struct.html" title="Структура с битовыми полями для регистра тип устройства" alt="" coords="23,5,169,32"/>
+</map>

@@ -1,0 +1,214 @@
+\hypertarget{structram__data__struct}{}\doxysection{Структура ram\+\_\+data\+\_\+struct}
+\label{structram__data__struct}\index{ram\_data\_struct@{ram\_data\_struct}}
+
+
+Структура организующая память во внешнем ОЗУ  
+
+
+
+
+{\ttfamily \#include $<$external\+\_\+ram.\+h$>$}
+
+
+
+Граф связей класса ram\+\_\+data\+\_\+struct\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{structram__data__struct__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Открытые атрибуты}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{external__ram_8h_ad52ebc9def70278428b60cfdc9d51fe8}{ram\+\_\+start\+\_\+struct}} \mbox{\hyperlink{structram__data__struct_a0de3b7f84ef21ea299d6e45bbfc7dcf4}{start\+\_\+struct}}
+\begin{DoxyCompactList}\small\item\em Структура по умолчанию, которая должна находиться в начале ОЗУ \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{structram__data__struct_a802ed45cf44c03eb17497774fb59aeb5}{Reserv}} \mbox{[}\mbox{\hyperlink{external__ram_8h_af46525578bcb3a80d76d60b7537f0f94}{R\+A\+M\+\_\+\+R\+E\+G\+I\+S\+T\+E\+R\+\_\+\+S\+P\+A\+C\+E\+\_\+\+S\+T\+A\+R\+T\+\_\+\+A\+D\+DR}} -\/ sizeof(\mbox{\hyperlink{external__ram_8h_ad52ebc9def70278428b60cfdc9d51fe8}{ram\+\_\+start\+\_\+struct}})\mbox{]}
+\begin{DoxyCompactList}\small\item\em Зарезервированное место \end{DoxyCompactList}\item 
+\mbox{\hyperlink{external__ram_8h_ae89789d7f765328bd1d8c6e089f1f2ab}{common\+\_\+ram\+\_\+registers}} \mbox{\hyperlink{structram__data__struct_a29ff19a4ce45ab988b4f61feaea38545}{common\+\_\+ram\+\_\+register\+\_\+space}}
+\begin{DoxyCompactList}\small\item\em Карта общих регистров начиная с адреса R\+E\+G\+I\+S\+T\+E\+R\+\_\+\+S\+P\+A\+C\+E\+\_\+\+S\+T\+A\+R\+T\+\_\+\+A\+D\+DR. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{external__ram_8h_a1cb2f4e25a86473899fae359eccd2c4d}{mpa\+\_\+ram\+\_\+registers}} \mbox{\hyperlink{structram__data__struct_a99f72177584aee68a4ed2064b1fecbde}{mpa\+\_\+ram\+\_\+register\+\_\+space}}
+\begin{DoxyCompactList}\small\item\em Карта регистров МПА начиная с адреса R\+E\+G\+I\+S\+T\+E\+R\+\_\+\+S\+P\+A\+C\+E\+\_\+\+S\+T\+A\+R\+T\+\_\+\+A\+D\+DR. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{rs422__protocol_8h_a31e46c5def1d302719d62543c9b3a11e}{fields\+\_\+packet}} \mbox{\hyperlink{structram__data__struct_a7f2127d07d9edbc570aae7abb635cdd8}{rx\+\_\+packet\+\_\+struct}}
+\begin{DoxyCompactList}\small\item\em Принятый пакет с идентифицированными полями \end{DoxyCompactList}\item 
+\mbox{\hyperlink{rs422__protocol_8h_a31e46c5def1d302719d62543c9b3a11e}{fields\+\_\+packet}} \mbox{\hyperlink{structram__data__struct_aade052f13f081a219189d9494fbdde89}{tx\+\_\+packet\+\_\+struct}}
+\begin{DoxyCompactList}\small\item\em Отправляемый пакет с идентифицированными полями \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{structram__data__struct_a492d81e21ce5dac959ae56a9175b3dde}{tx\+\_\+data}} \mbox{[}\mbox{\hyperlink{uart_8h_a0d57378e32bf8278011460740bc29f7f}{U\+A\+R\+T\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE}}\mbox{]}
+\begin{DoxyCompactList}\small\item\em Выделенное место для данных tx\+\_\+packet. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{structram__data__struct_a858728905809492bd23395b9f8b6ad95}{packet\+\_\+rx}} \mbox{[}\mbox{\hyperlink{uart_8h_a0d57378e32bf8278011460740bc29f7f}{U\+A\+R\+T\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE}}\mbox{]}
+\begin{DoxyCompactList}\small\item\em Буфер с принятым пакетом \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{structram__data__struct_a3665b197d1eb167f35ba9a58b3677691}{packet\+\_\+tx}} \mbox{[}\mbox{\hyperlink{uart_8h_a0d57378e32bf8278011460740bc29f7f}{U\+A\+R\+T\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE}}\mbox{]}
+\begin{DoxyCompactList}\small\item\em Буфер с отправленным пакетом \end{DoxyCompactList}\item 
+\mbox{\hyperlink{external__ram_8h_afc65bf27de36d72dec215dfa5368374c}{service\+\_\+struct\+\_\+pm}} \mbox{\hyperlink{structram__data__struct_ac62275f40908961a48f2c49d8e85a2df}{service\+\_\+byte\+\_\+pm}}
+\begin{DoxyCompactList}\small\item\em Структура сервисного байта ПМ \end{DoxyCompactList}\item 
+\mbox{\hyperlink{external__ram_8h_a4102ee639f837e4d037aef163aeacf15}{service\+\_\+struct\+\_\+um}} \mbox{\hyperlink{structram__data__struct_a20ec1ad93822ba1a91654812c83b77e2}{service\+\_\+byte\+\_\+um}}
+\begin{DoxyCompactList}\small\item\em Структура сервисного байта УМ \end{DoxyCompactList}\item 
+uint\+\_\+least32\+\_\+t \mbox{\hyperlink{structram__data__struct_a4a4fb4f881c11792f26679743010a42f}{crc\+\_\+table}} \mbox{[}256\mbox{]}
+\begin{DoxyCompactList}\small\item\em Таблица для вычисления контрольной суммы \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{structram__data__struct_a41d91820425c08fe1b256be17b38de21}{uart1\+\_\+rx\+\_\+buffer}} \mbox{[}\mbox{\hyperlink{uart_8h_a0d57378e32bf8278011460740bc29f7f}{U\+A\+R\+T\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE}}\mbox{]}
+\begin{DoxyCompactList}\small\item\em Буфер приемника U\+A\+R\+T1. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{structram__data__struct_ae35f6e14155e3bf0057c8a13a8d6bc0c}{uart2\+\_\+rx\+\_\+buffer}} \mbox{[}\mbox{\hyperlink{uart_8h_a0d57378e32bf8278011460740bc29f7f}{U\+A\+R\+T\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE}}\mbox{]}
+\begin{DoxyCompactList}\small\item\em Буфер приемника U\+A\+R\+T2. \end{DoxyCompactList}\item 
+uint16\+\_\+t \mbox{\hyperlink{structram__data__struct_aa408978a8e55bf008474fd09861d867f}{spi\+\_\+1\+\_\+rx\+\_\+buffer}} \mbox{[}\mbox{\hyperlink{spi_8h_a97f9f5cc546b1896703fe63289b4fd3d}{S\+P\+I\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE}}\mbox{]}
+\begin{DoxyCompactList}\small\item\em Буфер приемника S\+P\+I1. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Структура организующая память во внешнем ОЗУ 
+
+\doxysubsection{Данные класса}
+\mbox{\Hypertarget{structram__data__struct_a29ff19a4ce45ab988b4f61feaea38545}\label{structram__data__struct_a29ff19a4ce45ab988b4f61feaea38545}} 
+\index{ram\_data\_struct@{ram\_data\_struct}!common\_ram\_register\_space@{common\_ram\_register\_space}}
+\index{common\_ram\_register\_space@{common\_ram\_register\_space}!ram\_data\_struct@{ram\_data\_struct}}
+\doxysubsubsection{\texorpdfstring{common\_ram\_register\_space}{common\_ram\_register\_space}}
+{\footnotesize\ttfamily \mbox{\hyperlink{external__ram_8h_ae89789d7f765328bd1d8c6e089f1f2ab}{common\+\_\+ram\+\_\+registers}} ram\+\_\+data\+\_\+struct\+::common\+\_\+ram\+\_\+register\+\_\+space}
+
+
+
+Карта общих регистров начиная с адреса R\+E\+G\+I\+S\+T\+E\+R\+\_\+\+S\+P\+A\+C\+E\+\_\+\+S\+T\+A\+R\+T\+\_\+\+A\+D\+DR. 
+
+\mbox{\Hypertarget{structram__data__struct_a4a4fb4f881c11792f26679743010a42f}\label{structram__data__struct_a4a4fb4f881c11792f26679743010a42f}} 
+\index{ram\_data\_struct@{ram\_data\_struct}!crc\_table@{crc\_table}}
+\index{crc\_table@{crc\_table}!ram\_data\_struct@{ram\_data\_struct}}
+\doxysubsubsection{\texorpdfstring{crc\_table}{crc\_table}}
+{\footnotesize\ttfamily uint\+\_\+least32\+\_\+t ram\+\_\+data\+\_\+struct\+::crc\+\_\+table\mbox{[}256\mbox{]}}
+
+
+
+Таблица для вычисления контрольной суммы 
+
+\mbox{\Hypertarget{structram__data__struct_a99f72177584aee68a4ed2064b1fecbde}\label{structram__data__struct_a99f72177584aee68a4ed2064b1fecbde}} 
+\index{ram\_data\_struct@{ram\_data\_struct}!mpa\_ram\_register\_space@{mpa\_ram\_register\_space}}
+\index{mpa\_ram\_register\_space@{mpa\_ram\_register\_space}!ram\_data\_struct@{ram\_data\_struct}}
+\doxysubsubsection{\texorpdfstring{mpa\_ram\_register\_space}{mpa\_ram\_register\_space}}
+{\footnotesize\ttfamily \mbox{\hyperlink{external__ram_8h_a1cb2f4e25a86473899fae359eccd2c4d}{mpa\+\_\+ram\+\_\+registers}} ram\+\_\+data\+\_\+struct\+::mpa\+\_\+ram\+\_\+register\+\_\+space}
+
+
+
+Карта регистров МПА начиная с адреса R\+E\+G\+I\+S\+T\+E\+R\+\_\+\+S\+P\+A\+C\+E\+\_\+\+S\+T\+A\+R\+T\+\_\+\+A\+D\+DR. 
+
+\mbox{\Hypertarget{structram__data__struct_a858728905809492bd23395b9f8b6ad95}\label{structram__data__struct_a858728905809492bd23395b9f8b6ad95}} 
+\index{ram\_data\_struct@{ram\_data\_struct}!packet\_rx@{packet\_rx}}
+\index{packet\_rx@{packet\_rx}!ram\_data\_struct@{ram\_data\_struct}}
+\doxysubsubsection{\texorpdfstring{packet\_rx}{packet\_rx}}
+{\footnotesize\ttfamily uint8\+\_\+t ram\+\_\+data\+\_\+struct\+::packet\+\_\+rx\mbox{[}\mbox{\hyperlink{uart_8h_a0d57378e32bf8278011460740bc29f7f}{U\+A\+R\+T\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE}}\mbox{]}}
+
+
+
+Буфер с принятым пакетом 
+
+\mbox{\Hypertarget{structram__data__struct_a3665b197d1eb167f35ba9a58b3677691}\label{structram__data__struct_a3665b197d1eb167f35ba9a58b3677691}} 
+\index{ram\_data\_struct@{ram\_data\_struct}!packet\_tx@{packet\_tx}}
+\index{packet\_tx@{packet\_tx}!ram\_data\_struct@{ram\_data\_struct}}
+\doxysubsubsection{\texorpdfstring{packet\_tx}{packet\_tx}}
+{\footnotesize\ttfamily uint8\+\_\+t ram\+\_\+data\+\_\+struct\+::packet\+\_\+tx\mbox{[}\mbox{\hyperlink{uart_8h_a0d57378e32bf8278011460740bc29f7f}{U\+A\+R\+T\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE}}\mbox{]}}
+
+
+
+Буфер с отправленным пакетом 
+
+\mbox{\Hypertarget{structram__data__struct_a802ed45cf44c03eb17497774fb59aeb5}\label{structram__data__struct_a802ed45cf44c03eb17497774fb59aeb5}} 
+\index{ram\_data\_struct@{ram\_data\_struct}!Reserv@{Reserv}}
+\index{Reserv@{Reserv}!ram\_data\_struct@{ram\_data\_struct}}
+\doxysubsubsection{\texorpdfstring{Reserv}{Reserv}}
+{\footnotesize\ttfamily uint8\+\_\+t ram\+\_\+data\+\_\+struct\+::\+Reserv\mbox{[}\mbox{\hyperlink{external__ram_8h_af46525578bcb3a80d76d60b7537f0f94}{R\+A\+M\+\_\+\+R\+E\+G\+I\+S\+T\+E\+R\+\_\+\+S\+P\+A\+C\+E\+\_\+\+S\+T\+A\+R\+T\+\_\+\+A\+D\+DR}} -\/ sizeof(\mbox{\hyperlink{external__ram_8h_ad52ebc9def70278428b60cfdc9d51fe8}{ram\+\_\+start\+\_\+struct}})\mbox{]}}
+
+
+
+Зарезервированное место 
+
+\mbox{\Hypertarget{structram__data__struct_a7f2127d07d9edbc570aae7abb635cdd8}\label{structram__data__struct_a7f2127d07d9edbc570aae7abb635cdd8}} 
+\index{ram\_data\_struct@{ram\_data\_struct}!rx\_packet\_struct@{rx\_packet\_struct}}
+\index{rx\_packet\_struct@{rx\_packet\_struct}!ram\_data\_struct@{ram\_data\_struct}}
+\doxysubsubsection{\texorpdfstring{rx\_packet\_struct}{rx\_packet\_struct}}
+{\footnotesize\ttfamily \mbox{\hyperlink{rs422__protocol_8h_a31e46c5def1d302719d62543c9b3a11e}{fields\+\_\+packet}} ram\+\_\+data\+\_\+struct\+::rx\+\_\+packet\+\_\+struct}
+
+
+
+Принятый пакет с идентифицированными полями 
+
+\mbox{\Hypertarget{structram__data__struct_ac62275f40908961a48f2c49d8e85a2df}\label{structram__data__struct_ac62275f40908961a48f2c49d8e85a2df}} 
+\index{ram\_data\_struct@{ram\_data\_struct}!service\_byte\_pm@{service\_byte\_pm}}
+\index{service\_byte\_pm@{service\_byte\_pm}!ram\_data\_struct@{ram\_data\_struct}}
+\doxysubsubsection{\texorpdfstring{service\_byte\_pm}{service\_byte\_pm}}
+{\footnotesize\ttfamily \mbox{\hyperlink{external__ram_8h_afc65bf27de36d72dec215dfa5368374c}{service\+\_\+struct\+\_\+pm}} ram\+\_\+data\+\_\+struct\+::service\+\_\+byte\+\_\+pm}
+
+
+
+Структура сервисного байта ПМ 
+
+\mbox{\Hypertarget{structram__data__struct_a20ec1ad93822ba1a91654812c83b77e2}\label{structram__data__struct_a20ec1ad93822ba1a91654812c83b77e2}} 
+\index{ram\_data\_struct@{ram\_data\_struct}!service\_byte\_um@{service\_byte\_um}}
+\index{service\_byte\_um@{service\_byte\_um}!ram\_data\_struct@{ram\_data\_struct}}
+\doxysubsubsection{\texorpdfstring{service\_byte\_um}{service\_byte\_um}}
+{\footnotesize\ttfamily \mbox{\hyperlink{external__ram_8h_a4102ee639f837e4d037aef163aeacf15}{service\+\_\+struct\+\_\+um}} ram\+\_\+data\+\_\+struct\+::service\+\_\+byte\+\_\+um}
+
+
+
+Структура сервисного байта УМ 
+
+\mbox{\Hypertarget{structram__data__struct_aa408978a8e55bf008474fd09861d867f}\label{structram__data__struct_aa408978a8e55bf008474fd09861d867f}} 
+\index{ram\_data\_struct@{ram\_data\_struct}!spi\_1\_rx\_buffer@{spi\_1\_rx\_buffer}}
+\index{spi\_1\_rx\_buffer@{spi\_1\_rx\_buffer}!ram\_data\_struct@{ram\_data\_struct}}
+\doxysubsubsection{\texorpdfstring{spi\_1\_rx\_buffer}{spi\_1\_rx\_buffer}}
+{\footnotesize\ttfamily uint16\+\_\+t ram\+\_\+data\+\_\+struct\+::spi\+\_\+1\+\_\+rx\+\_\+buffer\mbox{[}\mbox{\hyperlink{spi_8h_a97f9f5cc546b1896703fe63289b4fd3d}{S\+P\+I\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE}}\mbox{]}}
+
+
+
+Буфер приемника S\+P\+I1. 
+
+\mbox{\Hypertarget{structram__data__struct_a0de3b7f84ef21ea299d6e45bbfc7dcf4}\label{structram__data__struct_a0de3b7f84ef21ea299d6e45bbfc7dcf4}} 
+\index{ram\_data\_struct@{ram\_data\_struct}!start\_struct@{start\_struct}}
+\index{start\_struct@{start\_struct}!ram\_data\_struct@{ram\_data\_struct}}
+\doxysubsubsection{\texorpdfstring{start\_struct}{start\_struct}}
+{\footnotesize\ttfamily \mbox{\hyperlink{external__ram_8h_ad52ebc9def70278428b60cfdc9d51fe8}{ram\+\_\+start\+\_\+struct}} ram\+\_\+data\+\_\+struct\+::start\+\_\+struct}
+
+
+
+Структура по умолчанию, которая должна находиться в начале ОЗУ 
+
+\mbox{\Hypertarget{structram__data__struct_a492d81e21ce5dac959ae56a9175b3dde}\label{structram__data__struct_a492d81e21ce5dac959ae56a9175b3dde}} 
+\index{ram\_data\_struct@{ram\_data\_struct}!tx\_data@{tx\_data}}
+\index{tx\_data@{tx\_data}!ram\_data\_struct@{ram\_data\_struct}}
+\doxysubsubsection{\texorpdfstring{tx\_data}{tx\_data}}
+{\footnotesize\ttfamily uint8\+\_\+t ram\+\_\+data\+\_\+struct\+::tx\+\_\+data\mbox{[}\mbox{\hyperlink{uart_8h_a0d57378e32bf8278011460740bc29f7f}{U\+A\+R\+T\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE}}\mbox{]}}
+
+
+
+Выделенное место для данных tx\+\_\+packet. 
+
+\mbox{\Hypertarget{structram__data__struct_aade052f13f081a219189d9494fbdde89}\label{structram__data__struct_aade052f13f081a219189d9494fbdde89}} 
+\index{ram\_data\_struct@{ram\_data\_struct}!tx\_packet\_struct@{tx\_packet\_struct}}
+\index{tx\_packet\_struct@{tx\_packet\_struct}!ram\_data\_struct@{ram\_data\_struct}}
+\doxysubsubsection{\texorpdfstring{tx\_packet\_struct}{tx\_packet\_struct}}
+{\footnotesize\ttfamily \mbox{\hyperlink{rs422__protocol_8h_a31e46c5def1d302719d62543c9b3a11e}{fields\+\_\+packet}} ram\+\_\+data\+\_\+struct\+::tx\+\_\+packet\+\_\+struct}
+
+
+
+Отправляемый пакет с идентифицированными полями 
+
+\mbox{\Hypertarget{structram__data__struct_a41d91820425c08fe1b256be17b38de21}\label{structram__data__struct_a41d91820425c08fe1b256be17b38de21}} 
+\index{ram\_data\_struct@{ram\_data\_struct}!uart1\_rx\_buffer@{uart1\_rx\_buffer}}
+\index{uart1\_rx\_buffer@{uart1\_rx\_buffer}!ram\_data\_struct@{ram\_data\_struct}}
+\doxysubsubsection{\texorpdfstring{uart1\_rx\_buffer}{uart1\_rx\_buffer}}
+{\footnotesize\ttfamily uint8\+\_\+t ram\+\_\+data\+\_\+struct\+::uart1\+\_\+rx\+\_\+buffer\mbox{[}\mbox{\hyperlink{uart_8h_a0d57378e32bf8278011460740bc29f7f}{U\+A\+R\+T\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE}}\mbox{]}}
+
+
+
+Буфер приемника U\+A\+R\+T1. 
+
+\mbox{\Hypertarget{structram__data__struct_ae35f6e14155e3bf0057c8a13a8d6bc0c}\label{structram__data__struct_ae35f6e14155e3bf0057c8a13a8d6bc0c}} 
+\index{ram\_data\_struct@{ram\_data\_struct}!uart2\_rx\_buffer@{uart2\_rx\_buffer}}
+\index{uart2\_rx\_buffer@{uart2\_rx\_buffer}!ram\_data\_struct@{ram\_data\_struct}}
+\doxysubsubsection{\texorpdfstring{uart2\_rx\_buffer}{uart2\_rx\_buffer}}
+{\footnotesize\ttfamily uint8\+\_\+t ram\+\_\+data\+\_\+struct\+::uart2\+\_\+rx\+\_\+buffer\mbox{[}\mbox{\hyperlink{uart_8h_a0d57378e32bf8278011460740bc29f7f}{U\+A\+R\+T\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE}}\mbox{]}}
+
+
+
+Буфер приемника U\+A\+R\+T2. 
+
+
+
+Объявления и описания членов структуры находятся в файле\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{external__ram_8h}{external\+\_\+ram.\+h}}\end{DoxyCompactItemize}

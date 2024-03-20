@@ -1,0 +1,1103 @@
+\hypertarget{rs422__protocol_8h}{}\doxysection{Файл rs422\+\_\+protocol.\+h}
+\label{rs422__protocol_8h}\index{rs422\_protocol.h@{rs422\_protocol.h}}
+
+
+Заголовочный файл с описанием A\+PI протокола обмена данными по интерфейсу R\+S-\/422.  
+
+
+{\ttfamily \#include \char`\"{}uart.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$stddef.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+Граф включаемых заголовочных файлов для rs422\+\_\+protocol.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{rs422__protocol_8h__incl}
+\end{center}
+\end{figure}
+Граф файлов, в которые включается этот файл\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{rs422__protocol_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Классы}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structcmd__header__struct}{cmd\+\_\+header\+\_\+struct}}
+\begin{DoxyCompactList}\small\item\em Структура с заголовком для каждой команды (субпакета) внутри одного пакета \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structcmd__struct}{cmd\+\_\+struct}}
+\begin{DoxyCompactList}\small\item\em Структура с полями данных для каждой команды (субпакета) внутри одного пакета \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structpacket__header__struct}{packet\+\_\+header\+\_\+struct}}
+\begin{DoxyCompactList}\small\item\em Структура с полями заголовка пакета \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structpacket__tail__Struct}{packet\+\_\+tail\+\_\+\+Struct}}
+\begin{DoxyCompactList}\small\item\em Структура с полями конца пакета \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structtx__rx__packet__struct}{tx\+\_\+rx\+\_\+packet\+\_\+struct}}
+\begin{DoxyCompactList}\small\item\em Структура пакета данных согласно утвержденному протоколу обмена данными \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Макросы}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{rs422__protocol_8h_acf1412bbf1c81fab86458c90cd04e589}{N\+U\+M\+B\+E\+R\+\_\+\+C\+M\+D\+S\+\_\+\+I\+N\+\_\+\+P\+A\+C\+K\+ET}}~255
+\begin{DoxyCompactList}\small\item\em Максимально возможное число команд в одном пакете \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{rs422__protocol_8h_ab7a88226a8fded994cb74483cc3d27d9}{P\+A\+C\+K\+E\+T\+\_\+\+H\+E\+AD}}~0x55
+\begin{DoxyCompactList}\small\item\em Заголовок пакета \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{rs422__protocol_8h_a6ed2133dbbc85f621ee0615069481eba}{P\+A\+C\+K\+E\+T\+\_\+\+T\+A\+IL}}~0x\+A\+A\+AA
+\begin{DoxyCompactList}\small\item\em Хвост пакета \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{rs422__protocol_8h_a6c25279ec70c83dc98246f5655de9a4d}{P\+L\+C\+\_\+\+C\+M\+\_\+\+U\+N\+K\+N\+O\+W\+N\+\_\+\+S\+T\+A\+TE}}~0x10
+\begin{DoxyCompactList}\small\item\em Неизвестное состояние \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{rs422__protocol_8h_a23fc42df1955da9f3eb1d0c2621d2aed}{P\+L\+C\+\_\+\+C\+M\+\_\+\+I\+N\+I\+T\+\_\+2\+\_\+\+B\+US}}~0x09
+\begin{DoxyCompactList}\small\item\em Модуль инициализирован, управление по шине 2. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{rs422__protocol_8h_a01c06ad9a04a9ca4aaac82c60a5f4b4c}{P\+L\+C\+\_\+\+C\+M\+\_\+\+C\+R\+I\+T\+I\+C\+A\+L\+\_\+\+F\+A\+U\+LT}}~0x06
+\begin{DoxyCompactList}\small\item\em Критическая неисправность \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{rs422__protocol_8h_aad7ddbf6d8aee65c5c90e647c5dff880}{P\+L\+C\+\_\+\+C\+M\+\_\+\+R\+E\+M\+O\+V\+E\+\_\+\+I\+N\+IT}}~0x05
+\begin{DoxyCompactList}\small\item\em Управление не осуществляется (снятие инициализации) \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{rs422__protocol_8h_a4356c5f2678dde04a1405c6cdd3eca86}{P\+L\+C\+\_\+\+C\+M\+\_\+\+I\+N\+I\+T\+\_\+1\+\_\+\+B\+US}}~0x04
+\begin{DoxyCompactList}\small\item\em Модуль инициализирован, управление по шине 1. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{rs422__protocol_8h_a187790db575f8159db45135102fb2504}{P\+L\+C\+\_\+\+C\+M\+\_\+\+N\+O\+T\+\_\+\+I\+N\+IT}}~0x01
+\begin{DoxyCompactList}\small\item\em Модуль не инициализирован \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{rs422__protocol_8h_ad7820c9e249225fa2598f435df7ddeba}{T\+Y\+P\+E\+\_\+\+C\+MD}}~0x00
+\begin{DoxyCompactList}\small\item\em Код команды T\+Y\+PE. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{rs422__protocol_8h_ae4eabd026e666b08fbd5d6c6f9499d45}{I\+N\+I\+T\+\_\+\+C\+MD}}~0x01
+\begin{DoxyCompactList}\small\item\em Код команды I\+N\+IT. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{rs422__protocol_8h_a21623e2a5501c821da54dd76ffc1d077}{R\+E\+A\+D\+\_\+\+C\+MD}}~0x02
+\begin{DoxyCompactList}\small\item\em Код команды R\+E\+AD. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{rs422__protocol_8h_af792feb13ae0c1eab8f95f64c8baa96d}{W\+R\+I\+T\+E\+\_\+\+C\+MD}}~0x03
+\begin{DoxyCompactList}\small\item\em Код команды W\+R\+I\+TE. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{rs422__protocol_8h_a1b576d3886aa80ee37419f976b7f3289}{R\+E\+S\+E\+T\+\_\+\+C\+MD}}~0x04
+\begin{DoxyCompactList}\small\item\em Код команды R\+E\+S\+ET. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{rs422__protocol_8h_a76ea3cf49247a07c54b3db005a3c7f57}{C\+O\+N\+F\+IG}}~0x05
+\begin{DoxyCompactList}\small\item\em Код команды C\+O\+N\+F\+IG. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Определения типов}
+\begin{DoxyCompactItemize}
+\item 
+typedef enum \mbox{\hyperlink{rs422__protocol_8h_aba7cbaf5e7772f2d042fe6c708b254bf}{protocol\+\_\+errors}} \mbox{\hyperlink{rs422__protocol_8h_a3daaf0175074f4779cf90ad4c6956752}{protocol\+\_\+error}}
+\begin{DoxyCompactList}\small\item\em Коды ошибок, которые могут возникать в процессе обмена данными по шине \end{DoxyCompactList}\item 
+typedef struct \mbox{\hyperlink{structcmd__header__struct}{cmd\+\_\+header\+\_\+struct}} \mbox{\hyperlink{rs422__protocol_8h_a080d1faf2afa75a4fd2cee16566addd9}{fields\+\_\+cmd\+\_\+header}}
+\begin{DoxyCompactList}\small\item\em Структура с заголовком для каждой команды (субпакета) внутри одного пакета \end{DoxyCompactList}\item 
+typedef struct \mbox{\hyperlink{structcmd__struct}{cmd\+\_\+struct}} \mbox{\hyperlink{rs422__protocol_8h_a56ff0b0094710491e663ab47bd92ca20}{fields\+\_\+cmd}}
+\begin{DoxyCompactList}\small\item\em Структура с полями данных для каждой команды (субпакета) внутри одного пакета \end{DoxyCompactList}\item 
+typedef struct \mbox{\hyperlink{structpacket__header__struct}{packet\+\_\+header\+\_\+struct}} \mbox{\hyperlink{rs422__protocol_8h_a2d873034c03caf25304010e73e441744}{fields\+\_\+packet\+\_\+header}}
+\begin{DoxyCompactList}\small\item\em Структура с полями заголовка пакета \end{DoxyCompactList}\item 
+typedef struct \mbox{\hyperlink{structpacket__tail__Struct}{packet\+\_\+tail\+\_\+\+Struct}} \mbox{\hyperlink{rs422__protocol_8h_a7510a1bc271d66928a58fb54013e9379}{fields\+\_\+packet\+\_\+tail}}
+\begin{DoxyCompactList}\small\item\em Структура с полями конца пакета \end{DoxyCompactList}\item 
+typedef struct \mbox{\hyperlink{structtx__rx__packet__struct}{tx\+\_\+rx\+\_\+packet\+\_\+struct}} \mbox{\hyperlink{rs422__protocol_8h_a31e46c5def1d302719d62543c9b3a11e}{fields\+\_\+packet}}
+\begin{DoxyCompactList}\small\item\em Структура пакета данных согласно утвержденному протоколу обмена данными \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Перечисления}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{rs422__protocol_8h_aba7cbaf5e7772f2d042fe6c708b254bf}{protocol\+\_\+errors}} \{ \newline
+\mbox{\hyperlink{rs422__protocol_8h_aba7cbaf5e7772f2d042fe6c708b254bfabf350750d0d4fabd8954c0f1e9bbae94}{N\+O\+\_\+\+E\+R\+R\+OR}}, 
+\mbox{\hyperlink{rs422__protocol_8h_aba7cbaf5e7772f2d042fe6c708b254bfa8d985e4627498f56f5ab06caa7405b46}{U\+A\+R\+T\+\_\+\+E\+R\+R\+OR}}, 
+\mbox{\hyperlink{rs422__protocol_8h_aba7cbaf5e7772f2d042fe6c708b254bfa8a393db133e073ad8bac2f92e78d6f5d}{C\+R\+C\+\_\+\+E\+R\+R\+OR}}, 
+\mbox{\hyperlink{rs422__protocol_8h_aba7cbaf5e7772f2d042fe6c708b254bfaf56071aad4bdf2cfc6d2e1337c0a1614}{P\+M\+\_\+\+A\+D\+D\+R\+\_\+\+E\+R\+R\+OR}}, 
+\newline
+\mbox{\hyperlink{rs422__protocol_8h_aba7cbaf5e7772f2d042fe6c708b254bfa9f7b3973b120dc5e465046d84ab437c8}{P\+A\+C\+K\+E\+T\+\_\+\+E\+R\+R\+OR}}
+ \}
+\begin{DoxyCompactList}\small\item\em Коды ошибок, которые могут возникать в процессе обмена данными по шине \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Функции}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{rs422__protocol_8h_a3daaf0175074f4779cf90ad4c6956752}{protocol\+\_\+error}} \mbox{\hyperlink{rs422__protocol_8h_af1ea8ba5878ba6102b6e8b6b33bd5b4a}{transmit\+\_\+packet}} (\mbox{\hyperlink{uart_8h_adaa8285f14392d31d36867eddcd78572}{uart\+\_\+n}} $\ast$uart\+\_\+struct, uint8\+\_\+t ext\+\_\+bus)
+\begin{DoxyCompactList}\small\item\em Отправляет пакет данных \end{DoxyCompactList}\item 
+\mbox{\hyperlink{rs422__protocol_8h_a3daaf0175074f4779cf90ad4c6956752}{protocol\+\_\+error}} \mbox{\hyperlink{rs422__protocol_8h_a10e95fbdcf84e63f3680809c93659d9a}{receive\+\_\+packet}} (\mbox{\hyperlink{uart_8h_adaa8285f14392d31d36867eddcd78572}{uart\+\_\+n}} $\ast$uart\+\_\+struct, uint8\+\_\+t ext\+\_\+bus)
+\begin{DoxyCompactList}\small\item\em Читает пакет данных \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{rs422__protocol_8h_a4a980b6aae1cf18f767040d266ddf695}{protocol\+\_\+do\+\_\+cmds}} (uint8\+\_\+t ext\+\_\+bus)
+\begin{DoxyCompactList}\small\item\em Выполняет требуемые команды \end{DoxyCompactList}\item 
+uint\+\_\+least32\+\_\+t \mbox{\hyperlink{rs422__protocol_8h_a65d2811dc9961bbe401508d42c37c065}{crc32}} (uint8\+\_\+t $\ast$buf, size\+\_\+t len)
+\begin{DoxyCompactList}\small\item\em Вычисляет контрольную сумму по алгоритму C\+R\+C32. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{rs422__protocol_8h_aed4c57914a23fa546b89d30973b11478}{fill\+\_\+crc32\+\_\+table}} (void)
+\begin{DoxyCompactList}\small\item\em Заполняет таблицу C\+R\+C32. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{rs422__protocol_8h_a52f65e97179a211b7317656d3f6fb9f5}{rx\+\_\+error\+\_\+handler}} (\mbox{\hyperlink{rs422__protocol_8h_a3daaf0175074f4779cf90ad4c6956752}{protocol\+\_\+error}} error, uint8\+\_\+t ext\+\_\+bus)
+\begin{DoxyCompactList}\small\item\em Обрабатывает ошибки приема пакетов \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{rs422__protocol_8h_a39460309d7bc42043887006271f2cdee}{um\+\_\+service\+\_\+byte\+\_\+handler}} (uint8\+\_\+t ext\+\_\+bus)
+\begin{DoxyCompactList}\small\item\em Обрабатывает сервисный байт УМ \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Заголовочный файл с описанием A\+PI протокола обмена данными по интерфейсу R\+S-\/422. 
+
+
+
+\doxysubsection{Макросы}
+\mbox{\Hypertarget{rs422__protocol_8h_a76ea3cf49247a07c54b3db005a3c7f57}\label{rs422__protocol_8h_a76ea3cf49247a07c54b3db005a3c7f57}} 
+\index{rs422\_protocol.h@{rs422\_protocol.h}!CONFIG@{CONFIG}}
+\index{CONFIG@{CONFIG}!rs422\_protocol.h@{rs422\_protocol.h}}
+\doxysubsubsection{\texorpdfstring{CONFIG}{CONFIG}}
+{\footnotesize\ttfamily \#define C\+O\+N\+F\+IG~0x05}
+
+
+
+Код команды C\+O\+N\+F\+IG. 
+
+\mbox{\Hypertarget{rs422__protocol_8h_ae4eabd026e666b08fbd5d6c6f9499d45}\label{rs422__protocol_8h_ae4eabd026e666b08fbd5d6c6f9499d45}} 
+\index{rs422\_protocol.h@{rs422\_protocol.h}!INIT\_CMD@{INIT\_CMD}}
+\index{INIT\_CMD@{INIT\_CMD}!rs422\_protocol.h@{rs422\_protocol.h}}
+\doxysubsubsection{\texorpdfstring{INIT\_CMD}{INIT\_CMD}}
+{\footnotesize\ttfamily \#define I\+N\+I\+T\+\_\+\+C\+MD~0x01}
+
+
+
+Код команды I\+N\+IT. 
+
+\mbox{\Hypertarget{rs422__protocol_8h_acf1412bbf1c81fab86458c90cd04e589}\label{rs422__protocol_8h_acf1412bbf1c81fab86458c90cd04e589}} 
+\index{rs422\_protocol.h@{rs422\_protocol.h}!NUMBER\_CMDS\_IN\_PACKET@{NUMBER\_CMDS\_IN\_PACKET}}
+\index{NUMBER\_CMDS\_IN\_PACKET@{NUMBER\_CMDS\_IN\_PACKET}!rs422\_protocol.h@{rs422\_protocol.h}}
+\doxysubsubsection{\texorpdfstring{NUMBER\_CMDS\_IN\_PACKET}{NUMBER\_CMDS\_IN\_PACKET}}
+{\footnotesize\ttfamily \#define N\+U\+M\+B\+E\+R\+\_\+\+C\+M\+D\+S\+\_\+\+I\+N\+\_\+\+P\+A\+C\+K\+ET~255}
+
+
+
+Максимально возможное число команд в одном пакете 
+
+\mbox{\Hypertarget{rs422__protocol_8h_ab7a88226a8fded994cb74483cc3d27d9}\label{rs422__protocol_8h_ab7a88226a8fded994cb74483cc3d27d9}} 
+\index{rs422\_protocol.h@{rs422\_protocol.h}!PACKET\_HEAD@{PACKET\_HEAD}}
+\index{PACKET\_HEAD@{PACKET\_HEAD}!rs422\_protocol.h@{rs422\_protocol.h}}
+\doxysubsubsection{\texorpdfstring{PACKET\_HEAD}{PACKET\_HEAD}}
+{\footnotesize\ttfamily \#define P\+A\+C\+K\+E\+T\+\_\+\+H\+E\+AD~0x55}
+
+
+
+Заголовок пакета 
+
+\mbox{\Hypertarget{rs422__protocol_8h_a6ed2133dbbc85f621ee0615069481eba}\label{rs422__protocol_8h_a6ed2133dbbc85f621ee0615069481eba}} 
+\index{rs422\_protocol.h@{rs422\_protocol.h}!PACKET\_TAIL@{PACKET\_TAIL}}
+\index{PACKET\_TAIL@{PACKET\_TAIL}!rs422\_protocol.h@{rs422\_protocol.h}}
+\doxysubsubsection{\texorpdfstring{PACKET\_TAIL}{PACKET\_TAIL}}
+{\footnotesize\ttfamily \#define P\+A\+C\+K\+E\+T\+\_\+\+T\+A\+IL~0x\+A\+A\+AA}
+
+
+
+Хвост пакета 
+
+\mbox{\Hypertarget{rs422__protocol_8h_a01c06ad9a04a9ca4aaac82c60a5f4b4c}\label{rs422__protocol_8h_a01c06ad9a04a9ca4aaac82c60a5f4b4c}} 
+\index{rs422\_protocol.h@{rs422\_protocol.h}!PLC\_CM\_CRITICAL\_FAULT@{PLC\_CM\_CRITICAL\_FAULT}}
+\index{PLC\_CM\_CRITICAL\_FAULT@{PLC\_CM\_CRITICAL\_FAULT}!rs422\_protocol.h@{rs422\_protocol.h}}
+\doxysubsubsection{\texorpdfstring{PLC\_CM\_CRITICAL\_FAULT}{PLC\_CM\_CRITICAL\_FAULT}}
+{\footnotesize\ttfamily \#define P\+L\+C\+\_\+\+C\+M\+\_\+\+C\+R\+I\+T\+I\+C\+A\+L\+\_\+\+F\+A\+U\+LT~0x06}
+
+
+
+Критическая неисправность 
+
+\mbox{\Hypertarget{rs422__protocol_8h_a4356c5f2678dde04a1405c6cdd3eca86}\label{rs422__protocol_8h_a4356c5f2678dde04a1405c6cdd3eca86}} 
+\index{rs422\_protocol.h@{rs422\_protocol.h}!PLC\_CM\_INIT\_1\_BUS@{PLC\_CM\_INIT\_1\_BUS}}
+\index{PLC\_CM\_INIT\_1\_BUS@{PLC\_CM\_INIT\_1\_BUS}!rs422\_protocol.h@{rs422\_protocol.h}}
+\doxysubsubsection{\texorpdfstring{PLC\_CM\_INIT\_1\_BUS}{PLC\_CM\_INIT\_1\_BUS}}
+{\footnotesize\ttfamily \#define P\+L\+C\+\_\+\+C\+M\+\_\+\+I\+N\+I\+T\+\_\+1\+\_\+\+B\+US~0x04}
+
+
+
+Модуль инициализирован, управление по шине 1. 
+
+\mbox{\Hypertarget{rs422__protocol_8h_a23fc42df1955da9f3eb1d0c2621d2aed}\label{rs422__protocol_8h_a23fc42df1955da9f3eb1d0c2621d2aed}} 
+\index{rs422\_protocol.h@{rs422\_protocol.h}!PLC\_CM\_INIT\_2\_BUS@{PLC\_CM\_INIT\_2\_BUS}}
+\index{PLC\_CM\_INIT\_2\_BUS@{PLC\_CM\_INIT\_2\_BUS}!rs422\_protocol.h@{rs422\_protocol.h}}
+\doxysubsubsection{\texorpdfstring{PLC\_CM\_INIT\_2\_BUS}{PLC\_CM\_INIT\_2\_BUS}}
+{\footnotesize\ttfamily \#define P\+L\+C\+\_\+\+C\+M\+\_\+\+I\+N\+I\+T\+\_\+2\+\_\+\+B\+US~0x09}
+
+
+
+Модуль инициализирован, управление по шине 2. 
+
+\mbox{\Hypertarget{rs422__protocol_8h_a187790db575f8159db45135102fb2504}\label{rs422__protocol_8h_a187790db575f8159db45135102fb2504}} 
+\index{rs422\_protocol.h@{rs422\_protocol.h}!PLC\_CM\_NOT\_INIT@{PLC\_CM\_NOT\_INIT}}
+\index{PLC\_CM\_NOT\_INIT@{PLC\_CM\_NOT\_INIT}!rs422\_protocol.h@{rs422\_protocol.h}}
+\doxysubsubsection{\texorpdfstring{PLC\_CM\_NOT\_INIT}{PLC\_CM\_NOT\_INIT}}
+{\footnotesize\ttfamily \#define P\+L\+C\+\_\+\+C\+M\+\_\+\+N\+O\+T\+\_\+\+I\+N\+IT~0x01}
+
+
+
+Модуль не инициализирован 
+
+\mbox{\Hypertarget{rs422__protocol_8h_aad7ddbf6d8aee65c5c90e647c5dff880}\label{rs422__protocol_8h_aad7ddbf6d8aee65c5c90e647c5dff880}} 
+\index{rs422\_protocol.h@{rs422\_protocol.h}!PLC\_CM\_REMOVE\_INIT@{PLC\_CM\_REMOVE\_INIT}}
+\index{PLC\_CM\_REMOVE\_INIT@{PLC\_CM\_REMOVE\_INIT}!rs422\_protocol.h@{rs422\_protocol.h}}
+\doxysubsubsection{\texorpdfstring{PLC\_CM\_REMOVE\_INIT}{PLC\_CM\_REMOVE\_INIT}}
+{\footnotesize\ttfamily \#define P\+L\+C\+\_\+\+C\+M\+\_\+\+R\+E\+M\+O\+V\+E\+\_\+\+I\+N\+IT~0x05}
+
+
+
+Управление не осуществляется (снятие инициализации) 
+
+\mbox{\Hypertarget{rs422__protocol_8h_a6c25279ec70c83dc98246f5655de9a4d}\label{rs422__protocol_8h_a6c25279ec70c83dc98246f5655de9a4d}} 
+\index{rs422\_protocol.h@{rs422\_protocol.h}!PLC\_CM\_UNKNOWN\_STATE@{PLC\_CM\_UNKNOWN\_STATE}}
+\index{PLC\_CM\_UNKNOWN\_STATE@{PLC\_CM\_UNKNOWN\_STATE}!rs422\_protocol.h@{rs422\_protocol.h}}
+\doxysubsubsection{\texorpdfstring{PLC\_CM\_UNKNOWN\_STATE}{PLC\_CM\_UNKNOWN\_STATE}}
+{\footnotesize\ttfamily \#define P\+L\+C\+\_\+\+C\+M\+\_\+\+U\+N\+K\+N\+O\+W\+N\+\_\+\+S\+T\+A\+TE~0x10}
+
+
+
+Неизвестное состояние 
+
+\mbox{\Hypertarget{rs422__protocol_8h_a21623e2a5501c821da54dd76ffc1d077}\label{rs422__protocol_8h_a21623e2a5501c821da54dd76ffc1d077}} 
+\index{rs422\_protocol.h@{rs422\_protocol.h}!READ\_CMD@{READ\_CMD}}
+\index{READ\_CMD@{READ\_CMD}!rs422\_protocol.h@{rs422\_protocol.h}}
+\doxysubsubsection{\texorpdfstring{READ\_CMD}{READ\_CMD}}
+{\footnotesize\ttfamily \#define R\+E\+A\+D\+\_\+\+C\+MD~0x02}
+
+
+
+Код команды R\+E\+AD. 
+
+\mbox{\Hypertarget{rs422__protocol_8h_a1b576d3886aa80ee37419f976b7f3289}\label{rs422__protocol_8h_a1b576d3886aa80ee37419f976b7f3289}} 
+\index{rs422\_protocol.h@{rs422\_protocol.h}!RESET\_CMD@{RESET\_CMD}}
+\index{RESET\_CMD@{RESET\_CMD}!rs422\_protocol.h@{rs422\_protocol.h}}
+\doxysubsubsection{\texorpdfstring{RESET\_CMD}{RESET\_CMD}}
+{\footnotesize\ttfamily \#define R\+E\+S\+E\+T\+\_\+\+C\+MD~0x04}
+
+
+
+Код команды R\+E\+S\+ET. 
+
+\mbox{\Hypertarget{rs422__protocol_8h_ad7820c9e249225fa2598f435df7ddeba}\label{rs422__protocol_8h_ad7820c9e249225fa2598f435df7ddeba}} 
+\index{rs422\_protocol.h@{rs422\_protocol.h}!TYPE\_CMD@{TYPE\_CMD}}
+\index{TYPE\_CMD@{TYPE\_CMD}!rs422\_protocol.h@{rs422\_protocol.h}}
+\doxysubsubsection{\texorpdfstring{TYPE\_CMD}{TYPE\_CMD}}
+{\footnotesize\ttfamily \#define T\+Y\+P\+E\+\_\+\+C\+MD~0x00}
+
+
+
+Код команды T\+Y\+PE. 
+
+\mbox{\Hypertarget{rs422__protocol_8h_af792feb13ae0c1eab8f95f64c8baa96d}\label{rs422__protocol_8h_af792feb13ae0c1eab8f95f64c8baa96d}} 
+\index{rs422\_protocol.h@{rs422\_protocol.h}!WRITE\_CMD@{WRITE\_CMD}}
+\index{WRITE\_CMD@{WRITE\_CMD}!rs422\_protocol.h@{rs422\_protocol.h}}
+\doxysubsubsection{\texorpdfstring{WRITE\_CMD}{WRITE\_CMD}}
+{\footnotesize\ttfamily \#define W\+R\+I\+T\+E\+\_\+\+C\+MD~0x03}
+
+
+
+Код команды W\+R\+I\+TE. 
+
+
+
+\doxysubsection{Типы}
+\mbox{\Hypertarget{rs422__protocol_8h_a56ff0b0094710491e663ab47bd92ca20}\label{rs422__protocol_8h_a56ff0b0094710491e663ab47bd92ca20}} 
+\index{rs422\_protocol.h@{rs422\_protocol.h}!fields\_cmd@{fields\_cmd}}
+\index{fields\_cmd@{fields\_cmd}!rs422\_protocol.h@{rs422\_protocol.h}}
+\doxysubsubsection{\texorpdfstring{fields\_cmd}{fields\_cmd}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structcmd__struct}{cmd\+\_\+struct}} \mbox{\hyperlink{rs422__protocol_8h_a56ff0b0094710491e663ab47bd92ca20}{fields\+\_\+cmd}}}
+
+
+
+Структура с полями данных для каждой команды (субпакета) внутри одного пакета 
+
+\mbox{\Hypertarget{rs422__protocol_8h_a080d1faf2afa75a4fd2cee16566addd9}\label{rs422__protocol_8h_a080d1faf2afa75a4fd2cee16566addd9}} 
+\index{rs422\_protocol.h@{rs422\_protocol.h}!fields\_cmd\_header@{fields\_cmd\_header}}
+\index{fields\_cmd\_header@{fields\_cmd\_header}!rs422\_protocol.h@{rs422\_protocol.h}}
+\doxysubsubsection{\texorpdfstring{fields\_cmd\_header}{fields\_cmd\_header}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structcmd__header__struct}{cmd\+\_\+header\+\_\+struct}} \mbox{\hyperlink{rs422__protocol_8h_a080d1faf2afa75a4fd2cee16566addd9}{fields\+\_\+cmd\+\_\+header}}}
+
+
+
+Структура с заголовком для каждой команды (субпакета) внутри одного пакета 
+
+\mbox{\Hypertarget{rs422__protocol_8h_a31e46c5def1d302719d62543c9b3a11e}\label{rs422__protocol_8h_a31e46c5def1d302719d62543c9b3a11e}} 
+\index{rs422\_protocol.h@{rs422\_protocol.h}!fields\_packet@{fields\_packet}}
+\index{fields\_packet@{fields\_packet}!rs422\_protocol.h@{rs422\_protocol.h}}
+\doxysubsubsection{\texorpdfstring{fields\_packet}{fields\_packet}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structtx__rx__packet__struct}{tx\+\_\+rx\+\_\+packet\+\_\+struct}} \mbox{\hyperlink{rs422__protocol_8h_a31e46c5def1d302719d62543c9b3a11e}{fields\+\_\+packet}}}
+
+
+
+Структура пакета данных согласно утвержденному протоколу обмена данными 
+
+\mbox{\Hypertarget{rs422__protocol_8h_a2d873034c03caf25304010e73e441744}\label{rs422__protocol_8h_a2d873034c03caf25304010e73e441744}} 
+\index{rs422\_protocol.h@{rs422\_protocol.h}!fields\_packet\_header@{fields\_packet\_header}}
+\index{fields\_packet\_header@{fields\_packet\_header}!rs422\_protocol.h@{rs422\_protocol.h}}
+\doxysubsubsection{\texorpdfstring{fields\_packet\_header}{fields\_packet\_header}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structpacket__header__struct}{packet\+\_\+header\+\_\+struct}} \mbox{\hyperlink{rs422__protocol_8h_a2d873034c03caf25304010e73e441744}{fields\+\_\+packet\+\_\+header}}}
+
+
+
+Структура с полями заголовка пакета 
+
+\mbox{\Hypertarget{rs422__protocol_8h_a7510a1bc271d66928a58fb54013e9379}\label{rs422__protocol_8h_a7510a1bc271d66928a58fb54013e9379}} 
+\index{rs422\_protocol.h@{rs422\_protocol.h}!fields\_packet\_tail@{fields\_packet\_tail}}
+\index{fields\_packet\_tail@{fields\_packet\_tail}!rs422\_protocol.h@{rs422\_protocol.h}}
+\doxysubsubsection{\texorpdfstring{fields\_packet\_tail}{fields\_packet\_tail}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structpacket__tail__Struct}{packet\+\_\+tail\+\_\+\+Struct}} \mbox{\hyperlink{rs422__protocol_8h_a7510a1bc271d66928a58fb54013e9379}{fields\+\_\+packet\+\_\+tail}}}
+
+
+
+Структура с полями конца пакета 
+
+\mbox{\Hypertarget{rs422__protocol_8h_a3daaf0175074f4779cf90ad4c6956752}\label{rs422__protocol_8h_a3daaf0175074f4779cf90ad4c6956752}} 
+\index{rs422\_protocol.h@{rs422\_protocol.h}!protocol\_error@{protocol\_error}}
+\index{protocol\_error@{protocol\_error}!rs422\_protocol.h@{rs422\_protocol.h}}
+\doxysubsubsection{\texorpdfstring{protocol\_error}{protocol\_error}}
+{\footnotesize\ttfamily typedef enum \mbox{\hyperlink{rs422__protocol_8h_aba7cbaf5e7772f2d042fe6c708b254bf}{protocol\+\_\+errors}} \mbox{\hyperlink{rs422__protocol_8h_a3daaf0175074f4779cf90ad4c6956752}{protocol\+\_\+error}}}
+
+
+
+Коды ошибок, которые могут возникать в процессе обмена данными по шине 
+
+
+
+\doxysubsection{Перечисления}
+\mbox{\Hypertarget{rs422__protocol_8h_aba7cbaf5e7772f2d042fe6c708b254bf}\label{rs422__protocol_8h_aba7cbaf5e7772f2d042fe6c708b254bf}} 
+\index{rs422\_protocol.h@{rs422\_protocol.h}!protocol\_errors@{protocol\_errors}}
+\index{protocol\_errors@{protocol\_errors}!rs422\_protocol.h@{rs422\_protocol.h}}
+\doxysubsubsection{\texorpdfstring{protocol\_errors}{protocol\_errors}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{rs422__protocol_8h_aba7cbaf5e7772f2d042fe6c708b254bf}{protocol\+\_\+errors}}}
+
+
+
+Коды ошибок, которые могут возникать в процессе обмена данными по шине 
+
+\begin{DoxyEnumFields}{Элементы перечислений}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NO\_ERROR@{NO\_ERROR}!rs422\_protocol.h@{rs422\_protocol.h}}\index{rs422\_protocol.h@{rs422\_protocol.h}!NO\_ERROR@{NO\_ERROR}}}\mbox{\Hypertarget{rs422__protocol_8h_aba7cbaf5e7772f2d042fe6c708b254bfabf350750d0d4fabd8954c0f1e9bbae94}\label{rs422__protocol_8h_aba7cbaf5e7772f2d042fe6c708b254bfabf350750d0d4fabd8954c0f1e9bbae94}} 
+N\+O\+\_\+\+E\+R\+R\+OR&Нет ошибок \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{UART\_ERROR@{UART\_ERROR}!rs422\_protocol.h@{rs422\_protocol.h}}\index{rs422\_protocol.h@{rs422\_protocol.h}!UART\_ERROR@{UART\_ERROR}}}\mbox{\Hypertarget{rs422__protocol_8h_aba7cbaf5e7772f2d042fe6c708b254bfa8d985e4627498f56f5ab06caa7405b46}\label{rs422__protocol_8h_aba7cbaf5e7772f2d042fe6c708b254bfa8d985e4627498f56f5ab06caa7405b46}} 
+U\+A\+R\+T\+\_\+\+E\+R\+R\+OR&Ошибка работы U\+A\+RT. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CRC\_ERROR@{CRC\_ERROR}!rs422\_protocol.h@{rs422\_protocol.h}}\index{rs422\_protocol.h@{rs422\_protocol.h}!CRC\_ERROR@{CRC\_ERROR}}}\mbox{\Hypertarget{rs422__protocol_8h_aba7cbaf5e7772f2d042fe6c708b254bfa8a393db133e073ad8bac2f92e78d6f5d}\label{rs422__protocol_8h_aba7cbaf5e7772f2d042fe6c708b254bfa8a393db133e073ad8bac2f92e78d6f5d}} 
+C\+R\+C\+\_\+\+E\+R\+R\+OR&Ошибка контрольной суммы \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PM\_ADDR\_ERROR@{PM\_ADDR\_ERROR}!rs422\_protocol.h@{rs422\_protocol.h}}\index{rs422\_protocol.h@{rs422\_protocol.h}!PM\_ADDR\_ERROR@{PM\_ADDR\_ERROR}}}\mbox{\Hypertarget{rs422__protocol_8h_aba7cbaf5e7772f2d042fe6c708b254bfaf56071aad4bdf2cfc6d2e1337c0a1614}\label{rs422__protocol_8h_aba7cbaf5e7772f2d042fe6c708b254bfaf56071aad4bdf2cfc6d2e1337c0a1614}} 
+P\+M\+\_\+\+A\+D\+D\+R\+\_\+\+E\+R\+R\+OR&Ошибка адресации \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PACKET\_ERROR@{PACKET\_ERROR}!rs422\_protocol.h@{rs422\_protocol.h}}\index{rs422\_protocol.h@{rs422\_protocol.h}!PACKET\_ERROR@{PACKET\_ERROR}}}\mbox{\Hypertarget{rs422__protocol_8h_aba7cbaf5e7772f2d042fe6c708b254bfa9f7b3973b120dc5e465046d84ab437c8}\label{rs422__protocol_8h_aba7cbaf5e7772f2d042fe6c708b254bfa9f7b3973b120dc5e465046d84ab437c8}} 
+P\+A\+C\+K\+E\+T\+\_\+\+E\+R\+R\+OR&Ошибка структуры пакета \\
+\hline
+
+\end{DoxyEnumFields}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{44 \{}
+\DoxyCodeLine{45     \mbox{\hyperlink{rs422__protocol_8h_aba7cbaf5e7772f2d042fe6c708b254bfabf350750d0d4fabd8954c0f1e9bbae94}{NO\_ERROR}},                                           }
+\DoxyCodeLine{46     \mbox{\hyperlink{rs422__protocol_8h_aba7cbaf5e7772f2d042fe6c708b254bfa8d985e4627498f56f5ab06caa7405b46}{UART\_ERROR}},                                       }
+\DoxyCodeLine{47     \mbox{\hyperlink{rs422__protocol_8h_aba7cbaf5e7772f2d042fe6c708b254bfa8a393db133e073ad8bac2f92e78d6f5d}{CRC\_ERROR}},                                     }
+\DoxyCodeLine{48     \mbox{\hyperlink{rs422__protocol_8h_aba7cbaf5e7772f2d042fe6c708b254bfaf56071aad4bdf2cfc6d2e1337c0a1614}{PM\_ADDR\_ERROR}},                             }
+\DoxyCodeLine{49     \mbox{\hyperlink{rs422__protocol_8h_aba7cbaf5e7772f2d042fe6c708b254bfa9f7b3973b120dc5e465046d84ab437c8}{PACKET\_ERROR}}                                    }
+\DoxyCodeLine{50 \} \mbox{\hyperlink{rs422__protocol_8h_a3daaf0175074f4779cf90ad4c6956752}{protocol\_error}};}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Функции}
+\mbox{\Hypertarget{rs422__protocol_8h_a65d2811dc9961bbe401508d42c37c065}\label{rs422__protocol_8h_a65d2811dc9961bbe401508d42c37c065}} 
+\index{rs422\_protocol.h@{rs422\_protocol.h}!crc32@{crc32}}
+\index{crc32@{crc32}!rs422\_protocol.h@{rs422\_protocol.h}}
+\doxysubsubsection{\texorpdfstring{crc32()}{crc32()}}
+{\footnotesize\ttfamily uint\+\_\+least32\+\_\+t crc32 (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{buf,  }\item[{size\+\_\+t}]{len }\end{DoxyParamCaption})}
+
+
+
+Вычисляет контрольную сумму по алгоритму C\+R\+C32. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em $\ast$buf} & -\/ Буфер с данными для расчета контрольной суммы \\
+\hline
+{\em len} & -\/ Длина буфера \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Контрольная сумма 
+\end{DoxyReturn}
+\mbox{\Hypertarget{rs422__protocol_8h_aed4c57914a23fa546b89d30973b11478}\label{rs422__protocol_8h_aed4c57914a23fa546b89d30973b11478}} 
+\index{rs422\_protocol.h@{rs422\_protocol.h}!fill\_crc32\_table@{fill\_crc32\_table}}
+\index{fill\_crc32\_table@{fill\_crc32\_table}!rs422\_protocol.h@{rs422\_protocol.h}}
+\doxysubsubsection{\texorpdfstring{fill\_crc32\_table()}{fill\_crc32\_table()}}
+{\footnotesize\ttfamily void fill\+\_\+crc32\+\_\+table (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Заполняет таблицу C\+R\+C32. 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{452 \{}
+\DoxyCodeLine{453     uint\_least32\_t crc; \textcolor{keywordtype}{int} i, j;}
+\DoxyCodeLine{454     \textcolor{keywordflow}{for} (i = 0; i < 256; i++)}
+\DoxyCodeLine{455     \{}
+\DoxyCodeLine{456         crc = i;}
+\DoxyCodeLine{457         \textcolor{keywordflow}{for} (j = 0; j < 8; j++)}
+\DoxyCodeLine{458             crc = crc \& 1 ? (crc >> 1) \string^ 0xEDB88320UL : crc >> 1;}
+\DoxyCodeLine{459 }
+\DoxyCodeLine{460         \mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_a4a4fb4f881c11792f26679743010a42f}{crc\_table}}[i] = crc;}
+\DoxyCodeLine{461     \}}
+\DoxyCodeLine{462 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{rs422__protocol_8h_a4a980b6aae1cf18f767040d266ddf695}\label{rs422__protocol_8h_a4a980b6aae1cf18f767040d266ddf695}} 
+\index{rs422\_protocol.h@{rs422\_protocol.h}!protocol\_do\_cmds@{protocol\_do\_cmds}}
+\index{protocol\_do\_cmds@{protocol\_do\_cmds}!rs422\_protocol.h@{rs422\_protocol.h}}
+\doxysubsubsection{\texorpdfstring{protocol\_do\_cmds()}{protocol\_do\_cmds()}}
+{\footnotesize\ttfamily uint8\+\_\+t protocol\+\_\+do\+\_\+cmds (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{ext\+\_\+bus }\end{DoxyParamCaption})}
+
+
+
+Выполняет требуемые команды 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em ext\+\_\+bus} & -\/ Номер шины \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Код ошибки protocol\+\_\+error 
+\end{DoxyReturn}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{205 \{}
+\DoxyCodeLine{206     \mbox{\hyperlink{structcommon__register__space__ext__ram}{common\_ram\_registers}} *common\_ram\_reg\_space\_ptr = \&\mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_a29ff19a4ce45ab988b4f61feaea38545}{common\_ram\_register\_space}}; \textcolor{comment}{// Указатель на область памяти внешнего ОЗУ с общими регистрами}}
+\DoxyCodeLine{207     \mbox{\hyperlink{structcmd__struct}{fields\_cmd}} *tx\_pack\_cmd\_with\_data\_ptr =   \&\mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_aade052f13f081a219189d9494fbdde89}{tx\_packet\_struct}}.\mbox{\hyperlink{structtx__rx__packet__struct_a0de9250ae3f8c175968144559a06966b}{cmd\_with\_data}}[0]; \textcolor{comment}{// Указатель на массив команд с данными для отправляемого пакета}}
+\DoxyCodeLine{208     \mbox{\hyperlink{structcmd__struct}{fields\_cmd}} *rx\_pack\_cmd\_with\_data\_ptr =   \&\mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_a7f2127d07d9edbc570aae7abb635cdd8}{rx\_packet\_struct}}.\mbox{\hyperlink{structtx__rx__packet__struct_a0de9250ae3f8c175968144559a06966b}{cmd\_with\_data}}[0]; \textcolor{comment}{// Указатель на массив команд с данными для принимаемого пакета}}
+\DoxyCodeLine{209     \mbox{\hyperlink{structpacket__header__struct}{fields\_packet\_header}} *tx\_pack\_header = \&\mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_aade052f13f081a219189d9494fbdde89}{tx\_packet\_struct}}.\mbox{\hyperlink{structtx__rx__packet__struct_a2e5d4eb9028e95fc2d204a4c88f2cf2d}{packet\_header}}; \textcolor{comment}{// Указатель на заголовок отправляемого пакета}}
+\DoxyCodeLine{210     \mbox{\hyperlink{structpacket__header__struct}{fields\_packet\_header}} *rx\_pack\_header = \&\mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_a7f2127d07d9edbc570aae7abb635cdd8}{rx\_packet\_struct}}.\mbox{\hyperlink{structtx__rx__packet__struct_a2e5d4eb9028e95fc2d204a4c88f2cf2d}{packet\_header}}; \textcolor{comment}{// Указатель на заголовок принимаемого пакета}}
+\DoxyCodeLine{211     \mbox{\hyperlink{structpacket__tail__Struct}{fields\_packet\_tail}} *tx\_pack\_tail = \&\mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_aade052f13f081a219189d9494fbdde89}{tx\_packet\_struct}}.\mbox{\hyperlink{structtx__rx__packet__struct_a5e7c2a7326ef419e211c879f870466e9}{packet\_tail}}; \textcolor{comment}{// Указатель на хвост отправляемого пакета}}
+\DoxyCodeLine{212     \mbox{\hyperlink{structpacket__tail__Struct}{fields\_packet\_tail}} *rx\_pack\_tail = \&\mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_a7f2127d07d9edbc570aae7abb635cdd8}{rx\_packet\_struct}}.\mbox{\hyperlink{structtx__rx__packet__struct_a5e7c2a7326ef419e211c879f870466e9}{packet\_tail}}; \textcolor{comment}{// Указатель на хвост принятого пакета}}
+\DoxyCodeLine{213     uint32\_t offset = 0; \textcolor{comment}{// Указатель на данные для каждой команды}}
+\DoxyCodeLine{214     uint16\_t start\_addr = 0; \textcolor{comment}{// Начальный адрес для чтения/записи регистров}}
+\DoxyCodeLine{215     uint16\_t size = 0;  \textcolor{comment}{// Кол-\/во байт для чтения/записи}}
+\DoxyCodeLine{216             }
+\DoxyCodeLine{217     \textcolor{keywordflow}{for} (uint8\_t i = 0; i < rx\_pack\_header-\/>\mbox{\hyperlink{structpacket__header__struct_a8f98e89c37075148a7f03a2d401f04cf}{cmd\_number}}; i++)}
+\DoxyCodeLine{218     \{}
+\DoxyCodeLine{219         \textcolor{keywordflow}{switch} ((rx\_pack\_cmd\_with\_data\_ptr + i)-\/>header.cmd)}
+\DoxyCodeLine{220         \{}
+\DoxyCodeLine{221                 \textcolor{keywordflow}{case} \mbox{\hyperlink{rs422__protocol_8h_ad7820c9e249225fa2598f435df7ddeba}{TYPE\_CMD}}:}
+\DoxyCodeLine{222                         \textcolor{comment}{// По команде TYPE кладем в поле дата регистры PLC\_SoftVer, PLC\_Config, PLC\_DeviceType, PLC\_SerialNumber}}
+\DoxyCodeLine{223                         (tx\_pack\_cmd\_with\_data\_ptr + i)-\/>data = (\mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_a492d81e21ce5dac959ae56a9175b3dde}{tx\_data}}) + offset;}
+\DoxyCodeLine{224                         }
+\DoxyCodeLine{225                         memcpy((\mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_a492d81e21ce5dac959ae56a9175b3dde}{tx\_data}}) + offset, \&(common\_ram\_reg\_space\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__ram_a23be17a22dd1b33e9612afaa9fb5cbb6}{PLC\_SoftVer}}), \textcolor{keyword}{sizeof}(common\_ram\_reg\_space\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__ram_a23be17a22dd1b33e9612afaa9fb5cbb6}{PLC\_SoftVer}}));}
+\DoxyCodeLine{226                         offset += \textcolor{keyword}{sizeof}(common\_ram\_reg\_space\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__ram_a23be17a22dd1b33e9612afaa9fb5cbb6}{PLC\_SoftVer}});}
+\DoxyCodeLine{227                         memcpy((\mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_a492d81e21ce5dac959ae56a9175b3dde}{tx\_data}}) + offset, \&(common\_ram\_reg\_space\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__ram_a41f4f575b584bacda875396b0bb7edb8}{PLC\_Config}}), \textcolor{keyword}{sizeof}(common\_ram\_reg\_space\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__ram_a41f4f575b584bacda875396b0bb7edb8}{PLC\_Config}}));}
+\DoxyCodeLine{228                         offset += \textcolor{keyword}{sizeof}(common\_ram\_reg\_space\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__ram_a41f4f575b584bacda875396b0bb7edb8}{PLC\_Config}});}
+\DoxyCodeLine{229                         memcpy((\mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_a492d81e21ce5dac959ae56a9175b3dde}{tx\_data}}) + offset, \&(common\_ram\_reg\_space\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__ram_a57d116516f9e264bccd561158118685a}{PLC\_CommonRomRegs}}.\mbox{\hyperlink{structcommon__register__space__ext__rom_a654cd1c6b191e3311ad10abac5341e44}{PLC\_DeviceType}}), \textcolor{keyword}{sizeof}(common\_ram\_reg\_space\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__ram_a57d116516f9e264bccd561158118685a}{PLC\_CommonRomRegs}}.\mbox{\hyperlink{structcommon__register__space__ext__rom_a654cd1c6b191e3311ad10abac5341e44}{PLC\_DeviceType}}));}
+\DoxyCodeLine{230                         offset += \textcolor{keyword}{sizeof}(common\_ram\_reg\_space\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__ram_a57d116516f9e264bccd561158118685a}{PLC\_CommonRomRegs}}.\mbox{\hyperlink{structcommon__register__space__ext__rom_a654cd1c6b191e3311ad10abac5341e44}{PLC\_DeviceType}});}
+\DoxyCodeLine{231                         memcpy((\mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_a492d81e21ce5dac959ae56a9175b3dde}{tx\_data}}) + offset, \&(common\_ram\_reg\_space\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__ram_a57d116516f9e264bccd561158118685a}{PLC\_CommonRomRegs}}.\mbox{\hyperlink{structcommon__register__space__ext__rom_ac241de2a572726a1cdf305e5877e063b}{PLC\_SerialNumber}}), \textcolor{keyword}{sizeof}(common\_ram\_reg\_space\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__ram_a57d116516f9e264bccd561158118685a}{PLC\_CommonRomRegs}}.\mbox{\hyperlink{structcommon__register__space__ext__rom_ac241de2a572726a1cdf305e5877e063b}{PLC\_SerialNumber}}));}
+\DoxyCodeLine{232                         offset += \textcolor{keyword}{sizeof}(common\_ram\_reg\_space\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__ram_a57d116516f9e264bccd561158118685a}{PLC\_CommonRomRegs}}.\mbox{\hyperlink{structcommon__register__space__ext__rom_ac241de2a572726a1cdf305e5877e063b}{PLC\_SerialNumber}});}
+\DoxyCodeLine{233                         }
+\DoxyCodeLine{234                         (tx\_pack\_cmd\_with\_data\_ptr + i)-\/>header.cmd = \mbox{\hyperlink{rs422__protocol_8h_ad7820c9e249225fa2598f435df7ddeba}{TYPE\_CMD}};}
+\DoxyCodeLine{235                         \textcolor{comment}{// TODO:разобраться для чего поле result}}
+\DoxyCodeLine{236                         (tx\_pack\_cmd\_with\_data\_ptr + i)-\/>header.result = 0;}
+\DoxyCodeLine{237                         (tx\_pack\_cmd\_with\_data\_ptr + i)-\/>header.length = \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structcmd__header__struct}{fields\_cmd\_header}}) + \textcolor{keyword}{sizeof}(common\_ram\_reg\_space\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__ram_a23be17a22dd1b33e9612afaa9fb5cbb6}{PLC\_SoftVer}}) + }
+\DoxyCodeLine{238                             \textcolor{keyword}{sizeof}(\mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_a29ff19a4ce45ab988b4f61feaea38545}{common\_ram\_register\_space}}.\mbox{\hyperlink{structcommon__register__space__ext__ram_a41f4f575b584bacda875396b0bb7edb8}{PLC\_Config}}) + \textcolor{keyword}{sizeof}(common\_ram\_reg\_space\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__ram_a57d116516f9e264bccd561158118685a}{PLC\_CommonRomRegs}}.\mbox{\hyperlink{structcommon__register__space__ext__rom_a654cd1c6b191e3311ad10abac5341e44}{PLC\_DeviceType}}) + \textcolor{keyword}{sizeof}(common\_ram\_reg\_space\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__ram_a57d116516f9e264bccd561158118685a}{PLC\_CommonRomRegs}}.\mbox{\hyperlink{structcommon__register__space__ext__rom_ac241de2a572726a1cdf305e5877e063b}{PLC\_SerialNumber}});}
+\DoxyCodeLine{239                         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{240                     }
+\DoxyCodeLine{241                 \textcolor{keywordflow}{case} \mbox{\hyperlink{rs422__protocol_8h_ae4eabd026e666b08fbd5d6c6f9499d45}{INIT\_CMD}}:}
+\DoxyCodeLine{242                         \textcolor{comment}{// По команде INIT кладем в поле дата регистр PLC\_SerialNumber, если выполнен ряд условий}}
+\DoxyCodeLine{243                         \textcolor{keywordflow}{switch} (ext\_bus)}
+\DoxyCodeLine{244                         \{}
+\DoxyCodeLine{245                                 \textcolor{keywordflow}{case} 1:}
+\DoxyCodeLine{246                                         \textcolor{keywordflow}{if}((\mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_a20ec1ad93822ba1a91654812c83b77e2}{service\_byte\_um}}.\mbox{\hyperlink{structservice__byte__struct__um_aa8771512ef455bc7c4f1a50bda9314ab}{ready\_to\_control}} == 1) \&\& (\mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_ac62275f40908961a48f2c49d8e85a2df}{service\_byte\_pm}}.\mbox{\hyperlink{structservice__byte__struct__pm_a129b05a90fa6551d749a7f837107355f}{fail\_bus\_1}} == 0) \&\& (common\_ram\_reg\_space\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__ram_a5a96150658343a9975428f52d86dfc70}{PLC\_CM\_State}} != \mbox{\hyperlink{rs422__protocol_8h_a23fc42df1955da9f3eb1d0c2621d2aed}{PLC\_CM\_INIT\_2\_BUS}}))}
+\DoxyCodeLine{247                                         \{}
+\DoxyCodeLine{248                                             \textcolor{comment}{// Заносим инфу в сервисный байт ПМ}}
+\DoxyCodeLine{249                                             \mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_ac62275f40908961a48f2c49d8e85a2df}{service\_byte\_pm}}.\mbox{\hyperlink{structservice__byte__struct__pm_a37d098cc6a8b79984422f52ae2c133a8}{init}} = 1;}
+\DoxyCodeLine{250                                             \mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_ac62275f40908961a48f2c49d8e85a2df}{service\_byte\_pm}}.\mbox{\hyperlink{structservice__byte__struct__pm_a4affe28d58d333d5f543b47469bcc1cb}{master}} = 0;}
+\DoxyCodeLine{251                                             \textcolor{comment}{// Заносим инфу в регистры}}
+\DoxyCodeLine{252                                             common\_ram\_reg\_space\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__ram_a5a96150658343a9975428f52d86dfc70}{PLC\_CM\_State}} = \mbox{\hyperlink{rs422__protocol_8h_a4356c5f2678dde04a1405c6cdd3eca86}{PLC\_CM\_INIT\_1\_BUS}};}
+\DoxyCodeLine{253                                         \}}
+\DoxyCodeLine{254                                         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{255                                         \{}
+\DoxyCodeLine{256                                             \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{257                                         \}}
+\DoxyCodeLine{258                                         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{259                                         }
+\DoxyCodeLine{260                                 \textcolor{keywordflow}{case} 2:}
+\DoxyCodeLine{261                                         \textcolor{keywordflow}{if}((\mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_a20ec1ad93822ba1a91654812c83b77e2}{service\_byte\_um}}.\mbox{\hyperlink{structservice__byte__struct__um_aa8771512ef455bc7c4f1a50bda9314ab}{ready\_to\_control}} == 1) \&\& (\mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_ac62275f40908961a48f2c49d8e85a2df}{service\_byte\_pm}}.\mbox{\hyperlink{structservice__byte__struct__pm_a25d62cb6162806fbfa7f374af5ec8c53}{fail\_bus\_2}} == 0) \&\& (common\_ram\_reg\_space\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__ram_a5a96150658343a9975428f52d86dfc70}{PLC\_CM\_State}} != \mbox{\hyperlink{rs422__protocol_8h_a4356c5f2678dde04a1405c6cdd3eca86}{PLC\_CM\_INIT\_1\_BUS}}))}
+\DoxyCodeLine{262                                         \{}
+\DoxyCodeLine{263                                             \textcolor{comment}{// Заносим инфу в сервисный байт ПМ}}
+\DoxyCodeLine{264                                             \mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_ac62275f40908961a48f2c49d8e85a2df}{service\_byte\_pm}}.\mbox{\hyperlink{structservice__byte__struct__pm_a37d098cc6a8b79984422f52ae2c133a8}{init}} = 1;}
+\DoxyCodeLine{265                                             \mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_ac62275f40908961a48f2c49d8e85a2df}{service\_byte\_pm}}.\mbox{\hyperlink{structservice__byte__struct__pm_a4affe28d58d333d5f543b47469bcc1cb}{master}} = 1;}
+\DoxyCodeLine{266                                             \textcolor{comment}{// Заносим инфу в регистры}}
+\DoxyCodeLine{267                                             common\_ram\_reg\_space\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__ram_a5a96150658343a9975428f52d86dfc70}{PLC\_CM\_State}} = \mbox{\hyperlink{rs422__protocol_8h_a23fc42df1955da9f3eb1d0c2621d2aed}{PLC\_CM\_INIT\_2\_BUS}};}
+\DoxyCodeLine{268                                         \}   }
+\DoxyCodeLine{269                                         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{270                                         \{}
+\DoxyCodeLine{271                                             \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{272                                         \}}
+\DoxyCodeLine{273                                         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{274                                         }
+\DoxyCodeLine{275                                 \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{276                                         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{277                         \}       }
+\DoxyCodeLine{278                         memcpy((\mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_a492d81e21ce5dac959ae56a9175b3dde}{tx\_data}}) + offset, \&(common\_ram\_reg\_space\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__ram_a57d116516f9e264bccd561158118685a}{PLC\_CommonRomRegs}}.\mbox{\hyperlink{structcommon__register__space__ext__rom_ac241de2a572726a1cdf305e5877e063b}{PLC\_SerialNumber}}), \textcolor{keyword}{sizeof}(common\_ram\_reg\_space\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__ram_a57d116516f9e264bccd561158118685a}{PLC\_CommonRomRegs}}.\mbox{\hyperlink{structcommon__register__space__ext__rom_ac241de2a572726a1cdf305e5877e063b}{PLC\_SerialNumber}}));}
+\DoxyCodeLine{279                         (tx\_pack\_cmd\_with\_data\_ptr + i)-\/>data = (\mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_a492d81e21ce5dac959ae56a9175b3dde}{tx\_data}}) + offset;}
+\DoxyCodeLine{280                         offset += \textcolor{keyword}{sizeof}(common\_ram\_reg\_space\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__ram_a57d116516f9e264bccd561158118685a}{PLC\_CommonRomRegs}}.\mbox{\hyperlink{structcommon__register__space__ext__rom_ac241de2a572726a1cdf305e5877e063b}{PLC\_SerialNumber}});}
+\DoxyCodeLine{281                         (tx\_pack\_cmd\_with\_data\_ptr + i)-\/>header.cmd = \mbox{\hyperlink{rs422__protocol_8h_ae4eabd026e666b08fbd5d6c6f9499d45}{INIT\_CMD}};}
+\DoxyCodeLine{282                         \textcolor{comment}{// TODO:разобраться для чего поле result}}
+\DoxyCodeLine{283                         (tx\_pack\_cmd\_with\_data\_ptr + i)-\/>header.result = 0;}
+\DoxyCodeLine{284                         (tx\_pack\_cmd\_with\_data\_ptr + i)-\/>header.length = \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structcmd__header__struct}{fields\_cmd\_header}})+ \textcolor{keyword}{sizeof}(common\_ram\_reg\_space\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__ram_a57d116516f9e264bccd561158118685a}{PLC\_CommonRomRegs}}.\mbox{\hyperlink{structcommon__register__space__ext__rom_ac241de2a572726a1cdf305e5877e063b}{PLC\_SerialNumber}});}
+\DoxyCodeLine{285                         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{286                     }
+\DoxyCodeLine{287                 \textcolor{keywordflow}{case} \mbox{\hyperlink{rs422__protocol_8h_a21623e2a5501c821da54dd76ffc1d077}{READ\_CMD}}:}
+\DoxyCodeLine{288                         memcpy(\&start\_addr, (rx\_pack\_cmd\_with\_data\_ptr + i)-\/>data, \textcolor{keyword}{sizeof}(start\_addr));}
+\DoxyCodeLine{289                         memcpy(\&size, (rx\_pack\_cmd\_with\_data\_ptr + i)-\/>data + \textcolor{keyword}{sizeof}(start\_addr), \textcolor{keyword}{sizeof}(size));}
+\DoxyCodeLine{290                         }
+\DoxyCodeLine{291                         \textcolor{comment}{// По команде READ кладем в поле дата size байт начиная с start\_addr}}
+\DoxyCodeLine{292                         memcpy((\mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_a492d81e21ce5dac959ae56a9175b3dde}{tx\_data}}) + offset, (\textcolor{keywordtype}{void}*)(\&(\mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_a0de3b7f84ef21ea299d6e45bbfc7dcf4}{start\_struct}})) + start\_addr, size);}
+\DoxyCodeLine{293                         (tx\_pack\_cmd\_with\_data\_ptr + i)-\/>data = (\mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_a492d81e21ce5dac959ae56a9175b3dde}{tx\_data}}) + offset;}
+\DoxyCodeLine{294                         offset += size;}
+\DoxyCodeLine{295                         (tx\_pack\_cmd\_with\_data\_ptr + i)-\/>header.cmd = \mbox{\hyperlink{rs422__protocol_8h_a21623e2a5501c821da54dd76ffc1d077}{READ\_CMD}};}
+\DoxyCodeLine{296                         \textcolor{comment}{// TODO:разобраться для чего поле result}}
+\DoxyCodeLine{297                         (tx\_pack\_cmd\_with\_data\_ptr + i)-\/>header.result = 0;}
+\DoxyCodeLine{298                         (tx\_pack\_cmd\_with\_data\_ptr + i)-\/>header.length = \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structcmd__header__struct}{fields\_cmd\_header}}) + size;}
+\DoxyCodeLine{299                         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{300                 }
+\DoxyCodeLine{301                 \textcolor{keywordflow}{case} \mbox{\hyperlink{rs422__protocol_8h_af792feb13ae0c1eab8f95f64c8baa96d}{WRITE\_CMD}}:}
+\DoxyCodeLine{302                         \textcolor{comment}{// Проверка того, что установлено соединение по выбранной шине}}
+\DoxyCodeLine{303                         \textcolor{keywordflow}{switch} (ext\_bus)}
+\DoxyCodeLine{304                         \{}
+\DoxyCodeLine{305                                 \textcolor{keywordflow}{case} 1:}
+\DoxyCodeLine{306                                         \textcolor{keywordflow}{if}(\mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_a29ff19a4ce45ab988b4f61feaea38545}{common\_ram\_register\_space}}.\mbox{\hyperlink{structcommon__register__space__ext__ram_a5a96150658343a9975428f52d86dfc70}{PLC\_CM\_State}} != \mbox{\hyperlink{rs422__protocol_8h_a4356c5f2678dde04a1405c6cdd3eca86}{PLC\_CM\_INIT\_1\_BUS}})}
+\DoxyCodeLine{307                                         \{}
+\DoxyCodeLine{308                                             \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{309                                         \}}
+\DoxyCodeLine{310                                         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{311                                         }
+\DoxyCodeLine{312                                 \textcolor{keywordflow}{case} 2:}
+\DoxyCodeLine{313                                         \textcolor{keywordflow}{if}(\mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_a29ff19a4ce45ab988b4f61feaea38545}{common\_ram\_register\_space}}.\mbox{\hyperlink{structcommon__register__space__ext__ram_a5a96150658343a9975428f52d86dfc70}{PLC\_CM\_State}} != \mbox{\hyperlink{rs422__protocol_8h_a23fc42df1955da9f3eb1d0c2621d2aed}{PLC\_CM\_INIT\_2\_BUS}})}
+\DoxyCodeLine{314                                         \{}
+\DoxyCodeLine{315                                             \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{316                                         \}}
+\DoxyCodeLine{317                                         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{318                                         }
+\DoxyCodeLine{319                                 \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{320                                         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{321                         \}}
+\DoxyCodeLine{322                         memcpy(\&start\_addr, (rx\_pack\_cmd\_with\_data\_ptr + i)-\/>data, \textcolor{keyword}{sizeof}(start\_addr));}
+\DoxyCodeLine{323                         memcpy(\&size, ((rx\_pack\_cmd\_with\_data\_ptr + i)-\/>data) + \textcolor{keyword}{sizeof}(start\_addr), \textcolor{keyword}{sizeof}(size));}
+\DoxyCodeLine{324                         \textcolor{comment}{// По команде WRITE кладем по адресу start\_addr size принятых байт для записи и в поле данных кладем код команды}}
+\DoxyCodeLine{325                         memcpy((\textcolor{keywordtype}{void}*)(\&(\mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_a0de3b7f84ef21ea299d6e45bbfc7dcf4}{start\_struct}})) + start\_addr, ((rx\_pack\_cmd\_with\_data\_ptr + i)-\/>data) + \textcolor{keyword}{sizeof}(start\_addr) + \textcolor{keyword}{sizeof}(size), size);}
+\DoxyCodeLine{326                         memset((\mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_a492d81e21ce5dac959ae56a9175b3dde}{tx\_data}}) + offset, \mbox{\hyperlink{rs422__protocol_8h_af792feb13ae0c1eab8f95f64c8baa96d}{WRITE\_CMD}}, 1);}
+\DoxyCodeLine{327                         (tx\_pack\_cmd\_with\_data\_ptr + i)-\/>data = (\mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_a492d81e21ce5dac959ae56a9175b3dde}{tx\_data}}) + offset;}
+\DoxyCodeLine{328                         offset++;}
+\DoxyCodeLine{329                         (tx\_pack\_cmd\_with\_data\_ptr + i)-\/>header.cmd = \mbox{\hyperlink{rs422__protocol_8h_af792feb13ae0c1eab8f95f64c8baa96d}{WRITE\_CMD}};}
+\DoxyCodeLine{330                         \textcolor{comment}{// TODO:разобраться для чего поле result}}
+\DoxyCodeLine{331                         (tx\_pack\_cmd\_with\_data\_ptr + i)-\/>header.result = 0;}
+\DoxyCodeLine{332                         (tx\_pack\_cmd\_with\_data\_ptr + i)-\/>header.length = \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structcmd__header__struct}{fields\_cmd\_header}}) + 1;}
+\DoxyCodeLine{333                         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{334                     }
+\DoxyCodeLine{335             \textcolor{keywordflow}{case} \mbox{\hyperlink{rs422__protocol_8h_a1b576d3886aa80ee37419f976b7f3289}{RESET\_CMD}}:}
+\DoxyCodeLine{336                     \textcolor{comment}{// Проверка того, что установлено соединение по выбранной шине}}
+\DoxyCodeLine{337                     \textcolor{keywordflow}{switch} (ext\_bus)}
+\DoxyCodeLine{338                     \{}
+\DoxyCodeLine{339                             \textcolor{keywordflow}{case} 1:}
+\DoxyCodeLine{340                                     \textcolor{keywordflow}{if}(common\_ram\_reg\_space\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__ram_a5a96150658343a9975428f52d86dfc70}{PLC\_CM\_State}} != \mbox{\hyperlink{rs422__protocol_8h_a4356c5f2678dde04a1405c6cdd3eca86}{PLC\_CM\_INIT\_1\_BUS}})}
+\DoxyCodeLine{341                                     \{}
+\DoxyCodeLine{342                                         \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{343                                     \}}
+\DoxyCodeLine{344                                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{345                                     }
+\DoxyCodeLine{346                             \textcolor{keywordflow}{case} 2:}
+\DoxyCodeLine{347                                     \textcolor{keywordflow}{if}(common\_ram\_reg\_space\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__ram_a5a96150658343a9975428f52d86dfc70}{PLC\_CM\_State}} != \mbox{\hyperlink{rs422__protocol_8h_a23fc42df1955da9f3eb1d0c2621d2aed}{PLC\_CM\_INIT\_2\_BUS}})}
+\DoxyCodeLine{348                                     \{}
+\DoxyCodeLine{349                                         \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{350                                     \}}
+\DoxyCodeLine{351                                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{352                                     }
+\DoxyCodeLine{353                             \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{354                                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{355                     \}}
+\DoxyCodeLine{356                     \textcolor{comment}{// По команде RESET сбрасываем регистры и в поле данных кладем код команды}}
+\DoxyCodeLine{357                     \mbox{\hyperlink{external__ram_8c_abd38ccc254da7c21a588b537f3e38ebe}{init\_external\_ram\_space}}();}
+\DoxyCodeLine{358                     memset((\mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_a492d81e21ce5dac959ae56a9175b3dde}{tx\_data}}) + offset, RESET, 1);}
+\DoxyCodeLine{359                     (tx\_pack\_cmd\_with\_data\_ptr + i)-\/>data = (\mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_a492d81e21ce5dac959ae56a9175b3dde}{tx\_data}}) + offset;}
+\DoxyCodeLine{360                     offset++;}
+\DoxyCodeLine{361                     (tx\_pack\_cmd\_with\_data\_ptr + i)-\/>header.cmd = RESET;}
+\DoxyCodeLine{362                     \textcolor{comment}{// TODO:разобраться для чего поле result}}
+\DoxyCodeLine{363                     (tx\_pack\_cmd\_with\_data\_ptr + i)-\/>header.result = 0;}
+\DoxyCodeLine{364                     (tx\_pack\_cmd\_with\_data\_ptr + i)-\/>header.length = \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structcmd__header__struct}{fields\_cmd\_header}})  + 1;}
+\DoxyCodeLine{365                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{366                 }
+\DoxyCodeLine{367             \textcolor{keywordflow}{case} \mbox{\hyperlink{rs422__protocol_8h_a76ea3cf49247a07c54b3db005a3c7f57}{CONFIG}}:}
+\DoxyCodeLine{368                     \textcolor{comment}{// Проверка того, что установлено соединение по выбранной шине}}
+\DoxyCodeLine{369                     \textcolor{keywordflow}{switch} (ext\_bus)}
+\DoxyCodeLine{370                     \{}
+\DoxyCodeLine{371                             \textcolor{keywordflow}{case} 1:}
+\DoxyCodeLine{372                                     \textcolor{keywordflow}{if}(common\_ram\_reg\_space\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__ram_a5a96150658343a9975428f52d86dfc70}{PLC\_CM\_State}} != \mbox{\hyperlink{rs422__protocol_8h_a4356c5f2678dde04a1405c6cdd3eca86}{PLC\_CM\_INIT\_1\_BUS}})}
+\DoxyCodeLine{373                                     \{}
+\DoxyCodeLine{374                                         \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{375                                     \}}
+\DoxyCodeLine{376                                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{377                                     }
+\DoxyCodeLine{378                             \textcolor{keywordflow}{case} 2:}
+\DoxyCodeLine{379                                     \textcolor{keywordflow}{if}(common\_ram\_reg\_space\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__ram_a5a96150658343a9975428f52d86dfc70}{PLC\_CM\_State}} != \mbox{\hyperlink{rs422__protocol_8h_a23fc42df1955da9f3eb1d0c2621d2aed}{PLC\_CM\_INIT\_2\_BUS}})}
+\DoxyCodeLine{380                                     \{}
+\DoxyCodeLine{381                                         \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{382                                     \}}
+\DoxyCodeLine{383                                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{384                                     }
+\DoxyCodeLine{385                             \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{386                                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{387                     \}}
+\DoxyCodeLine{388                     \textcolor{comment}{// Проверка на то, что ПМ находится в сервисном режиме}}
+\DoxyCodeLine{389                     \textcolor{keywordflow}{if} (common\_ram\_reg\_space\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__ram_a98e192cc41987223a2ee0f3c47d82bbc}{PLC\_PMAddr}}.\mbox{\hyperlink{structdevice__address__struct_ae0c20d59ca32f79b879d71d608237ff6}{module\_addr}} != 0x00)}
+\DoxyCodeLine{390                     \{}
+\DoxyCodeLine{391                         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{392                     \}}
+\DoxyCodeLine{393                     \textcolor{comment}{// По команде CONFIG регистры зеркализируются в ПЗУ и в поле данных кладем код команды}}
+\DoxyCodeLine{394                     memcpy(\&start\_addr, (rx\_pack\_cmd\_with\_data\_ptr + i)-\/>data, \textcolor{keyword}{sizeof}(start\_addr));}
+\DoxyCodeLine{395                     memcpy(\&size, (rx\_pack\_cmd\_with\_data\_ptr + i)-\/>data + \textcolor{keyword}{sizeof}(start\_addr), \textcolor{keyword}{sizeof}(size));}
+\DoxyCodeLine{396                     \textcolor{comment}{// Если используется внешнее ПЗУ, то записываем данные в ПЗУ}}
+\DoxyCodeLine{397 \textcolor{preprocessor}{                    \#ifdef ROM\_IS\_USED}}
+\DoxyCodeLine{398                         \textcolor{comment}{//запись данных в ПЗУ}}
+\DoxyCodeLine{399                         memcpy(\&common\_regs, \&common\_ram\_reg\_space\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__ram_a57d116516f9e264bccd561158118685a}{PLC\_CommonRomRegs}}, \textcolor{keyword}{sizeof}(common\_regs));}
+\DoxyCodeLine{400                         memcpy(\&mpa\_regs, \&\mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_a99f72177584aee68a4ed2064b1fecbde}{mpa\_ram\_register\_space}}.\mbox{\hyperlink{structmpa__register__space__ext__ram_a667898579a4053c595e2ed9433cb3cb6}{AI\_RomRegs}}, \textcolor{keyword}{sizeof}(mpa\_regs));}
+\DoxyCodeLine{401                         \mbox{\hyperlink{ebc_8c_a6b64f4215863b90dc0f8d0b2b4d513db}{ebc\_init}}(\mbox{\hyperlink{ebc_8h_aa4b88f24716e66e8d41400b00e8ae8aead875d3de2bb4db8f95c05c7019c469c9}{EBC\_ROM}});}
+\DoxyCodeLine{402                         \mbox{\hyperlink{external__rom_8c_ac5f089ea2207f47244550f8c8d045bcf}{memcpy\_to\_rom}}(\mbox{\hyperlink{external__rom_8h_a2c10957cec5780eddd5fd75d2745607d}{ROM\_REGISTER\_SPACE\_START\_ADDR}}, \&common\_regs, \textcolor{keyword}{sizeof}(common\_regs));}
+\DoxyCodeLine{403                         \mbox{\hyperlink{external__rom_8c_ac5f089ea2207f47244550f8c8d045bcf}{memcpy\_to\_rom}}(\mbox{\hyperlink{external__rom_8h_a2c10957cec5780eddd5fd75d2745607d}{ROM\_REGISTER\_SPACE\_START\_ADDR}} + \textcolor{keyword}{sizeof}(common\_regs), \&mpa\_regs, \textcolor{keyword}{sizeof}(mpa\_regs));}
+\DoxyCodeLine{404                         \mbox{\hyperlink{ebc_8c_a6b64f4215863b90dc0f8d0b2b4d513db}{ebc\_init}}(\mbox{\hyperlink{ebc_8h_aa4b88f24716e66e8d41400b00e8ae8aea991481e1b7d5eab2a8424ca8d935f5ec}{EBC\_RAM}});}
+\DoxyCodeLine{405 \textcolor{preprocessor}{                    \#endif}}
+\DoxyCodeLine{406                     }
+\DoxyCodeLine{407                     memset((\mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_a492d81e21ce5dac959ae56a9175b3dde}{tx\_data}}) + offset, \mbox{\hyperlink{rs422__protocol_8h_a76ea3cf49247a07c54b3db005a3c7f57}{CONFIG}}, 1);}
+\DoxyCodeLine{408                     (tx\_pack\_cmd\_with\_data\_ptr + i)-\/>data = (\mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_a492d81e21ce5dac959ae56a9175b3dde}{tx\_data}}) + offset;}
+\DoxyCodeLine{409                     offset++;}
+\DoxyCodeLine{410                     (tx\_pack\_cmd\_with\_data\_ptr + i)-\/>header.cmd = \mbox{\hyperlink{rs422__protocol_8h_a76ea3cf49247a07c54b3db005a3c7f57}{CONFIG}};}
+\DoxyCodeLine{411                     \textcolor{comment}{// TODO:разобраться для чего поле result}}
+\DoxyCodeLine{412                     (tx\_pack\_cmd\_with\_data\_ptr + i)-\/>header.result = 0;}
+\DoxyCodeLine{413                     (tx\_pack\_cmd\_with\_data\_ptr + i)-\/>header.length = \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structcmd__header__struct}{fields\_cmd\_header}}) + 1;}
+\DoxyCodeLine{414                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{415                 }
+\DoxyCodeLine{416             \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{417                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{418         \}}
+\DoxyCodeLine{419         tx\_pack\_header-\/>\mbox{\hyperlink{structpacket__header__struct_ac6fcd430d601d7bfae577e62ab22492f}{packet\_length}} += (tx\_pack\_cmd\_with\_data\_ptr + i)-\/>header.length;}
+\DoxyCodeLine{420     \}}
+\DoxyCodeLine{421     \textcolor{comment}{// Заполнение остальных полей}}
+\DoxyCodeLine{422     tx\_pack\_header-\/>\mbox{\hyperlink{structpacket__header__struct_a7113d39ff097e7c72b893dbba4c8c7ca}{header}} = rx\_pack\_header-\/>\mbox{\hyperlink{structpacket__header__struct_a7113d39ff097e7c72b893dbba4c8c7ca}{header}};}
+\DoxyCodeLine{423     tx\_pack\_header-\/>\mbox{\hyperlink{structpacket__header__struct_adbdd35d51ce8eea8fb0a76a5c54274e5}{receiver\_addr}} = rx\_pack\_header-\/>\mbox{\hyperlink{structpacket__header__struct_ac504af7800c52ebd39622a7b93c0231d}{sender\_addr}};}
+\DoxyCodeLine{424     tx\_pack\_header-\/>\mbox{\hyperlink{structpacket__header__struct_ac504af7800c52ebd39622a7b93c0231d}{sender\_addr}} = rx\_pack\_header-\/>\mbox{\hyperlink{structpacket__header__struct_adbdd35d51ce8eea8fb0a76a5c54274e5}{receiver\_addr}};}
+\DoxyCodeLine{425     tx\_pack\_header-\/>\mbox{\hyperlink{structpacket__header__struct_ac6fcd430d601d7bfae577e62ab22492f}{packet\_length}} += \textcolor{keyword}{sizeof}(\mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_aade052f13f081a219189d9494fbdde89}{tx\_packet\_struct}}.\mbox{\hyperlink{structtx__rx__packet__struct_a2e5d4eb9028e95fc2d204a4c88f2cf2d}{packet\_header}}) -\/ \textcolor{keyword}{sizeof}(tx\_pack\_header-\/>\mbox{\hyperlink{structpacket__header__struct_a7113d39ff097e7c72b893dbba4c8c7ca}{header}}) + }
+\DoxyCodeLine{426         \textcolor{keyword}{sizeof}(tx\_pack\_tail-\/>\mbox{\hyperlink{structpacket__tail__Struct_a9580dd1f28b6745e64a314ebaa4e341a}{checksum}});}
+\DoxyCodeLine{427     memcpy(\&(tx\_pack\_header-\/>\mbox{\hyperlink{structpacket__header__struct_af227b1e6bb326a48ea957e067443f7c8}{service\_byte}}), \&(\mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_ac62275f40908961a48f2c49d8e85a2df}{service\_byte\_pm}}), \textcolor{keyword}{sizeof}(\mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_ac62275f40908961a48f2c49d8e85a2df}{service\_byte\_pm}}));}
+\DoxyCodeLine{428     tx\_pack\_header-\/>\mbox{\hyperlink{structpacket__header__struct_a8f98e89c37075148a7f03a2d401f04cf}{cmd\_number}} = rx\_pack\_header-\/>\mbox{\hyperlink{structpacket__header__struct_a8f98e89c37075148a7f03a2d401f04cf}{cmd\_number}};}
+\DoxyCodeLine{429     }
+\DoxyCodeLine{430     tx\_pack\_tail-\/>\mbox{\hyperlink{structpacket__tail__Struct_a00bf37b5f69ad2a474f215ca8aa7484c}{end}} = rx\_pack\_tail-\/>\mbox{\hyperlink{structpacket__tail__Struct_a00bf37b5f69ad2a474f215ca8aa7484c}{end}};}
+\DoxyCodeLine{431     }
+\DoxyCodeLine{432     \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{433 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{rs422__protocol_8h_a10e95fbdcf84e63f3680809c93659d9a}\label{rs422__protocol_8h_a10e95fbdcf84e63f3680809c93659d9a}} 
+\index{rs422\_protocol.h@{rs422\_protocol.h}!receive\_packet@{receive\_packet}}
+\index{receive\_packet@{receive\_packet}!rs422\_protocol.h@{rs422\_protocol.h}}
+\doxysubsubsection{\texorpdfstring{receive\_packet()}{receive\_packet()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{rs422__protocol_8h_a3daaf0175074f4779cf90ad4c6956752}{protocol\+\_\+error}} receive\+\_\+packet (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{uart_8h_adaa8285f14392d31d36867eddcd78572}{uart\+\_\+n}} $\ast$}]{uart\+\_\+struct,  }\item[{uint8\+\_\+t}]{ext\+\_\+bus }\end{DoxyParamCaption})}
+
+
+
+Читает пакет данных 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em $\ast$uart\+\_\+struct} & -\/ Выбранный U\+A\+RT МК \\
+\hline
+{\em ext\+\_\+bus} & -\/ Номер шины \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Код ошибки protocol\+\_\+error 
+\end{DoxyReturn}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{62 \{}
+\DoxyCodeLine{63     \mbox{\hyperlink{structtx__rx__packet__struct}{fields\_packet}} *rx\_pack\_ptr = \&\mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_a7f2127d07d9edbc570aae7abb635cdd8}{rx\_packet\_struct}}; \textcolor{comment}{// Указатель на структуру с принимаемым пакетом}}
+\DoxyCodeLine{64     \mbox{\hyperlink{structpacket__header__struct}{fields\_packet\_header}} *rx\_pack\_header\_ptr = \&\mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_a7f2127d07d9edbc570aae7abb635cdd8}{rx\_packet\_struct}}.\mbox{\hyperlink{structtx__rx__packet__struct_a2e5d4eb9028e95fc2d204a4c88f2cf2d}{packet\_header}}; \textcolor{comment}{// Указатель на заголовок принимаемого пакета}}
+\DoxyCodeLine{65     \mbox{\hyperlink{structpacket__tail__Struct}{fields\_packet\_tail}} *rx\_pack\_tail\_ptr = \&\mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_a7f2127d07d9edbc570aae7abb635cdd8}{rx\_packet\_struct}}.\mbox{\hyperlink{structtx__rx__packet__struct_a5e7c2a7326ef419e211c879f870466e9}{packet\_tail}}; \textcolor{comment}{// Указатель на заголовок принимаемого пакета}}
+\DoxyCodeLine{66     \mbox{\hyperlink{structcmd__struct}{fields\_cmd}} *rx\_pack\_cmd\_with\_data\_ptr =   \&\mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_a7f2127d07d9edbc570aae7abb635cdd8}{rx\_packet\_struct}}.\mbox{\hyperlink{structtx__rx__packet__struct_a0de9250ae3f8c175968144559a06966b}{cmd\_with\_data}}[0]; \textcolor{comment}{// Указатель на массив команд с данными для принимаемого пакета}}
+\DoxyCodeLine{67     uint32\_t current\_rx\_packet = 0;}
+\DoxyCodeLine{68     }
+\DoxyCodeLine{69     \textcolor{comment}{// Код последней ошибки, возникшей в процессе обмена данными}}
+\DoxyCodeLine{70     \mbox{\hyperlink{rs422__protocol_8h_a3daaf0175074f4779cf90ad4c6956752}{protocol\_error}} error;}
+\DoxyCodeLine{71     \textcolor{comment}{// Код последней ошибки, связанной с работой блока UART МК}}
+\DoxyCodeLine{72     \mbox{\hyperlink{uart_8h_a7c366cf58b12c041cc1dc3130264643f}{uart\_errors}} uart\_error;}
+\DoxyCodeLine{73     }
+\DoxyCodeLine{74     uint8\_t packet\_head;}
+\DoxyCodeLine{75     }
+\DoxyCodeLine{76     \textcolor{comment}{// Очистка всех структур данных связанных с принимаемым и отправляемым пакетом}}
+\DoxyCodeLine{77     memset(rx\_pack\_ptr, 0, \textcolor{keyword}{sizeof}(\mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_a7f2127d07d9edbc570aae7abb635cdd8}{rx\_packet\_struct}}) + \textcolor{keyword}{sizeof}(\mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_aade052f13f081a219189d9494fbdde89}{tx\_packet\_struct}}) + }
+\DoxyCodeLine{78         \textcolor{keyword}{sizeof}(\mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_a492d81e21ce5dac959ae56a9175b3dde}{tx\_data}}) + \textcolor{keyword}{sizeof}(\mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_a3665b197d1eb167f35ba9a58b3677691}{packet\_tx}}) + \textcolor{keyword}{sizeof}(\mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_a858728905809492bd23395b9f8b6ad95}{packet\_rx}}));}
+\DoxyCodeLine{79     }
+\DoxyCodeLine{80     \textcolor{comment}{// Здесь в цикле ловится и обрабатывается последний пакет в буфере приемника UART}}
+\DoxyCodeLine{81     \textcolor{keywordflow}{while} (1)}
+\DoxyCodeLine{82     \{}
+\DoxyCodeLine{83         \textcolor{keywordflow}{if} (\mbox{\hyperlink{uart_8c_ae4c246743abceb853beddc6f00487b94}{uart\_read\_pos}}(uart\_struct) < \mbox{\hyperlink{uart_8h_a0d57378e32bf8278011460740bc29f7f}{UART\_BUFFER\_SIZE}})}
+\DoxyCodeLine{84         \{}
+\DoxyCodeLine{85             memcpy(\&packet\_head, (uint8\_t*)(\mbox{\hyperlink{uart_8h_a4a8dd93d7e01285628644eaf90067f90}{GET\_UART\_BUF\_PTR}} + \mbox{\hyperlink{uart_8c_ae4c246743abceb853beddc6f00487b94}{uart\_read\_pos}}(uart\_struct)), \textcolor{keyword}{sizeof}(packet\_head));}
+\DoxyCodeLine{86         \}}
+\DoxyCodeLine{87         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{88         \{}
+\DoxyCodeLine{89             memcpy(\&packet\_head, (uint8\_t*)(\mbox{\hyperlink{uart_8h_a4a8dd93d7e01285628644eaf90067f90}{GET\_UART\_BUF\_PTR}}), \textcolor{keyword}{sizeof}(packet\_head));}
+\DoxyCodeLine{90         \}}
+\DoxyCodeLine{91         }
+\DoxyCodeLine{92         \textcolor{comment}{// Если уже были разобраны какие то пакеты, а начала следующего пакета (0x55) в буфере нет, это означает что крайний разобранный пакет оказался последним и выходим из цикла}}
+\DoxyCodeLine{93         \textcolor{keywordflow}{if} ((current\_rx\_packet != 0) \&\& (packet\_head != \mbox{\hyperlink{rs422__protocol_8h_ab7a88226a8fded994cb74483cc3d27d9}{PACKET\_HEAD}}))}
+\DoxyCodeLine{94         \{}
+\DoxyCodeLine{95             \mbox{\hyperlink{uart_8c_a66de1150972b09285805d2103e5a6cdf}{uart\_clean}}(uart\_struct);}
+\DoxyCodeLine{96             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{97         \}}
+\DoxyCodeLine{98         }
+\DoxyCodeLine{99         \textcolor{comment}{// Считываем первый байт и проверяем на 0x55}}
+\DoxyCodeLine{100         uart\_error = \mbox{\hyperlink{uart_8c_a7e6732641a7051f1b7932b1684826ad9}{uart\_read}}(uart\_struct, \textcolor{keyword}{sizeof}(rx\_pack\_header\_ptr-\/>\mbox{\hyperlink{structpacket__header__struct_a7113d39ff097e7c72b893dbba4c8c7ca}{header}}), \mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_a858728905809492bd23395b9f8b6ad95}{packet\_rx}});}
+\DoxyCodeLine{101         \textcolor{keywordflow}{if} (uart\_error != 0)}
+\DoxyCodeLine{102         \{}
+\DoxyCodeLine{103             error = \mbox{\hyperlink{rs422__protocol_8h_aba7cbaf5e7772f2d042fe6c708b254bfa8d985e4627498f56f5ab06caa7405b46}{UART\_ERROR}};}
+\DoxyCodeLine{104             \mbox{\hyperlink{rs422__protocol_8c_a52f65e97179a211b7317656d3f6fb9f5}{rx\_error\_handler}}(error, ext\_bus);}
+\DoxyCodeLine{105             \textcolor{keywordflow}{return} error;}
+\DoxyCodeLine{106         \}}
+\DoxyCodeLine{107         }
+\DoxyCodeLine{108         memcpy(\&(rx\_pack\_header\_ptr-\/>\mbox{\hyperlink{structpacket__header__struct_a7113d39ff097e7c72b893dbba4c8c7ca}{header}}), \mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_a858728905809492bd23395b9f8b6ad95}{packet\_rx}}, \textcolor{keyword}{sizeof}(rx\_pack\_header\_ptr-\/>\mbox{\hyperlink{structpacket__header__struct_a7113d39ff097e7c72b893dbba4c8c7ca}{header}}));}
+\DoxyCodeLine{109         \textcolor{keywordflow}{if} (rx\_pack\_header\_ptr-\/>\mbox{\hyperlink{structpacket__header__struct_a7113d39ff097e7c72b893dbba4c8c7ca}{header}} != \mbox{\hyperlink{rs422__protocol_8h_ab7a88226a8fded994cb74483cc3d27d9}{PACKET\_HEAD}})}
+\DoxyCodeLine{110         \{}
+\DoxyCodeLine{111             error = \mbox{\hyperlink{rs422__protocol_8h_aba7cbaf5e7772f2d042fe6c708b254bfa9f7b3973b120dc5e465046d84ab437c8}{PACKET\_ERROR}};}
+\DoxyCodeLine{112             \mbox{\hyperlink{rs422__protocol_8c_a52f65e97179a211b7317656d3f6fb9f5}{rx\_error\_handler}}(error, ext\_bus);}
+\DoxyCodeLine{113             \textcolor{keywordflow}{return} error;}
+\DoxyCodeLine{114         \}}
+\DoxyCodeLine{115         }
+\DoxyCodeLine{116         \textcolor{comment}{// Считываем заголовок телеграммы}}
+\DoxyCodeLine{117         uart\_error = \mbox{\hyperlink{uart_8c_a7e6732641a7051f1b7932b1684826ad9}{uart\_read}}(uart\_struct, \textcolor{keyword}{sizeof}(rx\_pack\_ptr-\/>\mbox{\hyperlink{structtx__rx__packet__struct_a2e5d4eb9028e95fc2d204a4c88f2cf2d}{packet\_header}}) -\/ \textcolor{keyword}{sizeof}(rx\_pack\_header\_ptr-\/>\mbox{\hyperlink{structpacket__header__struct_a7113d39ff097e7c72b893dbba4c8c7ca}{header}}),  (\mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_a858728905809492bd23395b9f8b6ad95}{packet\_rx}}) + \textcolor{keyword}{sizeof}(rx\_pack\_header\_ptr-\/>\mbox{\hyperlink{structpacket__header__struct_a7113d39ff097e7c72b893dbba4c8c7ca}{header}}));}
+\DoxyCodeLine{118         \textcolor{keywordflow}{if} (uart\_error != 0)}
+\DoxyCodeLine{119         \{}
+\DoxyCodeLine{120             error = \mbox{\hyperlink{rs422__protocol_8h_aba7cbaf5e7772f2d042fe6c708b254bfa8d985e4627498f56f5ab06caa7405b46}{UART\_ERROR}};}
+\DoxyCodeLine{121             \mbox{\hyperlink{rs422__protocol_8c_a52f65e97179a211b7317656d3f6fb9f5}{rx\_error\_handler}}(error, ext\_bus);}
+\DoxyCodeLine{122             \textcolor{keywordflow}{return} error;}
+\DoxyCodeLine{123         \}}
+\DoxyCodeLine{124         memcpy(rx\_pack\_header\_ptr, \mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_a858728905809492bd23395b9f8b6ad95}{packet\_rx}}, \textcolor{keyword}{sizeof}(rx\_pack\_ptr-\/>\mbox{\hyperlink{structtx__rx__packet__struct_a2e5d4eb9028e95fc2d204a4c88f2cf2d}{packet\_header}}));}
+\DoxyCodeLine{125         }
+\DoxyCodeLine{126         \textcolor{comment}{// Анализ длины пакета}}
+\DoxyCodeLine{127         \textcolor{keywordflow}{if} (rx\_pack\_header\_ptr-\/>\mbox{\hyperlink{structpacket__header__struct_ac6fcd430d601d7bfae577e62ab22492f}{packet\_length}} > \mbox{\hyperlink{uart_8h_a0d57378e32bf8278011460740bc29f7f}{UART\_BUFFER\_SIZE}})}
+\DoxyCodeLine{128         \{}
+\DoxyCodeLine{129             error = \mbox{\hyperlink{rs422__protocol_8h_aba7cbaf5e7772f2d042fe6c708b254bfa9f7b3973b120dc5e465046d84ab437c8}{PACKET\_ERROR}};}
+\DoxyCodeLine{130             \mbox{\hyperlink{rs422__protocol_8c_a52f65e97179a211b7317656d3f6fb9f5}{rx\_error\_handler}}(error, ext\_bus);}
+\DoxyCodeLine{131             \textcolor{keywordflow}{return} error;}
+\DoxyCodeLine{132         \}}
+\DoxyCodeLine{133         }
+\DoxyCodeLine{134         \textcolor{comment}{// Считываем весь пакет вычисленной длины}}
+\DoxyCodeLine{135         uart\_error = \mbox{\hyperlink{uart_8c_a7e6732641a7051f1b7932b1684826ad9}{uart\_read}}(uart\_struct, (rx\_pack\_header\_ptr-\/>\mbox{\hyperlink{structpacket__header__struct_ac6fcd430d601d7bfae577e62ab22492f}{packet\_length}}) -\/ \textcolor{keyword}{sizeof}(rx\_pack\_ptr-\/>\mbox{\hyperlink{structtx__rx__packet__struct_a2e5d4eb9028e95fc2d204a4c88f2cf2d}{packet\_header}}) + \textcolor{keyword}{sizeof}(rx\_pack\_header\_ptr-\/>\mbox{\hyperlink{structpacket__header__struct_a7113d39ff097e7c72b893dbba4c8c7ca}{header}}) + \textcolor{keyword}{sizeof}(rx\_pack\_tail\_ptr-\/>\mbox{\hyperlink{structpacket__tail__Struct_a00bf37b5f69ad2a474f215ca8aa7484c}{end}}), }
+\DoxyCodeLine{136             (\mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_a858728905809492bd23395b9f8b6ad95}{packet\_rx}}) + \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structpacket__header__struct}{fields\_packet\_header}}));}
+\DoxyCodeLine{137         \textcolor{keywordflow}{if} (uart\_error != 0)}
+\DoxyCodeLine{138         \{}
+\DoxyCodeLine{139             error = \mbox{\hyperlink{rs422__protocol_8h_aba7cbaf5e7772f2d042fe6c708b254bfa8d985e4627498f56f5ab06caa7405b46}{UART\_ERROR}};}
+\DoxyCodeLine{140             \mbox{\hyperlink{rs422__protocol_8c_a52f65e97179a211b7317656d3f6fb9f5}{rx\_error\_handler}}(error, ext\_bus);}
+\DoxyCodeLine{141             \textcolor{keywordflow}{return} error;}
+\DoxyCodeLine{142         \}}
+\DoxyCodeLine{143 }
+\DoxyCodeLine{144         \textcolor{comment}{// Считываем хвост пакета}}
+\DoxyCodeLine{145         memcpy(\&(rx\_pack\_ptr-\/>\mbox{\hyperlink{structtx__rx__packet__struct_a5e7c2a7326ef419e211c879f870466e9}{packet\_tail}}), \mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_a858728905809492bd23395b9f8b6ad95}{packet\_rx}} + (rx\_pack\_header\_ptr-\/>\mbox{\hyperlink{structpacket__header__struct_ac6fcd430d601d7bfae577e62ab22492f}{packet\_length}}) -\/ \textcolor{keyword}{sizeof}(rx\_pack\_tail\_ptr-\/>\mbox{\hyperlink{structpacket__tail__Struct_a9580dd1f28b6745e64a314ebaa4e341a}{checksum}}) + \textcolor{keyword}{sizeof}(rx\_pack\_header\_ptr-\/>\mbox{\hyperlink{structpacket__header__struct_a7113d39ff097e7c72b893dbba4c8c7ca}{header}}), \textcolor{keyword}{sizeof}(rx\_pack\_ptr-\/>\mbox{\hyperlink{structtx__rx__packet__struct_a5e7c2a7326ef419e211c879f870466e9}{packet\_tail}}));}
+\DoxyCodeLine{146         }
+\DoxyCodeLine{147         \textcolor{comment}{// Вторая обязательная проверка -\/ последние 2 байта должны быть 0xAA}}
+\DoxyCodeLine{148         \textcolor{keywordflow}{if} (rx\_pack\_tail\_ptr-\/>\mbox{\hyperlink{structpacket__tail__Struct_a00bf37b5f69ad2a474f215ca8aa7484c}{end}} != \mbox{\hyperlink{rs422__protocol_8h_a6ed2133dbbc85f621ee0615069481eba}{PACKET\_TAIL}})}
+\DoxyCodeLine{149         \{}
+\DoxyCodeLine{150             error = \mbox{\hyperlink{rs422__protocol_8h_aba7cbaf5e7772f2d042fe6c708b254bfa9f7b3973b120dc5e465046d84ab437c8}{PACKET\_ERROR}};}
+\DoxyCodeLine{151             \mbox{\hyperlink{rs422__protocol_8c_a52f65e97179a211b7317656d3f6fb9f5}{rx\_error\_handler}}(error, ext\_bus);}
+\DoxyCodeLine{152             \textcolor{keywordflow}{return} error;}
+\DoxyCodeLine{153         \}}
+\DoxyCodeLine{154             }
+\DoxyCodeLine{155         current\_rx\_packet++;}
+\DoxyCodeLine{156     \}}
+\DoxyCodeLine{157     \textcolor{comment}{// После того, как распознали последниий принятый пакет, продолжаем его обработку}}
+\DoxyCodeLine{158     \textcolor{comment}{// Распознавание сервисного байта УМ}}
+\DoxyCodeLine{159     memcpy(\&(\mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_a20ec1ad93822ba1a91654812c83b77e2}{service\_byte\_um}}), \&(rx\_pack\_header\_ptr-\/>\mbox{\hyperlink{structpacket__header__struct_af227b1e6bb326a48ea957e067443f7c8}{service\_byte}}), \textcolor{keyword}{sizeof}(rx\_pack\_header\_ptr-\/>\mbox{\hyperlink{structpacket__header__struct_af227b1e6bb326a48ea957e067443f7c8}{service\_byte}}));}
+\DoxyCodeLine{160     \textcolor{comment}{// Обработка сервисного байта УМ}}
+\DoxyCodeLine{161     \mbox{\hyperlink{rs422__protocol_8c_a39460309d7bc42043887006271f2cdee}{um\_service\_byte\_handler}}(ext\_bus);}
+\DoxyCodeLine{162     \textcolor{comment}{// Считываем массив команд (команда -\/ данные)}}
+\DoxyCodeLine{163     uint16\_t buffer\_offset = 0; \textcolor{comment}{//перемешение по буферу}}
+\DoxyCodeLine{164     \textcolor{keywordflow}{for} (uint32\_t i = 0; i < (rx\_pack\_header\_ptr-\/>\mbox{\hyperlink{structpacket__header__struct_a8f98e89c37075148a7f03a2d401f04cf}{cmd\_number}}); i++)}
+\DoxyCodeLine{165     \{}
+\DoxyCodeLine{166         \textcolor{comment}{// Считываем заголовок -\/ команда, результат, данные}}
+\DoxyCodeLine{167         memcpy(\&((rx\_pack\_cmd\_with\_data\_ptr + i)-\/>header), \mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_a858728905809492bd23395b9f8b6ad95}{packet\_rx}} + \textcolor{keyword}{sizeof}(rx\_pack\_ptr-\/>\mbox{\hyperlink{structtx__rx__packet__struct_a2e5d4eb9028e95fc2d204a4c88f2cf2d}{packet\_header}}) + buffer\_offset, \textcolor{keyword}{sizeof}((rx\_pack\_cmd\_with\_data\_ptr + i)-\/>header));}
+\DoxyCodeLine{168         \textcolor{comment}{// Анализ длины команды}}
+\DoxyCodeLine{169         \textcolor{keywordflow}{if} ((rx\_pack\_cmd\_with\_data\_ptr + i)-\/>header.length > \mbox{\hyperlink{uart_8h_a0d57378e32bf8278011460740bc29f7f}{UART\_BUFFER\_SIZE}})}
+\DoxyCodeLine{170         \{}
+\DoxyCodeLine{171             error = \mbox{\hyperlink{rs422__protocol_8h_aba7cbaf5e7772f2d042fe6c708b254bfa9f7b3973b120dc5e465046d84ab437c8}{PACKET\_ERROR}};}
+\DoxyCodeLine{172             \textcolor{keywordflow}{return} error;}
+\DoxyCodeLine{173         \}}
+\DoxyCodeLine{174         \textcolor{comment}{// Считываем указатель на данные}}
+\DoxyCodeLine{175         (rx\_pack\_cmd\_with\_data\_ptr + i)-\/>data = \mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_a858728905809492bd23395b9f8b6ad95}{packet\_rx}} + \textcolor{keyword}{sizeof}(rx\_pack\_ptr-\/>\mbox{\hyperlink{structtx__rx__packet__struct_a2e5d4eb9028e95fc2d204a4c88f2cf2d}{packet\_header}}) + buffer\_offset + \textcolor{keyword}{sizeof}((rx\_pack\_cmd\_with\_data\_ptr + i)-\/>header);}
+\DoxyCodeLine{176         buffer\_offset += (rx\_pack\_cmd\_with\_data\_ptr + i)-\/>header.length;}
+\DoxyCodeLine{177     \}}
+\DoxyCodeLine{178     }
+\DoxyCodeLine{179     \textcolor{comment}{// Вычисление контрольной суммы и сравнение ее с той, что в телеграмме  }}
+\DoxyCodeLine{180     uint32\_t real\_checksum = \mbox{\hyperlink{rs422__protocol_8c_acc758b87344b8f41001b3ae091d14cf5}{crc32}}((\mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_a858728905809492bd23395b9f8b6ad95}{packet\_rx}}) + \textcolor{keyword}{sizeof}(rx\_pack\_header\_ptr-\/>\mbox{\hyperlink{structpacket__header__struct_a7113d39ff097e7c72b893dbba4c8c7ca}{header}}), rx\_pack\_header\_ptr-\/>\mbox{\hyperlink{structpacket__header__struct_ac6fcd430d601d7bfae577e62ab22492f}{packet\_length}} -\/ \textcolor{keyword}{sizeof}(rx\_pack\_tail\_ptr-\/>\mbox{\hyperlink{structpacket__tail__Struct_a9580dd1f28b6745e64a314ebaa4e341a}{checksum}}));}
+\DoxyCodeLine{181     \textcolor{keywordflow}{if} (real\_checksum != (rx\_pack\_tail\_ptr-\/>\mbox{\hyperlink{structpacket__tail__Struct_a9580dd1f28b6745e64a314ebaa4e341a}{checksum}}))}
+\DoxyCodeLine{182     \{}
+\DoxyCodeLine{183         error = \mbox{\hyperlink{rs422__protocol_8h_aba7cbaf5e7772f2d042fe6c708b254bfa8a393db133e073ad8bac2f92e78d6f5d}{CRC\_ERROR}};}
+\DoxyCodeLine{184         \mbox{\hyperlink{rs422__protocol_8c_a52f65e97179a211b7317656d3f6fb9f5}{rx\_error\_handler}}(error, ext\_bus);}
+\DoxyCodeLine{185         \textcolor{keywordflow}{return} error;}
+\DoxyCodeLine{186     \}}
+\DoxyCodeLine{187     }
+\DoxyCodeLine{188     \textcolor{comment}{// Проверка адресации}}
+\DoxyCodeLine{189     \textcolor{keywordflow}{if}(rx\_pack\_header\_ptr-\/>\mbox{\hyperlink{structpacket__header__struct_adbdd35d51ce8eea8fb0a76a5c54274e5}{receiver\_addr}} != \mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_a29ff19a4ce45ab988b4f61feaea38545}{common\_ram\_register\_space}}.\mbox{\hyperlink{structcommon__register__space__ext__ram_a98e192cc41987223a2ee0f3c47d82bbc}{PLC\_PMAddr}}.\mbox{\hyperlink{structdevice__address__struct_ae0c20d59ca32f79b879d71d608237ff6}{module\_addr}})}
+\DoxyCodeLine{190     \{}
+\DoxyCodeLine{191         error = \mbox{\hyperlink{rs422__protocol_8h_aba7cbaf5e7772f2d042fe6c708b254bfaf56071aad4bdf2cfc6d2e1337c0a1614}{PM\_ADDR\_ERROR}};}
+\DoxyCodeLine{192         \textcolor{keywordflow}{return} error;}
+\DoxyCodeLine{193     \}}
+\DoxyCodeLine{194     }
+\DoxyCodeLine{195     \textcolor{comment}{// Если нет ошибок}}
+\DoxyCodeLine{196     error = \mbox{\hyperlink{rs422__protocol_8h_aba7cbaf5e7772f2d042fe6c708b254bfabf350750d0d4fabd8954c0f1e9bbae94}{NO\_ERROR}};}
+\DoxyCodeLine{197     \mbox{\hyperlink{rs422__protocol_8c_a52f65e97179a211b7317656d3f6fb9f5}{rx\_error\_handler}}(error, ext\_bus);   }
+\DoxyCodeLine{198 }
+\DoxyCodeLine{199     \textcolor{keywordflow}{return} error;}
+\DoxyCodeLine{200 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{rs422__protocol_8h_a52f65e97179a211b7317656d3f6fb9f5}\label{rs422__protocol_8h_a52f65e97179a211b7317656d3f6fb9f5}} 
+\index{rs422\_protocol.h@{rs422\_protocol.h}!rx\_error\_handler@{rx\_error\_handler}}
+\index{rx\_error\_handler@{rx\_error\_handler}!rs422\_protocol.h@{rs422\_protocol.h}}
+\doxysubsubsection{\texorpdfstring{rx\_error\_handler()}{rx\_error\_handler()}}
+{\footnotesize\ttfamily void rx\+\_\+error\+\_\+handler (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{rs422__protocol_8h_a3daaf0175074f4779cf90ad4c6956752}{protocol\+\_\+error}}}]{error,  }\item[{uint8\+\_\+t}]{ext\+\_\+bus }\end{DoxyParamCaption})}
+
+
+
+Обрабатывает ошибки приема пакетов 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em error} & -\/ Код ошибки \\
+\hline
+{\em ext\+\_\+bus} & -\/ Номер шины \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{467 \{}
+\DoxyCodeLine{468     \mbox{\hyperlink{structcommon__register__space__ext__ram}{common\_ram\_registers}} *common\_ram\_reg\_space\_ptr = \&\mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_a29ff19a4ce45ab988b4f61feaea38545}{common\_ram\_register\_space}}; \textcolor{comment}{//указатель на область памяти внешнего ОЗУ с общими регистрами}}
+\DoxyCodeLine{469     }
+\DoxyCodeLine{470     \textcolor{keywordflow}{switch} ((uint8\_t)error)}
+\DoxyCodeLine{471     \{}
+\DoxyCodeLine{472             \textcolor{keywordflow}{case} \mbox{\hyperlink{rs422__protocol_8h_aba7cbaf5e7772f2d042fe6c708b254bfabf350750d0d4fabd8954c0f1e9bbae94}{NO\_ERROR}}:}
+\DoxyCodeLine{473                     \mbox{\hyperlink{leds_8h_a430aace194cfb35550cca261ba966571}{SET\_LED\_OK\_WORK}}()}
+\DoxyCodeLine{474                     \mbox{\hyperlink{leds_8h_a5a72f7f58350bb195a2673db18c456d3}{RESET\_LED\_ERROR\_WORK}}()}
+\DoxyCodeLine{475                     switch (ext\_bus)}
+\DoxyCodeLine{476                     \{}
+\DoxyCodeLine{477                             \textcolor{keywordflow}{case} 1:}
+\DoxyCodeLine{478                                     common\_ram\_reg\_space\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__ram_a6a45af96191489245a2761ab66213ab2}{PLC\_CorrPackToDevice\_B1}}++; \textcolor{comment}{// Увеличиваем счетчик корректно принятых пакетов}}
+\DoxyCodeLine{479                                     common\_ram\_reg\_space\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__ram_a9137275729f93cc8dcfb6e36577708f6}{PLC\_ErrPackToDevice\_B1}} = 0;\textcolor{comment}{// Кол-\/во поврежденных пакетов подряд }}
+\DoxyCodeLine{480                                     \mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_ac62275f40908961a48f2c49d8e85a2df}{service\_byte\_pm}}.\mbox{\hyperlink{structservice__byte__struct__pm_a129b05a90fa6551d749a7f837107355f}{fail\_bus\_1}} = 0; \textcolor{comment}{// Снятие в сервисном байте ПМ бита несиправности шины}}
+\DoxyCodeLine{481                                     common\_ram\_reg\_space\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__ram_ab5e60da0a44659009cc670a6fa353141}{PLC\_BusDefect\_B1}}.\mbox{\hyperlink{structbus__defect__struct_a42522f5451ab00adc0496043bfd871b4}{many\_fail\_packet}} = 0; \textcolor{comment}{// Снятие в регистре неисправности шины бита "{}кол-\/во битых пакетов больше установленного"{}}}
+\DoxyCodeLine{482                                     common\_ram\_reg\_space\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__ram_ab5e60da0a44659009cc670a6fa353141}{PLC\_BusDefect\_B1}}.\mbox{\hyperlink{structbus__defect__struct_a8fecbe9edceca257e5f148b20240fedc}{fail\_timeout}} = 0; \textcolor{comment}{// Снятие в регистре неисправности шины бита "{}неисправность по таймауту"{}}}
+\DoxyCodeLine{483                                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{484                                 }
+\DoxyCodeLine{485                             \textcolor{keywordflow}{case} 2:}
+\DoxyCodeLine{486                                     common\_ram\_reg\_space\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__ram_a49d5a2f201634517f6b0c3b8b0c7426a}{PLC\_CorrPackToDevice\_B2}}++; \textcolor{comment}{// Увеличиваем счетчик корректно принятых пакетов}}
+\DoxyCodeLine{487                                     common\_ram\_reg\_space\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__ram_a5dfba01ac730555fcf94207da8dac540}{PLC\_ErrPackToDevice\_B2}} = 0;\textcolor{comment}{// Кол-\/во поврежденных пакетов подряд }}
+\DoxyCodeLine{488                                     \mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_ac62275f40908961a48f2c49d8e85a2df}{service\_byte\_pm}}.\mbox{\hyperlink{structservice__byte__struct__pm_a25d62cb6162806fbfa7f374af5ec8c53}{fail\_bus\_2}} = 0;    \textcolor{comment}{// Снятие в сервисном байте ПМ бита несиправности шины}}
+\DoxyCodeLine{489                                     common\_ram\_reg\_space\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__ram_a43b068532822b48d600bdb70f86b9eae}{PLC\_BusDefect\_B2}}.\mbox{\hyperlink{structbus__defect__struct_a42522f5451ab00adc0496043bfd871b4}{many\_fail\_packet}} = 0; \textcolor{comment}{// Снятие в регистре неисправности шины бита "{}кол-\/во битых пакетов больше установленного"{}}}
+\DoxyCodeLine{490                                     common\_ram\_reg\_space\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__ram_a43b068532822b48d600bdb70f86b9eae}{PLC\_BusDefect\_B2}}.\mbox{\hyperlink{structbus__defect__struct_a8fecbe9edceca257e5f148b20240fedc}{fail\_timeout}} = 0; \textcolor{comment}{// Снятие в регистре неисправности шины бита "{}неисправность по таймауту"{}}}
+\DoxyCodeLine{491                                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{492                                 }
+\DoxyCodeLine{493                             \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{494                                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{495                     \}   }
+\DoxyCodeLine{496                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{497                     }
+\DoxyCodeLine{498                 \textcolor{keywordflow}{case} \mbox{\hyperlink{rs422__protocol_8h_aba7cbaf5e7772f2d042fe6c708b254bfa8d985e4627498f56f5ab06caa7405b46}{UART\_ERROR}}:}
+\DoxyCodeLine{499                         \mbox{\hyperlink{leds_8h_a1ef7b516af7c36e82d260f9267c749d1}{RESET\_LED\_OK\_WORK}}()}
+\DoxyCodeLine{500                         \mbox{\hyperlink{leds_8h_a52ea46b9f9af903424e711659ad661a0}{SET\_LED\_ERROR\_WORK}}()}
+\DoxyCodeLine{501                 }
+\DoxyCodeLine{502                         switch (ext\_bus)}
+\DoxyCodeLine{503                         \{}
+\DoxyCodeLine{504                                 \textcolor{keywordflow}{case} 1:}
+\DoxyCodeLine{505                                         \mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_ac62275f40908961a48f2c49d8e85a2df}{service\_byte\_pm}}.\mbox{\hyperlink{structservice__byte__struct__pm_a129b05a90fa6551d749a7f837107355f}{fail\_bus\_1}} = 1;    \textcolor{comment}{// Запись в сервисный байт ПМ бита несиправности шины, если превышен таймаут}}
+\DoxyCodeLine{506                                         common\_ram\_reg\_space\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__ram_ab5e60da0a44659009cc670a6fa353141}{PLC\_BusDefect\_B1}}.\mbox{\hyperlink{structbus__defect__struct_a8fecbe9edceca257e5f148b20240fedc}{fail\_timeout}} = 1; \textcolor{comment}{// Запись в регистр неисправности шины бита "{}неисправность по таймауту"{}}}
+\DoxyCodeLine{507                                         common\_ram\_reg\_space\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__ram_a5a96150658343a9975428f52d86dfc70}{PLC\_CM\_State}} = \mbox{\hyperlink{rs422__protocol_8h_aad7ddbf6d8aee65c5c90e647c5dff880}{PLC\_CM\_REMOVE\_INIT}}; \textcolor{comment}{// Снятие инициализации}}
+\DoxyCodeLine{508                                         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{509                                 }
+\DoxyCodeLine{510                                 \textcolor{keywordflow}{case} 2:}
+\DoxyCodeLine{511                                         \mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_ac62275f40908961a48f2c49d8e85a2df}{service\_byte\_pm}}.\mbox{\hyperlink{structservice__byte__struct__pm_a25d62cb6162806fbfa7f374af5ec8c53}{fail\_bus\_2}} = 1;    \textcolor{comment}{// Запись в сервисный байт ПМ бита несиправности шины, если превышен таймаут}}
+\DoxyCodeLine{512                                         common\_ram\_reg\_space\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__ram_a43b068532822b48d600bdb70f86b9eae}{PLC\_BusDefect\_B2}}.\mbox{\hyperlink{structbus__defect__struct_a8fecbe9edceca257e5f148b20240fedc}{fail\_timeout}} = 1; \textcolor{comment}{// Запись в регистр неисправности шины бита "{}неисправность по таймауту"{}}}
+\DoxyCodeLine{513                                         common\_ram\_reg\_space\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__ram_a5a96150658343a9975428f52d86dfc70}{PLC\_CM\_State}} = \mbox{\hyperlink{rs422__protocol_8h_aad7ddbf6d8aee65c5c90e647c5dff880}{PLC\_CM\_REMOVE\_INIT}}; \textcolor{comment}{// Снятие инициализации}}
+\DoxyCodeLine{514                                         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{515                                 }
+\DoxyCodeLine{516                                 \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{517                                         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{518                         \}}
+\DoxyCodeLine{519                         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{520                         }
+\DoxyCodeLine{521                 \textcolor{keywordflow}{case} \mbox{\hyperlink{rs422__protocol_8h_aba7cbaf5e7772f2d042fe6c708b254bfa8a393db133e073ad8bac2f92e78d6f5d}{CRC\_ERROR}}: \textcolor{keywordflow}{case} \mbox{\hyperlink{rs422__protocol_8h_aba7cbaf5e7772f2d042fe6c708b254bfa9f7b3973b120dc5e465046d84ab437c8}{PACKET\_ERROR}}:}
+\DoxyCodeLine{522                         \mbox{\hyperlink{leds_8h_a1ef7b516af7c36e82d260f9267c749d1}{RESET\_LED\_OK\_WORK}}()}
+\DoxyCodeLine{523                         \mbox{\hyperlink{leds_8h_a52ea46b9f9af903424e711659ad661a0}{SET\_LED\_ERROR\_WORK}}()}
+\DoxyCodeLine{524                 }
+\DoxyCodeLine{525                         switch (ext\_bus)}
+\DoxyCodeLine{526                         \{}
+\DoxyCodeLine{527                                 \textcolor{keywordflow}{case} 1:}
+\DoxyCodeLine{528                                         common\_ram\_reg\_space\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__ram_a9137275729f93cc8dcfb6e36577708f6}{PLC\_ErrPackToDevice\_B1}}++;\textcolor{comment}{// Кол-\/во поврежденных пакетов подряд }}
+\DoxyCodeLine{529                                         \textcolor{keywordflow}{if} (common\_ram\_reg\_space\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__ram_a9137275729f93cc8dcfb6e36577708f6}{PLC\_ErrPackToDevice\_B1}} >= common\_ram\_reg\_space\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__ram_a57d116516f9e264bccd561158118685a}{PLC\_CommonRomRegs}}.\mbox{\hyperlink{structcommon__register__space__ext__rom_aa5e113ae43750669b7de5b3585208ce3}{PLC\_NumCrcErrorsForDefect\_B1}})}
+\DoxyCodeLine{530                                         \{}
+\DoxyCodeLine{531                                             \mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_ac62275f40908961a48f2c49d8e85a2df}{service\_byte\_pm}}.\mbox{\hyperlink{structservice__byte__struct__pm_a129b05a90fa6551d749a7f837107355f}{fail\_bus\_1}} = 1;    \textcolor{comment}{// Запись в сервисный байт ПМ бита несиправности шины, если кол-\/во подряд поврежденных пакетов больше установленного}}
+\DoxyCodeLine{532                                             common\_ram\_reg\_space\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__ram_ab5e60da0a44659009cc670a6fa353141}{PLC\_BusDefect\_B1}}.\mbox{\hyperlink{structbus__defect__struct_a42522f5451ab00adc0496043bfd871b4}{many\_fail\_packet}} = 1; \textcolor{comment}{// Запись в регистр неисправности шины бита "{}кол-\/во битых пакетов больше установленного"{}}}
+\DoxyCodeLine{533                                             common\_ram\_reg\_space\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__ram_a5a96150658343a9975428f52d86dfc70}{PLC\_CM\_State}} = \mbox{\hyperlink{rs422__protocol_8h_aad7ddbf6d8aee65c5c90e647c5dff880}{PLC\_CM\_REMOVE\_INIT}}; \textcolor{comment}{// Снятие инициализации}}
+\DoxyCodeLine{534                                         \}}
+\DoxyCodeLine{535                                         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{536                                         }
+\DoxyCodeLine{537                                 \textcolor{keywordflow}{case} 2:}
+\DoxyCodeLine{538                                         common\_ram\_reg\_space\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__ram_a5dfba01ac730555fcf94207da8dac540}{PLC\_ErrPackToDevice\_B2}}++;\textcolor{comment}{// Кол-\/во поврежденных пакетов подряд }}
+\DoxyCodeLine{539                                         \textcolor{keywordflow}{if} (common\_ram\_reg\_space\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__ram_a5dfba01ac730555fcf94207da8dac540}{PLC\_ErrPackToDevice\_B2}} >= common\_ram\_reg\_space\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__ram_a57d116516f9e264bccd561158118685a}{PLC\_CommonRomRegs}}.\mbox{\hyperlink{structcommon__register__space__ext__rom_a9e20154c6b508ea1fe7c316e112f2d87}{PLC\_NumCrcErrorsForDefect\_B2}})}
+\DoxyCodeLine{540                                         \{}
+\DoxyCodeLine{541                                             \mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_ac62275f40908961a48f2c49d8e85a2df}{service\_byte\_pm}}.\mbox{\hyperlink{structservice__byte__struct__pm_a25d62cb6162806fbfa7f374af5ec8c53}{fail\_bus\_2}} = 1;    \textcolor{comment}{// Запись в сервисный байт ПМ бита несиправности шины, если кол-\/во подряд поврежденных пакетов больше установленного}}
+\DoxyCodeLine{542                                             common\_ram\_reg\_space\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__ram_a43b068532822b48d600bdb70f86b9eae}{PLC\_BusDefect\_B2}}.\mbox{\hyperlink{structbus__defect__struct_a42522f5451ab00adc0496043bfd871b4}{many\_fail\_packet}} = 1; \textcolor{comment}{// Запись в регистр неисправности шины бита "{}кол-\/во битых пакетов больше установленного"{}}}
+\DoxyCodeLine{543                                             common\_ram\_reg\_space\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__ram_a5a96150658343a9975428f52d86dfc70}{PLC\_CM\_State}} = \mbox{\hyperlink{rs422__protocol_8h_aad7ddbf6d8aee65c5c90e647c5dff880}{PLC\_CM\_REMOVE\_INIT}}; \textcolor{comment}{// Снятие инициализации}}
+\DoxyCodeLine{544                                         \}}
+\DoxyCodeLine{545                                         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{546                                         }
+\DoxyCodeLine{547                                 \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{548                                         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{549                         \}}
+\DoxyCodeLine{550                         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{551                         }
+\DoxyCodeLine{552                 \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{553                         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{554     \}}
+\DoxyCodeLine{555 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{rs422__protocol_8h_af1ea8ba5878ba6102b6e8b6b33bd5b4a}\label{rs422__protocol_8h_af1ea8ba5878ba6102b6e8b6b33bd5b4a}} 
+\index{rs422\_protocol.h@{rs422\_protocol.h}!transmit\_packet@{transmit\_packet}}
+\index{transmit\_packet@{transmit\_packet}!rs422\_protocol.h@{rs422\_protocol.h}}
+\doxysubsubsection{\texorpdfstring{transmit\_packet()}{transmit\_packet()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{rs422__protocol_8h_a3daaf0175074f4779cf90ad4c6956752}{protocol\+\_\+error}} transmit\+\_\+packet (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{uart_8h_adaa8285f14392d31d36867eddcd78572}{uart\+\_\+n}} $\ast$}]{uart\+\_\+struct,  }\item[{uint8\+\_\+t}]{ext\+\_\+bus }\end{DoxyParamCaption})}
+
+
+
+Отправляет пакет данных 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em $\ast$uart\+\_\+struct} & -\/ Выбранный U\+A\+RT МК \\
+\hline
+{\em ext\+\_\+bus} & -\/ Номер шины \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Код ошибки protocol\+\_\+error 
+\end{DoxyReturn}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{20 \{   }
+\DoxyCodeLine{21     \mbox{\hyperlink{rs422__protocol_8h_a3daaf0175074f4779cf90ad4c6956752}{protocol\_error}} error;}
+\DoxyCodeLine{22     \mbox{\hyperlink{structtx__rx__packet__struct}{fields\_packet}} *tx\_pack\_ptr = \&\mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_aade052f13f081a219189d9494fbdde89}{tx\_packet\_struct}}; \textcolor{comment}{// Указатель на структуру с отправляемым пакетом}}
+\DoxyCodeLine{23     \mbox{\hyperlink{structcmd__struct}{fields\_cmd}} *tx\_pack\_cmd\_with\_data\_ptr =   \&\mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_aade052f13f081a219189d9494fbdde89}{tx\_packet\_struct}}.\mbox{\hyperlink{structtx__rx__packet__struct_a0de9250ae3f8c175968144559a06966b}{cmd\_with\_data}}[0]; \textcolor{comment}{// Указатель на массив команд с данными для принимаемого пакета}}
+\DoxyCodeLine{24     \mbox{\hyperlink{structpacket__header__struct}{fields\_packet\_header}} *tx\_pack\_header\_ptr = \&\mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_aade052f13f081a219189d9494fbdde89}{tx\_packet\_struct}}.\mbox{\hyperlink{structtx__rx__packet__struct_a2e5d4eb9028e95fc2d204a4c88f2cf2d}{packet\_header}}; \textcolor{comment}{// Указатель на заголовок принимаемого пакета}}
+\DoxyCodeLine{25     \mbox{\hyperlink{structpacket__tail__Struct}{fields\_packet\_tail}} *tx\_pack\_tail\_ptr = \&\mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_aade052f13f081a219189d9494fbdde89}{tx\_packet\_struct}}.\mbox{\hyperlink{structtx__rx__packet__struct_a5e7c2a7326ef419e211c879f870466e9}{packet\_tail}}; \textcolor{comment}{// Указатель на хвост принимаемого пакета}}
+\DoxyCodeLine{26     }
+\DoxyCodeLine{27     \textcolor{comment}{// Записываем в буфер заголовок пакета}}
+\DoxyCodeLine{28     memcpy(\&(\mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_a3665b197d1eb167f35ba9a58b3677691}{packet\_tx}}), \&(tx\_pack\_ptr-\/>\mbox{\hyperlink{structtx__rx__packet__struct_a2e5d4eb9028e95fc2d204a4c88f2cf2d}{packet\_header}}), \textcolor{keyword}{sizeof}(tx\_pack\_ptr-\/>\mbox{\hyperlink{structtx__rx__packet__struct_a2e5d4eb9028e95fc2d204a4c88f2cf2d}{packet\_header}}));}
+\DoxyCodeLine{29     \textcolor{comment}{// Записываем в буфер массив команд (команда -\/ данные)}}
+\DoxyCodeLine{30     uint16\_t buffer\_offset = 0; \textcolor{comment}{//перемешение по буферу}}
+\DoxyCodeLine{31     \textcolor{keywordflow}{for} (uint32\_t i = 0; i < (tx\_pack\_header\_ptr-\/>\mbox{\hyperlink{structpacket__header__struct_a8f98e89c37075148a7f03a2d401f04cf}{cmd\_number}}); i++)}
+\DoxyCodeLine{32     \{}
+\DoxyCodeLine{33         \textcolor{comment}{// Записываем команда, результат, данные}}
+\DoxyCodeLine{34         memcpy((\mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_a3665b197d1eb167f35ba9a58b3677691}{packet\_tx}}) + \textcolor{keyword}{sizeof}(tx\_pack\_ptr-\/>\mbox{\hyperlink{structtx__rx__packet__struct_a2e5d4eb9028e95fc2d204a4c88f2cf2d}{packet\_header}}) + buffer\_offset, \&((tx\_pack\_cmd\_with\_data\_ptr + i)-\/>header), \textcolor{keyword}{sizeof}((tx\_pack\_cmd\_with\_data\_ptr + i)-\/>header));}
+\DoxyCodeLine{35         memcpy((\mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_a3665b197d1eb167f35ba9a58b3677691}{packet\_tx}}) + \textcolor{keyword}{sizeof}(tx\_pack\_ptr-\/>\mbox{\hyperlink{structtx__rx__packet__struct_a2e5d4eb9028e95fc2d204a4c88f2cf2d}{packet\_header}}) + buffer\_offset + \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structcmd__header__struct}{fields\_cmd\_header}}), (tx\_pack\_cmd\_with\_data\_ptr + i)-\/>data, }
+\DoxyCodeLine{36             ((tx\_pack\_cmd\_with\_data\_ptr + i)-\/>header.length) -\/ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structcmd__header__struct}{fields\_cmd\_header}}));}
+\DoxyCodeLine{37         buffer\_offset += (tx\_pack\_cmd\_with\_data\_ptr + i)-\/>header.length;}
+\DoxyCodeLine{38     \}}
+\DoxyCodeLine{39     }
+\DoxyCodeLine{40     \textcolor{comment}{// Вычисление контрольной суммы}}
+\DoxyCodeLine{41     tx\_pack\_tail\_ptr-\/>\mbox{\hyperlink{structpacket__tail__Struct_a9580dd1f28b6745e64a314ebaa4e341a}{checksum}} = \mbox{\hyperlink{rs422__protocol_8c_acc758b87344b8f41001b3ae091d14cf5}{crc32}}((\mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_a3665b197d1eb167f35ba9a58b3677691}{packet\_tx}}) + \textcolor{keyword}{sizeof}(tx\_pack\_header\_ptr-\/>\mbox{\hyperlink{structpacket__header__struct_a7113d39ff097e7c72b893dbba4c8c7ca}{header}}), tx\_pack\_header\_ptr-\/>\mbox{\hyperlink{structpacket__header__struct_ac6fcd430d601d7bfae577e62ab22492f}{packet\_length}} -\/ \textcolor{keyword}{sizeof}(tx\_pack\_tail\_ptr-\/>\mbox{\hyperlink{structpacket__tail__Struct_a9580dd1f28b6745e64a314ebaa4e341a}{checksum}}));}
+\DoxyCodeLine{42     }
+\DoxyCodeLine{43     \textcolor{comment}{// Записываем в буфер хвост пакета}}
+\DoxyCodeLine{44     memcpy((\mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_a3665b197d1eb167f35ba9a58b3677691}{packet\_tx}}) + \textcolor{keyword}{sizeof}(tx\_pack\_ptr-\/>\mbox{\hyperlink{structtx__rx__packet__struct_a2e5d4eb9028e95fc2d204a4c88f2cf2d}{packet\_header}}) + buffer\_offset, \&(tx\_pack\_ptr-\/>\mbox{\hyperlink{structtx__rx__packet__struct_a5e7c2a7326ef419e211c879f870466e9}{packet\_tail}}), \textcolor{keyword}{sizeof}(tx\_pack\_ptr-\/>\mbox{\hyperlink{structtx__rx__packet__struct_a5e7c2a7326ef419e211c879f870466e9}{packet\_tail}}));}
+\DoxyCodeLine{45     }
+\DoxyCodeLine{46     \textcolor{comment}{// Отправляем данные по UART}}
+\DoxyCodeLine{47     \textcolor{keywordflow}{if} (\mbox{\hyperlink{uart_8c_ae6a3bc40518edab0e42a8fbb40aaa8d9}{uart\_write}}(uart\_struct, \mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_a3665b197d1eb167f35ba9a58b3677691}{packet\_tx}}, tx\_pack\_header\_ptr-\/>\mbox{\hyperlink{structpacket__header__struct_ac6fcd430d601d7bfae577e62ab22492f}{packet\_length}} + \textcolor{keyword}{sizeof}(tx\_pack\_header\_ptr-\/>\mbox{\hyperlink{structpacket__header__struct_a7113d39ff097e7c72b893dbba4c8c7ca}{header}}) + \textcolor{keyword}{sizeof}(tx\_pack\_tail\_ptr-\/>\mbox{\hyperlink{structpacket__tail__Struct_a00bf37b5f69ad2a474f215ca8aa7484c}{end}})) != 0)}
+\DoxyCodeLine{48     \{}
+\DoxyCodeLine{49         error = \mbox{\hyperlink{rs422__protocol_8h_aba7cbaf5e7772f2d042fe6c708b254bfa8d985e4627498f56f5ab06caa7405b46}{UART\_ERROR}};}
+\DoxyCodeLine{50         \textcolor{keywordflow}{return} error;}
+\DoxyCodeLine{51     \}}
+\DoxyCodeLine{52     }
+\DoxyCodeLine{53     \textcolor{comment}{// Если нет ошибок}}
+\DoxyCodeLine{54     error = \mbox{\hyperlink{rs422__protocol_8h_aba7cbaf5e7772f2d042fe6c708b254bfabf350750d0d4fabd8954c0f1e9bbae94}{NO\_ERROR}};}
+\DoxyCodeLine{55     }
+\DoxyCodeLine{56     \textcolor{keywordflow}{return} error;}
+\DoxyCodeLine{57 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{rs422__protocol_8h_a39460309d7bc42043887006271f2cdee}\label{rs422__protocol_8h_a39460309d7bc42043887006271f2cdee}} 
+\index{rs422\_protocol.h@{rs422\_protocol.h}!um\_service\_byte\_handler@{um\_service\_byte\_handler}}
+\index{um\_service\_byte\_handler@{um\_service\_byte\_handler}!rs422\_protocol.h@{rs422\_protocol.h}}
+\doxysubsubsection{\texorpdfstring{um\_service\_byte\_handler()}{um\_service\_byte\_handler()}}
+{\footnotesize\ttfamily void um\+\_\+service\+\_\+byte\+\_\+handler (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{ext\+\_\+bus }\end{DoxyParamCaption})}
+
+
+
+Обрабатывает сервисный байт УМ 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em ext\+\_\+bus} & -\/ Номер шины \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{560 \{}
+\DoxyCodeLine{561     \mbox{\hyperlink{structcommon__register__space__ext__ram}{common\_ram\_registers}} *common\_ram\_reg\_space\_ptr = \&\mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_a29ff19a4ce45ab988b4f61feaea38545}{common\_ram\_register\_space}}; \textcolor{comment}{//указатель на область памяти внешнего ОЗУ с общими регистрами}}
+\DoxyCodeLine{562 }
+\DoxyCodeLine{563     \textcolor{keywordflow}{switch} (\mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_a20ec1ad93822ba1a91654812c83b77e2}{service\_byte\_um}}.\mbox{\hyperlink{structservice__byte__struct__um_a3d40389709e0add0d437942d9f3e17fe}{last\_answer}})}
+\DoxyCodeLine{564     \{}
+\DoxyCodeLine{565             \textcolor{keywordflow}{case} 0:}
+\DoxyCodeLine{566                     \textcolor{keywordflow}{switch} (ext\_bus)}
+\DoxyCodeLine{567                     \{}
+\DoxyCodeLine{568                             \textcolor{keywordflow}{case} 1:}
+\DoxyCodeLine{569                                     \textcolor{keywordflow}{if}((\mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_a20ec1ad93822ba1a91654812c83b77e2}{service\_byte\_um}}.\mbox{\hyperlink{structservice__byte__struct__um_aa8771512ef455bc7c4f1a50bda9314ab}{ready\_to\_control}} == 0) \&\& (common\_ram\_reg\_space\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__ram_a5a96150658343a9975428f52d86dfc70}{PLC\_CM\_State}} == \mbox{\hyperlink{rs422__protocol_8h_a4356c5f2678dde04a1405c6cdd3eca86}{PLC\_CM\_INIT\_1\_BUS}}))}
+\DoxyCodeLine{570                                     \{}
+\DoxyCodeLine{571                                         \textcolor{comment}{// Сброс инициализации}}
+\DoxyCodeLine{572                                         common\_ram\_reg\_space\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__ram_a5a96150658343a9975428f52d86dfc70}{PLC\_CM\_State}} = \mbox{\hyperlink{rs422__protocol_8h_aad7ddbf6d8aee65c5c90e647c5dff880}{PLC\_CM\_REMOVE\_INIT}};}
+\DoxyCodeLine{573                                         \mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_ac62275f40908961a48f2c49d8e85a2df}{service\_byte\_pm}}.\mbox{\hyperlink{structservice__byte__struct__pm_a37d098cc6a8b79984422f52ae2c133a8}{init}} = 0;}
+\DoxyCodeLine{574                                     \}}
+\DoxyCodeLine{575                                     common\_ram\_reg\_space\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__ram_a4e2c758faf568b5a9c8715256ef9af97}{PLC\_CorrPackFromDevice\_B1}}++; \textcolor{comment}{// Увеличиваем счетчик корректно отправленных пакетов}}
+\DoxyCodeLine{576                                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{577                                 }
+\DoxyCodeLine{578                             \textcolor{keywordflow}{case} 2:}
+\DoxyCodeLine{579                                     \textcolor{keywordflow}{if}((\mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_a20ec1ad93822ba1a91654812c83b77e2}{service\_byte\_um}}.\mbox{\hyperlink{structservice__byte__struct__um_aa8771512ef455bc7c4f1a50bda9314ab}{ready\_to\_control}} == 0) \&\& (common\_ram\_reg\_space\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__ram_a5a96150658343a9975428f52d86dfc70}{PLC\_CM\_State}} == \mbox{\hyperlink{rs422__protocol_8h_a23fc42df1955da9f3eb1d0c2621d2aed}{PLC\_CM\_INIT\_2\_BUS}}))}
+\DoxyCodeLine{580                                     \{}
+\DoxyCodeLine{581                                         \textcolor{comment}{// Сброс инициализации}}
+\DoxyCodeLine{582                                         common\_ram\_reg\_space\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__ram_a5a96150658343a9975428f52d86dfc70}{PLC\_CM\_State}} = \mbox{\hyperlink{rs422__protocol_8h_aad7ddbf6d8aee65c5c90e647c5dff880}{PLC\_CM\_REMOVE\_INIT}};}
+\DoxyCodeLine{583                                         \mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_ac62275f40908961a48f2c49d8e85a2df}{service\_byte\_pm}}.\mbox{\hyperlink{structservice__byte__struct__pm_a37d098cc6a8b79984422f52ae2c133a8}{init}} = 0;}
+\DoxyCodeLine{584                                     \}   }
+\DoxyCodeLine{585                                     common\_ram\_reg\_space\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__ram_ad3936c82fcda75e3b43e1869fd0fb97f}{PLC\_CorrPackFromDevice\_B2}}++; \textcolor{comment}{// Увеличиваем счетчик корректно отправленных пакетов}}
+\DoxyCodeLine{586                                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{587                                 }
+\DoxyCodeLine{588                             \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{589                                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{590                     \}   }
+\DoxyCodeLine{591                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{592                     }
+\DoxyCodeLine{593                 \textcolor{keywordflow}{case} 1:}
+\DoxyCodeLine{594                         \textcolor{keywordflow}{switch} (ext\_bus)}
+\DoxyCodeLine{595                         \{}
+\DoxyCodeLine{596                                 \textcolor{keywordflow}{case} 1:}
+\DoxyCodeLine{597                                         \textcolor{keywordflow}{if}((\mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_a20ec1ad93822ba1a91654812c83b77e2}{service\_byte\_um}}.\mbox{\hyperlink{structservice__byte__struct__um_aa8771512ef455bc7c4f1a50bda9314ab}{ready\_to\_control}} == 0) \&\& (common\_ram\_reg\_space\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__ram_a5a96150658343a9975428f52d86dfc70}{PLC\_CM\_State}} == \mbox{\hyperlink{rs422__protocol_8h_a4356c5f2678dde04a1405c6cdd3eca86}{PLC\_CM\_INIT\_1\_BUS}}))}
+\DoxyCodeLine{598                                         \{}
+\DoxyCodeLine{599                                             \textcolor{comment}{// Сброс инициализации}}
+\DoxyCodeLine{600                                             common\_ram\_reg\_space\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__ram_a5a96150658343a9975428f52d86dfc70}{PLC\_CM\_State}} = \mbox{\hyperlink{rs422__protocol_8h_aad7ddbf6d8aee65c5c90e647c5dff880}{PLC\_CM\_REMOVE\_INIT}};}
+\DoxyCodeLine{601                                             \mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_ac62275f40908961a48f2c49d8e85a2df}{service\_byte\_pm}}.\mbox{\hyperlink{structservice__byte__struct__pm_a37d098cc6a8b79984422f52ae2c133a8}{init}} = 0;}
+\DoxyCodeLine{602                                         \}}
+\DoxyCodeLine{603                                         common\_ram\_reg\_space\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__ram_a65bb90f3b47e619d9c5739cd930e1765}{PLC\_ErrPackFromDevice\_B1}}++; \textcolor{comment}{// Увеличиваем счетчик ошибочно отправленных пакетов}}
+\DoxyCodeLine{604                                         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{605                                 }
+\DoxyCodeLine{606                                 \textcolor{keywordflow}{case} 2:}
+\DoxyCodeLine{607                                         \textcolor{keywordflow}{if}((\mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_a20ec1ad93822ba1a91654812c83b77e2}{service\_byte\_um}}.\mbox{\hyperlink{structservice__byte__struct__um_aa8771512ef455bc7c4f1a50bda9314ab}{ready\_to\_control}} == 0) \&\& (common\_ram\_reg\_space\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__ram_a5a96150658343a9975428f52d86dfc70}{PLC\_CM\_State}} == \mbox{\hyperlink{rs422__protocol_8h_a23fc42df1955da9f3eb1d0c2621d2aed}{PLC\_CM\_INIT\_2\_BUS}}))}
+\DoxyCodeLine{608                                         \{}
+\DoxyCodeLine{609                                             \textcolor{comment}{// Сброс инициализации}}
+\DoxyCodeLine{610                                             common\_ram\_reg\_space\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__ram_a5a96150658343a9975428f52d86dfc70}{PLC\_CM\_State}} = \mbox{\hyperlink{rs422__protocol_8h_aad7ddbf6d8aee65c5c90e647c5dff880}{PLC\_CM\_REMOVE\_INIT}};}
+\DoxyCodeLine{611                                             \mbox{\hyperlink{rs422__protocol_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_ac62275f40908961a48f2c49d8e85a2df}{service\_byte\_pm}}.\mbox{\hyperlink{structservice__byte__struct__pm_a37d098cc6a8b79984422f52ae2c133a8}{init}} = 0;}
+\DoxyCodeLine{612                                         \}   }
+\DoxyCodeLine{613                                         common\_ram\_reg\_space\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__ram_ac15455ee68731cbe049caadc7cd01970}{PLC\_ErrPackFromDevice\_B2}}++; \textcolor{comment}{// Увеличиваем счетчик ошибочно отправленных пакетов}}
+\DoxyCodeLine{614                                         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{615                                 }
+\DoxyCodeLine{616                                 \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{617                                         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{618                         \}}
+\DoxyCodeLine{619                         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{620                         }
+\DoxyCodeLine{621                 \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{622                         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{623     \}}
+\DoxyCodeLine{624 \}}
+
+\end{DoxyCode}

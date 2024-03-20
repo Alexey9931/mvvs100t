@@ -1,0 +1,7 @@
+<map id="tx_rx_packet_struct" name="tx_rx_packet_struct">
+<area shape="rect" id="node1" title="Структура пакета данных согласно утвержденному протоколу обмена данными" alt="" coords="145,184,295,211"/>
+<area shape="rect" id="node2" href="$structcmd__struct.html" title="Структура с полями данных для каждой команды (субпакета) внутри одного пакета" alt="" coords="31,95,126,121"/>
+<area shape="rect" id="node3" href="$structcmd__header__struct.html" title="Структура с заголовком для каждой команды (субпакета) внутри одного пакета" alt="" coords="5,5,152,32"/>
+<area shape="rect" id="node4" href="$structpacket__tail__Struct.html" title="Структура с полями конца пакета" alt="" coords="151,95,289,121"/>
+<area shape="rect" id="node5" href="$structpacket__header__struct.html" title="Структура с полями заголовка пакета" alt="" coords="313,95,476,121"/>
+</map>

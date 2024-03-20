@@ -1,0 +1,4 @@
+<map id="start_struct_ext_ram" name="start_struct_ext_ram">
+<area shape="rect" id="node1" title="Структура, которая лежит в начале ОЗУ любого модуля" alt="" coords="5,95,163,121"/>
+<area shape="rect" id="node2" href="$structrange__start__struct.html" title="Структура одного диапазона для стартовой структуры" alt="" coords="14,5,154,32"/>
+</map>

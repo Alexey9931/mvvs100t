@@ -1,0 +1,327 @@
+\hypertarget{spi_8c}{}\doxysection{Файл spi.\+c}
+\label{spi_8c}\index{spi.c@{spi.c}}
+
+
+Файл с реализацией A\+PI для работы с S\+PI.  
+
+
+{\ttfamily \#include \char`\"{}spi.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}1273pv19t.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}external\+\_\+ram.\+h\char`\"{}}\newline
+Граф включаемых заголовочных файлов для spi.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{spi_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Функции}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{spi_8c_ac061abb9730613f7f8ef63ed02eb24f8}{spi\+\_\+gpio\+\_\+config}} (void)
+\begin{DoxyCompactList}\small\item\em Конфигурирует выводы МК для S\+PI. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{spi_8c_a1d731764013a9bc565b1e703a03751b4}{spi\+\_\+init}} (\mbox{\hyperlink{spi_8h_ab833736115a154e13899c6b9695957a2}{spi\+\_\+n}} $\ast$spi\+\_\+struct)
+\begin{DoxyCompactList}\small\item\em Инициализацирует выбранный S\+P\+In. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{spi_8c_a68aa0c3af0f472cf1ec75ae0c2d75e4c}{spi\+\_\+transmit\+\_\+halfword}} (\mbox{\hyperlink{spi_8h_ab833736115a154e13899c6b9695957a2}{spi\+\_\+n}} $\ast$spi\+\_\+struct, uint16\+\_\+t half\+\_\+word)
+\begin{DoxyCompactList}\small\item\em Отправляет полуслово по S\+P\+In. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{spi_8c_a48f5d3ec746f4cd7f83f481b7bd93e9f}{spi\+\_\+transmit\+\_\+message}} (\mbox{\hyperlink{spi_8h_ab833736115a154e13899c6b9695957a2}{spi\+\_\+n}} $\ast$spi\+\_\+struct, uint16\+\_\+t message\mbox{[}$\,$\mbox{]}, uint32\+\_\+t length)
+\begin{DoxyCompactList}\small\item\em Отправляет массив полуслов по S\+P\+In. \end{DoxyCompactList}\item 
+uint16\+\_\+t \mbox{\hyperlink{spi_8c_a7ac70f87abf82267a8f6ef045c43321c}{spi\+\_\+receive\+\_\+halfword}} (\mbox{\hyperlink{spi_8h_ab833736115a154e13899c6b9695957a2}{spi\+\_\+n}} $\ast$spi\+\_\+struct)
+\begin{DoxyCompactList}\small\item\em Принимает полуслово по S\+P\+In. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{spi_8c_a129f1bdb142ca6714cb77ec0e25f7e74}{spi\+\_\+clean\+\_\+fifo\+\_\+rx\+\_\+buf}} (\mbox{\hyperlink{spi_8h_ab833736115a154e13899c6b9695957a2}{spi\+\_\+n}} $\ast$spi\+\_\+struct)
+\begin{DoxyCompactList}\small\item\em Очищает F\+I\+FO буфер приемника S\+P\+In. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{spi_8c_ad78531a757476f1ec34b631951b94ec2}{dma\+\_\+spi\+\_\+rx\+\_\+init}} (\mbox{\hyperlink{spi_8h_ab833736115a154e13899c6b9695957a2}{spi\+\_\+n}} $\ast$spi\+\_\+struct)
+\begin{DoxyCompactList}\small\item\em Инициализирует n-\/ый канал D\+MA на запрос от приемника S\+P\+In. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Переменные}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{spi_8h_ab833736115a154e13899c6b9695957a2}{spi\+\_\+n}} \mbox{\hyperlink{spi_8c_a168a603d82909428f4f498ae15a611d7}{spi\+\_\+1}}
+\begin{DoxyCompactList}\small\item\em Структура с конфигурационными параметрами блока S\+P\+I1 МК \end{DoxyCompactList}\item 
+\mbox{\hyperlink{spi_8h_ab833736115a154e13899c6b9695957a2}{spi\+\_\+n}} \mbox{\hyperlink{spi_8c_a37bdd3ddaee9770093c97c396a2942c2}{spi\+\_\+2}}
+\begin{DoxyCompactList}\small\item\em Структура с конфигурационными параметрами блока S\+P\+I2 МК \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Файл с реализацией A\+PI для работы с S\+PI. 
+
+
+
+\doxysubsection{Функции}
+\mbox{\Hypertarget{spi_8c_ad78531a757476f1ec34b631951b94ec2}\label{spi_8c_ad78531a757476f1ec34b631951b94ec2}} 
+\index{spi.c@{spi.c}!dma\_spi\_rx\_init@{dma\_spi\_rx\_init}}
+\index{dma\_spi\_rx\_init@{dma\_spi\_rx\_init}!spi.c@{spi.c}}
+\doxysubsubsection{\texorpdfstring{dma\_spi\_rx\_init()}{dma\_spi\_rx\_init()}}
+{\footnotesize\ttfamily void dma\+\_\+spi\+\_\+rx\+\_\+init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{spi_8h_ab833736115a154e13899c6b9695957a2}{spi\+\_\+n}} $\ast$}]{spi\+\_\+struct }\end{DoxyParamCaption})}
+
+
+
+Инициализирует n-\/ый канал D\+MA на запрос от приемника S\+P\+In. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em $\ast$spi\+\_\+struct} & -\/ Выбранный S\+PI \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{129 \{}
+\DoxyCodeLine{130 }
+\DoxyCodeLine{131     DMA\_StructInit(\&spi\_struct-\/>\mbox{\hyperlink{structspi__config__data_aaafbcfaf3333ceebf395c3f9167ee277}{spi\_dma\_ch}}.\mbox{\hyperlink{structspi__dma__params_a073f9ac240a1391e1dbdaaa03fc32dc5}{DMA\_Channel\_SPI\_RX}});}
+\DoxyCodeLine{132     spi\_struct-\/>\mbox{\hyperlink{structspi__config__data_aaafbcfaf3333ceebf395c3f9167ee277}{spi\_dma\_ch}}.\mbox{\hyperlink{structspi__dma__params_aecfb6cc2a477feda67e02ab29e9c7b4b}{DMA\_InitStructure\_SPI\_RX}}.DMA\_SourceBaseAddr = (uint32\_t)(\&(spi\_struct-\/>\mbox{\hyperlink{structspi__config__data_af7c62ae50acedf3fd8aea07e6d804d47}{SSPx}}-\/>DR));}
+\DoxyCodeLine{133     spi\_struct-\/>\mbox{\hyperlink{structspi__config__data_aaafbcfaf3333ceebf395c3f9167ee277}{spi\_dma\_ch}}.\mbox{\hyperlink{structspi__dma__params_aecfb6cc2a477feda67e02ab29e9c7b4b}{DMA\_InitStructure\_SPI\_RX}}.DMA\_DestBaseAddr = (uint32\_t)(spi\_struct-\/>\mbox{\hyperlink{structspi__config__data_a1867273e7c2b87ecac77f7797690ec95}{buffer}});}
+\DoxyCodeLine{134     spi\_struct-\/>\mbox{\hyperlink{structspi__config__data_aaafbcfaf3333ceebf395c3f9167ee277}{spi\_dma\_ch}}.\mbox{\hyperlink{structspi__dma__params_aecfb6cc2a477feda67e02ab29e9c7b4b}{DMA\_InitStructure\_SPI\_RX}}.DMA\_CycleSize = 1;}
+\DoxyCodeLine{135     spi\_struct-\/>\mbox{\hyperlink{structspi__config__data_aaafbcfaf3333ceebf395c3f9167ee277}{spi\_dma\_ch}}.\mbox{\hyperlink{structspi__dma__params_aecfb6cc2a477feda67e02ab29e9c7b4b}{DMA\_InitStructure\_SPI\_RX}}.DMA\_SourceIncSize = DMA\_SourceIncNo;}
+\DoxyCodeLine{136     spi\_struct-\/>\mbox{\hyperlink{structspi__config__data_aaafbcfaf3333ceebf395c3f9167ee277}{spi\_dma\_ch}}.\mbox{\hyperlink{structspi__dma__params_aecfb6cc2a477feda67e02ab29e9c7b4b}{DMA\_InitStructure\_SPI\_RX}}.DMA\_DestIncSize = DMA\_DestIncHalfword;}
+\DoxyCodeLine{137     spi\_struct-\/>\mbox{\hyperlink{structspi__config__data_aaafbcfaf3333ceebf395c3f9167ee277}{spi\_dma\_ch}}.\mbox{\hyperlink{structspi__dma__params_aecfb6cc2a477feda67e02ab29e9c7b4b}{DMA\_InitStructure\_SPI\_RX}}.DMA\_MemoryDataSize = DMA\_MemoryDataSize\_HalfWord;}
+\DoxyCodeLine{138     spi\_struct-\/>\mbox{\hyperlink{structspi__config__data_aaafbcfaf3333ceebf395c3f9167ee277}{spi\_dma\_ch}}.\mbox{\hyperlink{structspi__dma__params_aecfb6cc2a477feda67e02ab29e9c7b4b}{DMA\_InitStructure\_SPI\_RX}}.DMA\_NumContinuous = DMA\_Transfers\_1;}
+\DoxyCodeLine{139     spi\_struct-\/>\mbox{\hyperlink{structspi__config__data_aaafbcfaf3333ceebf395c3f9167ee277}{spi\_dma\_ch}}.\mbox{\hyperlink{structspi__dma__params_aecfb6cc2a477feda67e02ab29e9c7b4b}{DMA\_InitStructure\_SPI\_RX}}.DMA\_SourceProtCtrl = DMA\_SourcePrivileged;}
+\DoxyCodeLine{140     spi\_struct-\/>\mbox{\hyperlink{structspi__config__data_aaafbcfaf3333ceebf395c3f9167ee277}{spi\_dma\_ch}}.\mbox{\hyperlink{structspi__dma__params_aecfb6cc2a477feda67e02ab29e9c7b4b}{DMA\_InitStructure\_SPI\_RX}}.DMA\_DestProtCtrl = DMA\_DestPrivileged;}
+\DoxyCodeLine{141     spi\_struct-\/>\mbox{\hyperlink{structspi__config__data_aaafbcfaf3333ceebf395c3f9167ee277}{spi\_dma\_ch}}.\mbox{\hyperlink{structspi__dma__params_aecfb6cc2a477feda67e02ab29e9c7b4b}{DMA\_InitStructure\_SPI\_RX}}.DMA\_Mode = DMA\_Mode\_Basic;}
+\DoxyCodeLine{142     }
+\DoxyCodeLine{143     \textcolor{comment}{// Задать структуру канала}}
+\DoxyCodeLine{144     spi\_struct-\/>\mbox{\hyperlink{structspi__config__data_aaafbcfaf3333ceebf395c3f9167ee277}{spi\_dma\_ch}}.\mbox{\hyperlink{structspi__dma__params_a073f9ac240a1391e1dbdaaa03fc32dc5}{DMA\_Channel\_SPI\_RX}}.DMA\_PriCtrlData = \&spi\_struct-\/>\mbox{\hyperlink{structspi__config__data_aaafbcfaf3333ceebf395c3f9167ee277}{spi\_dma\_ch}}.\mbox{\hyperlink{structspi__dma__params_aecfb6cc2a477feda67e02ab29e9c7b4b}{DMA\_InitStructure\_SPI\_RX}};}
+\DoxyCodeLine{145     spi\_struct-\/>\mbox{\hyperlink{structspi__config__data_aaafbcfaf3333ceebf395c3f9167ee277}{spi\_dma\_ch}}.\mbox{\hyperlink{structspi__dma__params_a073f9ac240a1391e1dbdaaa03fc32dc5}{DMA\_Channel\_SPI\_RX}}.DMA\_Priority = DMA\_Priority\_High;}
+\DoxyCodeLine{146     spi\_struct-\/>\mbox{\hyperlink{structspi__config__data_aaafbcfaf3333ceebf395c3f9167ee277}{spi\_dma\_ch}}.\mbox{\hyperlink{structspi__dma__params_a073f9ac240a1391e1dbdaaa03fc32dc5}{DMA\_Channel\_SPI\_RX}}.DMA\_UseBurst = DMA\_BurstClear;}
+\DoxyCodeLine{147     spi\_struct-\/>\mbox{\hyperlink{structspi__config__data_aaafbcfaf3333ceebf395c3f9167ee277}{spi\_dma\_ch}}.\mbox{\hyperlink{structspi__dma__params_a073f9ac240a1391e1dbdaaa03fc32dc5}{DMA\_Channel\_SPI\_RX}}.DMA\_SelectDataStructure = DMA\_CTRL\_DATA\_PRIMARY;}
+\DoxyCodeLine{148     }
+\DoxyCodeLine{149     \textcolor{comment}{// Инициализировать канал}}
+\DoxyCodeLine{150     DMA\_Init(spi\_struct-\/>\mbox{\hyperlink{structspi__config__data_aaafbcfaf3333ceebf395c3f9167ee277}{spi\_dma\_ch}}.\mbox{\hyperlink{structspi__dma__params_a57f62569fee44582e631327600feb797}{dma\_channel}}, \&spi\_struct-\/>\mbox{\hyperlink{structspi__config__data_aaafbcfaf3333ceebf395c3f9167ee277}{spi\_dma\_ch}}.\mbox{\hyperlink{structspi__dma__params_a073f9ac240a1391e1dbdaaa03fc32dc5}{DMA\_Channel\_SPI\_RX}});}
+\DoxyCodeLine{151     }
+\DoxyCodeLine{152     MDR\_DMA-\/>CHNL\_REQ\_MASK\_CLR = 1 << spi\_struct-\/>\mbox{\hyperlink{structspi__config__data_aaafbcfaf3333ceebf395c3f9167ee277}{spi\_dma\_ch}}.\mbox{\hyperlink{structspi__dma__params_a57f62569fee44582e631327600feb797}{dma\_channel}};}
+\DoxyCodeLine{153     MDR\_DMA-\/>CHNL\_USEBURST\_CLR = 1 << spi\_struct-\/>\mbox{\hyperlink{structspi__config__data_aaafbcfaf3333ceebf395c3f9167ee277}{spi\_dma\_ch}}.\mbox{\hyperlink{structspi__dma__params_a57f62569fee44582e631327600feb797}{dma\_channel}};}
+\DoxyCodeLine{154     }
+\DoxyCodeLine{155     SSP\_DMACmd(spi\_struct-\/>\mbox{\hyperlink{structspi__config__data_af7c62ae50acedf3fd8aea07e6d804d47}{SSPx}}, SSP\_DMA\_RXE, DISABLE);}
+\DoxyCodeLine{156     \textcolor{comment}{// Разрешить работу DMA с SPI}}
+\DoxyCodeLine{157     DMA\_Cmd (spi\_struct-\/>\mbox{\hyperlink{structspi__config__data_aaafbcfaf3333ceebf395c3f9167ee277}{spi\_dma\_ch}}.\mbox{\hyperlink{structspi__dma__params_a57f62569fee44582e631327600feb797}{dma\_channel}}, DISABLE);}
+\DoxyCodeLine{158     }
+\DoxyCodeLine{159     \textcolor{comment}{//NVIC\_SetPriority (DMA\_IRQn, 0);}}
+\DoxyCodeLine{160     \textcolor{comment}{//NVIC\_EnableIRQ(DMA\_IRQn);}}
+\DoxyCodeLine{161 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{spi_8c_a129f1bdb142ca6714cb77ec0e25f7e74}\label{spi_8c_a129f1bdb142ca6714cb77ec0e25f7e74}} 
+\index{spi.c@{spi.c}!spi\_clean\_fifo\_rx\_buf@{spi\_clean\_fifo\_rx\_buf}}
+\index{spi\_clean\_fifo\_rx\_buf@{spi\_clean\_fifo\_rx\_buf}!spi.c@{spi.c}}
+\doxysubsubsection{\texorpdfstring{spi\_clean\_fifo\_rx\_buf()}{spi\_clean\_fifo\_rx\_buf()}}
+{\footnotesize\ttfamily void spi\+\_\+clean\+\_\+fifo\+\_\+rx\+\_\+buf (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{spi_8h_ab833736115a154e13899c6b9695957a2}{spi\+\_\+n}} $\ast$}]{spi\+\_\+struct }\end{DoxyParamCaption})}
+
+
+
+Очищает F\+I\+FO буфер приемника S\+P\+In. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em $\ast$spi\+\_\+struct} & -\/ Выбранный S\+PI \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{118 \{   }
+\DoxyCodeLine{119     uint16\_t a;}
+\DoxyCodeLine{120     \textcolor{keywordflow}{while}(SSP\_GetFlagStatus(spi\_struct-\/>\mbox{\hyperlink{structspi__config__data_af7c62ae50acedf3fd8aea07e6d804d47}{SSPx}}, SSP\_FLAG\_RNE) == SET)}
+\DoxyCodeLine{121     \{}
+\DoxyCodeLine{122         a = spi\_struct-\/>\mbox{\hyperlink{structspi__config__data_af7c62ae50acedf3fd8aea07e6d804d47}{SSPx}}-\/>DR;}
+\DoxyCodeLine{123     \}}
+\DoxyCodeLine{124 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{spi_8c_ac061abb9730613f7f8ef63ed02eb24f8}\label{spi_8c_ac061abb9730613f7f8ef63ed02eb24f8}} 
+\index{spi.c@{spi.c}!spi\_gpio\_config@{spi\_gpio\_config}}
+\index{spi\_gpio\_config@{spi\_gpio\_config}!spi.c@{spi.c}}
+\doxysubsubsection{\texorpdfstring{spi\_gpio\_config()}{spi\_gpio\_config()}}
+{\footnotesize\ttfamily void spi\+\_\+gpio\+\_\+config (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Конфигурирует выводы МК для S\+PI. 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{19 \{}
+\DoxyCodeLine{20     \textcolor{comment}{// Включение тактирования портов}}
+\DoxyCodeLine{21     RST\_CLK\_PCLKcmd(RST\_CLK\_PCLK\_RST\_CLK|RST\_CLK\_PCLK\_PORTD, ENABLE);   }
+\DoxyCodeLine{22     }
+\DoxyCodeLine{23     \textcolor{comment}{// Инициализация портов SSP1}}
+\DoxyCodeLine{24     PORT\_InitTypeDef GPIO\_init\_struct\_SPI1;}
+\DoxyCodeLine{25     }
+\DoxyCodeLine{26     PORT\_StructInit(\&GPIO\_init\_struct\_SPI1);}
+\DoxyCodeLine{27     GPIO\_init\_struct\_SPI1.PORT\_FUNC = PORT\_FUNC\_ALTER;}
+\DoxyCodeLine{28     GPIO\_init\_struct\_SPI1.PORT\_MODE = PORT\_MODE\_DIGITAL;}
+\DoxyCodeLine{29     GPIO\_init\_struct\_SPI1.PORT\_SPEED = PORT\_SPEED\_MAXFAST;}
+\DoxyCodeLine{30     \textcolor{comment}{// Инициализация вывода SCK}}
+\DoxyCodeLine{31     GPIO\_init\_struct\_SPI1.PORT\_Pin = \mbox{\hyperlink{spi_8h_aee0f6fc6957f1ed799d9b225326129e6}{PIN\_SSP1\_SCK}};}
+\DoxyCodeLine{32     GPIO\_init\_struct\_SPI1.PORT\_OE = PORT\_OE\_IN;}
+\DoxyCodeLine{33     PORT\_Init(\mbox{\hyperlink{spi_8h_ab1b2ce8814a7a499806ef41a898d65b3}{PORT\_SSP1}}, \&GPIO\_init\_struct\_SPI1);}
+\DoxyCodeLine{34     \textcolor{comment}{// Инициализация вывода SSP\_RX}}
+\DoxyCodeLine{35     GPIO\_init\_struct\_SPI1.PORT\_Pin = \mbox{\hyperlink{spi_8h_aa00ef5091ed480f2f80745738d9dc317}{PIN\_SSP1\_RX}};}
+\DoxyCodeLine{36     GPIO\_init\_struct\_SPI1.PORT\_OE = PORT\_OE\_IN;}
+\DoxyCodeLine{37     PORT\_Init(\mbox{\hyperlink{spi_8h_ab1b2ce8814a7a499806ef41a898d65b3}{PORT\_SSP1}}, \&GPIO\_init\_struct\_SPI1);}
+\DoxyCodeLine{38     \textcolor{comment}{// Инициализация вывода SSP\_TX}}
+\DoxyCodeLine{39     GPIO\_init\_struct\_SPI1.PORT\_Pin = \mbox{\hyperlink{spi_8h_a6d889b8dba7010a7b8acea1bf1ded4ab}{PIN\_SSP1\_TX}};}
+\DoxyCodeLine{40     GPIO\_init\_struct\_SPI1.PORT\_OE = PORT\_OE\_OUT;}
+\DoxyCodeLine{41     PORT\_Init(\mbox{\hyperlink{spi_8h_ab1b2ce8814a7a499806ef41a898d65b3}{PORT\_SSP1}}, \&GPIO\_init\_struct\_SPI1);}
+\DoxyCodeLine{42     PORT\_ResetBits(\mbox{\hyperlink{spi_8h_ab1b2ce8814a7a499806ef41a898d65b3}{PORT\_SSP1}},\mbox{\hyperlink{spi_8h_a6d889b8dba7010a7b8acea1bf1ded4ab}{PIN\_SSP1\_TX}});}
+\DoxyCodeLine{43     \textcolor{comment}{// Инициализация вывода SS (вход SDIFS)}}
+\DoxyCodeLine{44     GPIO\_init\_struct\_SPI1.PORT\_Pin = \mbox{\hyperlink{spi_8h_a01a7257aa3943f00cfcaa20fd35c56da}{PIN\_SSP1\_SS}};}
+\DoxyCodeLine{45     GPIO\_init\_struct\_SPI1.PORT\_FUNC = PORT\_FUNC\_ALTER;}
+\DoxyCodeLine{46     GPIO\_init\_struct\_SPI1.PORT\_OE = PORT\_OE\_IN;}
+\DoxyCodeLine{47     PORT\_Init(\mbox{\hyperlink{spi_8h_ab1b2ce8814a7a499806ef41a898d65b3}{PORT\_SSP1}}, \&GPIO\_init\_struct\_SPI1);}
+\DoxyCodeLine{48 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{spi_8c_a1d731764013a9bc565b1e703a03751b4}\label{spi_8c_a1d731764013a9bc565b1e703a03751b4}} 
+\index{spi.c@{spi.c}!spi\_init@{spi\_init}}
+\index{spi\_init@{spi\_init}!spi.c@{spi.c}}
+\doxysubsubsection{\texorpdfstring{spi\_init()}{spi\_init()}}
+{\footnotesize\ttfamily void spi\+\_\+init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{spi_8h_ab833736115a154e13899c6b9695957a2}{spi\+\_\+n}} $\ast$}]{spi\+\_\+struct }\end{DoxyParamCaption})}
+
+
+
+Инициализацирует выбранный S\+P\+In. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em $\ast$spi\+\_\+struct} & -\/ Выбранный S\+PI для инициализации \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{53 \{}
+\DoxyCodeLine{54     \mbox{\hyperlink{spi_8c_ac061abb9730613f7f8ef63ed02eb24f8}{spi\_gpio\_config}}();}
+\DoxyCodeLine{55     }
+\DoxyCodeLine{56     \textcolor{comment}{// Структура для инициализации SPI}}
+\DoxyCodeLine{57     SSP\_InitTypeDef SSP\_InitStruct;}
+\DoxyCodeLine{58     }
+\DoxyCodeLine{59     \textcolor{comment}{// Включение тактирования SPI}}
+\DoxyCodeLine{60     RST\_CLK\_PCLKcmd(spi\_struct-\/>\mbox{\hyperlink{structspi__config__data_a247538f866abbe38d75e28839e1eeda8}{RST\_CLK\_PCLK\_SPIn}}, ENABLE);}
+\DoxyCodeLine{61 }
+\DoxyCodeLine{62     SSP\_StructInit(\&SSP\_InitStruct);}
+\DoxyCodeLine{63     }
+\DoxyCodeLine{64     SSP\_BRGInit(spi\_struct-\/>\mbox{\hyperlink{structspi__config__data_af7c62ae50acedf3fd8aea07e6d804d47}{SSPx}}, SSP\_HCLKdiv1);}
+\DoxyCodeLine{65     }
+\DoxyCodeLine{66     SSP\_InitStruct.SSP\_WordLength = spi\_struct-\/>\mbox{\hyperlink{structspi__config__data_a4bee2d980540cdded5cf085ae1136ad3}{SPI}}.SSP\_WordLength;}
+\DoxyCodeLine{67     SSP\_InitStruct.SSP\_Mode = spi\_struct-\/>\mbox{\hyperlink{structspi__config__data_a4bee2d980540cdded5cf085ae1136ad3}{SPI}}.SSP\_Mode;}
+\DoxyCodeLine{68     SSP\_InitStruct.SSP\_SPH = spi\_struct-\/>\mbox{\hyperlink{structspi__config__data_a4bee2d980540cdded5cf085ae1136ad3}{SPI}}.SSP\_SPH;}
+\DoxyCodeLine{69   SSP\_InitStruct.SSP\_FRF = spi\_struct-\/>\mbox{\hyperlink{structspi__config__data_a4bee2d980540cdded5cf085ae1136ad3}{SPI}}.SSP\_FRF;}
+\DoxyCodeLine{70   SSP\_InitStruct.SSP\_HardwareFlowControl = spi\_struct-\/>\mbox{\hyperlink{structspi__config__data_a4bee2d980540cdded5cf085ae1136ad3}{SPI}}.SSP\_HardwareFlowControl;}
+\DoxyCodeLine{71     \textcolor{comment}{//SSP\_InitStruct.SSP\_SCR  = 0x10;}}
+\DoxyCodeLine{72   SSP\_InitStruct.SSP\_CPSDVSR = spi\_struct-\/>\mbox{\hyperlink{structspi__config__data_a4bee2d980540cdded5cf085ae1136ad3}{SPI}}.SSP\_CPSDVSR; \textcolor{comment}{// Частота обмена 2МГц }}
+\DoxyCodeLine{73     SSP\_Init(spi\_struct-\/>\mbox{\hyperlink{structspi__config__data_af7c62ae50acedf3fd8aea07e6d804d47}{SSPx}},\&SSP\_InitStruct);}
+\DoxyCodeLine{74     }
+\DoxyCodeLine{75     NVIC\_DisableIRQ(spi\_struct-\/>\mbox{\hyperlink{structspi__config__data_a7a06c2f3824a0a98580af694e5c2b0ef}{IRQn}});}
+\DoxyCodeLine{76     \textcolor{comment}{// Выбор источников прерываний (прием и передача данных)}}
+\DoxyCodeLine{77   SSP\_ITConfig (spi\_struct-\/>\mbox{\hyperlink{structspi__config__data_af7c62ae50acedf3fd8aea07e6d804d47}{SSPx}}, SSP\_IT\_RX, DISABLE);}
+\DoxyCodeLine{78     }
+\DoxyCodeLine{79     SSP\_Cmd(spi\_struct-\/>\mbox{\hyperlink{structspi__config__data_af7c62ae50acedf3fd8aea07e6d804d47}{SSPx}}, ENABLE);  }
+\DoxyCodeLine{80 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{spi_8c_a7ac70f87abf82267a8f6ef045c43321c}\label{spi_8c_a7ac70f87abf82267a8f6ef045c43321c}} 
+\index{spi.c@{spi.c}!spi\_receive\_halfword@{spi\_receive\_halfword}}
+\index{spi\_receive\_halfword@{spi\_receive\_halfword}!spi.c@{spi.c}}
+\doxysubsubsection{\texorpdfstring{spi\_receive\_halfword()}{spi\_receive\_halfword()}}
+{\footnotesize\ttfamily uint16\+\_\+t spi\+\_\+receive\+\_\+halfword (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{spi_8h_ab833736115a154e13899c6b9695957a2}{spi\+\_\+n}} $\ast$}]{spi\+\_\+struct }\end{DoxyParamCaption})}
+
+
+
+Принимает полуслово по S\+P\+In. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em $\ast$spi\+\_\+struct} & -\/ Выбранный S\+PI \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{105 \{   }
+\DoxyCodeLine{106     uint16\_t tmpVar;}
+\DoxyCodeLine{107     \textcolor{comment}{// Обработка прерывания от приемника данных}}
+\DoxyCodeLine{108     \textcolor{keywordflow}{while} (SSP\_GetFlagStatus(spi\_struct-\/>\mbox{\hyperlink{structspi__config__data_af7c62ae50acedf3fd8aea07e6d804d47}{SSPx}}, SSP\_FLAG\_RNE) != SET)  \{\}  \textcolor{comment}{// Ждем, пока появится байт  }}
+\DoxyCodeLine{109     \textcolor{comment}{// Получаем данные}}
+\DoxyCodeLine{110     tmpVar = SSP\_ReceiveData(spi\_struct-\/>\mbox{\hyperlink{structspi__config__data_af7c62ae50acedf3fd8aea07e6d804d47}{SSPx}});}
+\DoxyCodeLine{111         }
+\DoxyCodeLine{112     \textcolor{keywordflow}{return} tmpVar;}
+\DoxyCodeLine{113 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{spi_8c_a68aa0c3af0f472cf1ec75ae0c2d75e4c}\label{spi_8c_a68aa0c3af0f472cf1ec75ae0c2d75e4c}} 
+\index{spi.c@{spi.c}!spi\_transmit\_halfword@{spi\_transmit\_halfword}}
+\index{spi\_transmit\_halfword@{spi\_transmit\_halfword}!spi.c@{spi.c}}
+\doxysubsubsection{\texorpdfstring{spi\_transmit\_halfword()}{spi\_transmit\_halfword()}}
+{\footnotesize\ttfamily void spi\+\_\+transmit\+\_\+halfword (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{spi_8h_ab833736115a154e13899c6b9695957a2}{spi\+\_\+n}} $\ast$}]{spi\+\_\+struct,  }\item[{uint16\+\_\+t}]{half\+\_\+word }\end{DoxyParamCaption})}
+
+
+
+Отправляет полуслово по S\+P\+In. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em $\ast$spi\+\_\+struct} & -\/ Выбранный S\+PI \\
+\hline
+{\em half\+\_\+word} & -\/ Полуслово для отправки \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{85 \{}
+\DoxyCodeLine{86     SSP\_SendData(spi\_struct-\/>\mbox{\hyperlink{structspi__config__data_af7c62ae50acedf3fd8aea07e6d804d47}{SSPx}}, half\_word);}
+\DoxyCodeLine{87     \textcolor{keywordflow}{while} ( SSP\_GetFlagStatus(spi\_struct-\/>\mbox{\hyperlink{structspi__config__data_af7c62ae50acedf3fd8aea07e6d804d47}{SSPx}}, SSP\_FLAG\_TFE) != SET);}
+\DoxyCodeLine{88 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{spi_8c_a48f5d3ec746f4cd7f83f481b7bd93e9f}\label{spi_8c_a48f5d3ec746f4cd7f83f481b7bd93e9f}} 
+\index{spi.c@{spi.c}!spi\_transmit\_message@{spi\_transmit\_message}}
+\index{spi\_transmit\_message@{spi\_transmit\_message}!spi.c@{spi.c}}
+\doxysubsubsection{\texorpdfstring{spi\_transmit\_message()}{spi\_transmit\_message()}}
+{\footnotesize\ttfamily void spi\+\_\+transmit\+\_\+message (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{spi_8h_ab833736115a154e13899c6b9695957a2}{spi\+\_\+n}} $\ast$}]{spi\+\_\+struct,  }\item[{uint16\+\_\+t}]{message\mbox{[}$\,$\mbox{]},  }\item[{uint32\+\_\+t}]{length }\end{DoxyParamCaption})}
+
+
+
+Отправляет массив полуслов по S\+P\+In. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em $\ast$spi\+\_\+struct} & -\/ Выбранный S\+PI \\
+\hline
+{\em message} & -\/ Массив для отправки \\
+\hline
+{\em length} & -\/ Размер массива \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{93 \{}
+\DoxyCodeLine{94     \textcolor{keywordflow}{for}(uint32\_t i = 0; i < length; i++)}
+\DoxyCodeLine{95     \{}
+\DoxyCodeLine{96         \textcolor{keywordflow}{while}(SSP\_GetFlagStatus(spi\_struct-\/>\mbox{\hyperlink{structspi__config__data_af7c62ae50acedf3fd8aea07e6d804d47}{SSPx}}, SSP\_FLAG\_TNF) != SET) \{\} \textcolor{comment}{// Ждем, когда в буфере появится место и затем записываем следующий байт}}
+\DoxyCodeLine{97         SSP\_SendData(spi\_struct-\/>\mbox{\hyperlink{structspi__config__data_af7c62ae50acedf3fd8aea07e6d804d47}{SSPx}}, message[i]);         }
+\DoxyCodeLine{98     \}   }
+\DoxyCodeLine{99     \textcolor{keywordflow}{while} (SSP\_GetFlagStatus(spi\_struct-\/>\mbox{\hyperlink{structspi__config__data_af7c62ae50acedf3fd8aea07e6d804d47}{SSPx}}, SSP\_FLAG\_TFE) != SET) \{\}  \textcolor{comment}{// Ждем, пока байт уйдет       }}
+\DoxyCodeLine{100 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Переменные}
+\mbox{\Hypertarget{spi_8c_a168a603d82909428f4f498ae15a611d7}\label{spi_8c_a168a603d82909428f4f498ae15a611d7}} 
+\index{spi.c@{spi.c}!spi\_1@{spi\_1}}
+\index{spi\_1@{spi\_1}!spi.c@{spi.c}}
+\doxysubsubsection{\texorpdfstring{spi\_1}{spi\_1}}
+{\footnotesize\ttfamily \mbox{\hyperlink{spi_8h_ab833736115a154e13899c6b9695957a2}{spi\+\_\+n}} spi\+\_\+1}
+
+
+
+Структура с конфигурационными параметрами блока S\+P\+I1 МК 
+
+Структура с конфигурационными параметрами блока S\+PI МК
+
+Структуры с конфигурационными параметрами блоков S\+PI МК \mbox{\Hypertarget{spi_8c_a37bdd3ddaee9770093c97c396a2942c2}\label{spi_8c_a37bdd3ddaee9770093c97c396a2942c2}} 
+\index{spi.c@{spi.c}!spi\_2@{spi\_2}}
+\index{spi\_2@{spi\_2}!spi.c@{spi.c}}
+\doxysubsubsection{\texorpdfstring{spi\_2}{spi\_2}}
+{\footnotesize\ttfamily \mbox{\hyperlink{spi_8h_ab833736115a154e13899c6b9695957a2}{spi\+\_\+n}} spi\+\_\+2}
+
+
+
+Структура с конфигурационными параметрами блока S\+P\+I2 МК 
+

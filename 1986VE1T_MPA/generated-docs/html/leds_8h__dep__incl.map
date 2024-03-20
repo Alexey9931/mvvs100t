@@ -1,0 +1,8 @@
+<map id="leds.h" name="leds.h">
+<area shape="rect" id="node1" title="Заголовочный файл с описанием API для работы со светодиодными индикаторами" alt="" coords="93,5,154,32"/>
+<area shape="rect" id="node2" href="$leds_8c.html" title="Файл с реализацией API для работы со светодиодными индикаторами" alt="" coords="5,80,65,107"/>
+<area shape="rect" id="node3" href="$main_8h.html" title="Заголовочный файл с реализацией основного функционала МПА" alt="" coords="90,80,157,107"/>
+<area shape="rect" id="node6" href="$rs422__protocol_8c.html" title="Файл с реализацией API протокола обмена данными по интерфейсу RS&#45;422." alt="" coords="181,80,311,107"/>
+<area shape="rect" id="node4" href="$main_8c.html" title=" " alt="" coords="42,155,109,181"/>
+<area shape="rect" id="node5" href="$timers_8c.html" title="Файл с реализацией API для работы с таймерами" alt="" coords="133,155,207,181"/>
+</map>

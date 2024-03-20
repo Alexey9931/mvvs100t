@@ -1,11 +1,11 @@
 /*!
  \file
- \brief Файл с реализацией API для работы с областью памяти внешнего ОЗУ
+ \brief Р¤Р°Р№Р» СЃ СЂРµР°Р»РёР·Р°С†РёРµР№ API РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ РѕР±Р»Р°СЃС‚СЊСЋ РїР°РјСЏС‚Рё РІРЅРµС€РЅРµРіРѕ РћР—РЈ
 */
 
 /*
- *	Внешняя память ОЗУ 1645Р4 подключается по внешней системной шине в 32-битном режиме данных.
- *	Сдвиг адресации делать нужно A2->A0, A3->A1 и тд (т.к. нормально работать с ОЗУ можно только в 32 битном режим EBC, а для этого нужен сдвиг)
+ *	Р’РЅРµС€РЅСЏСЏ РїР°РјСЏС‚СЊ РћР—РЈ 1645Р 4 РїРѕРґРєР»СЋС‡Р°РµС‚СЃСЏ РїРѕ РІРЅРµС€РЅРµР№ СЃРёСЃС‚РµРјРЅРѕР№ С€РёРЅРµ РІ 32-Р±РёС‚РЅРѕРј СЂРµР¶РёРјРµ РґР°РЅРЅС‹С….
+ *	РЎРґРІРёРі Р°РґСЂРµСЃР°С†РёРё РґРµР»Р°С‚СЊ РЅСѓР¶РЅРѕ A2->A0, A3->A1 Рё С‚Рґ (С‚.Рє. РЅРѕСЂРјР°Р»СЊРЅРѕ СЂР°Р±РѕС‚Р°С‚СЊ СЃ РћР—РЈ РјРѕР¶РЅРѕ С‚РѕР»СЊРєРѕ РІ 32 Р±РёС‚РЅРѕРј СЂРµР¶РёРј EBC, Р° РґР»СЏ СЌС‚РѕРіРѕ РЅСѓР¶РµРЅ СЃРґРІРёРі)
 */
 
 #include "external_ram.h"
@@ -13,10 +13,12 @@
 #include <string.h>
 #include <math.h>
 
+/// РЈРєР°Р·Р°С‚РµР»СЊ РґР»СЏ РѕР±СЂР°С‰РµРЅРёСЏ Рє РІРЅРµС€РЅРµРјСѓ РћР—РЈ
 extern ram_data *ram_space_pointer;
+/// РЈРєР°Р·Р°С‚РµР»СЊ РґР»СЏ РѕР±СЂР°С‰РµРЅРёСЏ Рє РІРЅРµС€РЅРµРјСѓ РџР—РЈ
 extern rom_data *rom_space_pointer;
 
-//константы полиномов
+/// РљРѕРЅСЃС‚Р°РЅС‚С‹ РїРѕР»РёРЅРѕРјРѕРІ
 float polyn_ch_consts[MAX_CHANEL_NUMBER][7] = {
 	{4.94072982f, 0.00015744f, 	0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
 	{4.92697692f, 0.00015771f, 	0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
@@ -28,7 +30,7 @@ float polyn_ch_consts[MAX_CHANEL_NUMBER][7] = {
 };
 
 /*!
-	Функция инициализации области памяти внешнего ОЗУ
+	Р¤СѓРЅРєС†РёСЏ РёРЅРёС†РёР°Р»РёР·Р°С†РёРё РѕР±Р»Р°СЃС‚Рё РїР°РјСЏС‚Рё РІРЅРµС€РЅРµРіРѕ РћР—РЈ
 */
 void init_external_ram_space(void)
 {
@@ -40,9 +42,10 @@ void init_external_ram_space(void)
 	mpa_rom_registers* mpa_rom_reg_ptr = &ram_space_pointer->mpa_ram_register_space.AI_RomRegs;
 	common_rom_registers* common_rom_reg_ptr = &ram_space_pointer->common_ram_register_space.PLC_CommonRomRegs;
 	
-	//первичная очистка используемого куска памяти ОЗУ
+	// РџРµСЂРІРёС‡РЅР°СЏ РѕС‡РёСЃС‚РєР° РёСЃРїРѕР»СЊР·СѓРµРјРѕРіРѕ РєСѓСЃРєР° РїР°РјСЏС‚Рё РћР—РЈ
 	memset(ram_space_pointer, 0, sizeof(ram_data));
-	//инициализации структуры, которая лежит в начале ОЗУ
+	
+	// РРЅРёС†РёР°Р»РёР·Р°С†РёРё СЃС‚Р°СЂС‚РѕРІРѕР№ СЃС‚СЂСѓРєС‚СѓСЂС‹, РєРѕС‚РѕСЂР°СЏ Р»РµР¶РёС‚ РІ РЅР°С‡Р°Р»Рµ РћР—РЈ
 	start_struct_ptr->length = START_STRUCT_LENGTH;
 	start_struct_ptr->text_info = START_STRUCT_TEXT_INFO_ADDR;
 	start_struct_ptr->flag_change_struct = START_STRUCT_CHANGE_FLAG;
@@ -60,8 +63,8 @@ void init_external_ram_space(void)
 	start_struct_ptr->ranges_in_start_struct[2].address = START_STRUCT_RANGE2_ADDR;
 	start_struct_ptr->ranges_in_start_struct[2].size = START_STRUCT_RANGE2_SIZE;
 	
-	//кладем карту регистров по адресу 200 во внешней ОЗУ и инциализируем ее
-	//кладем регистры, которые инициализируются в ПО
+	// РљР»Р°РґРµРј РєР°СЂС‚Сѓ СЂРµРіРёСЃС‚СЂРѕРІ РїРѕ Р°РґСЂРµСЃСѓ 200 РІРѕ РІРЅРµС€РЅРµР№ РћР—РЈ Рё РёРЅС†РёР°Р»РёР·РёСЂСѓРµРј РµРµ
+	// РљР»Р°РґРµРј СЂРµРіРёСЃС‚СЂС‹, РєРѕС‚РѕСЂС‹Рµ РёРЅРёС†РёР°Р»РёР·РёСЂСѓСЋС‚СЃСЏ РІ РџРћ
 	common_ram_reg_ptr->PLC_SoftVer.revision = PLC_SOFT_VER_REVISION;
 	common_ram_reg_ptr->PLC_SoftVer.modification = PLC_SOFT_VER_MODIFICATION;
 	common_ram_reg_ptr->PLC_SoftVer.type = PLC_SOFT_VER_TYPE;
@@ -76,7 +79,8 @@ void init_external_ram_space(void)
 	common_ram_reg_ptr->PLC_Config.reserv = PLC_CONFIG_RESERV;
 	common_ram_reg_ptr->PLC_CM_State = PLC_CM_NOT_INIT;
 	
-	//кладем регистры, которые берутся из ПЗУ
+	// РљР»Р°РґРµРј СЂРµРіРёСЃС‚СЂС‹, РєРѕС‚РѕСЂС‹Рµ Р±РµСЂСѓС‚СЃСЏ РёР· РџР—РЈ
+	// Р•СЃР»Рё РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РІРЅРµС€РЅРµРµ РџР—РЈ (РІ РѕР±С‰РµРј С‚Рѕ РєР°Рє Рё РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ) Р·РµСЂРєР°Р»РёР·РёСЂСѓРµРј РґР°РЅРЅС‹Рµ РёР· РџР—РЈ РІ РћР—РЈ
 	#ifdef ROM_IS_USED
 		common_rom_registers 	common_regs;
 		mpa_rom_registers			mpa_regs;
@@ -90,7 +94,8 @@ void init_external_ram_space(void)
 		memcpy(&ram_space_pointer->mpa_ram_register_space.AI_RomRegs, &mpa_regs, sizeof(mpa_regs));
 	#endif
 	#ifndef ROM_IS_USED
-		//инициализация общих регистров
+		// Р•СЃР»Рё РЅРµ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РІРЅРµС€РЅРµРµ РџР—РЈ, С‚Рѕ СЃР°РјРѕСЃС‚РѕСЏС‚РµР»СЊРЅРѕ РёРЅРёС†РёР°Р»РёР·РёСЂСѓРµРј СЂРµРіРёСЃС‚СЂС‹ РІ РћР—РЈ (РґР°РЅРЅС‹Р№ РІР°СЂРёР°РЅС‚ РІСЂРµРјРµРЅРЅС‹Р№ Рё РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РєРѕРіРґР° РЅРµС‚ СЂР°Р±РѕС‡РµР№ РџР—РЈ)
+		// РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РѕР±С‰РёС… СЂРµРіРёСЃС‚СЂРѕРІ
 		strncpy(&common_rom_reg_ptr->PLC_DeviceInfo,DEV_INFO,sizeof(DEV_INFO));	
 		common_rom_reg_ptr->PLC_DeviceType.revision = REVISION;
 		common_rom_reg_ptr->PLC_DeviceType.modification = MODIFICATION;
@@ -107,14 +112,14 @@ void init_external_ram_space(void)
 		common_rom_reg_ptr->PLC_DualControl = DUAL_CONTROL;
 		memset(&common_rom_reg_ptr->Reserv_2, 0, sizeof(common_rom_reg_ptr->Reserv_2));
 		
-		//инциализация регистров МПА
+		// РРЅС†РёР°Р»РёР·Р°С†РёСЏ СЂРµРіРёСЃС‚СЂРѕРІ РњРџРђ
 		for (uint8_t i = 0; i < MAX_CHANEL_NUMBER; i++)
 		{
 			RESET_BIT(i, mpa_rom_reg_ptr->AI_OperMode.adc_chs_mode);
 			mpa_rom_reg_ptr->AI_NumForAverag[i] = NUM_FOR_AVERAGE;
 			mpa_rom_reg_ptr->AI_MinCodeADC[i] = MIN_CODE_ADC;
 			mpa_rom_reg_ptr->AI_MaxCodeADC[i] = MAX_CODE_ADC;
-			//такие значения коэф. полиномов только для напряжения 0-10В
+			// РўР°РєРёРµ Р·РЅР°С‡РµРЅРёСЏ РєРѕСЌС„. РїРѕР»РёРЅРѕРјРѕРІ С‚РѕР»СЊРєРѕ РґР»СЏ РЅР°РїСЂСЏР¶РµРЅРёСЏ 0-10Р’
 			mpa_rom_reg_ptr->AI_PolynConst0[i] = polyn_ch_consts[i][0];
 			mpa_rom_reg_ptr->AI_PolynConst1[i] = polyn_ch_consts[i][1];
 			mpa_rom_reg_ptr->AI_PolynConst2[i] = polyn_ch_consts[i][2];
@@ -129,12 +134,13 @@ void init_external_ram_space(void)
 		memset(mpa_rom_reg_ptr->Reserv_5, 0, sizeof(mpa_rom_reg_ptr->Reserv_5));
 	#endif
 	
-	//Заполянем таблицу CRC32
+	// Р—Р°РїРѕР»СЏРЅРµРј С‚Р°Р±Р»РёС†Сѓ CRC32
 	fill_crc32_table();
 }
 
+
 /*!
-	Функция нахождения максимального элемента массива 
+ *	\brief РќР°С…РѕРґРёС‚ РјР°РєСЃРёРјР°Р»СЊРЅС‹Р№ СЌР»РµРјРµРЅС‚ РјР°СЃСЃРёРІР° 
 */
 uint16_t find_max_halfword(uint16_t *array, uint32_t array_size);
 uint16_t find_max_halfword(uint16_t *array, uint32_t array_size)
@@ -153,4 +159,3 @@ uint16_t find_max_halfword(uint16_t *array, uint32_t array_size)
 	
 	return result;
 }
-

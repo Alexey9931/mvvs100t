@@ -1,0 +1,126 @@
+\hypertarget{mdr32__drivers_8h}{}\doxysection{Файл mdr32\+\_\+drivers.\+h}
+\label{mdr32__drivers_8h}\index{mdr32\_drivers.h@{mdr32\_drivers.h}}
+
+
+Заголовочный файл с глобальными константами и подключаемыми библиотеками  
+
+
+{\ttfamily \#include $<$M\+D\+R32\+F1\+Q\+I.\+h$>$}\newline
+{\ttfamily \#include $<$M\+D\+R32\+Fx\+Q\+I\+\_\+rst\+\_\+clk.\+h$>$}\newline
+{\ttfamily \#include $<$M\+D\+R32\+Fx\+Q\+I\+\_\+uart.\+h$>$}\newline
+{\ttfamily \#include $<$M\+D\+R32\+Fx\+Q\+I\+\_\+ssp.\+h$>$}\newline
+{\ttfamily \#include $<$M\+D\+R32\+Fx\+Q\+I\+\_\+port.\+h$>$}\newline
+{\ttfamily \#include $<$M\+D\+R32\+Fx\+Q\+I\+\_\+dma.\+h$>$}\newline
+{\ttfamily \#include $<$M\+D\+R32\+Fx\+Q\+I\+\_\+timer.\+h$>$}\newline
+{\ttfamily \#include $<$M\+D\+R32\+Fx\+Q\+I\+\_\+ebc.\+h$>$}\newline
+{\ttfamily \#include $<$M\+D\+R32\+Fx\+Q\+I\+\_\+bkp.\+h$>$}\newline
+Граф включаемых заголовочных файлов для mdr32\+\_\+drivers.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mdr32__drivers_8h__incl}
+\end{center}
+\end{figure}
+Граф файлов, в которые включается этот файл\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mdr32__drivers_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Макросы}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{mdr32__drivers_8h_a3cb637ce9cef3fe92b490cac7fe5441d}{K1986\+V\+E1T}}
+\begin{DoxyCompactList}\small\item\em Выбор МК К1986ВЕ1Т \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{mdr32__drivers_8h_a1837dd007a11f2876022dc900cb4e531}{H\+S\+E\+\_\+\+O\+SC}}~((uint32\+\_\+t)12000000)
+\begin{DoxyCompactList}\small\item\em Частота внешнего тактового генератора (!также изменить в M\+D\+R32\+\_\+config.\+h) \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{mdr32__drivers_8h_a6996c8a52221b98c54ec60f0759421af}{W\+O\+R\+K\+\_\+\+F\+R\+EQ}}~144
+\begin{DoxyCompactList}\small\item\em Рабочая частота в МГц \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{mdr32__drivers_8h_a150ba8643ab5a18b3eb9a0165f56647a}{C\+H\+A\+N\+E\+L\+\_\+\+N\+U\+M\+B\+ER}}~6
+\begin{DoxyCompactList}\small\item\em Кол-\/во каналов в МПА \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{mdr32__drivers_8h_a2332bbff598b25d3bddab65efa40db0f}{M\+A\+X\+\_\+\+C\+H\+A\+N\+E\+L\+\_\+\+N\+U\+M\+B\+ER}}~8
+\begin{DoxyCompactList}\small\item\em Максимальное кол-\/во каналов в МПА \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{mdr32__drivers_8h_a8890c933b89745eed1e9dfec00610dc5}{P\+M\+\_\+\+D\+E\+V\+\_\+\+A\+D\+DR}}~0
+\begin{DoxyCompactList}\small\item\em Адрес модуля \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{mdr32__drivers_8h_aa3f920bb573f33ed6696d507b432d8c1}{P\+M\+\_\+\+C\+H\+A\+S\+S\+I\+S\+\_\+\+A\+D\+DR}}~0
+\begin{DoxyCompactList}\small\item\em Адрес шасси \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Заголовочный файл с глобальными константами и подключаемыми библиотеками 
+
+
+
+\doxysubsection{Макросы}
+\mbox{\Hypertarget{mdr32__drivers_8h_a150ba8643ab5a18b3eb9a0165f56647a}\label{mdr32__drivers_8h_a150ba8643ab5a18b3eb9a0165f56647a}} 
+\index{mdr32\_drivers.h@{mdr32\_drivers.h}!CHANEL\_NUMBER@{CHANEL\_NUMBER}}
+\index{CHANEL\_NUMBER@{CHANEL\_NUMBER}!mdr32\_drivers.h@{mdr32\_drivers.h}}
+\doxysubsubsection{\texorpdfstring{CHANEL\_NUMBER}{CHANEL\_NUMBER}}
+{\footnotesize\ttfamily \#define C\+H\+A\+N\+E\+L\+\_\+\+N\+U\+M\+B\+ER~6}
+
+
+
+Кол-\/во каналов в МПА 
+
+\mbox{\Hypertarget{mdr32__drivers_8h_a1837dd007a11f2876022dc900cb4e531}\label{mdr32__drivers_8h_a1837dd007a11f2876022dc900cb4e531}} 
+\index{mdr32\_drivers.h@{mdr32\_drivers.h}!HSE\_OSC@{HSE\_OSC}}
+\index{HSE\_OSC@{HSE\_OSC}!mdr32\_drivers.h@{mdr32\_drivers.h}}
+\doxysubsubsection{\texorpdfstring{HSE\_OSC}{HSE\_OSC}}
+{\footnotesize\ttfamily \#define H\+S\+E\+\_\+\+O\+SC~((uint32\+\_\+t)12000000)}
+
+
+
+Частота внешнего тактового генератора (!также изменить в M\+D\+R32\+\_\+config.\+h) 
+
+\mbox{\Hypertarget{mdr32__drivers_8h_a3cb637ce9cef3fe92b490cac7fe5441d}\label{mdr32__drivers_8h_a3cb637ce9cef3fe92b490cac7fe5441d}} 
+\index{mdr32\_drivers.h@{mdr32\_drivers.h}!K1986VE1T@{K1986VE1T}}
+\index{K1986VE1T@{K1986VE1T}!mdr32\_drivers.h@{mdr32\_drivers.h}}
+\doxysubsubsection{\texorpdfstring{K1986VE1T}{K1986VE1T}}
+{\footnotesize\ttfamily \#define K1986\+V\+E1T}
+
+
+
+Выбор МК К1986ВЕ1Т 
+
+\mbox{\Hypertarget{mdr32__drivers_8h_a2332bbff598b25d3bddab65efa40db0f}\label{mdr32__drivers_8h_a2332bbff598b25d3bddab65efa40db0f}} 
+\index{mdr32\_drivers.h@{mdr32\_drivers.h}!MAX\_CHANEL\_NUMBER@{MAX\_CHANEL\_NUMBER}}
+\index{MAX\_CHANEL\_NUMBER@{MAX\_CHANEL\_NUMBER}!mdr32\_drivers.h@{mdr32\_drivers.h}}
+\doxysubsubsection{\texorpdfstring{MAX\_CHANEL\_NUMBER}{MAX\_CHANEL\_NUMBER}}
+{\footnotesize\ttfamily \#define M\+A\+X\+\_\+\+C\+H\+A\+N\+E\+L\+\_\+\+N\+U\+M\+B\+ER~8}
+
+
+
+Максимальное кол-\/во каналов в МПА 
+
+\mbox{\Hypertarget{mdr32__drivers_8h_aa3f920bb573f33ed6696d507b432d8c1}\label{mdr32__drivers_8h_aa3f920bb573f33ed6696d507b432d8c1}} 
+\index{mdr32\_drivers.h@{mdr32\_drivers.h}!PM\_CHASSIS\_ADDR@{PM\_CHASSIS\_ADDR}}
+\index{PM\_CHASSIS\_ADDR@{PM\_CHASSIS\_ADDR}!mdr32\_drivers.h@{mdr32\_drivers.h}}
+\doxysubsubsection{\texorpdfstring{PM\_CHASSIS\_ADDR}{PM\_CHASSIS\_ADDR}}
+{\footnotesize\ttfamily \#define P\+M\+\_\+\+C\+H\+A\+S\+S\+I\+S\+\_\+\+A\+D\+DR~0}
+
+
+
+Адрес шасси 
+
+\mbox{\Hypertarget{mdr32__drivers_8h_a8890c933b89745eed1e9dfec00610dc5}\label{mdr32__drivers_8h_a8890c933b89745eed1e9dfec00610dc5}} 
+\index{mdr32\_drivers.h@{mdr32\_drivers.h}!PM\_DEV\_ADDR@{PM\_DEV\_ADDR}}
+\index{PM\_DEV\_ADDR@{PM\_DEV\_ADDR}!mdr32\_drivers.h@{mdr32\_drivers.h}}
+\doxysubsubsection{\texorpdfstring{PM\_DEV\_ADDR}{PM\_DEV\_ADDR}}
+{\footnotesize\ttfamily \#define P\+M\+\_\+\+D\+E\+V\+\_\+\+A\+D\+DR~0}
+
+
+
+Адрес модуля 
+
+\mbox{\Hypertarget{mdr32__drivers_8h_a6996c8a52221b98c54ec60f0759421af}\label{mdr32__drivers_8h_a6996c8a52221b98c54ec60f0759421af}} 
+\index{mdr32\_drivers.h@{mdr32\_drivers.h}!WORK\_FREQ@{WORK\_FREQ}}
+\index{WORK\_FREQ@{WORK\_FREQ}!mdr32\_drivers.h@{mdr32\_drivers.h}}
+\doxysubsubsection{\texorpdfstring{WORK\_FREQ}{WORK\_FREQ}}
+{\footnotesize\ttfamily \#define W\+O\+R\+K\+\_\+\+F\+R\+EQ~144}
+
+
+
+Рабочая частота в МГц 
+

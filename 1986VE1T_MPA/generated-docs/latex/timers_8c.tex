@@ -1,0 +1,415 @@
+\hypertarget{timers_8c}{}\doxysection{Файл timers.\+c}
+\label{timers_8c}\index{timers.c@{timers.c}}
+
+
+Файл с реализацией A\+PI для работы с таймерами  
+
+
+{\ttfamily \#include \char`\"{}timers.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}spi.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}1273pv19t.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}external\+\_\+ram.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}main.\+h\char`\"{}}\newline
+Граф включаемых заголовочных файлов для timers.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{timers_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Функции}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{timers_8c_a0551de7995e9a2bc0dbfe413524d6d98}{timer1\+\_\+init}} (\mbox{\hyperlink{timers_8h_a93415917cf28bb298dd781fbb842ddae}{timer\+\_\+n}} $\ast$timer\+\_\+struct)
+\begin{DoxyCompactList}\small\item\em Инициализирует Timer1. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{timers_8c_a20ccc55ff942d80acc111fa6279484a3}{timer3\+\_\+init}} (\mbox{\hyperlink{timers_8h_a93415917cf28bb298dd781fbb842ddae}{timer\+\_\+n}} $\ast$timer\+\_\+struct)
+\begin{DoxyCompactList}\small\item\em Инициализирует Timer3. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{timers_8c_a9791d44b2b82b8699d61fe9532f88d71}{timer2\+\_\+init}} (\mbox{\hyperlink{timers_8h_a93415917cf28bb298dd781fbb842ddae}{timer\+\_\+n}} $\ast$timer\+\_\+struct)
+\begin{DoxyCompactList}\small\item\em Инициализирует Timer2. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{timers_8c_a8d5b476044a5eb598d2b0a7e4e82f1f6}{timer\+\_\+init}} (\mbox{\hyperlink{timers_8h_a93415917cf28bb298dd781fbb842ddae}{timer\+\_\+n}} $\ast$timer\+\_\+struct)
+\begin{DoxyCompactList}\small\item\em Инициализацирует выбранный Timer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{timers_8c_a12c8b827e5eab9d3f93d56f858e735a3}{T\+I\+M\+E\+R2\+\_\+\+I\+R\+Q\+Handler}} (void)
+\begin{DoxyCompactList}\small\item\em Обработчик прерываний Timer2 (Обработка прерываний путем обхода двусвязного списка реализована аналогично linux kernel) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{timers_8c_a5c8c1042d9a53ff36e149cbc8178e489}{delay\+\_\+milli}} (uint32\+\_\+t time\+\_\+milli)
+\begin{DoxyCompactList}\small\item\em Реализует задержку в мс \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{timers_8c_a55159cc6c08a6ece9ceae2ac776b86f2}{delay\+\_\+micro}} (uint32\+\_\+t time\+\_\+micro)
+\begin{DoxyCompactList}\small\item\em Реализует задержку в мкс \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{timers_8c_a695072fd5d07d67692fb0e45e4517234}{list\+\_\+tmr\+\_\+handler\+\_\+add\+\_\+tail}} (uint8\+\_\+t tmr\+\_\+num, void($\ast$func\+\_\+ptr)(void $\ast$), void $\ast$data, T\+I\+M\+E\+R\+\_\+\+Status\+\_\+\+Flags\+\_\+\+Type\+Def event)
+\begin{DoxyCompactList}\small\item\em Добавляет обработчик прерывания таймера в список обработчиков \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{timers_8c_a75b81776350752a2f5e68d2e3e2f56eb}{list\+\_\+tmr\+\_\+handler\+\_\+init}} (uint8\+\_\+t tmr\+\_\+num)
+\begin{DoxyCompactList}\small\item\em Инициализирует список обработчиков прерываний таймера \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Переменные}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{1273pv19t_8h_a373968a5da87bc4464c88e86a02c2c52}{adc\+\_\+n}} \mbox{\hyperlink{timers_8c_a558e219bfe7a1a334ebe338ca121e0ec}{adc\+\_\+1}}
+\begin{DoxyCompactList}\small\item\em Структура с конфигурационными параметрами микросхемы АЦП \end{DoxyCompactList}\item 
+\mbox{\hyperlink{external__ram_8h_a28cf59a70f3b5cc1d30de9cc00673860}{ram\+\_\+data}} $\ast$ \mbox{\hyperlink{timers_8c_ac71509c38b7eba0d545dc42301c15146}{ram\+\_\+space\+\_\+pointer}}
+\begin{DoxyCompactList}\small\item\em Указатель для обращения к внешнему ОЗУ \end{DoxyCompactList}\item 
+\mbox{\hyperlink{list_8h_a4829e226828f5e92b99dd3fd30c69469}{list\+\_\+head}} \mbox{\hyperlink{timers_8c_a7066571e4937db387974ddc88d60b247}{tmr\+\_\+handler\+\_\+head}} \mbox{[}\mbox{\hyperlink{external__ram_8h_a1c7c6e4d297f71543388ab3581612010}{T\+I\+M\+E\+R\+\_\+\+N\+UM}}\mbox{]}
+\begin{DoxyCompactList}\small\item\em Указатели на списки обработчиков таймеров \end{DoxyCompactList}\item 
+\mbox{\hyperlink{timers_8h_a93415917cf28bb298dd781fbb842ddae}{timer\+\_\+n}} \mbox{\hyperlink{timers_8c_a31ea70aa2bae87d7190dd89907374e82}{timer\+\_\+1}}
+\begin{DoxyCompactList}\small\item\em Структура с конфигурационными параметрами блока Timer1 МК \end{DoxyCompactList}\item 
+\mbox{\hyperlink{timers_8h_a93415917cf28bb298dd781fbb842ddae}{timer\+\_\+n}} \mbox{\hyperlink{timers_8c_a1bd790a808dd714d6cdae26f4ee59bdb}{timer\+\_\+2}}
+\begin{DoxyCompactList}\small\item\em Структура с конфигурационными параметрами блока Timer2 МК \end{DoxyCompactList}\item 
+\mbox{\hyperlink{timers_8h_a93415917cf28bb298dd781fbb842ddae}{timer\+\_\+n}} \mbox{\hyperlink{timers_8c_ab5444d3d745188ad65e535e648990690}{timer\+\_\+3}}
+\begin{DoxyCompactList}\small\item\em Структура с конфигурационными параметрами блока Timer3 МК \end{DoxyCompactList}\item 
+\mbox{\hyperlink{spi_8h_ab833736115a154e13899c6b9695957a2}{spi\+\_\+n}} \mbox{\hyperlink{timers_8c_a168a603d82909428f4f498ae15a611d7}{spi\+\_\+1}}
+\begin{DoxyCompactList}\small\item\em Структура с конфигурационными параметрами блока S\+PI МК \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Файл с реализацией A\+PI для работы с таймерами 
+
+
+
+\doxysubsection{Функции}
+\mbox{\Hypertarget{timers_8c_a55159cc6c08a6ece9ceae2ac776b86f2}\label{timers_8c_a55159cc6c08a6ece9ceae2ac776b86f2}} 
+\index{timers.c@{timers.c}!delay\_micro@{delay\_micro}}
+\index{delay\_micro@{delay\_micro}!timers.c@{timers.c}}
+\doxysubsubsection{\texorpdfstring{delay\_micro()}{delay\_micro()}}
+{\footnotesize\ttfamily void delay\+\_\+micro (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{time\+\_\+micro }\end{DoxyParamCaption})}
+
+
+
+Реализует задержку в мкс 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em time\+\_\+micro} & -\/ Задержка в мкс \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{162 \{ }
+\DoxyCodeLine{163     TIMER\_SetCounter(MDR\_TIMER1, 0);}
+\DoxyCodeLine{164     \textcolor{keywordflow}{while} (TIMER\_GetCounter(MDR\_TIMER1) <= time\_micro);}
+\DoxyCodeLine{165 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{timers_8c_a5c8c1042d9a53ff36e149cbc8178e489}\label{timers_8c_a5c8c1042d9a53ff36e149cbc8178e489}} 
+\index{timers.c@{timers.c}!delay\_milli@{delay\_milli}}
+\index{delay\_milli@{delay\_milli}!timers.c@{timers.c}}
+\doxysubsubsection{\texorpdfstring{delay\_milli()}{delay\_milli()}}
+{\footnotesize\ttfamily void delay\+\_\+milli (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{time\+\_\+milli }\end{DoxyParamCaption})}
+
+
+
+Реализует задержку в мс 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em time\+\_\+milli} & -\/ Задержка в мс \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{154 \{ }
+\DoxyCodeLine{155     TIMER\_SetCounter(MDR\_TIMER3, 0);}
+\DoxyCodeLine{156     \textcolor{keywordflow}{while} (TIMER\_GetCounter(MDR\_TIMER3) <=(time\_milli*50));}
+\DoxyCodeLine{157 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{timers_8c_a695072fd5d07d67692fb0e45e4517234}\label{timers_8c_a695072fd5d07d67692fb0e45e4517234}} 
+\index{timers.c@{timers.c}!list\_tmr\_handler\_add\_tail@{list\_tmr\_handler\_add\_tail}}
+\index{list\_tmr\_handler\_add\_tail@{list\_tmr\_handler\_add\_tail}!timers.c@{timers.c}}
+\doxysubsubsection{\texorpdfstring{list\_tmr\_handler\_add\_tail()}{list\_tmr\_handler\_add\_tail()}}
+{\footnotesize\ttfamily void list\+\_\+tmr\+\_\+handler\+\_\+add\+\_\+tail (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{tmr\+\_\+num,  }\item[{void($\ast$)(void $\ast$)}]{func\+\_\+ptr,  }\item[{void $\ast$}]{data,  }\item[{T\+I\+M\+E\+R\+\_\+\+Status\+\_\+\+Flags\+\_\+\+Type\+Def}]{event }\end{DoxyParamCaption})}
+
+
+
+Добавляет обработчик прерывания таймера в список обработчиков 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em tmr\+\_\+num} & -\/ Номер таймера \\
+\hline
+{\em func\+\_\+ptr} & -\/ Указатель на функцию-\/обработчик прерывания \\
+\hline
+{\em data} & -\/ Указатель на данные в обработчике прерывания \\
+\hline
+{\em event} & -\/ Событие, по которому вызывается данное прерывание \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{170 \{}
+\DoxyCodeLine{171     \textcolor{comment}{// Выделяем память для нового указателя}}
+\DoxyCodeLine{172     \mbox{\hyperlink{structtimer__irq__list__struct}{timer\_irq\_list}} *ptr = (\mbox{\hyperlink{structtimer__irq__list__struct}{timer\_irq\_list}}*)\mbox{\hyperlink{internal__ram_8c_a9900c57ec6823ee4290b04f672955b20}{malloc\_ram\_pages}}(\textcolor{keyword}{sizeof}(\mbox{\hyperlink{structtimer__irq__list__struct}{timer\_irq\_list}}));}
+\DoxyCodeLine{173     \textcolor{comment}{// Инициализируем элемент списка}}
+\DoxyCodeLine{174     ptr-\/>\mbox{\hyperlink{structtimer__irq__list__struct_a5990691b491982b75bd7c4a2f7d4a854}{data}} = data;}
+\DoxyCodeLine{175     ptr-\/>\mbox{\hyperlink{structtimer__irq__list__struct_a4c6e41629145a247f7b25a4c0aa7b6ce}{event}} = event;}
+\DoxyCodeLine{176     ptr-\/>\mbox{\hyperlink{structtimer__irq__list__struct_a63bf1e4609042bd432379349df8cb596}{handler}} = func\_ptr;}
+\DoxyCodeLine{177     }
+\DoxyCodeLine{178     \mbox{\hyperlink{list_8c_ab5bd4d17afc5d068a0d2a0f57c976c28}{list\_add\_tail}}(\&ptr-\/>\mbox{\hyperlink{structtimer__irq__list__struct_a6a8448369bb5f2d760abf5d552cb103a}{list}}, \&\mbox{\hyperlink{timers_8c_a7066571e4937db387974ddc88d60b247}{tmr\_handler\_head}}[tmr\_num]);}
+\DoxyCodeLine{179 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{timers_8c_a75b81776350752a2f5e68d2e3e2f56eb}\label{timers_8c_a75b81776350752a2f5e68d2e3e2f56eb}} 
+\index{timers.c@{timers.c}!list\_tmr\_handler\_init@{list\_tmr\_handler\_init}}
+\index{list\_tmr\_handler\_init@{list\_tmr\_handler\_init}!timers.c@{timers.c}}
+\doxysubsubsection{\texorpdfstring{list\_tmr\_handler\_init()}{list\_tmr\_handler\_init()}}
+{\footnotesize\ttfamily void list\+\_\+tmr\+\_\+handler\+\_\+init (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{tmr\+\_\+num }\end{DoxyParamCaption})}
+
+
+
+Инициализирует список обработчиков прерываний таймера 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em tmr\+\_\+num} & -\/ Номер таймера, для которого инициализируется список \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{184 \{}
+\DoxyCodeLine{185     \mbox{\hyperlink{list_8c_a1c2b5c9a9806c781abd7a6e8ff05c566}{init\_list\_head}}(\&\mbox{\hyperlink{timers_8c_a7066571e4937db387974ddc88d60b247}{tmr\_handler\_head}}[tmr\_num]);}
+\DoxyCodeLine{186 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{timers_8c_a0551de7995e9a2bc0dbfe413524d6d98}\label{timers_8c_a0551de7995e9a2bc0dbfe413524d6d98}} 
+\index{timers.c@{timers.c}!timer1\_init@{timer1\_init}}
+\index{timer1\_init@{timer1\_init}!timers.c@{timers.c}}
+\doxysubsubsection{\texorpdfstring{timer1\_init()}{timer1\_init()}}
+{\footnotesize\ttfamily void timer1\+\_\+init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{timers_8h_a93415917cf28bb298dd781fbb842ddae}{timer\+\_\+n}} $\ast$}]{timer\+\_\+struct }\end{DoxyParamCaption})}
+
+
+
+Инициализирует Timer1. 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{36 \{}
+\DoxyCodeLine{37     TIMER\_CntInitTypeDef TIMER1InitStruct;}
+\DoxyCodeLine{38     }
+\DoxyCodeLine{39   RST\_CLK\_PCLKcmd (RST\_CLK\_PCLK\_TIMER1, ENABLE);}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41     TIMER\_CntStructInit(\&TIMER1InitStruct);}
+\DoxyCodeLine{42     TIMER1InitStruct.TIMER\_Period = timer\_struct-\/>\mbox{\hyperlink{structtimer__config__struct_a5b7638d9c51c3cb44287671f0df9b84a}{TIMERInitStruct}}.TIMER\_Period;}
+\DoxyCodeLine{43     TIMER1InitStruct.TIMER\_Prescaler = timer\_struct-\/>\mbox{\hyperlink{structtimer__config__struct_a5b7638d9c51c3cb44287671f0df9b84a}{TIMERInitStruct}}.TIMER\_Prescaler;}
+\DoxyCodeLine{44      }
+\DoxyCodeLine{45     TIMER\_CntInit(MDR\_TIMER1, \&TIMER1InitStruct);}
+\DoxyCodeLine{46     }
+\DoxyCodeLine{47   TIMER\_BRGInit(MDR\_TIMER1,TIMER\_HCLKdiv1);}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49   TIMER\_Cmd(MDR\_TIMER1,ENABLE);}
+\DoxyCodeLine{50     TIMER\_SetCounter(MDR\_TIMER1, 0);}
+\DoxyCodeLine{51 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{timers_8c_a9791d44b2b82b8699d61fe9532f88d71}\label{timers_8c_a9791d44b2b82b8699d61fe9532f88d71}} 
+\index{timers.c@{timers.c}!timer2\_init@{timer2\_init}}
+\index{timer2\_init@{timer2\_init}!timers.c@{timers.c}}
+\doxysubsubsection{\texorpdfstring{timer2\_init()}{timer2\_init()}}
+{\footnotesize\ttfamily void timer2\+\_\+init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{timers_8h_a93415917cf28bb298dd781fbb842ddae}{timer\+\_\+n}} $\ast$}]{timer\+\_\+struct }\end{DoxyParamCaption})}
+
+
+
+Инициализирует Timer2. 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{78 \{}
+\DoxyCodeLine{79     TIMER\_CntInitTypeDef TIMER2InitStruct;}
+\DoxyCodeLine{80     TIMER\_ChnInitTypeDef sTIM2\_ChnInit;}
+\DoxyCodeLine{81 }
+\DoxyCodeLine{82     RST\_CLK\_PCLKcmd (RST\_CLK\_PCLK\_TIMER2, ENABLE);}
+\DoxyCodeLine{83 }
+\DoxyCodeLine{84     TIMER\_CntStructInit(\&TIMER2InitStruct);}
+\DoxyCodeLine{85     TIMER2InitStruct.TIMER\_Prescaler = timer\_struct-\/>\mbox{\hyperlink{structtimer__config__struct_a5b7638d9c51c3cb44287671f0df9b84a}{TIMERInitStruct}}.TIMER\_Prescaler;}
+\DoxyCodeLine{86     TIMER2InitStruct.TIMER\_Period = timer\_struct-\/>\mbox{\hyperlink{structtimer__config__struct_a5b7638d9c51c3cb44287671f0df9b84a}{TIMERInitStruct}}.TIMER\_Period;}
+\DoxyCodeLine{87     TIMER2InitStruct.TIMER\_CounterDirection = timer\_struct-\/>\mbox{\hyperlink{structtimer__config__struct_a5b7638d9c51c3cb44287671f0df9b84a}{TIMERInitStruct}}.TIMER\_CounterDirection;}
+\DoxyCodeLine{88     TIMER2InitStruct.TIMER\_CounterMode = timer\_struct-\/>\mbox{\hyperlink{structtimer__config__struct_a5b7638d9c51c3cb44287671f0df9b84a}{TIMERInitStruct}}.TIMER\_CounterMode;}
+\DoxyCodeLine{89     TIMER2InitStruct.TIMER\_EventSource = timer\_struct-\/>\mbox{\hyperlink{structtimer__config__struct_a5b7638d9c51c3cb44287671f0df9b84a}{TIMERInitStruct}}.TIMER\_EventSource;}
+\DoxyCodeLine{90     TIMER2InitStruct.TIMER\_ARR\_UpdateMode = timer\_struct-\/>\mbox{\hyperlink{structtimer__config__struct_a5b7638d9c51c3cb44287671f0df9b84a}{TIMERInitStruct}}.TIMER\_ARR\_UpdateMode;}
+\DoxyCodeLine{91     TIMER2InitStruct.TIMER\_FilterSampling = timer\_struct-\/>\mbox{\hyperlink{structtimer__config__struct_a5b7638d9c51c3cb44287671f0df9b84a}{TIMERInitStruct}}.TIMER\_FilterSampling;}
+\DoxyCodeLine{92     TIMER2InitStruct.TIMER\_ETR\_FilterConf = timer\_struct-\/>\mbox{\hyperlink{structtimer__config__struct_a5b7638d9c51c3cb44287671f0df9b84a}{TIMERInitStruct}}.TIMER\_ETR\_FilterConf;}
+\DoxyCodeLine{93     TIMER2InitStruct.TIMER\_ETR\_Prescaler = timer\_struct-\/>\mbox{\hyperlink{structtimer__config__struct_a5b7638d9c51c3cb44287671f0df9b84a}{TIMERInitStruct}}.TIMER\_ETR\_Prescaler;}
+\DoxyCodeLine{94     TIMER2InitStruct.TIMER\_ETR\_Polarity = timer\_struct-\/>\mbox{\hyperlink{structtimer__config__struct_a5b7638d9c51c3cb44287671f0df9b84a}{TIMERInitStruct}}.TIMER\_ETR\_Polarity;}
+\DoxyCodeLine{95     TIMER2InitStruct.TIMER\_BRK\_Polarity = timer\_struct-\/>\mbox{\hyperlink{structtimer__config__struct_a5b7638d9c51c3cb44287671f0df9b84a}{TIMERInitStruct}}.TIMER\_BRK\_Polarity;}
+\DoxyCodeLine{96     TIMER\_CntInit (MDR\_TIMER2, \&TIMER2InitStruct);}
+\DoxyCodeLine{97     }
+\DoxyCodeLine{98     TIMER\_ChnStructInit (\&sTIM2\_ChnInit);}
+\DoxyCodeLine{99     sTIM2\_ChnInit.TIMER\_CH\_Number = timer\_struct-\/>\mbox{\hyperlink{structtimer__config__struct_a07633c834cb63ccdaccd024a65836c4f}{sTIM\_ChnInit}}.TIMER\_CH\_Number;}
+\DoxyCodeLine{100   sTIM2\_ChnInit.TIMER\_CH\_Mode = timer\_struct-\/>\mbox{\hyperlink{structtimer__config__struct_a07633c834cb63ccdaccd024a65836c4f}{sTIM\_ChnInit}}.TIMER\_CH\_Mode;}
+\DoxyCodeLine{101   sTIM2\_ChnInit.TIMER\_CH\_EventSource = timer\_struct-\/>\mbox{\hyperlink{structtimer__config__struct_a07633c834cb63ccdaccd024a65836c4f}{sTIM\_ChnInit}}.TIMER\_CH\_EventSource;}
+\DoxyCodeLine{102   TIMER\_ChnInit (MDR\_TIMER2, \&sTIM2\_ChnInit);}
+\DoxyCodeLine{103      }
+\DoxyCodeLine{104     TIMER\_ChnCCR1\_Cmd(MDR\_TIMER2, sTIM2\_ChnInit.TIMER\_CH\_Number, ENABLE);}
+\DoxyCodeLine{105 }
+\DoxyCodeLine{106     TIMER\_ITConfig(MDR\_TIMER2, timer\_struct-\/>\mbox{\hyperlink{structtimer__config__struct_a8bbb20b6525b41337470d2753e1ab3c8}{TIMER\_STATUS}}, ENABLE);}
+\DoxyCodeLine{107     TIMER\_ClearITPendingBit(MDR\_TIMER2, TIMER\_STATUS\_CNT\_ARR);}
+\DoxyCodeLine{108     TIMER\_ITConfig(MDR\_TIMER2, TIMER\_STATUS\_CNT\_ARR, DISABLE);}
+\DoxyCodeLine{109     NVIC\_EnableIRQ(TIMER2\_IRQn);}
+\DoxyCodeLine{110     \textcolor{comment}{//NVIC\_SetPriority(timer\_struct-\/>IRQn, 0);}}
+\DoxyCodeLine{111 }
+\DoxyCodeLine{112   TIMER\_BRGInit(MDR\_TIMER2,TIMER\_HCLKdiv1);}
+\DoxyCodeLine{113 }
+\DoxyCodeLine{114   TIMER\_Cmd(MDR\_TIMER2,ENABLE);}
+\DoxyCodeLine{115     TIMER\_SetCounter(MDR\_TIMER2, 0);}
+\DoxyCodeLine{116 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{timers_8c_a12c8b827e5eab9d3f93d56f858e735a3}\label{timers_8c_a12c8b827e5eab9d3f93d56f858e735a3}} 
+\index{timers.c@{timers.c}!TIMER2\_IRQHandler@{TIMER2\_IRQHandler}}
+\index{TIMER2\_IRQHandler@{TIMER2\_IRQHandler}!timers.c@{timers.c}}
+\doxysubsubsection{\texorpdfstring{TIMER2\_IRQHandler()}{TIMER2\_IRQHandler()}}
+{\footnotesize\ttfamily void T\+I\+M\+E\+R2\+\_\+\+I\+R\+Q\+Handler (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Обработчик прерываний Timer2 (Обработка прерываний путем обхода двусвязного списка реализована аналогично linux kernel) 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{140 \{}
+\DoxyCodeLine{141     \mbox{\hyperlink{structtimer__irq__list__struct}{timer\_irq\_list}} *ep;}
+\DoxyCodeLine{142     \mbox{\hyperlink{list_8h_a9b782fefb5ab71ce9762182e45a615e1}{list\_for\_each\_entry}}(ep, \&\mbox{\hyperlink{timers_8c_a7066571e4937db387974ddc88d60b247}{tmr\_handler\_head}}[1], list)}
+\DoxyCodeLine{143     \{}
+\DoxyCodeLine{144         \textcolor{keywordflow}{if} (TIMER\_GetITStatus(\mbox{\hyperlink{timers_8c_a1bd790a808dd714d6cdae26f4ee59bdb}{timer\_2}}.\mbox{\hyperlink{structtimer__config__struct_a26d6f987c10095f685286d88e1cc4a96}{TIMERx}}, ep-\/>\mbox{\hyperlink{structtimer__irq__list__struct_a4c6e41629145a247f7b25a4c0aa7b6ce}{event}}) == SET)}
+\DoxyCodeLine{145         \{}
+\DoxyCodeLine{146             ep-\/>\mbox{\hyperlink{structtimer__irq__list__struct_a63bf1e4609042bd432379349df8cb596}{handler}}(ep-\/>\mbox{\hyperlink{structtimer__irq__list__struct_a5990691b491982b75bd7c4a2f7d4a854}{data}});}
+\DoxyCodeLine{147         \}}
+\DoxyCodeLine{148     \}}
+\DoxyCodeLine{149 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{timers_8c_a20ccc55ff942d80acc111fa6279484a3}\label{timers_8c_a20ccc55ff942d80acc111fa6279484a3}} 
+\index{timers.c@{timers.c}!timer3\_init@{timer3\_init}}
+\index{timer3\_init@{timer3\_init}!timers.c@{timers.c}}
+\doxysubsubsection{\texorpdfstring{timer3\_init()}{timer3\_init()}}
+{\footnotesize\ttfamily void timer3\+\_\+init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{timers_8h_a93415917cf28bb298dd781fbb842ddae}{timer\+\_\+n}} $\ast$}]{timer\+\_\+struct }\end{DoxyParamCaption})}
+
+
+
+Инициализирует Timer3. 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{57 \{}
+\DoxyCodeLine{58     TIMER\_CntInitTypeDef TIMER3InitStruct;}
+\DoxyCodeLine{59     }
+\DoxyCodeLine{60   RST\_CLK\_PCLKcmd (RST\_CLK\_PCLK\_TIMER3, ENABLE);}
+\DoxyCodeLine{61 }
+\DoxyCodeLine{62     TIMER\_CntStructInit(\&TIMER3InitStruct);}
+\DoxyCodeLine{63     TIMER3InitStruct.TIMER\_Period = timer\_struct-\/>\mbox{\hyperlink{structtimer__config__struct_a5b7638d9c51c3cb44287671f0df9b84a}{TIMERInitStruct}}.TIMER\_Period;}
+\DoxyCodeLine{64     TIMER3InitStruct.TIMER\_Prescaler = timer\_struct-\/>\mbox{\hyperlink{structtimer__config__struct_a5b7638d9c51c3cb44287671f0df9b84a}{TIMERInitStruct}}.TIMER\_Prescaler;}
+\DoxyCodeLine{65      }
+\DoxyCodeLine{66     TIMER\_CntInit(MDR\_TIMER3, \&TIMER3InitStruct);}
+\DoxyCodeLine{67     }
+\DoxyCodeLine{68   TIMER\_BRGInit(MDR\_TIMER3, TIMER\_HCLKdiv1);}
+\DoxyCodeLine{69 }
+\DoxyCodeLine{70   TIMER\_Cmd(MDR\_TIMER3, ENABLE);}
+\DoxyCodeLine{71     TIMER\_SetCounter(MDR\_TIMER3, 0);}
+\DoxyCodeLine{72 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{timers_8c_a8d5b476044a5eb598d2b0a7e4e82f1f6}\label{timers_8c_a8d5b476044a5eb598d2b0a7e4e82f1f6}} 
+\index{timers.c@{timers.c}!timer\_init@{timer\_init}}
+\index{timer\_init@{timer\_init}!timers.c@{timers.c}}
+\doxysubsubsection{\texorpdfstring{timer\_init()}{timer\_init()}}
+{\footnotesize\ttfamily void timer\+\_\+init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{timers_8h_a93415917cf28bb298dd781fbb842ddae}{timer\+\_\+n}} $\ast$}]{timer\+\_\+struct }\end{DoxyParamCaption})}
+
+
+
+Инициализацирует выбранный Timer. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em $\ast$timer\+\_\+struct} & -\/ Таймер для инициализации \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{121 \{}
+\DoxyCodeLine{122     \textcolor{keywordflow}{if} (timer\_struct-\/>\mbox{\hyperlink{structtimer__config__struct_a26d6f987c10095f685286d88e1cc4a96}{TIMERx}} == MDR\_TIMER1)}
+\DoxyCodeLine{123     \{}
+\DoxyCodeLine{124         \mbox{\hyperlink{timers_8c_a0551de7995e9a2bc0dbfe413524d6d98}{timer1\_init}}(timer\_struct);}
+\DoxyCodeLine{125     \}}
+\DoxyCodeLine{126     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (timer\_struct-\/>\mbox{\hyperlink{structtimer__config__struct_a26d6f987c10095f685286d88e1cc4a96}{TIMERx}} == MDR\_TIMER2)}
+\DoxyCodeLine{127     \{}
+\DoxyCodeLine{128         \mbox{\hyperlink{timers_8c_a9791d44b2b82b8699d61fe9532f88d71}{timer2\_init}}(timer\_struct);}
+\DoxyCodeLine{129     \}}
+\DoxyCodeLine{130     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (timer\_struct-\/>\mbox{\hyperlink{structtimer__config__struct_a26d6f987c10095f685286d88e1cc4a96}{TIMERx}} == MDR\_TIMER3)}
+\DoxyCodeLine{131     \{}
+\DoxyCodeLine{132         \mbox{\hyperlink{timers_8c_a20ccc55ff942d80acc111fa6279484a3}{timer3\_init}}(timer\_struct);}
+\DoxyCodeLine{133     \}}
+\DoxyCodeLine{134 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Переменные}
+\mbox{\Hypertarget{timers_8c_a558e219bfe7a1a334ebe338ca121e0ec}\label{timers_8c_a558e219bfe7a1a334ebe338ca121e0ec}} 
+\index{timers.c@{timers.c}!adc\_1@{adc\_1}}
+\index{adc\_1@{adc\_1}!timers.c@{timers.c}}
+\doxysubsubsection{\texorpdfstring{adc\_1}{adc\_1}}
+{\footnotesize\ttfamily \mbox{\hyperlink{1273pv19t_8h_a373968a5da87bc4464c88e86a02c2c52}{adc\+\_\+n}} adc\+\_\+1\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Структура с конфигурационными параметрами микросхемы АЦП 
+
+\mbox{\Hypertarget{timers_8c_ac71509c38b7eba0d545dc42301c15146}\label{timers_8c_ac71509c38b7eba0d545dc42301c15146}} 
+\index{timers.c@{timers.c}!ram\_space\_pointer@{ram\_space\_pointer}}
+\index{ram\_space\_pointer@{ram\_space\_pointer}!timers.c@{timers.c}}
+\doxysubsubsection{\texorpdfstring{ram\_space\_pointer}{ram\_space\_pointer}}
+{\footnotesize\ttfamily \mbox{\hyperlink{external__ram_8h_a28cf59a70f3b5cc1d30de9cc00673860}{ram\+\_\+data}}$\ast$ ram\+\_\+space\+\_\+pointer\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Указатель для обращения к внешнему ОЗУ 
+
+\mbox{\Hypertarget{timers_8c_a168a603d82909428f4f498ae15a611d7}\label{timers_8c_a168a603d82909428f4f498ae15a611d7}} 
+\index{timers.c@{timers.c}!spi\_1@{spi\_1}}
+\index{spi\_1@{spi\_1}!timers.c@{timers.c}}
+\doxysubsubsection{\texorpdfstring{spi\_1}{spi\_1}}
+{\footnotesize\ttfamily \mbox{\hyperlink{spi_8h_ab833736115a154e13899c6b9695957a2}{spi\+\_\+n}} spi\+\_\+1\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Структура с конфигурационными параметрами блока S\+PI МК 
+
+Структура с конфигурационными параметрами блока S\+PI МК
+
+Структуры с конфигурационными параметрами блоков S\+PI МК \mbox{\Hypertarget{timers_8c_a31ea70aa2bae87d7190dd89907374e82}\label{timers_8c_a31ea70aa2bae87d7190dd89907374e82}} 
+\index{timers.c@{timers.c}!timer\_1@{timer\_1}}
+\index{timer\_1@{timer\_1}!timers.c@{timers.c}}
+\doxysubsubsection{\texorpdfstring{timer\_1}{timer\_1}}
+{\footnotesize\ttfamily \mbox{\hyperlink{timers_8h_a93415917cf28bb298dd781fbb842ddae}{timer\+\_\+n}} timer\+\_\+1}
+
+
+
+Структура с конфигурационными параметрами блока Timer1 МК 
+
+Структуры с конфигурационными параметрами блоков таймеров МК \mbox{\Hypertarget{timers_8c_a1bd790a808dd714d6cdae26f4ee59bdb}\label{timers_8c_a1bd790a808dd714d6cdae26f4ee59bdb}} 
+\index{timers.c@{timers.c}!timer\_2@{timer\_2}}
+\index{timer\_2@{timer\_2}!timers.c@{timers.c}}
+\doxysubsubsection{\texorpdfstring{timer\_2}{timer\_2}}
+{\footnotesize\ttfamily \mbox{\hyperlink{timers_8h_a93415917cf28bb298dd781fbb842ddae}{timer\+\_\+n}} timer\+\_\+2}
+
+
+
+Структура с конфигурационными параметрами блока Timer2 МК 
+
+\mbox{\Hypertarget{timers_8c_ab5444d3d745188ad65e535e648990690}\label{timers_8c_ab5444d3d745188ad65e535e648990690}} 
+\index{timers.c@{timers.c}!timer\_3@{timer\_3}}
+\index{timer\_3@{timer\_3}!timers.c@{timers.c}}
+\doxysubsubsection{\texorpdfstring{timer\_3}{timer\_3}}
+{\footnotesize\ttfamily \mbox{\hyperlink{timers_8h_a93415917cf28bb298dd781fbb842ddae}{timer\+\_\+n}} timer\+\_\+3}
+
+
+
+Структура с конфигурационными параметрами блока Timer3 МК 
+
+\mbox{\Hypertarget{timers_8c_a7066571e4937db387974ddc88d60b247}\label{timers_8c_a7066571e4937db387974ddc88d60b247}} 
+\index{timers.c@{timers.c}!tmr\_handler\_head@{tmr\_handler\_head}}
+\index{tmr\_handler\_head@{tmr\_handler\_head}!timers.c@{timers.c}}
+\doxysubsubsection{\texorpdfstring{tmr\_handler\_head}{tmr\_handler\_head}}
+{\footnotesize\ttfamily \mbox{\hyperlink{list_8h_a4829e226828f5e92b99dd3fd30c69469}{list\+\_\+head}} tmr\+\_\+handler\+\_\+head\mbox{[}\mbox{\hyperlink{external__ram_8h_a1c7c6e4d297f71543388ab3581612010}{T\+I\+M\+E\+R\+\_\+\+N\+UM}}\mbox{]}}
+
+
+
+Указатели на списки обработчиков таймеров 
+
+Массив указателей на head списков обработчиков прерываний таймеров 

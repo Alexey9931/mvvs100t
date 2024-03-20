@@ -1,24 +1,19 @@
 /*!
  \file
- \brief Ôàéë ñ ðåàëèçàöèåé API äëÿ ðàáîòû ñ EBC
+ \brief Ð¤Ð°Ð¹Ð» Ñ Ñ€ÐµÐ°Ð»Ð¸Ð·Ð°Ñ†Ð¸ÐµÐ¹ API Ð´Ð»Ñ Ñ€Ð°Ð±Ð¾Ñ‚Ñ‹ Ñ EBC
 */
-
-#ifndef __CONFIG_C
-#define __CONFIG_C
 
 #include "ebc.h"
 
-/*
-Ôóíêöèÿ êîíôèãóðèðîâàíèÿ âûâîäîâ ÌÊ EBC äëÿ âíåøíåãî ÎÇÓ èëè ÏÇÓ
-device: 0-RAM, 1-ROM 
+/*!
+ *	\brief ÐšÐ¾Ð½Ñ„Ð¸Ð³ÑƒÑ€ÑƒÐµÑ‚ Ð²Ñ‹Ð²Ð¾Ð´Ñ‹ ÐœÐš EBC Ð´Ð»Ñ Ð²Ð½ÐµÑˆÐ½ÐµÐ³Ð¾ ÐžÐ—Ð£ Ð¸Ð»Ð¸ ÐŸÐ—Ð£
 */
-void ebc_gpio_config(ebc_devices device);
 void ebc_gpio_config(ebc_devices device)
 {	
-		// Ñòðóêòóðà äëÿ èíèöèàëèçàöèè ëèíèé ââîäà-âûâîäà ñèñòåìíîé øèíû
+		// Ð¡Ñ‚Ñ€ÑƒÐºÑ‚ÑƒÑ€Ð° Ð´Ð»Ñ Ð¸Ð½Ð¸Ñ†Ð¸Ð°Ð»Ð¸Ð·Ð°Ñ†Ð¸Ð¸ Ð»Ð¸Ð½Ð¸Ð¹ Ð²Ð²Ð¾Ð´Ð°-Ð²Ñ‹Ð²Ð¾Ð´Ð° ÑÐ¸ÑÑ‚ÐµÐ¼Ð½Ð¾Ð¹ ÑˆÐ¸Ð½Ñ‹
 		PORT_InitTypeDef ExtBusInitStruct;
 		
-		/* Enables the clock on PORTS */
+		// Ð’ÐºÐ»ÑŽÑ‡ÐµÐ½Ð¸Ðµ Ñ‚Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ñ Ð¿Ð¾Ñ€Ñ‚Ð¾Ð²
 		RST_CLK_PCLKcmd(RST_CLK_PCLK_PORTA, ENABLE);
 		RST_CLK_PCLKcmd(RST_CLK_PCLK_PORTB, ENABLE);
 		RST_CLK_PCLKcmd(RST_CLK_PCLK_PORTC, ENABLE);
@@ -26,15 +21,15 @@ void ebc_gpio_config(ebc_devices device)
 		RST_CLK_PCLKcmd(RST_CLK_PCLK_PORTE, ENABLE);
 		RST_CLK_PCLKcmd(RST_CLK_PCLK_PORTF, ENABLE);	
 
-		/* Configure PORTA pins 0..15 for inout ExtBus data  D0-D15*/
+		// ÐšÐ¾Ð½Ñ„Ð¸Ð³ÑƒÑ€Ð°Ñ†Ð¸Ñ Ð»Ð¸Ð½Ð¸Ð¸ Ð´Ð°Ð½Ð½Ñ‹Ñ…
 		if (device == EBC_RAM)
 		{
-			//32-áèòíûé ðåæèì äàííûõ
+			// 32-Ð±Ð¸Ñ‚Ð½Ñ‹Ð¹ Ñ€ÐµÐ¶Ð¸Ð¼ Ð´Ð°Ð½Ð½Ñ‹Ñ…
 			ExtBusInitStruct.PORT_Pin = (PORT_Pin_0 | PORT_Pin_1 | PORT_Pin_2 | PORT_Pin_3 | PORT_Pin_4 | PORT_Pin_5 | PORT_Pin_6 | PORT_Pin_7 | PORT_Pin_8 | PORT_Pin_9 | PORT_Pin_10 | PORT_Pin_11 | PORT_Pin_12 | PORT_Pin_13 | PORT_Pin_14 | PORT_Pin_15);
 		}
 		else if (device == EBC_ROM)
 		{
-			//8-áèòíûé ðåæèì äàííûõ
+			// 8-Ð±Ð¸Ñ‚Ð½Ñ‹Ð¹ Ñ€ÐµÐ¶Ð¸Ð¼ Ð´Ð°Ð½Ð½Ñ‹Ñ…
 			ExtBusInitStruct.PORT_Pin = (PORT_Pin_0 | PORT_Pin_1 | PORT_Pin_2 | PORT_Pin_3 | PORT_Pin_4 | PORT_Pin_5 | PORT_Pin_6 | PORT_Pin_7 );
 		}
 		ExtBusInitStruct.PORT_FUNC = PORT_FUNC_MAIN;
@@ -43,16 +38,15 @@ void ebc_gpio_config(ebc_devices device)
 
 		PORT_Init(MDR_PORTA, &ExtBusInitStruct);
 
-		/* Configure PORTB pins 0..15 for inout ExtBus data  D16-D31*/
 		ExtBusInitStruct.PORT_Pin = (PORT_Pin_0 | PORT_Pin_1 | PORT_Pin_2 | PORT_Pin_3 | PORT_Pin_4 | PORT_Pin_5 | PORT_Pin_6 | PORT_Pin_7 | PORT_Pin_8 | PORT_Pin_9 | PORT_Pin_10 | PORT_Pin_11 | PORT_Pin_12 | PORT_Pin_13 | PORT_Pin_14 | PORT_Pin_15);
 		if (device == EBC_RAM)
 		{
-			//32-áèòíûé ðåæèì äàííûõ
+			// 32-Ð±Ð¸Ñ‚Ð½Ñ‹Ð¹ Ñ€ÐµÐ¶Ð¸Ð¼ Ð´Ð°Ð½Ð½Ñ‹Ñ…
 			ExtBusInitStruct.PORT_FUNC = PORT_FUNC_MAIN;
 		}
 		else if (device == EBC_ROM)
 		{
-			//8-áèòíûé ðåæèì äàííûõ
+			// 8-Ð±Ð¸Ñ‚Ð½Ñ‹Ð¹ Ñ€ÐµÐ¶Ð¸Ð¼ Ð´Ð°Ð½Ð½Ñ‹Ñ…
 			ExtBusInitStruct.PORT_FUNC = PORT_FUNC_PORT;
 		}
 		ExtBusInitStruct.PORT_MODE = PORT_MODE_DIGITAL;
@@ -60,7 +54,7 @@ void ebc_gpio_config(ebc_devices device)
 
 		PORT_Init(MDR_PORTB, &ExtBusInitStruct);
 		
-		//Config ~OE, ~WE
+		// ÐšÐ¾Ð½Ñ„Ð¸Ð³ÑƒÑ€Ð°Ñ†Ð¸Ñ OE, WE
 		ExtBusInitStruct.PORT_Pin = (PORT_Pin_0 | PORT_Pin_1);
 		ExtBusInitStruct.PORT_FUNC = PORT_FUNC_MAIN;
 		ExtBusInitStruct.PORT_MODE = PORT_MODE_DIGITAL;
@@ -68,7 +62,7 @@ void ebc_gpio_config(ebc_devices device)
 
 		PORT_Init(MDR_PORTC, &ExtBusInitStruct);
 		
-		//Config BE3, BE2, BE1, BE0
+		// ÐšÐ¾Ð½Ñ„Ð¸Ð³ÑƒÑ€Ð°Ñ†Ð¸Ñ BE3, BE2, BE1, BE0
 		ExtBusInitStruct.PORT_Pin = ( PORT_Pin_9 | PORT_Pin_10 | PORT_Pin_11 | PORT_Pin_12 );
 		ExtBusInitStruct.PORT_FUNC = PORT_FUNC_ALTER;
 		ExtBusInitStruct.PORT_MODE = PORT_MODE_DIGITAL;
@@ -76,16 +70,15 @@ void ebc_gpio_config(ebc_devices device)
 
 		PORT_Init(MDR_PORTC, &ExtBusInitStruct);
 
-		/* Configure PORTF pins 3..15 for output ExtBus adress  A0-A12*/ 
-		
+		// ÐšÐ¾Ð½Ñ„Ð¸Ð³ÑƒÑ€Ð°Ñ†Ð¸Ñ Ð»Ð¸Ð½Ð¸Ð¸ Ð°Ð´Ñ€ÐµÑÐ°
 		if (device == EBC_RAM)
 		{
-			//A2->A0
+			// Ð¡Ð´Ð²Ð¸Ð³ Ð°Ð´Ñ€ÐµÑÐ¾Ð² A2->A0
 			ExtBusInitStruct.PORT_Pin = (PORT_Pin_5 | PORT_Pin_6 | PORT_Pin_7 | PORT_Pin_8 | PORT_Pin_9 | PORT_Pin_10 | PORT_Pin_11 | PORT_Pin_12 | PORT_Pin_13 | PORT_Pin_14 | PORT_Pin_15);
 		}
 		else if (device == EBC_ROM)
 		{
-			//A0->A0
+			// ÐÐµÑ‚ ÑÐ´Ð²Ð¸Ð³Ð° Ð°Ð´Ñ€ÐµÑÐ¾Ð² A0->A0
 			ExtBusInitStruct.PORT_Pin = (PORT_Pin_3 | PORT_Pin_4 | PORT_Pin_5 | PORT_Pin_6 | PORT_Pin_7 | PORT_Pin_8 | PORT_Pin_9 | PORT_Pin_10 | PORT_Pin_11 | PORT_Pin_12 | PORT_Pin_13 | PORT_Pin_14 | PORT_Pin_15);
 		}
 		ExtBusInitStruct.PORT_FUNC  = PORT_FUNC_ALTER;
@@ -94,7 +87,7 @@ void ebc_gpio_config(ebc_devices device)
 
 		PORT_Init(MDR_PORTF, &ExtBusInitStruct);
 
-		/* Configure PORTD pin 15 for output ExtBus adress  A13*/
+		// ÐšÐ¾Ð½Ñ„Ð¸Ð³ÑƒÑ€Ð°Ñ†Ð¸Ñ Ð»Ð¸Ð½Ð¸Ð¸ Ð°Ð´Ñ€ÐµÑÐ° A13
 		ExtBusInitStruct.PORT_Pin = PORT_Pin_15;
 		ExtBusInitStruct.PORT_FUNC = PORT_FUNC_ALTER;
 		ExtBusInitStruct.PORT_MODE = PORT_MODE_DIGITAL;
@@ -102,7 +95,7 @@ void ebc_gpio_config(ebc_devices device)
 
 		PORT_Init(MDR_PORTD, &ExtBusInitStruct);
 
-		/* Configure PORTE pins 0..5 for output ExtBus adress  A14-A19*/ 
+		// ÐšÐ¾Ð½Ñ„Ð¸Ð³ÑƒÑ€Ð°Ñ†Ð¸Ñ Ð»Ð¸Ð½Ð¸Ð¸ Ð°Ð´Ñ€ÐµÑÐ° A14-A19
 		ExtBusInitStruct.PORT_Pin = (PORT_Pin_0 | PORT_Pin_1 | PORT_Pin_2 | PORT_Pin_3 | PORT_Pin_4 | PORT_Pin_5);
 		ExtBusInitStruct.PORT_FUNC = PORT_FUNC_ALTER;
 		ExtBusInitStruct.PORT_MODE = PORT_MODE_DIGITAL;
@@ -110,16 +103,15 @@ void ebc_gpio_config(ebc_devices device)
 
 		PORT_Init(MDR_PORTE, &ExtBusInitStruct);
 
-		//Config CS1 - PE7(A21) è CS0 - PE6(A20) (Íîæêè âûáîðà ÎÇÓ)
+		// ÐšÐ¾Ð½Ñ„Ð¸Ð³ÑƒÑ€Ð°Ñ†Ð¸Ñ CS1-PE7(A21) Ð¸ CS0-PE6(A20)(ÐÐ¾Ð¶ÐºÐ¸ Ð²Ñ‹Ð±Ð¾Ñ€Ð° ÐžÐ—Ð£)
 		ExtBusInitStruct.PORT_Pin = (PORT_Pin_7 | PORT_Pin_6);
 		ExtBusInitStruct.PORT_FUNC = PORT_FUNC_ALTER;
 		ExtBusInitStruct.PORT_MODE = PORT_MODE_DIGITAL;
 		ExtBusInitStruct.PORT_SPEED = PORT_SPEED_FAST;
 
 		PORT_Init(MDR_PORTE, &ExtBusInitStruct);
-		//PORT_WriteBit(MDR_PORTE, PORT_Pin_6, 0);
 		
-		/* Configure PORTE pin 8 for output CS2 (A22)  (Íîæêà âûáîðà ÏÇÓ)*/
+		// ÐšÐ¾Ð½Ñ„Ð¸Ð³ÑƒÑ€Ð°Ñ†Ð¸Ñ CS2-PE8(A22)(ÐÐ¾Ð¶ÐºÐ° Ð²Ñ‹Ð±Ð¾Ñ€Ð° ÐŸÐ—Ð£)*/
 		ExtBusInitStruct.PORT_Pin = PORT_Pin_8;
 		ExtBusInitStruct.PORT_OE  = PORT_OE_OUT;
 		ExtBusInitStruct.PORT_FUNC = PORT_FUNC_ALTER;
@@ -133,8 +125,7 @@ void ebc_gpio_config(ebc_devices device)
 		PORT_Init(MDR_PORTE, &ExtBusInitStruct);
 }
 /*
-Ôóíêöèÿ èíèöèàëèçàöèè EBC äëÿ âíåøíåãî ÎÇÓ èëè ÏÇÓ
-device: 0-RAM, 1-ROM 
+	Ð¤ÑƒÐ½ÐºÑ†Ð¸Ñ Ð¸Ð½Ð¸Ñ†Ð¸Ð°Ð»Ð¸Ð·Ð°Ñ†Ð¸Ð¸ EBC Ð´Ð»Ñ Ð²Ð½ÐµÑˆÐ½ÐµÐ³Ð¾ ÐžÐ—Ð£ Ð¸Ð»Ð¸ ÐŸÐ—Ð£
 */
 void ebc_init(ebc_devices device)
  {
@@ -143,10 +134,9 @@ void ebc_init(ebc_devices device)
 		EBC_InitTypeDef EBC_InitStruct;
     EBC_MemRegionInitTypeDef EBC_MemRegionInitStruct;
 
-    /* Enables the HSI clock for EBC control */
+    // Ð’ÐºÐ»ÑŽÑ‡ÐµÐ½Ð¸Ðµ Ñ‚Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ñ EBC
     RST_CLK_PCLKcmd(RST_CLK_PCLK_EBC, ENABLE);
 
-    /* Initializes EBC_InitStruct by default values*/
     EBC_StructInit(&EBC_InitStruct);
 	
 		if (device == EBC_RAM)
@@ -157,28 +147,24 @@ void ebc_init(ebc_devices device)
 		{
 			EBC_InitStruct.EBC_Mode = EBC_MODE_ROM;
 		}
-    /* Initializes the EBC peripheral registers */
+
     EBC_Init(&EBC_InitStruct);
 		
 		MDR_EBC->CONTROL = 0x00008001;
 		if (device == EBC_RAM)
 		{
-			MDR_EBC->CONTROL &= ~(1<<5);//32-áèòíûé ðåæèì äàííûõ
+			MDR_EBC->CONTROL &= ~(1<<5); // 32-Ð±Ð¸Ñ‚Ð½Ñ‹Ð¹ Ñ€ÐµÐ¶Ð¸Ð¼ Ð´Ð°Ð½Ð½Ñ‹Ñ…
 		}
 		else if (device == EBC_ROM)
 		{
-			MDR_EBC->CONTROL |= (1<<5);//8-áèòíûé ðåæèì äàííûõ
+			MDR_EBC->CONTROL |= (1<<5);// 8-Ð±Ð¸Ñ‚Ð½Ñ‹Ð¹ Ñ€ÐµÐ¶Ð¸Ð¼ Ð´Ð°Ð½Ð½Ñ‹Ñ…
 		}
 
-    /* Initializes the EBC memory region 0õ50000000-0õ5FFFFFFF */
-    /* Struct init */
     EBC_MemRegionStructInit(&EBC_MemRegionInitStruct);
     EBC_MemRegionInitStruct.WS_Setup    = 3;
     EBC_MemRegionInitStruct.WS_Active   = 9;
     EBC_MemRegionInitStruct.WS_Hold     = 3;
     EBC_MemRegionInitStruct.Enable_Tune = ENABLE;
-    /* Initializes the EBC memory region  */
+    
     EBC_MemRegionInit(&EBC_MemRegionInitStruct, EBC_MEM_REGION_50000000);
 }
-
-#endif	//__CONFIG_C

@@ -1,0 +1,254 @@
+\hypertarget{1273pv19t_8c}{}\doxysection{Файл 1273pv19t.\+c}
+\label{1273pv19t_8c}\index{1273pv19t.c@{1273pv19t.c}}
+
+
+Файл с реализацией A\+PI для работы с АЦП 1273ПВ19Т  
+
+
+{\ttfamily \#include \char`\"{}math.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}1273pv19t.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}timers.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}external\+\_\+ram.\+h\char`\"{}}\newline
+Граф включаемых заголовочных файлов для 1273pv19t.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{1273pv19t_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Функции}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{1273pv19t_8c_af75ec660b2a9fc7fa0ae346b136b3884}{adc\+\_\+gpio\+\_\+config}} (void)
+\begin{DoxyCompactList}\small\item\em Конфигурирует выводы МК для АЦП \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{1273pv19t_8c_a4c24005daac4ae7e944749179b89b0e3}{adc\+\_\+init}} (\mbox{\hyperlink{1273pv19t_8h_a373968a5da87bc4464c88e86a02c2c52}{adc\+\_\+n}} $\ast$adc\+\_\+struct)
+\begin{DoxyCompactList}\small\item\em Инициализирует микросхему АЦП 1273ПВ19Т \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{1273pv19t_8c_a81badb55f6183f8680189f895d510743}{adc\+\_\+reset}} (void)
+\begin{DoxyCompactList}\small\item\em Аппаратный сброс микросхемы АЦП 1273ПВ19Т \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Переменные}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{spi_8h_ab833736115a154e13899c6b9695957a2}{spi\+\_\+n}} \mbox{\hyperlink{1273pv19t_8c_a168a603d82909428f4f498ae15a611d7}{spi\+\_\+1}}
+\begin{DoxyCompactList}\small\item\em Структура с конфигурационными параметрами блока S\+P\+I1 МК \end{DoxyCompactList}\item 
+\mbox{\hyperlink{timers_8h_a93415917cf28bb298dd781fbb842ddae}{timer\+\_\+n}} \mbox{\hyperlink{1273pv19t_8c_a1bd790a808dd714d6cdae26f4ee59bdb}{timer\+\_\+2}}
+\begin{DoxyCompactList}\small\item\em Структура с конфигурационными параметрами блока Timer2 МК \end{DoxyCompactList}\item 
+\mbox{\hyperlink{1273pv19t_8h_a373968a5da87bc4464c88e86a02c2c52}{adc\+\_\+n}} \mbox{\hyperlink{1273pv19t_8c_a558e219bfe7a1a334ebe338ca121e0ec}{adc\+\_\+1}}
+\begin{DoxyCompactList}\small\item\em Структура с конфигурационными параметрами микросхемы АЦП \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Файл с реализацией A\+PI для работы с АЦП 1273ПВ19Т 
+
+
+
+\doxysubsection{Функции}
+\mbox{\Hypertarget{1273pv19t_8c_af75ec660b2a9fc7fa0ae346b136b3884}\label{1273pv19t_8c_af75ec660b2a9fc7fa0ae346b136b3884}} 
+\index{1273pv19t.c@{1273pv19t.c}!adc\_gpio\_config@{adc\_gpio\_config}}
+\index{adc\_gpio\_config@{adc\_gpio\_config}!1273pv19t.c@{1273pv19t.c}}
+\doxysubsubsection{\texorpdfstring{adc\_gpio\_config()}{adc\_gpio\_config()}}
+{\footnotesize\ttfamily void adc\+\_\+gpio\+\_\+config (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Конфигурирует выводы МК для АЦП 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{36 \{}
+\DoxyCodeLine{37     \textcolor{comment}{// Включение тактирования портов}}
+\DoxyCodeLine{38     RST\_CLK\_PCLKcmd(RST\_CLK\_PCLK\_RST\_CLK|RST\_CLK\_PCLK\_PORTD|RST\_CLK\_PCLK\_PORTE|RST\_CLK\_PCLK\_PORTC, ENABLE); }
+\DoxyCodeLine{39     }
+\DoxyCodeLine{40     PORT\_InitTypeDef GPIO\_init\_structADC;}
+\DoxyCodeLine{41     PORT\_StructInit(\&GPIO\_init\_structADC);}
+\DoxyCodeLine{42     }
+\DoxyCodeLine{43     \textcolor{comment}{// Инициализация RESET PD0 для аппаратного сброса ацп}}
+\DoxyCodeLine{44     GPIO\_init\_structADC.PORT\_Pin = \mbox{\hyperlink{1273pv19t_8h_a3c08a9006ac08e756fc4e67c4965e8bb}{PIN\_ADC\_RST}};}
+\DoxyCodeLine{45     GPIO\_init\_structADC.PORT\_FUNC = PORT\_FUNC\_PORT;}
+\DoxyCodeLine{46     GPIO\_init\_structADC.PORT\_OE = PORT\_OE\_OUT;}
+\DoxyCodeLine{47     GPIO\_init\_structADC.PORT\_MODE = PORT\_MODE\_DIGITAL;}
+\DoxyCodeLine{48     GPIO\_init\_structADC.PORT\_SPEED = PORT\_SPEED\_MAXFAST;}
+\DoxyCodeLine{49     PORT\_Init(\mbox{\hyperlink{1273pv19t_8h_a428032d607ec2ca0a33dd1c216ef4c83}{PORT\_ADC\_RST}}, \&GPIO\_init\_structADC);}
+\DoxyCodeLine{50     \textcolor{comment}{// Установка RESET в лог единицу}}
+\DoxyCodeLine{51     PORT\_SetBits(\mbox{\hyperlink{1273pv19t_8h_a428032d607ec2ca0a33dd1c216ef4c83}{PORT\_ADC\_RST}},\mbox{\hyperlink{1273pv19t_8h_a3c08a9006ac08e756fc4e67c4965e8bb}{PIN\_ADC\_RST}});}
+\DoxyCodeLine{52     }
+\DoxyCodeLine{53     \textcolor{comment}{// Инициализация ножек выбора режима работы (0-\/10В,4-\/20мА)}}
+\DoxyCodeLine{54     GPIO\_init\_structADC.PORT\_Pin = \mbox{\hyperlink{1273pv19t_8h_a247778baeff3c1eeaab63315629961db}{PIN\_ADC\_MODE\_A0}};}
+\DoxyCodeLine{55     GPIO\_init\_structADC.PORT\_FUNC = PORT\_FUNC\_PORT;}
+\DoxyCodeLine{56     GPIO\_init\_structADC.PORT\_OE = PORT\_OE\_OUT;}
+\DoxyCodeLine{57     PORT\_Init(\mbox{\hyperlink{1273pv19t_8h_a8103a2be16b735b3ea8d885f05e1ef9d}{PORT\_ADC\_MODE}}, \&GPIO\_init\_structADC);}
+\DoxyCodeLine{58     }
+\DoxyCodeLine{59     GPIO\_init\_structADC.PORT\_Pin = \mbox{\hyperlink{1273pv19t_8h_a9d95a17c895c9c71646efffc8ec3af45}{PIN\_ADC\_MODE\_A1}};}
+\DoxyCodeLine{60     GPIO\_init\_structADC.PORT\_FUNC = PORT\_FUNC\_PORT;}
+\DoxyCodeLine{61     GPIO\_init\_structADC.PORT\_OE = PORT\_OE\_OUT;}
+\DoxyCodeLine{62     PORT\_Init(\mbox{\hyperlink{1273pv19t_8h_a8103a2be16b735b3ea8d885f05e1ef9d}{PORT\_ADC\_MODE}}, \&GPIO\_init\_structADC);}
+\DoxyCodeLine{63     }
+\DoxyCodeLine{64     \textcolor{comment}{// Выбор однополярного режима на мультиплексоре A0=1;A1=0   }}
+\DoxyCodeLine{65     PORT\_SetBits(\mbox{\hyperlink{1273pv19t_8h_a8103a2be16b735b3ea8d885f05e1ef9d}{PORT\_ADC\_MODE}},\mbox{\hyperlink{1273pv19t_8h_a247778baeff3c1eeaab63315629961db}{PIN\_ADC\_MODE\_A0}});}
+\DoxyCodeLine{66     PORT\_ResetBits(\mbox{\hyperlink{1273pv19t_8h_a8103a2be16b735b3ea8d885f05e1ef9d}{PORT\_ADC\_MODE}},\mbox{\hyperlink{1273pv19t_8h_a9d95a17c895c9c71646efffc8ec3af45}{PIN\_ADC\_MODE\_A1}});}
+\DoxyCodeLine{67     }
+\DoxyCodeLine{68     \textcolor{comment}{// Инициализация вывода NSS}}
+\DoxyCodeLine{69     GPIO\_init\_structADC.PORT\_Pin = \mbox{\hyperlink{1273pv19t_8h_a3bb9e59accb957b0115ff3c4da16dd48}{PIN\_ADC\_NSS}};}
+\DoxyCodeLine{70     GPIO\_init\_structADC.PORT\_FUNC = PORT\_FUNC\_PORT;}
+\DoxyCodeLine{71     GPIO\_init\_structADC.PORT\_OE = PORT\_OE\_OUT;}
+\DoxyCodeLine{72     PORT\_Init(\mbox{\hyperlink{1273pv19t_8h_a315d7d17de6d025ae213eb3fad072e39}{PORT\_ADC\_NSS}}, \&GPIO\_init\_structADC);}
+\DoxyCodeLine{73     }
+\DoxyCodeLine{74     \textcolor{comment}{// Установка NSS в лог ноль}}
+\DoxyCodeLine{75     PORT\_ResetBits(\mbox{\hyperlink{1273pv19t_8h_a315d7d17de6d025ae213eb3fad072e39}{PORT\_ADC\_NSS}}, \mbox{\hyperlink{1273pv19t_8h_a3bb9e59accb957b0115ff3c4da16dd48}{PIN\_ADC\_NSS}});}
+\DoxyCodeLine{76     }
+\DoxyCodeLine{77     \textcolor{comment}{// Инициализация порта E для канала 2 таймера 2 на вход прерывания SDIFS/SDOFS от АЦП (канал захвата для таймера)}}
+\DoxyCodeLine{78     GPIO\_init\_structADC.PORT\_FUNC = PORT\_FUNC\_MAIN;}
+\DoxyCodeLine{79     GPIO\_init\_structADC.PORT\_OE = PORT\_OE\_IN;}
+\DoxyCodeLine{80     GPIO\_init\_structADC.PORT\_SPEED = PORT\_SPEED\_MAXFAST;}
+\DoxyCodeLine{81     GPIO\_init\_structADC.PORT\_MODE = PORT\_MODE\_DIGITAL;}
+\DoxyCodeLine{82     GPIO\_init\_structADC.PORT\_Pin = \mbox{\hyperlink{1273pv19t_8h_aaee579897a98bfb956ee2b8b2533e528}{PIN\_ADC\_SDIFS\_IRQ}};}
+\DoxyCodeLine{83     GPIO\_init\_structADC.PORT\_PULL\_DOWN = PORT\_PULL\_DOWN\_ON;}
+\DoxyCodeLine{84     PORT\_Init (\mbox{\hyperlink{1273pv19t_8h_ae5f7ee4c5a6c52493d90007a6c9df984}{PORT\_ADC\_SDIFS\_IRQ}}, \&GPIO\_init\_structADC);}
+\DoxyCodeLine{85 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{1273pv19t_8c_a4c24005daac4ae7e944749179b89b0e3}\label{1273pv19t_8c_a4c24005daac4ae7e944749179b89b0e3}} 
+\index{1273pv19t.c@{1273pv19t.c}!adc\_init@{adc\_init}}
+\index{adc\_init@{adc\_init}!1273pv19t.c@{1273pv19t.c}}
+\doxysubsubsection{\texorpdfstring{adc\_init()}{adc\_init()}}
+{\footnotesize\ttfamily void adc\+\_\+init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{1273pv19t_8h_a373968a5da87bc4464c88e86a02c2c52}{adc\+\_\+n}} $\ast$}]{adc\+\_\+struct }\end{DoxyParamCaption})}
+
+
+
+Инициализирует микросхему АЦП 1273ПВ19Т 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em $\ast$adc\+\_\+struct} & -\/ Структура с конфиг. параметрами АЦП \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{90 \{}
+\DoxyCodeLine{91     \mbox{\hyperlink{1273pv19t_8c_af75ec660b2a9fc7fa0ae346b136b3884}{adc\_gpio\_config}}();}
+\DoxyCodeLine{92 }
+\DoxyCodeLine{93     \textcolor{comment}{// Активация микросхемы АЦП}}
+\DoxyCodeLine{94     PORT\_SetBits(\mbox{\hyperlink{1273pv19t_8h_a315d7d17de6d025ae213eb3fad072e39}{PORT\_ADC\_NSS}}, \mbox{\hyperlink{1273pv19t_8h_a3bb9e59accb957b0115ff3c4da16dd48}{PIN\_ADC\_NSS}});}
+\DoxyCodeLine{95     \mbox{\hyperlink{timers_8c_a5c8c1042d9a53ff36e149cbc8178e489}{delay\_milli}}(1);}
+\DoxyCodeLine{96     }
+\DoxyCodeLine{97     \mbox{\hyperlink{1273pv19t_8c_a81badb55f6183f8680189f895d510743}{adc\_reset}}();}
+\DoxyCodeLine{98     \mbox{\hyperlink{timers_8c_a5c8c1042d9a53ff36e149cbc8178e489}{delay\_milli}}(1);}
+\DoxyCodeLine{99     }
+\DoxyCodeLine{100     \textcolor{keywordflow}{switch} (\mbox{\hyperlink{mdr32__drivers_8h_a150ba8643ab5a18b3eb9a0165f56647a}{CHANEL\_NUMBER}})}
+\DoxyCodeLine{101     \{}
+\DoxyCodeLine{102             \textcolor{keywordflow}{case} 1:}
+\DoxyCodeLine{103                     \textcolor{comment}{// Режим control, запись в регистр D управление питанием АЦП1 и АЦП2}}
+\DoxyCodeLine{104                     SSP\_SendData(adc\_struct-\/>\mbox{\hyperlink{structadc__config__data_a200c9d0952003f2561fabcd7fff26299}{spi\_struct}}-\/>\mbox{\hyperlink{structspi__config__data_af7c62ae50acedf3fd8aea07e6d804d47}{SSPx}}, 0x8308);}
+\DoxyCodeLine{105                     \mbox{\hyperlink{timers_8c_a5c8c1042d9a53ff36e149cbc8178e489}{delay\_milli}}(1);}
+\DoxyCodeLine{106                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{107             \textcolor{keywordflow}{case} 2:}
+\DoxyCodeLine{108                     \textcolor{comment}{// Режим control, запись в регистр D управление питанием АЦП1 и АЦП2}}
+\DoxyCodeLine{109                     SSP\_SendData(adc\_struct-\/>\mbox{\hyperlink{structadc__config__data_a200c9d0952003f2561fabcd7fff26299}{spi\_struct}}-\/>\mbox{\hyperlink{structspi__config__data_af7c62ae50acedf3fd8aea07e6d804d47}{SSPx}}, 0x8388);}
+\DoxyCodeLine{110                     \mbox{\hyperlink{timers_8c_a5c8c1042d9a53ff36e149cbc8178e489}{delay\_milli}}(1);}
+\DoxyCodeLine{111                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{112             \textcolor{keywordflow}{case} 3:}
+\DoxyCodeLine{113                     \textcolor{comment}{// Режим control, запись в регистр D управление питанием АЦП1 и АЦП2}}
+\DoxyCodeLine{114                     SSP\_SendData(adc\_struct-\/>\mbox{\hyperlink{structadc__config__data_a200c9d0952003f2561fabcd7fff26299}{spi\_struct}}-\/>\mbox{\hyperlink{structspi__config__data_af7c62ae50acedf3fd8aea07e6d804d47}{SSPx}}, 0x8388);}
+\DoxyCodeLine{115                     \mbox{\hyperlink{timers_8c_a5c8c1042d9a53ff36e149cbc8178e489}{delay\_milli}}(1);}
+\DoxyCodeLine{116                     \textcolor{comment}{// Режим control, запись в регистр E управление питанием АЦП3 и АЦП4}}
+\DoxyCodeLine{117                     SSP\_SendData(adc\_struct-\/>\mbox{\hyperlink{structadc__config__data_a200c9d0952003f2561fabcd7fff26299}{spi\_struct}}-\/>\mbox{\hyperlink{structspi__config__data_af7c62ae50acedf3fd8aea07e6d804d47}{SSPx}}, 0x8408);}
+\DoxyCodeLine{118                     \mbox{\hyperlink{timers_8c_a5c8c1042d9a53ff36e149cbc8178e489}{delay\_milli}}(1);}
+\DoxyCodeLine{119                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{120             \textcolor{keywordflow}{case} 4:}
+\DoxyCodeLine{121                     \textcolor{comment}{// Режим control, запись в регистр D управление питанием АЦП1 и АЦП2}}
+\DoxyCodeLine{122                     SSP\_SendData(adc\_struct-\/>\mbox{\hyperlink{structadc__config__data_a200c9d0952003f2561fabcd7fff26299}{spi\_struct}}-\/>\mbox{\hyperlink{structspi__config__data_af7c62ae50acedf3fd8aea07e6d804d47}{SSPx}}, 0x8388);}
+\DoxyCodeLine{123                     \mbox{\hyperlink{timers_8c_a5c8c1042d9a53ff36e149cbc8178e489}{delay\_milli}}(1);}
+\DoxyCodeLine{124                     \textcolor{comment}{// Режим control, запись в регистр E управление питанием АЦП3 и АЦП4}}
+\DoxyCodeLine{125                     SSP\_SendData(adc\_struct-\/>\mbox{\hyperlink{structadc__config__data_a200c9d0952003f2561fabcd7fff26299}{spi\_struct}}-\/>\mbox{\hyperlink{structspi__config__data_af7c62ae50acedf3fd8aea07e6d804d47}{SSPx}}, 0x8488);}
+\DoxyCodeLine{126                     \mbox{\hyperlink{timers_8c_a5c8c1042d9a53ff36e149cbc8178e489}{delay\_milli}}(1);}
+\DoxyCodeLine{127                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{128             \textcolor{keywordflow}{case} 5:}
+\DoxyCodeLine{129                     \textcolor{comment}{// Режим control, запись в регистр D управление питанием АЦП1 и АЦП2}}
+\DoxyCodeLine{130                     SSP\_SendData(adc\_struct-\/>\mbox{\hyperlink{structadc__config__data_a200c9d0952003f2561fabcd7fff26299}{spi\_struct}}-\/>\mbox{\hyperlink{structspi__config__data_af7c62ae50acedf3fd8aea07e6d804d47}{SSPx}}, 0x8388);}
+\DoxyCodeLine{131                     \mbox{\hyperlink{timers_8c_a5c8c1042d9a53ff36e149cbc8178e489}{delay\_milli}}(1);}
+\DoxyCodeLine{132                     \textcolor{comment}{// Режим control, запись в регистр E управление питанием АЦП3 и АЦП4}}
+\DoxyCodeLine{133                     SSP\_SendData(adc\_struct-\/>\mbox{\hyperlink{structadc__config__data_a200c9d0952003f2561fabcd7fff26299}{spi\_struct}}-\/>\mbox{\hyperlink{structspi__config__data_af7c62ae50acedf3fd8aea07e6d804d47}{SSPx}}, 0x8488);}
+\DoxyCodeLine{134                     \mbox{\hyperlink{timers_8c_a5c8c1042d9a53ff36e149cbc8178e489}{delay\_milli}}(1);}
+\DoxyCodeLine{135                     \textcolor{comment}{// Режим control, запись в регистр F управление питанием АЦП5 и АЦП6}}
+\DoxyCodeLine{136                     SSP\_SendData(adc\_struct-\/>\mbox{\hyperlink{structadc__config__data_a200c9d0952003f2561fabcd7fff26299}{spi\_struct}}-\/>\mbox{\hyperlink{structspi__config__data_af7c62ae50acedf3fd8aea07e6d804d47}{SSPx}}, 0x8508);}
+\DoxyCodeLine{137                     \mbox{\hyperlink{timers_8c_a5c8c1042d9a53ff36e149cbc8178e489}{delay\_milli}}(1);}
+\DoxyCodeLine{138                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{139             \textcolor{keywordflow}{case} 6:}
+\DoxyCodeLine{140                     \textcolor{comment}{// Режим control, запись в регистр D управление питанием АЦП1 и АЦП2}}
+\DoxyCodeLine{141                     SSP\_SendData(adc\_struct-\/>\mbox{\hyperlink{structadc__config__data_a200c9d0952003f2561fabcd7fff26299}{spi\_struct}}-\/>\mbox{\hyperlink{structspi__config__data_af7c62ae50acedf3fd8aea07e6d804d47}{SSPx}}, 0x8388);}
+\DoxyCodeLine{142                     \mbox{\hyperlink{timers_8c_a5c8c1042d9a53ff36e149cbc8178e489}{delay\_milli}}(1);}
+\DoxyCodeLine{143                     \textcolor{comment}{// Режим control, запись в регистр E управление питанием АЦП3 и АЦП4}}
+\DoxyCodeLine{144                     SSP\_SendData(adc\_struct-\/>\mbox{\hyperlink{structadc__config__data_a200c9d0952003f2561fabcd7fff26299}{spi\_struct}}-\/>\mbox{\hyperlink{structspi__config__data_af7c62ae50acedf3fd8aea07e6d804d47}{SSPx}}, 0x8488);}
+\DoxyCodeLine{145                     \mbox{\hyperlink{timers_8c_a5c8c1042d9a53ff36e149cbc8178e489}{delay\_milli}}(1);}
+\DoxyCodeLine{146                     \textcolor{comment}{// Режим control, запись в регистр F управление питанием АЦП5 и АЦП6}}
+\DoxyCodeLine{147                     SSP\_SendData(adc\_struct-\/>\mbox{\hyperlink{structadc__config__data_a200c9d0952003f2561fabcd7fff26299}{spi\_struct}}-\/>\mbox{\hyperlink{structspi__config__data_af7c62ae50acedf3fd8aea07e6d804d47}{SSPx}}, 0x8588);}
+\DoxyCodeLine{148                     \mbox{\hyperlink{timers_8c_a5c8c1042d9a53ff36e149cbc8178e489}{delay\_milli}}(1);}
+\DoxyCodeLine{149                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{150             }
+\DoxyCodeLine{151     \}}
+\DoxyCodeLine{152     \textcolor{comment}{// Режим control, запись в регистр C вкл. 5В режима,использ. вывода REFOUT, вкл. опорное напряж.}}
+\DoxyCodeLine{153     SSP\_SendData(adc\_struct-\/>\mbox{\hyperlink{structadc__config__data_a200c9d0952003f2561fabcd7fff26299}{spi\_struct}}-\/>\mbox{\hyperlink{structspi__config__data_af7c62ae50acedf3fd8aea07e6d804d47}{SSPx}}, 0x82E0);}
+\DoxyCodeLine{154     \mbox{\hyperlink{timers_8c_a5c8c1042d9a53ff36e149cbc8178e489}{delay\_milli}}(1);}
+\DoxyCodeLine{155     }
+\DoxyCodeLine{156     \textcolor{comment}{// Режим control, запись в регистр А -\/ перевод в режим данных}}
+\DoxyCodeLine{157     SSP\_SendData(adc\_struct-\/>\mbox{\hyperlink{structadc__config__data_a200c9d0952003f2561fabcd7fff26299}{spi\_struct}}-\/>\mbox{\hyperlink{structspi__config__data_af7c62ae50acedf3fd8aea07e6d804d47}{SSPx}}, 0x8001);}
+\DoxyCodeLine{158     \mbox{\hyperlink{timers_8c_a55159cc6c08a6ece9ceae2ac776b86f2}{delay\_micro}}(10);}
+\DoxyCodeLine{159     }
+\DoxyCodeLine{160     \textcolor{comment}{// Очистка буфера FIFO SPI передатчика}}
+\DoxyCodeLine{161     \mbox{\hyperlink{spi_8c_a129f1bdb142ca6714cb77ec0e25f7e74}{spi\_clean\_fifo\_rx\_buf}}(adc\_struct-\/>\mbox{\hyperlink{structadc__config__data_a200c9d0952003f2561fabcd7fff26299}{spi\_struct}});}
+\DoxyCodeLine{162     }
+\DoxyCodeLine{163     adc\_struct-\/>\mbox{\hyperlink{structadc__config__data_a485b473e939318ba11fcccd0dac3e946}{init\_flag}} = 1;}
+\DoxyCodeLine{164 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{1273pv19t_8c_a81badb55f6183f8680189f895d510743}\label{1273pv19t_8c_a81badb55f6183f8680189f895d510743}} 
+\index{1273pv19t.c@{1273pv19t.c}!adc\_reset@{adc\_reset}}
+\index{adc\_reset@{adc\_reset}!1273pv19t.c@{1273pv19t.c}}
+\doxysubsubsection{\texorpdfstring{adc\_reset()}{adc\_reset()}}
+{\footnotesize\ttfamily void adc\+\_\+reset (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Аппаратный сброс микросхемы АЦП 1273ПВ19Т 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{169 \{}
+\DoxyCodeLine{170     PORT\_ResetBits(\mbox{\hyperlink{1273pv19t_8h_a428032d607ec2ca0a33dd1c216ef4c83}{PORT\_ADC\_RST}},\mbox{\hyperlink{1273pv19t_8h_a3c08a9006ac08e756fc4e67c4965e8bb}{PIN\_ADC\_RST}});}
+\DoxyCodeLine{171     \mbox{\hyperlink{timers_8c_a5c8c1042d9a53ff36e149cbc8178e489}{delay\_milli}}(100);}
+\DoxyCodeLine{172     PORT\_SetBits(\mbox{\hyperlink{1273pv19t_8h_a428032d607ec2ca0a33dd1c216ef4c83}{PORT\_ADC\_RST}},\mbox{\hyperlink{1273pv19t_8h_a3c08a9006ac08e756fc4e67c4965e8bb}{PIN\_ADC\_RST}});}
+\DoxyCodeLine{173 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Переменные}
+\mbox{\Hypertarget{1273pv19t_8c_a558e219bfe7a1a334ebe338ca121e0ec}\label{1273pv19t_8c_a558e219bfe7a1a334ebe338ca121e0ec}} 
+\index{1273pv19t.c@{1273pv19t.c}!adc\_1@{adc\_1}}
+\index{adc\_1@{adc\_1}!1273pv19t.c@{1273pv19t.c}}
+\doxysubsubsection{\texorpdfstring{adc\_1}{adc\_1}}
+{\footnotesize\ttfamily \mbox{\hyperlink{1273pv19t_8h_a373968a5da87bc4464c88e86a02c2c52}{adc\+\_\+n}} adc\+\_\+1}
+
+
+
+Структура с конфигурационными параметрами микросхемы АЦП 
+
+\mbox{\Hypertarget{1273pv19t_8c_a168a603d82909428f4f498ae15a611d7}\label{1273pv19t_8c_a168a603d82909428f4f498ae15a611d7}} 
+\index{1273pv19t.c@{1273pv19t.c}!spi\_1@{spi\_1}}
+\index{spi\_1@{spi\_1}!1273pv19t.c@{1273pv19t.c}}
+\doxysubsubsection{\texorpdfstring{spi\_1}{spi\_1}}
+{\footnotesize\ttfamily \mbox{\hyperlink{spi_8h_ab833736115a154e13899c6b9695957a2}{spi\+\_\+n}} spi\+\_\+1\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Структура с конфигурационными параметрами блока S\+P\+I1 МК 
+
+\mbox{\Hypertarget{1273pv19t_8c_a1bd790a808dd714d6cdae26f4ee59bdb}\label{1273pv19t_8c_a1bd790a808dd714d6cdae26f4ee59bdb}} 
+\index{1273pv19t.c@{1273pv19t.c}!timer\_2@{timer\_2}}
+\index{timer\_2@{timer\_2}!1273pv19t.c@{1273pv19t.c}}
+\doxysubsubsection{\texorpdfstring{timer\_2}{timer\_2}}
+{\footnotesize\ttfamily \mbox{\hyperlink{timers_8h_a93415917cf28bb298dd781fbb842ddae}{timer\+\_\+n}} timer\+\_\+2\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Структура с конфигурационными параметрами блока Timer2 МК 
+

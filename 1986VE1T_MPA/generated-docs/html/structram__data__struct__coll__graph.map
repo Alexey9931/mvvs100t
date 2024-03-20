@@ -1,0 +1,24 @@
+<map id="ram_data_struct" name="ram_data_struct">
+<area shape="rect" id="node1" title="Структура организующая память во внешнем ОЗУ" alt="" coords="1105,220,1233,247"/>
+<area shape="rect" id="node2" href="$structservice__byte__struct__pm.html" title="Структура с битовыми полями для сервисного байта ПМ" alt="" coords="709,79,886,105"/>
+<area shape="rect" id="node3" href="$structstart__struct__ext__ram.html" title="Структура, которая лежит в начале ОЗУ любого модуля" alt="" coords="719,129,876,156"/>
+<area shape="rect" id="node4" href="$structrange__start__struct.html" title="Структура одного диапазона для стартовой структуры" alt="" coords="343,9,483,36"/>
+<area shape="rect" id="node5" href="$structmpa__register__space__ext__ram.html" title="Органиация пространства регистров МПА во внешнем ОЗУ" alt="" coords="721,181,874,222"/>
+<area shape="rect" id="node6" href="$structmpa__register__space__ext__rom.html" title="Органиация пространства регистров МПА для зеркализации во внешнем ПЗУ" alt="" coords="337,61,490,102"/>
+<area shape="rect" id="node7" href="$structai__oper__mode__struct.html" title="Структура с битовыми полями для регистра режим работы канала" alt="" coords="5,68,164,95"/>
+<area shape="rect" id="node8" href="$structcommon__register__space__ext__ram.html" title="Органиация пространства общих регистров во внешнем ОЗУ" alt="" coords="707,246,888,287"/>
+<area shape="rect" id="node9" href="$structconfig__struct.html" title="Структура с битовыми полями для регистра конфигурация" alt="" coords="361,127,466,153"/>
+<area shape="rect" id="node10" href="$structplc__sof__ver__struct.html" title="Структура с битовыми полями для регистра версия ПО" alt="" coords="343,177,483,204"/>
+<area shape="rect" id="node11" href="$structself__diag__struct.html" title="Структура с битовыми полями для регистра неисправность самодиагностики" alt="" coords="351,228,476,255"/>
+<area shape="rect" id="node12" href="$structpower__failure__struct.html" title="Структура с битовыми полями для регистра неисправность питания" alt="" coords="336,279,491,305"/>
+<area shape="rect" id="node13" href="$structcommon__register__space__ext__rom.html" title="Органиация пространства общих регистров для зеркализации во внешнем ПЗУ" alt="" coords="323,330,504,371"/>
+<area shape="rect" id="node14" href="$structdevice__type__struct.html" title="Структура с битовыми полями для регистра тип устройства" alt="" coords="12,337,157,364"/>
+<area shape="rect" id="node15" href="$structdevice__address__struct.html" title="Структура с битовыми полями для регистра адрес устройства" alt="" coords="330,396,497,423"/>
+<area shape="rect" id="node16" href="$structbus__defect__struct.html" title="Структура с битовыми полями для регистра неисправность шины" alt="" coords="345,447,482,473"/>
+<area shape="rect" id="node17" href="$structservice__byte__struct__um.html" title="Структура с битовыми полями для сервисного байта УМ" alt="" coords="709,312,886,339"/>
+<area shape="rect" id="node18" href="$structtx__rx__packet__struct.html" title="Структура пакета данных согласно утвержденному протоколу обмена данными" alt="" coords="722,525,873,552"/>
+<area shape="rect" id="node19" href="$structcmd__struct.html" title="Структура с полями данных для каждой команды (субпакета) внутри одного пакета" alt="" coords="366,497,461,524"/>
+<area shape="rect" id="node20" href="$structcmd__header__struct.html" title="Структура с заголовком для каждой команды (субпакета) внутри одного пакета" alt="" coords="11,497,158,524"/>
+<area shape="rect" id="node21" href="$structpacket__tail__Struct.html" title="Структура с полями конца пакета" alt="" coords="344,548,483,575"/>
+<area shape="rect" id="node22" href="$structpacket__header__struct.html" title="Структура с полями заголовка пакета" alt="" coords="332,599,495,625"/>
+</map>

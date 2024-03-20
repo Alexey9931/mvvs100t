@@ -1,67 +1,62 @@
 /*!
  \file
- \brief Файл с реализацией API для работы с SPI
+ \brief Р¤Р°Р№Р» СЃ СЂРµР°Р»РёР·Р°С†РёРµР№ API РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ SPI
 */
 #include "spi.h"
 #include "1273pv19t.h"
 #include "external_ram.h"
 
+/// РЎС‚СЂСѓРєС‚СѓСЂР° СЃ РєРѕРЅС„РёРіСѓСЂР°С†РёРѕРЅРЅС‹РјРё РїР°СЂР°РјРµС‚СЂР°РјРё Р±Р»РѕРєР° SPI1 РњРљ
 spi_n spi_1;
+/// РЎС‚СЂСѓРєС‚СѓСЂР° СЃ РєРѕРЅС„РёРіСѓСЂР°С†РёРѕРЅРЅС‹РјРё РїР°СЂР°РјРµС‚СЂР°РјРё Р±Р»РѕРєР° SPI2 РњРљ
 spi_n spi_2;
 
-extern adc_n adc_1;
-extern ram_data *ram_space_pointer;
-
-extern uart_n uart_1;
-extern uart_n uart_2;
-
-/*
-Функция конфигурирования выводов МК для SPI
+/*!
+ *	\brief РљРѕРЅС„РёРіСѓСЂРёСЂСѓРµС‚ РІС‹РІРѕРґС‹ РњРљ РґР»СЏ SPI
 */
 void spi_gpio_config(void);
 void spi_gpio_config(void)
 {
-	// Включение тактирования портов
+	// Р’РєР»СЋС‡РµРЅРёРµ С‚Р°РєС‚РёСЂРѕРІР°РЅРёСЏ РїРѕСЂС‚РѕРІ
 	RST_CLK_PCLKcmd(RST_CLK_PCLK_RST_CLK|RST_CLK_PCLK_PORTD, ENABLE);	
 	
-	// Инициализация портов SSP1
+	// РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РїРѕСЂС‚РѕРІ SSP1
 	PORT_InitTypeDef GPIO_init_struct_SPI1;
 	
 	PORT_StructInit(&GPIO_init_struct_SPI1);
 	GPIO_init_struct_SPI1.PORT_FUNC = PORT_FUNC_ALTER;
 	GPIO_init_struct_SPI1.PORT_MODE = PORT_MODE_DIGITAL;
 	GPIO_init_struct_SPI1.PORT_SPEED = PORT_SPEED_MAXFAST;
-	//Инициализация вывода SCK
+	// РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РІС‹РІРѕРґР° SCK
 	GPIO_init_struct_SPI1.PORT_Pin = PIN_SSP1_SCK;
 	GPIO_init_struct_SPI1.PORT_OE = PORT_OE_IN;
 	PORT_Init(PORT_SSP1, &GPIO_init_struct_SPI1);
-	//Инициализация вывода SSP_RX
+	// РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РІС‹РІРѕРґР° SSP_RX
 	GPIO_init_struct_SPI1.PORT_Pin = PIN_SSP1_RX;
 	GPIO_init_struct_SPI1.PORT_OE = PORT_OE_IN;
 	PORT_Init(PORT_SSP1, &GPIO_init_struct_SPI1);
-	//Инициализация вывода SSP_TX
+	// РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РІС‹РІРѕРґР° SSP_TX
 	GPIO_init_struct_SPI1.PORT_Pin = PIN_SSP1_TX;
 	GPIO_init_struct_SPI1.PORT_OE = PORT_OE_OUT;
 	PORT_Init(PORT_SSP1, &GPIO_init_struct_SPI1);
 	PORT_ResetBits(PORT_SSP1,PIN_SSP1_TX);
-	//Инициализация вывода SS (вход SDIFS)
+	// РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РІС‹РІРѕРґР° SS (РІС…РѕРґ SDIFS)
 	GPIO_init_struct_SPI1.PORT_Pin = PIN_SSP1_SS;
 	GPIO_init_struct_SPI1.PORT_FUNC = PORT_FUNC_ALTER;
 	GPIO_init_struct_SPI1.PORT_OE = PORT_OE_IN;
 	PORT_Init(PORT_SSP1, &GPIO_init_struct_SPI1);
-	
 }
 /*
-Функция инициализация SPI
+	Р¤СѓРЅРєС†РёСЏ РёРЅРёС†РёР°Р»РёР·Р°С†РёСЏ SPI
 */
 void spi_init(spi_n *spi_struct)
 {
 	spi_gpio_config();
 	
-	//Структура для инициализации SPI
+	// РЎС‚СЂСѓРєС‚СѓСЂР° РґР»СЏ РёРЅРёС†РёР°Р»РёР·Р°С†РёРё SPI
 	SSP_InitTypeDef SSP_InitStruct;
 	
-	// Включение тактирования SPI
+	// Р’РєР»СЋС‡РµРЅРёРµ С‚Р°РєС‚РёСЂРѕРІР°РЅРёСЏ SPI
 	RST_CLK_PCLKcmd(spi_struct->RST_CLK_PCLK_SPIn, ENABLE);
 
 	SSP_StructInit(&SSP_InitStruct);
@@ -74,17 +69,17 @@ void spi_init(spi_n *spi_struct)
   SSP_InitStruct.SSP_FRF = spi_struct->SPI.SSP_FRF;
   SSP_InitStruct.SSP_HardwareFlowControl = spi_struct->SPI.SSP_HardwareFlowControl;
 	//SSP_InitStruct.SSP_SCR  = 0x10;
-  SSP_InitStruct.SSP_CPSDVSR = spi_struct->SPI.SSP_CPSDVSR;//частота обмена 2МГц 
+  SSP_InitStruct.SSP_CPSDVSR = spi_struct->SPI.SSP_CPSDVSR; // Р§Р°СЃС‚РѕС‚Р° РѕР±РјРµРЅР° 2РњР“С† 
 	SSP_Init(spi_struct->SSPx,&SSP_InitStruct);
 	
 	NVIC_DisableIRQ(spi_struct->IRQn);
-	// Выбор источников прерываний (прием и передача данных)
+	// Р’С‹Р±РѕСЂ РёСЃС‚РѕС‡РЅРёРєРѕРІ РїСЂРµСЂС‹РІР°РЅРёР№ (РїСЂРёРµРј Рё РїРµСЂРµРґР°С‡Р° РґР°РЅРЅС‹С…)
   SSP_ITConfig (spi_struct->SSPx, SSP_IT_RX, DISABLE);
 	
 	SSP_Cmd(spi_struct->SSPx, ENABLE);	
 }
 /*
-Функция передачи полуслова по SPI
+	Р¤СѓРЅРєС†РёСЏ РїРµСЂРµРґР°С‡Рё РїРѕР»СѓСЃР»РѕРІР° РїРѕ SPI
 */
 void spi_transmit_halfword(spi_n *spi_struct, uint16_t half_word)
 {
@@ -92,45 +87,43 @@ void spi_transmit_halfword(spi_n *spi_struct, uint16_t half_word)
 	while (	SSP_GetFlagStatus(spi_struct->SSPx, SSP_FLAG_TFE) != SET);
 }
 /*
-Функция передачи массива по SPI
+	Р¤СѓРЅРєС†РёСЏ РїРµСЂРµРґР°С‡Рё РјР°СЃСЃРёРІР° РїРѕ SPI
 */
 void spi_transmit_message(spi_n *spi_struct, uint16_t message[], uint32_t length)
 {
 	for(uint32_t i = 0; i < length; i++)
 	{
-		while(SSP_GetFlagStatus(spi_struct->SSPx, SSP_FLAG_TNF) != SET) {} // Ждем когда в буфере появится место и затем записываем следующий байт
+		while(SSP_GetFlagStatus(spi_struct->SSPx, SSP_FLAG_TNF) != SET) {} // Р–РґРµРј, РєРѕРіРґР° РІ Р±СѓС„РµСЂРµ РїРѕСЏРІРёС‚СЃСЏ РјРµСЃС‚Рѕ Рё Р·Р°С‚РµРј Р·Р°РїРёСЃС‹РІР°РµРј СЃР»РµРґСѓСЋС‰РёР№ Р±Р°Р№С‚
 		SSP_SendData(spi_struct->SSPx, message[i]);			
 	}	
-	while (SSP_GetFlagStatus(spi_struct->SSPx, SSP_FLAG_TFE) != SET) {}  //ждем пока байт уйдет		
+	while (SSP_GetFlagStatus(spi_struct->SSPx, SSP_FLAG_TFE) != SET) {}  // Р–РґРµРј, РїРѕРєР° Р±Р°Р№С‚ СѓР№РґРµС‚		
 }
 /*
-Функция приема полуслова по SPI
+	Р¤СѓРЅРєС†РёСЏ РїСЂРёРµРјР° РїРѕР»СѓСЃР»РѕРІР° РїРѕ SPI
 */
 uint16_t spi_receive_halfword(spi_n *spi_struct)
 {	
 	uint16_t tmpVar;
-	// Обработка прерывания от приемника данных
-	while (SSP_GetFlagStatus(spi_struct->SSPx, SSP_FLAG_RNE) != SET)  {}  //ждем пока появится байт  
-	// Получаем данные
+	// РћР±СЂР°Р±РѕС‚РєР° РїСЂРµСЂС‹РІР°РЅРёСЏ РѕС‚ РїСЂРёРµРјРЅРёРєР° РґР°РЅРЅС‹С…
+	while (SSP_GetFlagStatus(spi_struct->SSPx, SSP_FLAG_RNE) != SET)  {}  // Р–РґРµРј, РїРѕРєР° РїРѕСЏРІРёС‚СЃСЏ Р±Р°Р№С‚  
+	// РџРѕР»СѓС‡Р°РµРј РґР°РЅРЅС‹Рµ
 	tmpVar = SSP_ReceiveData(spi_struct->SSPx);
 		
 	return tmpVar;
 }
 /*
-Функция очистки FIFO буфера приемника SPI
+	Р¤СѓРЅРєС†РёСЏ РѕС‡РёСЃС‚РєРё FIFO Р±СѓС„РµСЂР° РїСЂРёРµРјРЅРёРєР° SPI
 */
 void spi_clean_fifo_rx_buf(spi_n *spi_struct)
 {	
 	uint16_t a;
-	//for (uint8_t i = 0; i < FIFO_SIZE; i++)
 	while(SSP_GetFlagStatus(spi_struct->SSPx, SSP_FLAG_RNE) == SET)
 	{
 		a = spi_struct->SSPx->DR;
 	}
 }
-
 /*
-Функция инициализации n-го канала DMA  на запрос от приемника SPIn
+	Р¤СѓРЅРєС†РёСЏ РёРЅРёС†РёР°Р»РёР·Р°С†РёРё n-РіРѕ РєР°РЅР°Р»Р° DMA  РЅР° Р·Р°РїСЂРѕСЃ РѕС‚ РїСЂРёРµРјРЅРёРєР° SPIn
 */
 void dma_spi_rx_init(spi_n *spi_struct)
 {
@@ -147,24 +140,22 @@ void dma_spi_rx_init(spi_n *spi_struct)
 	spi_struct->spi_dma_ch.DMA_InitStructure_SPI_RX.DMA_DestProtCtrl = DMA_DestPrivileged;
 	spi_struct->spi_dma_ch.DMA_InitStructure_SPI_RX.DMA_Mode = DMA_Mode_Basic;
 	
-	// Задать структуру канала
+	// Р—Р°РґР°С‚СЊ СЃС‚СЂСѓРєС‚СѓСЂСѓ РєР°РЅР°Р»Р°
 	spi_struct->spi_dma_ch.DMA_Channel_SPI_RX.DMA_PriCtrlData = &spi_struct->spi_dma_ch.DMA_InitStructure_SPI_RX;
 	spi_struct->spi_dma_ch.DMA_Channel_SPI_RX.DMA_Priority = DMA_Priority_High;
 	spi_struct->spi_dma_ch.DMA_Channel_SPI_RX.DMA_UseBurst = DMA_BurstClear;
 	spi_struct->spi_dma_ch.DMA_Channel_SPI_RX.DMA_SelectDataStructure = DMA_CTRL_DATA_PRIMARY;
 	
-	// Инициализировать канал
+	// РРЅРёС†РёР°Р»РёР·РёСЂРѕРІР°С‚СЊ РєР°РЅР°Р»
 	DMA_Init(spi_struct->spi_dma_ch.dma_channel, &spi_struct->spi_dma_ch.DMA_Channel_SPI_RX);
 	
 	MDR_DMA->CHNL_REQ_MASK_CLR = 1 << spi_struct->spi_dma_ch.dma_channel;
 	MDR_DMA->CHNL_USEBURST_CLR = 1 << spi_struct->spi_dma_ch.dma_channel;
 	
 	SSP_DMACmd(spi_struct->SSPx, SSP_DMA_RXE, DISABLE);
-	// Разрешить работу DMA с SPI
+	// Р Р°Р·СЂРµС€РёС‚СЊ СЂР°Р±РѕС‚Сѓ DMA СЃ SPI
 	DMA_Cmd (spi_struct->spi_dma_ch.dma_channel, DISABLE);
 	
 	//NVIC_SetPriority (DMA_IRQn, 0);
 	//NVIC_EnableIRQ(DMA_IRQn);
 }
-
-

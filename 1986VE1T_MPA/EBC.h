@@ -1,14 +1,17 @@
 /*!
  \file
- \brief Заголовочный файл с описанием API для работы с EBC
+ \brief Р—Р°РіРѕР»РѕРІРѕС‡РЅС‹Р№ С„Р°Р№Р» СЃ РѕРїРёСЃР°РЅРёРµРј API РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ EBC (РєРѕРЅС‚СЂРѕР»Р»РµСЂ РІРЅРµС€РЅРµР№ СЃРёСЃС‚РµРјРЅРѕР№ С€РёРЅС‹)
 */
 
-#ifndef __CONFIG_H
-#define __CONFIG_H
+#ifndef __EBC_H
+#define __EBC_H
 
 #include "mdr32_drivers.h"
 
-///Типы устройств для подключение по EBC
+/**
+ * @brief РўРёРїС‹ СѓСЃС‚СЂРѕР№СЃС‚РІ РґР»СЏ РїРѕРґРєР»СЋС‡РµРЅРёРµ РїРѕ EBC
+ *
+ */
 typedef enum devices
 {
 	EBC_RAM,		///< RAM
@@ -16,9 +19,10 @@ typedef enum devices
 } ebc_devices;
 
 /*!
- *	\brief Инициализирует EBC для внешнего ОЗУ или ПЗУ
+ *	\brief РРЅРёС†РёР°Р»РёР·РёСЂСѓРµС‚ EBC РґР»СЏ РІРЅРµС€РЅРµРіРѕ РћР—РЈ РёР»Рё РџР—РЈ
  *	\param device: 0-RAM, 1-ROM 
 */
 void ebc_init(ebc_devices device);
 
-#endif /*__CONFIG_H */
+#endif /*__EBC_H */
+ 

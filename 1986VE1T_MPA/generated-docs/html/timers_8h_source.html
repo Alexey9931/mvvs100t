@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.20"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>ПО для макета МПА (100 тема): Исходный файл timers.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">ПО для макета МПА (100 тема)
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.20 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">timers.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="timers_8h.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#ifndef __TIMERS_H</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#define __TIMERS_H</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="mdr32__drivers_8h.html">mdr32_drivers.h</a>&quot;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="list_8h.html">list.h</a>&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="structtimer__config__struct.html">   17</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structtimer__config__struct.html">timer_config_struct</a></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;{</div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="structtimer__config__struct.html#a26d6f987c10095f685286d88e1cc4a96">   19</a></span>&#160;    MDR_TIMER_TypeDef*                      <a class="code" href="structtimer__config__struct.html#a26d6f987c10095f685286d88e1cc4a96">TIMERx</a>;                                     </div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="structtimer__config__struct.html#a5b7638d9c51c3cb44287671f0df9b84a">   20</a></span>&#160;    TIMER_CntInitTypeDef                    <a class="code" href="structtimer__config__struct.html#a5b7638d9c51c3cb44287671f0df9b84a">TIMERInitStruct</a>;                    </div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="structtimer__config__struct.html#a07633c834cb63ccdaccd024a65836c4f">   21</a></span>&#160;    TIMER_ChnInitTypeDef                    <a class="code" href="structtimer__config__struct.html#a07633c834cb63ccdaccd024a65836c4f">sTIM_ChnInit</a>;                                       </div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="structtimer__config__struct.html#a8bbb20b6525b41337470d2753e1ab3c8">   22</a></span>&#160;    TIMER_Status_Flags_TypeDef      <a class="code" href="structtimer__config__struct.html#a8bbb20b6525b41337470d2753e1ab3c8">TIMER_STATUS</a>;                                       </div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="structtimer__config__struct.html#adb95d9046f9f4026c2892e357a1576c9">   23</a></span>&#160;    uint32_t                                            <a class="code" href="structtimer__config__struct.html#adb95d9046f9f4026c2892e357a1576c9">timer_cnt</a>;                                          </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;} </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#ifndef DOXYGEN</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;__attribute__((packed))</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="timers_8h.html#a93415917cf28bb298dd781fbb842ddae">   28</a></span>&#160;<a class="code" href="timers_8h.html#a93415917cf28bb298dd781fbb842ddae">timer_n</a>;    </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="structtimer__irq__list__struct.html">   34</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structtimer__irq__list__struct.html">timer_irq_list_struct</a></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;{</div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="structtimer__irq__list__struct.html#a63bf1e4609042bd432379349df8cb596">   36</a></span>&#160;    void(*<a class="code" href="structtimer__irq__list__struct.html#a63bf1e4609042bd432379349df8cb596">handler</a>)(<span class="keywordtype">void</span>*);                          </div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="structtimer__irq__list__struct.html#a4c6e41629145a247f7b25a4c0aa7b6ce">   37</a></span>&#160;    TIMER_Status_Flags_TypeDef <a class="code" href="structtimer__irq__list__struct.html#a4c6e41629145a247f7b25a4c0aa7b6ce">event</a>;       </div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="structtimer__irq__list__struct.html#a5990691b491982b75bd7c4a2f7d4a854">   38</a></span>&#160;    <span class="keywordtype">void</span> *<a class="code" href="structtimer__irq__list__struct.html#a5990691b491982b75bd7c4a2f7d4a854">data</a>;                                                 </div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="structtimer__irq__list__struct.html#a6a8448369bb5f2d760abf5d552cb103a">   39</a></span>&#160;    <a class="code" href="structlist__head__struct.html">list_head</a> <a class="code" href="structtimer__irq__list__struct.html#a6a8448369bb5f2d760abf5d552cb103a">list</a>;                                         </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;} </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#ifndef DOXYGEN</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;__attribute__((packed))</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#endif </span></div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="timers_8h.html#a831c61bf52aad67a34f92b77afb895b3">   44</a></span>&#160;<a class="code" href="timers_8h.html#a831c61bf52aad67a34f92b77afb895b3">timer_irq_list</a>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keywordtype">void</span> <a class="code" href="timers_8h.html#a8d5b476044a5eb598d2b0a7e4e82f1f6">timer_init</a>(<a class="code" href="structtimer__config__struct.html">timer_n</a> *timer_struct);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keywordtype">void</span> <a class="code" href="timers_8h.html#a5c8c1042d9a53ff36e149cbc8178e489">delay_milli</a>(uint32_t time_milli);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="keywordtype">void</span> <a class="code" href="timers_8h.html#a55159cc6c08a6ece9ceae2ac776b86f2">delay_micro</a>(uint32_t time_micro);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="keywordtype">void</span> <a class="code" href="timers_8h.html#a695072fd5d07d67692fb0e45e4517234">list_tmr_handler_add_tail</a>(uint8_t tmr_num, <span class="keywordtype">void</span> (*func_ptr)(<span class="keywordtype">void</span>*), <span class="keywordtype">void</span> *data, TIMER_Status_Flags_TypeDef event);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="keywordtype">void</span> <a class="code" href="timers_8h.html#a75b81776350752a2f5e68d2e3e2f56eb">list_tmr_handler_init</a>(uint8_t tmr_num);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/*__TIMERS_H */</span><span class="preprocessor"></span></div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="astructtimer__config__struct_html_a26d6f987c10095f685286d88e1cc4a96"><div class="ttname"><a href="structtimer__config__struct.html#a26d6f987c10095f685286d88e1cc4a96">timer_config_struct::TIMERx</a></div><div class="ttdeci">MDR_TIMER_TypeDef * TIMERx</div><div class="ttdoc">Библиотечная структура с периферийными регистрами блока TIMER.</div><div class="ttdef"><b>Definition:</b> timers.h:19</div></div>
+<div class="ttc" id="atimers_8h_html_a55159cc6c08a6ece9ceae2ac776b86f2"><div class="ttname"><a href="timers_8h.html#a55159cc6c08a6ece9ceae2ac776b86f2">delay_micro</a></div><div class="ttdeci">void delay_micro(uint32_t time_micro)</div><div class="ttdoc">Реализует задержку в мкс</div><div class="ttdef"><b>Definition:</b> timers.c:161</div></div>
+<div class="ttc" id="astructtimer__config__struct_html_adb95d9046f9f4026c2892e357a1576c9"><div class="ttname"><a href="structtimer__config__struct.html#adb95d9046f9f4026c2892e357a1576c9">timer_config_struct::timer_cnt</a></div><div class="ttdeci">uint32_t timer_cnt</div><div class="ttdoc">Счетчик для TIMER (может быть использован для разных целей)</div><div class="ttdef"><b>Definition:</b> timers.h:23</div></div>
+<div class="ttc" id="astructlist__head__struct_html"><div class="ttname"><a href="structlist__head__struct.html">list_head_struct</a></div><div class="ttdoc">Структура с описанием двусвязанного списка</div><div class="ttdef"><b>Definition:</b> list.h:44</div></div>
+<div class="ttc" id="atimers_8h_html_a93415917cf28bb298dd781fbb842ddae"><div class="ttname"><a href="timers_8h.html#a93415917cf28bb298dd781fbb842ddae">timer_n</a></div><div class="ttdeci">struct timer_config_struct timer_n</div><div class="ttdoc">Структура с конфигурационными параметрами Таймеров</div></div>
+<div class="ttc" id="atimers_8h_html_a5c8c1042d9a53ff36e149cbc8178e489"><div class="ttname"><a href="timers_8h.html#a5c8c1042d9a53ff36e149cbc8178e489">delay_milli</a></div><div class="ttdeci">void delay_milli(uint32_t time_milli)</div><div class="ttdoc">Реализует задержку в мс</div><div class="ttdef"><b>Definition:</b> timers.c:153</div></div>
+<div class="ttc" id="astructtimer__config__struct_html"><div class="ttname"><a href="structtimer__config__struct.html">timer_config_struct</a></div><div class="ttdoc">Структура с конфигурационными параметрами Таймеров</div><div class="ttdef"><b>Definition:</b> timers.h:18</div></div>
+<div class="ttc" id="atimers_8h_html_a75b81776350752a2f5e68d2e3e2f56eb"><div class="ttname"><a href="timers_8h.html#a75b81776350752a2f5e68d2e3e2f56eb">list_tmr_handler_init</a></div><div class="ttdeci">void list_tmr_handler_init(uint8_t tmr_num)</div><div class="ttdoc">Инициализирует список обработчиков прерываний таймера</div><div class="ttdef"><b>Definition:</b> timers.c:183</div></div>
+<div class="ttc" id="atimers_8h_html_a8d5b476044a5eb598d2b0a7e4e82f1f6"><div class="ttname"><a href="timers_8h.html#a8d5b476044a5eb598d2b0a7e4e82f1f6">timer_init</a></div><div class="ttdeci">void timer_init(timer_n *timer_struct)</div><div class="ttdoc">Инициализацирует выбранный Timer.</div><div class="ttdef"><b>Definition:</b> timers.c:120</div></div>
+<div class="ttc" id="astructtimer__irq__list__struct_html_a5990691b491982b75bd7c4a2f7d4a854"><div class="ttname"><a href="structtimer__irq__list__struct.html#a5990691b491982b75bd7c4a2f7d4a854">timer_irq_list_struct::data</a></div><div class="ttdeci">void * data</div><div class="ttdoc">Указатель на данные, передаваемые в обработчик (при необходимости)</div><div class="ttdef"><b>Definition:</b> timers.h:38</div></div>
+<div class="ttc" id="astructtimer__config__struct_html_a5b7638d9c51c3cb44287671f0df9b84a"><div class="ttname"><a href="structtimer__config__struct.html#a5b7638d9c51c3cb44287671f0df9b84a">timer_config_struct::TIMERInitStruct</a></div><div class="ttdeci">TIMER_CntInitTypeDef TIMERInitStruct</div><div class="ttdoc">Библиотечная структура с конфигурационными параметрами блока TIMER.</div><div class="ttdef"><b>Definition:</b> timers.h:20</div></div>
+<div class="ttc" id="astructtimer__irq__list__struct_html_a63bf1e4609042bd432379349df8cb596"><div class="ttname"><a href="structtimer__irq__list__struct.html#a63bf1e4609042bd432379349df8cb596">timer_irq_list_struct::handler</a></div><div class="ttdeci">void(* handler)(void *)</div><div class="ttdoc">Указатель на функцию-обработчик прерывания</div><div class="ttdef"><b>Definition:</b> timers.h:36</div></div>
+<div class="ttc" id="astructtimer__config__struct_html_a8bbb20b6525b41337470d2753e1ab3c8"><div class="ttname"><a href="structtimer__config__struct.html#a8bbb20b6525b41337470d2753e1ab3c8">timer_config_struct::TIMER_STATUS</a></div><div class="ttdeci">TIMER_Status_Flags_TypeDef TIMER_STATUS</div><div class="ttdoc">Настрока событий, по которому происходит прерывание блока TIMER.</div><div class="ttdef"><b>Definition:</b> timers.h:22</div></div>
+<div class="ttc" id="astructtimer__irq__list__struct_html_a4c6e41629145a247f7b25a4c0aa7b6ce"><div class="ttname"><a href="structtimer__irq__list__struct.html#a4c6e41629145a247f7b25a4c0aa7b6ce">timer_irq_list_struct::event</a></div><div class="ttdeci">TIMER_Status_Flags_TypeDef event</div><div class="ttdoc">Событие, по которому срабатывает прерывание</div><div class="ttdef"><b>Definition:</b> timers.h:37</div></div>
+<div class="ttc" id="astructtimer__config__struct_html_a07633c834cb63ccdaccd024a65836c4f"><div class="ttname"><a href="structtimer__config__struct.html#a07633c834cb63ccdaccd024a65836c4f">timer_config_struct::sTIM_ChnInit</a></div><div class="ttdeci">TIMER_ChnInitTypeDef sTIM_ChnInit</div><div class="ttdoc">Библиотечная структура с конфигурационными параметрами каналов блока TIMER (используются например для...</div><div class="ttdef"><b>Definition:</b> timers.h:21</div></div>
+<div class="ttc" id="atimers_8h_html_a831c61bf52aad67a34f92b77afb895b3"><div class="ttname"><a href="timers_8h.html#a831c61bf52aad67a34f92b77afb895b3">timer_irq_list</a></div><div class="ttdeci">struct timer_irq_list_struct timer_irq_list</div><div class="ttdoc">Структура-реализация односвязанного списка обработчиков прерываний таймеров</div></div>
+<div class="ttc" id="astructtimer__irq__list__struct_html_a6a8448369bb5f2d760abf5d552cb103a"><div class="ttname"><a href="structtimer__irq__list__struct.html#a6a8448369bb5f2d760abf5d552cb103a">timer_irq_list_struct::list</a></div><div class="ttdeci">list_head list</div><div class="ttdoc">Список прерываний</div><div class="ttdef"><b>Definition:</b> timers.h:39</div></div>
+<div class="ttc" id="amdr32__drivers_8h_html"><div class="ttname"><a href="mdr32__drivers_8h.html">mdr32_drivers.h</a></div><div class="ttdoc">Заголовочный файл с глобальными константами и подключаемыми библиотеками</div></div>
+<div class="ttc" id="alist_8h_html"><div class="ttname"><a href="list_8h.html">list.h</a></div><div class="ttdoc">Заголовочный файл с описанием API для работы со списками (реализация аналогична linux kernel)</div></div>
+<div class="ttc" id="atimers_8h_html_a695072fd5d07d67692fb0e45e4517234"><div class="ttname"><a href="timers_8h.html#a695072fd5d07d67692fb0e45e4517234">list_tmr_handler_add_tail</a></div><div class="ttdeci">void list_tmr_handler_add_tail(uint8_t tmr_num, void(*func_ptr)(void *), void *data, TIMER_Status_Flags_TypeDef event)</div><div class="ttdoc">Добавляет обработчик прерывания таймера в список обработчиков</div><div class="ttdef"><b>Definition:</b> timers.c:169</div></div>
+<div class="ttc" id="astructtimer__irq__list__struct_html"><div class="ttname"><a href="structtimer__irq__list__struct.html">timer_irq_list_struct</a></div><div class="ttdoc">Структура-реализация односвязанного списка обработчиков прерываний таймеров</div><div class="ttdef"><b>Definition:</b> timers.h:35</div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20
+</small></address>
+</body>
+</html>

@@ -1,0 +1,108 @@
+\hypertarget{structmpa__register__space__ext__ram}{}\doxysection{Структура mpa\+\_\+register\+\_\+space\+\_\+ext\+\_\+ram}
+\label{structmpa__register__space__ext__ram}\index{mpa\_register\_space\_ext\_ram@{mpa\_register\_space\_ext\_ram}}
+
+
+Органиация пространства регистров МПА во внешнем ОЗУ  
+
+
+
+
+{\ttfamily \#include $<$external\+\_\+ram.\+h$>$}
+
+
+
+Граф связей класса mpa\+\_\+register\+\_\+space\+\_\+ext\+\_\+ram\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=208pt]{structmpa__register__space__ext__ram__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Открытые атрибуты}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{external__rom_8h_a8897187d53796e2a6e4068abd4da0112}{mpa\+\_\+rom\+\_\+registers}} \mbox{\hyperlink{structmpa__register__space__ext__ram_a667898579a4053c595e2ed9433cb3cb6}{A\+I\+\_\+\+Rom\+Regs}}
+\begin{DoxyCompactList}\small\item\em Регистры МПА, которые храняться в ПЗУ \end{DoxyCompactList}\item 
+uint16\+\_\+t \mbox{\hyperlink{structmpa__register__space__ext__ram_a57d7877553f94c1a71d81fc2f328b402}{A\+I\+\_\+\+Signal\+Changed}}
+\begin{DoxyCompactList}\small\item\em Изменялся ли сигнал с последнего опроса ~\newline
+ \end{DoxyCompactList}\item 
+int16\+\_\+t \mbox{\hyperlink{structmpa__register__space__ext__ram_a7e5473b0af9ea61d8c0b1486da8b02cf}{A\+I\+\_\+\+Code\+A\+DC}} \mbox{[}\mbox{\hyperlink{mdr32__drivers_8h_a2332bbff598b25d3bddab65efa40db0f}{M\+A\+X\+\_\+\+C\+H\+A\+N\+E\+L\+\_\+\+N\+U\+M\+B\+ER}}\mbox{]}
+\begin{DoxyCompactList}\small\item\em Сырые данные, код АЦП \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{structmpa__register__space__ext__ram_a6775cde415d33a5e6b0070ee41d83fa0}{A\+I\+\_\+\+Phys\+Quant\+Float}} \mbox{[}\mbox{\hyperlink{mdr32__drivers_8h_a2332bbff598b25d3bddab65efa40db0f}{M\+A\+X\+\_\+\+C\+H\+A\+N\+E\+L\+\_\+\+N\+U\+M\+B\+ER}}\mbox{]}
+\begin{DoxyCompactList}\small\item\em Физическая величина (число с плавающей точкой) \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{structmpa__register__space__ext__ram_a1a1bc771a89052f2f8b5177315949637}{A\+I\+\_\+\+Diagnostic\+Channel}} \mbox{[}\mbox{\hyperlink{mdr32__drivers_8h_a2332bbff598b25d3bddab65efa40db0f}{M\+A\+X\+\_\+\+C\+H\+A\+N\+E\+L\+\_\+\+N\+U\+M\+B\+ER}}\mbox{]}
+\begin{DoxyCompactList}\small\item\em Самодиагностика каналов \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{structmpa__register__space__ext__ram_ad70da0bac2b0e396525efbcbfc28ebe3}{Reserv\+\_\+6}} \mbox{[}2\mbox{]}
+\begin{DoxyCompactList}\small\item\em Резерв \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Органиация пространства регистров МПА во внешнем ОЗУ 
+
+\doxysubsection{Данные класса}
+\mbox{\Hypertarget{structmpa__register__space__ext__ram_a7e5473b0af9ea61d8c0b1486da8b02cf}\label{structmpa__register__space__ext__ram_a7e5473b0af9ea61d8c0b1486da8b02cf}} 
+\index{mpa\_register\_space\_ext\_ram@{mpa\_register\_space\_ext\_ram}!AI\_CodeADC@{AI\_CodeADC}}
+\index{AI\_CodeADC@{AI\_CodeADC}!mpa\_register\_space\_ext\_ram@{mpa\_register\_space\_ext\_ram}}
+\doxysubsubsection{\texorpdfstring{AI\_CodeADC}{AI\_CodeADC}}
+{\footnotesize\ttfamily int16\+\_\+t mpa\+\_\+register\+\_\+space\+\_\+ext\+\_\+ram\+::\+A\+I\+\_\+\+Code\+A\+DC\mbox{[}\mbox{\hyperlink{mdr32__drivers_8h_a2332bbff598b25d3bddab65efa40db0f}{M\+A\+X\+\_\+\+C\+H\+A\+N\+E\+L\+\_\+\+N\+U\+M\+B\+ER}}\mbox{]}}
+
+
+
+Сырые данные, код АЦП 
+
+\mbox{\Hypertarget{structmpa__register__space__ext__ram_a1a1bc771a89052f2f8b5177315949637}\label{structmpa__register__space__ext__ram_a1a1bc771a89052f2f8b5177315949637}} 
+\index{mpa\_register\_space\_ext\_ram@{mpa\_register\_space\_ext\_ram}!AI\_DiagnosticChannel@{AI\_DiagnosticChannel}}
+\index{AI\_DiagnosticChannel@{AI\_DiagnosticChannel}!mpa\_register\_space\_ext\_ram@{mpa\_register\_space\_ext\_ram}}
+\doxysubsubsection{\texorpdfstring{AI\_DiagnosticChannel}{AI\_DiagnosticChannel}}
+{\footnotesize\ttfamily uint8\+\_\+t mpa\+\_\+register\+\_\+space\+\_\+ext\+\_\+ram\+::\+A\+I\+\_\+\+Diagnostic\+Channel\mbox{[}\mbox{\hyperlink{mdr32__drivers_8h_a2332bbff598b25d3bddab65efa40db0f}{M\+A\+X\+\_\+\+C\+H\+A\+N\+E\+L\+\_\+\+N\+U\+M\+B\+ER}}\mbox{]}}
+
+
+
+Самодиагностика каналов 
+
+\mbox{\Hypertarget{structmpa__register__space__ext__ram_a6775cde415d33a5e6b0070ee41d83fa0}\label{structmpa__register__space__ext__ram_a6775cde415d33a5e6b0070ee41d83fa0}} 
+\index{mpa\_register\_space\_ext\_ram@{mpa\_register\_space\_ext\_ram}!AI\_PhysQuantFloat@{AI\_PhysQuantFloat}}
+\index{AI\_PhysQuantFloat@{AI\_PhysQuantFloat}!mpa\_register\_space\_ext\_ram@{mpa\_register\_space\_ext\_ram}}
+\doxysubsubsection{\texorpdfstring{AI\_PhysQuantFloat}{AI\_PhysQuantFloat}}
+{\footnotesize\ttfamily float mpa\+\_\+register\+\_\+space\+\_\+ext\+\_\+ram\+::\+A\+I\+\_\+\+Phys\+Quant\+Float\mbox{[}\mbox{\hyperlink{mdr32__drivers_8h_a2332bbff598b25d3bddab65efa40db0f}{M\+A\+X\+\_\+\+C\+H\+A\+N\+E\+L\+\_\+\+N\+U\+M\+B\+ER}}\mbox{]}}
+
+
+
+Физическая величина (число с плавающей точкой) 
+
+\mbox{\Hypertarget{structmpa__register__space__ext__ram_a667898579a4053c595e2ed9433cb3cb6}\label{structmpa__register__space__ext__ram_a667898579a4053c595e2ed9433cb3cb6}} 
+\index{mpa\_register\_space\_ext\_ram@{mpa\_register\_space\_ext\_ram}!AI\_RomRegs@{AI\_RomRegs}}
+\index{AI\_RomRegs@{AI\_RomRegs}!mpa\_register\_space\_ext\_ram@{mpa\_register\_space\_ext\_ram}}
+\doxysubsubsection{\texorpdfstring{AI\_RomRegs}{AI\_RomRegs}}
+{\footnotesize\ttfamily \mbox{\hyperlink{external__rom_8h_a8897187d53796e2a6e4068abd4da0112}{mpa\+\_\+rom\+\_\+registers}} mpa\+\_\+register\+\_\+space\+\_\+ext\+\_\+ram\+::\+A\+I\+\_\+\+Rom\+Regs}
+
+
+
+Регистры МПА, которые храняться в ПЗУ 
+
+\mbox{\Hypertarget{structmpa__register__space__ext__ram_a57d7877553f94c1a71d81fc2f328b402}\label{structmpa__register__space__ext__ram_a57d7877553f94c1a71d81fc2f328b402}} 
+\index{mpa\_register\_space\_ext\_ram@{mpa\_register\_space\_ext\_ram}!AI\_SignalChanged@{AI\_SignalChanged}}
+\index{AI\_SignalChanged@{AI\_SignalChanged}!mpa\_register\_space\_ext\_ram@{mpa\_register\_space\_ext\_ram}}
+\doxysubsubsection{\texorpdfstring{AI\_SignalChanged}{AI\_SignalChanged}}
+{\footnotesize\ttfamily uint16\+\_\+t mpa\+\_\+register\+\_\+space\+\_\+ext\+\_\+ram\+::\+A\+I\+\_\+\+Signal\+Changed}
+
+
+
+Изменялся ли сигнал с последнего опроса ~\newline
+ 
+
+\mbox{\Hypertarget{structmpa__register__space__ext__ram_ad70da0bac2b0e396525efbcbfc28ebe3}\label{structmpa__register__space__ext__ram_ad70da0bac2b0e396525efbcbfc28ebe3}} 
+\index{mpa\_register\_space\_ext\_ram@{mpa\_register\_space\_ext\_ram}!Reserv\_6@{Reserv\_6}}
+\index{Reserv\_6@{Reserv\_6}!mpa\_register\_space\_ext\_ram@{mpa\_register\_space\_ext\_ram}}
+\doxysubsubsection{\texorpdfstring{Reserv\_6}{Reserv\_6}}
+{\footnotesize\ttfamily uint8\+\_\+t mpa\+\_\+register\+\_\+space\+\_\+ext\+\_\+ram\+::\+Reserv\+\_\+6\mbox{[}2\mbox{]}}
+
+
+
+Резерв 
+
+
+
+Объявления и описания членов структуры находятся в файле\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{external__ram_8h}{external\+\_\+ram.\+h}}\end{DoxyCompactItemize}

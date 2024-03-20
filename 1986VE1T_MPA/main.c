@@ -1,17 +1,21 @@
 #include "main.h"
 
+/// Структура с конфигурационными параметрами микросхемы АЦП
 extern adc_n adc_1;
 
+/// Структуры с конфигурационными параметрами блоков таймеров МК
 extern timer_n timer_1;
 extern timer_n timer_2;
 extern timer_n timer_3;
 
-//массив указателей на head списков обработчиков прерываний таймеров
+/// Массив указателей на head списков обработчиков прерываний таймеров
 extern list_head *tmr_handler_head[TIMER_NUM];
 
+/// Структуры с конфигурационными параметрами блоков SPI МК
 extern spi_n spi_1;
 extern spi_n spi_2;
 
+/// Структуры с конфигурационными параметрами блоков UART МК
 extern uart_n uart_1;
 extern uart_n uart_2;
 #ifdef K1986VE3T
@@ -19,34 +23,39 @@ extern uart_n uart_3;
 extern uart_n uart_4;
 #endif
 
-//указатель для обращения к внешнему ОЗУ
+/// Указатель для обращения к внешнему ОЗУ
 ram_data *ram_space_pointer;
-//указатель для обращения к внешнему ПЗУ
+/// Указатель для обращения к внешнему ПЗУ
 rom_data *rom_space_pointer;
 
-//выделение памяти во внутр ОЗУ для кучи
+/// Выделение памяти во внутреннем ОЗУ МК для "самодельной" кучи
 int_ram_heap heap;
-//указатель на кучу
+/// Указатель на "самодельную" кучу
 int_ram_heap *heap_ptr = &heap;
 
 int main(void)
 {	
+	// Инициализация тактирования МК
 	clock_init();
+	// Общая инициализация блока DMA МК
 	dma_common_init();
+	// Прошивка внешней микросхемы ПЗУ (делается только 1 раз)
 	#ifdef ROM_IS_USED
 		ebc_init(EBC_ROM);
 		init_external_rom_space();
 	#endif
+	// Инициализация внешней микросхемы ОЗУ
 	ebc_init(EBC_RAM);
 	init_external_ram_space(); 
+	// Инициализация светодиодных индикаторов
 	leds_gpio_config();
 		
-	//инициализация и создание списков обработчиков перываний таймеров
+	// Инициализация и создание списков обработчиков прерываний таймеров
 	list_tmr_handler_init(1);
 	list_tmr_handler_add_tail(1, sync_adc_chanels, NULL, TIMER_STATUS_CNT_ARR);
 	list_tmr_handler_add_tail(1, receive_adc_chanel_pack, NULL, TIMER_STATUS_CCR_CAP1_CH4);
 	
-	//инициализация SSI1
+	// Инициализация блока SSI1 МК
 	spi_1.SSPx = MDR_SSP1;
 	spi_1.RST_CLK_PCLK_SPIn = RST_CLK_PCLK_SSP1;
 	spi_1.SPI.SSP_WordLength = SSP_WordLength16b;
@@ -61,21 +70,21 @@ int main(void)
 	
 	spi_init(&spi_1);
 	
-	//инициализация Timer1 (настроен на период 10мс)
+	// Инициализация блока Timer1 МК (настроен на период 10мс)
 	timer_1.TIMERInitStruct.TIMER_Period = 0x270F;//10000-1
 	timer_1.TIMERInitStruct.TIMER_Prescaler = WORK_FREQ - 1;//128-1
 	timer_1.TIMERx = MDR_TIMER1;
 	
 	timer_init(&timer_1);
 	
-	//инициализация Timer3 (настроен на период 1сек)
+	// Инициализация блока Timer3 МК (настроен на период 1сек)
 	timer_3.TIMERInitStruct.TIMER_Period = 0xC34F;//50000-1
 	timer_3.TIMERInitStruct.TIMER_Prescaler = WORK_FREQ*20 - 1;//2560-1
 	timer_3.TIMERx = MDR_TIMER3;
 	
 	timer_init(&timer_3);
 	
-	//инициализация Timer2 (настроен для режима захвата по 2 каналу таймера - для нужд АЦП, также настроен на период 10мкс)
+	// Инициализация блока Timer2 МК (настроен для режима захвата по 2 каналу таймера - для нужд АЦП, также настроен на период 10мкс)
 	timer_2.TIMERInitStruct.TIMER_Period = 10 + 1;
 	timer_2.TIMERInitStruct.TIMER_Prescaler = WORK_FREQ + 1;
 	timer_2.sTIM_ChnInit.TIMER_CH_Number = TIMER_CHANNEL4;
@@ -86,7 +95,7 @@ int main(void)
 	
 	timer_init(&timer_2);
 	
-	//инициализация АЦП1
+	// Инициализация 6-ти канальной микросхемы АЦП1
 	adc_1.spi_struct = &spi_1;
 	adc_1.spi_struct->buffer_counter = 0;
 	adc_1.timer_n_capture = &timer_2;
@@ -96,7 +105,7 @@ int main(void)
 	
 	adc_init(&adc_1);
 
-	//Инициализация UART1-2:
+	// Инициализация блоков UART1-2 МК:
 	uart_1.UARTx = MDR_UART1;
 	uart_1.uart_dma_ch.dma_channel = DMA_Channel_REQ_UART1_RX;
 	uart_1.IRQn = UART1_IRQn;
@@ -125,18 +134,22 @@ int main(void)
 	uart_2.read_pos = 0;
 	uart_2.uart_timeouts.timer_n_timeout = &timer_3;
 
+	// Установка таймаутов на ШИНАХ1-2
 	//uart_set_read_timeout(&uart_1, 300);
 	uart_set_read_timeout(&uart_2, 300);
-
+	
+	// Инициализация ШИНЫ1
 	//uart_init(&uart_1);
+	// Инициализация DMA для UART1
 	//DMA_UART_RX_init(&UART1);
+	
+	// Инициализация ШИНЫ2
 	uart_init(&uart_2);
+	// Инициализация DMA для UART2
 	DMA_UART_RX_init(&uart_2);
 
 	while(1)
 	{		
-		//do_mpa_task(&adc_1);
-		//delay_milli(10);
 		//запрос пакета по ШИНЕ1
 		//request_data(&uart_1);
 		//запрос пакета по ШИНЕ2
@@ -144,26 +157,32 @@ int main(void)
 	}
 }
 /*
-Функция для запроса данных
+	Функция для запроса данных
 */
 uint8_t request_data(uart_n *uart_struct)
 {
+	// Номер шины, по которой запрашиваются данные
 	uint8_t ext_bus; 
-	//определение шины, по которой идет обмен данными
+	
+	// Определение шины, по которой идет обмен данными
 	RECOGNIZE_BUS(ext_bus, uart_struct);
 	
+	// Прием пакета данных по шине
 	if(receive_packet(uart_struct, ext_bus) != NO_ERROR)
 	{
 		return 1;
 	}
 	
-	//выполнение команды периферией (опрос каналов АЦП)
+	// Выполнение команды периферией (для МПА - опрос каналов АЦП)
 	do_mpa_task(&adc_1);
-			
-	if(protocol_do_cmds(ext_bus) != 0)
+		
+	// Выполнение соответствующих протокольных команд
+ 	if(protocol_do_cmds(ext_bus) != 0)
 	{
 		return 1; 
 	}
+	
+	// Передача ответноно пакета
 	if(transmit_packet(uart_struct, ext_bus) != NO_ERROR)
 	{
 		return 1;
@@ -172,34 +191,41 @@ uint8_t request_data(uart_n *uart_struct)
 	return 0;
 }
 /*
-Функция для выполнения периферийной задачи МПА
+	Функция для выполнения периферийной задачи МПА
 */
 void do_mpa_task(adc_n *adc_struct)
 {
+	// Темповые переменные, необходиме для обработки данных АЦП
 	int adc_code[MAX_CHANEL_NUMBER] = {0};
 	int16_t adc_value;
-	//TODO: пока что читает каналы МПА только для напряжений 0-10В (для тока в карту регистров надо добавлять свои полиномы)
 	
-	//указатель на пространство регистров МПА
+	// TODO: на текущий момент данная ф-ция обрабатывает данные каналов МПА только для напряжений 0-10В (для тока в карту регистров надо добавлять свои полиномы, т.к. они отличаются)
+	
+	// Указатель на пространство регистров МПА
 	mpa_ram_registers *ptr = &ram_space_pointer->mpa_ram_register_space;
 	
-//для двуполярного вх напр (-5.4 ... 5.4 В ) на мультиплексоре A0=A1=0
-//		U = 1.6474f*pow(10,-4)*adc_code;
-//		delta = 6.5627f*pow(10,-6)*adc_code + 0.00039f;
-//для однополярного вх напр (0 ... 10.8 В ) на мультиплексоре A0=1;A1=0	
-//		U = 1.6474f*pow(10,-4)*adc_code + 5.398f;
-//		delta = 6.6962f*pow(10,-6)*adc_code + 0.4252307f;
-//для однополярного вх тока (0 ... 21.6 мА ) на мультиплексоре A0=1;A1=0
-//		I = 3.052f*pow(10,-4)*adc_code + 10.0f;
-//		delta = -11.9006f*pow(10,-6)*adc_code + 0.03072506f;
-//самодиагностика для двуполярного случая	на мультиплексоре A0=1;A1=1 (на выходе должно быть 0В)
-//		U = 1.6474f*pow(10,-4)*adc_code;
-//		delta = 6.5627f*pow(10,-6)*adc_code + 0.00039f;			
-//самодиагностика для однополярного случая	на мультиплексоре A0=0;A1=1 (на выходе должно быть 0В)
-//		U = 1.6474f*pow(10,-4)*adc_code + 5.398f;
-//		delta = 6.6962f*pow(10,-6)*adc_code + 0.4252307f;
+	// Ниже приведены аппроксимирующие полиномы, полученные экспериментально для всех режимов работы отладочной платы АЦП
+	/*
+		для двуполярного вх напр (-5.4 ... 5.4 В ) на мультиплексоре A0=A1=0
+				U = 1.6474f*pow(10,-4)*adc_code;
+				delta = 6.5627f*pow(10,-6)*adc_code + 0.00039f;
+		для однополярного вх напр (0 ... 10.8 В ) на мультиплексоре A0=1;A1=0	
+				U = 1.6474f*pow(10,-4)*adc_code + 5.398f;
+				delta = 6.6962f*pow(10,-6)*adc_code + 0.4252307f;
+		для однополярного вх тока (0 ... 21.6 мА ) на мультиплексоре A0=1;A1=0
+				I = 3.052f*pow(10,-4)*adc_code + 10.0f;
+				delta = -11.9006f*pow(10,-6)*adc_code + 0.03072506f;
+		самодиагностика для двуполярного случая	на мультиплексоре A0=1;A1=1 (на выходе должно быть 0В)
+				U = 1.6474f*pow(10,-4)*adc_code;
+				delta = 6.5627f*pow(10,-6)*adc_code + 0.00039f;			
+		самодиагностика для однополярного случая	на мультиплексоре A0=0;A1=1 (на выходе должно быть 0В)
+				U = 1.6474f*pow(10,-4)*adc_code + 5.398f;
+				delta = 6.6962f*pow(10,-6)*adc_code + 0.4252307f;
+				
+		Результирующее напряжение после аппроксимации U = U - delta;
+	*/
 
-	//делаем усреднение по максим кол-ву выборок если выборки различаются для разных каналов
+	// Производим усреднение по максим кол-ву выборок, если кол-во выборок различается для разных каналов МПА
 	adc_1.avg_num = find_max_halfword(ptr->AI_RomRegs.AI_NumForAverag, CHANEL_NUMBER);
 	
 	for (uint8_t k = 0; k < CHANEL_NUMBER; k++)
@@ -210,16 +236,19 @@ void do_mpa_task(adc_n *adc_struct)
 			adc_code[k] += (int16_t)(~adc_value + 1);	
 		}
 		adc_code[k] /= ptr->AI_RomRegs.AI_NumForAverag[k];
+		// Кладем в соответсвующий регистр МПА полученные код АЦП для текущего канала МПА
 		memcpy(&(ptr->AI_CodeADC[k]), &adc_code[k], sizeof(adc_code[k]));
+		// В зависимости от режима работы канала МПА (ток/напряжение) вычисляем по аппроксимирующему полиному значение напряжения/тока и кладем 
+		// результат в соответсвующий регистр МПА для текущего канала МПА
 		switch ( TEST_BIT(k, ptr->AI_RomRegs.AI_OperMode.adc_chs_mode))
 		{
 			case 0:
-					//напряжение 0-10В
+					// Напряжение 0-10В
 					ptr->AI_PhysQuantFloat[k] = ptr->AI_RomRegs.AI_PolynConst0[k] + (ptr->AI_RomRegs.AI_PolynConst1[k])*(ptr->AI_CodeADC[k]);
 					break;
 			
 			case 1:
-					//ток 0-20мА
+					// Ток 0-20мА
 					ptr->AI_PhysQuantFloat[k] = 4.004f*(ptr->AI_RomRegs.AI_PolynConst0[k] + (ptr->AI_RomRegs.AI_PolynConst1[k])*(ptr->AI_CodeADC[k]));
 					break;
 			
@@ -229,59 +258,59 @@ void do_mpa_task(adc_n *adc_struct)
 	}
 }
 /*
-Функция синхронизации каналов АЦП (выполняется при срабатывании прерывания Timer2 по переполнению счетчика CNT)
+	Функция синхронизации каналов АЦП (выполняется при срабатывании прерывания Timer2 по переполнению счетчика CNT)
 */
 void sync_adc_chanels(void *data)
 {
-	//if (TIMER_GetITStatus(adc_1.timer_n_capture->TIMERx, TIMER_STATUS_CNT_ARR) == SET)
-	//{
-		//только если инициализирован АЦП
-		if ((adc_1.init_flag == 1))
+	// Только, если инициализирована микросхема АЦП
+	if ((adc_1.init_flag == 1))
+	{
+		// Выключаем прерывания таймера, срабатываемое при переполнении счетчика таймера
+		TIMER_ITConfig(adc_1.timer_n_capture->TIMERx, TIMER_STATUS_CNT_ARR, DISABLE);	
+		
+		// Считываем FIFO буфер SPI
+		uint16_t spi_rx_value[FIFO_SIZE];
+		for (uint8_t i = 0; i < FIFO_SIZE; i++)
 		{
-			TIMER_ITConfig(adc_1.timer_n_capture->TIMERx, TIMER_STATUS_CNT_ARR, DISABLE);	
-			//считываем FIFO буфер SPI
-			uint16_t spi_rx_value[FIFO_SIZE];
-			for (uint8_t i = 0; i < FIFO_SIZE; i++)
-			{
-				spi_rx_value[i] = adc_1.spi_struct->SSPx->DR;
-			}
-			//только если пришли все каналы, то записываем в буфер SPI
-			if (adc_1.ch_rx_num == CHANEL_NUMBER)
-			{
-				memcpy(ram_space_pointer->spi_1_rx_buffer + spi_1.buffer_counter, spi_rx_value, CHANEL_NUMBER*sizeof(spi_rx_value[0]));
-				spi_1.buffer_counter += CHANEL_NUMBER;
-				if (adc_1.spi_struct->buffer_counter >= (CHANEL_NUMBER*adc_1.avg_num))
-				{
-					adc_1.spi_struct->buffer_counter = 0;
-				}
-			}
-			adc_1.ch_rx_num = 0;
+			spi_rx_value[i] = adc_1.spi_struct->SSPx->DR;
 		}
-		TIMER_ClearITPendingBit(adc_1.timer_n_capture->TIMERx, TIMER_STATUS_CNT_ARR);
-	//}
+		
+		// Только, если получили данные всех каналов микросхемы АЦП, то переносим данные из FIFO буфера SPI в буфер SPI, расположенный во внешней ОЗУ
+		if (adc_1.ch_rx_num == CHANEL_NUMBER)
+		{
+			memcpy(ram_space_pointer->spi_1_rx_buffer + spi_1.buffer_counter, spi_rx_value, CHANEL_NUMBER*sizeof(spi_rx_value[0]));
+			spi_1.buffer_counter += CHANEL_NUMBER;
+			if (adc_1.spi_struct->buffer_counter >= (CHANEL_NUMBER*adc_1.avg_num))
+			{
+				adc_1.spi_struct->buffer_counter = 0;
+			}
+		}
+		adc_1.ch_rx_num = 0;
+	}
+	TIMER_ClearITPendingBit(adc_1.timer_n_capture->TIMERx, TIMER_STATUS_CNT_ARR);
 }
 /*
-Функция приема пакета с результатами измерений одного канала (выполняется при срабатывании прерывания Timer2 по захвату)
+	Функция приема пакета с результатами измерений одного канала (выполняется при срабатывании прерывания Timer2 по захвату)
 */
 void receive_adc_chanel_pack(void *data)
 {
-	//if (TIMER_GetITStatus(adc_1.timer_n_capture->TIMERx, TIMER_STATUS_CCR_CAP1_CH4) == SET)
-	//{   
-		//PORT_WriteBit(PORT_ADC_MODE, PIN_ADC_MODE_A0, 1);
-		//только если инициализирован АЦП
-		if ((adc_1.init_flag == 1))
+	// Только, если инициализирована микросхема АЦП
+	if ((adc_1.init_flag == 1))
+	{
+		// Выключаем прерывания таймера, срабатываемое при переполнении счетчика таймера
+		TIMER_ITConfig(adc_1.timer_n_capture->TIMERx, TIMER_STATUS_CNT_ARR, DISABLE);
+		// Ведем счетчик принятых данных каналов АЦП
+		adc_1.ch_rx_num++;
+		// Если счетчик переваливает максимальное число каналов АЦП, значит принятые данные соответсвуют первому каналу АЦП
+		if (adc_1.ch_rx_num == (CHANEL_NUMBER+1))
 		{
-			TIMER_ITConfig(adc_1.timer_n_capture->TIMERx, TIMER_STATUS_CNT_ARR, DISABLE);
-			adc_1.ch_rx_num++;
-			if (adc_1.ch_rx_num == (CHANEL_NUMBER+1))
-			{
-				adc_1.ch_rx_num = 1;
-			}
-			TIMER_SetCounter(adc_1.timer_n_capture->TIMERx, 0);	
-			TIMER_ClearITPendingBit(adc_1.timer_n_capture->TIMERx, TIMER_STATUS_CNT_ARR);
-			TIMER_ITConfig(adc_1.timer_n_capture->TIMERx, TIMER_STATUS_CNT_ARR, ENABLE);			
+			adc_1.ch_rx_num = 1;
 		}
-		TIMER_ClearITPendingBit(adc_1.timer_n_capture->TIMERx, TIMER_STATUS_CCR_CAP1_CH4);
-		//PORT_WriteBit(PORT_ADC_MODE, PIN_ADC_MODE_A0, 0);
-	//}
+		// Сброс счетчика таймера, тем самым устанавливается таймаут на временной интервал между пакетами данных от микросхемы АЦП
+		TIMER_SetCounter(adc_1.timer_n_capture->TIMERx, 0);	
+		TIMER_ClearITPendingBit(adc_1.timer_n_capture->TIMERx, TIMER_STATUS_CNT_ARR);
+		// Включаем прерывания таймера, срабатываемое при переполнении счетчика таймера
+		TIMER_ITConfig(adc_1.timer_n_capture->TIMERx, TIMER_STATUS_CNT_ARR, ENABLE);			
+	}
+	TIMER_ClearITPendingBit(adc_1.timer_n_capture->TIMERx, TIMER_STATUS_CCR_CAP1_CH4);
 }

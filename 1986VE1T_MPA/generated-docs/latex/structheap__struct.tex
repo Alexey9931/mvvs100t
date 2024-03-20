@@ -1,0 +1,49 @@
+\hypertarget{structheap__struct}{}\doxysection{Структура heap\+\_\+struct}
+\label{structheap__struct}\index{heap\_struct@{heap\_struct}}
+
+
+Реализация \char`\"{}самодельной\char`\"{} кучи  
+
+
+
+
+{\ttfamily \#include $<$internal\+\_\+ram.\+h$>$}
+
+\doxysubsection*{Открытые атрибуты}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{structheap__struct_ad0015b8e38985ffcc758c33e5fab5767}{memory\+\_\+page\+\_\+status}} \mbox{[}\mbox{\hyperlink{internal__ram_8h_a7944066606b40c3231f807c478c5ba11}{P\+A\+G\+E\+\_\+\+N\+UM}}\mbox{]}
+\begin{DoxyCompactList}\small\item\em Статус каждой страница 0-\/свободна, 1-\/занята \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{structheap__struct_ab5c0c2d3e10e4006b923fc5b13a0ee68}{memory\+\_\+page\+\_\+space}} \mbox{[}\mbox{\hyperlink{internal__ram_8h_a7944066606b40c3231f807c478c5ba11}{P\+A\+G\+E\+\_\+\+N\+UM}}\mbox{]}\mbox{[}\mbox{\hyperlink{internal__ram_8h_a7d467c1d283fdfa1f2081ba1e0d01b6e}{P\+A\+G\+E\+\_\+\+S\+I\+ZE}}\mbox{]}
+\begin{DoxyCompactList}\small\item\em Место памяти для кучи разбитой на 32 страницы по 64 байта \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Реализация \char`\"{}самодельной\char`\"{} кучи 
+
+\doxysubsection{Данные класса}
+\mbox{\Hypertarget{structheap__struct_ab5c0c2d3e10e4006b923fc5b13a0ee68}\label{structheap__struct_ab5c0c2d3e10e4006b923fc5b13a0ee68}} 
+\index{heap\_struct@{heap\_struct}!memory\_page\_space@{memory\_page\_space}}
+\index{memory\_page\_space@{memory\_page\_space}!heap\_struct@{heap\_struct}}
+\doxysubsubsection{\texorpdfstring{memory\_page\_space}{memory\_page\_space}}
+{\footnotesize\ttfamily uint8\+\_\+t heap\+\_\+struct\+::memory\+\_\+page\+\_\+space\mbox{[}\mbox{\hyperlink{internal__ram_8h_a7944066606b40c3231f807c478c5ba11}{P\+A\+G\+E\+\_\+\+N\+UM}}\mbox{]}\mbox{[}\mbox{\hyperlink{internal__ram_8h_a7d467c1d283fdfa1f2081ba1e0d01b6e}{P\+A\+G\+E\+\_\+\+S\+I\+ZE}}\mbox{]}}
+
+
+
+Место памяти для кучи разбитой на 32 страницы по 64 байта 
+
+\mbox{\Hypertarget{structheap__struct_ad0015b8e38985ffcc758c33e5fab5767}\label{structheap__struct_ad0015b8e38985ffcc758c33e5fab5767}} 
+\index{heap\_struct@{heap\_struct}!memory\_page\_status@{memory\_page\_status}}
+\index{memory\_page\_status@{memory\_page\_status}!heap\_struct@{heap\_struct}}
+\doxysubsubsection{\texorpdfstring{memory\_page\_status}{memory\_page\_status}}
+{\footnotesize\ttfamily uint8\+\_\+t heap\+\_\+struct\+::memory\+\_\+page\+\_\+status\mbox{[}\mbox{\hyperlink{internal__ram_8h_a7944066606b40c3231f807c478c5ba11}{P\+A\+G\+E\+\_\+\+N\+UM}}\mbox{]}}
+
+
+
+Статус каждой страница 0-\/свободна, 1-\/занята 
+
+
+
+Объявления и описания членов структуры находятся в файле\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{internal__ram_8h}{internal\+\_\+ram.\+h}}\end{DoxyCompactItemize}

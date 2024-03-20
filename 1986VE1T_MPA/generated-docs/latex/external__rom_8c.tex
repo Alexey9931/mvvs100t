@@ -1,0 +1,265 @@
+\hypertarget{external__rom_8c}{}\doxysection{Файл external\+\_\+rom.\+c}
+\label{external__rom_8c}\index{external\_rom.c@{external\_rom.c}}
+
+
+Файл с реализацией A\+PI для работы с областью памяти внешнего ПЗУ  
+
+
+{\ttfamily \#include \char`\"{}external\+\_\+ram.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}ebc.\+h\char`\"{}}\newline
+Граф включаемых заголовочных файлов для external\+\_\+rom.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{external__rom_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Макросы}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{external__rom_8c_a1d28705f26641f53ce557309193cad7b}{F\+I\+R\+S\+T\+\_\+\+T\+I\+M\+E\+\_\+\+I\+N\+IT}}
+\begin{DoxyCompactList}\small\item\em Макрос для записи данных (по умолчанию) в ПЗУ в первый раз \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Функции}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{external__rom_8c_a8093f4f3a32adafd9e30e9f2e875a89f}{init\+\_\+external\+\_\+rom\+\_\+space}} (void)
+\begin{DoxyCompactList}\small\item\em Инициализацирует область памяти внешнего ПЗУ \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{external__rom_8c_ae414181a157621f2c0e43435ab40b245}{write\+\_\+byte\+\_\+rom}} (uint32\+\_\+t dest\+\_\+addr, uint8\+\_\+t byte)
+\begin{DoxyCompactList}\small\item\em Записывает байт в ПЗУ \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{external__rom_8c_aa9a665f53b57dec8bd6d16ddec42cd3b}{read\+\_\+byte\+\_\+rom}} (uint32\+\_\+t dest\+\_\+addr)
+\begin{DoxyCompactList}\small\item\em Читает байт из ПЗУ \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{external__rom_8c_ac5f089ea2207f47244550f8c8d045bcf}{memcpy\+\_\+to\+\_\+rom}} (uint32\+\_\+t dest\+\_\+addr, void $\ast$src\+\_\+addr, uint32\+\_\+t size)
+\begin{DoxyCompactList}\small\item\em Копирует область памяти в ПЗУ \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{external__rom_8c_a3a4c49012724b4aeece49ae20353d0a8}{erase\+\_\+rom}} (void)
+\begin{DoxyCompactList}\small\item\em Очищает память в ПЗУ \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Переменные}
+\begin{DoxyCompactItemize}
+\item 
+float \mbox{\hyperlink{external__rom_8c_aa1bc97b47398b1375004586d29ba3845}{polyn\+\_\+ch\+\_\+consts}} \mbox{[}\mbox{\hyperlink{mdr32__drivers_8h_a2332bbff598b25d3bddab65efa40db0f}{M\+A\+X\+\_\+\+C\+H\+A\+N\+E\+L\+\_\+\+N\+U\+M\+B\+ER}}\mbox{]}\mbox{[}7\mbox{]}
+\begin{DoxyCompactList}\small\item\em Константы полиномов \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Файл с реализацией A\+PI для работы с областью памяти внешнего ПЗУ 
+
+
+
+\doxysubsection{Макросы}
+\mbox{\Hypertarget{external__rom_8c_a1d28705f26641f53ce557309193cad7b}\label{external__rom_8c_a1d28705f26641f53ce557309193cad7b}} 
+\index{external\_rom.c@{external\_rom.c}!FIRST\_TIME\_INIT@{FIRST\_TIME\_INIT}}
+\index{FIRST\_TIME\_INIT@{FIRST\_TIME\_INIT}!external\_rom.c@{external\_rom.c}}
+\doxysubsubsection{\texorpdfstring{FIRST\_TIME\_INIT}{FIRST\_TIME\_INIT}}
+{\footnotesize\ttfamily \#define F\+I\+R\+S\+T\+\_\+\+T\+I\+M\+E\+\_\+\+I\+N\+IT}
+
+
+
+Макрос для записи данных (по умолчанию) в ПЗУ в первый раз 
+
+
+
+\doxysubsection{Функции}
+\mbox{\Hypertarget{external__rom_8c_a3a4c49012724b4aeece49ae20353d0a8}\label{external__rom_8c_a3a4c49012724b4aeece49ae20353d0a8}} 
+\index{external\_rom.c@{external\_rom.c}!erase\_rom@{erase\_rom}}
+\index{erase\_rom@{erase\_rom}!external\_rom.c@{external\_rom.c}}
+\doxysubsubsection{\texorpdfstring{erase\_rom()}{erase\_rom()}}
+{\footnotesize\ttfamily void erase\+\_\+rom (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Очищает память в ПЗУ 
+
+Функция очистки памяти ПЗУ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{142 \{}
+\DoxyCodeLine{143     uint8\_t status;}
+\DoxyCodeLine{144     }
+\DoxyCodeLine{145     \textcolor{comment}{// Команда Reset}}
+\DoxyCodeLine{146     \mbox{\hyperlink{external__rom_8h_ac9660181819fceac0b5abcd67d76ca6e}{HWREG}}(\mbox{\hyperlink{external__rom_8h_a960345392a2283a7512431a480f2ad3d}{EXT\_ROM\_START\_ADDR}}) = 0xF0;}
+\DoxyCodeLine{147     }
+\DoxyCodeLine{148     \textcolor{comment}{// Конфигурирование выводов EBC на выход}}
+\DoxyCodeLine{149     MDR\_PORTA-\/>OE = 0x0000FFFF;}
+\DoxyCodeLine{150     }
+\DoxyCodeLine{151     \textcolor{comment}{// Отправка соответствующей команды}}
+\DoxyCodeLine{152     \mbox{\hyperlink{external__rom_8h_ac9660181819fceac0b5abcd67d76ca6e}{HWREG}}(\mbox{\hyperlink{external__rom_8h_a960345392a2283a7512431a480f2ad3d}{EXT\_ROM\_START\_ADDR}} + 0x555) = 0xAA;}
+\DoxyCodeLine{153     \mbox{\hyperlink{external__rom_8h_ac9660181819fceac0b5abcd67d76ca6e}{HWREG}}(\mbox{\hyperlink{external__rom_8h_a960345392a2283a7512431a480f2ad3d}{EXT\_ROM\_START\_ADDR}} + 0x2AA) = 0x55;}
+\DoxyCodeLine{154     \mbox{\hyperlink{external__rom_8h_ac9660181819fceac0b5abcd67d76ca6e}{HWREG}}(\mbox{\hyperlink{external__rom_8h_a960345392a2283a7512431a480f2ad3d}{EXT\_ROM\_START\_ADDR}} + 0x555) = 0x80;}
+\DoxyCodeLine{155     \mbox{\hyperlink{external__rom_8h_ac9660181819fceac0b5abcd67d76ca6e}{HWREG}}(\mbox{\hyperlink{external__rom_8h_a960345392a2283a7512431a480f2ad3d}{EXT\_ROM\_START\_ADDR}} + 0x555) = 0xAA;}
+\DoxyCodeLine{156     \mbox{\hyperlink{external__rom_8h_ac9660181819fceac0b5abcd67d76ca6e}{HWREG}}(\mbox{\hyperlink{external__rom_8h_a960345392a2283a7512431a480f2ad3d}{EXT\_ROM\_START\_ADDR}} + 0x2AA) = 0x55;}
+\DoxyCodeLine{157     \mbox{\hyperlink{external__rom_8h_ac9660181819fceac0b5abcd67d76ca6e}{HWREG}}(\mbox{\hyperlink{external__rom_8h_a960345392a2283a7512431a480f2ad3d}{EXT\_ROM\_START\_ADDR}} + 0x555) = 0x10;}
+\DoxyCodeLine{158     }
+\DoxyCodeLine{159     \textcolor{comment}{// Конфигурирование выводов EBC на вход}}
+\DoxyCodeLine{160     MDR\_PORTA-\/>OE = 0x00000000;}
+\DoxyCodeLine{161     }
+\DoxyCodeLine{162     \textcolor{keywordflow}{do} status = \mbox{\hyperlink{external__rom_8h_ac9660181819fceac0b5abcd67d76ca6e}{HWREG}}(\mbox{\hyperlink{external__rom_8h_a960345392a2283a7512431a480f2ad3d}{EXT\_ROM\_START\_ADDR}});}
+\DoxyCodeLine{163     \textcolor{keywordflow}{while} ((status \& 0x80) != 0x80);}
+\DoxyCodeLine{164 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{external__rom_8c_a8093f4f3a32adafd9e30e9f2e875a89f}\label{external__rom_8c_a8093f4f3a32adafd9e30e9f2e875a89f}} 
+\index{external\_rom.c@{external\_rom.c}!init\_external\_rom\_space@{init\_external\_rom\_space}}
+\index{init\_external\_rom\_space@{init\_external\_rom\_space}!external\_rom.c@{external\_rom.c}}
+\doxysubsubsection{\texorpdfstring{init\_external\_rom\_space()}{init\_external\_rom\_space()}}
+{\footnotesize\ttfamily void init\+\_\+external\+\_\+rom\+\_\+space (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Инициализацирует область памяти внешнего ПЗУ 
+
+Функция инициализации области памяти внешнего ПЗУ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{23 \{}
+\DoxyCodeLine{24 \textcolor{preprocessor}{    \#ifdef FIRST\_TIME\_INIT}}
+\DoxyCodeLine{25         \mbox{\hyperlink{structcommon__register__space__ext__rom}{common\_rom\_registers}}    common\_regs;}
+\DoxyCodeLine{26         \mbox{\hyperlink{structmpa__register__space__ext__rom}{mpa\_rom\_registers}}          mpa\_regs;}
+\DoxyCodeLine{27         }
+\DoxyCodeLine{28         \textcolor{comment}{// Очистка ПЗУ}}
+\DoxyCodeLine{29         \mbox{\hyperlink{external__rom_8c_a3a4c49012724b4aeece49ae20353d0a8}{erase\_rom}}();}
+\DoxyCodeLine{30         }
+\DoxyCodeLine{31         \textcolor{comment}{// Инициализация общих регистров}}
+\DoxyCodeLine{32         strncpy(\&common\_regs.\mbox{\hyperlink{structcommon__register__space__ext__rom_aa315ceee8d8a72000dbc2f425f01907f}{PLC\_DeviceInfo}},\mbox{\hyperlink{external__rom_8h_a7ba0cd77e48302e4132984de3022b62d}{DEV\_INFO}},\textcolor{keyword}{sizeof}(\mbox{\hyperlink{external__rom_8h_a7ba0cd77e48302e4132984de3022b62d}{DEV\_INFO}}));   }
+\DoxyCodeLine{33         common\_regs.\mbox{\hyperlink{structcommon__register__space__ext__rom_a654cd1c6b191e3311ad10abac5341e44}{PLC\_DeviceType}}.\mbox{\hyperlink{structdevice__type__struct_abf8cd32d8893bfe5113a04156f598ae3}{revision}} = \mbox{\hyperlink{external__rom_8h_ad526597ab378f3faff87123d7742c79a}{REVISION}};}
+\DoxyCodeLine{34         common\_regs.\mbox{\hyperlink{structcommon__register__space__ext__rom_a654cd1c6b191e3311ad10abac5341e44}{PLC\_DeviceType}}.\mbox{\hyperlink{structdevice__type__struct_a9ebba1b77ac9d75f2fbaf03c3dfd9b70}{modification}} = \mbox{\hyperlink{external__rom_8h_aed0e6f45a7dec027efc20ffceee8cc08}{MODIFICATION}};}
+\DoxyCodeLine{35         common\_regs.\mbox{\hyperlink{structcommon__register__space__ext__rom_a654cd1c6b191e3311ad10abac5341e44}{PLC\_DeviceType}}.\mbox{\hyperlink{structdevice__type__struct_a148cd2e3b112417214c0173f90bebadb}{type}} = \mbox{\hyperlink{external__rom_8h_a5454b7a913f969a1aa7eacaf500fb44e}{DEV\_TYPE}};}
+\DoxyCodeLine{36         common\_regs.\mbox{\hyperlink{structcommon__register__space__ext__rom_a654cd1c6b191e3311ad10abac5341e44}{PLC\_DeviceType}}.\mbox{\hyperlink{structdevice__type__struct_ab5977d2a47b947eb58a9461eb352748b}{batch}} = \mbox{\hyperlink{external__rom_8h_ae2daa49a9ae9f39ffbe4177490d37eb3}{BATCH}};}
+\DoxyCodeLine{37         common\_regs.\mbox{\hyperlink{structcommon__register__space__ext__rom_a654cd1c6b191e3311ad10abac5341e44}{PLC\_DeviceType}}.\mbox{\hyperlink{structdevice__type__struct_a4d2cb05049497b40162805cb6e99dea4}{reserv}} = \mbox{\hyperlink{external__rom_8h_aca398dfddfede8607ede24e635e63a74}{DEV\_TYPE\_RESERV}};}
+\DoxyCodeLine{38         common\_regs.\mbox{\hyperlink{structcommon__register__space__ext__rom_ac241de2a572726a1cdf305e5877e063b}{PLC\_SerialNumber}} = \mbox{\hyperlink{external__rom_8h_ad8a20d143f6a7579ed227578aeddec21}{SERIAL\_NUMBER}};}
+\DoxyCodeLine{39         common\_regs.\mbox{\hyperlink{structcommon__register__space__ext__rom_a2bea3a6689853dfab4b1154a91ae32ee}{PLC\_TimeoutForDefect\_B1}} = \mbox{\hyperlink{external__rom_8h_a8e6e9dbd245833a8c7f40119ae645747}{TIMEOUT\_FOR\_DEFECT\_B1}};}
+\DoxyCodeLine{40         common\_regs.\mbox{\hyperlink{structcommon__register__space__ext__rom_a4e9b070882f84e14036eff9f3e525f0b}{PLC\_TimeoutForDefect\_B2}} = \mbox{\hyperlink{external__rom_8h_aad4b836137e53a99bd674ac881552b2c}{TIMEOUT\_FOR\_DEFECT\_B2}};}
+\DoxyCodeLine{41         common\_regs.\mbox{\hyperlink{structcommon__register__space__ext__rom_aa5e113ae43750669b7de5b3585208ce3}{PLC\_NumCrcErrorsForDefect\_B1}} = \mbox{\hyperlink{external__rom_8h_a2d8679cc90acd0a2552afda3db96a587}{NUM\_CRC\_ERRORS\_FOR\_DEFECT\_B1}};}
+\DoxyCodeLine{42         common\_regs.\mbox{\hyperlink{structcommon__register__space__ext__rom_a9e20154c6b508ea1fe7c316e112f2d87}{PLC\_NumCrcErrorsForDefect\_B2}} = \mbox{\hyperlink{external__rom_8h_a395089f50e9714237ae0ecbade3fe17c}{NUM\_CRC\_ERRORS\_FOR\_DEFECT\_B2}};}
+\DoxyCodeLine{43         common\_regs.\mbox{\hyperlink{structcommon__register__space__ext__rom_a7e56d897c3bb6e895ad1d682b45e9af1}{PLC\_TimeToRepair}} = \mbox{\hyperlink{external__rom_8h_a95d7a976943c682beabf98f28ec7d1be}{TIME\_TO\_REPAIR}};}
+\DoxyCodeLine{44         common\_regs.\mbox{\hyperlink{structcommon__register__space__ext__rom_a65738cd951190832ba1adf79029567ec}{PLC\_TimeSoloWork}} = \mbox{\hyperlink{external__rom_8h_ad3ce557aa94cb7290af613899b07044d}{TIME\_SOLO\_WORK}};}
+\DoxyCodeLine{45         common\_regs.\mbox{\hyperlink{structcommon__register__space__ext__rom_a0c37cac35f86ad074f5afbced1ec68d7}{PLC\_DualControl}} = \mbox{\hyperlink{external__rom_8h_ae0fdc1811bdbb2c6074fb3df42539698}{DUAL\_CONTROL}};}
+\DoxyCodeLine{46         memset(\&common\_regs.\mbox{\hyperlink{structcommon__register__space__ext__rom_a93798da8bb62438512265e1c83ccfd19}{Reserv\_2}}, 0, \textcolor{keyword}{sizeof}(common\_regs.\mbox{\hyperlink{structcommon__register__space__ext__rom_a93798da8bb62438512265e1c83ccfd19}{Reserv\_2}}));}
+\DoxyCodeLine{47         }
+\DoxyCodeLine{48         \textcolor{comment}{// Инциализация регистров МПА}}
+\DoxyCodeLine{49         \textcolor{keywordflow}{for} (uint8\_t i = 0; i < \mbox{\hyperlink{mdr32__drivers_8h_a2332bbff598b25d3bddab65efa40db0f}{MAX\_CHANEL\_NUMBER}}; i++)}
+\DoxyCodeLine{50         \{}
+\DoxyCodeLine{51             \mbox{\hyperlink{external__ram_8h_a35ec17ccb6ce6c67129489452ebe5b13}{RESET\_BIT}}(i, mpa\_regs.\mbox{\hyperlink{structmpa__register__space__ext__rom_a49e8b51172c0d8ea6eda885e82343374}{AI\_OperMode}}.\mbox{\hyperlink{structai__oper__mode__struct_a066d6d1b821481dbd425f831570053a6}{adc\_chs\_mode}});}
+\DoxyCodeLine{52             mpa\_regs.\mbox{\hyperlink{structmpa__register__space__ext__rom_a1ac3a111cbf7f05ea99156d54e16b955}{AI\_NumForAverag}}[i] = \mbox{\hyperlink{external__rom_8h_a3fd7d68cc3eba687943a64bc193e963c}{NUM\_FOR\_AVERAGE}};}
+\DoxyCodeLine{53             mpa\_regs.\mbox{\hyperlink{structmpa__register__space__ext__rom_a7b24af1f2403ce6d5f5a9f729c1e6fc0}{AI\_MinCodeADC}}[i] = \mbox{\hyperlink{external__rom_8h_abe6e8e90da58faffd31fce91cd1d186f}{MIN\_CODE\_ADC}};}
+\DoxyCodeLine{54             mpa\_regs.\mbox{\hyperlink{structmpa__register__space__ext__rom_af0ec497c4c59db14a07540a4cbb78e3a}{AI\_MaxCodeADC}}[i] = \mbox{\hyperlink{external__rom_8h_a42bbbb386d02c190a64fc801382a39aa}{MAX\_CODE\_ADC}};}
+\DoxyCodeLine{55             \textcolor{comment}{// Такие значения коэф. полиномов только для напряжения 0-\/10В}}
+\DoxyCodeLine{56             mpa\_regs.\mbox{\hyperlink{structmpa__register__space__ext__rom_a6893959779b22a58c36f3aa0bd2b4777}{AI\_PolynConst0}}[i] = \mbox{\hyperlink{external__rom_8c_aa1bc97b47398b1375004586d29ba3845}{polyn\_ch\_consts}}[i][0];}
+\DoxyCodeLine{57             mpa\_regs.\mbox{\hyperlink{structmpa__register__space__ext__rom_ac9dcd4f5d112d0ba95ea072e06465f71}{AI\_PolynConst1}}[i] = \mbox{\hyperlink{external__rom_8c_aa1bc97b47398b1375004586d29ba3845}{polyn\_ch\_consts}}[i][1];}
+\DoxyCodeLine{58             mpa\_regs.\mbox{\hyperlink{structmpa__register__space__ext__rom_aa8b22285124f0d85fc148fcb896b6078}{AI\_PolynConst2}}[i] = \mbox{\hyperlink{external__rom_8c_aa1bc97b47398b1375004586d29ba3845}{polyn\_ch\_consts}}[i][2];}
+\DoxyCodeLine{59             mpa\_regs.\mbox{\hyperlink{structmpa__register__space__ext__rom_adaa30c909a5f4fb46337525db6ea536f}{AI\_PolynConst3}}[i] = \mbox{\hyperlink{external__rom_8c_aa1bc97b47398b1375004586d29ba3845}{polyn\_ch\_consts}}[i][3];}
+\DoxyCodeLine{60             mpa\_regs.\mbox{\hyperlink{structmpa__register__space__ext__rom_aa7d4ea93729864388f73d4452bd80030}{AI\_PolynConst4}}[i] = \mbox{\hyperlink{external__rom_8c_aa1bc97b47398b1375004586d29ba3845}{polyn\_ch\_consts}}[i][4];}
+\DoxyCodeLine{61             mpa\_regs.\mbox{\hyperlink{structmpa__register__space__ext__rom_a85ca16cef224c436d288720c9f111c41}{AI\_PolynConst5}}[i] = \mbox{\hyperlink{external__rom_8c_aa1bc97b47398b1375004586d29ba3845}{polyn\_ch\_consts}}[i][5];}
+\DoxyCodeLine{62             mpa\_regs.\mbox{\hyperlink{structmpa__register__space__ext__rom_aeb1c4b214192020c67cc59a1a6aa327c}{AI\_PolynConst6}}[i] = \mbox{\hyperlink{external__rom_8c_aa1bc97b47398b1375004586d29ba3845}{polyn\_ch\_consts}}[i][6];}
+\DoxyCodeLine{63             mpa\_regs.\mbox{\hyperlink{structmpa__register__space__ext__rom_a3d35b2e1585382f6eae5016c672b4ab6}{AI\_MetrologDat}}[i] = \mbox{\hyperlink{external__rom_8h_a59755ea0b4c28cd31d11a4bd93ce323d}{METROLOG\_DAT}};}
+\DoxyCodeLine{64         \}}
+\DoxyCodeLine{65         memset(mpa\_regs.\mbox{\hyperlink{structmpa__register__space__ext__rom_a3d35b2e1585382f6eae5016c672b4ab6}{AI\_MetrologDat}}, 0, \textcolor{keyword}{sizeof}(mpa\_regs.\mbox{\hyperlink{structmpa__register__space__ext__rom_a3d35b2e1585382f6eae5016c672b4ab6}{AI\_MetrologDat}}));}
+\DoxyCodeLine{66         memset(mpa\_regs.\mbox{\hyperlink{structmpa__register__space__ext__rom_ad0ab3d711fc7b3c2c661a93ec450e58f}{Reserv\_4}}, 0, \textcolor{keyword}{sizeof}(mpa\_regs.\mbox{\hyperlink{structmpa__register__space__ext__rom_ad0ab3d711fc7b3c2c661a93ec450e58f}{Reserv\_4}}));}
+\DoxyCodeLine{67         memset(mpa\_regs.\mbox{\hyperlink{structmpa__register__space__ext__rom_a8d21bd3ee4501d6530d5b6fb523e305b}{Reserv\_5}}, 0, \textcolor{keyword}{sizeof}(mpa\_regs.\mbox{\hyperlink{structmpa__register__space__ext__rom_a8d21bd3ee4501d6530d5b6fb523e305b}{Reserv\_5}}));}
+\DoxyCodeLine{68         }
+\DoxyCodeLine{69         \textcolor{comment}{// Копирование данных в ПЗУ}}
+\DoxyCodeLine{70         \mbox{\hyperlink{external__rom_8c_ac5f089ea2207f47244550f8c8d045bcf}{memcpy\_to\_rom}}(\mbox{\hyperlink{external__rom_8h_a2c10957cec5780eddd5fd75d2745607d}{ROM\_REGISTER\_SPACE\_START\_ADDR}}, \&common\_regs, \textcolor{keyword}{sizeof}(common\_regs));}
+\DoxyCodeLine{71         \mbox{\hyperlink{external__rom_8c_ac5f089ea2207f47244550f8c8d045bcf}{memcpy\_to\_rom}}(\mbox{\hyperlink{external__rom_8h_a2c10957cec5780eddd5fd75d2745607d}{ROM\_REGISTER\_SPACE\_START\_ADDR}} + \textcolor{keyword}{sizeof}(common\_regs), \&mpa\_regs, \textcolor{keyword}{sizeof}(mpa\_regs));}
+\DoxyCodeLine{72         }
+\DoxyCodeLine{73 \textcolor{preprocessor}{    \#endif}}
+\DoxyCodeLine{74 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{external__rom_8c_ac5f089ea2207f47244550f8c8d045bcf}\label{external__rom_8c_ac5f089ea2207f47244550f8c8d045bcf}} 
+\index{external\_rom.c@{external\_rom.c}!memcpy\_to\_rom@{memcpy\_to\_rom}}
+\index{memcpy\_to\_rom@{memcpy\_to\_rom}!external\_rom.c@{external\_rom.c}}
+\doxysubsubsection{\texorpdfstring{memcpy\_to\_rom()}{memcpy\_to\_rom()}}
+{\footnotesize\ttfamily void memcpy\+\_\+to\+\_\+rom (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{dest\+\_\+addr,  }\item[{void $\ast$}]{src\+\_\+addr,  }\item[{uint32\+\_\+t}]{size }\end{DoxyParamCaption})}
+
+
+
+Копирует область памяти в ПЗУ 
+
+Функция копирования области памяти в ПЗУ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{131 \{}
+\DoxyCodeLine{132     \textcolor{keywordflow}{for} (uint32\_t i = 0; i < size; i++)}
+\DoxyCodeLine{133     \{}
+\DoxyCodeLine{134         \mbox{\hyperlink{external__rom_8c_ae414181a157621f2c0e43435ab40b245}{write\_byte\_rom}}(dest\_addr + i, *((uint8\_t*)src\_addr+i));}
+\DoxyCodeLine{135     \}}
+\DoxyCodeLine{136 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{external__rom_8c_aa9a665f53b57dec8bd6d16ddec42cd3b}\label{external__rom_8c_aa9a665f53b57dec8bd6d16ddec42cd3b}} 
+\index{external\_rom.c@{external\_rom.c}!read\_byte\_rom@{read\_byte\_rom}}
+\index{read\_byte\_rom@{read\_byte\_rom}!external\_rom.c@{external\_rom.c}}
+\doxysubsubsection{\texorpdfstring{read\_byte\_rom()}{read\_byte\_rom()}}
+{\footnotesize\ttfamily uint8\+\_\+t read\+\_\+byte\+\_\+rom (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{dest\+\_\+addr }\end{DoxyParamCaption})}
+
+
+
+Читает байт из ПЗУ 
+
+Функция чтения байта из ПЗУ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{121 \{ }
+\DoxyCodeLine{122     \textcolor{comment}{// Конфигурирование выводов EBC на вход}}
+\DoxyCodeLine{123     MDR\_PORTA-\/>OE = 0x00000000; }
+\DoxyCodeLine{124     \textcolor{keywordflow}{return} (\mbox{\hyperlink{external__rom_8h_ac9660181819fceac0b5abcd67d76ca6e}{HWREG}}(dest\_addr));}
+\DoxyCodeLine{125 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{external__rom_8c_ae414181a157621f2c0e43435ab40b245}\label{external__rom_8c_ae414181a157621f2c0e43435ab40b245}} 
+\index{external\_rom.c@{external\_rom.c}!write\_byte\_rom@{write\_byte\_rom}}
+\index{write\_byte\_rom@{write\_byte\_rom}!external\_rom.c@{external\_rom.c}}
+\doxysubsubsection{\texorpdfstring{write\_byte\_rom()}{write\_byte\_rom()}}
+{\footnotesize\ttfamily uint8\+\_\+t write\+\_\+byte\+\_\+rom (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{dest\+\_\+addr,  }\item[{uint8\+\_\+t}]{byte }\end{DoxyParamCaption})}
+
+
+
+Записывает байт в ПЗУ 
+
+Функция записи байта в ПЗУ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{80 \{         }
+\DoxyCodeLine{81     uint8\_t status;}
+\DoxyCodeLine{82     }
+\DoxyCodeLine{83     \textcolor{comment}{// Конфигурирование выводов EBC на выход}}
+\DoxyCodeLine{84     MDR\_PORTA-\/>OE = 0x0000FFFF;}
+\DoxyCodeLine{85     }
+\DoxyCodeLine{86     \mbox{\hyperlink{external__rom_8h_ac9660181819fceac0b5abcd67d76ca6e}{HWREG}}(\mbox{\hyperlink{external__rom_8h_a960345392a2283a7512431a480f2ad3d}{EXT\_ROM\_START\_ADDR}} + 0x555) = 0xAA;}
+\DoxyCodeLine{87     \mbox{\hyperlink{external__rom_8h_ac9660181819fceac0b5abcd67d76ca6e}{HWREG}}(\mbox{\hyperlink{external__rom_8h_a960345392a2283a7512431a480f2ad3d}{EXT\_ROM\_START\_ADDR}} + 0x2AA) = 0x55;}
+\DoxyCodeLine{88     \mbox{\hyperlink{external__rom_8h_ac9660181819fceac0b5abcd67d76ca6e}{HWREG}}(\mbox{\hyperlink{external__rom_8h_a960345392a2283a7512431a480f2ad3d}{EXT\_ROM\_START\_ADDR}} + 0x555) = 0xA0;}
+\DoxyCodeLine{89     \mbox{\hyperlink{external__rom_8h_ac9660181819fceac0b5abcd67d76ca6e}{HWREG}}(dest\_addr + \mbox{\hyperlink{external__rom_8h_a960345392a2283a7512431a480f2ad3d}{EXT\_ROM\_START\_ADDR}}) = byte;}
+\DoxyCodeLine{90 }
+\DoxyCodeLine{91     \textcolor{comment}{// Конфигурирование выводов EBC на вход}}
+\DoxyCodeLine{92     MDR\_PORTA-\/>OE = 0x00000000;}
+\DoxyCodeLine{93     }
+\DoxyCodeLine{94     \textcolor{comment}{// Теперь проверяем, ывполнилась ли запись успешно (успех = бит D7 == data[7])}}
+\DoxyCodeLine{95     \textcolor{keywordflow}{do} status = \mbox{\hyperlink{external__rom_8h_ac9660181819fceac0b5abcd67d76ca6e}{HWREG}}(dest\_addr + \mbox{\hyperlink{external__rom_8h_a960345392a2283a7512431a480f2ad3d}{EXT\_ROM\_START\_ADDR}});}
+\DoxyCodeLine{96     \textcolor{keywordflow}{while}(((status \& 0x80) != (\textcolor{keywordtype}{byte} \& 0x80)) \& ((status \& 0x20) == 0));}
+\DoxyCodeLine{97     }
+\DoxyCodeLine{98     \textcolor{keywordflow}{if}((status \& 0x20) != 0) }
+\DoxyCodeLine{99     \{}
+\DoxyCodeLine{100         status = \mbox{\hyperlink{external__rom_8h_ac9660181819fceac0b5abcd67d76ca6e}{HWREG}}(dest\_addr + \mbox{\hyperlink{external__rom_8h_a960345392a2283a7512431a480f2ad3d}{EXT\_ROM\_START\_ADDR}});}
+\DoxyCodeLine{101         \textcolor{keywordflow}{if}((status \& 0x80) == (\textcolor{keywordtype}{byte} \& 0x80)) \textcolor{comment}{//Успех}}
+\DoxyCodeLine{102         \{}
+\DoxyCodeLine{103             \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{104         \}}
+\DoxyCodeLine{105         \textcolor{keywordflow}{else} }
+\DoxyCodeLine{106         \{}
+\DoxyCodeLine{107             \textcolor{keywordflow}{return} 1; \textcolor{comment}{// Ошибка записи}}
+\DoxyCodeLine{108         \}}
+\DoxyCodeLine{109     \}}
+\DoxyCodeLine{110     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}((status \& 0x80) == (\textcolor{keywordtype}{byte} \& 0x80)) \textcolor{comment}{// Успех}}
+\DoxyCodeLine{111     \{}
+\DoxyCodeLine{112         \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{113     \}}
+\DoxyCodeLine{114     \textcolor{keywordflow}{return} 2; }
+\DoxyCodeLine{115 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Переменные}
+\mbox{\Hypertarget{external__rom_8c_aa1bc97b47398b1375004586d29ba3845}\label{external__rom_8c_aa1bc97b47398b1375004586d29ba3845}} 
+\index{external\_rom.c@{external\_rom.c}!polyn\_ch\_consts@{polyn\_ch\_consts}}
+\index{polyn\_ch\_consts@{polyn\_ch\_consts}!external\_rom.c@{external\_rom.c}}
+\doxysubsubsection{\texorpdfstring{polyn\_ch\_consts}{polyn\_ch\_consts}}
+{\footnotesize\ttfamily float polyn\+\_\+ch\+\_\+consts\mbox{[}\mbox{\hyperlink{mdr32__drivers_8h_a2332bbff598b25d3bddab65efa40db0f}{M\+A\+X\+\_\+\+C\+H\+A\+N\+E\+L\+\_\+\+N\+U\+M\+B\+ER}}\mbox{]}\mbox{[}7\mbox{]}\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Константы полиномов 
+

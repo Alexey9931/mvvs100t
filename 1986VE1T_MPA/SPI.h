@@ -1,6 +1,6 @@
  /*!
  \file
- \brief Заголовочный файл с описанием API для работы с SPI
+ \brief Р—Р°РіРѕР»РѕРІРѕС‡РЅС‹Р№ С„Р°Р№Р» СЃ РѕРїРёСЃР°РЅРёРµРј API РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ SPI
 */
 
 #ifndef __SPI_H
@@ -8,73 +8,87 @@
 
 #include "mdr32_drivers.h"
 
-///ножки для SSP1
-#define PORT_SSP1 MDR_PORTD
-#define PIN_SSP1_SCK PORT_Pin_4
-#define PIN_SSP1_RX PORT_Pin_3
-#define PIN_SSP1_TX PORT_Pin_2
-#define PIN_SSP1_SS PORT_Pin_5
+// РќРѕР¶РєРё РґР»СЏ SSP1
+#define PORT_SSP1 MDR_PORTD				///< РџРѕСЂС‚ SSP1
+#define PIN_SSP1_SCK PORT_Pin_4		///< Р›РёРЅРёСЏ SCK РїРѕСЂС‚Р° SSP1
+#define PIN_SSP1_RX PORT_Pin_3		///< Р›РёРЅРёСЏ RX РїРѕСЂС‚Р° SSP1
+#define PIN_SSP1_TX PORT_Pin_2		///< Р›РёРЅРёСЏ TX РїРѕСЂС‚Р° SSP1
+#define PIN_SSP1_SS PORT_Pin_5		///< Р›РёРЅРёСЏ SS РїРѕСЂС‚Р° SSP1
 
-#define FIFO_SIZE 8						///< Размер буфера FIFO SSP в полусловах (16 бит)
-#define SPI_BUFFER_SIZE 512		///< Буфер приемника SSP
+#define FIFO_SIZE 8						///< Р Р°Р·РјРµСЂ Р±СѓС„РµСЂР° FIFO SSP РІ РїРѕР»СѓСЃР»РѕРІР°С… (16 Р±РёС‚)
+#define SPI_BUFFER_SIZE 512		///< Р‘СѓС„РµСЂ РїСЂРёРµРјРЅРёРєР° SSP
 	
-///Структура с параметрами DMA канала SPIn
+/**
+ * @brief РЎС‚СЂСѓРєС‚СѓСЂР° СЃ РїР°СЂР°РјРµС‚СЂР°РјРё DMA РєР°РЅР°Р»Р° SPIn
+ *
+ */
 typedef struct spi_dma_params
 {
-	uint8_t 									dma_channel;							 ///< Выбор канала DMA для SPIn
-	uint32_t 									dma_irq_counter;					 ///< Счетчик прерываний DMA
-	DMA_CtrlDataInitTypeDef 	DMA_InitStructure_SPI_RX;  ///< Структура с настройками DMA в целом 
-	DMA_ChannelInitTypeDef 		DMA_Channel_SPI_RX;  			 ///< Структура с настройками канала DMA
-} spi_n_dma_ch_params;  
+	uint8_t 									dma_channel;							 ///< Р’С‹Р±РѕСЂ РєР°РЅР°Р»Р° DMA РґР»СЏ SPIn
+	uint32_t 									dma_irq_counter;					 ///< РЎС‡РµС‚С‡РёРє РїСЂРµСЂС‹РІР°РЅРёР№ DMA
+	DMA_CtrlDataInitTypeDef 	DMA_InitStructure_SPI_RX;  ///< РЎС‚СЂСѓРєС‚СѓСЂР° СЃ РЅР°СЃС‚СЂРѕР№РєР°РјРё DMA РІ С†РµР»РѕРј 
+	DMA_ChannelInitTypeDef 		DMA_Channel_SPI_RX;  			 ///< РЎС‚СЂСѓРєС‚СѓСЂР° СЃ РЅР°СЃС‚СЂРѕР№РєР°РјРё РєР°РЅР°Р»Р° DMA
+} 
+#ifndef DOXYGEN
+__attribute__((packed))
+#endif
+spi_n_dma_ch_params;  
 
-///Структура с конфигурационными параметрами SPI
+/**
+ * @brief РЎС‚СЂСѓРєС‚СѓСЂР° СЃ РєРѕРЅС„РёРіСѓСЂР°С†РёРѕРЅРЅС‹РјРё РїР°СЂР°РјРµС‚СЂР°РјРё SPI
+ *
+ */
 typedef struct spi_config_data
 {
-	MDR_SSP_TypeDef* 				SSPx;            						///< Библиотечная структура с периферийными регистрами блока SPI
-	spi_n_dma_ch_params 		spi_dma_ch;									///< Структура с параметрами канала DMA для SPI
-	uint32_t 								RST_CLK_PCLK_SPIn;					///< Включение тактирования для SPIn
-	SSP_InitTypeDef 				SPI;												///< Библиотечная структура с конфигурационными параметрами SPI
-	IRQn_Type 							IRQn;												///< Выбор обработчика прерываний блока SPI
-	uint8_t 								buffer_counter;							///< Счетчик слов в приемнике SPI
-	uint16_t								*buffer;										///< Указатель на буфер приемника SPI
-} spi_n;
+	MDR_SSP_TypeDef* 				SSPx;            						///< Р‘РёР±Р»РёРѕС‚РµС‡РЅР°СЏ СЃС‚СЂСѓРєС‚СѓСЂР° СЃ РїРµСЂРёС„РµСЂРёР№РЅС‹РјРё СЂРµРіРёСЃС‚СЂР°РјРё Р±Р»РѕРєР° SPI
+	spi_n_dma_ch_params 		spi_dma_ch;									///< РЎС‚СЂСѓРєС‚СѓСЂР° СЃ РїР°СЂР°РјРµС‚СЂР°РјРё РєР°РЅР°Р»Р° DMA РґР»СЏ SPI
+	uint32_t 								RST_CLK_PCLK_SPIn;					///< Р’РєР»СЋС‡РµРЅРёРµ С‚Р°РєС‚РёСЂРѕРІР°РЅРёСЏ РґР»СЏ SPIn
+	SSP_InitTypeDef 				SPI;												///< Р‘РёР±Р»РёРѕС‚РµС‡РЅР°СЏ СЃС‚СЂСѓРєС‚СѓСЂР° СЃ РєРѕРЅС„РёРіСѓСЂР°С†РёРѕРЅРЅС‹РјРё РїР°СЂР°РјРµС‚СЂР°РјРё SPI
+	IRQn_Type 							IRQn;												///< Р’С‹Р±РѕСЂ РѕР±СЂР°Р±РѕС‚С‡РёРєР° РїСЂРµСЂС‹РІР°РЅРёР№ Р±Р»РѕРєР° SPI
+	uint8_t 								buffer_counter;							///< РЎС‡РµС‚С‡РёРє СЃР»РѕРІ РІ РїСЂРёРµРјРЅРёРєРµ SPI
+	uint16_t								*buffer;										///< РЈРєР°Р·Р°С‚РµР»СЊ РЅР° Р±СѓС„РµСЂ РїСЂРёРµРјРЅРёРєР° SPI
+} 
+#ifndef DOXYGEN
+__attribute__((packed))
+#endif
+spi_n;
 
 /*!
- *	\brief Инициализацирует выбранный  SPIn
- *	\param *spi_struct - Выбранный SPI для инициализации
+ *	\brief РРЅРёС†РёР°Р»РёР·Р°С†РёСЂСѓРµС‚ РІС‹Р±СЂР°РЅРЅС‹Р№  SPIn
+ *	\param *spi_struct - Р’С‹Р±СЂР°РЅРЅС‹Р№ SPI РґР»СЏ РёРЅРёС†РёР°Р»РёР·Р°С†РёРё
 */
 void spi_init(spi_n *spi_struct);
 
 /*!
- *	\brief Отправляет полуслово по SPIn
- *	\param *spi_struct - Выбранный SPI 
-	*	\param half_word - Полуслово для отправки
+ *	\brief РћС‚РїСЂР°РІР»СЏРµС‚ РїРѕР»СѓСЃР»РѕРІРѕ РїРѕ SPIn
+ *	\param *spi_struct - Р’С‹Р±СЂР°РЅРЅС‹Р№ SPI 
+	*	\param half_word - РџРѕР»СѓСЃР»РѕРІРѕ РґР»СЏ РѕС‚РїСЂР°РІРєРё
 */
 void spi_transmit_halfword(spi_n *spi_struct, uint16_t half_word);
 
 /*!
- *	\brief Отправляет массив полуслов по SPIn
- *	\param *spi_struct - Выбранный SPI
- *	\param 	message - Массив для отправки
- *	\param length - Размер массива
+ *	\brief РћС‚РїСЂР°РІР»СЏРµС‚ РјР°СЃСЃРёРІ РїРѕР»СѓСЃР»РѕРІ РїРѕ SPIn
+ *	\param *spi_struct - Р’С‹Р±СЂР°РЅРЅС‹Р№ SPI
+ *	\param 	message - РњР°СЃСЃРёРІ РґР»СЏ РѕС‚РїСЂР°РІРєРё
+ *	\param length - Р Р°Р·РјРµСЂ РјР°СЃСЃРёРІР°
 */
 void spi_transmit_message(spi_n *spi_struct, uint16_t message[], uint32_t length);
 
 /*!
- *	\brief Принимает полуслово по SPIn
- *	\param *spi_struct - Выбранный SPI 
+ *	\brief РџСЂРёРЅРёРјР°РµС‚ РїРѕР»СѓСЃР»РѕРІРѕ РїРѕ SPIn
+ *	\param *spi_struct - Р’С‹Р±СЂР°РЅРЅС‹Р№ SPI 
 */
 uint16_t spi_receive_halfword(spi_n *spi_struct);
 
 /*!
- *	\brief Очищает FIFO буфер приемника SPIn
- *	\param *spi_struct - Выбранный SPI 
+ *	\brief РћС‡РёС‰Р°РµС‚ FIFO Р±СѓС„РµСЂ РїСЂРёРµРјРЅРёРєР° SPIn
+ *	\param *spi_struct - Р’С‹Р±СЂР°РЅРЅС‹Р№ SPI 
 */
 void spi_clean_fifo_rx_buf(spi_n *spi_struct);
 
 /*!
- *	\brief Инициализирует n-ый канал DMA  на запрос от приемника SPIn
- *	\param *spi_struct - Выбранный SPI 
+ *	\brief РРЅРёС†РёР°Р»РёР·РёСЂСѓРµС‚ n-С‹Р№ РєР°РЅР°Р» DMA  РЅР° Р·Р°РїСЂРѕСЃ РѕС‚ РїСЂРёРµРјРЅРёРєР° SPIn
+ *	\param *spi_struct - Р’С‹Р±СЂР°РЅРЅС‹Р№ SPI 
 */
 void dma_spi_rx_init(spi_n *spi_struct);
 

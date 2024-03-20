@@ -1,0 +1,341 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.20"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>ПО для макета МПА (100 тема): Файл leds.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">ПО для макета МПА (100 тема)
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.20 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#define-members">Макросы</a> &#124;
+<a href="#func-members">Функции</a>  </div>
+  <div class="headertitle">
+<div class="title">Файл leds.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Заголовочный файл с описанием API для работы со светодиодными индикаторами  
+<a href="#details">Подробнее...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="mdr32__drivers_8h_source.html">mdr32_drivers.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Граф включаемых заголовочных файлов для leds.h:</div>
+<div class="dyncontent">
+<div class="center"><img src="leds_8h__incl.png" border="0" usemap="#aleds_8h" alt=""/></div>
+<map name="leds_8h" id="leds_8h">
+<area shape="rect" title="Заголовочный файл с описанием API для работы со светодиодными индикаторами" alt="" coords="693,5,755,32"/>
+<area shape="rect" href="mdr32__drivers_8h.html" title="Заголовочный файл с глобальными константами и подключаемыми библиотеками" alt="" coords="660,80,788,107"/>
+<area shape="rect" title=" " alt="" coords="5,155,115,181"/>
+<area shape="rect" title=" " alt="" coords="139,155,298,181"/>
+<area shape="rect" title=" " alt="" coords="322,155,465,181"/>
+<area shape="rect" title=" " alt="" coords="489,155,628,181"/>
+<area shape="rect" title=" " alt="" coords="653,155,795,181"/>
+<area shape="rect" title=" " alt="" coords="819,155,965,181"/>
+<area shape="rect" title=" " alt="" coords="989,155,1139,181"/>
+<area shape="rect" title=" " alt="" coords="1164,155,1303,181"/>
+<area shape="rect" title=" " alt="" coords="1327,155,1467,181"/>
+</map>
+</div>
+</div><div class="textblock"><div class="dynheader">
+Граф файлов, в которые включается этот файл:</div>
+<div class="dyncontent">
+<div class="center"><img src="leds_8h__dep__incl.png" border="0" usemap="#aleds_8hdep" alt=""/></div>
+<map name="leds_8hdep" id="aleds_8hdep">
+<area shape="rect" title="Заголовочный файл с описанием API для работы со светодиодными индикаторами" alt="" coords="93,5,154,32"/>
+<area shape="rect" href="leds_8c.html" title="Файл с реализацией API для работы со светодиодными индикаторами" alt="" coords="5,80,65,107"/>
+<area shape="rect" href="main_8h.html" title="Заголовочный файл с реализацией основного функционала МПА" alt="" coords="90,80,157,107"/>
+<area shape="rect" href="rs422__protocol_8c.html" title="Файл с реализацией API протокола обмена данными по интерфейсу RS&#45;422." alt="" coords="181,80,311,107"/>
+<area shape="rect" href="main_8c.html" title=" " alt="" coords="42,155,109,181"/>
+<area shape="rect" href="timers_8c.html" title="Файл с реализацией API для работы с таймерами" alt="" coords="133,155,207,181"/>
+</map>
+</div>
+</div>
+<p><a href="leds_8h_source.html">См. исходные тексты.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Макросы</h2></td></tr>
+<tr class="memitem:a5ce60c4a7ee9b8df3c4eae48cc2478c3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="leds_8h.html#a5ce60c4a7ee9b8df3c4eae48cc2478c3">PORT_LEDS</a>&#160;&#160;&#160;MDR_PORTD</td></tr>
+<tr class="memdesc:a5ce60c4a7ee9b8df3c4eae48cc2478c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Порт выводов на светодиоды  <a href="leds_8h.html#a5ce60c4a7ee9b8df3c4eae48cc2478c3">Подробнее...</a><br /></td></tr>
+<tr class="separator:a5ce60c4a7ee9b8df3c4eae48cc2478c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d499bd331122dda583e0006e7d277d3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="leds_8h.html#a6d499bd331122dda583e0006e7d277d3">CLOCK_LEDS</a>&#160;&#160;&#160;RST_CLK_PCLK_PORTD</td></tr>
+<tr class="memdesc:a6d499bd331122dda583e0006e7d277d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Выбор тактирования выводов для светодиодов  <a href="leds_8h.html#a6d499bd331122dda583e0006e7d277d3">Подробнее...</a><br /></td></tr>
+<tr class="separator:a6d499bd331122dda583e0006e7d277d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7230c8e2dae96adad41296a45ebaf2b0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="leds_8h.html#a7230c8e2dae96adad41296a45ebaf2b0">PIN_LED_OK_WORK</a>&#160;&#160;&#160;PORT_Pin_7</td></tr>
+<tr class="memdesc:a7230c8e2dae96adad41296a45ebaf2b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Светодиод-индикатор корректной работы  <a href="leds_8h.html#a7230c8e2dae96adad41296a45ebaf2b0">Подробнее...</a><br /></td></tr>
+<tr class="separator:a7230c8e2dae96adad41296a45ebaf2b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f040ee9ad09af1046a3cd2fcd94d149"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="leds_8h.html#a3f040ee9ad09af1046a3cd2fcd94d149">PIN_LED_ERROR_WORK</a>&#160;&#160;&#160;PORT_Pin_8</td></tr>
+<tr class="memdesc:a3f040ee9ad09af1046a3cd2fcd94d149"><td class="mdescLeft">&#160;</td><td class="mdescRight">Светодиод-индикатор неисправности <br  />
+  <a href="leds_8h.html#a3f040ee9ad09af1046a3cd2fcd94d149">Подробнее...</a><br /></td></tr>
+<tr class="separator:a3f040ee9ad09af1046a3cd2fcd94d149"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a430aace194cfb35550cca261ba966571"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="leds_8h.html#a430aace194cfb35550cca261ba966571">SET_LED_OK_WORK</a>()&#160;&#160;&#160;{<a class="el" href="leds_8h.html#a5ce60c4a7ee9b8df3c4eae48cc2478c3">PORT_LEDS</a>-&gt;SETTX = <a class="el" href="leds_8h.html#a7230c8e2dae96adad41296a45ebaf2b0">PIN_LED_OK_WORK</a>;}</td></tr>
+<tr class="memdesc:a430aace194cfb35550cca261ba966571"><td class="mdescLeft">&#160;</td><td class="mdescRight">Макрос включения светодиода корректной работы  <a href="leds_8h.html#a430aace194cfb35550cca261ba966571">Подробнее...</a><br /></td></tr>
+<tr class="separator:a430aace194cfb35550cca261ba966571"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ef7b516af7c36e82d260f9267c749d1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="leds_8h.html#a1ef7b516af7c36e82d260f9267c749d1">RESET_LED_OK_WORK</a>()&#160;&#160;&#160;{<a class="el" href="leds_8h.html#a5ce60c4a7ee9b8df3c4eae48cc2478c3">PORT_LEDS</a>-&gt;CLRTX = <a class="el" href="leds_8h.html#a7230c8e2dae96adad41296a45ebaf2b0">PIN_LED_OK_WORK</a>;}</td></tr>
+<tr class="memdesc:a1ef7b516af7c36e82d260f9267c749d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Макрос выключения светодиода корректной работы  <a href="leds_8h.html#a1ef7b516af7c36e82d260f9267c749d1">Подробнее...</a><br /></td></tr>
+<tr class="separator:a1ef7b516af7c36e82d260f9267c749d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a52ea46b9f9af903424e711659ad661a0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="leds_8h.html#a52ea46b9f9af903424e711659ad661a0">SET_LED_ERROR_WORK</a>()&#160;&#160;&#160;{<a class="el" href="leds_8h.html#a5ce60c4a7ee9b8df3c4eae48cc2478c3">PORT_LEDS</a>-&gt;SETTX = <a class="el" href="leds_8h.html#a3f040ee9ad09af1046a3cd2fcd94d149">PIN_LED_ERROR_WORK</a>;}</td></tr>
+<tr class="memdesc:a52ea46b9f9af903424e711659ad661a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Макрос включения светодиода некорректной работы  <a href="leds_8h.html#a52ea46b9f9af903424e711659ad661a0">Подробнее...</a><br /></td></tr>
+<tr class="separator:a52ea46b9f9af903424e711659ad661a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a72f7f58350bb195a2673db18c456d3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="leds_8h.html#a5a72f7f58350bb195a2673db18c456d3">RESET_LED_ERROR_WORK</a>()&#160;&#160;&#160;{<a class="el" href="leds_8h.html#a5ce60c4a7ee9b8df3c4eae48cc2478c3">PORT_LEDS</a>-&gt;CLRTX = <a class="el" href="leds_8h.html#a3f040ee9ad09af1046a3cd2fcd94d149">PIN_LED_ERROR_WORK</a>;}</td></tr>
+<tr class="memdesc:a5a72f7f58350bb195a2673db18c456d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Макрос выключения светодиода некорректной работы  <a href="leds_8h.html#a5a72f7f58350bb195a2673db18c456d3">Подробнее...</a><br /></td></tr>
+<tr class="separator:a5a72f7f58350bb195a2673db18c456d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Функции</h2></td></tr>
+<tr class="memitem:a71356b7b172c1d4ea20d3c5aa61f7c35"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="leds_8h.html#a71356b7b172c1d4ea20d3c5aa61f7c35">leds_gpio_config</a> (void)</td></tr>
+<tr class="memdesc:a71356b7b172c1d4ea20d3c5aa61f7c35"><td class="mdescLeft">&#160;</td><td class="mdescRight">Конфигурирует выводы МК для светодиодных индикаторов  <a href="leds_8h.html#a71356b7b172c1d4ea20d3c5aa61f7c35">Подробнее...</a><br /></td></tr>
+<tr class="separator:a71356b7b172c1d4ea20d3c5aa61f7c35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Заголовочный файл с описанием API для работы со светодиодными индикаторами </p>
+</div><h2 class="groupheader">Макросы</h2>
+<a id="a6d499bd331122dda583e0006e7d277d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d499bd331122dda583e0006e7d277d3">&#9670;&nbsp;</a></span>CLOCK_LEDS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define CLOCK_LEDS&#160;&#160;&#160;RST_CLK_PCLK_PORTD</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Выбор тактирования выводов для светодиодов </p>
+
+</div>
+</div>
+<a id="a3f040ee9ad09af1046a3cd2fcd94d149"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f040ee9ad09af1046a3cd2fcd94d149">&#9670;&nbsp;</a></span>PIN_LED_ERROR_WORK</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PIN_LED_ERROR_WORK&#160;&#160;&#160;PORT_Pin_8</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Светодиод-индикатор неисправности <br  />
+ </p>
+
+</div>
+</div>
+<a id="a7230c8e2dae96adad41296a45ebaf2b0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7230c8e2dae96adad41296a45ebaf2b0">&#9670;&nbsp;</a></span>PIN_LED_OK_WORK</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PIN_LED_OK_WORK&#160;&#160;&#160;PORT_Pin_7</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Светодиод-индикатор корректной работы </p>
+
+</div>
+</div>
+<a id="a5ce60c4a7ee9b8df3c4eae48cc2478c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ce60c4a7ee9b8df3c4eae48cc2478c3">&#9670;&nbsp;</a></span>PORT_LEDS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PORT_LEDS&#160;&#160;&#160;MDR_PORTD</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Порт выводов на светодиоды </p>
+
+</div>
+</div>
+<a id="a5a72f7f58350bb195a2673db18c456d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a72f7f58350bb195a2673db18c456d3">&#9670;&nbsp;</a></span>RESET_LED_ERROR_WORK</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define RESET_LED_ERROR_WORK</td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td>&#160;&#160;&#160;{<a class="el" href="leds_8h.html#a5ce60c4a7ee9b8df3c4eae48cc2478c3">PORT_LEDS</a>-&gt;CLRTX = <a class="el" href="leds_8h.html#a3f040ee9ad09af1046a3cd2fcd94d149">PIN_LED_ERROR_WORK</a>;}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Макрос выключения светодиода некорректной работы </p>
+
+</div>
+</div>
+<a id="a1ef7b516af7c36e82d260f9267c749d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ef7b516af7c36e82d260f9267c749d1">&#9670;&nbsp;</a></span>RESET_LED_OK_WORK</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define RESET_LED_OK_WORK</td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td>&#160;&#160;&#160;{<a class="el" href="leds_8h.html#a5ce60c4a7ee9b8df3c4eae48cc2478c3">PORT_LEDS</a>-&gt;CLRTX = <a class="el" href="leds_8h.html#a7230c8e2dae96adad41296a45ebaf2b0">PIN_LED_OK_WORK</a>;}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Макрос выключения светодиода корректной работы </p>
+
+</div>
+</div>
+<a id="a52ea46b9f9af903424e711659ad661a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a52ea46b9f9af903424e711659ad661a0">&#9670;&nbsp;</a></span>SET_LED_ERROR_WORK</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SET_LED_ERROR_WORK</td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td>&#160;&#160;&#160;{<a class="el" href="leds_8h.html#a5ce60c4a7ee9b8df3c4eae48cc2478c3">PORT_LEDS</a>-&gt;SETTX = <a class="el" href="leds_8h.html#a3f040ee9ad09af1046a3cd2fcd94d149">PIN_LED_ERROR_WORK</a>;}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Макрос включения светодиода некорректной работы </p>
+
+</div>
+</div>
+<a id="a430aace194cfb35550cca261ba966571"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a430aace194cfb35550cca261ba966571">&#9670;&nbsp;</a></span>SET_LED_OK_WORK</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SET_LED_OK_WORK</td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td>&#160;&#160;&#160;{<a class="el" href="leds_8h.html#a5ce60c4a7ee9b8df3c4eae48cc2478c3">PORT_LEDS</a>-&gt;SETTX = <a class="el" href="leds_8h.html#a7230c8e2dae96adad41296a45ebaf2b0">PIN_LED_OK_WORK</a>;}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Макрос включения светодиода корректной работы </p>
+
+</div>
+</div>
+<h2 class="groupheader">Функции</h2>
+<a id="a71356b7b172c1d4ea20d3c5aa61f7c35"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a71356b7b172c1d4ea20d3c5aa61f7c35">&#9670;&nbsp;</a></span>leds_gpio_config()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void leds_gpio_config </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Конфигурирует выводы МК для светодиодных индикаторов </p>
+<div class="fragment"><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;{</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="comment">// Включение тактирования портов</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    RST_CLK_PCLKcmd(RST_CLK_PCLK_RST_CLK|<a class="code" href="leds_8h.html#a6d499bd331122dda583e0006e7d277d3">CLOCK_LEDS</a>, ENABLE);   </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    PORT_InitTypeDef gpio_init_struct_leds;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    PORT_StructInit(&amp;gpio_init_struct_leds);</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="comment">// Инициализация светодиода-индикатора корректной работы</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    gpio_init_struct_leds.PORT_Pin = <a class="code" href="leds_8h.html#a7230c8e2dae96adad41296a45ebaf2b0">PIN_LED_OK_WORK</a>;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    gpio_init_struct_leds.PORT_FUNC = PORT_FUNC_PORT;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    gpio_init_struct_leds.PORT_OE = PORT_OE_OUT;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    gpio_init_struct_leds.PORT_MODE = PORT_MODE_DIGITAL;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    gpio_init_struct_leds.PORT_SPEED = PORT_SPEED_MAXFAST;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    PORT_Init(<a class="code" href="leds_8h.html#a5ce60c4a7ee9b8df3c4eae48cc2478c3">PORT_LEDS</a>, &amp;gpio_init_struct_leds);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="comment">// Инициализация светодиода-индикатора неисправности</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    gpio_init_struct_leds.PORT_Pin = <a class="code" href="leds_8h.html#a3f040ee9ad09af1046a3cd2fcd94d149">PIN_LED_ERROR_WORK</a>;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    gpio_init_struct_leds.PORT_FUNC = PORT_FUNC_PORT;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    gpio_init_struct_leds.PORT_OE = PORT_OE_OUT;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    gpio_init_struct_leds.PORT_MODE = PORT_MODE_DIGITAL;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    gpio_init_struct_leds.PORT_SPEED = PORT_SPEED_MAXFAST;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    PORT_Init(<a class="code" href="leds_8h.html#a5ce60c4a7ee9b8df3c4eae48cc2478c3">PORT_LEDS</a>, &amp;gpio_init_struct_leds);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+</div><!-- contents -->
+<div class="ttc" id="aleds_8h_html_a5ce60c4a7ee9b8df3c4eae48cc2478c3"><div class="ttname"><a href="leds_8h.html#a5ce60c4a7ee9b8df3c4eae48cc2478c3">PORT_LEDS</a></div><div class="ttdeci">#define PORT_LEDS</div><div class="ttdoc">Порт выводов на светодиоды</div><div class="ttdef"><b>Definition:</b> leds.h:11</div></div>
+<div class="ttc" id="aleds_8h_html_a3f040ee9ad09af1046a3cd2fcd94d149"><div class="ttname"><a href="leds_8h.html#a3f040ee9ad09af1046a3cd2fcd94d149">PIN_LED_ERROR_WORK</a></div><div class="ttdeci">#define PIN_LED_ERROR_WORK</div><div class="ttdoc">Светодиод-индикатор неисправности</div><div class="ttdef"><b>Definition:</b> leds.h:15</div></div>
+<div class="ttc" id="aleds_8h_html_a6d499bd331122dda583e0006e7d277d3"><div class="ttname"><a href="leds_8h.html#a6d499bd331122dda583e0006e7d277d3">CLOCK_LEDS</a></div><div class="ttdeci">#define CLOCK_LEDS</div><div class="ttdoc">Выбор тактирования выводов для светодиодов</div><div class="ttdef"><b>Definition:</b> leds.h:12</div></div>
+<div class="ttc" id="aleds_8h_html_a7230c8e2dae96adad41296a45ebaf2b0"><div class="ttname"><a href="leds_8h.html#a7230c8e2dae96adad41296a45ebaf2b0">PIN_LED_OK_WORK</a></div><div class="ttdeci">#define PIN_LED_OK_WORK</div><div class="ttdoc">Светодиод-индикатор корректной работы</div><div class="ttdef"><b>Definition:</b> leds.h:14</div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20
+</small></address>
+</body>
+</html>

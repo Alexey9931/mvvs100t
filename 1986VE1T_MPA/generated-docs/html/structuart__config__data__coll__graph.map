@@ -1,0 +1,6 @@
+<map id="uart_config_data" name="uart_config_data">
+<area shape="rect" id="node1" title="Структура с конфигурационными параметрами UART и буфером приема" alt="" coords="77,184,207,211"/>
+<area shape="rect" id="node2" href="$structuart__dma__params.html" title="Структура с параметрами DMA канала UARTn." alt="" coords="5,95,145,121"/>
+<area shape="rect" id="node3" href="$structuart__timeouts.html" title="Структура с таймаутами UARTn." alt="" coords="169,95,283,121"/>
+<area shape="rect" id="node4" href="$structtimer__config__struct.html" title="Структура с конфигурационными параметрами Таймеров" alt="" coords="153,5,299,32"/>
+</map>

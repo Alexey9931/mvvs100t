@@ -2,18 +2,25 @@
  \file
  \brief Файл с реализацией API для работы с UART
 */
+
 #include "uart.h"
 #include "timers.h"
 
+/// Структура с конфигурационными параметрами блока UART1 МК
 uart_n uart_1;
+/// Структура с конфигурационными параметрами блока UART2 МК
 uart_n uart_2;
 
 #ifdef K1986VE3T
+/// Структура с конфигурационными параметрами блока UART3 МК
 uart_n uart_3;
+/// Структура с конфигурационными параметрами блока UART4 МК
 uart_n uart_4;
 #endif
 
-//обработчик прерываний UART1
+/*!
+ *	\brief Обработчик прерываний UART1
+*/
 void UART1_IRQHandler(void);
 void UART1_IRQHandler(void)
 {
@@ -23,7 +30,9 @@ void UART1_IRQHandler(void)
 		UART_ReceiveData(uart_1.UARTx);
 		UART_ClearITPendingBit(uart_1.UARTx, UART_IT_RX);
 }
-//обработчик прерываний UART2
+/*!
+ *	\brief Обработчик прерываний UART2
+*/
 void UART2_IRQHandler(void);
 void UART2_IRQHandler(void)
 {
@@ -34,7 +43,9 @@ void UART2_IRQHandler(void)
 		UART_ClearITPendingBit(uart_2.UARTx, UART_IT_RX);
 }
 #ifdef K1986VE3T
-//обработчик прерываний UART3
+/*!
+ *	\brief Обработчик прерываний UART3
+*/
 void UART3_IRQHandler(void);
 void UART3_IRQHandler(void)
 {
@@ -44,7 +55,9 @@ void UART3_IRQHandler(void)
 	UART_ReceiveData(uart_3.UARTx);
 	UART_ClearITPendingBit(uart_3.UARTx, UART_IT_RX);
 }
-//обработчик прерываний UART4
+/*!
+ *	\brief Обработчик прерываний UART4
+*/
 void UART4_IRQHandler(void);
 void UART4_IRQHandler(void)
 {
@@ -55,9 +68,8 @@ void UART4_IRQHandler(void)
 	UART_ClearITPendingBit(uart_4.UARTx, UART_IT_RX);
 }
 #endif
-
-/*
-Функция конфигурации выводов МК для UART
+/*!
+ *	\brief Конфигурирует выводы МК для UART
 */
 void uart_gpio_config(void);
 void uart_gpio_config(void)
@@ -86,12 +98,12 @@ void uart_gpio_config(void)
 	GPIO_init_structUART1.PORT_OE = PORT_OE_IN;
 	PORT_Init(PORT_UART1, &GPIO_init_structUART1);
 
-	//инициализация ножки разрешения записи данных по UART1 (для микросхемы rs485)
+	// Инициализация ножки разрешения записи данных по UART1 (для микросхемы rs485)
 	GPIO_init_structUART1.PORT_Pin = PIN_UART1_EN;
 	GPIO_init_structUART1.PORT_FUNC = PORT_FUNC_PORT;
 	GPIO_init_structUART1.PORT_OE = PORT_OE_OUT;
 	PORT_Init(PORT_UART1_EN, &GPIO_init_structUART1);
-	//дезактивирование микросхемы RS485 на выдачу данных
+	// Дезактивирование микросхемы RS485 на выдачу данных
 	PORT_WriteBit(PORT_UART1_EN, PIN_UART1_EN, 0);
 
 
@@ -116,18 +128,18 @@ void uart_gpio_config(void)
 	GPIO_init_structUART2.PORT_OE = PORT_OE_IN;
 	PORT_Init(PORT_UART2, &GPIO_init_structUART2);
 
-	//инициализация ножки разрешения записи данных по UART2 (для микросхемы rs485)
+	// Инициализация ножки разрешения записи данных по UART2 (для микросхемы rs485)
 	GPIO_init_structUART2.PORT_Pin = PIN_UART2_EN;
 	GPIO_init_structUART2.PORT_FUNC = PORT_FUNC_PORT;
 	GPIO_init_structUART2.PORT_OE = PORT_OE_OUT;
 	PORT_Init(PORT_UART2_EN, &GPIO_init_structUART2);
-	//дезактивирование микросхемы RS485 на выдачу данных
+	// Дезактивирование микросхемы RS485 на выдачу данных
 	PORT_WriteBit(PORT_UART2_EN, PIN_UART2_EN, 0);
 }
 /*
-Функция инициализация UART
+	Функция инициализация UART
 */
-uint8_t uart_init(uart_n *uart_struct)
+uart_errors uart_init(uart_n *uart_struct)
 { 
 	uart_gpio_config();
 	
@@ -170,24 +182,24 @@ uint8_t uart_init(uart_n *uart_struct)
 		return error;
 	}
 
-	//Включение прерываний UART
+	// Включение прерываний UART
 	NVIC_SetPriority (uart_struct->IRQn, 0);
 	UART_ITConfig( uart_struct->UARTx, UART_IT_RX, ENABLE );
 	
-	// Включить сконфигурированный UART
+	// Включение сконфигурированного UART
 	UART_Cmd(uart_struct->UARTx, ENABLE);
 	
-	return 0;
+	return NO_ERRORS;
 }
 /*
-Функция передачи данных по UART
+	Функция передачи данных по UART
 */
-uint8_t uart_write(uart_n *uart_struct, uint8_t *data, uint32_t data_size)
+uart_errors uart_write(uart_n *uart_struct, uint8_t *data, uint32_t data_size)
 {
 	uart_errors error;
 	uint32_t timer_cnt = 0;
 	
-	//активирование микросхемы RS485 на выдачу данных
+	// Активирование микросхемы RS485 на выдачу данных
 	if (uart_struct->UARTx == MDR_UART1)
 	{
 		PORT_WriteBit(PORT_UART1_EN, PIN_UART1_EN, 1);
@@ -222,9 +234,9 @@ uint8_t uart_write(uart_n *uart_struct, uint8_t *data, uint32_t data_size)
 			}
 		}
 	}
-	//небольшая задержка для микросхемы RS-485 
+	// Небольшая задержка для микросхемы RS-485 
 	delay_micro(10);
-	//дезактивирование микросхемы RS485 на прием данных
+	// Дезактивирование микросхемы RS485 на прием данных
 	if (uart_struct->UARTx == MDR_UART1)
 	{
 		PORT_WriteBit(PORT_UART1_EN, PIN_UART1_EN, 0);
@@ -234,27 +246,27 @@ uint8_t uart_write(uart_n *uart_struct, uint8_t *data, uint32_t data_size)
 		PORT_WriteBit(PORT_UART2_EN, PIN_UART2_EN, 0);
 	}
 	
-	return 0;
+	return NO_ERRORS;
 }
 /*
-Функция чтения данных из буффера UART
+	Функция чтения данных из буффера UART
 */
-uint8_t uart_read(uart_n *uart_struct, uint32_t len, uint8_t *data)
+uart_errors uart_read(uart_n *uart_struct, uint32_t len, uint8_t *data)
 {
 	uart_errors error;
 	uint32_t timer_cnt = 0;
 	
-	//если длина превышает размер буфера
+	// Если длина превышает размер буфера
 	if (len > UART_BUFFER_SIZE)
 	{
 		error = SIZE_ERROR;
 		uart_struct->read_pos++;
 		return error;
 	}
-	//если последний принятый байт перевалит границу буфера и байты будут перезаписываться в буфере с самого начала
+	// Если последний принятый байт перевалит границу буфера и байты будут перезаписываться в буфере с самого начала
 	if (((uart_struct->read_pos)+len) > UART_BUFFER_SIZE)
 	{
-		//если задан таймаут 
+		// Если задан таймаут 
 		if (uart_struct->uart_timeouts.read_timeout_flag == 1)
 		{
 			TIMER_SetCounter(uart_struct->uart_timeouts.timer_n_timeout->TIMERx, 0);
@@ -295,10 +307,10 @@ uint8_t uart_read(uart_n *uart_struct, uint32_t len, uint8_t *data)
 			uart_struct->read_pos = (uart_struct->read_pos) + len-UART_BUFFER_SIZE;
 		}
 	}
-	//если последний принятый байт не перевалит границу буфера
+	// Если последний принятый байт не перевалит границу буфера
 	else
 	{
-		//если задан таймаут 
+		// Если задан таймаут 
 		if (uart_struct->uart_timeouts.read_timeout_flag == 1)
 		{
 			TIMER_SetCounter(uart_struct->uart_timeouts.timer_n_timeout->TIMERx, 0);
@@ -322,12 +334,12 @@ uint8_t uart_read(uart_n *uart_struct, uint32_t len, uint8_t *data)
 		uart_struct->read_pos = (uart_struct->read_pos) + len;
 	}
 	
-	return 0;
+	return NO_ERRORS;
 }
 /*
-Функция установки курсора чтения в буфере UART
+	Функция установки курсора чтения в буфере UART
 */
-uint8_t uart_set_pos(uart_n *uart_struct, uint32_t pos)
+uart_errors uart_set_pos(uart_n *uart_struct, uint32_t pos)
 {
 	uart_errors error;
 	
@@ -337,31 +349,31 @@ uint8_t uart_set_pos(uart_n *uart_struct, uint32_t pos)
 		return error;
 	}
 	uart_struct->read_pos = pos;
-	return 0;
+	return NO_ERRORS;
 }
 /*
-Функция чтения текущей позиции курсора чтения
+	Функция чтения текущей позиции курсора чтения
 */
 uint32_t uart_read_pos(uart_n *uart_struct)
 {
 	return uart_struct->read_pos;
 }
 /*
-Функция чтения кол-во байт в буфере UART
+	Функция чтения кол-во байт в буфере UART
 */
 uint32_t uart_get_buf_counter(uart_n *uart_struct)
 {
 	return uart_struct->buffer_count;
 }
 /*
-Функция очистки буфера UART
+	Функция очистки буфера UART
 */
 void uart_clean(uart_n *uart_struct)
 {
 	memset(uart_struct->buffer, 0, UART_BUFFER_SIZE);
 }
 /*
-Функция инициализации n-го канала DMA  на запрос от приемника UARTn
+	Функция инициализации n-го канала DMA  на запрос от приемника UARTn
 */
 void DMA_UART_RX_init(uart_n *uart_struct)
 {
@@ -398,7 +410,7 @@ void DMA_UART_RX_init(uart_n *uart_struct)
 	NVIC_EnableIRQ(DMA_IRQn);
 }
 /*
-Функция установки таймаута UARTn на чтение
+	Функция установки таймаута UARTn на чтение
 */
 void uart_set_read_timeout(uart_n *uart_struct, uint32_t read_timeout)
 {
@@ -406,7 +418,7 @@ void uart_set_read_timeout(uart_n *uart_struct, uint32_t read_timeout)
 	uart_struct->uart_timeouts.read_val_timeout = read_timeout;
 }
 /*
-Функция установки таймаута UARTn на запись
+	Функция установки таймаута UARTn на запись
 */
 void uart_set_write_timeout(uart_n *uart_struct, uint32_t write_timeout)
 {

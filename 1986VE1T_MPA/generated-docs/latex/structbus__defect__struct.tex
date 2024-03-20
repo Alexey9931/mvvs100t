@@ -1,0 +1,61 @@
+\hypertarget{structbus__defect__struct}{}\doxysection{Структура bus\+\_\+defect\+\_\+struct}
+\label{structbus__defect__struct}\index{bus\_defect\_struct@{bus\_defect\_struct}}
+
+
+Структура с битовыми полями для регистра неисправность шины  
+
+
+
+
+{\ttfamily \#include $<$external\+\_\+ram.\+h$>$}
+
+\doxysubsection*{Открытые атрибуты}
+\begin{DoxyCompactItemize}
+\item 
+unsigned \mbox{\hyperlink{structbus__defect__struct_a42522f5451ab00adc0496043bfd871b4}{many\+\_\+fail\+\_\+packet}}\+: 1
+\begin{DoxyCompactList}\small\item\em Количество битых пакетов подряд $>$ уст. значения \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{structbus__defect__struct_a8fecbe9edceca257e5f148b20240fedc}{fail\+\_\+timeout}}\+: 1
+\begin{DoxyCompactList}\small\item\em Неисправность по таймауту \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{structbus__defect__struct_a8698a254cac0ca260b6af39bc05f92d5}{reserv}}\+: 14
+\begin{DoxyCompactList}\small\item\em Резерв \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Структура с битовыми полями для регистра неисправность шины 
+
+\doxysubsection{Данные класса}
+\mbox{\Hypertarget{structbus__defect__struct_a8fecbe9edceca257e5f148b20240fedc}\label{structbus__defect__struct_a8fecbe9edceca257e5f148b20240fedc}} 
+\index{bus\_defect\_struct@{bus\_defect\_struct}!fail\_timeout@{fail\_timeout}}
+\index{fail\_timeout@{fail\_timeout}!bus\_defect\_struct@{bus\_defect\_struct}}
+\doxysubsubsection{\texorpdfstring{fail\_timeout}{fail\_timeout}}
+{\footnotesize\ttfamily unsigned bus\+\_\+defect\+\_\+struct\+::fail\+\_\+timeout}
+
+
+
+Неисправность по таймауту 
+
+\mbox{\Hypertarget{structbus__defect__struct_a42522f5451ab00adc0496043bfd871b4}\label{structbus__defect__struct_a42522f5451ab00adc0496043bfd871b4}} 
+\index{bus\_defect\_struct@{bus\_defect\_struct}!many\_fail\_packet@{many\_fail\_packet}}
+\index{many\_fail\_packet@{many\_fail\_packet}!bus\_defect\_struct@{bus\_defect\_struct}}
+\doxysubsubsection{\texorpdfstring{many\_fail\_packet}{many\_fail\_packet}}
+{\footnotesize\ttfamily unsigned bus\+\_\+defect\+\_\+struct\+::many\+\_\+fail\+\_\+packet}
+
+
+
+Количество битых пакетов подряд $>$ уст. значения 
+
+\mbox{\Hypertarget{structbus__defect__struct_a8698a254cac0ca260b6af39bc05f92d5}\label{structbus__defect__struct_a8698a254cac0ca260b6af39bc05f92d5}} 
+\index{bus\_defect\_struct@{bus\_defect\_struct}!reserv@{reserv}}
+\index{reserv@{reserv}!bus\_defect\_struct@{bus\_defect\_struct}}
+\doxysubsubsection{\texorpdfstring{reserv}{reserv}}
+{\footnotesize\ttfamily unsigned bus\+\_\+defect\+\_\+struct\+::reserv}
+
+
+
+Резерв 
+
+
+
+Объявления и описания членов структуры находятся в файле\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{external__ram_8h}{external\+\_\+ram.\+h}}\end{DoxyCompactItemize}

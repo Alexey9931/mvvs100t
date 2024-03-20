@@ -1,0 +1,190 @@
+\hypertarget{structcommon__register__space__ext__rom}{}\doxysection{Структура common\+\_\+register\+\_\+space\+\_\+ext\+\_\+rom}
+\label{structcommon__register__space__ext__rom}\index{common\_register\_space\_ext\_rom@{common\_register\_space\_ext\_rom}}
+
+
+Органиация пространства общих регистров для зеркализации во внешнем ПЗУ  
+
+
+
+
+{\ttfamily \#include $<$external\+\_\+rom.\+h$>$}
+
+
+
+Граф связей класса common\+\_\+register\+\_\+space\+\_\+ext\+\_\+rom\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=231pt]{structcommon__register__space__ext__rom__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Открытые атрибуты}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{structcommon__register__space__ext__rom_aa315ceee8d8a72000dbc2f425f01907f}{P\+L\+C\+\_\+\+Device\+Info}} \mbox{[}1024\mbox{]}
+\begin{DoxyCompactList}\small\item\em Текстовая информация о модуле \end{DoxyCompactList}\item 
+\mbox{\hyperlink{external__rom_8h_ab79c29d4d73d5c6bf505514de8abfb5c}{device\+\_\+type}} \mbox{\hyperlink{structcommon__register__space__ext__rom_a654cd1c6b191e3311ad10abac5341e44}{P\+L\+C\+\_\+\+Device\+Type}}
+\begin{DoxyCompactList}\small\item\em Тип устройства \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{structcommon__register__space__ext__rom_ac241de2a572726a1cdf305e5877e063b}{P\+L\+C\+\_\+\+Serial\+Number}}
+\begin{DoxyCompactList}\small\item\em Серийный номер устройства \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{structcommon__register__space__ext__rom_a2f87692281c76d5e7940882033c66731}{P\+L\+C\+\_\+\+Bus\+Config\+\_\+\+B1}}
+\begin{DoxyCompactList}\small\item\em Конфигурация шины 1. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{structcommon__register__space__ext__rom_afa4160758302b6b93a9b36e5837eea60}{P\+L\+C\+\_\+\+Bus\+Config\+\_\+\+B2}}
+\begin{DoxyCompactList}\small\item\em Конфигурация шины 2. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{structcommon__register__space__ext__rom_a2bea3a6689853dfab4b1154a91ae32ee}{P\+L\+C\+\_\+\+Timeout\+For\+Defect\+\_\+\+B1}}
+\begin{DoxyCompactList}\small\item\em Время без связи до неиспр шины 1, мс \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{structcommon__register__space__ext__rom_a4e9b070882f84e14036eff9f3e525f0b}{P\+L\+C\+\_\+\+Timeout\+For\+Defect\+\_\+\+B2}}
+\begin{DoxyCompactList}\small\item\em Время без связи до неиспр шины 2, мс \end{DoxyCompactList}\item 
+uint16\+\_\+t \mbox{\hyperlink{structcommon__register__space__ext__rom_aa5e113ae43750669b7de5b3585208ce3}{P\+L\+C\+\_\+\+Num\+Crc\+Errors\+For\+Defect\+\_\+\+B1}}
+\begin{DoxyCompactList}\small\item\em Количество ошибок приема пакета до неисправности шины 1. \end{DoxyCompactList}\item 
+uint16\+\_\+t \mbox{\hyperlink{structcommon__register__space__ext__rom_a9e20154c6b508ea1fe7c316e112f2d87}{P\+L\+C\+\_\+\+Num\+Crc\+Errors\+For\+Defect\+\_\+\+B2}}
+\begin{DoxyCompactList}\small\item\em Количество ошибок приема пакета до неисправности шины 2. \end{DoxyCompactList}\item 
+uint16\+\_\+t \mbox{\hyperlink{structcommon__register__space__ext__rom_a7e56d897c3bb6e895ad1d682b45e9af1}{P\+L\+C\+\_\+\+Time\+To\+Repair}}
+\begin{DoxyCompactList}\small\item\em Максимально время переключения на резервный УМ, х10мс \end{DoxyCompactList}\item 
+uint16\+\_\+t \mbox{\hyperlink{structcommon__register__space__ext__rom_a65738cd951190832ba1adf79029567ec}{P\+L\+C\+\_\+\+Time\+Solo\+Work}}
+\begin{DoxyCompactList}\small\item\em Время работы без резервирующего УМ, с \end{DoxyCompactList}\item 
+uint16\+\_\+t \mbox{\hyperlink{structcommon__register__space__ext__rom_a0c37cac35f86ad074f5afbced1ec68d7}{P\+L\+C\+\_\+\+Dual\+Control}}
+\begin{DoxyCompactList}\small\item\em Реакция при одновременном управлении \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{structcommon__register__space__ext__rom_a93798da8bb62438512265e1c83ccfd19}{Reserv\+\_\+2}} \mbox{[}64\mbox{]}
+\begin{DoxyCompactList}\small\item\em РЕЗЕРВ \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Органиация пространства общих регистров для зеркализации во внешнем ПЗУ 
+
+\doxysubsection{Данные класса}
+\mbox{\Hypertarget{structcommon__register__space__ext__rom_a2f87692281c76d5e7940882033c66731}\label{structcommon__register__space__ext__rom_a2f87692281c76d5e7940882033c66731}} 
+\index{common\_register\_space\_ext\_rom@{common\_register\_space\_ext\_rom}!PLC\_BusConfig\_B1@{PLC\_BusConfig\_B1}}
+\index{PLC\_BusConfig\_B1@{PLC\_BusConfig\_B1}!common\_register\_space\_ext\_rom@{common\_register\_space\_ext\_rom}}
+\doxysubsubsection{\texorpdfstring{PLC\_BusConfig\_B1}{PLC\_BusConfig\_B1}}
+{\footnotesize\ttfamily uint32\+\_\+t common\+\_\+register\+\_\+space\+\_\+ext\+\_\+rom\+::\+P\+L\+C\+\_\+\+Bus\+Config\+\_\+\+B1}
+
+
+
+Конфигурация шины 1. 
+
+\mbox{\Hypertarget{structcommon__register__space__ext__rom_afa4160758302b6b93a9b36e5837eea60}\label{structcommon__register__space__ext__rom_afa4160758302b6b93a9b36e5837eea60}} 
+\index{common\_register\_space\_ext\_rom@{common\_register\_space\_ext\_rom}!PLC\_BusConfig\_B2@{PLC\_BusConfig\_B2}}
+\index{PLC\_BusConfig\_B2@{PLC\_BusConfig\_B2}!common\_register\_space\_ext\_rom@{common\_register\_space\_ext\_rom}}
+\doxysubsubsection{\texorpdfstring{PLC\_BusConfig\_B2}{PLC\_BusConfig\_B2}}
+{\footnotesize\ttfamily uint32\+\_\+t common\+\_\+register\+\_\+space\+\_\+ext\+\_\+rom\+::\+P\+L\+C\+\_\+\+Bus\+Config\+\_\+\+B2}
+
+
+
+Конфигурация шины 2. 
+
+\mbox{\Hypertarget{structcommon__register__space__ext__rom_aa315ceee8d8a72000dbc2f425f01907f}\label{structcommon__register__space__ext__rom_aa315ceee8d8a72000dbc2f425f01907f}} 
+\index{common\_register\_space\_ext\_rom@{common\_register\_space\_ext\_rom}!PLC\_DeviceInfo@{PLC\_DeviceInfo}}
+\index{PLC\_DeviceInfo@{PLC\_DeviceInfo}!common\_register\_space\_ext\_rom@{common\_register\_space\_ext\_rom}}
+\doxysubsubsection{\texorpdfstring{PLC\_DeviceInfo}{PLC\_DeviceInfo}}
+{\footnotesize\ttfamily uint8\+\_\+t common\+\_\+register\+\_\+space\+\_\+ext\+\_\+rom\+::\+P\+L\+C\+\_\+\+Device\+Info\mbox{[}1024\mbox{]}}
+
+
+
+Текстовая информация о модуле 
+
+\mbox{\Hypertarget{structcommon__register__space__ext__rom_a654cd1c6b191e3311ad10abac5341e44}\label{structcommon__register__space__ext__rom_a654cd1c6b191e3311ad10abac5341e44}} 
+\index{common\_register\_space\_ext\_rom@{common\_register\_space\_ext\_rom}!PLC\_DeviceType@{PLC\_DeviceType}}
+\index{PLC\_DeviceType@{PLC\_DeviceType}!common\_register\_space\_ext\_rom@{common\_register\_space\_ext\_rom}}
+\doxysubsubsection{\texorpdfstring{PLC\_DeviceType}{PLC\_DeviceType}}
+{\footnotesize\ttfamily \mbox{\hyperlink{external__rom_8h_ab79c29d4d73d5c6bf505514de8abfb5c}{device\+\_\+type}} common\+\_\+register\+\_\+space\+\_\+ext\+\_\+rom\+::\+P\+L\+C\+\_\+\+Device\+Type}
+
+
+
+Тип устройства 
+
+\mbox{\Hypertarget{structcommon__register__space__ext__rom_a0c37cac35f86ad074f5afbced1ec68d7}\label{structcommon__register__space__ext__rom_a0c37cac35f86ad074f5afbced1ec68d7}} 
+\index{common\_register\_space\_ext\_rom@{common\_register\_space\_ext\_rom}!PLC\_DualControl@{PLC\_DualControl}}
+\index{PLC\_DualControl@{PLC\_DualControl}!common\_register\_space\_ext\_rom@{common\_register\_space\_ext\_rom}}
+\doxysubsubsection{\texorpdfstring{PLC\_DualControl}{PLC\_DualControl}}
+{\footnotesize\ttfamily uint16\+\_\+t common\+\_\+register\+\_\+space\+\_\+ext\+\_\+rom\+::\+P\+L\+C\+\_\+\+Dual\+Control}
+
+
+
+Реакция при одновременном управлении 
+
+\mbox{\Hypertarget{structcommon__register__space__ext__rom_aa5e113ae43750669b7de5b3585208ce3}\label{structcommon__register__space__ext__rom_aa5e113ae43750669b7de5b3585208ce3}} 
+\index{common\_register\_space\_ext\_rom@{common\_register\_space\_ext\_rom}!PLC\_NumCrcErrorsForDefect\_B1@{PLC\_NumCrcErrorsForDefect\_B1}}
+\index{PLC\_NumCrcErrorsForDefect\_B1@{PLC\_NumCrcErrorsForDefect\_B1}!common\_register\_space\_ext\_rom@{common\_register\_space\_ext\_rom}}
+\doxysubsubsection{\texorpdfstring{PLC\_NumCrcErrorsForDefect\_B1}{PLC\_NumCrcErrorsForDefect\_B1}}
+{\footnotesize\ttfamily uint16\+\_\+t common\+\_\+register\+\_\+space\+\_\+ext\+\_\+rom\+::\+P\+L\+C\+\_\+\+Num\+Crc\+Errors\+For\+Defect\+\_\+\+B1}
+
+
+
+Количество ошибок приема пакета до неисправности шины 1. 
+
+\mbox{\Hypertarget{structcommon__register__space__ext__rom_a9e20154c6b508ea1fe7c316e112f2d87}\label{structcommon__register__space__ext__rom_a9e20154c6b508ea1fe7c316e112f2d87}} 
+\index{common\_register\_space\_ext\_rom@{common\_register\_space\_ext\_rom}!PLC\_NumCrcErrorsForDefect\_B2@{PLC\_NumCrcErrorsForDefect\_B2}}
+\index{PLC\_NumCrcErrorsForDefect\_B2@{PLC\_NumCrcErrorsForDefect\_B2}!common\_register\_space\_ext\_rom@{common\_register\_space\_ext\_rom}}
+\doxysubsubsection{\texorpdfstring{PLC\_NumCrcErrorsForDefect\_B2}{PLC\_NumCrcErrorsForDefect\_B2}}
+{\footnotesize\ttfamily uint16\+\_\+t common\+\_\+register\+\_\+space\+\_\+ext\+\_\+rom\+::\+P\+L\+C\+\_\+\+Num\+Crc\+Errors\+For\+Defect\+\_\+\+B2}
+
+
+
+Количество ошибок приема пакета до неисправности шины 2. 
+
+\mbox{\Hypertarget{structcommon__register__space__ext__rom_ac241de2a572726a1cdf305e5877e063b}\label{structcommon__register__space__ext__rom_ac241de2a572726a1cdf305e5877e063b}} 
+\index{common\_register\_space\_ext\_rom@{common\_register\_space\_ext\_rom}!PLC\_SerialNumber@{PLC\_SerialNumber}}
+\index{PLC\_SerialNumber@{PLC\_SerialNumber}!common\_register\_space\_ext\_rom@{common\_register\_space\_ext\_rom}}
+\doxysubsubsection{\texorpdfstring{PLC\_SerialNumber}{PLC\_SerialNumber}}
+{\footnotesize\ttfamily uint32\+\_\+t common\+\_\+register\+\_\+space\+\_\+ext\+\_\+rom\+::\+P\+L\+C\+\_\+\+Serial\+Number}
+
+
+
+Серийный номер устройства 
+
+\mbox{\Hypertarget{structcommon__register__space__ext__rom_a2bea3a6689853dfab4b1154a91ae32ee}\label{structcommon__register__space__ext__rom_a2bea3a6689853dfab4b1154a91ae32ee}} 
+\index{common\_register\_space\_ext\_rom@{common\_register\_space\_ext\_rom}!PLC\_TimeoutForDefect\_B1@{PLC\_TimeoutForDefect\_B1}}
+\index{PLC\_TimeoutForDefect\_B1@{PLC\_TimeoutForDefect\_B1}!common\_register\_space\_ext\_rom@{common\_register\_space\_ext\_rom}}
+\doxysubsubsection{\texorpdfstring{PLC\_TimeoutForDefect\_B1}{PLC\_TimeoutForDefect\_B1}}
+{\footnotesize\ttfamily uint32\+\_\+t common\+\_\+register\+\_\+space\+\_\+ext\+\_\+rom\+::\+P\+L\+C\+\_\+\+Timeout\+For\+Defect\+\_\+\+B1}
+
+
+
+Время без связи до неиспр шины 1, мс 
+
+\mbox{\Hypertarget{structcommon__register__space__ext__rom_a4e9b070882f84e14036eff9f3e525f0b}\label{structcommon__register__space__ext__rom_a4e9b070882f84e14036eff9f3e525f0b}} 
+\index{common\_register\_space\_ext\_rom@{common\_register\_space\_ext\_rom}!PLC\_TimeoutForDefect\_B2@{PLC\_TimeoutForDefect\_B2}}
+\index{PLC\_TimeoutForDefect\_B2@{PLC\_TimeoutForDefect\_B2}!common\_register\_space\_ext\_rom@{common\_register\_space\_ext\_rom}}
+\doxysubsubsection{\texorpdfstring{PLC\_TimeoutForDefect\_B2}{PLC\_TimeoutForDefect\_B2}}
+{\footnotesize\ttfamily uint32\+\_\+t common\+\_\+register\+\_\+space\+\_\+ext\+\_\+rom\+::\+P\+L\+C\+\_\+\+Timeout\+For\+Defect\+\_\+\+B2}
+
+
+
+Время без связи до неиспр шины 2, мс 
+
+\mbox{\Hypertarget{structcommon__register__space__ext__rom_a65738cd951190832ba1adf79029567ec}\label{structcommon__register__space__ext__rom_a65738cd951190832ba1adf79029567ec}} 
+\index{common\_register\_space\_ext\_rom@{common\_register\_space\_ext\_rom}!PLC\_TimeSoloWork@{PLC\_TimeSoloWork}}
+\index{PLC\_TimeSoloWork@{PLC\_TimeSoloWork}!common\_register\_space\_ext\_rom@{common\_register\_space\_ext\_rom}}
+\doxysubsubsection{\texorpdfstring{PLC\_TimeSoloWork}{PLC\_TimeSoloWork}}
+{\footnotesize\ttfamily uint16\+\_\+t common\+\_\+register\+\_\+space\+\_\+ext\+\_\+rom\+::\+P\+L\+C\+\_\+\+Time\+Solo\+Work}
+
+
+
+Время работы без резервирующего УМ, с 
+
+\mbox{\Hypertarget{structcommon__register__space__ext__rom_a7e56d897c3bb6e895ad1d682b45e9af1}\label{structcommon__register__space__ext__rom_a7e56d897c3bb6e895ad1d682b45e9af1}} 
+\index{common\_register\_space\_ext\_rom@{common\_register\_space\_ext\_rom}!PLC\_TimeToRepair@{PLC\_TimeToRepair}}
+\index{PLC\_TimeToRepair@{PLC\_TimeToRepair}!common\_register\_space\_ext\_rom@{common\_register\_space\_ext\_rom}}
+\doxysubsubsection{\texorpdfstring{PLC\_TimeToRepair}{PLC\_TimeToRepair}}
+{\footnotesize\ttfamily uint16\+\_\+t common\+\_\+register\+\_\+space\+\_\+ext\+\_\+rom\+::\+P\+L\+C\+\_\+\+Time\+To\+Repair}
+
+
+
+Максимально время переключения на резервный УМ, х10мс 
+
+\mbox{\Hypertarget{structcommon__register__space__ext__rom_a93798da8bb62438512265e1c83ccfd19}\label{structcommon__register__space__ext__rom_a93798da8bb62438512265e1c83ccfd19}} 
+\index{common\_register\_space\_ext\_rom@{common\_register\_space\_ext\_rom}!Reserv\_2@{Reserv\_2}}
+\index{Reserv\_2@{Reserv\_2}!common\_register\_space\_ext\_rom@{common\_register\_space\_ext\_rom}}
+\doxysubsubsection{\texorpdfstring{Reserv\_2}{Reserv\_2}}
+{\footnotesize\ttfamily uint8\+\_\+t common\+\_\+register\+\_\+space\+\_\+ext\+\_\+rom\+::\+Reserv\+\_\+2\mbox{[}64\mbox{]}}
+
+
+
+РЕЗЕРВ 
+
+
+
+Объявления и описания членов структуры находятся в файле\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{external__rom_8h}{external\+\_\+rom.\+h}}\end{DoxyCompactItemize}

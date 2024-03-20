@@ -1,0 +1,70 @@
+\hypertarget{dma_8h}{}\doxysection{Файл dma.\+h}
+\label{dma_8h}\index{dma.h@{dma.h}}
+
+
+Заголовочный файл с описанием A\+PI для работы с D\+MA.  
+
+
+{\ttfamily \#include \char`\"{}uart.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}mdr32\+\_\+drivers.\+h\char`\"{}}\newline
+Граф включаемых заголовочных файлов для dma.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dma_8h__incl}
+\end{center}
+\end{figure}
+Граф файлов, в которые включается этот файл\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=234pt]{dma_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Функции}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{dma_8h_a88f1960e6ba93568ac05f5bfbbcfe7eb}{dma\+\_\+common\+\_\+init}} (void)
+\begin{DoxyCompactList}\small\item\em Выполняет общую инициализацию D\+MA. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Заголовочный файл с описанием A\+PI для работы с D\+MA. 
+
+
+
+\doxysubsection{Функции}
+\mbox{\Hypertarget{dma_8h_a88f1960e6ba93568ac05f5bfbbcfe7eb}\label{dma_8h_a88f1960e6ba93568ac05f5bfbbcfe7eb}} 
+\index{dma.h@{dma.h}!dma\_common\_init@{dma\_common\_init}}
+\index{dma\_common\_init@{dma\_common\_init}!dma.h@{dma.h}}
+\doxysubsubsection{\texorpdfstring{dma\_common\_init()}{dma\_common\_init()}}
+{\footnotesize\ttfamily void dma\+\_\+common\+\_\+init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Выполняет общую инициализацию D\+MA. 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{44 \{}
+\DoxyCodeLine{45     \textcolor{comment}{// Разрешить тактирование DMA}}
+\DoxyCodeLine{46     RST\_CLK\_PCLKcmd(RST\_CLK\_PCLK\_RST\_CLK | RST\_CLK\_PCLK\_DMA | RST\_CLK\_PCLK\_SSP1 |RST\_CLK\_PCLK\_SSP2 |RST\_CLK\_PCLK\_SSP3, ENABLE);}
+\DoxyCodeLine{47 \textcolor{preprocessor}{    \#ifdef K1986VE3T}}
+\DoxyCodeLine{48     RST\_CLK\_PCLKcmd(RST\_CLK\_PCLK\_SSP4, ENABLE);}
+\DoxyCodeLine{49 \textcolor{preprocessor}{    \#endif}}
+\DoxyCodeLine{50     \textcolor{comment}{// Запретить все прерывания, в том числе от SSP}}
+\DoxyCodeLine{51     NVIC-\/>ICPR[0] = 0xFFFFFFFF;}
+\DoxyCodeLine{52     NVIC-\/>ICER[0] = 0xFFFFFFFF;}
+\DoxyCodeLine{53     }
+\DoxyCodeLine{54     MDR\_SSP1-\/>DMACR=0;}
+\DoxyCodeLine{55     MDR\_SSP2-\/>DMACR=0;}
+\DoxyCodeLine{56     MDR\_SSP3-\/>DMACR=0;}
+\DoxyCodeLine{57 \textcolor{preprocessor}{    \#ifdef K1986VE3T}}
+\DoxyCodeLine{58     MDR\_SSP4-\/>DMACR=0;}
+\DoxyCodeLine{59 \textcolor{preprocessor}{    \#endif}}
+\DoxyCodeLine{60     \textcolor{comment}{// Сбросить все настройки DMA}}
+\DoxyCodeLine{61     DMA\_DeInit();}
+\DoxyCodeLine{62 \}}
+
+\end{DoxyCode}

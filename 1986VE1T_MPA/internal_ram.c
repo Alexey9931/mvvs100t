@@ -1,24 +1,25 @@
 /*!
  \file
- \brief Файл с реализацией API для работы с областью памяти внутреннего ОЗУ
+ \brief Р¤Р°Р№Р» СЃ СЂРµР°Р»РёР·Р°С†РёРµР№ API РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ РѕР±Р»Р°СЃС‚СЊСЋ РїР°РјСЏС‚Рё РІРЅСѓС‚СЂРµРЅРЅРµРіРѕ РћР—РЈ
 */
 
 #include "internal_ram.h"
 
+/// РЈРєР°Р·Р°С‚РµР»СЊ РЅР° "СЃР°РјРѕРґРµР»СЊРЅСѓСЋ" РєСѓС‡Сѓ
 extern int_ram_heap *heap_ptr;
 
 /*!
-	Функция выделения свободной памяти во внешнем ОЗУ (страниц памяти)
+	Р¤СѓРЅРєС†РёСЏ РІС‹РґРµР»РµРЅРёСЏ СЃРІРѕР±РѕРґРЅРѕР№ РїР°РјСЏС‚Рё РІРѕ РІРЅРµС€РЅРµРј РћР—РЈ (СЃС‚СЂР°РЅРёС† РїР°РјСЏС‚Рё)
 */
 uint8_t* malloc_ram_pages(uint32_t size)
 {
-	uint32_t page_num = size/PAGE_SIZE + 1; //кол-во выделяемых страниц
-	uint32_t page_cnt; //счетчик страниц
-	uint32_t consecutive_page_cnt; //счетчик подряд идущих пустых страниц
+	uint32_t page_num = size/PAGE_SIZE + 1; // РљРѕР»-РІРѕ РІС‹РґРµР»СЏРµРјС‹С… СЃС‚СЂР°РЅРёС†
+	uint32_t page_cnt; // РЎС‡РµС‚С‡РёРє СЃС‚СЂР°РЅРёС†
+	uint32_t consecutive_page_cnt; // РЎС‡РµС‚С‡РёРє РїРѕРґСЂСЏРґ РёРґСѓС‰РёС… РїСѓСЃС‚С‹С… СЃС‚СЂР°РЅРёС†
 	 
 	for (page_cnt = 0; (page_cnt + page_num) < PAGE_SIZE; page_cnt++)
 	{
-		//проверяем что подряд идут пустые страницы памяти
+		// РџСЂРѕРІРµСЂСЏРµРј, С‡С‚Рѕ РїРѕРґСЂСЏРґ РёРґСѓС‚ РїСѓСЃС‚С‹Рµ СЃС‚СЂР°РЅРёС†С‹ РїР°РјСЏС‚Рё
 		for (consecutive_page_cnt = 0; consecutive_page_cnt < page_num; consecutive_page_cnt++)
 		{
 			if (heap_ptr->memory_page_status[page_cnt + consecutive_page_cnt] != 0)
@@ -27,10 +28,10 @@ uint8_t* malloc_ram_pages(uint32_t size)
 				break;
 			}
 		}
-		//если удалось найти требуемое кол-во подряд идущих пустых страницы, то возвращаяем указатель
+		// Р•СЃР»Рё СѓРґР°Р»РѕСЃСЊ РЅР°Р№С‚Рё С‚СЂРµР±СѓРµРјРѕРµ РєРѕР»-РІРѕ РїРѕРґСЂСЏРґ РёРґСѓС‰РёС… РїСѓСЃС‚С‹С… СЃС‚СЂР°РЅРёС†С‹, С‚Рѕ РІРѕР·РІСЂР°С‰Р°СЏРµРј СѓРєР°Р·Р°С‚РµР»СЊ
 		if (consecutive_page_cnt == page_num)	
 		{
-			//обновляем статус страниц
+			// РћР±РЅРѕРІР»СЏРµРј СЃС‚Р°С‚СѓСЃ СЃС‚СЂР°РЅРёС†
 			for (consecutive_page_cnt = 0; consecutive_page_cnt < page_num; consecutive_page_cnt++)
 			{
 				memset(&heap_ptr->memory_page_status[page_cnt + consecutive_page_cnt], 1, sizeof(heap_ptr->memory_page_status[page_cnt + consecutive_page_cnt]));
@@ -42,18 +43,18 @@ uint8_t* malloc_ram_pages(uint32_t size)
 	return 0;
 }
 /*!
-	Функция освобождения памяти во внешнем ОЗУ (страниц памяти)
+	Р¤СѓРЅРєС†РёСЏ РѕСЃРІРѕР±РѕР¶РґРµРЅРёСЏ РїР°РјСЏС‚Рё РІРѕ РІРЅРµС€РЅРµРј РћР—РЈ (СЃС‚СЂР°РЅРёС† РїР°РјСЏС‚Рё)
 */
 void free_ram_pages(uint8_t *page_addr, uint32_t size)
 {
-	uint32_t page_num = size/PAGE_SIZE + 1; //кол-во освобождаемых страниц
-	uint32_t page_cnt; //счетчик страниц
+	uint32_t page_num = size/PAGE_SIZE + 1; // РљРѕР»-РІРѕ РѕСЃРІРѕР±РѕР¶РґР°РµРјС‹С… СЃС‚СЂР°РЅРёС†
+	uint32_t page_cnt; // РЎС‡РµС‚С‡РёРє СЃС‚СЂР°РЅРёС†
 	 
 	for (page_cnt = 0; (page_cnt + page_num) < PAGE_SIZE; page_cnt++)
 	{
 		if (page_addr == &heap_ptr->memory_page_space[page_cnt][PAGE_SIZE])
 		{
-			//обновляем статус страниц
+			// РћР±РЅРѕРІР»СЏРµРј СЃС‚Р°С‚СѓСЃ СЃС‚СЂР°РЅРёС†
 			for (uint32_t i = 0; i < page_num; i++)
 			{
 				memset(&heap_ptr->memory_page_status[page_cnt + i], 0, sizeof(heap_ptr->memory_page_status[page_cnt + i]));

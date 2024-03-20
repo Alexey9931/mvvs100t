@@ -1,21 +1,23 @@
 /*!
  \file
- \brief Файл с реализацией API для работы с областью памяти внешнего ПЗУ
+ \brief Р¤Р°Р№Р» СЃ СЂРµР°Р»РёР·Р°С†РёРµР№ API РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ РѕР±Р»Р°СЃС‚СЊСЋ РїР°РјСЏС‚Рё РІРЅРµС€РЅРµРіРѕ РџР—РЈ
 */
 
 /*
- *	Внешняя память ПЗУ 1636Р1 подключается по внешней системной шине в 8-битном режиме данных.
- *	Сдвиг адресации делать не нужно A0->A0, A1->A1 и тд (т.к. 8 битный режим EBC)
+ *	Р’РЅРµС€РЅСЏСЏ РїР°РјСЏС‚СЊ РџР—РЈ 1636Р 1 РїРѕРґРєР»СЋС‡Р°РµС‚СЃСЏ РїРѕ РІРЅРµС€РЅРµР№ СЃРёСЃС‚РµРјРЅРѕР№ С€РёРЅРµ РІ 8-Р±РёС‚РЅРѕРј СЂРµР¶РёРјРµ РґР°РЅРЅС‹С….
+ *	РЎРґРІРёРі Р°РґСЂРµСЃР°С†РёРё РґРµР»Р°С‚СЊ РЅРµ РЅСѓР¶РЅРѕ A0->A0, A1->A1 Рё С‚Рґ (С‚.Рє. 8 Р±РёС‚РЅС‹Р№ СЂРµР¶РёРј EBC)
 */
 
 #include "external_ram.h"
 #include "ebc.h"
 
-#define FIRST_TIME_INIT //макрос для записи данных (по умолчанию) в ПЗУ в первый раз
+#define FIRST_TIME_INIT ///< РњР°РєСЂРѕСЃ РґР»СЏ Р·Р°РїРёСЃРё РґР°РЅРЅС‹С… (РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ) РІ РџР—РЈ РІ РїРµСЂРІС‹Р№ СЂР°Р·
 
+/// РљРѕРЅСЃС‚Р°РЅС‚С‹ РїРѕР»РёРЅРѕРјРѕРІ
 extern float polyn_ch_consts[MAX_CHANEL_NUMBER][7];
+
 /*!
-	Функция инициализации области памяти внешнего ПЗУ
+	Р¤СѓРЅРєС†РёСЏ РёРЅРёС†РёР°Р»РёР·Р°С†РёРё РѕР±Р»Р°СЃС‚Рё РїР°РјСЏС‚Рё РІРЅРµС€РЅРµРіРѕ РџР—РЈ
 */
 void init_external_rom_space(void)
 {
@@ -23,9 +25,10 @@ void init_external_rom_space(void)
 		common_rom_registers 	common_regs;
 		mpa_rom_registers			mpa_regs;
 		
+		// РћС‡РёСЃС‚РєР° РџР—РЈ
 		erase_rom();
 		
-		//инициализация общих регистров
+		// РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РѕР±С‰РёС… СЂРµРіРёСЃС‚СЂРѕРІ
 		strncpy(&common_regs.PLC_DeviceInfo,DEV_INFO,sizeof(DEV_INFO));	
 		common_regs.PLC_DeviceType.revision = REVISION;
 		common_regs.PLC_DeviceType.modification = MODIFICATION;
@@ -42,14 +45,14 @@ void init_external_rom_space(void)
 		common_regs.PLC_DualControl = DUAL_CONTROL;
 		memset(&common_regs.Reserv_2, 0, sizeof(common_regs.Reserv_2));
 		
-		//инциализация регистров МПА
+		// РРЅС†РёР°Р»РёР·Р°С†РёСЏ СЂРµРіРёСЃС‚СЂРѕРІ РњРџРђ
 		for (uint8_t i = 0; i < MAX_CHANEL_NUMBER; i++)
 		{
 			RESET_BIT(i, mpa_regs.AI_OperMode.adc_chs_mode);
 			mpa_regs.AI_NumForAverag[i] = NUM_FOR_AVERAGE;
 			mpa_regs.AI_MinCodeADC[i] = MIN_CODE_ADC;
 			mpa_regs.AI_MaxCodeADC[i] = MAX_CODE_ADC;
-			//такие значения коэф. полиномов только для напряжения 0-10В
+			// РўР°РєРёРµ Р·РЅР°С‡РµРЅРёСЏ РєРѕСЌС„. РїРѕР»РёРЅРѕРјРѕРІ С‚РѕР»СЊРєРѕ РґР»СЏ РЅР°РїСЂСЏР¶РµРЅРёСЏ 0-10Р’
 			mpa_regs.AI_PolynConst0[i] = polyn_ch_consts[i][0];
 			mpa_regs.AI_PolynConst1[i] = polyn_ch_consts[i][1];
 			mpa_regs.AI_PolynConst2[i] = polyn_ch_consts[i][2];
@@ -63,7 +66,7 @@ void init_external_rom_space(void)
 		memset(mpa_regs.Reserv_4, 0, sizeof(mpa_regs.Reserv_4));
 		memset(mpa_regs.Reserv_5, 0, sizeof(mpa_regs.Reserv_5));
 		
-		//копирование в ПЗУ
+		// РљРѕРїРёСЂРѕРІР°РЅРёРµ РґР°РЅРЅС‹С… РІ РџР—РЈ
 		memcpy_to_rom(ROM_REGISTER_SPACE_START_ADDR, &common_regs, sizeof(common_regs));
 		memcpy_to_rom(ROM_REGISTER_SPACE_START_ADDR + sizeof(common_regs), &mpa_regs, sizeof(mpa_regs));
 		
@@ -71,13 +74,13 @@ void init_external_rom_space(void)
 }
 
 /*!
-	Функция записи байта в ПЗУ
+	Р¤СѓРЅРєС†РёСЏ Р·Р°РїРёСЃРё Р±Р°Р№С‚Р° РІ РџР—РЈ
 */
 uint8_t write_byte_rom(uint32_t dest_addr, uint8_t byte)
 {		  
 	uint8_t status;
 	
-  /* Configure PORTA pins 0..15 for inout ExtBus data  */
+	// РљРѕРЅС„РёРіСѓСЂРёСЂРѕРІР°РЅРёРµ РІС‹РІРѕРґРѕРІ EBC РЅР° РІС‹С…РѕРґ
 	MDR_PORTA->OE = 0x0000FFFF;
 	
 	HWREG(EXT_ROM_START_ADDR + 0x555) = 0xAA;
@@ -85,42 +88,44 @@ uint8_t write_byte_rom(uint32_t dest_addr, uint8_t byte)
 	HWREG(EXT_ROM_START_ADDR + 0x555) = 0xA0;
 	HWREG(dest_addr + EXT_ROM_START_ADDR) = byte;
 
+	// РљРѕРЅС„РёРіСѓСЂРёСЂРѕРІР°РЅРёРµ РІС‹РІРѕРґРѕРІ EBC РЅР° РІС…РѕРґ
 	MDR_PORTA->OE = 0x00000000;
 	
-	// Теперь проверяем, ывполнилась ли запись успешно (успех = бит D7 == data[7])
+	// РўРµРїРµСЂСЊ РїСЂРѕРІРµСЂСЏРµРј, С‹РІРїРѕР»РЅРёР»Р°СЃСЊ Р»Рё Р·Р°РїРёСЃСЊ СѓСЃРїРµС€РЅРѕ (СѓСЃРїРµС… = Р±РёС‚ D7 == data[7])
 	do status = HWREG(dest_addr + EXT_ROM_START_ADDR);
 	while(((status & 0x80) != (byte & 0x80)) & ((status & 0x20) == 0));
 	
 	if((status & 0x20) != 0) 
 	{
 		status = HWREG(dest_addr + EXT_ROM_START_ADDR);
-		if((status & 0x80) == (byte & 0x80)) //Успех
+		if((status & 0x80) == (byte & 0x80)) //РЈСЃРїРµС…
 		{
 			return 0;
 		}
 		else 
 		{
-			return 1; // Error write
+			return 1; // РћС€РёР±РєР° Р·Р°РїРёСЃРё
 		}
 	}
-	else if((status & 0x80) == (byte & 0x80)) //Успех
+	else if((status & 0x80) == (byte & 0x80)) // РЈСЃРїРµС…
 	{
 		return 0;
 	}
-	return 2; // Unknow state
+	return 2; 
 }
 
 /*!
-	Функция чтения байта из ПЗУ
+	Р¤СѓРЅРєС†РёСЏ С‡С‚РµРЅРёСЏ Р±Р°Р№С‚Р° РёР· РџР—РЈ
 */
 uint8_t read_byte_rom(uint32_t dest_addr)
 { 
+	// РљРѕРЅС„РёРіСѓСЂРёСЂРѕРІР°РЅРёРµ РІС‹РІРѕРґРѕРІ EBC РЅР° РІС…РѕРґ
 	MDR_PORTA->OE = 0x00000000;	
 	return (HWREG(dest_addr));
 }
 
 /*!
-	Функция копирования области памяти в ПЗУ
+	Р¤СѓРЅРєС†РёСЏ РєРѕРїРёСЂРѕРІР°РЅРёСЏ РѕР±Р»Р°СЃС‚Рё РїР°РјСЏС‚Рё РІ РџР—РЈ
 */
 void memcpy_to_rom(uint32_t dest_addr, void *src_addr, uint32_t size)
 {
@@ -131,18 +136,19 @@ void memcpy_to_rom(uint32_t dest_addr, void *src_addr, uint32_t size)
 }
 
 /*!
-	Функция очистки памяти ПЗУ
+	Р¤СѓРЅРєС†РёСЏ РѕС‡РёСЃС‚РєРё РїР°РјСЏС‚Рё РџР—РЈ
 */
 void erase_rom(void)
 {
 	uint8_t status;
 	
-	//Команда Reset
+	// РљРѕРјР°РЅРґР° Reset
 	HWREG(EXT_ROM_START_ADDR) = 0xF0;
 	
+	// РљРѕРЅС„РёРіСѓСЂРёСЂРѕРІР°РЅРёРµ РІС‹РІРѕРґРѕРІ EBC РЅР° РІС‹С…РѕРґ
 	MDR_PORTA->OE = 0x0000FFFF;
 	
-	//CHIP erase
+	// РћС‚РїСЂР°РІРєР° СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РµР№ РєРѕРјР°РЅРґС‹
 	HWREG(EXT_ROM_START_ADDR + 0x555) = 0xAA;
 	HWREG(EXT_ROM_START_ADDR + 0x2AA) = 0x55;
 	HWREG(EXT_ROM_START_ADDR + 0x555) = 0x80;
@@ -150,7 +156,7 @@ void erase_rom(void)
 	HWREG(EXT_ROM_START_ADDR + 0x2AA) = 0x55;
 	HWREG(EXT_ROM_START_ADDR + 0x555) = 0x10;
 	
-	
+	// РљРѕРЅС„РёРіСѓСЂРёСЂРѕРІР°РЅРёРµ РІС‹РІРѕРґРѕРІ EBC РЅР° РІС…РѕРґ
 	MDR_PORTA->OE = 0x00000000;
 	
 	do status = HWREG(EXT_ROM_START_ADDR);

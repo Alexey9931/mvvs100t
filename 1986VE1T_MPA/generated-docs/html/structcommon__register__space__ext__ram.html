@@ -1,0 +1,471 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.20"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>ПО для макета МПА (100 тема): Структура common_register_space_ext_ram</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">ПО для макета МПА (100 тема)
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.20 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-attribs">Открытые атрибуты</a> &#124;
+<a href="structcommon__register__space__ext__ram-members.html">Полный список членов класса</a>  </div>
+  <div class="headertitle">
+<div class="title">Структура common_register_space_ext_ram</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Органиация пространства общих регистров во внешнем ОЗУ  
+ <a href="structcommon__register__space__ext__ram.html#details">Подробнее...</a></p>
+
+<p><code>#include &lt;<a class="el" href="external__ram_8h_source.html">external_ram.h</a>&gt;</code></p>
+<div class="dynheader">
+Граф связей класса common_register_space_ext_ram:</div>
+<div class="dyncontent">
+<div class="center"><img src="structcommon__register__space__ext__ram__coll__graph.png" border="0" usemap="#acommon__register__space__ext__ram_coll__map" alt="Collaboration graph"/></div>
+<map name="common__register__space__ext__ram_coll__map" id="common__register__space__ext__ram_coll__map">
+<area shape="rect" title="Органиация пространства общих регистров во внешнем ОЗУ" alt="" coords="693,150,875,191"/>
+<area shape="rect" href="structconfig__struct.html" title="Структура с битовыми полями для регистра конфигурация" alt="" coords="347,5,453,32"/>
+<area shape="rect" href="structplc__sof__ver__struct.html" title="Структура с битовыми полями для регистра версия ПО" alt="" coords="330,56,470,83"/>
+<area shape="rect" href="structself__diag__struct.html" title="Структура с битовыми полями для регистра неисправность самодиагностики" alt="" coords="337,107,463,133"/>
+<area shape="rect" href="structpower__failure__struct.html" title="Структура с битовыми полями для регистра неисправность питания" alt="" coords="323,157,477,184"/>
+<area shape="rect" href="structcommon__register__space__ext__rom.html" title="Органиация пространства общих регистров для зеркализации во внешнем ПЗУ" alt="" coords="309,209,491,250"/>
+<area shape="rect" href="structdevice__type__struct.html" title="Структура с битовыми полями для регистра тип устройства" alt="" coords="5,216,151,243"/>
+<area shape="rect" href="structdevice__address__struct.html" title="Структура с битовыми полями для регистра адрес устройства" alt="" coords="317,275,483,301"/>
+<area shape="rect" href="structbus__defect__struct.html" title="Структура с битовыми полями для регистра неисправность шины" alt="" coords="331,329,469,356"/>
+</map>
+<center><span class="legend">[<a href="graph_legend.html">см. легенду</a>]</span></center></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Открытые атрибуты</h2></td></tr>
+<tr class="memitem:a23be17a22dd1b33e9612afaa9fb5cbb6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="external__ram_8h.html#a3e996289f121b60086eeb46de8f62126">plc_soft_ver</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcommon__register__space__ext__ram.html#a23be17a22dd1b33e9612afaa9fb5cbb6">PLC_SoftVer</a></td></tr>
+<tr class="memdesc:a23be17a22dd1b33e9612afaa9fb5cbb6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Версия ПО <br  />
+  <a href="structcommon__register__space__ext__ram.html#a23be17a22dd1b33e9612afaa9fb5cbb6">Подробнее...</a><br /></td></tr>
+<tr class="separator:a23be17a22dd1b33e9612afaa9fb5cbb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41f4f575b584bacda875396b0bb7edb8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="external__ram_8h.html#a2dac5dc7ff578e21da8e0e5008834360">device_config</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcommon__register__space__ext__ram.html#a41f4f575b584bacda875396b0bb7edb8">PLC_Config</a></td></tr>
+<tr class="memdesc:a41f4f575b584bacda875396b0bb7edb8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Конфигурация устройства  <a href="structcommon__register__space__ext__ram.html#a41f4f575b584bacda875396b0bb7edb8">Подробнее...</a><br /></td></tr>
+<tr class="separator:a41f4f575b584bacda875396b0bb7edb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a98e192cc41987223a2ee0f3c47d82bbc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="external__ram_8h.html#aaac64f1a34f5aa60a1e502b91a23fce8">device_address</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcommon__register__space__ext__ram.html#a98e192cc41987223a2ee0f3c47d82bbc">PLC_PMAddr</a></td></tr>
+<tr class="memdesc:a98e192cc41987223a2ee0f3c47d82bbc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Адрес устройства  <a href="structcommon__register__space__ext__ram.html#a98e192cc41987223a2ee0f3c47d82bbc">Подробнее...</a><br /></td></tr>
+<tr class="separator:a98e192cc41987223a2ee0f3c47d82bbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64bd210afad78487c9193a8109318a5e"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcommon__register__space__ext__ram.html#a64bd210afad78487c9193a8109318a5e">PLC_Durat</a></td></tr>
+<tr class="memdesc:a64bd210afad78487c9193a8109318a5e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Время с момента запуска, с  <a href="structcommon__register__space__ext__ram.html#a64bd210afad78487c9193a8109318a5e">Подробнее...</a><br /></td></tr>
+<tr class="separator:a64bd210afad78487c9193a8109318a5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a96150658343a9975428f52d86dfc70"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcommon__register__space__ext__ram.html#a5a96150658343a9975428f52d86dfc70">PLC_CM_State</a></td></tr>
+<tr class="memdesc:a5a96150658343a9975428f52d86dfc70"><td class="mdescLeft">&#160;</td><td class="mdescRight">Состояние автомата выбора УМ  <a href="structcommon__register__space__ext__ram.html#a5a96150658343a9975428f52d86dfc70">Подробнее...</a><br /></td></tr>
+<tr class="separator:a5a96150658343a9975428f52d86dfc70"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e2c758faf568b5a9c8715256ef9af97"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcommon__register__space__ext__ram.html#a4e2c758faf568b5a9c8715256ef9af97">PLC_CorrPackFromDevice_B1</a></td></tr>
+<tr class="memdesc:a4e2c758faf568b5a9c8715256ef9af97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Корректных пакетов по Ш1, от устройства  <a href="structcommon__register__space__ext__ram.html#a4e2c758faf568b5a9c8715256ef9af97">Подробнее...</a><br /></td></tr>
+<tr class="separator:a4e2c758faf568b5a9c8715256ef9af97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a45af96191489245a2761ab66213ab2"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcommon__register__space__ext__ram.html#a6a45af96191489245a2761ab66213ab2">PLC_CorrPackToDevice_B1</a></td></tr>
+<tr class="memdesc:a6a45af96191489245a2761ab66213ab2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Корректных пакетов по Ш1, к устройству  <a href="structcommon__register__space__ext__ram.html#a6a45af96191489245a2761ab66213ab2">Подробнее...</a><br /></td></tr>
+<tr class="separator:a6a45af96191489245a2761ab66213ab2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9137275729f93cc8dcfb6e36577708f6"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcommon__register__space__ext__ram.html#a9137275729f93cc8dcfb6e36577708f6">PLC_ErrPackToDevice_B1</a></td></tr>
+<tr class="memdesc:a9137275729f93cc8dcfb6e36577708f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ошибок приема пакета по Ш1.  <a href="structcommon__register__space__ext__ram.html#a9137275729f93cc8dcfb6e36577708f6">Подробнее...</a><br /></td></tr>
+<tr class="separator:a9137275729f93cc8dcfb6e36577708f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65bb90f3b47e619d9c5739cd930e1765"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcommon__register__space__ext__ram.html#a65bb90f3b47e619d9c5739cd930e1765">PLC_ErrPackFromDevice_B1</a></td></tr>
+<tr class="memdesc:a65bb90f3b47e619d9c5739cd930e1765"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ошибок отправки пакета по Ш1.  <a href="structcommon__register__space__ext__ram.html#a65bb90f3b47e619d9c5739cd930e1765">Подробнее...</a><br /></td></tr>
+<tr class="separator:a65bb90f3b47e619d9c5739cd930e1765"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad3936c82fcda75e3b43e1869fd0fb97f"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcommon__register__space__ext__ram.html#ad3936c82fcda75e3b43e1869fd0fb97f">PLC_CorrPackFromDevice_B2</a></td></tr>
+<tr class="memdesc:ad3936c82fcda75e3b43e1869fd0fb97f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Корректных пакетов по Ш2, от устройства  <a href="structcommon__register__space__ext__ram.html#ad3936c82fcda75e3b43e1869fd0fb97f">Подробнее...</a><br /></td></tr>
+<tr class="separator:ad3936c82fcda75e3b43e1869fd0fb97f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a49d5a2f201634517f6b0c3b8b0c7426a"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcommon__register__space__ext__ram.html#a49d5a2f201634517f6b0c3b8b0c7426a">PLC_CorrPackToDevice_B2</a></td></tr>
+<tr class="memdesc:a49d5a2f201634517f6b0c3b8b0c7426a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Корректных пакетов по Ш2, к устройству  <a href="structcommon__register__space__ext__ram.html#a49d5a2f201634517f6b0c3b8b0c7426a">Подробнее...</a><br /></td></tr>
+<tr class="separator:a49d5a2f201634517f6b0c3b8b0c7426a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5dfba01ac730555fcf94207da8dac540"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcommon__register__space__ext__ram.html#a5dfba01ac730555fcf94207da8dac540">PLC_ErrPackToDevice_B2</a></td></tr>
+<tr class="memdesc:a5dfba01ac730555fcf94207da8dac540"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ошибок приема пакета по Ш2.  <a href="structcommon__register__space__ext__ram.html#a5dfba01ac730555fcf94207da8dac540">Подробнее...</a><br /></td></tr>
+<tr class="separator:a5dfba01ac730555fcf94207da8dac540"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac15455ee68731cbe049caadc7cd01970"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcommon__register__space__ext__ram.html#ac15455ee68731cbe049caadc7cd01970">PLC_ErrPackFromDevice_B2</a></td></tr>
+<tr class="memdesc:ac15455ee68731cbe049caadc7cd01970"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ошибок отправки пакета по Ш2.  <a href="structcommon__register__space__ext__ram.html#ac15455ee68731cbe049caadc7cd01970">Подробнее...</a><br /></td></tr>
+<tr class="separator:ac15455ee68731cbe049caadc7cd01970"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a69676d2a978b4e5a1049c6ed5ddd7491"><td class="memItemLeft" align="right" valign="top"><a class="el" href="external__ram_8h.html#a0af0eff1baae45b5c07dbb112e449709">power_failure</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcommon__register__space__ext__ram.html#a69676d2a978b4e5a1049c6ed5ddd7491">PLC_PowerDefect</a></td></tr>
+<tr class="memdesc:a69676d2a978b4e5a1049c6ed5ddd7491"><td class="mdescLeft">&#160;</td><td class="mdescRight">Неиспр питания  <a href="structcommon__register__space__ext__ram.html#a69676d2a978b4e5a1049c6ed5ddd7491">Подробнее...</a><br /></td></tr>
+<tr class="separator:a69676d2a978b4e5a1049c6ed5ddd7491"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5e60da0a44659009cc670a6fa353141"><td class="memItemLeft" align="right" valign="top"><a class="el" href="external__ram_8h.html#ac308ee858db1c1de4baaad977613c593">bus_defect</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcommon__register__space__ext__ram.html#ab5e60da0a44659009cc670a6fa353141">PLC_BusDefect_B1</a></td></tr>
+<tr class="memdesc:ab5e60da0a44659009cc670a6fa353141"><td class="mdescLeft">&#160;</td><td class="mdescRight">Неиспр 1 шины  <a href="structcommon__register__space__ext__ram.html#ab5e60da0a44659009cc670a6fa353141">Подробнее...</a><br /></td></tr>
+<tr class="separator:ab5e60da0a44659009cc670a6fa353141"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43b068532822b48d600bdb70f86b9eae"><td class="memItemLeft" align="right" valign="top"><a class="el" href="external__ram_8h.html#ac308ee858db1c1de4baaad977613c593">bus_defect</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcommon__register__space__ext__ram.html#a43b068532822b48d600bdb70f86b9eae">PLC_BusDefect_B2</a></td></tr>
+<tr class="memdesc:a43b068532822b48d600bdb70f86b9eae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Неиспр 2 шины  <a href="structcommon__register__space__ext__ram.html#a43b068532822b48d600bdb70f86b9eae">Подробнее...</a><br /></td></tr>
+<tr class="separator:a43b068532822b48d600bdb70f86b9eae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2cdef00da20bc6087da08b3e9f11136a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="external__ram_8h.html#a0d97e29a474b978aa198100c058ba873">self_diag</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcommon__register__space__ext__ram.html#a2cdef00da20bc6087da08b3e9f11136a">PLC_SelfDiagDefect</a></td></tr>
+<tr class="memdesc:a2cdef00da20bc6087da08b3e9f11136a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Неиспр самодиагностики  <a href="structcommon__register__space__ext__ram.html#a2cdef00da20bc6087da08b3e9f11136a">Подробнее...</a><br /></td></tr>
+<tr class="separator:a2cdef00da20bc6087da08b3e9f11136a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad2a3e185f6580aaf61217365a6eff5cc"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcommon__register__space__ext__ram.html#ad2a3e185f6580aaf61217365a6eff5cc">Reserv_1</a> [68]</td></tr>
+<tr class="memdesc:ad2a3e185f6580aaf61217365a6eff5cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">РЕЗЕРВ  <a href="structcommon__register__space__ext__ram.html#ad2a3e185f6580aaf61217365a6eff5cc">Подробнее...</a><br /></td></tr>
+<tr class="separator:ad2a3e185f6580aaf61217365a6eff5cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57d116516f9e264bccd561158118685a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="external__rom_8h.html#a961b98b0181a6a1ed5ece00b1b1228ce">common_rom_registers</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcommon__register__space__ext__ram.html#a57d116516f9e264bccd561158118685a">PLC_CommonRomRegs</a></td></tr>
+<tr class="memdesc:a57d116516f9e264bccd561158118685a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Общие регистры, которые храняться в ПЗУ  <a href="structcommon__register__space__ext__ram.html#a57d116516f9e264bccd561158118685a">Подробнее...</a><br /></td></tr>
+<tr class="separator:a57d116516f9e264bccd561158118685a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Органиация пространства общих регистров во внешнем ОЗУ </p>
+</div><h2 class="groupheader">Данные класса</h2>
+<a id="ab5e60da0a44659009cc670a6fa353141"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab5e60da0a44659009cc670a6fa353141">&#9670;&nbsp;</a></span>PLC_BusDefect_B1</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="external__ram_8h.html#ac308ee858db1c1de4baaad977613c593">bus_defect</a> common_register_space_ext_ram::PLC_BusDefect_B1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Неиспр 1 шины </p>
+
+</div>
+</div>
+<a id="a43b068532822b48d600bdb70f86b9eae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a43b068532822b48d600bdb70f86b9eae">&#9670;&nbsp;</a></span>PLC_BusDefect_B2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="external__ram_8h.html#ac308ee858db1c1de4baaad977613c593">bus_defect</a> common_register_space_ext_ram::PLC_BusDefect_B2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Неиспр 2 шины </p>
+
+</div>
+</div>
+<a id="a5a96150658343a9975428f52d86dfc70"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a96150658343a9975428f52d86dfc70">&#9670;&nbsp;</a></span>PLC_CM_State</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t common_register_space_ext_ram::PLC_CM_State</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Состояние автомата выбора УМ </p>
+
+</div>
+</div>
+<a id="a57d116516f9e264bccd561158118685a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a57d116516f9e264bccd561158118685a">&#9670;&nbsp;</a></span>PLC_CommonRomRegs</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="external__rom_8h.html#a961b98b0181a6a1ed5ece00b1b1228ce">common_rom_registers</a> common_register_space_ext_ram::PLC_CommonRomRegs</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Общие регистры, которые храняться в ПЗУ </p>
+
+</div>
+</div>
+<a id="a41f4f575b584bacda875396b0bb7edb8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a41f4f575b584bacda875396b0bb7edb8">&#9670;&nbsp;</a></span>PLC_Config</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="external__ram_8h.html#a2dac5dc7ff578e21da8e0e5008834360">device_config</a> common_register_space_ext_ram::PLC_Config</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Конфигурация устройства </p>
+
+</div>
+</div>
+<a id="a4e2c758faf568b5a9c8715256ef9af97"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4e2c758faf568b5a9c8715256ef9af97">&#9670;&nbsp;</a></span>PLC_CorrPackFromDevice_B1</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t common_register_space_ext_ram::PLC_CorrPackFromDevice_B1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Корректных пакетов по Ш1, от устройства </p>
+
+</div>
+</div>
+<a id="ad3936c82fcda75e3b43e1869fd0fb97f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad3936c82fcda75e3b43e1869fd0fb97f">&#9670;&nbsp;</a></span>PLC_CorrPackFromDevice_B2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t common_register_space_ext_ram::PLC_CorrPackFromDevice_B2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Корректных пакетов по Ш2, от устройства </p>
+
+</div>
+</div>
+<a id="a6a45af96191489245a2761ab66213ab2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6a45af96191489245a2761ab66213ab2">&#9670;&nbsp;</a></span>PLC_CorrPackToDevice_B1</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t common_register_space_ext_ram::PLC_CorrPackToDevice_B1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Корректных пакетов по Ш1, к устройству </p>
+
+</div>
+</div>
+<a id="a49d5a2f201634517f6b0c3b8b0c7426a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a49d5a2f201634517f6b0c3b8b0c7426a">&#9670;&nbsp;</a></span>PLC_CorrPackToDevice_B2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t common_register_space_ext_ram::PLC_CorrPackToDevice_B2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Корректных пакетов по Ш2, к устройству </p>
+
+</div>
+</div>
+<a id="a64bd210afad78487c9193a8109318a5e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a64bd210afad78487c9193a8109318a5e">&#9670;&nbsp;</a></span>PLC_Durat</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t common_register_space_ext_ram::PLC_Durat</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Время с момента запуска, с </p>
+
+</div>
+</div>
+<a id="a65bb90f3b47e619d9c5739cd930e1765"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a65bb90f3b47e619d9c5739cd930e1765">&#9670;&nbsp;</a></span>PLC_ErrPackFromDevice_B1</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t common_register_space_ext_ram::PLC_ErrPackFromDevice_B1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Ошибок отправки пакета по Ш1. </p>
+
+</div>
+</div>
+<a id="ac15455ee68731cbe049caadc7cd01970"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac15455ee68731cbe049caadc7cd01970">&#9670;&nbsp;</a></span>PLC_ErrPackFromDevice_B2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t common_register_space_ext_ram::PLC_ErrPackFromDevice_B2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Ошибок отправки пакета по Ш2. </p>
+
+</div>
+</div>
+<a id="a9137275729f93cc8dcfb6e36577708f6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9137275729f93cc8dcfb6e36577708f6">&#9670;&nbsp;</a></span>PLC_ErrPackToDevice_B1</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t common_register_space_ext_ram::PLC_ErrPackToDevice_B1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Ошибок приема пакета по Ш1. </p>
+
+</div>
+</div>
+<a id="a5dfba01ac730555fcf94207da8dac540"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5dfba01ac730555fcf94207da8dac540">&#9670;&nbsp;</a></span>PLC_ErrPackToDevice_B2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t common_register_space_ext_ram::PLC_ErrPackToDevice_B2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Ошибок приема пакета по Ш2. </p>
+
+</div>
+</div>
+<a id="a98e192cc41987223a2ee0f3c47d82bbc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a98e192cc41987223a2ee0f3c47d82bbc">&#9670;&nbsp;</a></span>PLC_PMAddr</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="external__ram_8h.html#aaac64f1a34f5aa60a1e502b91a23fce8">device_address</a> common_register_space_ext_ram::PLC_PMAddr</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Адрес устройства </p>
+
+</div>
+</div>
+<a id="a69676d2a978b4e5a1049c6ed5ddd7491"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a69676d2a978b4e5a1049c6ed5ddd7491">&#9670;&nbsp;</a></span>PLC_PowerDefect</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="external__ram_8h.html#a0af0eff1baae45b5c07dbb112e449709">power_failure</a> common_register_space_ext_ram::PLC_PowerDefect</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Неиспр питания </p>
+
+</div>
+</div>
+<a id="a2cdef00da20bc6087da08b3e9f11136a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2cdef00da20bc6087da08b3e9f11136a">&#9670;&nbsp;</a></span>PLC_SelfDiagDefect</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="external__ram_8h.html#a0d97e29a474b978aa198100c058ba873">self_diag</a> common_register_space_ext_ram::PLC_SelfDiagDefect</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Неиспр самодиагностики </p>
+
+</div>
+</div>
+<a id="a23be17a22dd1b33e9612afaa9fb5cbb6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a23be17a22dd1b33e9612afaa9fb5cbb6">&#9670;&nbsp;</a></span>PLC_SoftVer</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="external__ram_8h.html#a3e996289f121b60086eeb46de8f62126">plc_soft_ver</a> common_register_space_ext_ram::PLC_SoftVer</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Версия ПО <br  />
+ </p>
+
+</div>
+</div>
+<a id="ad2a3e185f6580aaf61217365a6eff5cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad2a3e185f6580aaf61217365a6eff5cc">&#9670;&nbsp;</a></span>Reserv_1</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t common_register_space_ext_ram::Reserv_1[68]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>РЕЗЕРВ </p>
+
+</div>
+</div>
+<hr/>Объявления и описания членов структуры находятся в файле:<ul>
+<li><a class="el" href="external__ram_8h_source.html">external_ram.h</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20
+</small></address>
+</body>
+</html>

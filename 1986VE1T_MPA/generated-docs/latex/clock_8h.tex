@@ -1,0 +1,78 @@
+\hypertarget{clock_8h}{}\doxysection{Файл clock.\+h}
+\label{clock_8h}\index{clock.h@{clock.h}}
+
+
+Заголовочный файл с описанием A\+PI для настройки тактирования МК  
+
+
+{\ttfamily \#include \char`\"{}mdr32\+\_\+drivers.\+h\char`\"{}}\newline
+Граф включаемых заголовочных файлов для clock.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{clock_8h__incl}
+\end{center}
+\end{figure}
+Граф файлов, в которые включается этот файл\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=236pt]{clock_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Функции}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{clock_8h_a78ab77b57cf2e00089f0a3a22508524c}{clock\+\_\+init}} (void)
+\begin{DoxyCompactList}\small\item\em Настраивает тактирование МК \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Заголовочный файл с описанием A\+PI для настройки тактирования МК 
+
+
+
+\doxysubsection{Функции}
+\mbox{\Hypertarget{clock_8h_a78ab77b57cf2e00089f0a3a22508524c}\label{clock_8h_a78ab77b57cf2e00089f0a3a22508524c}} 
+\index{clock.h@{clock.h}!clock\_init@{clock\_init}}
+\index{clock\_init@{clock\_init}!clock.h@{clock.h}}
+\doxysubsubsection{\texorpdfstring{clock\_init()}{clock\_init()}}
+{\footnotesize\ttfamily void clock\+\_\+init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Настраивает тактирование МК 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{12 \{}
+\DoxyCodeLine{13     \textcolor{comment}{// Сброс настроек системы тактирования}}
+\DoxyCodeLine{14   RST\_CLK\_DeInit();}
+\DoxyCodeLine{15     }
+\DoxyCodeLine{16     \textcolor{comment}{// Настройка тактирования от внешнего кварца HSE\_OSC МГц}}
+\DoxyCodeLine{17     \textcolor{comment}{// Включаем генератор на внешнем кварце}}
+\DoxyCodeLine{18     RST\_CLK\_HSEconfig (RST\_CLK\_HSE\_ON);}
+\DoxyCodeLine{19     \textcolor{keywordflow}{while} (RST\_CLK\_HSEstatus () != SUCCESS);}
+\DoxyCodeLine{20     }
+\DoxyCodeLine{21     \textcolor{comment}{// Настраиваем источник и коэффициент умножения PLL}}
+\DoxyCodeLine{22     \textcolor{comment}{//(CPU\_C1\_SEL = HSE / 1 * 12 = 144 МГц )}}
+\DoxyCodeLine{23     RST\_CLK\_CPU\_PLLconfig ( RST\_CLK\_CPU\_PLLsrcHSEdiv1,11);}
+\DoxyCodeLine{24     }
+\DoxyCodeLine{25     \textcolor{comment}{// Включаем PLL, но еще не подключаем к кристаллу (PLL умножает частоту тактирования)}}
+\DoxyCodeLine{26     RST\_CLK\_CPU\_PLLcmd (ENABLE);}
+\DoxyCodeLine{27     \textcolor{keywordflow}{while} (RST\_CLK\_CPU\_PLLstatus () != SUCCESS);}
+\DoxyCodeLine{28     }
+\DoxyCodeLine{29     \textcolor{comment}{// Делитель С3 ( CPU\_C3\_SEL = CPU\_C2\_SEL )}}
+\DoxyCodeLine{30     RST\_CLK\_CPUclkPrescaler (RST\_CLK\_CPUclkDIV1);}
+\DoxyCodeLine{31     }
+\DoxyCodeLine{32     \textcolor{comment}{// На С2 идет с PLL, а не напрямую с С1 (CPU\_C2\_SEL = PLL)}}
+\DoxyCodeLine{33     RST\_CLK\_CPU\_PLLuse (ENABLE);}
+\DoxyCodeLine{34     \textcolor{comment}{// CPU берет тактирование с выхода С3}}
+\DoxyCodeLine{35     \textcolor{comment}{//( HCLK\_SEL = CPU\_C3\_SEL = 128 МГц)}}
+\DoxyCodeLine{36     RST\_CLK\_CPUclkSelection(RST\_CLK\_CPUclkCPU\_C3);}
+\DoxyCodeLine{37     }
+\DoxyCodeLine{38     SystemCoreClockUpdate();}
+\DoxyCodeLine{39 \}}
+
+\end{DoxyCode}

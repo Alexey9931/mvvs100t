@@ -1,0 +1,275 @@
+\hypertarget{main_8h}{}\doxysection{Файл main.\+h}
+\label{main_8h}\index{main.h@{main.h}}
+
+
+Заголовочный файл с реализацией основного функционала МПА  
+
+
+{\ttfamily \#include \char`\"{}1273pv19t.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}timers.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}spi.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}uart.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}rs422\+\_\+protocol.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}clock.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}dma.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}ebc.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}internal\+\_\+ram.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}external\+\_\+ram.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}external\+\_\+rom.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}leds.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}list.\+h\char`\"{}}\newline
+Граф включаемых заголовочных файлов для main.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{main_8h__incl}
+\end{center}
+\end{figure}
+Граф файлов, в которые включается этот файл\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=204pt]{main_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Функции}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{main_8h_a353773deeb7196ea82e8394fe09298f9}{request\+\_\+data}} (\mbox{\hyperlink{uart_8h_adaa8285f14392d31d36867eddcd78572}{uart\+\_\+n}} $\ast$uart\+\_\+struct)
+\begin{DoxyCompactList}\small\item\em Запрашивает данные на выбранной шине \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8h_add9034e8ca82f81aa078fb0476ae4463}{do\+\_\+mpa\+\_\+task}} (\mbox{\hyperlink{1273pv19t_8h_a373968a5da87bc4464c88e86a02c2c52}{adc\+\_\+n}} $\ast$adc\+\_\+struct)
+\begin{DoxyCompactList}\small\item\em Выполняет периферийные задачи МПА \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8h_a531a35bda98d26ed2060df2248a74d0e}{sync\+\_\+adc\+\_\+chanels}} (void $\ast$data)
+\begin{DoxyCompactList}\small\item\em Синхронизирует каналы АЦП (выполняется при срабатывании прерывания Timer2 по переполнению счетчика C\+NT) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8h_a35f65903f40fb5180ffc3c65917e627e}{receive\+\_\+adc\+\_\+chanel\+\_\+pack}} (void $\ast$data)
+\begin{DoxyCompactList}\small\item\em Принимает пакет с результатами измерений одного канала (выполняется при срабатывании прерывания Timer2 по захвату) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Заголовочный файл с реализацией основного функционала МПА 
+
+
+
+\doxysubsection{Функции}
+\mbox{\Hypertarget{main_8h_add9034e8ca82f81aa078fb0476ae4463}\label{main_8h_add9034e8ca82f81aa078fb0476ae4463}} 
+\index{main.h@{main.h}!do\_mpa\_task@{do\_mpa\_task}}
+\index{do\_mpa\_task@{do\_mpa\_task}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{do\_mpa\_task()}{do\_mpa\_task()}}
+{\footnotesize\ttfamily void do\+\_\+mpa\+\_\+task (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{1273pv19t_8h_a373968a5da87bc4464c88e86a02c2c52}{adc\+\_\+n}} $\ast$}]{adc\+\_\+struct }\end{DoxyParamCaption})}
+
+
+
+Выполняет периферийные задачи МПА 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em $\ast$adc\+\_\+struct} & -\/ Структура с конфигурационными параметрами микросхемы АЦП \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{197 \{}
+\DoxyCodeLine{198     \textcolor{comment}{// Темповые переменные, необходиме для обработки данных АЦП}}
+\DoxyCodeLine{199     \textcolor{keywordtype}{int} adc\_code[\mbox{\hyperlink{mdr32__drivers_8h_a2332bbff598b25d3bddab65efa40db0f}{MAX\_CHANEL\_NUMBER}}] = \{0\};}
+\DoxyCodeLine{200     int16\_t adc\_value;}
+\DoxyCodeLine{201     }
+\DoxyCodeLine{202     \textcolor{comment}{// TODO: на текущий момент данная ф-\/ция обрабатывает данные каналов МПА только для напряжений 0-\/10В (для тока в карту регистров надо добавлять свои полиномы, т.к. они отличаются)}}
+\DoxyCodeLine{203     }
+\DoxyCodeLine{204     \textcolor{comment}{// Указатель на пространство регистров МПА}}
+\DoxyCodeLine{205     \mbox{\hyperlink{structmpa__register__space__ext__ram}{mpa\_ram\_registers}} *ptr = \&\mbox{\hyperlink{main_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_a99f72177584aee68a4ed2064b1fecbde}{mpa\_ram\_register\_space}};}
+\DoxyCodeLine{206     }
+\DoxyCodeLine{207     \textcolor{comment}{// Ниже приведены аппроксимирующие полиномы, полученные экспериментально для всех режимов работы отладочной платы АЦП}}
+\DoxyCodeLine{208     \textcolor{comment}{/*}}
+\DoxyCodeLine{209 \textcolor{comment}{        для двуполярного вх напр (-\/5.4 ... 5.4 В ) на мультиплексоре A0=A1=0}}
+\DoxyCodeLine{210 \textcolor{comment}{                U = 1.6474f*pow(10,-\/4)*adc\_code;}}
+\DoxyCodeLine{211 \textcolor{comment}{                delta = 6.5627f*pow(10,-\/6)*adc\_code + 0.00039f;}}
+\DoxyCodeLine{212 \textcolor{comment}{        для однополярного вх напр (0 ... 10.8 В ) на мультиплексоре A0=1;A1=0   }}
+\DoxyCodeLine{213 \textcolor{comment}{                U = 1.6474f*pow(10,-\/4)*adc\_code + 5.398f;}}
+\DoxyCodeLine{214 \textcolor{comment}{                delta = 6.6962f*pow(10,-\/6)*adc\_code + 0.4252307f;}}
+\DoxyCodeLine{215 \textcolor{comment}{        для однополярного вх тока (0 ... 21.6 мА ) на мультиплексоре A0=1;A1=0}}
+\DoxyCodeLine{216 \textcolor{comment}{                I = 3.052f*pow(10,-\/4)*adc\_code + 10.0f;}}
+\DoxyCodeLine{217 \textcolor{comment}{                delta = -\/11.9006f*pow(10,-\/6)*adc\_code + 0.03072506f;}}
+\DoxyCodeLine{218 \textcolor{comment}{        самодиагностика для двуполярного случая на мультиплексоре A0=1;A1=1 (на выходе должно быть 0В)}}
+\DoxyCodeLine{219 \textcolor{comment}{                U = 1.6474f*pow(10,-\/4)*adc\_code;}}
+\DoxyCodeLine{220 \textcolor{comment}{                delta = 6.5627f*pow(10,-\/6)*adc\_code + 0.00039f;         }}
+\DoxyCodeLine{221 \textcolor{comment}{        самодиагностика для однополярного случая    на мультиплексоре A0=0;A1=1 (на выходе должно быть 0В)}}
+\DoxyCodeLine{222 \textcolor{comment}{                U = 1.6474f*pow(10,-\/4)*adc\_code + 5.398f;}}
+\DoxyCodeLine{223 \textcolor{comment}{                delta = 6.6962f*pow(10,-\/6)*adc\_code + 0.4252307f;}}
+\DoxyCodeLine{224 \textcolor{comment}{                }}
+\DoxyCodeLine{225 \textcolor{comment}{        Результирующее напряжение после аппроксимации U = U -\/ delta;}}
+\DoxyCodeLine{226 \textcolor{comment}{    */}}
+\DoxyCodeLine{227 }
+\DoxyCodeLine{228     \textcolor{comment}{// Производим усреднение по максим кол-\/ву выборок, если кол-\/во выборок различается для разных каналов МПА}}
+\DoxyCodeLine{229     \mbox{\hyperlink{main_8c_a558e219bfe7a1a334ebe338ca121e0ec}{adc\_1}}.\mbox{\hyperlink{structadc__config__data_a33ece2b17d817bd874aa87b64f2dc2ee}{avg\_num}} = \mbox{\hyperlink{external__ram_8c_af4bd0fedf3600f5c3440c884770be9d9}{find\_max\_halfword}}(ptr-\/>\mbox{\hyperlink{structmpa__register__space__ext__ram_a667898579a4053c595e2ed9433cb3cb6}{AI\_RomRegs}}.\mbox{\hyperlink{structmpa__register__space__ext__rom_a1ac3a111cbf7f05ea99156d54e16b955}{AI\_NumForAverag}}, \mbox{\hyperlink{mdr32__drivers_8h_a150ba8643ab5a18b3eb9a0165f56647a}{CHANEL\_NUMBER}});}
+\DoxyCodeLine{230     }
+\DoxyCodeLine{231     \textcolor{keywordflow}{for} (uint8\_t k = 0; k < \mbox{\hyperlink{mdr32__drivers_8h_a150ba8643ab5a18b3eb9a0165f56647a}{CHANEL\_NUMBER}}; k++)}
+\DoxyCodeLine{232     \{}
+\DoxyCodeLine{233         \textcolor{keywordflow}{for} (uint8\_t i = 0; i < ptr-\/>\mbox{\hyperlink{structmpa__register__space__ext__ram_a667898579a4053c595e2ed9433cb3cb6}{AI\_RomRegs}}.\mbox{\hyperlink{structmpa__register__space__ext__rom_a1ac3a111cbf7f05ea99156d54e16b955}{AI\_NumForAverag}}[k]; i++)}
+\DoxyCodeLine{234         \{       }
+\DoxyCodeLine{235             memcpy(\&adc\_value, adc\_struct-\/>\mbox{\hyperlink{structadc__config__data_a200c9d0952003f2561fabcd7fff26299}{spi\_struct}}-\/>\mbox{\hyperlink{structspi__config__data_a1867273e7c2b87ecac77f7797690ec95}{buffer}} + (i*\mbox{\hyperlink{mdr32__drivers_8h_a150ba8643ab5a18b3eb9a0165f56647a}{CHANEL\_NUMBER}}) + k, \textcolor{keyword}{sizeof}(adc\_value));}
+\DoxyCodeLine{236             adc\_code[k] += (int16\_t)(\string~adc\_value + 1);   }
+\DoxyCodeLine{237         \}}
+\DoxyCodeLine{238         adc\_code[k] /= ptr-\/>\mbox{\hyperlink{structmpa__register__space__ext__ram_a667898579a4053c595e2ed9433cb3cb6}{AI\_RomRegs}}.\mbox{\hyperlink{structmpa__register__space__ext__rom_a1ac3a111cbf7f05ea99156d54e16b955}{AI\_NumForAverag}}[k];}
+\DoxyCodeLine{239         \textcolor{comment}{// Кладем в соответсвующий регистр МПА полученные код АЦП для текущего канала МПА}}
+\DoxyCodeLine{240         memcpy(\&(ptr-\/>\mbox{\hyperlink{structmpa__register__space__ext__ram_a7e5473b0af9ea61d8c0b1486da8b02cf}{AI\_CodeADC}}[k]), \&adc\_code[k], \textcolor{keyword}{sizeof}(adc\_code[k]));}
+\DoxyCodeLine{241         \textcolor{comment}{// В зависимости от режима работы канала МПА (ток/напряжение) вычисляем по аппроксимирующему полиному значение напряжения/тока и кладем }}
+\DoxyCodeLine{242         \textcolor{comment}{// результат в соответсвующий регистр МПА для текущего канала МПА}}
+\DoxyCodeLine{243         \textcolor{keywordflow}{switch} ( \mbox{\hyperlink{external__ram_8h_ad5fb065973974ec287bf6a7a06290c5d}{TEST\_BIT}}(k, ptr-\/>\mbox{\hyperlink{structmpa__register__space__ext__ram_a667898579a4053c595e2ed9433cb3cb6}{AI\_RomRegs}}.\mbox{\hyperlink{structmpa__register__space__ext__rom_a49e8b51172c0d8ea6eda885e82343374}{AI\_OperMode}}.\mbox{\hyperlink{structai__oper__mode__struct_a066d6d1b821481dbd425f831570053a6}{adc\_chs\_mode}}))}
+\DoxyCodeLine{244         \{}
+\DoxyCodeLine{245             \textcolor{keywordflow}{case} 0:}
+\DoxyCodeLine{246                     \textcolor{comment}{// Напряжение 0-\/10В}}
+\DoxyCodeLine{247                     ptr-\/>\mbox{\hyperlink{structmpa__register__space__ext__ram_a6775cde415d33a5e6b0070ee41d83fa0}{AI\_PhysQuantFloat}}[k] = ptr-\/>\mbox{\hyperlink{structmpa__register__space__ext__ram_a667898579a4053c595e2ed9433cb3cb6}{AI\_RomRegs}}.\mbox{\hyperlink{structmpa__register__space__ext__rom_a6893959779b22a58c36f3aa0bd2b4777}{AI\_PolynConst0}}[k] + (ptr-\/>\mbox{\hyperlink{structmpa__register__space__ext__ram_a667898579a4053c595e2ed9433cb3cb6}{AI\_RomRegs}}.\mbox{\hyperlink{structmpa__register__space__ext__rom_ac9dcd4f5d112d0ba95ea072e06465f71}{AI\_PolynConst1}}[k])*(ptr-\/>\mbox{\hyperlink{structmpa__register__space__ext__ram_a7e5473b0af9ea61d8c0b1486da8b02cf}{AI\_CodeADC}}[k]);}
+\DoxyCodeLine{248                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{249             }
+\DoxyCodeLine{250             \textcolor{keywordflow}{case} 1:}
+\DoxyCodeLine{251                     \textcolor{comment}{// Ток 0-\/20мА}}
+\DoxyCodeLine{252                     ptr-\/>\mbox{\hyperlink{structmpa__register__space__ext__ram_a6775cde415d33a5e6b0070ee41d83fa0}{AI\_PhysQuantFloat}}[k] = 4.004f*(ptr-\/>\mbox{\hyperlink{structmpa__register__space__ext__ram_a667898579a4053c595e2ed9433cb3cb6}{AI\_RomRegs}}.\mbox{\hyperlink{structmpa__register__space__ext__rom_a6893959779b22a58c36f3aa0bd2b4777}{AI\_PolynConst0}}[k] + (ptr-\/>\mbox{\hyperlink{structmpa__register__space__ext__ram_a667898579a4053c595e2ed9433cb3cb6}{AI\_RomRegs}}.\mbox{\hyperlink{structmpa__register__space__ext__rom_ac9dcd4f5d112d0ba95ea072e06465f71}{AI\_PolynConst1}}[k])*(ptr-\/>\mbox{\hyperlink{structmpa__register__space__ext__ram_a7e5473b0af9ea61d8c0b1486da8b02cf}{AI\_CodeADC}}[k]));}
+\DoxyCodeLine{253                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{254             }
+\DoxyCodeLine{255             \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{256                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{257         \}}
+\DoxyCodeLine{258     \}}
+\DoxyCodeLine{259 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{main_8h_a35f65903f40fb5180ffc3c65917e627e}\label{main_8h_a35f65903f40fb5180ffc3c65917e627e}} 
+\index{main.h@{main.h}!receive\_adc\_chanel\_pack@{receive\_adc\_chanel\_pack}}
+\index{receive\_adc\_chanel\_pack@{receive\_adc\_chanel\_pack}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{receive\_adc\_chanel\_pack()}{receive\_adc\_chanel\_pack()}}
+{\footnotesize\ttfamily void receive\+\_\+adc\+\_\+chanel\+\_\+pack (\begin{DoxyParamCaption}\item[{void $\ast$}]{data }\end{DoxyParamCaption})}
+
+
+
+Принимает пакет с результатами измерений одного канала (выполняется при срабатывании прерывания Timer2 по захвату) 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em $\ast$data} & -\/ Указатель на передаваемые при необходимости данные (не используется) \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{296 \{}
+\DoxyCodeLine{297     \textcolor{comment}{// Только, если инициализирована микросхема АЦП}}
+\DoxyCodeLine{298     \textcolor{keywordflow}{if} ((\mbox{\hyperlink{main_8c_a558e219bfe7a1a334ebe338ca121e0ec}{adc\_1}}.\mbox{\hyperlink{structadc__config__data_a485b473e939318ba11fcccd0dac3e946}{init\_flag}} == 1))}
+\DoxyCodeLine{299     \{}
+\DoxyCodeLine{300         \textcolor{comment}{// Выключаем прерывания таймера, срабатываемое при переполнении счетчика таймера}}
+\DoxyCodeLine{301         TIMER\_ITConfig(\mbox{\hyperlink{main_8c_a558e219bfe7a1a334ebe338ca121e0ec}{adc\_1}}.\mbox{\hyperlink{structadc__config__data_ac18ce0504a3921524c8bfddef5bc847d}{timer\_n\_capture}}-\/>\mbox{\hyperlink{structtimer__config__struct_a26d6f987c10095f685286d88e1cc4a96}{TIMERx}}, TIMER\_STATUS\_CNT\_ARR, DISABLE);}
+\DoxyCodeLine{302         \textcolor{comment}{// Ведем счетчик принятых данных каналов АЦП}}
+\DoxyCodeLine{303         \mbox{\hyperlink{main_8c_a558e219bfe7a1a334ebe338ca121e0ec}{adc\_1}}.\mbox{\hyperlink{structadc__config__data_a8d40441a9a9d1d1fb714dc8c39542865}{ch\_rx\_num}}++;}
+\DoxyCodeLine{304         \textcolor{comment}{// Если счетчик переваливает максимальное число каналов АЦП, значит принятые данные соответсвуют первому каналу АЦП}}
+\DoxyCodeLine{305         \textcolor{keywordflow}{if} (\mbox{\hyperlink{main_8c_a558e219bfe7a1a334ebe338ca121e0ec}{adc\_1}}.\mbox{\hyperlink{structadc__config__data_a8d40441a9a9d1d1fb714dc8c39542865}{ch\_rx\_num}} == (\mbox{\hyperlink{mdr32__drivers_8h_a150ba8643ab5a18b3eb9a0165f56647a}{CHANEL\_NUMBER}}+1))}
+\DoxyCodeLine{306         \{}
+\DoxyCodeLine{307             \mbox{\hyperlink{main_8c_a558e219bfe7a1a334ebe338ca121e0ec}{adc\_1}}.\mbox{\hyperlink{structadc__config__data_a8d40441a9a9d1d1fb714dc8c39542865}{ch\_rx\_num}} = 1;}
+\DoxyCodeLine{308         \}}
+\DoxyCodeLine{309         \textcolor{comment}{// Сброс счетчика таймера, тем самым устанавливается таймаут на временной интервал между пакетами данных от микросхемы АЦП}}
+\DoxyCodeLine{310         TIMER\_SetCounter(\mbox{\hyperlink{main_8c_a558e219bfe7a1a334ebe338ca121e0ec}{adc\_1}}.\mbox{\hyperlink{structadc__config__data_ac18ce0504a3921524c8bfddef5bc847d}{timer\_n\_capture}}-\/>\mbox{\hyperlink{structtimer__config__struct_a26d6f987c10095f685286d88e1cc4a96}{TIMERx}}, 0);   }
+\DoxyCodeLine{311         TIMER\_ClearITPendingBit(\mbox{\hyperlink{main_8c_a558e219bfe7a1a334ebe338ca121e0ec}{adc\_1}}.\mbox{\hyperlink{structadc__config__data_ac18ce0504a3921524c8bfddef5bc847d}{timer\_n\_capture}}-\/>\mbox{\hyperlink{structtimer__config__struct_a26d6f987c10095f685286d88e1cc4a96}{TIMERx}}, TIMER\_STATUS\_CNT\_ARR);}
+\DoxyCodeLine{312         \textcolor{comment}{// Включаем прерывания таймера, срабатываемое при переполнении счетчика таймера}}
+\DoxyCodeLine{313         TIMER\_ITConfig(\mbox{\hyperlink{main_8c_a558e219bfe7a1a334ebe338ca121e0ec}{adc\_1}}.\mbox{\hyperlink{structadc__config__data_ac18ce0504a3921524c8bfddef5bc847d}{timer\_n\_capture}}-\/>\mbox{\hyperlink{structtimer__config__struct_a26d6f987c10095f685286d88e1cc4a96}{TIMERx}}, TIMER\_STATUS\_CNT\_ARR, ENABLE);          }
+\DoxyCodeLine{314     \}}
+\DoxyCodeLine{315     TIMER\_ClearITPendingBit(\mbox{\hyperlink{main_8c_a558e219bfe7a1a334ebe338ca121e0ec}{adc\_1}}.\mbox{\hyperlink{structadc__config__data_ac18ce0504a3921524c8bfddef5bc847d}{timer\_n\_capture}}-\/>\mbox{\hyperlink{structtimer__config__struct_a26d6f987c10095f685286d88e1cc4a96}{TIMERx}}, TIMER\_STATUS\_CCR\_CAP1\_CH4);}
+\DoxyCodeLine{316 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{main_8h_a353773deeb7196ea82e8394fe09298f9}\label{main_8h_a353773deeb7196ea82e8394fe09298f9}} 
+\index{main.h@{main.h}!request\_data@{request\_data}}
+\index{request\_data@{request\_data}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{request\_data()}{request\_data()}}
+{\footnotesize\ttfamily uint8\+\_\+t request\+\_\+data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{uart_8h_adaa8285f14392d31d36867eddcd78572}{uart\+\_\+n}} $\ast$}]{uart\+\_\+struct }\end{DoxyParamCaption})}
+
+
+
+Запрашивает данные на выбранной шине 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em $\ast$uart\+\_\+struct} & -\/ Выбранный U\+A\+RT МК \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Код возврата\+: 0 -\/ пакет данных получен, обработан и ответный пакет отправлен; 1-\/ нет принятого пакета, ошибка 
+\end{DoxyReturn}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{163 \{}
+\DoxyCodeLine{164     \textcolor{comment}{// Номер шины, по которой запрашиваются данные}}
+\DoxyCodeLine{165     uint8\_t ext\_bus; }
+\DoxyCodeLine{166     }
+\DoxyCodeLine{167     \textcolor{comment}{// Определение шины, по которой идет обмен данными}}
+\DoxyCodeLine{168     \mbox{\hyperlink{uart_8h_a76aa2435d5c21f3636b0b576c7cfeefc}{RECOGNIZE\_BUS}}(ext\_bus, uart\_struct);}
+\DoxyCodeLine{169     }
+\DoxyCodeLine{170     \textcolor{comment}{// Прием пакета данных по шине}}
+\DoxyCodeLine{171     \textcolor{keywordflow}{if}(\mbox{\hyperlink{rs422__protocol_8c_a10e95fbdcf84e63f3680809c93659d9a}{receive\_packet}}(uart\_struct, ext\_bus) != \mbox{\hyperlink{rs422__protocol_8h_aba7cbaf5e7772f2d042fe6c708b254bfabf350750d0d4fabd8954c0f1e9bbae94}{NO\_ERROR}})}
+\DoxyCodeLine{172     \{}
+\DoxyCodeLine{173         \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{174     \}}
+\DoxyCodeLine{175     }
+\DoxyCodeLine{176     \textcolor{comment}{// Выполнение команды периферией (для МПА -\/ опрос каналов АЦП)}}
+\DoxyCodeLine{177     \mbox{\hyperlink{main_8c_add9034e8ca82f81aa078fb0476ae4463}{do\_mpa\_task}}(\&\mbox{\hyperlink{main_8c_a558e219bfe7a1a334ebe338ca121e0ec}{adc\_1}});}
+\DoxyCodeLine{178         }
+\DoxyCodeLine{179     \textcolor{comment}{// Выполнение соответствующих протокольных команд}}
+\DoxyCodeLine{180     \textcolor{keywordflow}{if}(\mbox{\hyperlink{rs422__protocol_8c_a4a980b6aae1cf18f767040d266ddf695}{protocol\_do\_cmds}}(ext\_bus) != 0)}
+\DoxyCodeLine{181     \{}
+\DoxyCodeLine{182         \textcolor{keywordflow}{return} 1; }
+\DoxyCodeLine{183     \}}
+\DoxyCodeLine{184     }
+\DoxyCodeLine{185     \textcolor{comment}{// Передача ответноно пакета}}
+\DoxyCodeLine{186     \textcolor{keywordflow}{if}(\mbox{\hyperlink{rs422__protocol_8c_af1ea8ba5878ba6102b6e8b6b33bd5b4a}{transmit\_packet}}(uart\_struct, ext\_bus) != \mbox{\hyperlink{rs422__protocol_8h_aba7cbaf5e7772f2d042fe6c708b254bfabf350750d0d4fabd8954c0f1e9bbae94}{NO\_ERROR}})}
+\DoxyCodeLine{187     \{}
+\DoxyCodeLine{188         \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{189     \}}
+\DoxyCodeLine{190     }
+\DoxyCodeLine{191     \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{192 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{main_8h_a531a35bda98d26ed2060df2248a74d0e}\label{main_8h_a531a35bda98d26ed2060df2248a74d0e}} 
+\index{main.h@{main.h}!sync\_adc\_chanels@{sync\_adc\_chanels}}
+\index{sync\_adc\_chanels@{sync\_adc\_chanels}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{sync\_adc\_chanels()}{sync\_adc\_chanels()}}
+{\footnotesize\ttfamily void sync\+\_\+adc\+\_\+chanels (\begin{DoxyParamCaption}\item[{void $\ast$}]{data }\end{DoxyParamCaption})}
+
+
+
+Синхронизирует каналы АЦП (выполняется при срабатывании прерывания Timer2 по переполнению счетчика C\+NT) 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em $\ast$data} & -\/ Указатель на передаваемые при необходимости данные (не используется) \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{264 \{}
+\DoxyCodeLine{265     \textcolor{comment}{// Только, если инициализирована микросхема АЦП}}
+\DoxyCodeLine{266     \textcolor{keywordflow}{if} ((\mbox{\hyperlink{main_8c_a558e219bfe7a1a334ebe338ca121e0ec}{adc\_1}}.\mbox{\hyperlink{structadc__config__data_a485b473e939318ba11fcccd0dac3e946}{init\_flag}} == 1))}
+\DoxyCodeLine{267     \{}
+\DoxyCodeLine{268         \textcolor{comment}{// Выключаем прерывания таймера, срабатываемое при переполнении счетчика таймера}}
+\DoxyCodeLine{269         TIMER\_ITConfig(\mbox{\hyperlink{main_8c_a558e219bfe7a1a334ebe338ca121e0ec}{adc\_1}}.\mbox{\hyperlink{structadc__config__data_ac18ce0504a3921524c8bfddef5bc847d}{timer\_n\_capture}}-\/>\mbox{\hyperlink{structtimer__config__struct_a26d6f987c10095f685286d88e1cc4a96}{TIMERx}}, TIMER\_STATUS\_CNT\_ARR, DISABLE); }
+\DoxyCodeLine{270         }
+\DoxyCodeLine{271         \textcolor{comment}{// Считываем FIFO буфер SPI}}
+\DoxyCodeLine{272         uint16\_t spi\_rx\_value[\mbox{\hyperlink{spi_8h_a6092455278a1ac67204e0dbe08f9d13f}{FIFO\_SIZE}}];}
+\DoxyCodeLine{273         \textcolor{keywordflow}{for} (uint8\_t i = 0; i < \mbox{\hyperlink{spi_8h_a6092455278a1ac67204e0dbe08f9d13f}{FIFO\_SIZE}}; i++)}
+\DoxyCodeLine{274         \{}
+\DoxyCodeLine{275             spi\_rx\_value[i] = \mbox{\hyperlink{main_8c_a558e219bfe7a1a334ebe338ca121e0ec}{adc\_1}}.\mbox{\hyperlink{structadc__config__data_a200c9d0952003f2561fabcd7fff26299}{spi\_struct}}-\/>\mbox{\hyperlink{structspi__config__data_af7c62ae50acedf3fd8aea07e6d804d47}{SSPx}}-\/>DR;}
+\DoxyCodeLine{276         \}}
+\DoxyCodeLine{277         }
+\DoxyCodeLine{278         \textcolor{comment}{// Только, если получили данные всех каналов микросхемы АЦП, то переносим данные из FIFO буфера SPI в буфер SPI, расположенный во внешней ОЗУ}}
+\DoxyCodeLine{279         \textcolor{keywordflow}{if} (\mbox{\hyperlink{main_8c_a558e219bfe7a1a334ebe338ca121e0ec}{adc\_1}}.\mbox{\hyperlink{structadc__config__data_a8d40441a9a9d1d1fb714dc8c39542865}{ch\_rx\_num}} == \mbox{\hyperlink{mdr32__drivers_8h_a150ba8643ab5a18b3eb9a0165f56647a}{CHANEL\_NUMBER}})}
+\DoxyCodeLine{280         \{}
+\DoxyCodeLine{281             memcpy(\mbox{\hyperlink{main_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_aa408978a8e55bf008474fd09861d867f}{spi\_1\_rx\_buffer}} + \mbox{\hyperlink{main_8c_a168a603d82909428f4f498ae15a611d7}{spi\_1}}.\mbox{\hyperlink{structspi__config__data_aadd203ebcb848c6b32967e7ed6b40657}{buffer\_counter}}, spi\_rx\_value, \mbox{\hyperlink{mdr32__drivers_8h_a150ba8643ab5a18b3eb9a0165f56647a}{CHANEL\_NUMBER}}*\textcolor{keyword}{sizeof}(spi\_rx\_value[0]));}
+\DoxyCodeLine{282             \mbox{\hyperlink{main_8c_a168a603d82909428f4f498ae15a611d7}{spi\_1}}.\mbox{\hyperlink{structspi__config__data_aadd203ebcb848c6b32967e7ed6b40657}{buffer\_counter}} += \mbox{\hyperlink{mdr32__drivers_8h_a150ba8643ab5a18b3eb9a0165f56647a}{CHANEL\_NUMBER}};}
+\DoxyCodeLine{283             \textcolor{keywordflow}{if} (\mbox{\hyperlink{main_8c_a558e219bfe7a1a334ebe338ca121e0ec}{adc\_1}}.\mbox{\hyperlink{structadc__config__data_a200c9d0952003f2561fabcd7fff26299}{spi\_struct}}-\/>\mbox{\hyperlink{structspi__config__data_aadd203ebcb848c6b32967e7ed6b40657}{buffer\_counter}} >= (\mbox{\hyperlink{mdr32__drivers_8h_a150ba8643ab5a18b3eb9a0165f56647a}{CHANEL\_NUMBER}}*\mbox{\hyperlink{main_8c_a558e219bfe7a1a334ebe338ca121e0ec}{adc\_1}}.\mbox{\hyperlink{structadc__config__data_a33ece2b17d817bd874aa87b64f2dc2ee}{avg\_num}}))}
+\DoxyCodeLine{284             \{}
+\DoxyCodeLine{285                 \mbox{\hyperlink{main_8c_a558e219bfe7a1a334ebe338ca121e0ec}{adc\_1}}.\mbox{\hyperlink{structadc__config__data_a200c9d0952003f2561fabcd7fff26299}{spi\_struct}}-\/>\mbox{\hyperlink{structspi__config__data_aadd203ebcb848c6b32967e7ed6b40657}{buffer\_counter}} = 0;}
+\DoxyCodeLine{286             \}}
+\DoxyCodeLine{287         \}}
+\DoxyCodeLine{288         \mbox{\hyperlink{main_8c_a558e219bfe7a1a334ebe338ca121e0ec}{adc\_1}}.\mbox{\hyperlink{structadc__config__data_a8d40441a9a9d1d1fb714dc8c39542865}{ch\_rx\_num}} = 0;}
+\DoxyCodeLine{289     \}}
+\DoxyCodeLine{290     TIMER\_ClearITPendingBit(\mbox{\hyperlink{main_8c_a558e219bfe7a1a334ebe338ca121e0ec}{adc\_1}}.\mbox{\hyperlink{structadc__config__data_ac18ce0504a3921524c8bfddef5bc847d}{timer\_n\_capture}}-\/>\mbox{\hyperlink{structtimer__config__struct_a26d6f987c10095f685286d88e1cc4a96}{TIMERx}}, TIMER\_STATUS\_CNT\_ARR);}
+\DoxyCodeLine{291 \}}
+
+\end{DoxyCode}

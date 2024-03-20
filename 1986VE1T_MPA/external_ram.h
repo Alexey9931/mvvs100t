@@ -1,6 +1,6 @@
 /*!
  \file
- \brief Заголовочный файл с описанием API для работы с областью памяти внешнего ОЗУ
+ \brief Р—Р°РіРѕР»РѕРІРѕС‡РЅС‹Р№ С„Р°Р№Р» СЃ РѕРїРёСЃР°РЅРёРµРј API РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ РѕР±Р»Р°СЃС‚СЊСЋ РїР°РјСЏС‚Рё РІРЅРµС€РЅРµРіРѕ РћР—РЈ
 */
 
 #ifndef __EXTERNAL_RAM_H
@@ -11,48 +11,49 @@
 #include "spi.h"
 #include "external_rom.h"
 
-#define EXT_RAM_START_ADDR 							0x50200000	///< Адрес в памяти МК, с которой начинается обращение к внешней ОЗУ      
-#define RAM_REGISTER_SPACE_START_ADDR 	200					///< Стартовый адрес карты регистров в ОЗУ    
+#define EXT_RAM_START_ADDR 							0x50200000	///< Р¤РёР·РёС‡РµСЃРєРёР№ Р°РґСЂРµСЃ РІ РїР°РјСЏС‚Рё РњРљ, СЃ РєРѕС‚РѕСЂРѕР№ РЅР°С‡РёРЅР°РµС‚СЃСЏ РѕР±СЂР°С‰РµРЅРёРµ Рє РІРЅРµС€РЅРµР№ РћР—РЈ
+#define RAM_REGISTER_SPACE_START_ADDR 	200					///< РЎС‚Р°СЂС‚РѕРІС‹Р№ Р°РґСЂРµСЃ РєР°СЂС‚С‹ СЂРµРіРёСЃС‚СЂРѕРІ РІ РћР—РЈ
 
-#define TIMER_NUM	4				///< Кол-во таймеров в МК
+#define TIMER_NUM	4				///< РљРѕР»-РІРѕ С‚Р°Р№РјРµСЂРѕРІ РІ РњРљ
 
-#define TEST_BIT(num, value) ((value>>num)&0x1)			///< Макрос проверки бита (0 или 1) в байте
-#define SET_BIT(num, value) (value |= (1<<num))			///< Макрос установки бита в байте в 1
-#define RESET_BIT(num, value) (value &= ~(1<<num))	///< Макрос сброса бита в байте в 0
+#define TEST_BIT(num, value) ((value>>num)&0x1)			///< РњР°РєСЂРѕСЃ РїСЂРѕРІРµСЂРєРё Р±РёС‚Р° (0 РёР»Рё 1) РІ Р±Р°Р№С‚Рµ
+#define SET_BIT(num, value) (value |= (1<<num))			///< РњР°РєСЂРѕСЃ СѓСЃС‚Р°РЅРѕРІРєРё Р±РёС‚Р° РІ Р±Р°Р№С‚Рµ РІ 1
+#define RESET_BIT(num, value) (value &= ~(1<<num))	///< РњР°РєСЂРѕСЃ СЃР±СЂРѕСЃР° Р±РёС‚Р° РІ Р±Р°Р№С‚Рµ РІ 0
 
-///Значения полей стартовой структуры с диапазонами для регулярного опроса МВВС
-#define START_STRUCT_LENGTH 							32			///< Длина структуры
-#define START_STRUCT_TEXT_INFO_ADDR 			332			///< Ссылка на текстовую информацию о модуле
-#define START_STRUCT_CHANGE_FLAG 					0				///< Флаг изменения структуры
-#define START_STRUCT_NUMBER_OF_RANGES 		3				///< Кол-во диапазонов в стартовой структуре
-#define START_STRUCT_RANGE0_TYPE 					0x0100	///< Тип диапазона (h) и тип операции (l)
-#define START_STRUCT_RANGE0_START_CH_NUM 	0x0000	///< Стартовый номер канала (h) и номер диапазона (l)
-#define START_STRUCT_RANGE0_ADDR 					1874		///< Адрес
-#define START_STRUCT_RANGE0_SIZE 					32			///< Количество байт
-#define START_STRUCT_RANGE1_TYPE 					0x0400	///< Тип диапазона (h) и тип операции (l)
-#define START_STRUCT_RANGE1_START_CH_NUM 	0x0001	///< Стартовый номер канала (h) и номер диапазона (l)
-#define START_STRUCT_RANGE1_ADDR 					254			///< Адрес
-#define START_STRUCT_RANGE1_SIZE 					10			///< Количество байт
-#define START_STRUCT_RANGE2_TYPE 					0x0500	///< Тип диапазона (h) и тип операции (l)
-#define START_STRUCT_RANGE2_START_CH_NUM 	0x0002	///< Стартовый номер канала (h) и номер диапазона (l)
-#define START_STRUCT_RANGE2_ADDR 					1906		///< Адрес
-#define START_STRUCT_RANGE2_SIZE 					8				///< Количество байт
+#define START_STRUCT_LENGTH 							32			///< Р”Р»РёРЅР° СЃС‚СЂСѓРєС‚СѓСЂС‹
+#define START_STRUCT_TEXT_INFO_ADDR 			332			///< РЎСЃС‹Р»РєР° РЅР° С‚РµРєСЃС‚РѕРІСѓСЋ РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ РјРѕРґСѓР»Рµ
+#define START_STRUCT_CHANGE_FLAG 					0				///< Р¤Р»Р°Рі РёР·РјРµРЅРµРЅРёСЏ СЃС‚СЂСѓРєС‚СѓСЂС‹
+#define START_STRUCT_NUMBER_OF_RANGES 		3				///< РљРѕР»-РІРѕ РґРёР°РїР°Р·РѕРЅРѕРІ РІ СЃС‚Р°СЂС‚РѕРІРѕР№ СЃС‚СЂСѓРєС‚СѓСЂРµ
+#define START_STRUCT_RANGE0_TYPE 					0x0100	///< РўРёРї РґРёР°РїР°Р·РѕРЅР° (h) Рё С‚РёРї РѕРїРµСЂР°С†РёРё (l)
+#define START_STRUCT_RANGE0_START_CH_NUM 	0x0000	///< РЎС‚Р°СЂС‚РѕРІС‹Р№ РЅРѕРјРµСЂ РєР°РЅР°Р»Р° (h) Рё РЅРѕРјРµСЂ РґРёР°РїР°Р·РѕРЅР° (l)
+#define START_STRUCT_RANGE0_ADDR 					1874		///< РђРґСЂРµСЃ
+#define START_STRUCT_RANGE0_SIZE 					32			///< РљРѕР»РёС‡РµСЃС‚РІРѕ Р±Р°Р№С‚
+#define START_STRUCT_RANGE1_TYPE 					0x0400	///< РўРёРї РґРёР°РїР°Р·РѕРЅР° (h) Рё С‚РёРї РѕРїРµСЂР°С†РёРё (l)
+#define START_STRUCT_RANGE1_START_CH_NUM 	0x0001	///< РЎС‚Р°СЂС‚РѕРІС‹Р№ РЅРѕРјРµСЂ РєР°РЅР°Р»Р° (h) Рё РЅРѕРјРµСЂ РґРёР°РїР°Р·РѕРЅР° (l)
+#define START_STRUCT_RANGE1_ADDR 					254			///< РђРґСЂРµСЃ
+#define START_STRUCT_RANGE1_SIZE 					10			///< РљРѕР»РёС‡РµСЃС‚РІРѕ Р±Р°Р№С‚
+#define START_STRUCT_RANGE2_TYPE 					0x0500	///< РўРёРї РґРёР°РїР°Р·РѕРЅР° (h) Рё С‚РёРї РѕРїРµСЂР°С†РёРё (l)
+#define START_STRUCT_RANGE2_START_CH_NUM 	0x0002	///< РЎС‚Р°СЂС‚РѕРІС‹Р№ РЅРѕРјРµСЂ РєР°РЅР°Р»Р° (h) Рё РЅРѕРјРµСЂ РґРёР°РїР°Р·РѕРЅР° (l)
+#define START_STRUCT_RANGE2_ADDR 					1906		///< РђРґСЂРµСЃ
+#define START_STRUCT_RANGE2_SIZE 					8				///< РљРѕР»РёС‡РµСЃС‚РІРѕ Р±Р°Р№С‚
 
-//Значения некоторых регистров в ОЗУ по умолчанию
-#define PLC_SOFT_VER_REVISION 			1								///< Ревизия модуля
-#define PLC_SOFT_VER_MODIFICATION 	2								///< Модификация модуля
-#define PLC_SOFT_VER_TYPE 					MPA							///< Тип модуля
-#define PLC_SOFT_VER_SOFT_VER 			1								///< Версия ПО
-#define PLC_SOFT_VER_ADD_INFO 			4								///< Доп.информация
-#define PLC_SOFT_VER_DEVELOP 				1								///< 1=ПО в процессе разработки
-#define PLC_PM_MODULE_ADDR					PM_DEV_ADDR			///< адрес модуля
-#define PLC_PM_CHASSIS_ADDR 				PM_CHASSIS_ADDR	///< адрес шасси
-#define PLC_CONFIG_MAIN_SWITCH 			4								///< Основной свитч
-#define PLC_CONFIG_ADD_SWITCH1 			3								///< 1 Доп свитч (при наличии)
-#define PLC_CONFIG_ADD_SWITCH2 			2								///< 2 Доп свитч (при наличии)
-#define PLC_CONFIG_RESERV 					1								///< резерв
+#define PLC_SOFT_VER_REVISION 			1								///< Р РµРІРёР·РёСЏ РјРѕРґСѓР»СЏ
+#define PLC_SOFT_VER_MODIFICATION 	2								///< РњРѕРґРёС„РёРєР°С†РёСЏ РјРѕРґСѓР»СЏ
+#define PLC_SOFT_VER_TYPE 					MPA							///< РўРёРї РјРѕРґСѓР»СЏ
+#define PLC_SOFT_VER_SOFT_VER 			1								///< Р’РµСЂСЃРёСЏ РџРћ
+#define PLC_SOFT_VER_ADD_INFO 			4								///< Р”РѕРї.РёРЅС„РѕСЂРјР°С†РёСЏ
+#define PLC_SOFT_VER_DEVELOP 				1								///< 1=РџРћ РІ РїСЂРѕС†РµСЃСЃРµ СЂР°Р·СЂР°Р±РѕС‚РєРё
+#define PLC_PM_MODULE_ADDR					PM_DEV_ADDR			///< Р°РґСЂРµСЃ РјРѕРґСѓР»СЏ
+#define PLC_PM_CHASSIS_ADDR 				PM_CHASSIS_ADDR	///< Р°РґСЂРµСЃ С€Р°СЃСЃРё
+#define PLC_CONFIG_MAIN_SWITCH 			4								///< РћСЃРЅРѕРІРЅРѕР№ СЃРІРёС‚С‡
+#define PLC_CONFIG_ADD_SWITCH1 			3								///< 1 Р”РѕРї СЃРІРёС‚С‡ (РїСЂРё РЅР°Р»РёС‡РёРё)
+#define PLC_CONFIG_ADD_SWITCH2 			2								///< 2 Р”РѕРї СЃРІРёС‚С‡ (РїСЂРё РЅР°Р»РёС‡РёРё)
+#define PLC_CONFIG_RESERV 					1								///< СЂРµР·РµСЂРІ
 
-///Типы модулей
+/**
+ * @brief РўРёРїС‹ РјРѕРґСѓР»РµР№
+ *
+ */
 typedef enum type_of_module
 {
 	MPD = 1,															
@@ -68,165 +69,255 @@ typedef enum type_of_module
 	MPI
 } module_type;
 
-///Структура с битовыми полями для регистра версия ПО       
+/**
+ * @brief РЎС‚СЂСѓРєС‚СѓСЂР° СЃ Р±РёС‚РѕРІС‹РјРё РїРѕР»СЏРјРё РґР»СЏ СЂРµРіРёСЃС‚СЂР° РІРµСЂСЃРёСЏ РџРћ
+ *
+ */
 typedef struct plc_sof_ver_struct
 {
-	unsigned revision: 4;											///< Ревизия модуля  
-	unsigned modification: 4;									///< Модификация модуля  
-	unsigned type: 9;													///< Тип модуля  
-	unsigned soft_ver: 10;										///< Версия ПО 
-	unsigned add_info: 4;											///< Дополнительная информация 
-	unsigned develop: 1;											///< 1=ПО в процессе разработки   
-}__attribute__((packed)) plc_soft_ver;
+	unsigned revision: 4;											///< Р РµРІРёР·РёСЏ РјРѕРґСѓР»СЏ
+	unsigned modification: 4;									///< РњРѕРґРёС„РёРєР°С†РёСЏ РјРѕРґСѓР»СЏ
+	unsigned type: 9;													///< РўРёРї РјРѕРґСѓР»СЏ
+	unsigned soft_ver: 10;										///< Р’РµСЂСЃРёСЏ РџРћ
+	unsigned add_info: 4;											///< Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅР°СЏ РёРЅС„РѕСЂРјР°С†РёСЏ 
+	unsigned develop: 1;											///< 1=РџРћ РІ РїСЂРѕС†РµСЃСЃРµ СЂР°Р·СЂР°Р±РѕС‚РєРё 
+}
+#ifndef DOXYGEN
+__attribute__((packed))
+#endif
+plc_soft_ver;
 
-
-///Структура с битовыми полями для регистра адрес устройства       
+/**
+ * @brief РЎС‚СЂСѓРєС‚СѓСЂР° СЃ Р±РёС‚РѕРІС‹РјРё РїРѕР»СЏРјРё РґР»СЏ СЂРµРіРёСЃС‚СЂР° Р°РґСЂРµСЃ СѓСЃС‚СЂРѕР№СЃС‚РІР°
+ *
+ */
 typedef struct device_address_struct
 {
-	unsigned module_addr: 	4;								///< Адрес модуля 
-	unsigned chassis_addr: 	4;								///< Адрес шасси 
-	unsigned reserv:				8;								///< Резерв
-}__attribute__((packed)) device_address;
+	unsigned module_addr: 	4;								///< РђРґСЂРµСЃ РјРѕРґСѓР»СЏ 
+	unsigned chassis_addr: 	4;								///< РђРґСЂРµСЃ С€Р°СЃСЃРё
+	unsigned reserv:				8;								///< Р РµР·РµСЂРІ
+}
+#ifndef DOXYGEN
+__attribute__((packed))
+#endif
+device_address;
 
-///Структура с битовыми полями для регистра конфигурация      
+/**
+ * @brief РЎС‚СЂСѓРєС‚СѓСЂР° СЃ Р±РёС‚РѕРІС‹РјРё РїРѕР»СЏРјРё РґР»СЏ СЂРµРіРёСЃС‚СЂР° РєРѕРЅС„РёРіСѓСЂР°С†РёСЏ
+ *
+ */
 typedef struct config_struct
 {
-	unsigned main_switch: 	4;							  ///< Основной свитч 
-	unsigned add_switch_1: 	4;								///< Доп свитч 1
-	unsigned add_switch_2: 	4;								///< Доп свитч 2
-	unsigned reserv:				4;								///< Резерв
-}__attribute__((packed)) device_config;
+	unsigned main_switch: 	4;							  ///< РћСЃРЅРѕРІРЅРѕР№ СЃРІРёС‚С‡
+	unsigned add_switch_1: 	4;								///< Р”РѕРї СЃРІРёС‚С‡ 1
+	unsigned add_switch_2: 	4;								///< Р”РѕРї СЃРІРёС‚С‡ 2
+	unsigned reserv:				4;								///< Р РµР·РµСЂРІ
+}
+#ifndef DOXYGEN
+__attribute__((packed))
+#endif
+device_config;
 
-///Структура с битовыми полями для регистра неисправность питания       
+/**
+ * @brief РЎС‚СЂСѓРєС‚СѓСЂР° СЃ Р±РёС‚РѕРІС‹РјРё РїРѕР»СЏРјРё РґР»СЏ СЂРµРіРёСЃС‚СЂР° РЅРµРёСЃРїСЂР°РІРЅРѕСЃС‚СЊ РїРёС‚Р°РЅРёСЏ 
+ *
+ */
 typedef struct power_failure_struct
 {
 	unsigned v2_3_3: 		1;										///< 2V3.3
 	unsigned v2_5: 			1;										///< 2V5
 	unsigned v1_3_3: 		1;										///< 1V3.3
 	unsigned v1_5:			1;										///< 1V5
-	unsigned reserv:		12;										///< Резерв
-}__attribute__((packed)) power_failure;
+	unsigned reserv:		12;										///< Р РµР·РµСЂРІ
+}
+#ifndef DOXYGEN
+__attribute__((packed))
+#endif
+power_failure;
 
-///Структура с битовыми полями для регистра неисправность шины       
+/**
+ * @brief РЎС‚СЂСѓРєС‚СѓСЂР° СЃ Р±РёС‚РѕРІС‹РјРё РїРѕР»СЏРјРё РґР»СЏ СЂРµРіРёСЃС‚СЂР° РЅРµРёСЃРїСЂР°РІРЅРѕСЃС‚СЊ С€РёРЅС‹
+ *
+ */
 typedef struct bus_defect_struct
 {
-	unsigned many_fail_packet: 1;							///< Количество битых пакетов подряд > уст. значения
-	unsigned fail_timeout: 1;									///< Неисправность по таймауту  
-	unsigned reserv: 14;											///< Резерв
-}__attribute__((packed)) bus_defect;
+	unsigned many_fail_packet: 1;							///< РљРѕР»РёС‡РµСЃС‚РІРѕ Р±РёС‚С‹С… РїР°РєРµС‚РѕРІ РїРѕРґСЂСЏРґ > СѓСЃС‚. Р·РЅР°С‡РµРЅРёСЏ
+	unsigned fail_timeout: 1;									///< РќРµРёСЃРїСЂР°РІРЅРѕСЃС‚СЊ РїРѕ С‚Р°Р№РјР°СѓС‚Сѓ 
+	unsigned reserv: 14;											///< Р РµР·РµСЂРІ
+}
+#ifndef DOXYGEN
+__attribute__((packed))
+#endif
+bus_defect;
 
-///Структура с битовыми полями для регистра неисправность самодиагностики       
+/**
+ * @brief РЎС‚СЂСѓРєС‚СѓСЂР° СЃ Р±РёС‚РѕРІС‹РјРё РїРѕР»СЏРјРё РґР»СЏ СЂРµРіРёСЃС‚СЂР° РЅРµРёСЃРїСЂР°РІРЅРѕСЃС‚СЊ СЃР°РјРѕРґРёР°РіРЅРѕСЃС‚РёРєРё
+ *
+ */
 typedef struct self_diag_struct
 {
-	unsigned fail_crc_firmware: 				1;		///< Некорректная ЦРЦ прошивки  
-	unsigned power_fail: 								1;		///< Неисправность питания 
-	unsigned fail_download_rom: 				1;		///< Ошибка при загрузке данных из ПЗУ     
-	unsigned fail_soft_ver:							1;		///< Версия ПО и тип модуля не совпадают      
-	unsigned fail_firmware_ram:					1;	  ///< Неисправность  в ПО арбитра ОЗУ     
-	unsigned fail_firmware_2_bus:				1;	  ///< Неисправность  в ПО 2ой шины
-	unsigned fail_firmware_1_bus:				1;		///< Неисправность  в ПО 1ой шины
-	unsigned reserv:										1;		///< Резерв
-	uint8_t fail_chanels[8];									///< Неисправность в каналах  
-	unsigned reserv1:										8;		///< Резерв
-}__attribute__((packed)) self_diag;
+	unsigned fail_crc_firmware: 				1;		///< РќРµРєРѕСЂСЂРµРєС‚РЅР°СЏ Р¦Р Р¦ РїСЂРѕС€РёРІРєРё
+	unsigned power_fail: 								1;		///< РќРµРёСЃРїСЂР°РІРЅРѕСЃС‚СЊ РїРёС‚Р°РЅРёСЏ 
+	unsigned fail_download_rom: 				1;		///< РћС€РёР±РєР° РїСЂРё Р·Р°РіСЂСѓР·РєРµ РґР°РЅРЅС‹С… РёР· РџР—РЈ 
+	unsigned fail_soft_ver:							1;		///< Р’РµСЂСЃРёСЏ РџРћ Рё С‚РёРї РјРѕРґСѓР»СЏ РЅРµ СЃРѕРІРїР°РґР°СЋС‚ 
+	unsigned fail_firmware_ram:					1;	  ///< РќРµРёСЃРїСЂР°РІРЅРѕСЃС‚СЊ  РІ РџРћ Р°СЂР±РёС‚СЂР° РћР—РЈ  
+	unsigned fail_firmware_2_bus:				1;	  ///< РќРµРёСЃРїСЂР°РІРЅРѕСЃС‚СЊ  РІ РџРћ 2РѕР№ С€РёРЅС‹
+	unsigned fail_firmware_1_bus:				1;		///< РќРµРёСЃРїСЂР°РІРЅРѕСЃС‚СЊ  РІ РџРћ 1РѕР№ С€РёРЅС‹
+	unsigned reserv:										1;		///< Р РµР·РµСЂРІ
+	uint8_t fail_chanels[8];									///< РќРµРёСЃРїСЂР°РІРЅРѕСЃС‚СЊ РІ РєР°РЅР°Р»Р°С…
+	unsigned reserv1:										8;		///< Р РµР·РµСЂРІ
+}
+#ifndef DOXYGEN
+__attribute__((packed))
+#endif
+self_diag;
 
-///Структура одного диапазона для стартовой структуры     
+/**
+ * @brief РЎС‚СЂСѓРєС‚СѓСЂР° РѕРґРЅРѕРіРѕ РґРёР°РїР°Р·РѕРЅР° РґР»СЏ СЃС‚Р°СЂС‚РѕРІРѕР№ СЃС‚СЂСѓРєС‚СѓСЂС‹
+ *
+ */
 typedef struct range_start_struct
 {
-	uint16_t	range_type;										  ///< Тип диапазона (h) и тип операции (l)
-	uint16_t	start_channel_num;						  ///< Стартовый номер канала (h) и номер диапазона (l)
-	uint16_t	address;											  ///< Адрес
-	uint16_t	size;													  ///< Количество байт 
-}__attribute__((packed)) range;
+	uint16_t	range_type;										  ///< РўРёРї РґРёР°РїР°Р·РѕРЅР° (h) Рё С‚РёРї РѕРїРµСЂР°С†РёРё (l)
+	uint16_t	start_channel_num;						  ///< РЎС‚Р°СЂС‚РѕРІС‹Р№ РЅРѕРјРµСЂ РєР°РЅР°Р»Р° (h) Рё РЅРѕРјРµСЂ РґРёР°РїР°Р·РѕРЅР° (l)
+	uint16_t	address;											  ///< РђРґСЂРµСЃ
+	uint16_t	size;													  ///< РљРѕР»РёС‡РµСЃС‚РІРѕ Р±Р°Р№С‚
+}
+#ifndef DOXYGEN
+__attribute__((packed))
+#endif
+range;
 
-///Структура, которая лежит в начале ОЗУ любого модуля       
+/**
+ * @brief РЎС‚СЂСѓРєС‚СѓСЂР°, РєРѕС‚РѕСЂР°СЏ Р»РµР¶РёС‚ РІ РЅР°С‡Р°Р»Рµ РћР—РЈ Р»СЋР±РѕРіРѕ РјРѕРґСѓР»СЏ 
+ *
+ */
 typedef struct start_struct_ext_ram
 {
-	uint16_t	length;																									///< Длина структуры 
-	uint16_t	text_info;																							///< Ссылка на текстувую информацию о модуле     
-	uint16_t	flag_change_struct;																			///< Флаг изменения структуры  
-	uint16_t	number_of_ranges;																				///< Количество диапазонов 
-	range			ranges_in_start_struct[START_STRUCT_NUMBER_OF_RANGES];	///< Диапазоны в стартовой структуре   
-}__attribute__((packed)) ram_start_struct;
+	uint16_t	length;																									///< Р”Р»РёРЅР° СЃС‚СЂСѓРєС‚СѓСЂС‹ 
+	uint16_t	text_info;																							///< РЎСЃС‹Р»РєР° РЅР° С‚РµРєСЃС‚СѓРІСѓСЋ РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ РјРѕРґСѓР»Рµ 
+	uint16_t	flag_change_struct;																			///< Р¤Р»Р°Рі РёР·РјРµРЅРµРЅРёСЏ СЃС‚СЂСѓРєС‚СѓСЂС‹ 
+	uint16_t	number_of_ranges;																				///< РљРѕР»РёС‡РµСЃС‚РІРѕ РґРёР°РїР°Р·РѕРЅРѕРІ 
+	range			ranges_in_start_struct[START_STRUCT_NUMBER_OF_RANGES];	///< Р”РёР°РїР°Р·РѕРЅС‹ РІ СЃС‚Р°СЂС‚РѕРІРѕР№ СЃС‚СЂСѓРєС‚СѓСЂРµ 
+}
+#ifndef DOXYGEN
+__attribute__((packed))
+#endif
+ram_start_struct;
 
-///Органиация пространства общих регистров во внешнем ОЗУ      
+/**
+ * @brief РћСЂРіР°РЅРёР°С†РёСЏ РїСЂРѕСЃС‚СЂР°РЅСЃС‚РІР° РѕР±С‰РёС… СЂРµРіРёСЃС‚СЂРѕРІ РІРѕ РІРЅРµС€РЅРµРј РћР—РЈ
+ *
+ */
 typedef struct common_register_space_ext_ram
 {
-	plc_soft_ver 						PLC_SoftVer;									///< Версия ПО		 									
-	device_config						PLC_Config;										///< Конфигурация устройства 
-	device_address					PLC_PMAddr;										///< Адрес устройства 
-	uint32_t								PLC_Durat;										///< Время с момента запуска, с
-	uint32_t								PLC_CM_State;									///< Состояние автомата выбора УМ   
-	uint32_t								PLC_CorrPackFromDevice_B1;		///< Корректных пакетов по Ш1, от устройства
-	uint32_t								PLC_CorrPackToDevice_B1;			///< Корректных пакетов по Ш1, к устройству
-	uint32_t								PLC_ErrPackToDevice_B1;				///< Ошибок приема пакета по Ш1
-	uint32_t								PLC_ErrPackFromDevice_B1;			///< Ошибок отправки пакета по Ш1
-	uint32_t								PLC_CorrPackFromDevice_B2;		///< Корректных пакетов по Ш2, от устройства
-	uint32_t								PLC_CorrPackToDevice_B2;			///< Корректных пакетов по Ш2, к устройству
-	uint32_t								PLC_ErrPackToDevice_B2;				///< Ошибок приема пакета по Ш2
-	uint32_t								PLC_ErrPackFromDevice_B2;			///< Ошибок отправки пакета по Ш2
-	power_failure						PLC_PowerDefect;							///< Неиспр питания 
-	bus_defect							PLC_BusDefect_B1;							///< Неиспр 1 шины
-	bus_defect  						PLC_BusDefect_B2;							///< Неиспр 2 шины
-	self_diag	  						PLC_SelfDiagDefect;						///< Неиспр самодиагностики 
-	uint8_t	  							Reserv_1[68];									///< РЕЗЕРВ
-	common_rom_registers	 	PLC_CommonRomRegs;						///< Общие регистры, которые храняться в ПЗУ  
-}__attribute__((packed)) common_ram_registers;
+	plc_soft_ver 						PLC_SoftVer;									///< Р’РµСЂСЃРёСЏ РџРћ											
+	device_config						PLC_Config;										///< РљРѕРЅС„РёРіСѓСЂР°С†РёСЏ СѓСЃС‚СЂРѕР№СЃС‚РІР° 
+	device_address					PLC_PMAddr;										///< РђРґСЂРµСЃ СѓСЃС‚СЂРѕР№СЃС‚РІР°
+	uint32_t								PLC_Durat;										///< Р’СЂРµРјСЏ СЃ РјРѕРјРµРЅС‚Р° Р·Р°РїСѓСЃРєР°, СЃ
+	uint32_t								PLC_CM_State;									///< РЎРѕСЃС‚РѕСЏРЅРёРµ Р°РІС‚РѕРјР°С‚Р° РІС‹Р±РѕСЂР° РЈРњ 
+	uint32_t								PLC_CorrPackFromDevice_B1;		///< РљРѕСЂСЂРµРєС‚РЅС‹С… РїР°РєРµС‚РѕРІ РїРѕ РЁ1, РѕС‚ СѓСЃС‚СЂРѕР№СЃС‚РІР°
+	uint32_t								PLC_CorrPackToDevice_B1;			///< РљРѕСЂСЂРµРєС‚РЅС‹С… РїР°РєРµС‚РѕРІ РїРѕ РЁ1, Рє СѓСЃС‚СЂРѕР№СЃС‚РІСѓ
+	uint32_t								PLC_ErrPackToDevice_B1;				///< РћС€РёР±РѕРє РїСЂРёРµРјР° РїР°РєРµС‚Р° РїРѕ РЁ1
+	uint32_t								PLC_ErrPackFromDevice_B1;			///< РћС€РёР±РѕРє РѕС‚РїСЂР°РІРєРё РїР°РєРµС‚Р° РїРѕ РЁ1
+	uint32_t								PLC_CorrPackFromDevice_B2;		///< РљРѕСЂСЂРµРєС‚РЅС‹С… РїР°РєРµС‚РѕРІ РїРѕ РЁ2, РѕС‚ СѓСЃС‚СЂРѕР№СЃС‚РІР°
+	uint32_t								PLC_CorrPackToDevice_B2;			///< РљРѕСЂСЂРµРєС‚РЅС‹С… РїР°РєРµС‚РѕРІ РїРѕ РЁ2, Рє СѓСЃС‚СЂРѕР№СЃС‚РІСѓ
+	uint32_t								PLC_ErrPackToDevice_B2;				///< РћС€РёР±РѕРє РїСЂРёРµРјР° РїР°РєРµС‚Р° РїРѕ РЁ2
+	uint32_t								PLC_ErrPackFromDevice_B2;			///< РћС€РёР±РѕРє РѕС‚РїСЂР°РІРєРё РїР°РєРµС‚Р° РїРѕ РЁ2
+	power_failure						PLC_PowerDefect;							///< РќРµРёСЃРїСЂ РїРёС‚Р°РЅРёСЏ 
+	bus_defect							PLC_BusDefect_B1;							///< РќРµРёСЃРїСЂ 1 С€РёРЅС‹
+	bus_defect  						PLC_BusDefect_B2;							///< РќРµРёСЃРїСЂ 2 С€РёРЅС‹
+	self_diag	  						PLC_SelfDiagDefect;						///< РќРµРёСЃРїСЂ СЃР°РјРѕРґРёР°РіРЅРѕСЃС‚РёРєРё 
+	uint8_t	  							Reserv_1[68];									///< Р Р•Р—Р•Р Р’
+	common_rom_registers	 	PLC_CommonRomRegs;						///< РћР±С‰РёРµ СЂРµРіРёСЃС‚СЂС‹, РєРѕС‚РѕСЂС‹Рµ С…СЂР°РЅСЏС‚СЊСЃСЏ РІ РџР—РЈ 
+}
+#ifndef DOXYGEN
+__attribute__((packed))
+#endif
+common_ram_registers;
 
-///Органиация пространства регистров МПА во внешнем ОЗУ      
+/**
+ * @brief РћСЂРіР°РЅРёР°С†РёСЏ РїСЂРѕСЃС‚СЂР°РЅСЃС‚РІР° СЂРµРіРёСЃС‚СЂРѕРІ РњРџРђ РІРѕ РІРЅРµС€РЅРµРј РћР—РЈ 
+ *
+ */
 typedef struct mpa_register_space_ext_ram
 {
-	mpa_rom_registers 	AI_RomRegs;																	///< Регистры МПА, которые храняться в ПЗУ
-	uint16_t						AI_SignalChanged;														///< Изменялся ли сигнал с последнего опроса       
-	int16_t							AI_CodeADC[MAX_CHANEL_NUMBER];							///< Сырые данные, код АЦП
-	float								AI_PhysQuantFloat[MAX_CHANEL_NUMBER];				///< Физическая величина (число с плавающей точкой)
-	uint8_t							AI_DiagnosticChannel[MAX_CHANEL_NUMBER];		///< Самодиагностика каналов 
-	uint8_t							Reserv_6[2];																///< Резерв
-}__attribute__((packed)) mpa_ram_registers;	
+	mpa_rom_registers 	AI_RomRegs;																	///< Р РµРіРёСЃС‚СЂС‹ РњРџРђ, РєРѕС‚РѕСЂС‹Рµ С…СЂР°РЅСЏС‚СЊСЃСЏ РІ РџР—РЈ
+	uint16_t						AI_SignalChanged;														///< РР·РјРµРЅСЏР»СЃСЏ Р»Рё СЃРёРіРЅР°Р» СЃ РїРѕСЃР»РµРґРЅРµРіРѕ РѕРїСЂРѕСЃР°   
+	int16_t							AI_CodeADC[MAX_CHANEL_NUMBER];							///< РЎС‹СЂС‹Рµ РґР°РЅРЅС‹Рµ, РєРѕРґ РђР¦Рџ
+	float								AI_PhysQuantFloat[MAX_CHANEL_NUMBER];				///< Р¤РёР·РёС‡РµСЃРєР°СЏ РІРµР»РёС‡РёРЅР° (С‡РёСЃР»Рѕ СЃ РїР»Р°РІР°СЋС‰РµР№ С‚РѕС‡РєРѕР№)
+	uint8_t							AI_DiagnosticChannel[MAX_CHANEL_NUMBER];		///< РЎР°РјРѕРґРёР°РіРЅРѕСЃС‚РёРєР° РєР°РЅР°Р»РѕРІ
+	uint8_t							Reserv_6[2];																///< Р РµР·РµСЂРІ
+}
+#ifndef DOXYGEN
+__attribute__((packed))
+#endif
+mpa_ram_registers;	
 
-///Структура с битовыми полями для сервисного байта ПМ       
+/**
+ * @brief РЎС‚СЂСѓРєС‚СѓСЂР° СЃ Р±РёС‚РѕРІС‹РјРё РїРѕР»СЏРјРё РґР»СЏ СЃРµСЂРІРёСЃРЅРѕРіРѕ Р±Р°Р№С‚Р° РџРњ 
+ *
+ */
 typedef struct service_byte_struct_pm
 {
-	unsigned init: 1;																	///< Инициализация (0 – не инициализирован, 1 – инициализирован)
-	unsigned self_diagnostics_error: 1;								///< Неисправность самодиагностики 
-	unsigned reserv_1: 1;															///< Резерв
-	unsigned reserv_2: 1;															///< Резерв
-	unsigned fail_bus_1: 1;														///< Неисправность (1 шина)
-	unsigned fail_bus_2: 1;														///< Неисправность (2 шина)
-	unsigned both_control: 1;													///< Признак одновременного управления  
-	unsigned master: 1;																///< Ведущий мастер (0 – первый, 1 – второй)
-}__attribute__((packed)) service_struct_pm;
+	unsigned init: 1;																	///< РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ (0 вЂ“ РЅРµ РёРЅРёС†РёР°Р»РёР·РёСЂРѕРІР°РЅ, 1 вЂ“ РёРЅРёС†РёР°Р»РёР·РёСЂРѕРІР°РЅ)
+	unsigned self_diagnostics_error: 1;								///< РќРµРёСЃРїСЂР°РІРЅРѕСЃС‚СЊ СЃР°РјРѕРґРёР°РіРЅРѕСЃС‚РёРєРё
+	unsigned reserv_1: 1;															///< Р РµР·РµСЂРІ
+	unsigned reserv_2: 1;															///< Р РµР·РµСЂРІ
+	unsigned fail_bus_1: 1;														///< РќРµРёСЃРїСЂР°РІРЅРѕСЃС‚СЊ (1 С€РёРЅР°)
+	unsigned fail_bus_2: 1;														///< РќРµРёСЃРїСЂР°РІРЅРѕСЃС‚СЊ (2 С€РёРЅР°)
+	unsigned both_control: 1;													///< РџСЂРёР·РЅР°Рє РѕРґРЅРѕРІСЂРµРјРµРЅРЅРѕРіРѕ СѓРїСЂР°РІР»РµРЅРёСЏ 
+	unsigned master: 1;																///< Р’РµРґСѓС‰РёР№ РјР°СЃС‚РµСЂ (0 вЂ“ РїРµСЂРІС‹Р№, 1 вЂ“ РІС‚РѕСЂРѕР№)
+}
+#ifndef DOXYGEN
+__attribute__((packed))
+#endif
+service_struct_pm;
 
-///Структура с битовыми полями для сервисного байта УМ       
+/**
+ * @brief РЎС‚СЂСѓРєС‚СѓСЂР° СЃ Р±РёС‚РѕРІС‹РјРё РїРѕР»СЏРјРё РґР»СЏ СЃРµСЂРІРёСЃРЅРѕРіРѕ Р±Р°Р№С‚Р° РЈРњ
+ *
+ */
 typedef struct service_byte_struct_um
 {
-	unsigned last_answer: 1;													///< 1= не получен ответ на предыдущий пакет     
-	unsigned reserv: 6;																///< Резерв
-	unsigned ready_to_control: 1;											///< Флаг «Готовность выполнять управление»  
-}__attribute__((packed)) service_struct_um;
+	unsigned last_answer: 1;													///< 1= РЅРµ РїРѕР»СѓС‡РµРЅ РѕС‚РІРµС‚ РЅР° РїСЂРµРґС‹РґСѓС‰РёР№ РїР°РєРµС‚
+	unsigned reserv: 6;																///< Р РµР·РµСЂРІ
+	unsigned ready_to_control: 1;											///< Р¤Р»Р°Рі В«Р“РѕС‚РѕРІРЅРѕСЃС‚СЊ РІС‹РїРѕР»РЅСЏС‚СЊ СѓРїСЂР°РІР»РµРЅРёРµВ»
+}
+#ifndef DOXYGEN
+__attribute__((packed))
+#endif
+service_struct_um;
 
-///Структура организующая память во внешнем ОЗУ     
+/**
+ * @brief РЎС‚СЂСѓРєС‚СѓСЂР° РѕСЂРіР°РЅРёР·СѓСЋС‰Р°СЏ РїР°РјСЏС‚СЊ РІРѕ РІРЅРµС€РЅРµРј РћР—РЈ
+ *
+ */
 typedef struct ram_data_struct
 {
-	ram_start_struct 				start_struct;																											///< Структура по умолчанию, которая должна находиться в начале ОЗУ     
-	uint8_t 								Reserv[RAM_REGISTER_SPACE_START_ADDR - sizeof(ram_start_struct)];	///< Зарезервированное место 
-	common_ram_registers		common_ram_register_space;																				///< Карта общих регистров начиная с адреса REGISTER_SPACE_START_ADDR
-	mpa_ram_registers				mpa_ram_register_space;																						///< Карта регистров МПА начиная с адреса REGISTER_SPACE_START_ADDR
-	fields_packet 					rx_packet_struct;																									///< Принятый пакет с идентифицированными полями    
-	fields_packet 					tx_packet_struct;																									///< Отправляемый пакет с идентифицированными полями    
-	uint8_t 								tx_data[UART_BUFFER_SIZE];																				///< Выделенное место для данных tx_packet 
-	uint8_t 								packet_rx[UART_BUFFER_SIZE];																			///< Буфер с принятым пакетом   
-	uint8_t 								packet_tx[UART_BUFFER_SIZE];																		  ///< Буфер с отправленным пакетом   
-	service_struct_pm				service_byte_pm;																									///< Структура сервисного байта ПМ   
-	service_struct_um				service_byte_um;																									///< Структура сервисного байта УМ   
-	uint_least32_t 					crc_table[256];																										///< Таблица для вычисления контрольной суммы    
-	uint8_t 								uart1_rx_buffer[UART_BUFFER_SIZE];																///< Буфер приемника UART1
-	uint8_t 								uart2_rx_buffer[UART_BUFFER_SIZE];																///< Буфер приемника UART2
-	uint16_t 								spi_1_rx_buffer[SPI_BUFFER_SIZE];																	///< Буфер приемника SPI1
-}__attribute__((packed)) 	ram_data;
+	ram_start_struct 				start_struct;																											///< РЎС‚СЂСѓРєС‚СѓСЂР° РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ, РєРѕС‚РѕСЂР°СЏ РґРѕР»Р¶РЅР° РЅР°С…РѕРґРёС‚СЊСЃСЏ РІ РЅР°С‡Р°Р»Рµ РћР—РЈ 
+	uint8_t 								Reserv[RAM_REGISTER_SPACE_START_ADDR - sizeof(ram_start_struct)];	///< Р—Р°СЂРµР·РµСЂРІРёСЂРѕРІР°РЅРЅРѕРµ РјРµСЃС‚Рѕ 
+	common_ram_registers		common_ram_register_space;																				///< РљР°СЂС‚Р° РѕР±С‰РёС… СЂРµРіРёСЃС‚СЂРѕРІ РЅР°С‡РёРЅР°СЏ СЃ Р°РґСЂРµСЃР° REGISTER_SPACE_START_ADDR
+	mpa_ram_registers				mpa_ram_register_space;																						///< РљР°СЂС‚Р° СЂРµРіРёСЃС‚СЂРѕРІ РњРџРђ РЅР°С‡РёРЅР°СЏ СЃ Р°РґСЂРµСЃР° REGISTER_SPACE_START_ADDR
+	fields_packet 					rx_packet_struct;																									///< РџСЂРёРЅСЏС‚С‹Р№ РїР°РєРµС‚ СЃ РёРґРµРЅС‚РёС„РёС†РёСЂРѕРІР°РЅРЅС‹РјРё РїРѕР»СЏРјРё 
+	fields_packet 					tx_packet_struct;																									///< РћС‚РїСЂР°РІР»СЏРµРјС‹Р№ РїР°РєРµС‚ СЃ РёРґРµРЅС‚РёС„РёС†РёСЂРѕРІР°РЅРЅС‹РјРё РїРѕР»СЏРјРё 
+	uint8_t 								tx_data[UART_BUFFER_SIZE];																				///< Р’С‹РґРµР»РµРЅРЅРѕРµ РјРµСЃС‚Рѕ РґР»СЏ РґР°РЅРЅС‹С… tx_packet 
+	uint8_t 								packet_rx[UART_BUFFER_SIZE];																			///< Р‘СѓС„РµСЂ СЃ РїСЂРёРЅСЏС‚С‹Рј РїР°РєРµС‚РѕРј 
+	uint8_t 								packet_tx[UART_BUFFER_SIZE];																		  ///< Р‘СѓС„РµСЂ СЃ РѕС‚РїСЂР°РІР»РµРЅРЅС‹Рј РїР°РєРµС‚РѕРј
+	service_struct_pm				service_byte_pm;																									///< РЎС‚СЂСѓРєС‚СѓСЂР° СЃРµСЂРІРёСЃРЅРѕРіРѕ Р±Р°Р№С‚Р° РџРњ
+	service_struct_um				service_byte_um;																									///< РЎС‚СЂСѓРєС‚СѓСЂР° СЃРµСЂРІРёСЃРЅРѕРіРѕ Р±Р°Р№С‚Р° РЈРњ
+	uint_least32_t 					crc_table[256];																										///< РўР°Р±Р»РёС†Р° РґР»СЏ РІС‹С‡РёСЃР»РµРЅРёСЏ РєРѕРЅС‚СЂРѕР»СЊРЅРѕР№ СЃСѓРјРјС‹ 
+	uint8_t 								uart1_rx_buffer[UART_BUFFER_SIZE];																///< Р‘СѓС„РµСЂ РїСЂРёРµРјРЅРёРєР° UART1
+	uint8_t 								uart2_rx_buffer[UART_BUFFER_SIZE];																///< Р‘СѓС„РµСЂ РїСЂРёРµРјРЅРёРєР° UART2
+	uint16_t 								spi_1_rx_buffer[SPI_BUFFER_SIZE];																	///< Р‘СѓС„РµСЂ РїСЂРёРµРјРЅРёРєР° SPI1
+}
+#ifndef DOXYGEN
+__attribute__((packed))
+#endif
+ram_data;
 
 /*!
- *	\brief Инициализацирует область памяти внешнего ОЗУ     
+ *	\brief РРЅРёС†РёР°Р»РёР·Р°С†РёСЂСѓРµС‚ РѕР±Р»Р°СЃС‚СЊ РїР°РјСЏС‚Рё РІРЅРµС€РЅРµРіРѕ РћР—РЈ 
 */
 void init_external_ram_space(void);
 

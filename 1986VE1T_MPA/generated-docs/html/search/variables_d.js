@@ -1,0 +1,20 @@
+var searchData=
+[
+  ['self_5fdiagnostics_5ferror_768',['self_diagnostics_error',['../structservice__byte__struct__pm.html#a06e0258a5d00be29d3029c0ef540e4f7',1,'service_byte_struct_pm']]],
+  ['sender_5faddr_769',['sender_addr',['../structpacket__header__struct.html#ac504af7800c52ebd39622a7b93c0231d',1,'packet_header_struct']]],
+  ['service_5fbyte_770',['service_byte',['../structpacket__header__struct.html#af227b1e6bb326a48ea957e067443f7c8',1,'packet_header_struct']]],
+  ['service_5fbyte_5fpm_771',['service_byte_pm',['../structram__data__struct.html#ac62275f40908961a48f2c49d8e85a2df',1,'ram_data_struct']]],
+  ['service_5fbyte_5fum_772',['service_byte_um',['../structram__data__struct.html#a20ec1ad93822ba1a91654812c83b77e2',1,'ram_data_struct']]],
+  ['size_773',['size',['../structrange__start__struct.html#aa90b6f86262a4375fdfb19f133768297',1,'range_start_struct']]],
+  ['soft_5fver_774',['soft_ver',['../structplc__sof__ver__struct.html#afaaf61df70cef194b5df5b4e24ab50f6',1,'plc_sof_ver_struct']]],
+  ['spi_775',['SPI',['../structspi__config__data.html#a4bee2d980540cdded5cf085ae1136ad3',1,'spi_config_data']]],
+  ['spi_5f1_776',['spi_1',['../1273pv19t_8c.html#a168a603d82909428f4f498ae15a611d7',1,'spi_1():&#160;spi.c'],['../dma_8c.html#a168a603d82909428f4f498ae15a611d7',1,'spi_1():&#160;spi.c'],['../main_8c.html#a168a603d82909428f4f498ae15a611d7',1,'spi_1():&#160;spi.c'],['../spi_8c.html#a168a603d82909428f4f498ae15a611d7',1,'spi_1():&#160;spi.c'],['../timers_8c.html#a168a603d82909428f4f498ae15a611d7',1,'spi_1():&#160;spi.c']]],
+  ['spi_5f1_5frx_5fbuffer_777',['spi_1_rx_buffer',['../structram__data__struct.html#aa408978a8e55bf008474fd09861d867f',1,'ram_data_struct']]],
+  ['spi_5f2_778',['spi_2',['../dma_8c.html#a37bdd3ddaee9770093c97c396a2942c2',1,'spi_2():&#160;spi.c'],['../main_8c.html#a37bdd3ddaee9770093c97c396a2942c2',1,'spi_2():&#160;spi.c'],['../spi_8c.html#a37bdd3ddaee9770093c97c396a2942c2',1,'spi_2():&#160;spi.c']]],
+  ['spi_5fdma_5fch_779',['spi_dma_ch',['../structspi__config__data.html#aaafbcfaf3333ceebf395c3f9167ee277',1,'spi_config_data']]],
+  ['spi_5fstruct_780',['spi_struct',['../structadc__config__data.html#a200c9d0952003f2561fabcd7fff26299',1,'adc_config_data']]],
+  ['sspx_781',['SSPx',['../structspi__config__data.html#af7c62ae50acedf3fd8aea07e6d804d47',1,'spi_config_data']]],
+  ['start_5fchannel_5fnum_782',['start_channel_num',['../structrange__start__struct.html#ac54f3eb4958e3dffc77df73292e3552e',1,'range_start_struct']]],
+  ['start_5fstruct_783',['start_struct',['../structram__data__struct.html#a0de3b7f84ef21ea299d6e45bbfc7dcf4',1,'ram_data_struct']]],
+  ['stim_5fchninit_784',['sTIM_ChnInit',['../structtimer__config__struct.html#a07633c834cb63ccdaccd024a65836c4f',1,'timer_config_struct']]]
+];

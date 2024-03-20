@@ -1,0 +1,31 @@
+<map id="mdr32_drivers.h" name="mdr32_drivers.h">
+<area shape="rect" id="node1" title="Заголовочный файл с глобальными константами и подключаемыми библиотеками" alt="" coords="653,5,781,32"/>
+<area shape="rect" id="node2" href="$1273pv19t_8h.html" title="Заголовочный файл с описанием API для работы с микросхемой АЦП 1273ПВ19Т" alt="" coords="1064,379,1167,405"/>
+<area shape="rect" id="node9" href="$clock_8h.html" title="Заголовочный файл с описанием API для настройки тактирования МК" alt="" coords="496,80,564,107"/>
+<area shape="rect" id="node11" href="$dma_8h.html" title="Заголовочный файл с описанием API для работы с DMA." alt="" coords="1096,304,1159,331"/>
+<area shape="rect" id="node12" href="$ebc_8h.html" title="Заголовочный файл с описанием API для работы с EBC (контроллер внешней системной шины)" alt="" coords="191,379,248,405"/>
+<area shape="rect" id="node17" href="$external__ram_8h.html" title="Заголовочный файл с описанием API для работы с областью памяти внешнего ОЗУ" alt="" coords="512,379,633,405"/>
+<area shape="rect" id="node18" href="$external__rom_8h.html" title="Заголовочный файл с описанием API для работы с областью памяти внешнего ПЗУ" alt="" coords="563,304,684,331"/>
+<area shape="rect" id="node19" href="$internal__ram_8h.html" title="Заголовочный файл с описанием API для работы с областью памяти внутреннего ОЗУ" alt="" coords="306,80,423,107"/>
+<area shape="rect" id="node21" href="$leds_8h.html" title="Заголовочный файл с описанием API для работы со светодиодными индикаторами" alt="" coords="54,379,115,405"/>
+<area shape="rect" id="node23" href="$list_8h.html" title="Заголовочный файл с описанием API для работы со списками (реализация аналогична linux kernel)" alt="" coords="727,80,781,107"/>
+<area shape="rect" id="node25" href="$timers_8h.html" title="Заголовочный файл с описанием API для работы с таймерами" alt="" coords="881,155,957,181"/>
+<area shape="rect" id="node27" href="$uart_8h.html" title="Заголовочный файл с описанием API для работы с UART." alt="" coords="757,229,817,256"/>
+<area shape="rect" id="node29" href="$spi_8h.html" title="Заголовочный файл с описанием API для работы с SPI." alt="" coords="1234,304,1287,331"/>
+<area shape="rect" id="node3" href="$1273pv19t_8c.html" title="Файл с реализацией API для работы с АЦП 1273ПВ19Т" alt="" coords="916,453,1019,480"/>
+<area shape="rect" id="node4" href="$dma_8c.html" title="Файл с реализацией API для работы с DMA." alt="" coords="1173,453,1236,480"/>
+<area shape="rect" id="node5" href="$main_8h.html" title="Заголовочный файл с реализацией основного функционала МПА" alt="" coords="689,453,755,480"/>
+<area shape="rect" id="node7" href="$timers_8c.html" title="Файл с реализацией API для работы с таймерами" alt="" coords="837,528,911,555"/>
+<area shape="rect" id="node8" href="$spi_8c.html" title="Файл с реализацией API для работы с SPI." alt="" coords="1095,453,1147,480"/>
+<area shape="rect" id="node6" href="$main_8c.html" title=" " alt="" coords="689,528,755,555"/>
+<area shape="rect" id="node10" href="$clock_8c.html" title="Файл с реализацией API для настройки тактирования МК" alt="" coords="498,155,565,181"/>
+<area shape="rect" id="node13" href="$ebc_8c.html" title="Файл с реализацией API для работы с EBC." alt="" coords="243,453,299,480"/>
+<area shape="rect" id="node14" href="$external__ram_8c.html" title="Файл с реализацией API для работы с областью памяти внешнего ОЗУ" alt="" coords="338,453,458,480"/>
+<area shape="rect" id="node15" href="$external__rom_8c.html" title="Файл с реализацией API для работы с областью памяти внешнего ПЗУ" alt="" coords="489,453,609,480"/>
+<area shape="rect" id="node16" href="$rs422__protocol_8c.html" title="Файл с реализацией API протокола обмена данными по интерфейсу RS&#45;422." alt="" coords="89,453,219,480"/>
+<area shape="rect" id="node20" href="$internal__ram_8c.html" title="Файл с реализацией API для работы с областью памяти внутреннего ОЗУ" alt="" coords="307,155,423,181"/>
+<area shape="rect" id="node22" href="$leds_8c.html" title="Файл с реализацией API для работы со светодиодными индикаторами" alt="" coords="5,453,65,480"/>
+<area shape="rect" id="node24" href="$list_8c.html" title="Файл с реализацией API для работы со списками (реализация аналогична linux kernel)" alt="" coords="753,155,806,181"/>
+<area shape="rect" id="node26" href="$uart_8c.html" title="Файл с реализацией API для работы с UART." alt="" coords="810,304,869,331"/>
+<area shape="rect" id="node28" href="$rs422__protocol_8h.html" title="Заголовочный файл с описанием API протокола обмена данными по интерфейсу RS&#45;422." alt="" coords="357,304,487,331"/>
+</map>

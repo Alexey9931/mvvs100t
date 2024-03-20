@@ -1,0 +1,65 @@
+\hypertarget{leds_8c}{}\doxysection{Файл leds.\+c}
+\label{leds_8c}\index{leds.c@{leds.c}}
+
+
+Файл с реализацией A\+PI для работы со светодиодными индикаторами  
+
+
+{\ttfamily \#include \char`\"{}leds.\+h\char`\"{}}\newline
+Граф включаемых заголовочных файлов для leds.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{leds_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Функции}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{leds_8c_a71356b7b172c1d4ea20d3c5aa61f7c35}{leds\+\_\+gpio\+\_\+config}} (void)
+\begin{DoxyCompactList}\small\item\em Конфигурирует выводы МК для светодиодных индикаторов \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Файл с реализацией A\+PI для работы со светодиодными индикаторами 
+
+
+
+\doxysubsection{Функции}
+\mbox{\Hypertarget{leds_8c_a71356b7b172c1d4ea20d3c5aa61f7c35}\label{leds_8c_a71356b7b172c1d4ea20d3c5aa61f7c35}} 
+\index{leds.c@{leds.c}!leds\_gpio\_config@{leds\_gpio\_config}}
+\index{leds\_gpio\_config@{leds\_gpio\_config}!leds.c@{leds.c}}
+\doxysubsubsection{\texorpdfstring{leds\_gpio\_config()}{leds\_gpio\_config()}}
+{\footnotesize\ttfamily void leds\+\_\+gpio\+\_\+config (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Конфигурирует выводы МК для светодиодных индикаторов 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{12 \{}
+\DoxyCodeLine{13     \textcolor{comment}{// Включение тактирования портов}}
+\DoxyCodeLine{14     RST\_CLK\_PCLKcmd(RST\_CLK\_PCLK\_RST\_CLK|\mbox{\hyperlink{leds_8h_a6d499bd331122dda583e0006e7d277d3}{CLOCK\_LEDS}}, ENABLE); }
+\DoxyCodeLine{15     }
+\DoxyCodeLine{16     PORT\_InitTypeDef gpio\_init\_struct\_leds;}
+\DoxyCodeLine{17     PORT\_StructInit(\&gpio\_init\_struct\_leds);}
+\DoxyCodeLine{18     }
+\DoxyCodeLine{19     \textcolor{comment}{// Инициализация светодиода-\/индикатора корректной работы}}
+\DoxyCodeLine{20     gpio\_init\_struct\_leds.PORT\_Pin = \mbox{\hyperlink{leds_8h_a7230c8e2dae96adad41296a45ebaf2b0}{PIN\_LED\_OK\_WORK}};}
+\DoxyCodeLine{21     gpio\_init\_struct\_leds.PORT\_FUNC = PORT\_FUNC\_PORT;}
+\DoxyCodeLine{22     gpio\_init\_struct\_leds.PORT\_OE = PORT\_OE\_OUT;}
+\DoxyCodeLine{23     gpio\_init\_struct\_leds.PORT\_MODE = PORT\_MODE\_DIGITAL;}
+\DoxyCodeLine{24     gpio\_init\_struct\_leds.PORT\_SPEED = PORT\_SPEED\_MAXFAST;}
+\DoxyCodeLine{25     PORT\_Init(\mbox{\hyperlink{leds_8h_a5ce60c4a7ee9b8df3c4eae48cc2478c3}{PORT\_LEDS}}, \&gpio\_init\_struct\_leds);}
+\DoxyCodeLine{26     }
+\DoxyCodeLine{27     \textcolor{comment}{// Инициализация светодиода-\/индикатора неисправности}}
+\DoxyCodeLine{28     gpio\_init\_struct\_leds.PORT\_Pin = \mbox{\hyperlink{leds_8h_a3f040ee9ad09af1046a3cd2fcd94d149}{PIN\_LED\_ERROR\_WORK}};}
+\DoxyCodeLine{29     gpio\_init\_struct\_leds.PORT\_FUNC = PORT\_FUNC\_PORT;}
+\DoxyCodeLine{30     gpio\_init\_struct\_leds.PORT\_OE = PORT\_OE\_OUT;}
+\DoxyCodeLine{31     gpio\_init\_struct\_leds.PORT\_MODE = PORT\_MODE\_DIGITAL;}
+\DoxyCodeLine{32     gpio\_init\_struct\_leds.PORT\_SPEED = PORT\_SPEED\_MAXFAST;}
+\DoxyCodeLine{33     PORT\_Init(\mbox{\hyperlink{leds_8h_a5ce60c4a7ee9b8df3c4eae48cc2478c3}{PORT\_LEDS}}, \&gpio\_init\_struct\_leds);}
+\DoxyCodeLine{34 \}}
+
+\end{DoxyCode}

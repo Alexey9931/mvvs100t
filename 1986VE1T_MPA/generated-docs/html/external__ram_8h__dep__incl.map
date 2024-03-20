@@ -1,0 +1,11 @@
+<map id="external_ram.h" name="external_ram.h">
+<area shape="rect" id="node1" title="Заголовочный файл с описанием API для работы с областью памяти внешнего ОЗУ" alt="" coords="393,5,515,32"/>
+<area shape="rect" id="node2" href="$1273pv19t_8c.html" title="Файл с реализацией API для работы с АЦП 1273ПВ19Т" alt="" coords="5,80,108,107"/>
+<area shape="rect" id="node3" href="$external__ram_8c.html" title="Файл с реализацией API для работы с областью памяти внешнего ОЗУ" alt="" coords="133,80,253,107"/>
+<area shape="rect" id="node4" href="$external__rom_8c.html" title="Файл с реализацией API для работы с областью памяти внешнего ПЗУ" alt="" coords="277,80,397,107"/>
+<area shape="rect" id="node5" href="$main_8h.html" title="Заголовочный файл с реализацией основного функционала МПА" alt="" coords="421,80,487,107"/>
+<area shape="rect" id="node7" href="$timers_8c.html" title="Файл с реализацией API для работы с таймерами" alt="" coords="487,155,562,181"/>
+<area shape="rect" id="node8" href="$rs422__protocol_8c.html" title="Файл с реализацией API протокола обмена данными по интерфейсу RS&#45;422." alt="" coords="563,80,692,107"/>
+<area shape="rect" id="node9" href="$spi_8c.html" title="Файл с реализацией API для работы с SPI." alt="" coords="716,80,768,107"/>
+<area shape="rect" id="node6" href="$main_8c.html" title=" " alt="" coords="397,155,463,181"/>
+</map>

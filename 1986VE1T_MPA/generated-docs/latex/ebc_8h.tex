@@ -1,0 +1,151 @@
+\hypertarget{ebc_8h}{}\doxysection{Файл ebc.\+h}
+\label{ebc_8h}\index{ebc.h@{ebc.h}}
+
+
+Заголовочный файл с описанием A\+PI для работы с E\+BC (контроллер внешней системной шины)  
+
+
+{\ttfamily \#include \char`\"{}mdr32\+\_\+drivers.\+h\char`\"{}}\newline
+Граф включаемых заголовочных файлов для ebc.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ebc_8h__incl}
+\end{center}
+\end{figure}
+Граф файлов, в которые включается этот файл\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ebc_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Определения типов}
+\begin{DoxyCompactItemize}
+\item 
+typedef enum \mbox{\hyperlink{ebc_8h_aa4b88f24716e66e8d41400b00e8ae8ae}{devices}} \mbox{\hyperlink{ebc_8h_a316b1f4d50291b83e654402968d0f009}{ebc\+\_\+devices}}
+\begin{DoxyCompactList}\small\item\em Типы устройств для подключение по E\+BC. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Перечисления}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{ebc_8h_aa4b88f24716e66e8d41400b00e8ae8ae}{devices}} \{ \mbox{\hyperlink{ebc_8h_aa4b88f24716e66e8d41400b00e8ae8aea991481e1b7d5eab2a8424ca8d935f5ec}{E\+B\+C\+\_\+\+R\+AM}}, 
+\mbox{\hyperlink{ebc_8h_aa4b88f24716e66e8d41400b00e8ae8aead875d3de2bb4db8f95c05c7019c469c9}{E\+B\+C\+\_\+\+R\+OM}}
+ \}
+\begin{DoxyCompactList}\small\item\em Типы устройств для подключение по E\+BC. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Функции}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{ebc_8h_a6b64f4215863b90dc0f8d0b2b4d513db}{ebc\+\_\+init}} (\mbox{\hyperlink{ebc_8h_a316b1f4d50291b83e654402968d0f009}{ebc\+\_\+devices}} device)
+\begin{DoxyCompactList}\small\item\em Инициализирует E\+BC для внешнего ОЗУ или ПЗУ \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Заголовочный файл с описанием A\+PI для работы с E\+BC (контроллер внешней системной шины) 
+
+
+
+\doxysubsection{Типы}
+\mbox{\Hypertarget{ebc_8h_a316b1f4d50291b83e654402968d0f009}\label{ebc_8h_a316b1f4d50291b83e654402968d0f009}} 
+\index{ebc.h@{ebc.h}!ebc\_devices@{ebc\_devices}}
+\index{ebc\_devices@{ebc\_devices}!ebc.h@{ebc.h}}
+\doxysubsubsection{\texorpdfstring{ebc\_devices}{ebc\_devices}}
+{\footnotesize\ttfamily typedef enum \mbox{\hyperlink{ebc_8h_aa4b88f24716e66e8d41400b00e8ae8ae}{devices}} \mbox{\hyperlink{ebc_8h_a316b1f4d50291b83e654402968d0f009}{ebc\+\_\+devices}}}
+
+
+
+Типы устройств для подключение по E\+BC. 
+
+
+
+\doxysubsection{Перечисления}
+\mbox{\Hypertarget{ebc_8h_aa4b88f24716e66e8d41400b00e8ae8ae}\label{ebc_8h_aa4b88f24716e66e8d41400b00e8ae8ae}} 
+\index{ebc.h@{ebc.h}!devices@{devices}}
+\index{devices@{devices}!ebc.h@{ebc.h}}
+\doxysubsubsection{\texorpdfstring{devices}{devices}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{ebc_8h_aa4b88f24716e66e8d41400b00e8ae8ae}{devices}}}
+
+
+
+Типы устройств для подключение по E\+BC. 
+
+\begin{DoxyEnumFields}{Элементы перечислений}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EBC\_RAM@{EBC\_RAM}!ebc.h@{ebc.h}}\index{ebc.h@{ebc.h}!EBC\_RAM@{EBC\_RAM}}}\mbox{\Hypertarget{ebc_8h_aa4b88f24716e66e8d41400b00e8ae8aea991481e1b7d5eab2a8424ca8d935f5ec}\label{ebc_8h_aa4b88f24716e66e8d41400b00e8ae8aea991481e1b7d5eab2a8424ca8d935f5ec}} 
+E\+B\+C\+\_\+\+R\+AM&R\+AM. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EBC\_ROM@{EBC\_ROM}!ebc.h@{ebc.h}}\index{ebc.h@{ebc.h}!EBC\_ROM@{EBC\_ROM}}}\mbox{\Hypertarget{ebc_8h_aa4b88f24716e66e8d41400b00e8ae8aead875d3de2bb4db8f95c05c7019c469c9}\label{ebc_8h_aa4b88f24716e66e8d41400b00e8ae8aead875d3de2bb4db8f95c05c7019c469c9}} 
+E\+B\+C\+\_\+\+R\+OM&R\+OM. \\
+\hline
+
+\end{DoxyEnumFields}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{16 \{}
+\DoxyCodeLine{17     \mbox{\hyperlink{ebc_8h_aa4b88f24716e66e8d41400b00e8ae8aea991481e1b7d5eab2a8424ca8d935f5ec}{EBC\_RAM}},     }
+\DoxyCodeLine{18     \mbox{\hyperlink{ebc_8h_aa4b88f24716e66e8d41400b00e8ae8aead875d3de2bb4db8f95c05c7019c469c9}{EBC\_ROM}}          }
+\DoxyCodeLine{19 \} \mbox{\hyperlink{ebc_8h_a316b1f4d50291b83e654402968d0f009}{ebc\_devices}};}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Функции}
+\mbox{\Hypertarget{ebc_8h_a6b64f4215863b90dc0f8d0b2b4d513db}\label{ebc_8h_a6b64f4215863b90dc0f8d0b2b4d513db}} 
+\index{ebc.h@{ebc.h}!ebc\_init@{ebc\_init}}
+\index{ebc\_init@{ebc\_init}!ebc.h@{ebc.h}}
+\doxysubsubsection{\texorpdfstring{ebc\_init()}{ebc\_init()}}
+{\footnotesize\ttfamily void ebc\+\_\+init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ebc_8h_a316b1f4d50291b83e654402968d0f009}{ebc\+\_\+devices}}}]{device }\end{DoxyParamCaption})}
+
+
+
+Инициализирует E\+BC для внешнего ОЗУ или ПЗУ 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em device} & 0-\/R\+AM, 1-\/R\+OM \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{131  \{}
+\DoxyCodeLine{132         \mbox{\hyperlink{ebc_8c_a0cb26daa245230725307e83802ba8438}{ebc\_gpio\_config}}(device);}
+\DoxyCodeLine{133     }
+\DoxyCodeLine{134         EBC\_InitTypeDef EBC\_InitStruct;}
+\DoxyCodeLine{135     EBC\_MemRegionInitTypeDef EBC\_MemRegionInitStruct;}
+\DoxyCodeLine{136 }
+\DoxyCodeLine{137     \textcolor{comment}{// Включение тактирования EBC}}
+\DoxyCodeLine{138     RST\_CLK\_PCLKcmd(RST\_CLK\_PCLK\_EBC, ENABLE);}
+\DoxyCodeLine{139 }
+\DoxyCodeLine{140     EBC\_StructInit(\&EBC\_InitStruct);}
+\DoxyCodeLine{141     }
+\DoxyCodeLine{142         \textcolor{keywordflow}{if} (device == \mbox{\hyperlink{ebc_8h_aa4b88f24716e66e8d41400b00e8ae8aea991481e1b7d5eab2a8424ca8d935f5ec}{EBC\_RAM}})}
+\DoxyCodeLine{143         \{}
+\DoxyCodeLine{144             EBC\_InitStruct.EBC\_Mode = EBC\_MODE\_RAM;}
+\DoxyCodeLine{145         \}}
+\DoxyCodeLine{146         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (device == \mbox{\hyperlink{ebc_8h_aa4b88f24716e66e8d41400b00e8ae8aead875d3de2bb4db8f95c05c7019c469c9}{EBC\_ROM}})}
+\DoxyCodeLine{147         \{}
+\DoxyCodeLine{148             EBC\_InitStruct.EBC\_Mode = EBC\_MODE\_ROM;}
+\DoxyCodeLine{149         \}}
+\DoxyCodeLine{150 }
+\DoxyCodeLine{151     EBC\_Init(\&EBC\_InitStruct);}
+\DoxyCodeLine{152         }
+\DoxyCodeLine{153         MDR\_EBC-\/>CONTROL = 0x00008001;}
+\DoxyCodeLine{154         \textcolor{keywordflow}{if} (device == \mbox{\hyperlink{ebc_8h_aa4b88f24716e66e8d41400b00e8ae8aea991481e1b7d5eab2a8424ca8d935f5ec}{EBC\_RAM}})}
+\DoxyCodeLine{155         \{}
+\DoxyCodeLine{156             MDR\_EBC-\/>CONTROL \&= \string~(1<<5); \textcolor{comment}{// 32-\/битный режим данных}}
+\DoxyCodeLine{157         \}}
+\DoxyCodeLine{158         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (device == \mbox{\hyperlink{ebc_8h_aa4b88f24716e66e8d41400b00e8ae8aead875d3de2bb4db8f95c05c7019c469c9}{EBC\_ROM}})}
+\DoxyCodeLine{159         \{}
+\DoxyCodeLine{160             MDR\_EBC-\/>CONTROL |= (1<<5);\textcolor{comment}{// 8-\/битный режим данных}}
+\DoxyCodeLine{161         \}}
+\DoxyCodeLine{162 }
+\DoxyCodeLine{163     EBC\_MemRegionStructInit(\&EBC\_MemRegionInitStruct);}
+\DoxyCodeLine{164     EBC\_MemRegionInitStruct.WS\_Setup    = 3;}
+\DoxyCodeLine{165     EBC\_MemRegionInitStruct.WS\_Active   = 9;}
+\DoxyCodeLine{166     EBC\_MemRegionInitStruct.WS\_Hold     = 3;}
+\DoxyCodeLine{167     EBC\_MemRegionInitStruct.Enable\_Tune = ENABLE;}
+\DoxyCodeLine{168     }
+\DoxyCodeLine{169     EBC\_MemRegionInit(\&EBC\_MemRegionInitStruct, EBC\_MEM\_REGION\_50000000);}
+\DoxyCodeLine{170 \}}
+
+\end{DoxyCode}

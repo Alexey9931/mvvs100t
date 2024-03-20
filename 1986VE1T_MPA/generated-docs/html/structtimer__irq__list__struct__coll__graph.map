@@ -1,0 +1,4 @@
+<map id="timer_irq_list_struct" name="timer_irq_list_struct">
+<area shape="rect" id="node1" title="Структура&#45;реализация односвязанного списка обработчиков прерываний таймеров" alt="" coords="5,97,157,124"/>
+<area shape="rect" id="node2" href="$structlist__head__struct.html" title="Структура с описанием двусвязанного списка" alt="" coords="19,7,144,33"/>
+</map>

@@ -1,0 +1,749 @@
+\@ifundefined {etoctocstyle}{\let \etoc@startlocaltoc \@gobble \let \etoc@settocdepth \@gobble \let \etoc@depthtag \@gobble \let \etoc@setlocaltop \@gobble }{}
+\babel@toc {russian}{}
+\contentsline {chapter}{\numberline {1}\IeC {\CYRA }\IeC {\cyrl }\IeC {\cyrf }\IeC {\cyra }\IeC {\cyrv }\IeC {\cyri }\IeC {\cyrt }\IeC {\cyrn }\IeC {\cyrery }\IeC {\cyrishrt } \IeC {\cyru }\IeC {\cyrk }\IeC {\cyra }\IeC {\cyrz }\IeC {\cyra }\IeC {\cyrt }\IeC {\cyre }\IeC {\cyrl }\IeC {\cyrsftsn } \IeC {\cyrk }\IeC {\cyrl }\IeC {\cyra }\IeC {\cyrs }\IeC {\cyrs }\IeC {\cyro }\IeC {\cyrv }}{1}{chapter.1}% 
+\contentsline {section}{\numberline {1.1}\IeC {\CYRK }\IeC {\cyrl }\IeC {\cyra }\IeC {\cyrs }\IeC {\cyrs }\IeC {\cyrery }}{1}{section.1.1}% 
+\contentsline {chapter}{\numberline {2}\IeC {\CYRS }\IeC {\cyrp }\IeC {\cyri }\IeC {\cyrs }\IeC {\cyro }\IeC {\cyrk } \IeC {\cyrf }\IeC {\cyra }\IeC {\cyrishrt }\IeC {\cyrl }\IeC {\cyro }\IeC {\cyrv }}{3}{chapter.2}% 
+\contentsline {section}{\numberline {2.1}\IeC {\CYRF }\IeC {\cyra }\IeC {\cyrishrt }\IeC {\cyrl }\IeC {\cyrery }}{3}{section.2.1}% 
+\contentsline {chapter}{\numberline {3}\IeC {\CYRK }\IeC {\cyrl }\IeC {\cyra }\IeC {\cyrs }\IeC {\cyrs }\IeC {\cyrery }}{5}{chapter.3}% 
+\contentsline {section}{\numberline {3.1}\IeC {\CYRS }\IeC {\cyrt }\IeC {\cyrr }\IeC {\cyru }\IeC {\cyrk }\IeC {\cyrt }\IeC {\cyru }\IeC {\cyrr }\IeC {\cyra } adc\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}config\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}data}{5}{section.3.1}% 
+\contentsline {subsection}{\numberline {3.1.1}\IeC {\CYRP }\IeC {\cyro }\IeC {\cyrd }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrb }\IeC {\cyrn }\IeC {\cyro }\IeC {\cyre } \IeC {\cyro }\IeC {\cyrp }\IeC {\cyri }\IeC {\cyrs }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyri }\IeC {\cyre }}{6}{subsection.3.1.1}% 
+\contentsline {subsection}{\numberline {3.1.2}\IeC {\CYRD }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyrn }\IeC {\cyrery }\IeC {\cyre } \IeC {\cyrk }\IeC {\cyrl }\IeC {\cyra }\IeC {\cyrs }\IeC {\cyrs }\IeC {\cyra }}{6}{subsection.3.1.2}% 
+\contentsline {subsubsection}{\numberline {3.1.2.1}avg\_num}{6}{subsubsection.3.1.2.1}% 
+\contentsline {subsubsection}{\numberline {3.1.2.2}ch\_rx\_num}{6}{subsubsection.3.1.2.2}% 
+\contentsline {subsubsection}{\numberline {3.1.2.3}init\_flag}{6}{subsubsection.3.1.2.3}% 
+\contentsline {subsubsection}{\numberline {3.1.2.4}spi\_struct}{6}{subsubsection.3.1.2.4}% 
+\contentsline {subsubsection}{\numberline {3.1.2.5}timer\_n\_capture}{6}{subsubsection.3.1.2.5}% 
+\contentsline {section}{\numberline {3.2}\IeC {\CYRS }\IeC {\cyrt }\IeC {\cyrr }\IeC {\cyru }\IeC {\cyrk }\IeC {\cyrt }\IeC {\cyru }\IeC {\cyrr }\IeC {\cyra } ai\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}oper\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}mode\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}struct}{7}{section.3.2}% 
+\contentsline {subsection}{\numberline {3.2.1}\IeC {\CYRP }\IeC {\cyro }\IeC {\cyrd }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrb }\IeC {\cyrn }\IeC {\cyro }\IeC {\cyre } \IeC {\cyro }\IeC {\cyrp }\IeC {\cyri }\IeC {\cyrs }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyri }\IeC {\cyre }}{7}{subsection.3.2.1}% 
+\contentsline {subsection}{\numberline {3.2.2}\IeC {\CYRD }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyrn }\IeC {\cyrery }\IeC {\cyre } \IeC {\cyrk }\IeC {\cyrl }\IeC {\cyra }\IeC {\cyrs }\IeC {\cyrs }\IeC {\cyra }}{7}{subsection.3.2.2}% 
+\contentsline {subsubsection}{\numberline {3.2.2.1}adc\_chs\_mode}{7}{subsubsection.3.2.2.1}% 
+\contentsline {subsubsection}{\numberline {3.2.2.2}reserv1}{7}{subsubsection.3.2.2.2}% 
+\contentsline {section}{\numberline {3.3}\IeC {\CYRS }\IeC {\cyrt }\IeC {\cyrr }\IeC {\cyru }\IeC {\cyrk }\IeC {\cyrt }\IeC {\cyru }\IeC {\cyrr }\IeC {\cyra } bus\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}defect\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}struct}{7}{section.3.3}% 
+\contentsline {subsection}{\numberline {3.3.1}\IeC {\CYRP }\IeC {\cyro }\IeC {\cyrd }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrb }\IeC {\cyrn }\IeC {\cyro }\IeC {\cyre } \IeC {\cyro }\IeC {\cyrp }\IeC {\cyri }\IeC {\cyrs }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyri }\IeC {\cyre }}{8}{subsection.3.3.1}% 
+\contentsline {subsection}{\numberline {3.3.2}\IeC {\CYRD }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyrn }\IeC {\cyrery }\IeC {\cyre } \IeC {\cyrk }\IeC {\cyrl }\IeC {\cyra }\IeC {\cyrs }\IeC {\cyrs }\IeC {\cyra }}{8}{subsection.3.3.2}% 
+\contentsline {subsubsection}{\numberline {3.3.2.1}fail\_timeout}{8}{subsubsection.3.3.2.1}% 
+\contentsline {subsubsection}{\numberline {3.3.2.2}many\_fail\_packet}{8}{subsubsection.3.3.2.2}% 
+\contentsline {subsubsection}{\numberline {3.3.2.3}reserv}{8}{subsubsection.3.3.2.3}% 
+\contentsline {section}{\numberline {3.4}\IeC {\CYRS }\IeC {\cyrt }\IeC {\cyrr }\IeC {\cyru }\IeC {\cyrk }\IeC {\cyrt }\IeC {\cyru }\IeC {\cyrr }\IeC {\cyra } cmd\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}header\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}struct}{8}{section.3.4}% 
+\contentsline {subsection}{\numberline {3.4.1}\IeC {\CYRP }\IeC {\cyro }\IeC {\cyrd }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrb }\IeC {\cyrn }\IeC {\cyro }\IeC {\cyre } \IeC {\cyro }\IeC {\cyrp }\IeC {\cyri }\IeC {\cyrs }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyri }\IeC {\cyre }}{9}{subsection.3.4.1}% 
+\contentsline {subsection}{\numberline {3.4.2}\IeC {\CYRD }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyrn }\IeC {\cyrery }\IeC {\cyre } \IeC {\cyrk }\IeC {\cyrl }\IeC {\cyra }\IeC {\cyrs }\IeC {\cyrs }\IeC {\cyra }}{9}{subsection.3.4.2}% 
+\contentsline {subsubsection}{\numberline {3.4.2.1}cmd}{9}{subsubsection.3.4.2.1}% 
+\contentsline {subsubsection}{\numberline {3.4.2.2}length}{9}{subsubsection.3.4.2.2}% 
+\contentsline {subsubsection}{\numberline {3.4.2.3}result}{9}{subsubsection.3.4.2.3}% 
+\contentsline {section}{\numberline {3.5}\IeC {\CYRS }\IeC {\cyrt }\IeC {\cyrr }\IeC {\cyru }\IeC {\cyrk }\IeC {\cyrt }\IeC {\cyru }\IeC {\cyrr }\IeC {\cyra } cmd\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}struct}{10}{section.3.5}% 
+\contentsline {subsection}{\numberline {3.5.1}\IeC {\CYRP }\IeC {\cyro }\IeC {\cyrd }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrb }\IeC {\cyrn }\IeC {\cyro }\IeC {\cyre } \IeC {\cyro }\IeC {\cyrp }\IeC {\cyri }\IeC {\cyrs }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyri }\IeC {\cyre }}{10}{subsection.3.5.1}% 
+\contentsline {subsection}{\numberline {3.5.2}\IeC {\CYRD }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyrn }\IeC {\cyrery }\IeC {\cyre } \IeC {\cyrk }\IeC {\cyrl }\IeC {\cyra }\IeC {\cyrs }\IeC {\cyrs }\IeC {\cyra }}{10}{subsection.3.5.2}% 
+\contentsline {subsubsection}{\numberline {3.5.2.1}data}{10}{subsubsection.3.5.2.1}% 
+\contentsline {subsubsection}{\numberline {3.5.2.2}header}{11}{subsubsection.3.5.2.2}% 
+\contentsline {section}{\numberline {3.6}\IeC {\CYRS }\IeC {\cyrt }\IeC {\cyrr }\IeC {\cyru }\IeC {\cyrk }\IeC {\cyrt }\IeC {\cyru }\IeC {\cyrr }\IeC {\cyra } common\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}register\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}space\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}ext\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}ram}{11}{section.3.6}% 
+\contentsline {subsection}{\numberline {3.6.1}\IeC {\CYRP }\IeC {\cyro }\IeC {\cyrd }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrb }\IeC {\cyrn }\IeC {\cyro }\IeC {\cyre } \IeC {\cyro }\IeC {\cyrp }\IeC {\cyri }\IeC {\cyrs }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyri }\IeC {\cyre }}{12}{subsection.3.6.1}% 
+\contentsline {subsection}{\numberline {3.6.2}\IeC {\CYRD }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyrn }\IeC {\cyrery }\IeC {\cyre } \IeC {\cyrk }\IeC {\cyrl }\IeC {\cyra }\IeC {\cyrs }\IeC {\cyrs }\IeC {\cyra }}{12}{subsection.3.6.2}% 
+\contentsline {subsubsection}{\numberline {3.6.2.1}PLC\_BusDefect\_B1}{12}{subsubsection.3.6.2.1}% 
+\contentsline {subsubsection}{\numberline {3.6.2.2}PLC\_BusDefect\_B2}{12}{subsubsection.3.6.2.2}% 
+\contentsline {subsubsection}{\numberline {3.6.2.3}PLC\_CM\_State}{13}{subsubsection.3.6.2.3}% 
+\contentsline {subsubsection}{\numberline {3.6.2.4}PLC\_CommonRomRegs}{13}{subsubsection.3.6.2.4}% 
+\contentsline {subsubsection}{\numberline {3.6.2.5}PLC\_Config}{13}{subsubsection.3.6.2.5}% 
+\contentsline {subsubsection}{\numberline {3.6.2.6}PLC\_CorrPackFromDevice\_B1}{13}{subsubsection.3.6.2.6}% 
+\contentsline {subsubsection}{\numberline {3.6.2.7}PLC\_CorrPackFromDevice\_B2}{13}{subsubsection.3.6.2.7}% 
+\contentsline {subsubsection}{\numberline {3.6.2.8}PLC\_CorrPackToDevice\_B1}{13}{subsubsection.3.6.2.8}% 
+\contentsline {subsubsection}{\numberline {3.6.2.9}PLC\_CorrPackToDevice\_B2}{14}{subsubsection.3.6.2.9}% 
+\contentsline {subsubsection}{\numberline {3.6.2.10}PLC\_Durat}{14}{subsubsection.3.6.2.10}% 
+\contentsline {subsubsection}{\numberline {3.6.2.11}PLC\_ErrPackFromDevice\_B1}{14}{subsubsection.3.6.2.11}% 
+\contentsline {subsubsection}{\numberline {3.6.2.12}PLC\_ErrPackFromDevice\_B2}{14}{subsubsection.3.6.2.12}% 
+\contentsline {subsubsection}{\numberline {3.6.2.13}PLC\_ErrPackToDevice\_B1}{14}{subsubsection.3.6.2.13}% 
+\contentsline {subsubsection}{\numberline {3.6.2.14}PLC\_ErrPackToDevice\_B2}{14}{subsubsection.3.6.2.14}% 
+\contentsline {subsubsection}{\numberline {3.6.2.15}PLC\_PMAddr}{15}{subsubsection.3.6.2.15}% 
+\contentsline {subsubsection}{\numberline {3.6.2.16}PLC\_PowerDefect}{15}{subsubsection.3.6.2.16}% 
+\contentsline {subsubsection}{\numberline {3.6.2.17}PLC\_SelfDiagDefect}{15}{subsubsection.3.6.2.17}% 
+\contentsline {subsubsection}{\numberline {3.6.2.18}PLC\_SoftVer}{15}{subsubsection.3.6.2.18}% 
+\contentsline {subsubsection}{\numberline {3.6.2.19}Reserv\_1}{15}{subsubsection.3.6.2.19}% 
+\contentsline {section}{\numberline {3.7}\IeC {\CYRS }\IeC {\cyrt }\IeC {\cyrr }\IeC {\cyru }\IeC {\cyrk }\IeC {\cyrt }\IeC {\cyru }\IeC {\cyrr }\IeC {\cyra } common\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}register\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}space\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}ext\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}rom}{16}{section.3.7}% 
+\contentsline {subsection}{\numberline {3.7.1}\IeC {\CYRP }\IeC {\cyro }\IeC {\cyrd }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrb }\IeC {\cyrn }\IeC {\cyro }\IeC {\cyre } \IeC {\cyro }\IeC {\cyrp }\IeC {\cyri }\IeC {\cyrs }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyri }\IeC {\cyre }}{17}{subsection.3.7.1}% 
+\contentsline {subsection}{\numberline {3.7.2}\IeC {\CYRD }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyrn }\IeC {\cyrery }\IeC {\cyre } \IeC {\cyrk }\IeC {\cyrl }\IeC {\cyra }\IeC {\cyrs }\IeC {\cyrs }\IeC {\cyra }}{17}{subsection.3.7.2}% 
+\contentsline {subsubsection}{\numberline {3.7.2.1}PLC\_BusConfig\_B1}{17}{subsubsection.3.7.2.1}% 
+\contentsline {subsubsection}{\numberline {3.7.2.2}PLC\_BusConfig\_B2}{17}{subsubsection.3.7.2.2}% 
+\contentsline {subsubsection}{\numberline {3.7.2.3}PLC\_DeviceInfo}{17}{subsubsection.3.7.2.3}% 
+\contentsline {subsubsection}{\numberline {3.7.2.4}PLC\_DeviceType}{17}{subsubsection.3.7.2.4}% 
+\contentsline {subsubsection}{\numberline {3.7.2.5}PLC\_DualControl}{17}{subsubsection.3.7.2.5}% 
+\contentsline {subsubsection}{\numberline {3.7.2.6}PLC\_NumCrcErrorsForDefect\_B1}{18}{subsubsection.3.7.2.6}% 
+\contentsline {subsubsection}{\numberline {3.7.2.7}PLC\_NumCrcErrorsForDefect\_B2}{18}{subsubsection.3.7.2.7}% 
+\contentsline {subsubsection}{\numberline {3.7.2.8}PLC\_SerialNumber}{18}{subsubsection.3.7.2.8}% 
+\contentsline {subsubsection}{\numberline {3.7.2.9}PLC\_TimeoutForDefect\_B1}{18}{subsubsection.3.7.2.9}% 
+\contentsline {subsubsection}{\numberline {3.7.2.10}PLC\_TimeoutForDefect\_B2}{18}{subsubsection.3.7.2.10}% 
+\contentsline {subsubsection}{\numberline {3.7.2.11}PLC\_TimeSoloWork}{18}{subsubsection.3.7.2.11}% 
+\contentsline {subsubsection}{\numberline {3.7.2.12}PLC\_TimeToRepair}{19}{subsubsection.3.7.2.12}% 
+\contentsline {subsubsection}{\numberline {3.7.2.13}Reserv\_2}{19}{subsubsection.3.7.2.13}% 
+\contentsline {section}{\numberline {3.8}\IeC {\CYRS }\IeC {\cyrt }\IeC {\cyrr }\IeC {\cyru }\IeC {\cyrk }\IeC {\cyrt }\IeC {\cyru }\IeC {\cyrr }\IeC {\cyra } config\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}struct}{19}{section.3.8}% 
+\contentsline {subsection}{\numberline {3.8.1}\IeC {\CYRP }\IeC {\cyro }\IeC {\cyrd }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrb }\IeC {\cyrn }\IeC {\cyro }\IeC {\cyre } \IeC {\cyro }\IeC {\cyrp }\IeC {\cyri }\IeC {\cyrs }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyri }\IeC {\cyre }}{19}{subsection.3.8.1}% 
+\contentsline {subsection}{\numberline {3.8.2}\IeC {\CYRD }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyrn }\IeC {\cyrery }\IeC {\cyre } \IeC {\cyrk }\IeC {\cyrl }\IeC {\cyra }\IeC {\cyrs }\IeC {\cyrs }\IeC {\cyra }}{19}{subsection.3.8.2}% 
+\contentsline {subsubsection}{\numberline {3.8.2.1}add\_switch\_1}{20}{subsubsection.3.8.2.1}% 
+\contentsline {subsubsection}{\numberline {3.8.2.2}add\_switch\_2}{20}{subsubsection.3.8.2.2}% 
+\contentsline {subsubsection}{\numberline {3.8.2.3}main\_switch}{20}{subsubsection.3.8.2.3}% 
+\contentsline {subsubsection}{\numberline {3.8.2.4}reserv}{20}{subsubsection.3.8.2.4}% 
+\contentsline {section}{\numberline {3.9}\IeC {\CYRS }\IeC {\cyrt }\IeC {\cyrr }\IeC {\cyru }\IeC {\cyrk }\IeC {\cyrt }\IeC {\cyru }\IeC {\cyrr }\IeC {\cyra } device\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}address\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}struct}{20}{section.3.9}% 
+\contentsline {subsection}{\numberline {3.9.1}\IeC {\CYRP }\IeC {\cyro }\IeC {\cyrd }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrb }\IeC {\cyrn }\IeC {\cyro }\IeC {\cyre } \IeC {\cyro }\IeC {\cyrp }\IeC {\cyri }\IeC {\cyrs }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyri }\IeC {\cyre }}{21}{subsection.3.9.1}% 
+\contentsline {subsection}{\numberline {3.9.2}\IeC {\CYRD }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyrn }\IeC {\cyrery }\IeC {\cyre } \IeC {\cyrk }\IeC {\cyrl }\IeC {\cyra }\IeC {\cyrs }\IeC {\cyrs }\IeC {\cyra }}{21}{subsection.3.9.2}% 
+\contentsline {subsubsection}{\numberline {3.9.2.1}chassis\_addr}{21}{subsubsection.3.9.2.1}% 
+\contentsline {subsubsection}{\numberline {3.9.2.2}module\_addr}{21}{subsubsection.3.9.2.2}% 
+\contentsline {subsubsection}{\numberline {3.9.2.3}reserv}{21}{subsubsection.3.9.2.3}% 
+\contentsline {section}{\numberline {3.10}\IeC {\CYRS }\IeC {\cyrt }\IeC {\cyrr }\IeC {\cyru }\IeC {\cyrk }\IeC {\cyrt }\IeC {\cyru }\IeC {\cyrr }\IeC {\cyra } device\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}type\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}struct}{21}{section.3.10}% 
+\contentsline {subsection}{\numberline {3.10.1}\IeC {\CYRP }\IeC {\cyro }\IeC {\cyrd }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrb }\IeC {\cyrn }\IeC {\cyro }\IeC {\cyre } \IeC {\cyro }\IeC {\cyrp }\IeC {\cyri }\IeC {\cyrs }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyri }\IeC {\cyre }}{22}{subsection.3.10.1}% 
+\contentsline {subsection}{\numberline {3.10.2}\IeC {\CYRD }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyrn }\IeC {\cyrery }\IeC {\cyre } \IeC {\cyrk }\IeC {\cyrl }\IeC {\cyra }\IeC {\cyrs }\IeC {\cyrs }\IeC {\cyra }}{22}{subsection.3.10.2}% 
+\contentsline {subsubsection}{\numberline {3.10.2.1}batch}{22}{subsubsection.3.10.2.1}% 
+\contentsline {subsubsection}{\numberline {3.10.2.2}modification}{22}{subsubsection.3.10.2.2}% 
+\contentsline {subsubsection}{\numberline {3.10.2.3}reserv}{22}{subsubsection.3.10.2.3}% 
+\contentsline {subsubsection}{\numberline {3.10.2.4}revision}{23}{subsubsection.3.10.2.4}% 
+\contentsline {subsubsection}{\numberline {3.10.2.5}type}{23}{subsubsection.3.10.2.5}% 
+\contentsline {subsubsection}{\numberline {3.10.2.6}use\_object}{23}{subsubsection.3.10.2.6}% 
+\contentsline {section}{\numberline {3.11}\IeC {\CYRS }\IeC {\cyrt }\IeC {\cyrr }\IeC {\cyru }\IeC {\cyrk }\IeC {\cyrt }\IeC {\cyru }\IeC {\cyrr }\IeC {\cyra } heap\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}struct}{23}{section.3.11}% 
+\contentsline {subsection}{\numberline {3.11.1}\IeC {\CYRP }\IeC {\cyro }\IeC {\cyrd }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrb }\IeC {\cyrn }\IeC {\cyro }\IeC {\cyre } \IeC {\cyro }\IeC {\cyrp }\IeC {\cyri }\IeC {\cyrs }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyri }\IeC {\cyre }}{23}{subsection.3.11.1}% 
+\contentsline {subsection}{\numberline {3.11.2}\IeC {\CYRD }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyrn }\IeC {\cyrery }\IeC {\cyre } \IeC {\cyrk }\IeC {\cyrl }\IeC {\cyra }\IeC {\cyrs }\IeC {\cyrs }\IeC {\cyra }}{23}{subsection.3.11.2}% 
+\contentsline {subsubsection}{\numberline {3.11.2.1}memory\_page\_space}{24}{subsubsection.3.11.2.1}% 
+\contentsline {subsubsection}{\numberline {3.11.2.2}memory\_page\_status}{24}{subsubsection.3.11.2.2}% 
+\contentsline {section}{\numberline {3.12}\IeC {\CYRS }\IeC {\cyrt }\IeC {\cyrr }\IeC {\cyru }\IeC {\cyrk }\IeC {\cyrt }\IeC {\cyru }\IeC {\cyrr }\IeC {\cyra } list\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}head\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}struct}{24}{section.3.12}% 
+\contentsline {subsection}{\numberline {3.12.1}\IeC {\CYRP }\IeC {\cyro }\IeC {\cyrd }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrb }\IeC {\cyrn }\IeC {\cyro }\IeC {\cyre } \IeC {\cyro }\IeC {\cyrp }\IeC {\cyri }\IeC {\cyrs }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyri }\IeC {\cyre }}{24}{subsection.3.12.1}% 
+\contentsline {subsection}{\numberline {3.12.2}\IeC {\CYRD }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyrn }\IeC {\cyrery }\IeC {\cyre } \IeC {\cyrk }\IeC {\cyrl }\IeC {\cyra }\IeC {\cyrs }\IeC {\cyrs }\IeC {\cyra }}{25}{subsection.3.12.2}% 
+\contentsline {subsubsection}{\numberline {3.12.2.1}next}{25}{subsubsection.3.12.2.1}% 
+\contentsline {subsubsection}{\numberline {3.12.2.2}prev}{25}{subsubsection.3.12.2.2}% 
+\contentsline {section}{\numberline {3.13}\IeC {\CYRS }\IeC {\cyrt }\IeC {\cyrr }\IeC {\cyru }\IeC {\cyrk }\IeC {\cyrt }\IeC {\cyru }\IeC {\cyrr }\IeC {\cyra } mpa\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}register\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}space\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}ext\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}ram}{25}{section.3.13}% 
+\contentsline {subsection}{\numberline {3.13.1}\IeC {\CYRP }\IeC {\cyro }\IeC {\cyrd }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrb }\IeC {\cyrn }\IeC {\cyro }\IeC {\cyre } \IeC {\cyro }\IeC {\cyrp }\IeC {\cyri }\IeC {\cyrs }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyri }\IeC {\cyre }}{26}{subsection.3.13.1}% 
+\contentsline {subsection}{\numberline {3.13.2}\IeC {\CYRD }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyrn }\IeC {\cyrery }\IeC {\cyre } \IeC {\cyrk }\IeC {\cyrl }\IeC {\cyra }\IeC {\cyrs }\IeC {\cyrs }\IeC {\cyra }}{26}{subsection.3.13.2}% 
+\contentsline {subsubsection}{\numberline {3.13.2.1}AI\_CodeADC}{26}{subsubsection.3.13.2.1}% 
+\contentsline {subsubsection}{\numberline {3.13.2.2}AI\_DiagnosticChannel}{26}{subsubsection.3.13.2.2}% 
+\contentsline {subsubsection}{\numberline {3.13.2.3}AI\_PhysQuantFloat}{26}{subsubsection.3.13.2.3}% 
+\contentsline {subsubsection}{\numberline {3.13.2.4}AI\_RomRegs}{27}{subsubsection.3.13.2.4}% 
+\contentsline {subsubsection}{\numberline {3.13.2.5}AI\_SignalChanged}{27}{subsubsection.3.13.2.5}% 
+\contentsline {subsubsection}{\numberline {3.13.2.6}Reserv\_6}{27}{subsubsection.3.13.2.6}% 
+\contentsline {section}{\numberline {3.14}\IeC {\CYRS }\IeC {\cyrt }\IeC {\cyrr }\IeC {\cyru }\IeC {\cyrk }\IeC {\cyrt }\IeC {\cyru }\IeC {\cyrr }\IeC {\cyra } mpa\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}register\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}space\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}ext\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}rom}{27}{section.3.14}% 
+\contentsline {subsection}{\numberline {3.14.1}\IeC {\CYRP }\IeC {\cyro }\IeC {\cyrd }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrb }\IeC {\cyrn }\IeC {\cyro }\IeC {\cyre } \IeC {\cyro }\IeC {\cyrp }\IeC {\cyri }\IeC {\cyrs }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyri }\IeC {\cyre }}{28}{subsection.3.14.1}% 
+\contentsline {subsection}{\numberline {3.14.2}\IeC {\CYRD }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyrn }\IeC {\cyrery }\IeC {\cyre } \IeC {\cyrk }\IeC {\cyrl }\IeC {\cyra }\IeC {\cyrs }\IeC {\cyrs }\IeC {\cyra }}{28}{subsection.3.14.2}% 
+\contentsline {subsubsection}{\numberline {3.14.2.1}AI\_MaxCodeADC}{28}{subsubsection.3.14.2.1}% 
+\contentsline {subsubsection}{\numberline {3.14.2.2}AI\_MetrologDat}{29}{subsubsection.3.14.2.2}% 
+\contentsline {subsubsection}{\numberline {3.14.2.3}AI\_MinCodeADC}{29}{subsubsection.3.14.2.3}% 
+\contentsline {subsubsection}{\numberline {3.14.2.4}AI\_NumForAverag}{29}{subsubsection.3.14.2.4}% 
+\contentsline {subsubsection}{\numberline {3.14.2.5}AI\_OperMode}{29}{subsubsection.3.14.2.5}% 
+\contentsline {subsubsection}{\numberline {3.14.2.6}AI\_PolynConst0}{29}{subsubsection.3.14.2.6}% 
+\contentsline {subsubsection}{\numberline {3.14.2.7}AI\_PolynConst1}{29}{subsubsection.3.14.2.7}% 
+\contentsline {subsubsection}{\numberline {3.14.2.8}AI\_PolynConst2}{30}{subsubsection.3.14.2.8}% 
+\contentsline {subsubsection}{\numberline {3.14.2.9}AI\_PolynConst3}{30}{subsubsection.3.14.2.9}% 
+\contentsline {subsubsection}{\numberline {3.14.2.10}AI\_PolynConst4}{30}{subsubsection.3.14.2.10}% 
+\contentsline {subsubsection}{\numberline {3.14.2.11}AI\_PolynConst5}{30}{subsubsection.3.14.2.11}% 
+\contentsline {subsubsection}{\numberline {3.14.2.12}AI\_PolynConst6}{30}{subsubsection.3.14.2.12}% 
+\contentsline {subsubsection}{\numberline {3.14.2.13}Reserv\_3}{30}{subsubsection.3.14.2.13}% 
+\contentsline {subsubsection}{\numberline {3.14.2.14}Reserv\_4}{31}{subsubsection.3.14.2.14}% 
+\contentsline {subsubsection}{\numberline {3.14.2.15}Reserv\_5}{31}{subsubsection.3.14.2.15}% 
+\contentsline {section}{\numberline {3.15}\IeC {\CYRS }\IeC {\cyrt }\IeC {\cyrr }\IeC {\cyru }\IeC {\cyrk }\IeC {\cyrt }\IeC {\cyru }\IeC {\cyrr }\IeC {\cyra } packet\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}header\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}struct}{31}{section.3.15}% 
+\contentsline {subsection}{\numberline {3.15.1}\IeC {\CYRP }\IeC {\cyro }\IeC {\cyrd }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrb }\IeC {\cyrn }\IeC {\cyro }\IeC {\cyre } \IeC {\cyro }\IeC {\cyrp }\IeC {\cyri }\IeC {\cyrs }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyri }\IeC {\cyre }}{31}{subsection.3.15.1}% 
+\contentsline {subsection}{\numberline {3.15.2}\IeC {\CYRD }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyrn }\IeC {\cyrery }\IeC {\cyre } \IeC {\cyrk }\IeC {\cyrl }\IeC {\cyra }\IeC {\cyrs }\IeC {\cyrs }\IeC {\cyra }}{31}{subsection.3.15.2}% 
+\contentsline {subsubsection}{\numberline {3.15.2.1}cmd\_number}{32}{subsubsection.3.15.2.1}% 
+\contentsline {subsubsection}{\numberline {3.15.2.2}header}{32}{subsubsection.3.15.2.2}% 
+\contentsline {subsubsection}{\numberline {3.15.2.3}packet\_length}{32}{subsubsection.3.15.2.3}% 
+\contentsline {subsubsection}{\numberline {3.15.2.4}receiver\_addr}{32}{subsubsection.3.15.2.4}% 
+\contentsline {subsubsection}{\numberline {3.15.2.5}sender\_addr}{32}{subsubsection.3.15.2.5}% 
+\contentsline {subsubsection}{\numberline {3.15.2.6}service\_byte}{32}{subsubsection.3.15.2.6}% 
+\contentsline {section}{\numberline {3.16}\IeC {\CYRS }\IeC {\cyrt }\IeC {\cyrr }\IeC {\cyru }\IeC {\cyrk }\IeC {\cyrt }\IeC {\cyru }\IeC {\cyrr }\IeC {\cyra } packet\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}tail\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}Struct}{33}{section.3.16}% 
+\contentsline {subsection}{\numberline {3.16.1}\IeC {\CYRP }\IeC {\cyro }\IeC {\cyrd }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrb }\IeC {\cyrn }\IeC {\cyro }\IeC {\cyre } \IeC {\cyro }\IeC {\cyrp }\IeC {\cyri }\IeC {\cyrs }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyri }\IeC {\cyre }}{33}{subsection.3.16.1}% 
+\contentsline {subsection}{\numberline {3.16.2}\IeC {\CYRD }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyrn }\IeC {\cyrery }\IeC {\cyre } \IeC {\cyrk }\IeC {\cyrl }\IeC {\cyra }\IeC {\cyrs }\IeC {\cyrs }\IeC {\cyra }}{33}{subsection.3.16.2}% 
+\contentsline {subsubsection}{\numberline {3.16.2.1}checksum}{33}{subsubsection.3.16.2.1}% 
+\contentsline {subsubsection}{\numberline {3.16.2.2}end}{33}{subsubsection.3.16.2.2}% 
+\contentsline {section}{\numberline {3.17}\IeC {\CYRS }\IeC {\cyrt }\IeC {\cyrr }\IeC {\cyru }\IeC {\cyrk }\IeC {\cyrt }\IeC {\cyru }\IeC {\cyrr }\IeC {\cyra } plc\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}sof\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}ver\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}struct}{33}{section.3.17}% 
+\contentsline {subsection}{\numberline {3.17.1}\IeC {\CYRP }\IeC {\cyro }\IeC {\cyrd }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrb }\IeC {\cyrn }\IeC {\cyro }\IeC {\cyre } \IeC {\cyro }\IeC {\cyrp }\IeC {\cyri }\IeC {\cyrs }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyri }\IeC {\cyre }}{34}{subsection.3.17.1}% 
+\contentsline {subsection}{\numberline {3.17.2}\IeC {\CYRD }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyrn }\IeC {\cyrery }\IeC {\cyre } \IeC {\cyrk }\IeC {\cyrl }\IeC {\cyra }\IeC {\cyrs }\IeC {\cyrs }\IeC {\cyra }}{34}{subsection.3.17.2}% 
+\contentsline {subsubsection}{\numberline {3.17.2.1}add\_info}{34}{subsubsection.3.17.2.1}% 
+\contentsline {subsubsection}{\numberline {3.17.2.2}develop}{34}{subsubsection.3.17.2.2}% 
+\contentsline {subsubsection}{\numberline {3.17.2.3}modification}{34}{subsubsection.3.17.2.3}% 
+\contentsline {subsubsection}{\numberline {3.17.2.4}revision}{35}{subsubsection.3.17.2.4}% 
+\contentsline {subsubsection}{\numberline {3.17.2.5}soft\_ver}{35}{subsubsection.3.17.2.5}% 
+\contentsline {subsubsection}{\numberline {3.17.2.6}type}{35}{subsubsection.3.17.2.6}% 
+\contentsline {section}{\numberline {3.18}\IeC {\CYRS }\IeC {\cyrt }\IeC {\cyrr }\IeC {\cyru }\IeC {\cyrk }\IeC {\cyrt }\IeC {\cyru }\IeC {\cyrr }\IeC {\cyra } power\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}failure\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}struct}{35}{section.3.18}% 
+\contentsline {subsection}{\numberline {3.18.1}\IeC {\CYRP }\IeC {\cyro }\IeC {\cyrd }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrb }\IeC {\cyrn }\IeC {\cyro }\IeC {\cyre } \IeC {\cyro }\IeC {\cyrp }\IeC {\cyri }\IeC {\cyrs }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyri }\IeC {\cyre }}{35}{subsection.3.18.1}% 
+\contentsline {subsection}{\numberline {3.18.2}\IeC {\CYRD }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyrn }\IeC {\cyrery }\IeC {\cyre } \IeC {\cyrk }\IeC {\cyrl }\IeC {\cyra }\IeC {\cyrs }\IeC {\cyrs }\IeC {\cyra }}{36}{subsection.3.18.2}% 
+\contentsline {subsubsection}{\numberline {3.18.2.1}reserv}{36}{subsubsection.3.18.2.1}% 
+\contentsline {subsubsection}{\numberline {3.18.2.2}v1\_3\_3}{36}{subsubsection.3.18.2.2}% 
+\contentsline {subsubsection}{\numberline {3.18.2.3}v1\_5}{36}{subsubsection.3.18.2.3}% 
+\contentsline {subsubsection}{\numberline {3.18.2.4}v2\_3\_3}{36}{subsubsection.3.18.2.4}% 
+\contentsline {subsubsection}{\numberline {3.18.2.5}v2\_5}{36}{subsubsection.3.18.2.5}% 
+\contentsline {section}{\numberline {3.19}\IeC {\CYRS }\IeC {\cyrt }\IeC {\cyrr }\IeC {\cyru }\IeC {\cyrk }\IeC {\cyrt }\IeC {\cyru }\IeC {\cyrr }\IeC {\cyra } ram\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}data\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}struct}{37}{section.3.19}% 
+\contentsline {subsection}{\numberline {3.19.1}\IeC {\CYRP }\IeC {\cyro }\IeC {\cyrd }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrb }\IeC {\cyrn }\IeC {\cyro }\IeC {\cyre } \IeC {\cyro }\IeC {\cyrp }\IeC {\cyri }\IeC {\cyrs }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyri }\IeC {\cyre }}{38}{subsection.3.19.1}% 
+\contentsline {subsection}{\numberline {3.19.2}\IeC {\CYRD }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyrn }\IeC {\cyrery }\IeC {\cyre } \IeC {\cyrk }\IeC {\cyrl }\IeC {\cyra }\IeC {\cyrs }\IeC {\cyrs }\IeC {\cyra }}{38}{subsection.3.19.2}% 
+\contentsline {subsubsection}{\numberline {3.19.2.1}common\_ram\_register\_space}{38}{subsubsection.3.19.2.1}% 
+\contentsline {subsubsection}{\numberline {3.19.2.2}crc\_table}{38}{subsubsection.3.19.2.2}% 
+\contentsline {subsubsection}{\numberline {3.19.2.3}mpa\_ram\_register\_space}{38}{subsubsection.3.19.2.3}% 
+\contentsline {subsubsection}{\numberline {3.19.2.4}packet\_rx}{38}{subsubsection.3.19.2.4}% 
+\contentsline {subsubsection}{\numberline {3.19.2.5}packet\_tx}{39}{subsubsection.3.19.2.5}% 
+\contentsline {subsubsection}{\numberline {3.19.2.6}Reserv}{39}{subsubsection.3.19.2.6}% 
+\contentsline {subsubsection}{\numberline {3.19.2.7}rx\_packet\_struct}{39}{subsubsection.3.19.2.7}% 
+\contentsline {subsubsection}{\numberline {3.19.2.8}service\_byte\_pm}{39}{subsubsection.3.19.2.8}% 
+\contentsline {subsubsection}{\numberline {3.19.2.9}service\_byte\_um}{39}{subsubsection.3.19.2.9}% 
+\contentsline {subsubsection}{\numberline {3.19.2.10}spi\_1\_rx\_buffer}{39}{subsubsection.3.19.2.10}% 
+\contentsline {subsubsection}{\numberline {3.19.2.11}start\_struct}{40}{subsubsection.3.19.2.11}% 
+\contentsline {subsubsection}{\numberline {3.19.2.12}tx\_data}{40}{subsubsection.3.19.2.12}% 
+\contentsline {subsubsection}{\numberline {3.19.2.13}tx\_packet\_struct}{40}{subsubsection.3.19.2.13}% 
+\contentsline {subsubsection}{\numberline {3.19.2.14}uart1\_rx\_buffer}{40}{subsubsection.3.19.2.14}% 
+\contentsline {subsubsection}{\numberline {3.19.2.15}uart2\_rx\_buffer}{40}{subsubsection.3.19.2.15}% 
+\contentsline {section}{\numberline {3.20}\IeC {\CYRS }\IeC {\cyrt }\IeC {\cyrr }\IeC {\cyru }\IeC {\cyrk }\IeC {\cyrt }\IeC {\cyru }\IeC {\cyrr }\IeC {\cyra } range\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}start\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}struct}{40}{section.3.20}% 
+\contentsline {subsection}{\numberline {3.20.1}\IeC {\CYRP }\IeC {\cyro }\IeC {\cyrd }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrb }\IeC {\cyrn }\IeC {\cyro }\IeC {\cyre } \IeC {\cyro }\IeC {\cyrp }\IeC {\cyri }\IeC {\cyrs }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyri }\IeC {\cyre }}{41}{subsection.3.20.1}% 
+\contentsline {subsection}{\numberline {3.20.2}\IeC {\CYRD }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyrn }\IeC {\cyrery }\IeC {\cyre } \IeC {\cyrk }\IeC {\cyrl }\IeC {\cyra }\IeC {\cyrs }\IeC {\cyrs }\IeC {\cyra }}{41}{subsection.3.20.2}% 
+\contentsline {subsubsection}{\numberline {3.20.2.1}address}{41}{subsubsection.3.20.2.1}% 
+\contentsline {subsubsection}{\numberline {3.20.2.2}range\_type}{41}{subsubsection.3.20.2.2}% 
+\contentsline {subsubsection}{\numberline {3.20.2.3}size}{41}{subsubsection.3.20.2.3}% 
+\contentsline {subsubsection}{\numberline {3.20.2.4}start\_channel\_num}{42}{subsubsection.3.20.2.4}% 
+\contentsline {section}{\numberline {3.21}\IeC {\CYRS }\IeC {\cyrt }\IeC {\cyrr }\IeC {\cyru }\IeC {\cyrk }\IeC {\cyrt }\IeC {\cyru }\IeC {\cyrr }\IeC {\cyra } rom\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}data\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}struct}{42}{section.3.21}% 
+\contentsline {subsection}{\numberline {3.21.1}\IeC {\CYRP }\IeC {\cyro }\IeC {\cyrd }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrb }\IeC {\cyrn }\IeC {\cyro }\IeC {\cyre } \IeC {\cyro }\IeC {\cyrp }\IeC {\cyri }\IeC {\cyrs }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyri }\IeC {\cyre }}{42}{subsection.3.21.1}% 
+\contentsline {subsection}{\numberline {3.21.2}\IeC {\CYRD }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyrn }\IeC {\cyrery }\IeC {\cyre } \IeC {\cyrk }\IeC {\cyrl }\IeC {\cyra }\IeC {\cyrs }\IeC {\cyrs }\IeC {\cyra }}{43}{subsection.3.21.2}% 
+\contentsline {subsubsection}{\numberline {3.21.2.1}common\_rom\_registers\_space}{43}{subsubsection.3.21.2.1}% 
+\contentsline {subsubsection}{\numberline {3.21.2.2}mpa\_rom\_registers\_space}{43}{subsubsection.3.21.2.2}% 
+\contentsline {section}{\numberline {3.22}\IeC {\CYRS }\IeC {\cyrt }\IeC {\cyrr }\IeC {\cyru }\IeC {\cyrk }\IeC {\cyrt }\IeC {\cyru }\IeC {\cyrr }\IeC {\cyra } self\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}diag\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}struct}{43}{section.3.22}% 
+\contentsline {subsection}{\numberline {3.22.1}\IeC {\CYRP }\IeC {\cyro }\IeC {\cyrd }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrb }\IeC {\cyrn }\IeC {\cyro }\IeC {\cyre } \IeC {\cyro }\IeC {\cyrp }\IeC {\cyri }\IeC {\cyrs }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyri }\IeC {\cyre }}{44}{subsection.3.22.1}% 
+\contentsline {subsection}{\numberline {3.22.2}\IeC {\CYRD }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyrn }\IeC {\cyrery }\IeC {\cyre } \IeC {\cyrk }\IeC {\cyrl }\IeC {\cyra }\IeC {\cyrs }\IeC {\cyrs }\IeC {\cyra }}{44}{subsection.3.22.2}% 
+\contentsline {subsubsection}{\numberline {3.22.2.1}fail\_chanels}{44}{subsubsection.3.22.2.1}% 
+\contentsline {subsubsection}{\numberline {3.22.2.2}fail\_crc\_firmware}{44}{subsubsection.3.22.2.2}% 
+\contentsline {subsubsection}{\numberline {3.22.2.3}fail\_download\_rom}{44}{subsubsection.3.22.2.3}% 
+\contentsline {subsubsection}{\numberline {3.22.2.4}fail\_firmware\_1\_bus}{44}{subsubsection.3.22.2.4}% 
+\contentsline {subsubsection}{\numberline {3.22.2.5}fail\_firmware\_2\_bus}{44}{subsubsection.3.22.2.5}% 
+\contentsline {subsubsection}{\numberline {3.22.2.6}fail\_firmware\_ram}{45}{subsubsection.3.22.2.6}% 
+\contentsline {subsubsection}{\numberline {3.22.2.7}fail\_soft\_ver}{45}{subsubsection.3.22.2.7}% 
+\contentsline {subsubsection}{\numberline {3.22.2.8}power\_fail}{45}{subsubsection.3.22.2.8}% 
+\contentsline {subsubsection}{\numberline {3.22.2.9}reserv}{45}{subsubsection.3.22.2.9}% 
+\contentsline {subsubsection}{\numberline {3.22.2.10}reserv1}{45}{subsubsection.3.22.2.10}% 
+\contentsline {section}{\numberline {3.23}\IeC {\CYRS }\IeC {\cyrt }\IeC {\cyrr }\IeC {\cyru }\IeC {\cyrk }\IeC {\cyrt }\IeC {\cyru }\IeC {\cyrr }\IeC {\cyra } service\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}byte\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}struct\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}pm}{45}{section.3.23}% 
+\contentsline {subsection}{\numberline {3.23.1}\IeC {\CYRP }\IeC {\cyro }\IeC {\cyrd }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrb }\IeC {\cyrn }\IeC {\cyro }\IeC {\cyre } \IeC {\cyro }\IeC {\cyrp }\IeC {\cyri }\IeC {\cyrs }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyri }\IeC {\cyre }}{46}{subsection.3.23.1}% 
+\contentsline {subsection}{\numberline {3.23.2}\IeC {\CYRD }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyrn }\IeC {\cyrery }\IeC {\cyre } \IeC {\cyrk }\IeC {\cyrl }\IeC {\cyra }\IeC {\cyrs }\IeC {\cyrs }\IeC {\cyra }}{46}{subsection.3.23.2}% 
+\contentsline {subsubsection}{\numberline {3.23.2.1}both\_control}{46}{subsubsection.3.23.2.1}% 
+\contentsline {subsubsection}{\numberline {3.23.2.2}fail\_bus\_1}{46}{subsubsection.3.23.2.2}% 
+\contentsline {subsubsection}{\numberline {3.23.2.3}fail\_bus\_2}{46}{subsubsection.3.23.2.3}% 
+\contentsline {subsubsection}{\numberline {3.23.2.4}init}{47}{subsubsection.3.23.2.4}% 
+\contentsline {subsubsection}{\numberline {3.23.2.5}master}{47}{subsubsection.3.23.2.5}% 
+\contentsline {subsubsection}{\numberline {3.23.2.6}reserv\_1}{47}{subsubsection.3.23.2.6}% 
+\contentsline {subsubsection}{\numberline {3.23.2.7}reserv\_2}{47}{subsubsection.3.23.2.7}% 
+\contentsline {subsubsection}{\numberline {3.23.2.8}self\_diagnostics\_error}{47}{subsubsection.3.23.2.8}% 
+\contentsline {section}{\numberline {3.24}\IeC {\CYRS }\IeC {\cyrt }\IeC {\cyrr }\IeC {\cyru }\IeC {\cyrk }\IeC {\cyrt }\IeC {\cyru }\IeC {\cyrr }\IeC {\cyra } service\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}byte\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}struct\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}um}{47}{section.3.24}% 
+\contentsline {subsection}{\numberline {3.24.1}\IeC {\CYRP }\IeC {\cyro }\IeC {\cyrd }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrb }\IeC {\cyrn }\IeC {\cyro }\IeC {\cyre } \IeC {\cyro }\IeC {\cyrp }\IeC {\cyri }\IeC {\cyrs }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyri }\IeC {\cyre }}{48}{subsection.3.24.1}% 
+\contentsline {subsection}{\numberline {3.24.2}\IeC {\CYRD }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyrn }\IeC {\cyrery }\IeC {\cyre } \IeC {\cyrk }\IeC {\cyrl }\IeC {\cyra }\IeC {\cyrs }\IeC {\cyrs }\IeC {\cyra }}{48}{subsection.3.24.2}% 
+\contentsline {subsubsection}{\numberline {3.24.2.1}last\_answer}{48}{subsubsection.3.24.2.1}% 
+\contentsline {subsubsection}{\numberline {3.24.2.2}ready\_to\_control}{48}{subsubsection.3.24.2.2}% 
+\contentsline {subsubsection}{\numberline {3.24.2.3}reserv}{48}{subsubsection.3.24.2.3}% 
+\contentsline {section}{\numberline {3.25}\IeC {\CYRS }\IeC {\cyrt }\IeC {\cyrr }\IeC {\cyru }\IeC {\cyrk }\IeC {\cyrt }\IeC {\cyru }\IeC {\cyrr }\IeC {\cyra } spi\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}config\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}data}{49}{section.3.25}% 
+\contentsline {subsection}{\numberline {3.25.1}\IeC {\CYRP }\IeC {\cyro }\IeC {\cyrd }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrb }\IeC {\cyrn }\IeC {\cyro }\IeC {\cyre } \IeC {\cyro }\IeC {\cyrp }\IeC {\cyri }\IeC {\cyrs }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyri }\IeC {\cyre }}{49}{subsection.3.25.1}% 
+\contentsline {subsection}{\numberline {3.25.2}\IeC {\CYRD }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyrn }\IeC {\cyrery }\IeC {\cyre } \IeC {\cyrk }\IeC {\cyrl }\IeC {\cyra }\IeC {\cyrs }\IeC {\cyrs }\IeC {\cyra }}{49}{subsection.3.25.2}% 
+\contentsline {subsubsection}{\numberline {3.25.2.1}buffer}{50}{subsubsection.3.25.2.1}% 
+\contentsline {subsubsection}{\numberline {3.25.2.2}buffer\_counter}{50}{subsubsection.3.25.2.2}% 
+\contentsline {subsubsection}{\numberline {3.25.2.3}IRQn}{50}{subsubsection.3.25.2.3}% 
+\contentsline {subsubsection}{\numberline {3.25.2.4}RST\_CLK\_PCLK\_SPIn}{50}{subsubsection.3.25.2.4}% 
+\contentsline {subsubsection}{\numberline {3.25.2.5}SPI}{50}{subsubsection.3.25.2.5}% 
+\contentsline {subsubsection}{\numberline {3.25.2.6}spi\_dma\_ch}{50}{subsubsection.3.25.2.6}% 
+\contentsline {subsubsection}{\numberline {3.25.2.7}SSPx}{51}{subsubsection.3.25.2.7}% 
+\contentsline {section}{\numberline {3.26}\IeC {\CYRS }\IeC {\cyrt }\IeC {\cyrr }\IeC {\cyru }\IeC {\cyrk }\IeC {\cyrt }\IeC {\cyru }\IeC {\cyrr }\IeC {\cyra } spi\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}dma\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}params}{51}{section.3.26}% 
+\contentsline {subsection}{\numberline {3.26.1}\IeC {\CYRP }\IeC {\cyro }\IeC {\cyrd }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrb }\IeC {\cyrn }\IeC {\cyro }\IeC {\cyre } \IeC {\cyro }\IeC {\cyrp }\IeC {\cyri }\IeC {\cyrs }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyri }\IeC {\cyre }}{51}{subsection.3.26.1}% 
+\contentsline {subsection}{\numberline {3.26.2}\IeC {\CYRD }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyrn }\IeC {\cyrery }\IeC {\cyre } \IeC {\cyrk }\IeC {\cyrl }\IeC {\cyra }\IeC {\cyrs }\IeC {\cyrs }\IeC {\cyra }}{51}{subsection.3.26.2}% 
+\contentsline {subsubsection}{\numberline {3.26.2.1}dma\_channel}{51}{subsubsection.3.26.2.1}% 
+\contentsline {subsubsection}{\numberline {3.26.2.2}DMA\_Channel\_SPI\_RX}{52}{subsubsection.3.26.2.2}% 
+\contentsline {subsubsection}{\numberline {3.26.2.3}DMA\_InitStructure\_SPI\_RX}{52}{subsubsection.3.26.2.3}% 
+\contentsline {subsubsection}{\numberline {3.26.2.4}dma\_irq\_counter}{52}{subsubsection.3.26.2.4}% 
+\contentsline {section}{\numberline {3.27}\IeC {\CYRS }\IeC {\cyrt }\IeC {\cyrr }\IeC {\cyru }\IeC {\cyrk }\IeC {\cyrt }\IeC {\cyru }\IeC {\cyrr }\IeC {\cyra } start\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}struct\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}ext\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}ram}{52}{section.3.27}% 
+\contentsline {subsection}{\numberline {3.27.1}\IeC {\CYRP }\IeC {\cyro }\IeC {\cyrd }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrb }\IeC {\cyrn }\IeC {\cyro }\IeC {\cyre } \IeC {\cyro }\IeC {\cyrp }\IeC {\cyri }\IeC {\cyrs }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyri }\IeC {\cyre }}{53}{subsection.3.27.1}% 
+\contentsline {subsection}{\numberline {3.27.2}\IeC {\CYRD }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyrn }\IeC {\cyrery }\IeC {\cyre } \IeC {\cyrk }\IeC {\cyrl }\IeC {\cyra }\IeC {\cyrs }\IeC {\cyrs }\IeC {\cyra }}{53}{subsection.3.27.2}% 
+\contentsline {subsubsection}{\numberline {3.27.2.1}flag\_change\_struct}{53}{subsubsection.3.27.2.1}% 
+\contentsline {subsubsection}{\numberline {3.27.2.2}length}{53}{subsubsection.3.27.2.2}% 
+\contentsline {subsubsection}{\numberline {3.27.2.3}number\_of\_ranges}{53}{subsubsection.3.27.2.3}% 
+\contentsline {subsubsection}{\numberline {3.27.2.4}ranges\_in\_start\_struct}{54}{subsubsection.3.27.2.4}% 
+\contentsline {subsubsection}{\numberline {3.27.2.5}text\_info}{54}{subsubsection.3.27.2.5}% 
+\contentsline {section}{\numberline {3.28}\IeC {\CYRS }\IeC {\cyrt }\IeC {\cyrr }\IeC {\cyru }\IeC {\cyrk }\IeC {\cyrt }\IeC {\cyru }\IeC {\cyrr }\IeC {\cyra } timer\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}config\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}struct}{54}{section.3.28}% 
+\contentsline {subsection}{\numberline {3.28.1}\IeC {\CYRP }\IeC {\cyro }\IeC {\cyrd }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrb }\IeC {\cyrn }\IeC {\cyro }\IeC {\cyre } \IeC {\cyro }\IeC {\cyrp }\IeC {\cyri }\IeC {\cyrs }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyri }\IeC {\cyre }}{54}{subsection.3.28.1}% 
+\contentsline {subsection}{\numberline {3.28.2}\IeC {\CYRD }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyrn }\IeC {\cyrery }\IeC {\cyre } \IeC {\cyrk }\IeC {\cyrl }\IeC {\cyra }\IeC {\cyrs }\IeC {\cyrs }\IeC {\cyra }}{54}{subsection.3.28.2}% 
+\contentsline {subsubsection}{\numberline {3.28.2.1}sTIM\_ChnInit}{55}{subsubsection.3.28.2.1}% 
+\contentsline {subsubsection}{\numberline {3.28.2.2}timer\_cnt}{55}{subsubsection.3.28.2.2}% 
+\contentsline {subsubsection}{\numberline {3.28.2.3}TIMER\_STATUS}{55}{subsubsection.3.28.2.3}% 
+\contentsline {subsubsection}{\numberline {3.28.2.4}TIMERInitStruct}{55}{subsubsection.3.28.2.4}% 
+\contentsline {subsubsection}{\numberline {3.28.2.5}TIMERx}{55}{subsubsection.3.28.2.5}% 
+\contentsline {section}{\numberline {3.29}\IeC {\CYRS }\IeC {\cyrt }\IeC {\cyrr }\IeC {\cyru }\IeC {\cyrk }\IeC {\cyrt }\IeC {\cyru }\IeC {\cyrr }\IeC {\cyra } timer\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}irq\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}list\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}struct}{56}{section.3.29}% 
+\contentsline {subsection}{\numberline {3.29.1}\IeC {\CYRP }\IeC {\cyro }\IeC {\cyrd }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrb }\IeC {\cyrn }\IeC {\cyro }\IeC {\cyre } \IeC {\cyro }\IeC {\cyrp }\IeC {\cyri }\IeC {\cyrs }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyri }\IeC {\cyre }}{56}{subsection.3.29.1}% 
+\contentsline {subsection}{\numberline {3.29.2}\IeC {\CYRD }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyrn }\IeC {\cyrery }\IeC {\cyre } \IeC {\cyrk }\IeC {\cyrl }\IeC {\cyra }\IeC {\cyrs }\IeC {\cyrs }\IeC {\cyra }}{56}{subsection.3.29.2}% 
+\contentsline {subsubsection}{\numberline {3.29.2.1}data}{56}{subsubsection.3.29.2.1}% 
+\contentsline {subsubsection}{\numberline {3.29.2.2}event}{57}{subsubsection.3.29.2.2}% 
+\contentsline {subsubsection}{\numberline {3.29.2.3}handler}{57}{subsubsection.3.29.2.3}% 
+\contentsline {subsubsection}{\numberline {3.29.2.4}list}{57}{subsubsection.3.29.2.4}% 
+\contentsline {section}{\numberline {3.30}\IeC {\CYRS }\IeC {\cyrt }\IeC {\cyrr }\IeC {\cyru }\IeC {\cyrk }\IeC {\cyrt }\IeC {\cyru }\IeC {\cyrr }\IeC {\cyra } tx\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}rx\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}packet\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}struct}{57}{section.3.30}% 
+\contentsline {subsection}{\numberline {3.30.1}\IeC {\CYRP }\IeC {\cyro }\IeC {\cyrd }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrb }\IeC {\cyrn }\IeC {\cyro }\IeC {\cyre } \IeC {\cyro }\IeC {\cyrp }\IeC {\cyri }\IeC {\cyrs }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyri }\IeC {\cyre }}{58}{subsection.3.30.1}% 
+\contentsline {subsection}{\numberline {3.30.2}\IeC {\CYRD }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyrn }\IeC {\cyrery }\IeC {\cyre } \IeC {\cyrk }\IeC {\cyrl }\IeC {\cyra }\IeC {\cyrs }\IeC {\cyrs }\IeC {\cyra }}{58}{subsection.3.30.2}% 
+\contentsline {subsubsection}{\numberline {3.30.2.1}cmd\_with\_data}{58}{subsubsection.3.30.2.1}% 
+\contentsline {subsubsection}{\numberline {3.30.2.2}packet\_header}{58}{subsubsection.3.30.2.2}% 
+\contentsline {subsubsection}{\numberline {3.30.2.3}packet\_tail}{58}{subsubsection.3.30.2.3}% 
+\contentsline {section}{\numberline {3.31}\IeC {\CYRS }\IeC {\cyrt }\IeC {\cyrr }\IeC {\cyru }\IeC {\cyrk }\IeC {\cyrt }\IeC {\cyru }\IeC {\cyrr }\IeC {\cyra } uart\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}config\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}data}{59}{section.3.31}% 
+\contentsline {subsection}{\numberline {3.31.1}\IeC {\CYRP }\IeC {\cyro }\IeC {\cyrd }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrb }\IeC {\cyrn }\IeC {\cyro }\IeC {\cyre } \IeC {\cyro }\IeC {\cyrp }\IeC {\cyri }\IeC {\cyrs }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyri }\IeC {\cyre }}{60}{subsection.3.31.1}% 
+\contentsline {subsection}{\numberline {3.31.2}\IeC {\CYRD }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyrn }\IeC {\cyrery }\IeC {\cyre } \IeC {\cyrk }\IeC {\cyrl }\IeC {\cyra }\IeC {\cyrs }\IeC {\cyrs }\IeC {\cyra }}{60}{subsection.3.31.2}% 
+\contentsline {subsubsection}{\numberline {3.31.2.1}buffer}{60}{subsubsection.3.31.2.1}% 
+\contentsline {subsubsection}{\numberline {3.31.2.2}buffer\_count}{60}{subsubsection.3.31.2.2}% 
+\contentsline {subsubsection}{\numberline {3.31.2.3}IRQn}{60}{subsubsection.3.31.2.3}% 
+\contentsline {subsubsection}{\numberline {3.31.2.4}read\_pos}{60}{subsubsection.3.31.2.4}% 
+\contentsline {subsubsection}{\numberline {3.31.2.5}RST\_CLK\_PCLK\_UARTn}{60}{subsubsection.3.31.2.5}% 
+\contentsline {subsubsection}{\numberline {3.31.2.6}UART}{61}{subsubsection.3.31.2.6}% 
+\contentsline {subsubsection}{\numberline {3.31.2.7}uart\_dma\_ch}{61}{subsubsection.3.31.2.7}% 
+\contentsline {subsubsection}{\numberline {3.31.2.8}UART\_HCLKdiv}{61}{subsubsection.3.31.2.8}% 
+\contentsline {subsubsection}{\numberline {3.31.2.9}uart\_timeouts}{61}{subsubsection.3.31.2.9}% 
+\contentsline {subsubsection}{\numberline {3.31.2.10}UARTx}{61}{subsubsection.3.31.2.10}% 
+\contentsline {section}{\numberline {3.32}\IeC {\CYRS }\IeC {\cyrt }\IeC {\cyrr }\IeC {\cyru }\IeC {\cyrk }\IeC {\cyrt }\IeC {\cyru }\IeC {\cyrr }\IeC {\cyra } uart\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}dma\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}params}{61}{section.3.32}% 
+\contentsline {subsection}{\numberline {3.32.1}\IeC {\CYRP }\IeC {\cyro }\IeC {\cyrd }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrb }\IeC {\cyrn }\IeC {\cyro }\IeC {\cyre } \IeC {\cyro }\IeC {\cyrp }\IeC {\cyri }\IeC {\cyrs }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyri }\IeC {\cyre }}{62}{subsection.3.32.1}% 
+\contentsline {subsection}{\numberline {3.32.2}\IeC {\CYRD }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyrn }\IeC {\cyrery }\IeC {\cyre } \IeC {\cyrk }\IeC {\cyrl }\IeC {\cyra }\IeC {\cyrs }\IeC {\cyrs }\IeC {\cyra }}{62}{subsection.3.32.2}% 
+\contentsline {subsubsection}{\numberline {3.32.2.1}dma\_channel}{62}{subsubsection.3.32.2.1}% 
+\contentsline {subsubsection}{\numberline {3.32.2.2}DMA\_Channel\_UART\_RX}{62}{subsubsection.3.32.2.2}% 
+\contentsline {subsubsection}{\numberline {3.32.2.3}DMA\_InitStructure\_UART\_RX}{62}{subsubsection.3.32.2.3}% 
+\contentsline {subsubsection}{\numberline {3.32.2.4}dma\_irq\_counter}{63}{subsubsection.3.32.2.4}% 
+\contentsline {section}{\numberline {3.33}\IeC {\CYRS }\IeC {\cyrt }\IeC {\cyrr }\IeC {\cyru }\IeC {\cyrk }\IeC {\cyrt }\IeC {\cyru }\IeC {\cyrr }\IeC {\cyra } uart\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}timeouts}{63}{section.3.33}% 
+\contentsline {subsection}{\numberline {3.33.1}\IeC {\CYRP }\IeC {\cyro }\IeC {\cyrd }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrb }\IeC {\cyrn }\IeC {\cyro }\IeC {\cyre } \IeC {\cyro }\IeC {\cyrp }\IeC {\cyri }\IeC {\cyrs }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyri }\IeC {\cyre }}{63}{subsection.3.33.1}% 
+\contentsline {subsection}{\numberline {3.33.2}\IeC {\CYRD }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyrn }\IeC {\cyrery }\IeC {\cyre } \IeC {\cyrk }\IeC {\cyrl }\IeC {\cyra }\IeC {\cyrs }\IeC {\cyrs }\IeC {\cyra }}{64}{subsection.3.33.2}% 
+\contentsline {subsubsection}{\numberline {3.33.2.1}read\_timeout\_flag}{64}{subsubsection.3.33.2.1}% 
+\contentsline {subsubsection}{\numberline {3.33.2.2}read\_val\_timeout}{64}{subsubsection.3.33.2.2}% 
+\contentsline {subsubsection}{\numberline {3.33.2.3}timer\_n\_timeout}{64}{subsubsection.3.33.2.3}% 
+\contentsline {subsubsection}{\numberline {3.33.2.4}write\_timeout\_flag}{64}{subsubsection.3.33.2.4}% 
+\contentsline {subsubsection}{\numberline {3.33.2.5}write\_val\_timeout}{64}{subsubsection.3.33.2.5}% 
+\contentsline {chapter}{\numberline {4}\IeC {\CYRF }\IeC {\cyra }\IeC {\cyrishrt }\IeC {\cyrl }\IeC {\cyrery }}{65}{chapter.4}% 
+\contentsline {section}{\numberline {4.1}\IeC {\CYRF }\IeC {\cyra }\IeC {\cyrishrt }\IeC {\cyrl } 1273pv19t.\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}c}{65}{section.4.1}% 
+\contentsline {subsection}{\numberline {4.1.1}\IeC {\CYRP }\IeC {\cyro }\IeC {\cyrd }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrb }\IeC {\cyrn }\IeC {\cyro }\IeC {\cyre } \IeC {\cyro }\IeC {\cyrp }\IeC {\cyri }\IeC {\cyrs }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyri }\IeC {\cyre }}{66}{subsection.4.1.1}% 
+\contentsline {subsection}{\numberline {4.1.2}\IeC {\CYRF }\IeC {\cyru }\IeC {\cyrn }\IeC {\cyrk }\IeC {\cyrc }\IeC {\cyri }\IeC {\cyri }}{66}{subsection.4.1.2}% 
+\contentsline {subsubsection}{\numberline {4.1.2.1}adc\_gpio\_config()}{66}{subsubsection.4.1.2.1}% 
+\contentsline {subsubsection}{\numberline {4.1.2.2}adc\_init()}{67}{subsubsection.4.1.2.2}% 
+\contentsline {subsubsection}{\numberline {4.1.2.3}adc\_reset()}{68}{subsubsection.4.1.2.3}% 
+\contentsline {subsection}{\numberline {4.1.3}\IeC {\CYRP }\IeC {\cyre }\IeC {\cyrr }\IeC {\cyre }\IeC {\cyrm }\IeC {\cyre }\IeC {\cyrn }\IeC {\cyrn }\IeC {\cyrery }\IeC {\cyre }}{68}{subsection.4.1.3}% 
+\contentsline {subsubsection}{\numberline {4.1.3.1}adc\_1}{68}{subsubsection.4.1.3.1}% 
+\contentsline {subsubsection}{\numberline {4.1.3.2}spi\_1}{68}{subsubsection.4.1.3.2}% 
+\contentsline {subsubsection}{\numberline {4.1.3.3}timer\_2}{69}{subsubsection.4.1.3.3}% 
+\contentsline {section}{\numberline {4.2}\IeC {\CYRF }\IeC {\cyra }\IeC {\cyrishrt }\IeC {\cyrl } 1273pv19t.\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}h}{69}{section.4.2}% 
+\contentsline {subsection}{\numberline {4.2.1}\IeC {\CYRP }\IeC {\cyro }\IeC {\cyrd }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrb }\IeC {\cyrn }\IeC {\cyro }\IeC {\cyre } \IeC {\cyro }\IeC {\cyrp }\IeC {\cyri }\IeC {\cyrs }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyri }\IeC {\cyre }}{70}{subsection.4.2.1}% 
+\contentsline {subsection}{\numberline {4.2.2}\IeC {\CYRM }\IeC {\cyra }\IeC {\cyrk }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrs }\IeC {\cyrery }}{70}{subsection.4.2.2}% 
+\contentsline {subsubsection}{\numberline {4.2.2.1}PIN\_ADC\_MODE\_A0}{70}{subsubsection.4.2.2.1}% 
+\contentsline {subsubsection}{\numberline {4.2.2.2}PIN\_ADC\_MODE\_A1}{71}{subsubsection.4.2.2.2}% 
+\contentsline {subsubsection}{\numberline {4.2.2.3}PIN\_ADC\_NSS}{71}{subsubsection.4.2.2.3}% 
+\contentsline {subsubsection}{\numberline {4.2.2.4}PIN\_ADC\_RST}{71}{subsubsection.4.2.2.4}% 
+\contentsline {subsubsection}{\numberline {4.2.2.5}PIN\_ADC\_SDIFS\_IRQ}{71}{subsubsection.4.2.2.5}% 
+\contentsline {subsubsection}{\numberline {4.2.2.6}PORT\_ADC\_MODE}{71}{subsubsection.4.2.2.6}% 
+\contentsline {subsubsection}{\numberline {4.2.2.7}PORT\_ADC\_NSS}{71}{subsubsection.4.2.2.7}% 
+\contentsline {subsubsection}{\numberline {4.2.2.8}PORT\_ADC\_RST}{72}{subsubsection.4.2.2.8}% 
+\contentsline {subsubsection}{\numberline {4.2.2.9}PORT\_ADC\_SDIFS\_IRQ}{72}{subsubsection.4.2.2.9}% 
+\contentsline {subsection}{\numberline {4.2.3}\IeC {\CYRT }\IeC {\cyri }\IeC {\cyrp }\IeC {\cyrery }}{72}{subsection.4.2.3}% 
+\contentsline {subsubsection}{\numberline {4.2.3.1}adc\_n}{72}{subsubsection.4.2.3.1}% 
+\contentsline {subsection}{\numberline {4.2.4}\IeC {\CYRF }\IeC {\cyru }\IeC {\cyrn }\IeC {\cyrk }\IeC {\cyrc }\IeC {\cyri }\IeC {\cyri }}{72}{subsection.4.2.4}% 
+\contentsline {subsubsection}{\numberline {4.2.4.1}adc\_init()}{72}{subsubsection.4.2.4.1}% 
+\contentsline {subsubsection}{\numberline {4.2.4.2}adc\_reset()}{73}{subsubsection.4.2.4.2}% 
+\contentsline {section}{\numberline {4.3}\IeC {\CYRF }\IeC {\cyra }\IeC {\cyrishrt }\IeC {\cyrl } clock.\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}c}{74}{section.4.3}% 
+\contentsline {subsection}{\numberline {4.3.1}\IeC {\CYRP }\IeC {\cyro }\IeC {\cyrd }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrb }\IeC {\cyrn }\IeC {\cyro }\IeC {\cyre } \IeC {\cyro }\IeC {\cyrp }\IeC {\cyri }\IeC {\cyrs }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyri }\IeC {\cyre }}{74}{subsection.4.3.1}% 
+\contentsline {subsection}{\numberline {4.3.2}\IeC {\CYRF }\IeC {\cyru }\IeC {\cyrn }\IeC {\cyrk }\IeC {\cyrc }\IeC {\cyri }\IeC {\cyri }}{74}{subsection.4.3.2}% 
+\contentsline {subsubsection}{\numberline {4.3.2.1}clock\_init()}{74}{subsubsection.4.3.2.1}% 
+\contentsline {section}{\numberline {4.4}\IeC {\CYRF }\IeC {\cyra }\IeC {\cyrishrt }\IeC {\cyrl } clock.\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}h}{75}{section.4.4}% 
+\contentsline {subsection}{\numberline {4.4.1}\IeC {\CYRP }\IeC {\cyro }\IeC {\cyrd }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrb }\IeC {\cyrn }\IeC {\cyro }\IeC {\cyre } \IeC {\cyro }\IeC {\cyrp }\IeC {\cyri }\IeC {\cyrs }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyri }\IeC {\cyre }}{75}{subsection.4.4.1}% 
+\contentsline {subsection}{\numberline {4.4.2}\IeC {\CYRF }\IeC {\cyru }\IeC {\cyrn }\IeC {\cyrk }\IeC {\cyrc }\IeC {\cyri }\IeC {\cyri }}{75}{subsection.4.4.2}% 
+\contentsline {subsubsection}{\numberline {4.4.2.1}clock\_init()}{76}{subsubsection.4.4.2.1}% 
+\contentsline {section}{\numberline {4.5}\IeC {\CYRF }\IeC {\cyra }\IeC {\cyrishrt }\IeC {\cyrl } dma.\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}c}{76}{section.4.5}% 
+\contentsline {subsection}{\numberline {4.5.1}\IeC {\CYRP }\IeC {\cyro }\IeC {\cyrd }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrb }\IeC {\cyrn }\IeC {\cyro }\IeC {\cyre } \IeC {\cyro }\IeC {\cyrp }\IeC {\cyri }\IeC {\cyrs }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyri }\IeC {\cyre }}{77}{subsection.4.5.1}% 
+\contentsline {subsection}{\numberline {4.5.2}\IeC {\CYRF }\IeC {\cyru }\IeC {\cyrn }\IeC {\cyrk }\IeC {\cyrc }\IeC {\cyri }\IeC {\cyri }}{77}{subsection.4.5.2}% 
+\contentsline {subsubsection}{\numberline {4.5.2.1}dma\_common\_init()}{77}{subsubsection.4.5.2.1}% 
+\contentsline {subsubsection}{\numberline {4.5.2.2}DMA\_IRQHandler()}{78}{subsubsection.4.5.2.2}% 
+\contentsline {subsection}{\numberline {4.5.3}\IeC {\CYRP }\IeC {\cyre }\IeC {\cyrr }\IeC {\cyre }\IeC {\cyrm }\IeC {\cyre }\IeC {\cyrn }\IeC {\cyrn }\IeC {\cyrery }\IeC {\cyre }}{79}{subsection.4.5.3}% 
+\contentsline {subsubsection}{\numberline {4.5.3.1}adc\_1}{79}{subsubsection.4.5.3.1}% 
+\contentsline {subsubsection}{\numberline {4.5.3.2}spi\_1}{79}{subsubsection.4.5.3.2}% 
+\contentsline {subsubsection}{\numberline {4.5.3.3}spi\_2}{79}{subsubsection.4.5.3.3}% 
+\contentsline {subsubsection}{\numberline {4.5.3.4}timer\_1}{79}{subsubsection.4.5.3.4}% 
+\contentsline {subsubsection}{\numberline {4.5.3.5}timer\_2}{79}{subsubsection.4.5.3.5}% 
+\contentsline {subsubsection}{\numberline {4.5.3.6}timer\_3}{79}{subsubsection.4.5.3.6}% 
+\contentsline {subsubsection}{\numberline {4.5.3.7}uart\_1}{80}{subsubsection.4.5.3.7}% 
+\contentsline {subsubsection}{\numberline {4.5.3.8}uart\_2}{80}{subsubsection.4.5.3.8}% 
+\contentsline {section}{\numberline {4.6}\IeC {\CYRF }\IeC {\cyra }\IeC {\cyrishrt }\IeC {\cyrl } dma.\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}h}{80}{section.4.6}% 
+\contentsline {subsection}{\numberline {4.6.1}\IeC {\CYRP }\IeC {\cyro }\IeC {\cyrd }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrb }\IeC {\cyrn }\IeC {\cyro }\IeC {\cyre } \IeC {\cyro }\IeC {\cyrp }\IeC {\cyri }\IeC {\cyrs }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyri }\IeC {\cyre }}{81}{subsection.4.6.1}% 
+\contentsline {subsection}{\numberline {4.6.2}\IeC {\CYRF }\IeC {\cyru }\IeC {\cyrn }\IeC {\cyrk }\IeC {\cyrc }\IeC {\cyri }\IeC {\cyri }}{81}{subsection.4.6.2}% 
+\contentsline {subsubsection}{\numberline {4.6.2.1}dma\_common\_init()}{81}{subsubsection.4.6.2.1}% 
+\contentsline {section}{\numberline {4.7}\IeC {\CYRF }\IeC {\cyra }\IeC {\cyrishrt }\IeC {\cyrl } ebc.\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}c}{81}{section.4.7}% 
+\contentsline {subsection}{\numberline {4.7.1}\IeC {\CYRP }\IeC {\cyro }\IeC {\cyrd }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrb }\IeC {\cyrn }\IeC {\cyro }\IeC {\cyre } \IeC {\cyro }\IeC {\cyrp }\IeC {\cyri }\IeC {\cyrs }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyri }\IeC {\cyre }}{82}{subsection.4.7.1}% 
+\contentsline {subsection}{\numberline {4.7.2}\IeC {\CYRF }\IeC {\cyru }\IeC {\cyrn }\IeC {\cyrk }\IeC {\cyrc }\IeC {\cyri }\IeC {\cyri }}{82}{subsection.4.7.2}% 
+\contentsline {subsubsection}{\numberline {4.7.2.1}ebc\_gpio\_config()}{82}{subsubsection.4.7.2.1}% 
+\contentsline {subsubsection}{\numberline {4.7.2.2}ebc\_init()}{83}{subsubsection.4.7.2.2}% 
+\contentsline {section}{\numberline {4.8}\IeC {\CYRF }\IeC {\cyra }\IeC {\cyrishrt }\IeC {\cyrl } ebc.\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}h}{84}{section.4.8}% 
+\contentsline {subsection}{\numberline {4.8.1}\IeC {\CYRP }\IeC {\cyro }\IeC {\cyrd }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrb }\IeC {\cyrn }\IeC {\cyro }\IeC {\cyre } \IeC {\cyro }\IeC {\cyrp }\IeC {\cyri }\IeC {\cyrs }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyri }\IeC {\cyre }}{85}{subsection.4.8.1}% 
+\contentsline {subsection}{\numberline {4.8.2}\IeC {\CYRT }\IeC {\cyri }\IeC {\cyrp }\IeC {\cyrery }}{85}{subsection.4.8.2}% 
+\contentsline {subsubsection}{\numberline {4.8.2.1}ebc\_devices}{85}{subsubsection.4.8.2.1}% 
+\contentsline {subsection}{\numberline {4.8.3}\IeC {\CYRP }\IeC {\cyre }\IeC {\cyrr }\IeC {\cyre }\IeC {\cyrch }\IeC {\cyri }\IeC {\cyrs }\IeC {\cyrl }\IeC {\cyre }\IeC {\cyrn }\IeC {\cyri }\IeC {\cyrya }}{85}{subsection.4.8.3}% 
+\contentsline {subsubsection}{\numberline {4.8.3.1}devices}{85}{subsubsection.4.8.3.1}% 
+\contentsline {subsection}{\numberline {4.8.4}\IeC {\CYRF }\IeC {\cyru }\IeC {\cyrn }\IeC {\cyrk }\IeC {\cyrc }\IeC {\cyri }\IeC {\cyri }}{86}{subsection.4.8.4}% 
+\contentsline {subsubsection}{\numberline {4.8.4.1}ebc\_init()}{86}{subsubsection.4.8.4.1}% 
+\contentsline {section}{\numberline {4.9}\IeC {\CYRF }\IeC {\cyra }\IeC {\cyrishrt }\IeC {\cyrl } external\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}ram.\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}c}{87}{section.4.9}% 
+\contentsline {subsection}{\numberline {4.9.1}\IeC {\CYRP }\IeC {\cyro }\IeC {\cyrd }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrb }\IeC {\cyrn }\IeC {\cyro }\IeC {\cyre } \IeC {\cyro }\IeC {\cyrp }\IeC {\cyri }\IeC {\cyrs }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyri }\IeC {\cyre }}{87}{subsection.4.9.1}% 
+\contentsline {subsection}{\numberline {4.9.2}\IeC {\CYRF }\IeC {\cyru }\IeC {\cyrn }\IeC {\cyrk }\IeC {\cyrc }\IeC {\cyri }\IeC {\cyri }}{87}{subsection.4.9.2}% 
+\contentsline {subsubsection}{\numberline {4.9.2.1}find\_max\_halfword()}{88}{subsubsection.4.9.2.1}% 
+\contentsline {subsubsection}{\numberline {4.9.2.2}init\_external\_ram\_space()}{88}{subsubsection.4.9.2.2}% 
+\contentsline {subsection}{\numberline {4.9.3}\IeC {\CYRP }\IeC {\cyre }\IeC {\cyrr }\IeC {\cyre }\IeC {\cyrm }\IeC {\cyre }\IeC {\cyrn }\IeC {\cyrn }\IeC {\cyrery }\IeC {\cyre }}{89}{subsection.4.9.3}% 
+\contentsline {subsubsection}{\numberline {4.9.3.1}polyn\_ch\_consts}{89}{subsubsection.4.9.3.1}% 
+\contentsline {subsubsection}{\numberline {4.9.3.2}ram\_space\_pointer}{90}{subsubsection.4.9.3.2}% 
+\contentsline {subsubsection}{\numberline {4.9.3.3}rom\_space\_pointer}{90}{subsubsection.4.9.3.3}% 
+\contentsline {section}{\numberline {4.10}\IeC {\CYRF }\IeC {\cyra }\IeC {\cyrishrt }\IeC {\cyrl } external\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}ram.\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}h}{90}{section.4.10}% 
+\contentsline {subsection}{\numberline {4.10.1}\IeC {\CYRP }\IeC {\cyro }\IeC {\cyrd }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrb }\IeC {\cyrn }\IeC {\cyro }\IeC {\cyre } \IeC {\cyro }\IeC {\cyrp }\IeC {\cyri }\IeC {\cyrs }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyri }\IeC {\cyre }}{93}{subsection.4.10.1}% 
+\contentsline {subsection}{\numberline {4.10.2}\IeC {\CYRM }\IeC {\cyra }\IeC {\cyrk }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrs }\IeC {\cyrery }}{94}{subsection.4.10.2}% 
+\contentsline {subsubsection}{\numberline {4.10.2.1}EXT\_RAM\_START\_ADDR}{94}{subsubsection.4.10.2.1}% 
+\contentsline {subsubsection}{\numberline {4.10.2.2}PLC\_CONFIG\_ADD\_SWITCH1}{94}{subsubsection.4.10.2.2}% 
+\contentsline {subsubsection}{\numberline {4.10.2.3}PLC\_CONFIG\_ADD\_SWITCH2}{94}{subsubsection.4.10.2.3}% 
+\contentsline {subsubsection}{\numberline {4.10.2.4}PLC\_CONFIG\_MAIN\_SWITCH}{94}{subsubsection.4.10.2.4}% 
+\contentsline {subsubsection}{\numberline {4.10.2.5}PLC\_CONFIG\_RESERV}{94}{subsubsection.4.10.2.5}% 
+\contentsline {subsubsection}{\numberline {4.10.2.6}PLC\_PM\_CHASSIS\_ADDR}{94}{subsubsection.4.10.2.6}% 
+\contentsline {subsubsection}{\numberline {4.10.2.7}PLC\_PM\_MODULE\_ADDR}{95}{subsubsection.4.10.2.7}% 
+\contentsline {subsubsection}{\numberline {4.10.2.8}PLC\_SOFT\_VER\_ADD\_INFO}{95}{subsubsection.4.10.2.8}% 
+\contentsline {subsubsection}{\numberline {4.10.2.9}PLC\_SOFT\_VER\_DEVELOP}{95}{subsubsection.4.10.2.9}% 
+\contentsline {subsubsection}{\numberline {4.10.2.10}PLC\_SOFT\_VER\_MODIFICATION}{95}{subsubsection.4.10.2.10}% 
+\contentsline {subsubsection}{\numberline {4.10.2.11}PLC\_SOFT\_VER\_REVISION}{95}{subsubsection.4.10.2.11}% 
+\contentsline {subsubsection}{\numberline {4.10.2.12}PLC\_SOFT\_VER\_SOFT\_VER}{95}{subsubsection.4.10.2.12}% 
+\contentsline {subsubsection}{\numberline {4.10.2.13}PLC\_SOFT\_VER\_TYPE}{96}{subsubsection.4.10.2.13}% 
+\contentsline {subsubsection}{\numberline {4.10.2.14}RAM\_REGISTER\_SPACE\_START\_ADDR}{96}{subsubsection.4.10.2.14}% 
+\contentsline {subsubsection}{\numberline {4.10.2.15}RESET\_BIT}{96}{subsubsection.4.10.2.15}% 
+\contentsline {subsubsection}{\numberline {4.10.2.16}SET\_BIT}{96}{subsubsection.4.10.2.16}% 
+\contentsline {subsubsection}{\numberline {4.10.2.17}START\_STRUCT\_CHANGE\_FLAG}{96}{subsubsection.4.10.2.17}% 
+\contentsline {subsubsection}{\numberline {4.10.2.18}START\_STRUCT\_LENGTH}{96}{subsubsection.4.10.2.18}% 
+\contentsline {subsubsection}{\numberline {4.10.2.19}START\_STRUCT\_NUMBER\_OF\_RANGES}{97}{subsubsection.4.10.2.19}% 
+\contentsline {subsubsection}{\numberline {4.10.2.20}START\_STRUCT\_RANGE0\_ADDR}{97}{subsubsection.4.10.2.20}% 
+\contentsline {subsubsection}{\numberline {4.10.2.21}START\_STRUCT\_RANGE0\_SIZE}{97}{subsubsection.4.10.2.21}% 
+\contentsline {subsubsection}{\numberline {4.10.2.22}START\_STRUCT\_RANGE0\_START\_CH\_NUM}{97}{subsubsection.4.10.2.22}% 
+\contentsline {subsubsection}{\numberline {4.10.2.23}START\_STRUCT\_RANGE0\_TYPE}{97}{subsubsection.4.10.2.23}% 
+\contentsline {subsubsection}{\numberline {4.10.2.24}START\_STRUCT\_RANGE1\_ADDR}{97}{subsubsection.4.10.2.24}% 
+\contentsline {subsubsection}{\numberline {4.10.2.25}START\_STRUCT\_RANGE1\_SIZE}{98}{subsubsection.4.10.2.25}% 
+\contentsline {subsubsection}{\numberline {4.10.2.26}START\_STRUCT\_RANGE1\_START\_CH\_NUM}{98}{subsubsection.4.10.2.26}% 
+\contentsline {subsubsection}{\numberline {4.10.2.27}START\_STRUCT\_RANGE1\_TYPE}{98}{subsubsection.4.10.2.27}% 
+\contentsline {subsubsection}{\numberline {4.10.2.28}START\_STRUCT\_RANGE2\_ADDR}{98}{subsubsection.4.10.2.28}% 
+\contentsline {subsubsection}{\numberline {4.10.2.29}START\_STRUCT\_RANGE2\_SIZE}{98}{subsubsection.4.10.2.29}% 
+\contentsline {subsubsection}{\numberline {4.10.2.30}START\_STRUCT\_RANGE2\_START\_CH\_NUM}{98}{subsubsection.4.10.2.30}% 
+\contentsline {subsubsection}{\numberline {4.10.2.31}START\_STRUCT\_RANGE2\_TYPE}{99}{subsubsection.4.10.2.31}% 
+\contentsline {subsubsection}{\numberline {4.10.2.32}START\_STRUCT\_TEXT\_INFO\_ADDR}{99}{subsubsection.4.10.2.32}% 
+\contentsline {subsubsection}{\numberline {4.10.2.33}TEST\_BIT}{99}{subsubsection.4.10.2.33}% 
+\contentsline {subsubsection}{\numberline {4.10.2.34}TIMER\_NUM}{99}{subsubsection.4.10.2.34}% 
+\contentsline {subsection}{\numberline {4.10.3}\IeC {\CYRT }\IeC {\cyri }\IeC {\cyrp }\IeC {\cyrery }}{99}{subsection.4.10.3}% 
+\contentsline {subsubsection}{\numberline {4.10.3.1}bus\_defect}{99}{subsubsection.4.10.3.1}% 
+\contentsline {subsubsection}{\numberline {4.10.3.2}common\_ram\_registers}{99}{subsubsection.4.10.3.2}% 
+\contentsline {subsubsection}{\numberline {4.10.3.3}device\_address}{100}{subsubsection.4.10.3.3}% 
+\contentsline {subsubsection}{\numberline {4.10.3.4}device\_config}{100}{subsubsection.4.10.3.4}% 
+\contentsline {subsubsection}{\numberline {4.10.3.5}module\_type}{100}{subsubsection.4.10.3.5}% 
+\contentsline {subsubsection}{\numberline {4.10.3.6}mpa\_ram\_registers}{100}{subsubsection.4.10.3.6}% 
+\contentsline {subsubsection}{\numberline {4.10.3.7}plc\_soft\_ver}{100}{subsubsection.4.10.3.7}% 
+\contentsline {subsubsection}{\numberline {4.10.3.8}power\_failure}{100}{subsubsection.4.10.3.8}% 
+\contentsline {subsubsection}{\numberline {4.10.3.9}ram\_data}{101}{subsubsection.4.10.3.9}% 
+\contentsline {subsubsection}{\numberline {4.10.3.10}ram\_start\_struct}{101}{subsubsection.4.10.3.10}% 
+\contentsline {subsubsection}{\numberline {4.10.3.11}range}{101}{subsubsection.4.10.3.11}% 
+\contentsline {subsubsection}{\numberline {4.10.3.12}self\_diag}{101}{subsubsection.4.10.3.12}% 
+\contentsline {subsubsection}{\numberline {4.10.3.13}service\_struct\_pm}{101}{subsubsection.4.10.3.13}% 
+\contentsline {subsubsection}{\numberline {4.10.3.14}service\_struct\_um}{101}{subsubsection.4.10.3.14}% 
+\contentsline {subsection}{\numberline {4.10.4}\IeC {\CYRP }\IeC {\cyre }\IeC {\cyrr }\IeC {\cyre }\IeC {\cyrch }\IeC {\cyri }\IeC {\cyrs }\IeC {\cyrl }\IeC {\cyre }\IeC {\cyrn }\IeC {\cyri }\IeC {\cyrya }}{101}{subsection.4.10.4}% 
+\contentsline {subsubsection}{\numberline {4.10.4.1}type\_of\_module}{101}{subsubsection.4.10.4.1}% 
+\contentsline {subsection}{\numberline {4.10.5}\IeC {\CYRF }\IeC {\cyru }\IeC {\cyrn }\IeC {\cyrk }\IeC {\cyrc }\IeC {\cyri }\IeC {\cyri }}{102}{subsection.4.10.5}% 
+\contentsline {subsubsection}{\numberline {4.10.5.1}init\_external\_ram\_space()}{102}{subsubsection.4.10.5.1}% 
+\contentsline {section}{\numberline {4.11}\IeC {\CYRF }\IeC {\cyra }\IeC {\cyrishrt }\IeC {\cyrl } external\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}rom.\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}c}{104}{section.4.11}% 
+\contentsline {subsection}{\numberline {4.11.1}\IeC {\CYRP }\IeC {\cyro }\IeC {\cyrd }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrb }\IeC {\cyrn }\IeC {\cyro }\IeC {\cyre } \IeC {\cyro }\IeC {\cyrp }\IeC {\cyri }\IeC {\cyrs }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyri }\IeC {\cyre }}{104}{subsection.4.11.1}% 
+\contentsline {subsection}{\numberline {4.11.2}\IeC {\CYRM }\IeC {\cyra }\IeC {\cyrk }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrs }\IeC {\cyrery }}{105}{subsection.4.11.2}% 
+\contentsline {subsubsection}{\numberline {4.11.2.1}FIRST\_TIME\_INIT}{105}{subsubsection.4.11.2.1}% 
+\contentsline {subsection}{\numberline {4.11.3}\IeC {\CYRF }\IeC {\cyru }\IeC {\cyrn }\IeC {\cyrk }\IeC {\cyrc }\IeC {\cyri }\IeC {\cyri }}{105}{subsection.4.11.3}% 
+\contentsline {subsubsection}{\numberline {4.11.3.1}erase\_rom()}{105}{subsubsection.4.11.3.1}% 
+\contentsline {subsubsection}{\numberline {4.11.3.2}init\_external\_rom\_space()}{106}{subsubsection.4.11.3.2}% 
+\contentsline {subsubsection}{\numberline {4.11.3.3}memcpy\_to\_rom()}{106}{subsubsection.4.11.3.3}% 
+\contentsline {subsubsection}{\numberline {4.11.3.4}read\_byte\_rom()}{107}{subsubsection.4.11.3.4}% 
+\contentsline {subsubsection}{\numberline {4.11.3.5}write\_byte\_rom()}{107}{subsubsection.4.11.3.5}% 
+\contentsline {subsection}{\numberline {4.11.4}\IeC {\CYRP }\IeC {\cyre }\IeC {\cyrr }\IeC {\cyre }\IeC {\cyrm }\IeC {\cyre }\IeC {\cyrn }\IeC {\cyrn }\IeC {\cyrery }\IeC {\cyre }}{107}{subsection.4.11.4}% 
+\contentsline {subsubsection}{\numberline {4.11.4.1}polyn\_ch\_consts}{108}{subsubsection.4.11.4.1}% 
+\contentsline {section}{\numberline {4.12}\IeC {\CYRF }\IeC {\cyra }\IeC {\cyrishrt }\IeC {\cyrl } external\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}rom.\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}h}{108}{section.4.12}% 
+\contentsline {subsection}{\numberline {4.12.1}\IeC {\CYRP }\IeC {\cyro }\IeC {\cyrd }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrb }\IeC {\cyrn }\IeC {\cyro }\IeC {\cyre } \IeC {\cyro }\IeC {\cyrp }\IeC {\cyri }\IeC {\cyrs }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyri }\IeC {\cyre }}{110}{subsection.4.12.1}% 
+\contentsline {subsection}{\numberline {4.12.2}\IeC {\CYRM }\IeC {\cyra }\IeC {\cyrk }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrs }\IeC {\cyrery }}{110}{subsection.4.12.2}% 
+\contentsline {subsubsection}{\numberline {4.12.2.1}BATCH}{110}{subsubsection.4.12.2.1}% 
+\contentsline {subsubsection}{\numberline {4.12.2.2}DEV\_INFO}{110}{subsubsection.4.12.2.2}% 
+\contentsline {subsubsection}{\numberline {4.12.2.3}DEV\_TYPE}{111}{subsubsection.4.12.2.3}% 
+\contentsline {subsubsection}{\numberline {4.12.2.4}DEV\_TYPE\_RESERV}{111}{subsubsection.4.12.2.4}% 
+\contentsline {subsubsection}{\numberline {4.12.2.5}DUAL\_CONTROL}{111}{subsubsection.4.12.2.5}% 
+\contentsline {subsubsection}{\numberline {4.12.2.6}EXT\_ROM\_START\_ADDR}{111}{subsubsection.4.12.2.6}% 
+\contentsline {subsubsection}{\numberline {4.12.2.7}HWREG}{111}{subsubsection.4.12.2.7}% 
+\contentsline {subsubsection}{\numberline {4.12.2.8}MAX\_CODE\_ADC}{111}{subsubsection.4.12.2.8}% 
+\contentsline {subsubsection}{\numberline {4.12.2.9}METROLOG\_DAT}{112}{subsubsection.4.12.2.9}% 
+\contentsline {subsubsection}{\numberline {4.12.2.10}MIN\_CODE\_ADC}{112}{subsubsection.4.12.2.10}% 
+\contentsline {subsubsection}{\numberline {4.12.2.11}MODIFICATION}{112}{subsubsection.4.12.2.11}% 
+\contentsline {subsubsection}{\numberline {4.12.2.12}NUM\_CRC\_ERRORS\_FOR\_DEFECT\_B1}{112}{subsubsection.4.12.2.12}% 
+\contentsline {subsubsection}{\numberline {4.12.2.13}NUM\_CRC\_ERRORS\_FOR\_DEFECT\_B2}{112}{subsubsection.4.12.2.13}% 
+\contentsline {subsubsection}{\numberline {4.12.2.14}NUM\_FOR\_AVERAGE}{112}{subsubsection.4.12.2.14}% 
+\contentsline {subsubsection}{\numberline {4.12.2.15}REVISION}{113}{subsubsection.4.12.2.15}% 
+\contentsline {subsubsection}{\numberline {4.12.2.16}ROM\_REGISTER\_SPACE\_START\_ADDR}{113}{subsubsection.4.12.2.16}% 
+\contentsline {subsubsection}{\numberline {4.12.2.17}SERIAL\_NUMBER}{113}{subsubsection.4.12.2.17}% 
+\contentsline {subsubsection}{\numberline {4.12.2.18}TIME\_SOLO\_WORK}{113}{subsubsection.4.12.2.18}% 
+\contentsline {subsubsection}{\numberline {4.12.2.19}TIME\_TO\_REPAIR}{113}{subsubsection.4.12.2.19}% 
+\contentsline {subsubsection}{\numberline {4.12.2.20}TIMEOUT\_FOR\_DEFECT\_B1}{113}{subsubsection.4.12.2.20}% 
+\contentsline {subsubsection}{\numberline {4.12.2.21}TIMEOUT\_FOR\_DEFECT\_B2}{114}{subsubsection.4.12.2.21}% 
+\contentsline {subsection}{\numberline {4.12.3}\IeC {\CYRT }\IeC {\cyri }\IeC {\cyrp }\IeC {\cyrery }}{114}{subsection.4.12.3}% 
+\contentsline {subsubsection}{\numberline {4.12.3.1}ai\_oper\_mode}{114}{subsubsection.4.12.3.1}% 
+\contentsline {subsubsection}{\numberline {4.12.3.2}common\_rom\_registers}{114}{subsubsection.4.12.3.2}% 
+\contentsline {subsubsection}{\numberline {4.12.3.3}device\_type}{114}{subsubsection.4.12.3.3}% 
+\contentsline {subsubsection}{\numberline {4.12.3.4}mpa\_rom\_registers}{114}{subsubsection.4.12.3.4}% 
+\contentsline {subsubsection}{\numberline {4.12.3.5}rom\_data}{114}{subsubsection.4.12.3.5}% 
+\contentsline {subsection}{\numberline {4.12.4}\IeC {\CYRF }\IeC {\cyru }\IeC {\cyrn }\IeC {\cyrk }\IeC {\cyrc }\IeC {\cyri }\IeC {\cyri }}{115}{subsection.4.12.4}% 
+\contentsline {subsubsection}{\numberline {4.12.4.1}erase\_rom()}{115}{subsubsection.4.12.4.1}% 
+\contentsline {subsubsection}{\numberline {4.12.4.2}init\_external\_rom\_space()}{115}{subsubsection.4.12.4.2}% 
+\contentsline {subsubsection}{\numberline {4.12.4.3}memcpy\_to\_rom()}{116}{subsubsection.4.12.4.3}% 
+\contentsline {subsubsection}{\numberline {4.12.4.4}read\_byte\_rom()}{116}{subsubsection.4.12.4.4}% 
+\contentsline {subsubsection}{\numberline {4.12.4.5}write\_byte\_rom()}{117}{subsubsection.4.12.4.5}% 
+\contentsline {section}{\numberline {4.13}\IeC {\CYRF }\IeC {\cyra }\IeC {\cyrishrt }\IeC {\cyrl } internal\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}ram.\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}c}{118}{section.4.13}% 
+\contentsline {subsection}{\numberline {4.13.1}\IeC {\CYRP }\IeC {\cyro }\IeC {\cyrd }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrb }\IeC {\cyrn }\IeC {\cyro }\IeC {\cyre } \IeC {\cyro }\IeC {\cyrp }\IeC {\cyri }\IeC {\cyrs }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyri }\IeC {\cyre }}{118}{subsection.4.13.1}% 
+\contentsline {subsection}{\numberline {4.13.2}\IeC {\CYRF }\IeC {\cyru }\IeC {\cyrn }\IeC {\cyrk }\IeC {\cyrc }\IeC {\cyri }\IeC {\cyri }}{118}{subsection.4.13.2}% 
+\contentsline {subsubsection}{\numberline {4.13.2.1}free\_ram\_pages()}{118}{subsubsection.4.13.2.1}% 
+\contentsline {subsubsection}{\numberline {4.13.2.2}malloc\_ram\_pages()}{119}{subsubsection.4.13.2.2}% 
+\contentsline {subsection}{\numberline {4.13.3}\IeC {\CYRP }\IeC {\cyre }\IeC {\cyrr }\IeC {\cyre }\IeC {\cyrm }\IeC {\cyre }\IeC {\cyrn }\IeC {\cyrn }\IeC {\cyrery }\IeC {\cyre }}{119}{subsection.4.13.3}% 
+\contentsline {subsubsection}{\numberline {4.13.3.1}heap\_ptr}{119}{subsubsection.4.13.3.1}% 
+\contentsline {section}{\numberline {4.14}\IeC {\CYRF }\IeC {\cyra }\IeC {\cyrishrt }\IeC {\cyrl } internal\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}ram.\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}h}{119}{section.4.14}% 
+\contentsline {subsection}{\numberline {4.14.1}\IeC {\CYRP }\IeC {\cyro }\IeC {\cyrd }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrb }\IeC {\cyrn }\IeC {\cyro }\IeC {\cyre } \IeC {\cyro }\IeC {\cyrp }\IeC {\cyri }\IeC {\cyrs }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyri }\IeC {\cyre }}{120}{subsection.4.14.1}% 
+\contentsline {subsection}{\numberline {4.14.2}\IeC {\CYRM }\IeC {\cyra }\IeC {\cyrk }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrs }\IeC {\cyrery }}{121}{subsection.4.14.2}% 
+\contentsline {subsubsection}{\numberline {4.14.2.1}PAGE\_NUM}{121}{subsubsection.4.14.2.1}% 
+\contentsline {subsubsection}{\numberline {4.14.2.2}PAGE\_SIZE}{121}{subsubsection.4.14.2.2}% 
+\contentsline {subsection}{\numberline {4.14.3}\IeC {\CYRT }\IeC {\cyri }\IeC {\cyrp }\IeC {\cyrery }}{121}{subsection.4.14.3}% 
+\contentsline {subsubsection}{\numberline {4.14.3.1}int\_ram\_heap}{121}{subsubsection.4.14.3.1}% 
+\contentsline {subsection}{\numberline {4.14.4}\IeC {\CYRF }\IeC {\cyru }\IeC {\cyrn }\IeC {\cyrk }\IeC {\cyrc }\IeC {\cyri }\IeC {\cyri }}{121}{subsection.4.14.4}% 
+\contentsline {subsubsection}{\numberline {4.14.4.1}free\_ram\_pages()}{121}{subsubsection.4.14.4.1}% 
+\contentsline {subsubsection}{\numberline {4.14.4.2}malloc\_ram\_pages()}{122}{subsubsection.4.14.4.2}% 
+\contentsline {section}{\numberline {4.15}\IeC {\CYRF }\IeC {\cyra }\IeC {\cyrishrt }\IeC {\cyrl } leds.\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}c}{123}{section.4.15}% 
+\contentsline {subsection}{\numberline {4.15.1}\IeC {\CYRP }\IeC {\cyro }\IeC {\cyrd }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrb }\IeC {\cyrn }\IeC {\cyro }\IeC {\cyre } \IeC {\cyro }\IeC {\cyrp }\IeC {\cyri }\IeC {\cyrs }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyri }\IeC {\cyre }}{123}{subsection.4.15.1}% 
+\contentsline {subsection}{\numberline {4.15.2}\IeC {\CYRF }\IeC {\cyru }\IeC {\cyrn }\IeC {\cyrk }\IeC {\cyrc }\IeC {\cyri }\IeC {\cyri }}{123}{subsection.4.15.2}% 
+\contentsline {subsubsection}{\numberline {4.15.2.1}leds\_gpio\_config()}{123}{subsubsection.4.15.2.1}% 
+\contentsline {section}{\numberline {4.16}\IeC {\CYRF }\IeC {\cyra }\IeC {\cyrishrt }\IeC {\cyrl } leds.\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}h}{124}{section.4.16}% 
+\contentsline {subsection}{\numberline {4.16.1}\IeC {\CYRP }\IeC {\cyro }\IeC {\cyrd }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrb }\IeC {\cyrn }\IeC {\cyro }\IeC {\cyre } \IeC {\cyro }\IeC {\cyrp }\IeC {\cyri }\IeC {\cyrs }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyri }\IeC {\cyre }}{125}{subsection.4.16.1}% 
+\contentsline {subsection}{\numberline {4.16.2}\IeC {\CYRM }\IeC {\cyra }\IeC {\cyrk }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrs }\IeC {\cyrery }}{125}{subsection.4.16.2}% 
+\contentsline {subsubsection}{\numberline {4.16.2.1}CLOCK\_LEDS}{125}{subsubsection.4.16.2.1}% 
+\contentsline {subsubsection}{\numberline {4.16.2.2}PIN\_LED\_ERROR\_WORK}{125}{subsubsection.4.16.2.2}% 
+\contentsline {subsubsection}{\numberline {4.16.2.3}PIN\_LED\_OK\_WORK}{125}{subsubsection.4.16.2.3}% 
+\contentsline {subsubsection}{\numberline {4.16.2.4}PORT\_LEDS}{125}{subsubsection.4.16.2.4}% 
+\contentsline {subsubsection}{\numberline {4.16.2.5}RESET\_LED\_ERROR\_WORK}{126}{subsubsection.4.16.2.5}% 
+\contentsline {subsubsection}{\numberline {4.16.2.6}RESET\_LED\_OK\_WORK}{126}{subsubsection.4.16.2.6}% 
+\contentsline {subsubsection}{\numberline {4.16.2.7}SET\_LED\_ERROR\_WORK}{126}{subsubsection.4.16.2.7}% 
+\contentsline {subsubsection}{\numberline {4.16.2.8}SET\_LED\_OK\_WORK}{126}{subsubsection.4.16.2.8}% 
+\contentsline {subsection}{\numberline {4.16.3}\IeC {\CYRF }\IeC {\cyru }\IeC {\cyrn }\IeC {\cyrk }\IeC {\cyrc }\IeC {\cyri }\IeC {\cyri }}{126}{subsection.4.16.3}% 
+\contentsline {subsubsection}{\numberline {4.16.3.1}leds\_gpio\_config()}{126}{subsubsection.4.16.3.1}% 
+\contentsline {section}{\numberline {4.17}\IeC {\CYRF }\IeC {\cyra }\IeC {\cyrishrt }\IeC {\cyrl } list.\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}c}{127}{section.4.17}% 
+\contentsline {subsection}{\numberline {4.17.1}\IeC {\CYRP }\IeC {\cyro }\IeC {\cyrd }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrb }\IeC {\cyrn }\IeC {\cyro }\IeC {\cyre } \IeC {\cyro }\IeC {\cyrp }\IeC {\cyri }\IeC {\cyrs }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyri }\IeC {\cyre }}{127}{subsection.4.17.1}% 
+\contentsline {subsection}{\numberline {4.17.2}\IeC {\CYRF }\IeC {\cyru }\IeC {\cyrn }\IeC {\cyrk }\IeC {\cyrc }\IeC {\cyri }\IeC {\cyri }}{127}{subsection.4.17.2}% 
+\contentsline {subsubsection}{\numberline {4.17.2.1}\_\_list\_add()}{128}{subsubsection.4.17.2.1}% 
+\contentsline {subsubsection}{\numberline {4.17.2.2}\_\_list\_del()}{128}{subsubsection.4.17.2.2}% 
+\contentsline {subsubsection}{\numberline {4.17.2.3}init\_list\_head()}{128}{subsubsection.4.17.2.3}% 
+\contentsline {subsubsection}{\numberline {4.17.2.4}list\_add()}{128}{subsubsection.4.17.2.4}% 
+\contentsline {subsubsection}{\numberline {4.17.2.5}list\_add\_tail()}{129}{subsubsection.4.17.2.5}% 
+\contentsline {subsubsection}{\numberline {4.17.2.6}list\_del()}{129}{subsubsection.4.17.2.6}% 
+\contentsline {subsubsection}{\numberline {4.17.2.7}list\_empty()}{129}{subsubsection.4.17.2.7}% 
+\contentsline {subsubsection}{\numberline {4.17.2.8}list\_is\_last()}{129}{subsubsection.4.17.2.8}% 
+\contentsline {section}{\numberline {4.18}\IeC {\CYRF }\IeC {\cyra }\IeC {\cyrishrt }\IeC {\cyrl } list.\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}h}{130}{section.4.18}% 
+\contentsline {subsection}{\numberline {4.18.1}\IeC {\CYRP }\IeC {\cyro }\IeC {\cyrd }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrb }\IeC {\cyrn }\IeC {\cyro }\IeC {\cyre } \IeC {\cyro }\IeC {\cyrp }\IeC {\cyri }\IeC {\cyrs }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyri }\IeC {\cyre }}{131}{subsection.4.18.1}% 
+\contentsline {subsection}{\numberline {4.18.2}\IeC {\CYRM }\IeC {\cyra }\IeC {\cyrk }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrs }\IeC {\cyrery }}{131}{subsection.4.18.2}% 
+\contentsline {subsubsection}{\numberline {4.18.2.1}container\_of}{131}{subsubsection.4.18.2.1}% 
+\contentsline {subsubsection}{\numberline {4.18.2.2}list\_entry}{132}{subsubsection.4.18.2.2}% 
+\contentsline {subsubsection}{\numberline {4.18.2.3}list\_for\_each}{132}{subsubsection.4.18.2.3}% 
+\contentsline {subsubsection}{\numberline {4.18.2.4}list\_for\_each\_entry}{132}{subsubsection.4.18.2.4}% 
+\contentsline {subsubsection}{\numberline {4.18.2.5}LIST\_HEAD}{132}{subsubsection.4.18.2.5}% 
+\contentsline {subsubsection}{\numberline {4.18.2.6}LIST\_HEAD\_INIT}{132}{subsubsection.4.18.2.6}% 
+\contentsline {subsection}{\numberline {4.18.3}\IeC {\CYRT }\IeC {\cyri }\IeC {\cyrp }\IeC {\cyrery }}{133}{subsection.4.18.3}% 
+\contentsline {subsubsection}{\numberline {4.18.3.1}list\_head}{133}{subsubsection.4.18.3.1}% 
+\contentsline {subsection}{\numberline {4.18.4}\IeC {\CYRF }\IeC {\cyru }\IeC {\cyrn }\IeC {\cyrk }\IeC {\cyrc }\IeC {\cyri }\IeC {\cyri }}{133}{subsection.4.18.4}% 
+\contentsline {subsubsection}{\numberline {4.18.4.1}\_\_list\_add()}{133}{subsubsection.4.18.4.1}% 
+\contentsline {subsubsection}{\numberline {4.18.4.2}\_\_list\_del()}{133}{subsubsection.4.18.4.2}% 
+\contentsline {subsubsection}{\numberline {4.18.4.3}init\_list\_head()}{134}{subsubsection.4.18.4.3}% 
+\contentsline {subsubsection}{\numberline {4.18.4.4}list\_add()}{134}{subsubsection.4.18.4.4}% 
+\contentsline {subsubsection}{\numberline {4.18.4.5}list\_add\_tail()}{134}{subsubsection.4.18.4.5}% 
+\contentsline {subsubsection}{\numberline {4.18.4.6}list\_del()}{135}{subsubsection.4.18.4.6}% 
+\contentsline {subsubsection}{\numberline {4.18.4.7}list\_empty()}{135}{subsubsection.4.18.4.7}% 
+\contentsline {subsubsection}{\numberline {4.18.4.8}list\_is\_last()}{136}{subsubsection.4.18.4.8}% 
+\contentsline {section}{\numberline {4.19}\IeC {\CYRF }\IeC {\cyra }\IeC {\cyrishrt }\IeC {\cyrl } main.\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}c}{136}{section.4.19}% 
+\contentsline {subsection}{\numberline {4.19.1}\IeC {\CYRF }\IeC {\cyru }\IeC {\cyrn }\IeC {\cyrk }\IeC {\cyrc }\IeC {\cyri }\IeC {\cyri }}{137}{subsection.4.19.1}% 
+\contentsline {subsubsection}{\numberline {4.19.1.1}do\_mpa\_task()}{137}{subsubsection.4.19.1.1}% 
+\contentsline {subsubsection}{\numberline {4.19.1.2}main()}{138}{subsubsection.4.19.1.2}% 
+\contentsline {subsubsection}{\numberline {4.19.1.3}receive\_adc\_chanel\_pack()}{140}{subsubsection.4.19.1.3}% 
+\contentsline {subsubsection}{\numberline {4.19.1.4}request\_data()}{140}{subsubsection.4.19.1.4}% 
+\contentsline {subsubsection}{\numberline {4.19.1.5}sync\_adc\_chanels()}{141}{subsubsection.4.19.1.5}% 
+\contentsline {subsection}{\numberline {4.19.2}\IeC {\CYRP }\IeC {\cyre }\IeC {\cyrr }\IeC {\cyre }\IeC {\cyrm }\IeC {\cyre }\IeC {\cyrn }\IeC {\cyrn }\IeC {\cyrery }\IeC {\cyre }}{142}{subsection.4.19.2}% 
+\contentsline {subsubsection}{\numberline {4.19.2.1}adc\_1}{142}{subsubsection.4.19.2.1}% 
+\contentsline {subsubsection}{\numberline {4.19.2.2}heap}{142}{subsubsection.4.19.2.2}% 
+\contentsline {subsubsection}{\numberline {4.19.2.3}heap\_ptr}{142}{subsubsection.4.19.2.3}% 
+\contentsline {subsubsection}{\numberline {4.19.2.4}ram\_space\_pointer}{142}{subsubsection.4.19.2.4}% 
+\contentsline {subsubsection}{\numberline {4.19.2.5}rom\_space\_pointer}{143}{subsubsection.4.19.2.5}% 
+\contentsline {subsubsection}{\numberline {4.19.2.6}spi\_1}{143}{subsubsection.4.19.2.6}% 
+\contentsline {subsubsection}{\numberline {4.19.2.7}spi\_2}{143}{subsubsection.4.19.2.7}% 
+\contentsline {subsubsection}{\numberline {4.19.2.8}timer\_1}{143}{subsubsection.4.19.2.8}% 
+\contentsline {subsubsection}{\numberline {4.19.2.9}timer\_2}{143}{subsubsection.4.19.2.9}% 
+\contentsline {subsubsection}{\numberline {4.19.2.10}timer\_3}{143}{subsubsection.4.19.2.10}% 
+\contentsline {subsubsection}{\numberline {4.19.2.11}tmr\_handler\_head}{144}{subsubsection.4.19.2.11}% 
+\contentsline {subsubsection}{\numberline {4.19.2.12}uart\_1}{144}{subsubsection.4.19.2.12}% 
+\contentsline {subsubsection}{\numberline {4.19.2.13}uart\_2}{144}{subsubsection.4.19.2.13}% 
+\contentsline {section}{\numberline {4.20}\IeC {\CYRF }\IeC {\cyra }\IeC {\cyrishrt }\IeC {\cyrl } main.\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}h}{144}{section.4.20}% 
+\contentsline {subsection}{\numberline {4.20.1}\IeC {\CYRP }\IeC {\cyro }\IeC {\cyrd }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrb }\IeC {\cyrn }\IeC {\cyro }\IeC {\cyre } \IeC {\cyro }\IeC {\cyrp }\IeC {\cyri }\IeC {\cyrs }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyri }\IeC {\cyre }}{145}{subsection.4.20.1}% 
+\contentsline {subsection}{\numberline {4.20.2}\IeC {\CYRF }\IeC {\cyru }\IeC {\cyrn }\IeC {\cyrk }\IeC {\cyrc }\IeC {\cyri }\IeC {\cyri }}{145}{subsection.4.20.2}% 
+\contentsline {subsubsection}{\numberline {4.20.2.1}do\_mpa\_task()}{145}{subsubsection.4.20.2.1}% 
+\contentsline {subsubsection}{\numberline {4.20.2.2}receive\_adc\_chanel\_pack()}{146}{subsubsection.4.20.2.2}% 
+\contentsline {subsubsection}{\numberline {4.20.2.3}request\_data()}{147}{subsubsection.4.20.2.3}% 
+\contentsline {subsubsection}{\numberline {4.20.2.4}sync\_adc\_chanels()}{148}{subsubsection.4.20.2.4}% 
+\contentsline {section}{\numberline {4.21}\IeC {\CYRF }\IeC {\cyra }\IeC {\cyrishrt }\IeC {\cyrl } mdr32\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}drivers.\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}h}{148}{section.4.21}% 
+\contentsline {subsection}{\numberline {4.21.1}\IeC {\CYRP }\IeC {\cyro }\IeC {\cyrd }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrb }\IeC {\cyrn }\IeC {\cyro }\IeC {\cyre } \IeC {\cyro }\IeC {\cyrp }\IeC {\cyri }\IeC {\cyrs }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyri }\IeC {\cyre }}{149}{subsection.4.21.1}% 
+\contentsline {subsection}{\numberline {4.21.2}\IeC {\CYRM }\IeC {\cyra }\IeC {\cyrk }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrs }\IeC {\cyrery }}{149}{subsection.4.21.2}% 
+\contentsline {subsubsection}{\numberline {4.21.2.1}CHANEL\_NUMBER}{150}{subsubsection.4.21.2.1}% 
+\contentsline {subsubsection}{\numberline {4.21.2.2}HSE\_OSC}{150}{subsubsection.4.21.2.2}% 
+\contentsline {subsubsection}{\numberline {4.21.2.3}K1986VE1T}{150}{subsubsection.4.21.2.3}% 
+\contentsline {subsubsection}{\numberline {4.21.2.4}MAX\_CHANEL\_NUMBER}{150}{subsubsection.4.21.2.4}% 
+\contentsline {subsubsection}{\numberline {4.21.2.5}PM\_CHASSIS\_ADDR}{150}{subsubsection.4.21.2.5}% 
+\contentsline {subsubsection}{\numberline {4.21.2.6}PM\_DEV\_ADDR}{150}{subsubsection.4.21.2.6}% 
+\contentsline {subsubsection}{\numberline {4.21.2.7}WORK\_FREQ}{151}{subsubsection.4.21.2.7}% 
+\contentsline {section}{\numberline {4.22}\IeC {\CYRF }\IeC {\cyra }\IeC {\cyrishrt }\IeC {\cyrl } rs422\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}protocol.\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}c}{151}{section.4.22}% 
+\contentsline {subsection}{\numberline {4.22.1}\IeC {\CYRP }\IeC {\cyro }\IeC {\cyrd }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrb }\IeC {\cyrn }\IeC {\cyro }\IeC {\cyre } \IeC {\cyro }\IeC {\cyrp }\IeC {\cyri }\IeC {\cyrs }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyri }\IeC {\cyre }}{152}{subsection.4.22.1}% 
+\contentsline {subsection}{\numberline {4.22.2}\IeC {\CYRF }\IeC {\cyru }\IeC {\cyrn }\IeC {\cyrk }\IeC {\cyrc }\IeC {\cyri }\IeC {\cyri }}{152}{subsection.4.22.2}% 
+\contentsline {subsubsection}{\numberline {4.22.2.1}crc32()}{152}{subsubsection.4.22.2.1}% 
+\contentsline {subsubsection}{\numberline {4.22.2.2}fill\_crc32\_table()}{152}{subsubsection.4.22.2.2}% 
+\contentsline {subsubsection}{\numberline {4.22.2.3}protocol\_do\_cmds()}{152}{subsubsection.4.22.2.3}% 
+\contentsline {subsubsection}{\numberline {4.22.2.4}receive\_packet()}{156}{subsubsection.4.22.2.4}% 
+\contentsline {subsubsection}{\numberline {4.22.2.5}rx\_error\_handler()}{158}{subsubsection.4.22.2.5}% 
+\contentsline {subsubsection}{\numberline {4.22.2.6}transmit\_packet()}{159}{subsubsection.4.22.2.6}% 
+\contentsline {subsubsection}{\numberline {4.22.2.7}um\_service\_byte\_handler()}{160}{subsubsection.4.22.2.7}% 
+\contentsline {subsection}{\numberline {4.22.3}\IeC {\CYRP }\IeC {\cyre }\IeC {\cyrr }\IeC {\cyre }\IeC {\cyrm }\IeC {\cyre }\IeC {\cyrn }\IeC {\cyrn }\IeC {\cyrery }\IeC {\cyre }}{161}{subsection.4.22.3}% 
+\contentsline {subsubsection}{\numberline {4.22.3.1}ram\_space\_pointer}{162}{subsubsection.4.22.3.1}% 
+\contentsline {subsubsection}{\numberline {4.22.3.2}rom\_space\_pointer}{162}{subsubsection.4.22.3.2}% 
+\contentsline {section}{\numberline {4.23}\IeC {\CYRF }\IeC {\cyra }\IeC {\cyrishrt }\IeC {\cyrl } rs422\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}\_\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}protocol.\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}h}{162}{section.4.23}% 
+\contentsline {subsection}{\numberline {4.23.1}\IeC {\CYRP }\IeC {\cyro }\IeC {\cyrd }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrb }\IeC {\cyrn }\IeC {\cyro }\IeC {\cyre } \IeC {\cyro }\IeC {\cyrp }\IeC {\cyri }\IeC {\cyrs }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyri }\IeC {\cyre }}{164}{subsection.4.23.1}% 
+\contentsline {subsection}{\numberline {4.23.2}\IeC {\CYRM }\IeC {\cyra }\IeC {\cyrk }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrs }\IeC {\cyrery }}{164}{subsection.4.23.2}% 
+\contentsline {subsubsection}{\numberline {4.23.2.1}CONFIG}{165}{subsubsection.4.23.2.1}% 
+\contentsline {subsubsection}{\numberline {4.23.2.2}INIT\_CMD}{165}{subsubsection.4.23.2.2}% 
+\contentsline {subsubsection}{\numberline {4.23.2.3}NUMBER\_CMDS\_IN\_PACKET}{165}{subsubsection.4.23.2.3}% 
+\contentsline {subsubsection}{\numberline {4.23.2.4}PACKET\_HEAD}{165}{subsubsection.4.23.2.4}% 
+\contentsline {subsubsection}{\numberline {4.23.2.5}PACKET\_TAIL}{165}{subsubsection.4.23.2.5}% 
+\contentsline {subsubsection}{\numberline {4.23.2.6}PLC\_CM\_CRITICAL\_FAULT}{165}{subsubsection.4.23.2.6}% 
+\contentsline {subsubsection}{\numberline {4.23.2.7}PLC\_CM\_INIT\_1\_BUS}{166}{subsubsection.4.23.2.7}% 
+\contentsline {subsubsection}{\numberline {4.23.2.8}PLC\_CM\_INIT\_2\_BUS}{166}{subsubsection.4.23.2.8}% 
+\contentsline {subsubsection}{\numberline {4.23.2.9}PLC\_CM\_NOT\_INIT}{166}{subsubsection.4.23.2.9}% 
+\contentsline {subsubsection}{\numberline {4.23.2.10}PLC\_CM\_REMOVE\_INIT}{166}{subsubsection.4.23.2.10}% 
+\contentsline {subsubsection}{\numberline {4.23.2.11}PLC\_CM\_UNKNOWN\_STATE}{166}{subsubsection.4.23.2.11}% 
+\contentsline {subsubsection}{\numberline {4.23.2.12}READ\_CMD}{166}{subsubsection.4.23.2.12}% 
+\contentsline {subsubsection}{\numberline {4.23.2.13}RESET\_CMD}{167}{subsubsection.4.23.2.13}% 
+\contentsline {subsubsection}{\numberline {4.23.2.14}TYPE\_CMD}{167}{subsubsection.4.23.2.14}% 
+\contentsline {subsubsection}{\numberline {4.23.2.15}WRITE\_CMD}{167}{subsubsection.4.23.2.15}% 
+\contentsline {subsection}{\numberline {4.23.3}\IeC {\CYRT }\IeC {\cyri }\IeC {\cyrp }\IeC {\cyrery }}{167}{subsection.4.23.3}% 
+\contentsline {subsubsection}{\numberline {4.23.3.1}fields\_cmd}{167}{subsubsection.4.23.3.1}% 
+\contentsline {subsubsection}{\numberline {4.23.3.2}fields\_cmd\_header}{167}{subsubsection.4.23.3.2}% 
+\contentsline {subsubsection}{\numberline {4.23.3.3}fields\_packet}{167}{subsubsection.4.23.3.3}% 
+\contentsline {subsubsection}{\numberline {4.23.3.4}fields\_packet\_header}{168}{subsubsection.4.23.3.4}% 
+\contentsline {subsubsection}{\numberline {4.23.3.5}fields\_packet\_tail}{168}{subsubsection.4.23.3.5}% 
+\contentsline {subsubsection}{\numberline {4.23.3.6}protocol\_error}{168}{subsubsection.4.23.3.6}% 
+\contentsline {subsection}{\numberline {4.23.4}\IeC {\CYRP }\IeC {\cyre }\IeC {\cyrr }\IeC {\cyre }\IeC {\cyrch }\IeC {\cyri }\IeC {\cyrs }\IeC {\cyrl }\IeC {\cyre }\IeC {\cyrn }\IeC {\cyri }\IeC {\cyrya }}{168}{subsection.4.23.4}% 
+\contentsline {subsubsection}{\numberline {4.23.4.1}protocol\_errors}{168}{subsubsection.4.23.4.1}% 
+\contentsline {subsection}{\numberline {4.23.5}\IeC {\CYRF }\IeC {\cyru }\IeC {\cyrn }\IeC {\cyrk }\IeC {\cyrc }\IeC {\cyri }\IeC {\cyri }}{169}{subsection.4.23.5}% 
+\contentsline {subsubsection}{\numberline {4.23.5.1}crc32()}{169}{subsubsection.4.23.5.1}% 
+\contentsline {subsubsection}{\numberline {4.23.5.2}fill\_crc32\_table()}{169}{subsubsection.4.23.5.2}% 
+\contentsline {subsubsection}{\numberline {4.23.5.3}protocol\_do\_cmds()}{169}{subsubsection.4.23.5.3}% 
+\contentsline {subsubsection}{\numberline {4.23.5.4}receive\_packet()}{173}{subsubsection.4.23.5.4}% 
+\contentsline {subsubsection}{\numberline {4.23.5.5}rx\_error\_handler()}{175}{subsubsection.4.23.5.5}% 
+\contentsline {subsubsection}{\numberline {4.23.5.6}transmit\_packet()}{176}{subsubsection.4.23.5.6}% 
+\contentsline {subsubsection}{\numberline {4.23.5.7}um\_service\_byte\_handler()}{177}{subsubsection.4.23.5.7}% 
+\contentsline {section}{\numberline {4.24}\IeC {\CYRF }\IeC {\cyra }\IeC {\cyrishrt }\IeC {\cyrl } spi.\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}c}{179}{section.4.24}% 
+\contentsline {subsection}{\numberline {4.24.1}\IeC {\CYRP }\IeC {\cyro }\IeC {\cyrd }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrb }\IeC {\cyrn }\IeC {\cyro }\IeC {\cyre } \IeC {\cyro }\IeC {\cyrp }\IeC {\cyri }\IeC {\cyrs }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyri }\IeC {\cyre }}{179}{subsection.4.24.1}% 
+\contentsline {subsection}{\numberline {4.24.2}\IeC {\CYRF }\IeC {\cyru }\IeC {\cyrn }\IeC {\cyrk }\IeC {\cyrc }\IeC {\cyri }\IeC {\cyri }}{180}{subsection.4.24.2}% 
+\contentsline {subsubsection}{\numberline {4.24.2.1}dma\_spi\_rx\_init()}{180}{subsubsection.4.24.2.1}% 
+\contentsline {subsubsection}{\numberline {4.24.2.2}spi\_clean\_fifo\_rx\_buf()}{180}{subsubsection.4.24.2.2}% 
+\contentsline {subsubsection}{\numberline {4.24.2.3}spi\_gpio\_config()}{181}{subsubsection.4.24.2.3}% 
+\contentsline {subsubsection}{\numberline {4.24.2.4}spi\_init()}{181}{subsubsection.4.24.2.4}% 
+\contentsline {subsubsection}{\numberline {4.24.2.5}spi\_receive\_halfword()}{182}{subsubsection.4.24.2.5}% 
+\contentsline {subsubsection}{\numberline {4.24.2.6}spi\_transmit\_halfword()}{182}{subsubsection.4.24.2.6}% 
+\contentsline {subsubsection}{\numberline {4.24.2.7}spi\_transmit\_message()}{183}{subsubsection.4.24.2.7}% 
+\contentsline {subsection}{\numberline {4.24.3}\IeC {\CYRP }\IeC {\cyre }\IeC {\cyrr }\IeC {\cyre }\IeC {\cyrm }\IeC {\cyre }\IeC {\cyrn }\IeC {\cyrn }\IeC {\cyrery }\IeC {\cyre }}{183}{subsection.4.24.3}% 
+\contentsline {subsubsection}{\numberline {4.24.3.1}spi\_1}{183}{subsubsection.4.24.3.1}% 
+\contentsline {subsubsection}{\numberline {4.24.3.2}spi\_2}{183}{subsubsection.4.24.3.2}% 
+\contentsline {section}{\numberline {4.25}\IeC {\CYRF }\IeC {\cyra }\IeC {\cyrishrt }\IeC {\cyrl } spi.\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}h}{184}{section.4.25}% 
+\contentsline {subsection}{\numberline {4.25.1}\IeC {\CYRP }\IeC {\cyro }\IeC {\cyrd }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrb }\IeC {\cyrn }\IeC {\cyro }\IeC {\cyre } \IeC {\cyro }\IeC {\cyrp }\IeC {\cyri }\IeC {\cyrs }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyri }\IeC {\cyre }}{185}{subsection.4.25.1}% 
+\contentsline {subsection}{\numberline {4.25.2}\IeC {\CYRM }\IeC {\cyra }\IeC {\cyrk }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrs }\IeC {\cyrery }}{185}{subsection.4.25.2}% 
+\contentsline {subsubsection}{\numberline {4.25.2.1}FIFO\_SIZE}{185}{subsubsection.4.25.2.1}% 
+\contentsline {subsubsection}{\numberline {4.25.2.2}PIN\_SSP1\_RX}{185}{subsubsection.4.25.2.2}% 
+\contentsline {subsubsection}{\numberline {4.25.2.3}PIN\_SSP1\_SCK}{186}{subsubsection.4.25.2.3}% 
+\contentsline {subsubsection}{\numberline {4.25.2.4}PIN\_SSP1\_SS}{186}{subsubsection.4.25.2.4}% 
+\contentsline {subsubsection}{\numberline {4.25.2.5}PIN\_SSP1\_TX}{186}{subsubsection.4.25.2.5}% 
+\contentsline {subsubsection}{\numberline {4.25.2.6}PORT\_SSP1}{186}{subsubsection.4.25.2.6}% 
+\contentsline {subsubsection}{\numberline {4.25.2.7}SPI\_BUFFER\_SIZE}{186}{subsubsection.4.25.2.7}% 
+\contentsline {subsection}{\numberline {4.25.3}\IeC {\CYRT }\IeC {\cyri }\IeC {\cyrp }\IeC {\cyrery }}{186}{subsection.4.25.3}% 
+\contentsline {subsubsection}{\numberline {4.25.3.1}spi\_n}{186}{subsubsection.4.25.3.1}% 
+\contentsline {subsubsection}{\numberline {4.25.3.2}spi\_n\_dma\_ch\_params}{187}{subsubsection.4.25.3.2}% 
+\contentsline {subsection}{\numberline {4.25.4}\IeC {\CYRF }\IeC {\cyru }\IeC {\cyrn }\IeC {\cyrk }\IeC {\cyrc }\IeC {\cyri }\IeC {\cyri }}{187}{subsection.4.25.4}% 
+\contentsline {subsubsection}{\numberline {4.25.4.1}dma\_spi\_rx\_init()}{187}{subsubsection.4.25.4.1}% 
+\contentsline {subsubsection}{\numberline {4.25.4.2}spi\_clean\_fifo\_rx\_buf()}{187}{subsubsection.4.25.4.2}% 
+\contentsline {subsubsection}{\numberline {4.25.4.3}spi\_init()}{188}{subsubsection.4.25.4.3}% 
+\contentsline {subsubsection}{\numberline {4.25.4.4}spi\_receive\_halfword()}{188}{subsubsection.4.25.4.4}% 
+\contentsline {subsubsection}{\numberline {4.25.4.5}spi\_transmit\_halfword()}{189}{subsubsection.4.25.4.5}% 
+\contentsline {subsubsection}{\numberline {4.25.4.6}spi\_transmit\_message()}{189}{subsubsection.4.25.4.6}% 
+\contentsline {section}{\numberline {4.26}\IeC {\CYRF }\IeC {\cyra }\IeC {\cyrishrt }\IeC {\cyrl } timers.\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}c}{190}{section.4.26}% 
+\contentsline {subsection}{\numberline {4.26.1}\IeC {\CYRP }\IeC {\cyro }\IeC {\cyrd }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrb }\IeC {\cyrn }\IeC {\cyro }\IeC {\cyre } \IeC {\cyro }\IeC {\cyrp }\IeC {\cyri }\IeC {\cyrs }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyri }\IeC {\cyre }}{191}{subsection.4.26.1}% 
+\contentsline {subsection}{\numberline {4.26.2}\IeC {\CYRF }\IeC {\cyru }\IeC {\cyrn }\IeC {\cyrk }\IeC {\cyrc }\IeC {\cyri }\IeC {\cyri }}{191}{subsection.4.26.2}% 
+\contentsline {subsubsection}{\numberline {4.26.2.1}delay\_micro()}{191}{subsubsection.4.26.2.1}% 
+\contentsline {subsubsection}{\numberline {4.26.2.2}delay\_milli()}{191}{subsubsection.4.26.2.2}% 
+\contentsline {subsubsection}{\numberline {4.26.2.3}list\_tmr\_handler\_add\_tail()}{192}{subsubsection.4.26.2.3}% 
+\contentsline {subsubsection}{\numberline {4.26.2.4}list\_tmr\_handler\_init()}{192}{subsubsection.4.26.2.4}% 
+\contentsline {subsubsection}{\numberline {4.26.2.5}timer1\_init()}{193}{subsubsection.4.26.2.5}% 
+\contentsline {subsubsection}{\numberline {4.26.2.6}timer2\_init()}{193}{subsubsection.4.26.2.6}% 
+\contentsline {subsubsection}{\numberline {4.26.2.7}TIMER2\_IRQHandler()}{194}{subsubsection.4.26.2.7}% 
+\contentsline {subsubsection}{\numberline {4.26.2.8}timer3\_init()}{194}{subsubsection.4.26.2.8}% 
+\contentsline {subsubsection}{\numberline {4.26.2.9}timer\_init()}{194}{subsubsection.4.26.2.9}% 
+\contentsline {subsection}{\numberline {4.26.3}\IeC {\CYRP }\IeC {\cyre }\IeC {\cyrr }\IeC {\cyre }\IeC {\cyrm }\IeC {\cyre }\IeC {\cyrn }\IeC {\cyrn }\IeC {\cyrery }\IeC {\cyre }}{195}{subsection.4.26.3}% 
+\contentsline {subsubsection}{\numberline {4.26.3.1}adc\_1}{195}{subsubsection.4.26.3.1}% 
+\contentsline {subsubsection}{\numberline {4.26.3.2}ram\_space\_pointer}{195}{subsubsection.4.26.3.2}% 
+\contentsline {subsubsection}{\numberline {4.26.3.3}spi\_1}{195}{subsubsection.4.26.3.3}% 
+\contentsline {subsubsection}{\numberline {4.26.3.4}timer\_1}{195}{subsubsection.4.26.3.4}% 
+\contentsline {subsubsection}{\numberline {4.26.3.5}timer\_2}{195}{subsubsection.4.26.3.5}% 
+\contentsline {subsubsection}{\numberline {4.26.3.6}timer\_3}{196}{subsubsection.4.26.3.6}% 
+\contentsline {subsubsection}{\numberline {4.26.3.7}tmr\_handler\_head}{196}{subsubsection.4.26.3.7}% 
+\contentsline {section}{\numberline {4.27}\IeC {\CYRF }\IeC {\cyra }\IeC {\cyrishrt }\IeC {\cyrl } timers.\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}h}{196}{section.4.27}% 
+\contentsline {subsection}{\numberline {4.27.1}\IeC {\CYRP }\IeC {\cyro }\IeC {\cyrd }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrb }\IeC {\cyrn }\IeC {\cyro }\IeC {\cyre } \IeC {\cyro }\IeC {\cyrp }\IeC {\cyri }\IeC {\cyrs }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyri }\IeC {\cyre }}{197}{subsection.4.27.1}% 
+\contentsline {subsection}{\numberline {4.27.2}\IeC {\CYRT }\IeC {\cyri }\IeC {\cyrp }\IeC {\cyrery }}{197}{subsection.4.27.2}% 
+\contentsline {subsubsection}{\numberline {4.27.2.1}timer\_irq\_list}{197}{subsubsection.4.27.2.1}% 
+\contentsline {subsubsection}{\numberline {4.27.2.2}timer\_n}{198}{subsubsection.4.27.2.2}% 
+\contentsline {subsection}{\numberline {4.27.3}\IeC {\CYRF }\IeC {\cyru }\IeC {\cyrn }\IeC {\cyrk }\IeC {\cyrc }\IeC {\cyri }\IeC {\cyri }}{198}{subsection.4.27.3}% 
+\contentsline {subsubsection}{\numberline {4.27.3.1}delay\_micro()}{198}{subsubsection.4.27.3.1}% 
+\contentsline {subsubsection}{\numberline {4.27.3.2}delay\_milli()}{198}{subsubsection.4.27.3.2}% 
+\contentsline {subsubsection}{\numberline {4.27.3.3}list\_tmr\_handler\_add\_tail()}{198}{subsubsection.4.27.3.3}% 
+\contentsline {subsubsection}{\numberline {4.27.3.4}list\_tmr\_handler\_init()}{199}{subsubsection.4.27.3.4}% 
+\contentsline {subsubsection}{\numberline {4.27.3.5}timer\_init()}{199}{subsubsection.4.27.3.5}% 
+\contentsline {section}{\numberline {4.28}\IeC {\CYRF }\IeC {\cyra }\IeC {\cyrishrt }\IeC {\cyrl } uart.\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}c}{200}{section.4.28}% 
+\contentsline {subsection}{\numberline {4.28.1}\IeC {\CYRP }\IeC {\cyro }\IeC {\cyrd }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrb }\IeC {\cyrn }\IeC {\cyro }\IeC {\cyre } \IeC {\cyro }\IeC {\cyrp }\IeC {\cyri }\IeC {\cyrs }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyri }\IeC {\cyre }}{201}{subsection.4.28.1}% 
+\contentsline {subsection}{\numberline {4.28.2}\IeC {\CYRF }\IeC {\cyru }\IeC {\cyrn }\IeC {\cyrk }\IeC {\cyrc }\IeC {\cyri }\IeC {\cyri }}{201}{subsection.4.28.2}% 
+\contentsline {subsubsection}{\numberline {4.28.2.1}DMA\_UART\_RX\_init()}{201}{subsubsection.4.28.2.1}% 
+\contentsline {subsubsection}{\numberline {4.28.2.2}UART1\_IRQHandler()}{202}{subsubsection.4.28.2.2}% 
+\contentsline {subsubsection}{\numberline {4.28.2.3}UART2\_IRQHandler()}{202}{subsubsection.4.28.2.3}% 
+\contentsline {subsubsection}{\numberline {4.28.2.4}uart\_clean()}{202}{subsubsection.4.28.2.4}% 
+\contentsline {subsubsection}{\numberline {4.28.2.5}uart\_get\_buf\_counter()}{202}{subsubsection.4.28.2.5}% 
+\contentsline {subsubsection}{\numberline {4.28.2.6}uart\_gpio\_config()}{203}{subsubsection.4.28.2.6}% 
+\contentsline {subsubsection}{\numberline {4.28.2.7}uart\_init()}{204}{subsubsection.4.28.2.7}% 
+\contentsline {subsubsection}{\numberline {4.28.2.8}uart\_read()}{205}{subsubsection.4.28.2.8}% 
+\contentsline {subsubsection}{\numberline {4.28.2.9}uart\_read\_pos()}{206}{subsubsection.4.28.2.9}% 
+\contentsline {subsubsection}{\numberline {4.28.2.10}uart\_set\_pos()}{206}{subsubsection.4.28.2.10}% 
+\contentsline {subsubsection}{\numberline {4.28.2.11}uart\_set\_read\_timeout()}{207}{subsubsection.4.28.2.11}% 
+\contentsline {subsubsection}{\numberline {4.28.2.12}uart\_set\_write\_timeout()}{207}{subsubsection.4.28.2.12}% 
+\contentsline {subsubsection}{\numberline {4.28.2.13}uart\_write()}{208}{subsubsection.4.28.2.13}% 
+\contentsline {subsection}{\numberline {4.28.3}\IeC {\CYRP }\IeC {\cyre }\IeC {\cyrr }\IeC {\cyre }\IeC {\cyrm }\IeC {\cyre }\IeC {\cyrn }\IeC {\cyrn }\IeC {\cyrery }\IeC {\cyre }}{209}{subsection.4.28.3}% 
+\contentsline {subsubsection}{\numberline {4.28.3.1}uart\_1}{209}{subsubsection.4.28.3.1}% 
+\contentsline {subsubsection}{\numberline {4.28.3.2}uart\_2}{209}{subsubsection.4.28.3.2}% 
+\contentsline {section}{\numberline {4.29}\IeC {\CYRF }\IeC {\cyra }\IeC {\cyrishrt }\IeC {\cyrl } uart.\discretionary {\unhbox \voidb@x \hbox {\relax \fontsize {7}{8}\selectfont $\leftarrow \joinrel \rhook $}}{}{}h}{209}{section.4.29}% 
+\contentsline {subsection}{\numberline {4.29.1}\IeC {\CYRP }\IeC {\cyro }\IeC {\cyrd }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrb }\IeC {\cyrn }\IeC {\cyro }\IeC {\cyre } \IeC {\cyro }\IeC {\cyrp }\IeC {\cyri }\IeC {\cyrs }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyri }\IeC {\cyre }}{212}{subsection.4.29.1}% 
+\contentsline {subsection}{\numberline {4.29.2}\IeC {\CYRM }\IeC {\cyra }\IeC {\cyrk }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrs }\IeC {\cyrery }}{212}{subsection.4.29.2}% 
+\contentsline {subsubsection}{\numberline {4.29.2.1}BUFFER\_MASK}{212}{subsubsection.4.29.2.1}% 
+\contentsline {subsubsection}{\numberline {4.29.2.2}GET\_UART\_BUF\_PTR}{212}{subsubsection.4.29.2.2}% 
+\contentsline {subsubsection}{\numberline {4.29.2.3}PIN\_UART1\_EN}{212}{subsubsection.4.29.2.3}% 
+\contentsline {subsubsection}{\numberline {4.29.2.4}PIN\_UART1\_RX}{212}{subsubsection.4.29.2.4}% 
+\contentsline {subsubsection}{\numberline {4.29.2.5}PIN\_UART1\_TX}{212}{subsubsection.4.29.2.5}% 
+\contentsline {subsubsection}{\numberline {4.29.2.6}PIN\_UART2\_EN}{213}{subsubsection.4.29.2.6}% 
+\contentsline {subsubsection}{\numberline {4.29.2.7}PIN\_UART2\_RX}{213}{subsubsection.4.29.2.7}% 
+\contentsline {subsubsection}{\numberline {4.29.2.8}PIN\_UART2\_TX}{213}{subsubsection.4.29.2.8}% 
+\contentsline {subsubsection}{\numberline {4.29.2.9}PORT\_UART1}{213}{subsubsection.4.29.2.9}% 
+\contentsline {subsubsection}{\numberline {4.29.2.10}PORT\_UART1\_EN}{213}{subsubsection.4.29.2.10}% 
+\contentsline {subsubsection}{\numberline {4.29.2.11}PORT\_UART2}{213}{subsubsection.4.29.2.11}% 
+\contentsline {subsubsection}{\numberline {4.29.2.12}PORT\_UART2\_EN}{214}{subsubsection.4.29.2.12}% 
+\contentsline {subsubsection}{\numberline {4.29.2.13}RECOGNIZE\_BUS}{214}{subsubsection.4.29.2.13}% 
+\contentsline {subsubsection}{\numberline {4.29.2.14}UART\_BUFFER\_SIZE}{214}{subsubsection.4.29.2.14}% 
+\contentsline {subsection}{\numberline {4.29.3}\IeC {\CYRT }\IeC {\cyri }\IeC {\cyrp }\IeC {\cyrery }}{214}{subsection.4.29.3}% 
+\contentsline {subsubsection}{\numberline {4.29.3.1}uart\_dma\_ch\_params}{214}{subsubsection.4.29.3.1}% 
+\contentsline {subsubsection}{\numberline {4.29.3.2}uart\_errors}{214}{subsubsection.4.29.3.2}% 
+\contentsline {subsubsection}{\numberline {4.29.3.3}uart\_n}{215}{subsubsection.4.29.3.3}% 
+\contentsline {subsubsection}{\numberline {4.29.3.4}uart\_rx\_tx\_timeouts}{215}{subsubsection.4.29.3.4}% 
+\contentsline {subsection}{\numberline {4.29.4}\IeC {\CYRP }\IeC {\cyre }\IeC {\cyrr }\IeC {\cyre }\IeC {\cyrch }\IeC {\cyri }\IeC {\cyrs }\IeC {\cyrl }\IeC {\cyre }\IeC {\cyrn }\IeC {\cyri }\IeC {\cyrya }}{215}{subsection.4.29.4}% 
+\contentsline {subsubsection}{\numberline {4.29.4.1}errors}{215}{subsubsection.4.29.4.1}% 
+\contentsline {subsection}{\numberline {4.29.5}\IeC {\CYRF }\IeC {\cyru }\IeC {\cyrn }\IeC {\cyrk }\IeC {\cyrc }\IeC {\cyri }\IeC {\cyri }}{215}{subsection.4.29.5}% 
+\contentsline {subsubsection}{\numberline {4.29.5.1}DMA\_UART\_RX\_init()}{216}{subsubsection.4.29.5.1}% 
+\contentsline {subsubsection}{\numberline {4.29.5.2}uart\_clean()}{216}{subsubsection.4.29.5.2}% 
+\contentsline {subsubsection}{\numberline {4.29.5.3}uart\_get\_buf\_counter()}{217}{subsubsection.4.29.5.3}% 
+\contentsline {subsubsection}{\numberline {4.29.5.4}uart\_init()}{217}{subsubsection.4.29.5.4}% 
+\contentsline {subsubsection}{\numberline {4.29.5.5}uart\_read()}{218}{subsubsection.4.29.5.5}% 
+\contentsline {subsubsection}{\numberline {4.29.5.6}uart\_read\_pos()}{219}{subsubsection.4.29.5.6}% 
+\contentsline {subsubsection}{\numberline {4.29.5.7}uart\_set\_pos()}{220}{subsubsection.4.29.5.7}% 
+\contentsline {subsubsection}{\numberline {4.29.5.8}uart\_set\_read\_timeout()}{220}{subsubsection.4.29.5.8}% 
+\contentsline {subsubsection}{\numberline {4.29.5.9}uart\_set\_write\_timeout()}{221}{subsubsection.4.29.5.9}% 
+\contentsline {subsubsection}{\numberline {4.29.5.10}uart\_write()}{221}{subsubsection.4.29.5.10}% 
+\contentsline {chapter}{{\cyrillictext \CYRP \cyrr \cyre \cyrd \cyrm \cyre \cyrt \cyrn \cyrery \cyrishrt \ \cyru \cyrk \cyra \cyrz \cyra \cyrt \cyre \cyrl \cyrsftsn }}{223}{section*.165}% 

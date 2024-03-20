@@ -1,0 +1,4 @@
+<map id="uart_timeouts" name="uart_timeouts">
+<area shape="rect" id="node1" title="Структура с таймаутами UARTn." alt="" coords="22,95,135,121"/>
+<area shape="rect" id="node2" href="$structtimer__config__struct.html" title="Структура с конфигурационными параметрами Таймеров" alt="" coords="5,5,152,32"/>
+</map>

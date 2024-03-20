@@ -1,44 +1,53 @@
 /*!
  \file
- \brief Заголовочный файл с реализацией API для работы с DMA
+ \brief Р¤Р°Р№Р» СЃ СЂРµР°Р»РёР·Р°С†РёРµР№ API РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ DMA
 */
 
 /* 
- *	Буферы назначения (куда копирует данные DMA) должен находится в определенной области памяти (начиная с 0x20100000).
+ *	Р‘СѓС„РµСЂС‹ РЅР°Р·РЅР°С‡РµРЅРёСЏ (РєСѓРґР° РєРѕРїРёСЂСѓРµС‚ РґР°РЅРЅС‹Рµ DMA) РґРѕР»Р¶РµРЅ РЅР°С…РѕРґРёС‚СЃСЏ РІ РѕРїСЂРµРґРµР»РµРЅРЅРѕР№ РѕР±Р»Р°СЃС‚Рё РїР°РјСЏС‚Рё (РЅР°С‡РёРЅР°СЏ СЃ 0x20100000).
 */
 
 #include "dma.h"
 #include "spi.h"
 #include "1273pv19t.h"
 
-
+/// РЎС‚СЂСѓРєС‚СѓСЂР° СЃ РєРѕРЅС„РёРіСѓСЂР°С†РёРѕРЅРЅС‹РјРё РїР°СЂР°РјРµС‚СЂР°РјРё Р±Р»РѕРєР° SPI1 РњРљ
 extern spi_n spi_1;
+/// РЎС‚СЂСѓРєС‚СѓСЂР° СЃ РєРѕРЅС„РёРіСѓСЂР°С†РёРѕРЅРЅС‹РјРё РїР°СЂР°РјРµС‚СЂР°РјРё Р±Р»РѕРєР° SPI2 РњРљ
 extern spi_n spi_2;
 
+/// РЎС‚СЂСѓРєС‚СѓСЂР° СЃ РєРѕРЅС„РёРіСѓСЂР°С†РёРѕРЅРЅС‹РјРё РїР°СЂР°РјРµС‚СЂР°РјРё РјРёРєСЂРѕСЃС…РµРјС‹ РђР¦Рџ
 extern adc_n adc_1;
 
+/// РЎС‚СЂСѓРєС‚СѓСЂР° СЃ РєРѕРЅС„РёРіСѓСЂР°С†РёРѕРЅРЅС‹РјРё РїР°СЂР°РјРµС‚СЂР°РјРё Р±Р»РѕРєР° Timer1 РњРљ
 extern timer_n timer_1;
+/// РЎС‚СЂСѓРєС‚СѓСЂР° СЃ РєРѕРЅС„РёРіСѓСЂР°С†РёРѕРЅРЅС‹РјРё РїР°СЂР°РјРµС‚СЂР°РјРё Р±Р»РѕРєР° Timer2 РњРљ
 extern timer_n timer_2;
+/// РЎС‚СЂСѓРєС‚СѓСЂР° СЃ РєРѕРЅС„РёРіСѓСЂР°С†РёРѕРЅРЅС‹РјРё РїР°СЂР°РјРµС‚СЂР°РјРё Р±Р»РѕРєР° Timer3 РњРљ
 extern timer_n timer_3;
 
+/// РЎС‚СЂСѓРєС‚СѓСЂР° СЃ РєРѕРЅС„РёРіСѓСЂР°С†РёРѕРЅРЅС‹РјРё РїР°СЂР°РјРµС‚СЂР°РјРё Р±Р»РѕРєР° UART1 РњРљ
 extern uart_n uart_1;
+/// РЎС‚СЂСѓРєС‚СѓСЂР° СЃ РєРѕРЅС„РёРіСѓСЂР°С†РёРѕРЅРЅС‹РјРё РїР°СЂР°РјРµС‚СЂР°РјРё Р±Р»РѕРєР° UART2 РњРљ
 extern uart_n uart_2;
 #ifdef K1986VE3T
+/// РЎС‚СЂСѓРєС‚СѓСЂР° СЃ РєРѕРЅС„РёРіСѓСЂР°С†РёРѕРЅРЅС‹РјРё РїР°СЂР°РјРµС‚СЂР°РјРё Р±Р»РѕРєР° UART3 РњРљ
 extern uart_n uart_3;
+/// РЎС‚СЂСѓРєС‚СѓСЂР° СЃ РєРѕРЅС„РёРіСѓСЂР°С†РёРѕРЅРЅС‹РјРё РїР°СЂР°РјРµС‚СЂР°РјРё Р±Р»РѕРєР° UART4 РњРљ
 extern uart_n uart_4;
 #endif
 
 /*
-Функция общей инициализация DMA
+	Р¤СѓРЅРєС†РёСЏ РѕР±С‰РµР№ РёРЅРёС†РёР°Р»РёР·Р°С†РёСЏ DMA
 */
 void dma_common_init(void)
 {
-	// Разрешить тактирование DMA
+	// Р Р°Р·СЂРµС€РёС‚СЊ С‚Р°РєС‚РёСЂРѕРІР°РЅРёРµ DMA
 	RST_CLK_PCLKcmd(RST_CLK_PCLK_RST_CLK | RST_CLK_PCLK_DMA | RST_CLK_PCLK_SSP1 |RST_CLK_PCLK_SSP2 |RST_CLK_PCLK_SSP3, ENABLE);
 	#ifdef K1986VE3T
 	RST_CLK_PCLKcmd(RST_CLK_PCLK_SSP4, ENABLE);
 	#endif
-	// Запретить все прерывания, в том числе от SSP
+	// Р—Р°РїСЂРµС‚РёС‚СЊ РІСЃРµ РїСЂРµСЂС‹РІР°РЅРёСЏ, РІ С‚РѕРј С‡РёСЃР»Рµ РѕС‚ SSP
 	NVIC->ICPR[0] = 0xFFFFFFFF;
 	NVIC->ICER[0] = 0xFFFFFFFF;
 	
@@ -48,18 +57,19 @@ void dma_common_init(void)
 	#ifdef K1986VE3T
 	MDR_SSP4->DMACR=0;
 	#endif
-	// Сбросить все настройки DMA
+	// РЎР±СЂРѕСЃРёС‚СЊ РІСЃРµ РЅР°СЃС‚СЂРѕР№РєРё DMA
 	DMA_DeInit();
 }
-/*
-Обработчик прерываний DMA
+/*!
+ *	\brief РћР±СЂР°Р±РѕС‚С‡РёРє РїСЂРµСЂС‹РІР°РЅРёР№ DMA
 */
 void DMA_IRQHandler(void);
 void DMA_IRQHandler(void)
 {
-	//если сработало прерывание при заполнении буфера приемника UART1
+	// Р•СЃР»Рё СЃСЂР°Р±РѕС‚Р°Р»Рѕ РїСЂРµСЂС‹РІР°РЅРёРµ РїСЂРё Р·Р°РїРѕР»РЅРµРЅРёРё Р±СѓС„РµСЂР° РїСЂРёРµРјРЅРёРєР° UART1
 	if(DMA_GetFlagStatus(DMA_Channel_REQ_UART1_RX, DMA_FLAG_CHNL_ENA) == 0)
 	{
+		// Р•СЃР»Рё СЃРєРѕРїРёСЂРѕРІР°РЅ РїРѕСЃР»РµРґРЅРёР№ Р±СѓС„РµСЂ UART
 		if (uart_1.uart_dma_ch.dma_irq_counter == ((UART_BUFFER_SIZE/1024) - 1))
 		{
 			DMA_UART_RX_init(&uart_1);
@@ -69,14 +79,15 @@ void DMA_IRQHandler(void)
 	  else
 		{
 			uart_1.uart_dma_ch.DMA_InitStructure_UART_RX.DMA_DestBaseAddr += uart_1.uart_dma_ch.DMA_InitStructure_UART_RX.DMA_CycleSize;
-			//Инициализировать канал
+			// РРЅРёС†РёР°Р»РёР·РёСЂРѕРІР°С‚СЊ РєР°РЅР°Р» СЃРЅРѕРІР°
 			DMA_Init(uart_1.uart_dma_ch.dma_channel, &uart_1.uart_dma_ch.DMA_Channel_UART_RX);
 			uart_1.uart_dma_ch.dma_irq_counter++;
 		}
 	}
-	//если сработало прерывание при заполнении буфера приемника UART2
+	// Р•СЃР»Рё СЃСЂР°Р±РѕС‚Р°Р»Рѕ РїСЂРµСЂС‹РІР°РЅРёРµ РїСЂРё Р·Р°РїРѕР»РЅРµРЅРёРё Р±СѓС„РµСЂР° РїСЂРёРµРјРЅРёРєР° UART2
 	if(DMA_GetFlagStatus(DMA_Channel_REQ_UART2_RX, DMA_FLAG_CHNL_ENA) == 0)
 	{
+		// Р•СЃР»Рё СЃРєРѕРїРёСЂРѕРІР°РЅ РїРѕСЃР»РµРґРЅРёР№ Р±СѓС„РµСЂ UART
 		if (uart_2.uart_dma_ch.dma_irq_counter == ((UART_BUFFER_SIZE/1024) - 1))
 		{
 			DMA_UART_RX_init(&uart_2);
@@ -85,40 +96,16 @@ void DMA_IRQHandler(void)
 	  else
 		{
 			uart_2.uart_dma_ch.DMA_InitStructure_UART_RX.DMA_DestBaseAddr += uart_2.uart_dma_ch.DMA_InitStructure_UART_RX.DMA_CycleSize;
-			 //Инициализировать канал
+			 // РРЅРёС†РёР°Р»РёР·РёСЂРѕРІР°С‚СЊ РєР°РЅР°Р» СЃРЅРѕРІР°
 			DMA_Init(uart_2.uart_dma_ch.dma_channel, &uart_2.uart_dma_ch.DMA_Channel_UART_RX);
 			uart_2.uart_dma_ch.dma_irq_counter++;
 		}
 	}
-//	//если сработало прерывание от SPI1
-//	if(DMA_GetFlagStatus(DMA_Channel_REQ_SSP1_RX, DMA_FLAG_CHNL_ENA) == 0)
-//	{
-//		MDR_PORTE->SETTX |= PORT_Pin_11;
-//		if ((adc_1.init_flag == 1))
-//		{		
-//			if (spi_1.spi_dma_ch.dma_irq_counter == (CHANEL_NUMBER-1))
-//			{				
-//				dma_spi_rx_init(&spi_1);
-//				spi_1.spi_dma_ch.dma_irq_counter = 0;
-//				//MDR_PORTE->CLRTX = PORT_Pin_11;
-//			}
-//			else
-//			{
-//				spi_1.spi_dma_ch.DMA_InitStructure_SPI_RX.DMA_DestBaseAddr += spi_1.spi_dma_ch.DMA_InitStructure_SPI_RX.DMA_CycleSize*2;
-//				DMA_Init(spi_1.spi_dma_ch.dma_channel, &spi_1.spi_dma_ch.DMA_Channel_SPI_RX);
-//				spi_1.spi_dma_ch.dma_irq_counter++;
-//				//MDR_PORTE->CLRTX = PORT_Pin_11;
-//			}
-//			//spi_1.SSPx->DR = 0x7FFF;
-//			//выключение SPI
-//  		//spi_1.SSPx->CR1 &= 0xFFFD;
-//		}
-//		MDR_PORTE->CLRTX = PORT_Pin_11;
-//	}
 	#ifdef K1986VE3T
-	//если сработало прерывание при заполнении буфера приемника UART3
+	// Р•СЃР»Рё СЃСЂР°Р±РѕС‚Р°Р»Рѕ РїСЂРµСЂС‹РІР°РЅРёРµ РїСЂРё Р·Р°РїРѕР»РЅРµРЅРёРё Р±СѓС„РµСЂР° РїСЂРёРµРјРЅРёРєР° UART3
 	if(DMA_GetFlagStatus(DMA_Channel_SW12, DMA_FLAG_CHNL_ENA) == RESET)
 	{
+		// Р•СЃР»Рё СЃРєРѕРїРёСЂРѕРІР°РЅ РїРѕСЃР»РµРґРЅРёР№ Р±СѓС„РµСЂ UART
 		if (uart_3.uart_dma_ch.dma_irq_counter == ((UART_BUFFER_SIZE/1024) - 1))
 		{
 			DMA_UART_RX_init(&uart_3);
@@ -128,14 +115,15 @@ void DMA_IRQHandler(void)
 	  else
 		{
 			uart_3.uart_dma_ch.DMA_InitStructure_UART_RX.DMA_DestBaseAddr += uart_3.uart_dma_ch.DMA_InitStructure_UART_RX.DMA_CycleSize;
-			//Инициализировать канал
+			// РРЅРёС†РёР°Р»РёР·РёСЂРѕРІР°С‚СЊ РєР°РЅР°Р» СЃРЅРѕРІР°
 			DMA_Init(uart_3.uart_dma_ch.dma_channel, &uart_3.uart_dma_ch.DMA_Channel_UART_RX);
 			uart_3.uart_dma_ch.dma_irq_counter++;
 		}
 	}
-	//если сработало прерывание при заполнении буфера приемника UART4
+	// Р•СЃР»Рё СЃСЂР°Р±РѕС‚Р°Р»Рѕ РїСЂРµСЂС‹РІР°РЅРёРµ РїСЂРё Р·Р°РїРѕР»РЅРµРЅРёРё Р±СѓС„РµСЂР° РїСЂРёРµРјРЅРёРєР° UART4
 	if(DMA_GetFlagStatus(DMA_Channel_SW14, DMA_FLAG_CHNL_ENA) == RESET)
 	{
+		// Р•СЃР»Рё СЃРєРѕРїРёСЂРѕРІР°РЅ РїРѕСЃР»РµРґРЅРёР№ Р±СѓС„РµСЂ UART
 		if (uart_4.uart_dma_ch.dma_irq_counter == ((UART_BUFFER_SIZE/1024) - 1))
 		{
 			DMA_UART_RX_init(&uart_4);
@@ -145,7 +133,7 @@ void DMA_IRQHandler(void)
 	  else
 		{
 			uart_4.uart_dma_ch.DMA_InitStructure_UART_RX.DMA_DestBaseAddr += uart_4.uart_dma_ch.DMA_InitStructure_UART_RX.DMA_CycleSize;
-			//Инициализировать канал
+			// РРЅРёС†РёР°Р»РёР·РёСЂРѕРІР°С‚СЊ РєР°РЅР°Р» СЃРЅРѕРІР°
 			DMA_Init(uart_4.uart_dma_ch.dma_channel, &uart_4.uart_dma_ch.DMA_Channel_UART_RX);
 			uart_4.uart_dma_ch.dma_irq_counter++;
 		}

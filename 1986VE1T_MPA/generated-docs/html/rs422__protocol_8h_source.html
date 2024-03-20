@@ -1,0 +1,230 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.20"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>ПО для макета МПА (100 тема): Исходный файл rs422_protocol.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">ПО для макета МПА (100 тема)
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.20 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">rs422_protocol.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="rs422__protocol_8h.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#ifndef __PROTOCOL_H</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#define __PROTOCOL_H</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="uart_8h.html">uart.h</a>&quot;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;stddef.h&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;math.h&gt;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="rs422__protocol_8h.html#acf1412bbf1c81fab86458c90cd04e589">   16</a></span>&#160;<span class="preprocessor">#define NUMBER_CMDS_IN_PACKET 255 </span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor"></span> </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#define PACKET_HEAD 0x55    </span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#define PACKET_TAIL 0xAAAA</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">// Состояния автомата выбора УМ</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="rs422__protocol_8h.html#a6c25279ec70c83dc98246f5655de9a4d">   24</a></span>&#160;<span class="preprocessor">#define PLC_CM_UNKNOWN_STATE        0x10    </span></div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="rs422__protocol_8h.html#a23fc42df1955da9f3eb1d0c2621d2aed">   25</a></span>&#160;<span class="preprocessor">#define PLC_CM_INIT_2_BUS           0x09    </span></div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="rs422__protocol_8h.html#a01c06ad9a04a9ca4aaac82c60a5f4b4c">   26</a></span>&#160;<span class="preprocessor">#define PLC_CM_CRITICAL_FAULT   0x06    </span></div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="rs422__protocol_8h.html#aad7ddbf6d8aee65c5c90e647c5dff880">   27</a></span>&#160;<span class="preprocessor">#define PLC_CM_REMOVE_INIT          0x05    </span></div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="rs422__protocol_8h.html#a4356c5f2678dde04a1405c6cdd3eca86">   28</a></span>&#160;<span class="preprocessor">#define PLC_CM_INIT_1_BUS           0x04    </span></div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="rs422__protocol_8h.html#a187790db575f8159db45135102fb2504">   29</a></span>&#160;<span class="preprocessor">#define PLC_CM_NOT_INIT                 0x01    </span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor"></span> </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">// Все поддерживаемые протоколом команды</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="rs422__protocol_8h.html#ad7820c9e249225fa2598f435df7ddeba">   32</a></span>&#160;<span class="preprocessor">#define TYPE_CMD    0x00        </span></div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="rs422__protocol_8h.html#ae4eabd026e666b08fbd5d6c6f9499d45">   33</a></span>&#160;<span class="preprocessor">#define INIT_CMD    0x01        </span></div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="rs422__protocol_8h.html#a21623e2a5501c821da54dd76ffc1d077">   34</a></span>&#160;<span class="preprocessor">#define READ_CMD    0x02        </span></div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="rs422__protocol_8h.html#af792feb13ae0c1eab8f95f64c8baa96d">   35</a></span>&#160;<span class="preprocessor">#define WRITE_CMD 0x03      </span></div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="rs422__protocol_8h.html#a1b576d3886aa80ee37419f976b7f3289">   36</a></span>&#160;<span class="preprocessor">#define RESET_CMD 0x04      </span></div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="rs422__protocol_8h.html#a76ea3cf49247a07c54b3db005a3c7f57">   37</a></span>&#160;<span class="preprocessor">#define CONFIG      0x05        </span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor"></span> </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="rs422__protocol_8h.html#aba7cbaf5e7772f2d042fe6c708b254bf">   43</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> <a class="code" href="rs422__protocol_8h.html#aba7cbaf5e7772f2d042fe6c708b254bf">protocol_errors</a></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;{</div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="rs422__protocol_8h.html#aba7cbaf5e7772f2d042fe6c708b254bfabf350750d0d4fabd8954c0f1e9bbae94">   45</a></span>&#160;    <a class="code" href="rs422__protocol_8h.html#aba7cbaf5e7772f2d042fe6c708b254bfabf350750d0d4fabd8954c0f1e9bbae94">NO_ERROR</a>,                                           </div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="rs422__protocol_8h.html#aba7cbaf5e7772f2d042fe6c708b254bfa8d985e4627498f56f5ab06caa7405b46">   46</a></span>&#160;    <a class="code" href="rs422__protocol_8h.html#aba7cbaf5e7772f2d042fe6c708b254bfa8d985e4627498f56f5ab06caa7405b46">UART_ERROR</a>,                                     </div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="rs422__protocol_8h.html#aba7cbaf5e7772f2d042fe6c708b254bfa8a393db133e073ad8bac2f92e78d6f5d">   47</a></span>&#160;    <a class="code" href="rs422__protocol_8h.html#aba7cbaf5e7772f2d042fe6c708b254bfa8a393db133e073ad8bac2f92e78d6f5d">CRC_ERROR</a>,                                      </div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="rs422__protocol_8h.html#aba7cbaf5e7772f2d042fe6c708b254bfaf56071aad4bdf2cfc6d2e1337c0a1614">   48</a></span>&#160;    <a class="code" href="rs422__protocol_8h.html#aba7cbaf5e7772f2d042fe6c708b254bfaf56071aad4bdf2cfc6d2e1337c0a1614">PM_ADDR_ERROR</a>,                              </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <a class="code" href="rs422__protocol_8h.html#aba7cbaf5e7772f2d042fe6c708b254bfa9f7b3973b120dc5e465046d84ab437c8">PACKET_ERROR</a>                                    </div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="rs422__protocol_8h.html#a3daaf0175074f4779cf90ad4c6956752">   50</a></span>&#160;} <a class="code" href="rs422__protocol_8h.html#a3daaf0175074f4779cf90ad4c6956752">protocol_error</a>;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="structcmd__header__struct.html">   56</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structcmd__header__struct.html">cmd_header_struct</a></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;{</div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="structcmd__header__struct.html#a2b3d135876acb4c9a73559616b42e149">   58</a></span>&#160;    uint8_t <a class="code" href="structcmd__header__struct.html#a2b3d135876acb4c9a73559616b42e149">cmd</a>;                    </div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="structcmd__header__struct.html#a66a414389585d0923409d5f1db826ffc">   59</a></span>&#160;    uint16_t <a class="code" href="structcmd__header__struct.html#a66a414389585d0923409d5f1db826ffc">result</a>;            </div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="structcmd__header__struct.html#af0a92825a17b7750ae490df9d3553605">   60</a></span>&#160;    uint16_t <a class="code" href="structcmd__header__struct.html#af0a92825a17b7750ae490df9d3553605">length</a>;            </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;}</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="preprocessor">#ifndef DOXYGEN</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;__attribute__((packed))</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="rs422__protocol_8h.html#a080d1faf2afa75a4fd2cee16566addd9">   65</a></span>&#160;<a class="code" href="rs422__protocol_8h.html#a080d1faf2afa75a4fd2cee16566addd9">fields_cmd_header</a>;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="structcmd__struct.html">   71</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structcmd__struct.html">cmd_struct</a></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;{</div>
+<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="structcmd__struct.html#ab99361bff90634a3a5cc6737ace548f2">   73</a></span>&#160;    <a class="code" href="structcmd__header__struct.html">fields_cmd_header</a>   <a class="code" href="structcmd__struct.html#ab99361bff90634a3a5cc6737ace548f2">header</a>;     </div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="structcmd__struct.html#a6f496356def365f53cab4874cb6bf3c2">   74</a></span>&#160;    uint8_t                         *<a class="code" href="structcmd__struct.html#a6f496356def365f53cab4874cb6bf3c2">data</a>;      </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;}</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="preprocessor">#ifndef DOXYGEN</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;__attribute__((packed))</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno"><a class="line" href="rs422__protocol_8h.html#a56ff0b0094710491e663ab47bd92ca20">   79</a></span>&#160;<a class="code" href="rs422__protocol_8h.html#a56ff0b0094710491e663ab47bd92ca20">fields_cmd</a>;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno"><a class="line" href="structpacket__header__struct.html">   85</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structpacket__header__struct.html">packet_header_struct</a></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;{</div>
+<div class="line"><a name="l00087"></a><span class="lineno"><a class="line" href="structpacket__header__struct.html#a7113d39ff097e7c72b893dbba4c8c7ca">   87</a></span>&#160;    uint8_t     <a class="code" href="structpacket__header__struct.html#a7113d39ff097e7c72b893dbba4c8c7ca">header</a>;                         </div>
+<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="structpacket__header__struct.html#adbdd35d51ce8eea8fb0a76a5c54274e5">   88</a></span>&#160;    uint8_t     <a class="code" href="structpacket__header__struct.html#adbdd35d51ce8eea8fb0a76a5c54274e5">receiver_addr</a>;          </div>
+<div class="line"><a name="l00089"></a><span class="lineno"><a class="line" href="structpacket__header__struct.html#ac504af7800c52ebd39622a7b93c0231d">   89</a></span>&#160;    uint8_t     <a class="code" href="structpacket__header__struct.html#ac504af7800c52ebd39622a7b93c0231d">sender_addr</a>;                </div>
+<div class="line"><a name="l00090"></a><span class="lineno"><a class="line" href="structpacket__header__struct.html#ac6fcd430d601d7bfae577e62ab22492f">   90</a></span>&#160;    uint16_t    <a class="code" href="structpacket__header__struct.html#ac6fcd430d601d7bfae577e62ab22492f">packet_length</a>;          </div>
+<div class="line"><a name="l00091"></a><span class="lineno"><a class="line" href="structpacket__header__struct.html#af227b1e6bb326a48ea957e067443f7c8">   91</a></span>&#160;    uint8_t     <a class="code" href="structpacket__header__struct.html#af227b1e6bb326a48ea957e067443f7c8">service_byte</a>;               </div>
+<div class="line"><a name="l00092"></a><span class="lineno"><a class="line" href="structpacket__header__struct.html#a8f98e89c37075148a7f03a2d401f04cf">   92</a></span>&#160;    uint8_t     <a class="code" href="structpacket__header__struct.html#a8f98e89c37075148a7f03a2d401f04cf">cmd_number</a>;                 </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;}</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="preprocessor">#ifndef DOXYGEN</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;__attribute__((packed))</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno"><a class="line" href="rs422__protocol_8h.html#a2d873034c03caf25304010e73e441744">   97</a></span>&#160;<a class="code" href="rs422__protocol_8h.html#a2d873034c03caf25304010e73e441744">fields_packet_header</a>;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
+<div class="line"><a name="l00103"></a><span class="lineno"><a class="line" href="structpacket__tail__Struct.html">  103</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structpacket__tail__Struct.html">packet_tail_Struct</a></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;{</div>
+<div class="line"><a name="l00105"></a><span class="lineno"><a class="line" href="structpacket__tail__Struct.html#a9580dd1f28b6745e64a314ebaa4e341a">  105</a></span>&#160;    uint32_t <a class="code" href="structpacket__tail__Struct.html#a9580dd1f28b6745e64a314ebaa4e341a">checksum</a>;      </div>
+<div class="line"><a name="l00106"></a><span class="lineno"><a class="line" href="structpacket__tail__Struct.html#a00bf37b5f69ad2a474f215ca8aa7484c">  106</a></span>&#160;    uint16_t <a class="code" href="structpacket__tail__Struct.html#a00bf37b5f69ad2a474f215ca8aa7484c">end</a>;                   </div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;}</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="preprocessor">#ifndef DOXYGEN</span></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;__attribute__((packed))</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00111"></a><span class="lineno"><a class="line" href="rs422__protocol_8h.html#a7510a1bc271d66928a58fb54013e9379">  111</a></span>&#160;<a class="code" href="rs422__protocol_8h.html#a7510a1bc271d66928a58fb54013e9379">fields_packet_tail</a>;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
+<div class="line"><a name="l00117"></a><span class="lineno"><a class="line" href="structtx__rx__packet__struct.html">  117</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structtx__rx__packet__struct.html">tx_rx_packet_struct</a></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;{</div>
+<div class="line"><a name="l00119"></a><span class="lineno"><a class="line" href="structtx__rx__packet__struct.html#a2e5d4eb9028e95fc2d204a4c88f2cf2d">  119</a></span>&#160;    <a class="code" href="structpacket__header__struct.html">fields_packet_header</a>    <a class="code" href="structtx__rx__packet__struct.html#a2e5d4eb9028e95fc2d204a4c88f2cf2d">packet_header</a>;                                                                  </div>
+<div class="line"><a name="l00120"></a><span class="lineno"><a class="line" href="structtx__rx__packet__struct.html#a0de9250ae3f8c175968144559a06966b">  120</a></span>&#160;    <a class="code" href="structcmd__struct.html">fields_cmd</a>                      <a class="code" href="structtx__rx__packet__struct.html#a0de9250ae3f8c175968144559a06966b">cmd_with_data</a>[<a class="code" href="rs422__protocol_8h.html#acf1412bbf1c81fab86458c90cd04e589">NUMBER_CMDS_IN_PACKET</a>];                       </div>
+<div class="line"><a name="l00121"></a><span class="lineno"><a class="line" href="structtx__rx__packet__struct.html#a5e7c2a7326ef419e211c879f870466e9">  121</a></span>&#160;    <a class="code" href="structpacket__tail__Struct.html">fields_packet_tail</a>      <a class="code" href="structtx__rx__packet__struct.html#a5e7c2a7326ef419e211c879f870466e9">packet_tail</a>;                                                                        </div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;}</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="preprocessor">#ifndef DOXYGEN</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;__attribute__((packed))</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00126"></a><span class="lineno"><a class="line" href="rs422__protocol_8h.html#a31e46c5def1d302719d62543c9b3a11e">  126</a></span>&#160;<a class="code" href="rs422__protocol_8h.html#a31e46c5def1d302719d62543c9b3a11e">fields_packet</a>;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160; </div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;<a class="code" href="rs422__protocol_8h.html#a3daaf0175074f4779cf90ad4c6956752">protocol_error</a> <a class="code" href="rs422__protocol_8h.html#af1ea8ba5878ba6102b6e8b6b33bd5b4a">transmit_packet</a>(<a class="code" href="structuart__config__data.html">uart_n</a> *uart_struct, uint8_t ext_bus);</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160; </div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;<a class="code" href="rs422__protocol_8h.html#a3daaf0175074f4779cf90ad4c6956752">protocol_error</a> <a class="code" href="rs422__protocol_8h.html#a10e95fbdcf84e63f3680809c93659d9a">receive_packet</a>(<a class="code" href="structuart__config__data.html">uart_n</a> *uart_struct, uint8_t ext_bus);</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160; </div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;uint8_t <a class="code" href="rs422__protocol_8h.html#a4a980b6aae1cf18f767040d266ddf695">protocol_do_cmds</a>(uint8_t ext_bus);</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160; </div>
+<div class="line"><a name="l00157"></a><span class="lineno"><a class="line" href="rs422__protocol_8h.html#a65d2811dc9961bbe401508d42c37c065">  157</a></span>&#160;uint_least32_t <a class="code" href="rs422__protocol_8h.html#a65d2811dc9961bbe401508d42c37c065">crc32</a>(uint8_t *buf, <span class="keywordtype">size_t</span> len);</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160; </div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;<span class="keywordtype">void</span> <a class="code" href="rs422__protocol_8h.html#aed4c57914a23fa546b89d30973b11478">fill_crc32_table</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160; </div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;<span class="keywordtype">void</span> <a class="code" href="rs422__protocol_8h.html#a52f65e97179a211b7317656d3f6fb9f5">rx_error_handler</a>(<a class="code" href="rs422__protocol_8h.html#a3daaf0175074f4779cf90ad4c6956752">protocol_error</a> error, uint8_t ext_bus);</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160; </div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;<span class="keywordtype">void</span> <a class="code" href="rs422__protocol_8h.html#a39460309d7bc42043887006271f2cdee">um_service_byte_handler</a>(uint8_t ext_bus);</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160; </div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/*__PROTOCOL_H */</span><span class="preprocessor"></span></div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="astructcmd__header__struct_html_a2b3d135876acb4c9a73559616b42e149"><div class="ttname"><a href="structcmd__header__struct.html#a2b3d135876acb4c9a73559616b42e149">cmd_header_struct::cmd</a></div><div class="ttdeci">uint8_t cmd</div><div class="ttdoc">Команда</div><div class="ttdef"><b>Definition:</b> rs422_protocol.h:58</div></div>
+<div class="ttc" id="astructuart__config__data_html"><div class="ttname"><a href="structuart__config__data.html">uart_config_data</a></div><div class="ttdoc">Структура с конфигурационными параметрами UART и буфером приема</div><div class="ttdef"><b>Definition:</b> uart.h:80</div></div>
+<div class="ttc" id="astructcmd__struct_html"><div class="ttname"><a href="structcmd__struct.html">cmd_struct</a></div><div class="ttdoc">Структура с полями данных для каждой команды (субпакета) внутри одного пакета</div><div class="ttdef"><b>Definition:</b> rs422_protocol.h:72</div></div>
+<div class="ttc" id="astructcmd__header__struct_html_af0a92825a17b7750ae490df9d3553605"><div class="ttname"><a href="structcmd__header__struct.html#af0a92825a17b7750ae490df9d3553605">cmd_header_struct::length</a></div><div class="ttdeci">uint16_t length</div><div class="ttdoc">Длина команды</div><div class="ttdef"><b>Definition:</b> rs422_protocol.h:60</div></div>
+<div class="ttc" id="ars422__protocol_8h_html_a2d873034c03caf25304010e73e441744"><div class="ttname"><a href="rs422__protocol_8h.html#a2d873034c03caf25304010e73e441744">fields_packet_header</a></div><div class="ttdeci">struct packet_header_struct fields_packet_header</div><div class="ttdoc">Структура с полями заголовка пакета</div></div>
+<div class="ttc" id="astructpacket__header__struct_html_a7113d39ff097e7c72b893dbba4c8c7ca"><div class="ttname"><a href="structpacket__header__struct.html#a7113d39ff097e7c72b893dbba4c8c7ca">packet_header_struct::header</a></div><div class="ttdeci">uint8_t header</div><div class="ttdoc">Заголовок</div><div class="ttdef"><b>Definition:</b> rs422_protocol.h:87</div></div>
+<div class="ttc" id="ars422__protocol_8h_html_a10e95fbdcf84e63f3680809c93659d9a"><div class="ttname"><a href="rs422__protocol_8h.html#a10e95fbdcf84e63f3680809c93659d9a">receive_packet</a></div><div class="ttdeci">protocol_error receive_packet(uart_n *uart_struct, uint8_t ext_bus)</div><div class="ttdoc">Читает пакет данных</div><div class="ttdef"><b>Definition:</b> rs422_protocol.c:61</div></div>
+<div class="ttc" id="ars422__protocol_8h_html_aba7cbaf5e7772f2d042fe6c708b254bf"><div class="ttname"><a href="rs422__protocol_8h.html#aba7cbaf5e7772f2d042fe6c708b254bf">protocol_errors</a></div><div class="ttdeci">protocol_errors</div><div class="ttdoc">Коды ошибок, которые могут возникать в процессе обмена данными по шине</div><div class="ttdef"><b>Definition:</b> rs422_protocol.h:44</div></div>
+<div class="ttc" id="ars422__protocol_8h_html_a3daaf0175074f4779cf90ad4c6956752"><div class="ttname"><a href="rs422__protocol_8h.html#a3daaf0175074f4779cf90ad4c6956752">protocol_error</a></div><div class="ttdeci">enum protocol_errors protocol_error</div><div class="ttdoc">Коды ошибок, которые могут возникать в процессе обмена данными по шине</div></div>
+<div class="ttc" id="ars422__protocol_8h_html_a65d2811dc9961bbe401508d42c37c065"><div class="ttname"><a href="rs422__protocol_8h.html#a65d2811dc9961bbe401508d42c37c065">crc32</a></div><div class="ttdeci">uint_least32_t crc32(uint8_t *buf, size_t len)</div><div class="ttdoc">Вычисляет контрольную сумму по алгоритму CRC32.</div></div>
+<div class="ttc" id="astructtx__rx__packet__struct_html_a0de9250ae3f8c175968144559a06966b"><div class="ttname"><a href="structtx__rx__packet__struct.html#a0de9250ae3f8c175968144559a06966b">tx_rx_packet_struct::cmd_with_data</a></div><div class="ttdeci">fields_cmd cmd_with_data[NUMBER_CMDS_IN_PACKET]</div><div class="ttdoc">Массив полей (субпакетов) с содержимым каждой команды</div><div class="ttdef"><b>Definition:</b> rs422_protocol.h:120</div></div>
+<div class="ttc" id="ars422__protocol_8h_html_aba7cbaf5e7772f2d042fe6c708b254bfa8a393db133e073ad8bac2f92e78d6f5d"><div class="ttname"><a href="rs422__protocol_8h.html#aba7cbaf5e7772f2d042fe6c708b254bfa8a393db133e073ad8bac2f92e78d6f5d">CRC_ERROR</a></div><div class="ttdeci">@ CRC_ERROR</div><div class="ttdoc">Ошибка контрольной суммы</div><div class="ttdef"><b>Definition:</b> rs422_protocol.h:47</div></div>
+<div class="ttc" id="auart_8h_html"><div class="ttname"><a href="uart_8h.html">uart.h</a></div><div class="ttdoc">Заголовочный файл с описанием API для работы с UART.</div></div>
+<div class="ttc" id="ars422__protocol_8h_html_a080d1faf2afa75a4fd2cee16566addd9"><div class="ttname"><a href="rs422__protocol_8h.html#a080d1faf2afa75a4fd2cee16566addd9">fields_cmd_header</a></div><div class="ttdeci">struct cmd_header_struct fields_cmd_header</div><div class="ttdoc">Структура с заголовком для каждой команды (субпакета) внутри одного пакета</div></div>
+<div class="ttc" id="astructpacket__header__struct_html_ac6fcd430d601d7bfae577e62ab22492f"><div class="ttname"><a href="structpacket__header__struct.html#ac6fcd430d601d7bfae577e62ab22492f">packet_header_struct::packet_length</a></div><div class="ttdeci">uint16_t packet_length</div><div class="ttdoc">Длина пакета</div><div class="ttdef"><b>Definition:</b> rs422_protocol.h:90</div></div>
+<div class="ttc" id="ars422__protocol_8h_html_a52f65e97179a211b7317656d3f6fb9f5"><div class="ttname"><a href="rs422__protocol_8h.html#a52f65e97179a211b7317656d3f6fb9f5">rx_error_handler</a></div><div class="ttdeci">void rx_error_handler(protocol_error error, uint8_t ext_bus)</div><div class="ttdoc">Обрабатывает ошибки приема пакетов</div><div class="ttdef"><b>Definition:</b> rs422_protocol.c:466</div></div>
+<div class="ttc" id="ars422__protocol_8h_html_aba7cbaf5e7772f2d042fe6c708b254bfabf350750d0d4fabd8954c0f1e9bbae94"><div class="ttname"><a href="rs422__protocol_8h.html#aba7cbaf5e7772f2d042fe6c708b254bfabf350750d0d4fabd8954c0f1e9bbae94">NO_ERROR</a></div><div class="ttdeci">@ NO_ERROR</div><div class="ttdoc">Нет ошибок</div><div class="ttdef"><b>Definition:</b> rs422_protocol.h:45</div></div>
+<div class="ttc" id="astructpacket__header__struct_html_a8f98e89c37075148a7f03a2d401f04cf"><div class="ttname"><a href="structpacket__header__struct.html#a8f98e89c37075148a7f03a2d401f04cf">packet_header_struct::cmd_number</a></div><div class="ttdeci">uint8_t cmd_number</div><div class="ttdoc">Количество команд</div><div class="ttdef"><b>Definition:</b> rs422_protocol.h:92</div></div>
+<div class="ttc" id="ars422__protocol_8h_html_a4a980b6aae1cf18f767040d266ddf695"><div class="ttname"><a href="rs422__protocol_8h.html#a4a980b6aae1cf18f767040d266ddf695">protocol_do_cmds</a></div><div class="ttdeci">uint8_t protocol_do_cmds(uint8_t ext_bus)</div><div class="ttdoc">Выполняет требуемые команды</div><div class="ttdef"><b>Definition:</b> rs422_protocol.c:204</div></div>
+<div class="ttc" id="ars422__protocol_8h_html_aba7cbaf5e7772f2d042fe6c708b254bfa9f7b3973b120dc5e465046d84ab437c8"><div class="ttname"><a href="rs422__protocol_8h.html#aba7cbaf5e7772f2d042fe6c708b254bfa9f7b3973b120dc5e465046d84ab437c8">PACKET_ERROR</a></div><div class="ttdeci">@ PACKET_ERROR</div><div class="ttdoc">Ошибка структуры пакета</div><div class="ttdef"><b>Definition:</b> rs422_protocol.h:49</div></div>
+<div class="ttc" id="ars422__protocol_8h_html_acf1412bbf1c81fab86458c90cd04e589"><div class="ttname"><a href="rs422__protocol_8h.html#acf1412bbf1c81fab86458c90cd04e589">NUMBER_CMDS_IN_PACKET</a></div><div class="ttdeci">#define NUMBER_CMDS_IN_PACKET</div><div class="ttdoc">Максимально возможное число команд в одном пакете</div><div class="ttdef"><b>Definition:</b> rs422_protocol.h:16</div></div>
+<div class="ttc" id="ars422__protocol_8h_html_a7510a1bc271d66928a58fb54013e9379"><div class="ttname"><a href="rs422__protocol_8h.html#a7510a1bc271d66928a58fb54013e9379">fields_packet_tail</a></div><div class="ttdeci">struct packet_tail_Struct fields_packet_tail</div><div class="ttdoc">Структура с полями конца пакета</div></div>
+<div class="ttc" id="astructtx__rx__packet__struct_html_a5e7c2a7326ef419e211c879f870466e9"><div class="ttname"><a href="structtx__rx__packet__struct.html#a5e7c2a7326ef419e211c879f870466e9">tx_rx_packet_struct::packet_tail</a></div><div class="ttdeci">fields_packet_tail packet_tail</div><div class="ttdoc">Поля хвоста пакета</div><div class="ttdef"><b>Definition:</b> rs422_protocol.h:121</div></div>
+<div class="ttc" id="astructpacket__header__struct_html"><div class="ttname"><a href="structpacket__header__struct.html">packet_header_struct</a></div><div class="ttdoc">Структура с полями заголовка пакета</div><div class="ttdef"><b>Definition:</b> rs422_protocol.h:86</div></div>
+<div class="ttc" id="ars422__protocol_8h_html_aed4c57914a23fa546b89d30973b11478"><div class="ttname"><a href="rs422__protocol_8h.html#aed4c57914a23fa546b89d30973b11478">fill_crc32_table</a></div><div class="ttdeci">void fill_crc32_table(void)</div><div class="ttdoc">Заполняет таблицу CRC32.</div><div class="ttdef"><b>Definition:</b> rs422_protocol.c:451</div></div>
+<div class="ttc" id="astructpacket__tail__Struct_html_a9580dd1f28b6745e64a314ebaa4e341a"><div class="ttname"><a href="structpacket__tail__Struct.html#a9580dd1f28b6745e64a314ebaa4e341a">packet_tail_Struct::checksum</a></div><div class="ttdeci">uint32_t checksum</div><div class="ttdoc">Контрольная сумма (CRC32)</div><div class="ttdef"><b>Definition:</b> rs422_protocol.h:105</div></div>
+<div class="ttc" id="astructcmd__struct_html_ab99361bff90634a3a5cc6737ace548f2"><div class="ttname"><a href="structcmd__struct.html#ab99361bff90634a3a5cc6737ace548f2">cmd_struct::header</a></div><div class="ttdeci">fields_cmd_header header</div><div class="ttdoc">Заголовок</div><div class="ttdef"><b>Definition:</b> rs422_protocol.h:73</div></div>
+<div class="ttc" id="astructcmd__header__struct_html"><div class="ttname"><a href="structcmd__header__struct.html">cmd_header_struct</a></div><div class="ttdoc">Структура с заголовком для каждой команды (субпакета) внутри одного пакета</div><div class="ttdef"><b>Definition:</b> rs422_protocol.h:57</div></div>
+<div class="ttc" id="ars422__protocol_8h_html_af1ea8ba5878ba6102b6e8b6b33bd5b4a"><div class="ttname"><a href="rs422__protocol_8h.html#af1ea8ba5878ba6102b6e8b6b33bd5b4a">transmit_packet</a></div><div class="ttdeci">protocol_error transmit_packet(uart_n *uart_struct, uint8_t ext_bus)</div><div class="ttdoc">Отправляет пакет данных</div><div class="ttdef"><b>Definition:</b> rs422_protocol.c:19</div></div>
+<div class="ttc" id="astructpacket__header__struct_html_adbdd35d51ce8eea8fb0a76a5c54274e5"><div class="ttname"><a href="structpacket__header__struct.html#adbdd35d51ce8eea8fb0a76a5c54274e5">packet_header_struct::receiver_addr</a></div><div class="ttdeci">uint8_t receiver_addr</div><div class="ttdoc">Адрес получателя</div><div class="ttdef"><b>Definition:</b> rs422_protocol.h:88</div></div>
+<div class="ttc" id="astructtx__rx__packet__struct_html_a2e5d4eb9028e95fc2d204a4c88f2cf2d"><div class="ttname"><a href="structtx__rx__packet__struct.html#a2e5d4eb9028e95fc2d204a4c88f2cf2d">tx_rx_packet_struct::packet_header</a></div><div class="ttdeci">fields_packet_header packet_header</div><div class="ttdoc">Заголовочные поля</div><div class="ttdef"><b>Definition:</b> rs422_protocol.h:119</div></div>
+<div class="ttc" id="astructcmd__struct_html_a6f496356def365f53cab4874cb6bf3c2"><div class="ttname"><a href="structcmd__struct.html#a6f496356def365f53cab4874cb6bf3c2">cmd_struct::data</a></div><div class="ttdeci">uint8_t * data</div><div class="ttdoc">Данные</div><div class="ttdef"><b>Definition:</b> rs422_protocol.h:74</div></div>
+<div class="ttc" id="astructpacket__tail__Struct_html_a00bf37b5f69ad2a474f215ca8aa7484c"><div class="ttname"><a href="structpacket__tail__Struct.html#a00bf37b5f69ad2a474f215ca8aa7484c">packet_tail_Struct::end</a></div><div class="ttdeci">uint16_t end</div><div class="ttdoc">Конец пакета</div><div class="ttdef"><b>Definition:</b> rs422_protocol.h:106</div></div>
+<div class="ttc" id="ars422__protocol_8h_html_a31e46c5def1d302719d62543c9b3a11e"><div class="ttname"><a href="rs422__protocol_8h.html#a31e46c5def1d302719d62543c9b3a11e">fields_packet</a></div><div class="ttdeci">struct tx_rx_packet_struct fields_packet</div><div class="ttdoc">Структура пакета данных согласно утвержденному протоколу обмена данными</div></div>
+<div class="ttc" id="astructpacket__tail__Struct_html"><div class="ttname"><a href="structpacket__tail__Struct.html">packet_tail_Struct</a></div><div class="ttdoc">Структура с полями конца пакета</div><div class="ttdef"><b>Definition:</b> rs422_protocol.h:104</div></div>
+<div class="ttc" id="astructpacket__header__struct_html_af227b1e6bb326a48ea957e067443f7c8"><div class="ttname"><a href="structpacket__header__struct.html#af227b1e6bb326a48ea957e067443f7c8">packet_header_struct::service_byte</a></div><div class="ttdeci">uint8_t service_byte</div><div class="ttdoc">Сервисный байт</div><div class="ttdef"><b>Definition:</b> rs422_protocol.h:91</div></div>
+<div class="ttc" id="ars422__protocol_8h_html_a56ff0b0094710491e663ab47bd92ca20"><div class="ttname"><a href="rs422__protocol_8h.html#a56ff0b0094710491e663ab47bd92ca20">fields_cmd</a></div><div class="ttdeci">struct cmd_struct fields_cmd</div><div class="ttdoc">Структура с полями данных для каждой команды (субпакета) внутри одного пакета</div></div>
+<div class="ttc" id="astructcmd__header__struct_html_a66a414389585d0923409d5f1db826ffc"><div class="ttname"><a href="structcmd__header__struct.html#a66a414389585d0923409d5f1db826ffc">cmd_header_struct::result</a></div><div class="ttdeci">uint16_t result</div><div class="ttdoc">Результат выполнения команды</div><div class="ttdef"><b>Definition:</b> rs422_protocol.h:59</div></div>
+<div class="ttc" id="astructpacket__header__struct_html_ac504af7800c52ebd39622a7b93c0231d"><div class="ttname"><a href="structpacket__header__struct.html#ac504af7800c52ebd39622a7b93c0231d">packet_header_struct::sender_addr</a></div><div class="ttdeci">uint8_t sender_addr</div><div class="ttdoc">Адрес отправителя</div><div class="ttdef"><b>Definition:</b> rs422_protocol.h:89</div></div>
+<div class="ttc" id="ars422__protocol_8h_html_aba7cbaf5e7772f2d042fe6c708b254bfaf56071aad4bdf2cfc6d2e1337c0a1614"><div class="ttname"><a href="rs422__protocol_8h.html#aba7cbaf5e7772f2d042fe6c708b254bfaf56071aad4bdf2cfc6d2e1337c0a1614">PM_ADDR_ERROR</a></div><div class="ttdeci">@ PM_ADDR_ERROR</div><div class="ttdoc">Ошибка адресации</div><div class="ttdef"><b>Definition:</b> rs422_protocol.h:48</div></div>
+<div class="ttc" id="ars422__protocol_8h_html_a39460309d7bc42043887006271f2cdee"><div class="ttname"><a href="rs422__protocol_8h.html#a39460309d7bc42043887006271f2cdee">um_service_byte_handler</a></div><div class="ttdeci">void um_service_byte_handler(uint8_t ext_bus)</div><div class="ttdoc">Обрабатывает сервисный байт УМ</div><div class="ttdef"><b>Definition:</b> rs422_protocol.c:559</div></div>
+<div class="ttc" id="astructtx__rx__packet__struct_html"><div class="ttname"><a href="structtx__rx__packet__struct.html">tx_rx_packet_struct</a></div><div class="ttdoc">Структура пакета данных согласно утвержденному протоколу обмена данными</div><div class="ttdef"><b>Definition:</b> rs422_protocol.h:118</div></div>
+<div class="ttc" id="ars422__protocol_8h_html_aba7cbaf5e7772f2d042fe6c708b254bfa8d985e4627498f56f5ab06caa7405b46"><div class="ttname"><a href="rs422__protocol_8h.html#aba7cbaf5e7772f2d042fe6c708b254bfa8d985e4627498f56f5ab06caa7405b46">UART_ERROR</a></div><div class="ttdeci">@ UART_ERROR</div><div class="ttdoc">Ошибка работы UART.</div><div class="ttdef"><b>Definition:</b> rs422_protocol.h:46</div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20
+</small></address>
+</body>
+</html>

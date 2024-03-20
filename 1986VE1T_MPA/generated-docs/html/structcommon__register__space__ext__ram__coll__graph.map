@@ -1,0 +1,11 @@
+<map id="common_register_space_ext_ram" name="common_register_space_ext_ram">
+<area shape="rect" id="node1" title="Органиация пространства общих регистров во внешнем ОЗУ" alt="" coords="693,150,875,191"/>
+<area shape="rect" id="node2" href="$structconfig__struct.html" title="Структура с битовыми полями для регистра конфигурация" alt="" coords="347,5,453,32"/>
+<area shape="rect" id="node3" href="$structplc__sof__ver__struct.html" title="Структура с битовыми полями для регистра версия ПО" alt="" coords="330,56,470,83"/>
+<area shape="rect" id="node4" href="$structself__diag__struct.html" title="Структура с битовыми полями для регистра неисправность самодиагностики" alt="" coords="337,107,463,133"/>
+<area shape="rect" id="node5" href="$structpower__failure__struct.html" title="Структура с битовыми полями для регистра неисправность питания" alt="" coords="323,157,477,184"/>
+<area shape="rect" id="node6" href="$structcommon__register__space__ext__rom.html" title="Органиация пространства общих регистров для зеркализации во внешнем ПЗУ" alt="" coords="309,209,491,250"/>
+<area shape="rect" id="node7" href="$structdevice__type__struct.html" title="Структура с битовыми полями для регистра тип устройства" alt="" coords="5,216,151,243"/>
+<area shape="rect" id="node8" href="$structdevice__address__struct.html" title="Структура с битовыми полями для регистра адрес устройства" alt="" coords="317,275,483,301"/>
+<area shape="rect" id="node9" href="$structbus__defect__struct.html" title="Структура с битовыми полями для регистра неисправность шины" alt="" coords="331,329,469,356"/>
+</map>

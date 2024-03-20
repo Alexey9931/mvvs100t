@@ -1,0 +1,206 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.20"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>ПО для макета МПА (100 тема): Структура packet_header_struct</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">ПО для макета МПА (100 тема)
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.20 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-attribs">Открытые атрибуты</a> &#124;
+<a href="structpacket__header__struct-members.html">Полный список членов класса</a>  </div>
+  <div class="headertitle">
+<div class="title">Структура packet_header_struct</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Структура с полями заголовка пакета  
+ <a href="structpacket__header__struct.html#details">Подробнее...</a></p>
+
+<p><code>#include &lt;<a class="el" href="rs422__protocol_8h_source.html">rs422_protocol.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Открытые атрибуты</h2></td></tr>
+<tr class="memitem:a7113d39ff097e7c72b893dbba4c8c7ca"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpacket__header__struct.html#a7113d39ff097e7c72b893dbba4c8c7ca">header</a></td></tr>
+<tr class="memdesc:a7113d39ff097e7c72b893dbba4c8c7ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Заголовок  <a href="structpacket__header__struct.html#a7113d39ff097e7c72b893dbba4c8c7ca">Подробнее...</a><br /></td></tr>
+<tr class="separator:a7113d39ff097e7c72b893dbba4c8c7ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adbdd35d51ce8eea8fb0a76a5c54274e5"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpacket__header__struct.html#adbdd35d51ce8eea8fb0a76a5c54274e5">receiver_addr</a></td></tr>
+<tr class="memdesc:adbdd35d51ce8eea8fb0a76a5c54274e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Адрес получателя  <a href="structpacket__header__struct.html#adbdd35d51ce8eea8fb0a76a5c54274e5">Подробнее...</a><br /></td></tr>
+<tr class="separator:adbdd35d51ce8eea8fb0a76a5c54274e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac504af7800c52ebd39622a7b93c0231d"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpacket__header__struct.html#ac504af7800c52ebd39622a7b93c0231d">sender_addr</a></td></tr>
+<tr class="memdesc:ac504af7800c52ebd39622a7b93c0231d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Адрес отправителя  <a href="structpacket__header__struct.html#ac504af7800c52ebd39622a7b93c0231d">Подробнее...</a><br /></td></tr>
+<tr class="separator:ac504af7800c52ebd39622a7b93c0231d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6fcd430d601d7bfae577e62ab22492f"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpacket__header__struct.html#ac6fcd430d601d7bfae577e62ab22492f">packet_length</a></td></tr>
+<tr class="memdesc:ac6fcd430d601d7bfae577e62ab22492f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Длина пакета  <a href="structpacket__header__struct.html#ac6fcd430d601d7bfae577e62ab22492f">Подробнее...</a><br /></td></tr>
+<tr class="separator:ac6fcd430d601d7bfae577e62ab22492f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af227b1e6bb326a48ea957e067443f7c8"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpacket__header__struct.html#af227b1e6bb326a48ea957e067443f7c8">service_byte</a></td></tr>
+<tr class="memdesc:af227b1e6bb326a48ea957e067443f7c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Сервисный байт  <a href="structpacket__header__struct.html#af227b1e6bb326a48ea957e067443f7c8">Подробнее...</a><br /></td></tr>
+<tr class="separator:af227b1e6bb326a48ea957e067443f7c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f98e89c37075148a7f03a2d401f04cf"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpacket__header__struct.html#a8f98e89c37075148a7f03a2d401f04cf">cmd_number</a></td></tr>
+<tr class="memdesc:a8f98e89c37075148a7f03a2d401f04cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Количество команд  <a href="structpacket__header__struct.html#a8f98e89c37075148a7f03a2d401f04cf">Подробнее...</a><br /></td></tr>
+<tr class="separator:a8f98e89c37075148a7f03a2d401f04cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Структура с полями заголовка пакета </p>
+</div><h2 class="groupheader">Данные класса</h2>
+<a id="a8f98e89c37075148a7f03a2d401f04cf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f98e89c37075148a7f03a2d401f04cf">&#9670;&nbsp;</a></span>cmd_number</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t packet_header_struct::cmd_number</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Количество команд </p>
+
+</div>
+</div>
+<a id="a7113d39ff097e7c72b893dbba4c8c7ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7113d39ff097e7c72b893dbba4c8c7ca">&#9670;&nbsp;</a></span>header</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t packet_header_struct::header</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Заголовок </p>
+
+</div>
+</div>
+<a id="ac6fcd430d601d7bfae577e62ab22492f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac6fcd430d601d7bfae577e62ab22492f">&#9670;&nbsp;</a></span>packet_length</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t packet_header_struct::packet_length</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Длина пакета </p>
+
+</div>
+</div>
+<a id="adbdd35d51ce8eea8fb0a76a5c54274e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adbdd35d51ce8eea8fb0a76a5c54274e5">&#9670;&nbsp;</a></span>receiver_addr</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t packet_header_struct::receiver_addr</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Адрес получателя </p>
+
+</div>
+</div>
+<a id="ac504af7800c52ebd39622a7b93c0231d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac504af7800c52ebd39622a7b93c0231d">&#9670;&nbsp;</a></span>sender_addr</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t packet_header_struct::sender_addr</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Адрес отправителя </p>
+
+</div>
+</div>
+<a id="af227b1e6bb326a48ea957e067443f7c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af227b1e6bb326a48ea957e067443f7c8">&#9670;&nbsp;</a></span>service_byte</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t packet_header_struct::service_byte</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Сервисный байт </p>
+
+</div>
+</div>
+<hr/>Объявления и описания членов структуры находятся в файле:<ul>
+<li><a class="el" href="rs422__protocol_8h_source.html">rs422_protocol.h</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20
+</small></address>
+</body>
+</html>

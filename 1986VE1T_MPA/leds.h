@@ -1,6 +1,6 @@
 /*!
  \file
- \brief Заголовочный файл с описанием API для работы со светоиодными индикаторами
+ \brief Р—Р°РіРѕР»РѕРІРѕС‡РЅС‹Р№ С„Р°Р№Р» СЃ РѕРїРёСЃР°РЅРёРµРј API РґР»СЏ СЂР°Р±РѕС‚С‹ СЃРѕ СЃРІРµС‚РѕРґРёРѕРґРЅС‹РјРё РёРЅРґРёРєР°С‚РѕСЂР°РјРё
 */
 
 #ifndef __LEDS_H
@@ -8,25 +8,22 @@
 
 #include "mdr32_drivers.h"
 
-#define PORT_LEDS MDR_PORTD
-#define CLOCK_LEDS RST_CLK_PCLK_PORTD
+#define PORT_LEDS MDR_PORTD								///< РџРѕСЂС‚ РІС‹РІРѕРґРѕРІ РЅР° СЃРІРµС‚РѕРґРёРѕРґС‹
+#define CLOCK_LEDS RST_CLK_PCLK_PORTD			///< Р’С‹Р±РѕСЂ С‚Р°РєС‚РёСЂРѕРІР°РЅРёСЏ РІС‹РІРѕРґРѕРІ РґР»СЏ СЃРІРµС‚РѕРґРёРѕРґРѕРІ
 
-//светодиоды для индикации работы/неисправности
-///светодиод-индикатор корректной работы
-#define PIN_LED_OK_WORK PORT_Pin_7
-///светодиод-индикатор неисправности
-#define PIN_LED_ERROR_WORK PORT_Pin_8
+#define PIN_LED_OK_WORK PORT_Pin_7				///< РЎРІРµС‚РѕРґРёРѕРґ-РёРЅРґРёРєР°С‚РѕСЂ РєРѕСЂСЂРµРєС‚РЅРѕР№ СЂР°Р±РѕС‚С‹
+#define PIN_LED_ERROR_WORK PORT_Pin_8			///< РЎРІРµС‚РѕРґРёРѕРґ-РёРЅРґРёРєР°С‚РѕСЂ РЅРµРёСЃРїСЂР°РІРЅРѕСЃС‚Рё	
 
-#define SET_LED_OK_WORK()		 		{PORT_LEDS->SETTX = PIN_LED_OK_WORK;}
-#define RESET_LED_OK_WORK() 		{PORT_LEDS->CLRTX = PIN_LED_OK_WORK;}
+#define SET_LED_OK_WORK()		 		{PORT_LEDS->SETTX = PIN_LED_OK_WORK;}			///< РњР°РєСЂРѕСЃ РІРєР»СЋС‡РµРЅРёСЏ СЃРІРµС‚РѕРґРёРѕРґР° РєРѕСЂСЂРµРєС‚РЅРѕР№ СЂР°Р±РѕС‚С‹
+#define RESET_LED_OK_WORK() 		{PORT_LEDS->CLRTX = PIN_LED_OK_WORK;}			///< РњР°РєСЂРѕСЃ РІС‹РєР»СЋС‡РµРЅРёСЏ СЃРІРµС‚РѕРґРёРѕРґР° РєРѕСЂСЂРµРєС‚РЅРѕР№ СЂР°Р±РѕС‚С‹
 
-#define SET_LED_ERROR_WORK() 		{PORT_LEDS->SETTX = PIN_LED_ERROR_WORK;}
-#define RESET_LED_ERROR_WORK() 	{PORT_LEDS->CLRTX = PIN_LED_ERROR_WORK;}
+#define SET_LED_ERROR_WORK() 		{PORT_LEDS->SETTX = PIN_LED_ERROR_WORK;}	///< РњР°РєСЂРѕСЃ РІРєР»СЋС‡РµРЅРёСЏ СЃРІРµС‚РѕРґРёРѕРґР° РЅРµРєРѕСЂСЂРµРєС‚РЅРѕР№ СЂР°Р±РѕС‚С‹
+#define RESET_LED_ERROR_WORK() 	{PORT_LEDS->CLRTX = PIN_LED_ERROR_WORK;}	///< РњР°РєСЂРѕСЃ РІС‹РєР»СЋС‡РµРЅРёСЏ СЃРІРµС‚РѕРґРёРѕРґР° РЅРµРєРѕСЂСЂРµРєС‚РЅРѕР№ СЂР°Р±РѕС‚С‹
 
 /*!
- *	\brief Конфигурирует выводы МК для светодиодных индикаторов
+ *	\brief РљРѕРЅС„РёРіСѓСЂРёСЂСѓРµС‚ РІС‹РІРѕРґС‹ РњРљ РґР»СЏ СЃРІРµС‚РѕРґРёРѕРґРЅС‹С… РёРЅРґРёРєР°С‚РѕСЂРѕРІ
 */
-void leds_gpio_config(void);
+void leds_gpio_config(void); 
 
 
 #endif /*__LEDS_H */

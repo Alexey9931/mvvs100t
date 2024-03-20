@@ -1,0 +1,218 @@
+\hypertarget{ebc_8c}{}\doxysection{Файл ebc.\+c}
+\label{ebc_8c}\index{ebc.c@{ebc.c}}
+
+
+Файл с реализацией A\+PI для работы с E\+BC.  
+
+
+{\ttfamily \#include \char`\"{}ebc.\+h\char`\"{}}\newline
+Граф включаемых заголовочных файлов для ebc.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{ebc_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Функции}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{ebc_8c_a0cb26daa245230725307e83802ba8438}{ebc\+\_\+gpio\+\_\+config}} (\mbox{\hyperlink{ebc_8h_a316b1f4d50291b83e654402968d0f009}{ebc\+\_\+devices}} device)
+\begin{DoxyCompactList}\small\item\em Конфигурует выводы МК E\+BC для внешнего ОЗУ или ПЗУ \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ebc_8c_a6b64f4215863b90dc0f8d0b2b4d513db}{ebc\+\_\+init}} (\mbox{\hyperlink{ebc_8h_a316b1f4d50291b83e654402968d0f009}{ebc\+\_\+devices}} device)
+\begin{DoxyCompactList}\small\item\em Инициализирует E\+BC для внешнего ОЗУ или ПЗУ \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Файл с реализацией A\+PI для работы с E\+BC. 
+
+
+
+\doxysubsection{Функции}
+\mbox{\Hypertarget{ebc_8c_a0cb26daa245230725307e83802ba8438}\label{ebc_8c_a0cb26daa245230725307e83802ba8438}} 
+\index{ebc.c@{ebc.c}!ebc\_gpio\_config@{ebc\_gpio\_config}}
+\index{ebc\_gpio\_config@{ebc\_gpio\_config}!ebc.c@{ebc.c}}
+\doxysubsubsection{\texorpdfstring{ebc\_gpio\_config()}{ebc\_gpio\_config()}}
+{\footnotesize\ttfamily void ebc\+\_\+gpio\+\_\+config (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ebc_8h_a316b1f4d50291b83e654402968d0f009}{ebc\+\_\+devices}}}]{device }\end{DoxyParamCaption})}
+
+
+
+Конфигурует выводы МК E\+BC для внешнего ОЗУ или ПЗУ 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{12 \{   }
+\DoxyCodeLine{13         \textcolor{comment}{// Структура для инициализации линий ввода-\/вывода системной шины}}
+\DoxyCodeLine{14         PORT\_InitTypeDef ExtBusInitStruct;}
+\DoxyCodeLine{15         }
+\DoxyCodeLine{16         \textcolor{comment}{// Включение тактирования портов}}
+\DoxyCodeLine{17         RST\_CLK\_PCLKcmd(RST\_CLK\_PCLK\_PORTA, ENABLE);}
+\DoxyCodeLine{18         RST\_CLK\_PCLKcmd(RST\_CLK\_PCLK\_PORTB, ENABLE);}
+\DoxyCodeLine{19         RST\_CLK\_PCLKcmd(RST\_CLK\_PCLK\_PORTC, ENABLE);}
+\DoxyCodeLine{20         RST\_CLK\_PCLKcmd(RST\_CLK\_PCLK\_PORTD, ENABLE);}
+\DoxyCodeLine{21         RST\_CLK\_PCLKcmd(RST\_CLK\_PCLK\_PORTE, ENABLE);}
+\DoxyCodeLine{22         RST\_CLK\_PCLKcmd(RST\_CLK\_PCLK\_PORTF, ENABLE);    }
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24         \textcolor{comment}{// Конфигурация линии данных}}
+\DoxyCodeLine{25         \textcolor{keywordflow}{if} (device == \mbox{\hyperlink{ebc_8h_aa4b88f24716e66e8d41400b00e8ae8aea991481e1b7d5eab2a8424ca8d935f5ec}{EBC\_RAM}})}
+\DoxyCodeLine{26         \{}
+\DoxyCodeLine{27             \textcolor{comment}{// 32-\/битный режим данных}}
+\DoxyCodeLine{28             ExtBusInitStruct.PORT\_Pin = (PORT\_Pin\_0 | PORT\_Pin\_1 | PORT\_Pin\_2 | PORT\_Pin\_3 | PORT\_Pin\_4 | PORT\_Pin\_5 | PORT\_Pin\_6 | PORT\_Pin\_7 | PORT\_Pin\_8 | PORT\_Pin\_9 | PORT\_Pin\_10 | PORT\_Pin\_11 | PORT\_Pin\_12 | PORT\_Pin\_13 | PORT\_Pin\_14 | PORT\_Pin\_15);}
+\DoxyCodeLine{29         \}}
+\DoxyCodeLine{30         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (device == \mbox{\hyperlink{ebc_8h_aa4b88f24716e66e8d41400b00e8ae8aead875d3de2bb4db8f95c05c7019c469c9}{EBC\_ROM}})}
+\DoxyCodeLine{31         \{}
+\DoxyCodeLine{32             \textcolor{comment}{// 8-\/битный режим данных}}
+\DoxyCodeLine{33             ExtBusInitStruct.PORT\_Pin = (PORT\_Pin\_0 | PORT\_Pin\_1 | PORT\_Pin\_2 | PORT\_Pin\_3 | PORT\_Pin\_4 | PORT\_Pin\_5 | PORT\_Pin\_6 | PORT\_Pin\_7 );}
+\DoxyCodeLine{34         \}}
+\DoxyCodeLine{35         ExtBusInitStruct.PORT\_FUNC = PORT\_FUNC\_MAIN;}
+\DoxyCodeLine{36         ExtBusInitStruct.PORT\_MODE = PORT\_MODE\_DIGITAL;}
+\DoxyCodeLine{37         ExtBusInitStruct.PORT\_SPEED = PORT\_SPEED\_FAST;}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39         PORT\_Init(MDR\_PORTA, \&ExtBusInitStruct);}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41         ExtBusInitStruct.PORT\_Pin = (PORT\_Pin\_0 | PORT\_Pin\_1 | PORT\_Pin\_2 | PORT\_Pin\_3 | PORT\_Pin\_4 | PORT\_Pin\_5 | PORT\_Pin\_6 | PORT\_Pin\_7 | PORT\_Pin\_8 | PORT\_Pin\_9 | PORT\_Pin\_10 | PORT\_Pin\_11 | PORT\_Pin\_12 | PORT\_Pin\_13 | PORT\_Pin\_14 | PORT\_Pin\_15);}
+\DoxyCodeLine{42         \textcolor{keywordflow}{if} (device == \mbox{\hyperlink{ebc_8h_aa4b88f24716e66e8d41400b00e8ae8aea991481e1b7d5eab2a8424ca8d935f5ec}{EBC\_RAM}})}
+\DoxyCodeLine{43         \{}
+\DoxyCodeLine{44             \textcolor{comment}{// 32-\/битный режим данных}}
+\DoxyCodeLine{45             ExtBusInitStruct.PORT\_FUNC = PORT\_FUNC\_MAIN;}
+\DoxyCodeLine{46         \}}
+\DoxyCodeLine{47         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (device == \mbox{\hyperlink{ebc_8h_aa4b88f24716e66e8d41400b00e8ae8aead875d3de2bb4db8f95c05c7019c469c9}{EBC\_ROM}})}
+\DoxyCodeLine{48         \{}
+\DoxyCodeLine{49             \textcolor{comment}{// 8-\/битный режим данных}}
+\DoxyCodeLine{50             ExtBusInitStruct.PORT\_FUNC = PORT\_FUNC\_PORT;}
+\DoxyCodeLine{51         \}}
+\DoxyCodeLine{52         ExtBusInitStruct.PORT\_MODE = PORT\_MODE\_DIGITAL;}
+\DoxyCodeLine{53         ExtBusInitStruct.PORT\_SPEED = PORT\_SPEED\_FAST;}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{55         PORT\_Init(MDR\_PORTB, \&ExtBusInitStruct);}
+\DoxyCodeLine{56         }
+\DoxyCodeLine{57         \textcolor{comment}{// Конфигурация OE, WE}}
+\DoxyCodeLine{58         ExtBusInitStruct.PORT\_Pin = (PORT\_Pin\_0 | PORT\_Pin\_1);}
+\DoxyCodeLine{59         ExtBusInitStruct.PORT\_FUNC = PORT\_FUNC\_MAIN;}
+\DoxyCodeLine{60         ExtBusInitStruct.PORT\_MODE = PORT\_MODE\_DIGITAL;}
+\DoxyCodeLine{61         ExtBusInitStruct.PORT\_SPEED = PORT\_SPEED\_FAST;}
+\DoxyCodeLine{62 }
+\DoxyCodeLine{63         PORT\_Init(MDR\_PORTC, \&ExtBusInitStruct);}
+\DoxyCodeLine{64         }
+\DoxyCodeLine{65         \textcolor{comment}{// Конфигурация BE3, BE2, BE1, BE0}}
+\DoxyCodeLine{66         ExtBusInitStruct.PORT\_Pin = ( PORT\_Pin\_9 | PORT\_Pin\_10 | PORT\_Pin\_11 | PORT\_Pin\_12 );}
+\DoxyCodeLine{67         ExtBusInitStruct.PORT\_FUNC = PORT\_FUNC\_ALTER;}
+\DoxyCodeLine{68         ExtBusInitStruct.PORT\_MODE = PORT\_MODE\_DIGITAL;}
+\DoxyCodeLine{69         ExtBusInitStruct.PORT\_SPEED = PORT\_SPEED\_FAST;}
+\DoxyCodeLine{70 }
+\DoxyCodeLine{71         PORT\_Init(MDR\_PORTC, \&ExtBusInitStruct);}
+\DoxyCodeLine{72 }
+\DoxyCodeLine{73         \textcolor{comment}{// Конфигурация линии адреса}}
+\DoxyCodeLine{74         \textcolor{keywordflow}{if} (device == \mbox{\hyperlink{ebc_8h_aa4b88f24716e66e8d41400b00e8ae8aea991481e1b7d5eab2a8424ca8d935f5ec}{EBC\_RAM}})}
+\DoxyCodeLine{75         \{}
+\DoxyCodeLine{76             \textcolor{comment}{// Сдвиг адресов A2-\/>A0}}
+\DoxyCodeLine{77             ExtBusInitStruct.PORT\_Pin = (PORT\_Pin\_5 | PORT\_Pin\_6 | PORT\_Pin\_7 | PORT\_Pin\_8 | PORT\_Pin\_9 | PORT\_Pin\_10 | PORT\_Pin\_11 | PORT\_Pin\_12 | PORT\_Pin\_13 | PORT\_Pin\_14 | PORT\_Pin\_15);}
+\DoxyCodeLine{78         \}}
+\DoxyCodeLine{79         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (device == \mbox{\hyperlink{ebc_8h_aa4b88f24716e66e8d41400b00e8ae8aead875d3de2bb4db8f95c05c7019c469c9}{EBC\_ROM}})}
+\DoxyCodeLine{80         \{}
+\DoxyCodeLine{81             \textcolor{comment}{// Нет сдвига адресов A0-\/>A0}}
+\DoxyCodeLine{82             ExtBusInitStruct.PORT\_Pin = (PORT\_Pin\_3 | PORT\_Pin\_4 | PORT\_Pin\_5 | PORT\_Pin\_6 | PORT\_Pin\_7 | PORT\_Pin\_8 | PORT\_Pin\_9 | PORT\_Pin\_10 | PORT\_Pin\_11 | PORT\_Pin\_12 | PORT\_Pin\_13 | PORT\_Pin\_14 | PORT\_Pin\_15);}
+\DoxyCodeLine{83         \}}
+\DoxyCodeLine{84         ExtBusInitStruct.PORT\_FUNC  = PORT\_FUNC\_ALTER;}
+\DoxyCodeLine{85         ExtBusInitStruct.PORT\_MODE  = PORT\_MODE\_DIGITAL;}
+\DoxyCodeLine{86         ExtBusInitStruct.PORT\_SPEED = PORT\_SPEED\_FAST;}
+\DoxyCodeLine{87 }
+\DoxyCodeLine{88         PORT\_Init(MDR\_PORTF, \&ExtBusInitStruct);}
+\DoxyCodeLine{89 }
+\DoxyCodeLine{90         \textcolor{comment}{// Конфигурация линии адреса A13}}
+\DoxyCodeLine{91         ExtBusInitStruct.PORT\_Pin = PORT\_Pin\_15;}
+\DoxyCodeLine{92         ExtBusInitStruct.PORT\_FUNC = PORT\_FUNC\_ALTER;}
+\DoxyCodeLine{93         ExtBusInitStruct.PORT\_MODE = PORT\_MODE\_DIGITAL;}
+\DoxyCodeLine{94         ExtBusInitStruct.PORT\_SPEED = PORT\_SPEED\_FAST;}
+\DoxyCodeLine{95 }
+\DoxyCodeLine{96         PORT\_Init(MDR\_PORTD, \&ExtBusInitStruct);}
+\DoxyCodeLine{97 }
+\DoxyCodeLine{98         \textcolor{comment}{// Конфигурация линии адреса A14-\/A19}}
+\DoxyCodeLine{99         ExtBusInitStruct.PORT\_Pin = (PORT\_Pin\_0 | PORT\_Pin\_1 | PORT\_Pin\_2 | PORT\_Pin\_3 | PORT\_Pin\_4 | PORT\_Pin\_5);}
+\DoxyCodeLine{100         ExtBusInitStruct.PORT\_FUNC = PORT\_FUNC\_ALTER;}
+\DoxyCodeLine{101         ExtBusInitStruct.PORT\_MODE = PORT\_MODE\_DIGITAL;}
+\DoxyCodeLine{102         ExtBusInitStruct.PORT\_SPEED = PORT\_SPEED\_FAST;}
+\DoxyCodeLine{103 }
+\DoxyCodeLine{104         PORT\_Init(MDR\_PORTE, \&ExtBusInitStruct);}
+\DoxyCodeLine{105 }
+\DoxyCodeLine{106         \textcolor{comment}{// Конфигурация CS1-\/PE7(A21) и CS0-\/PE6(A20)(Ножки выбора ОЗУ)}}
+\DoxyCodeLine{107         ExtBusInitStruct.PORT\_Pin = (PORT\_Pin\_7 | PORT\_Pin\_6);}
+\DoxyCodeLine{108         ExtBusInitStruct.PORT\_FUNC = PORT\_FUNC\_ALTER;}
+\DoxyCodeLine{109         ExtBusInitStruct.PORT\_MODE = PORT\_MODE\_DIGITAL;}
+\DoxyCodeLine{110         ExtBusInitStruct.PORT\_SPEED = PORT\_SPEED\_FAST;}
+\DoxyCodeLine{111 }
+\DoxyCodeLine{112         PORT\_Init(MDR\_PORTE, \&ExtBusInitStruct);}
+\DoxyCodeLine{113         }
+\DoxyCodeLine{114         \textcolor{comment}{// Конфигурация CS2-\/PE8(A22)(Ножка выбора ПЗУ)*/}}
+\DoxyCodeLine{115         ExtBusInitStruct.PORT\_Pin = PORT\_Pin\_8;}
+\DoxyCodeLine{116         ExtBusInitStruct.PORT\_OE  = PORT\_OE\_OUT;}
+\DoxyCodeLine{117         ExtBusInitStruct.PORT\_FUNC = PORT\_FUNC\_ALTER;}
+\DoxyCodeLine{118         ExtBusInitStruct.PORT\_MODE = PORT\_MODE\_DIGITAL;}
+\DoxyCodeLine{119         ExtBusInitStruct.PORT\_PD = PORT\_PD\_DRIVER;}
+\DoxyCodeLine{120         ExtBusInitStruct.PORT\_SPEED = PORT\_SPEED\_SLOW;}
+\DoxyCodeLine{121         ExtBusInitStruct.PORT\_GFEN = PORT\_GFEN\_OFF;}
+\DoxyCodeLine{122         ExtBusInitStruct.PORT\_PULL\_UP = PORT\_PULL\_UP\_OFF;}
+\DoxyCodeLine{123         ExtBusInitStruct.PORT\_PULL\_DOWN = PORT\_PULL\_DOWN\_OFF;}
+\DoxyCodeLine{124 }
+\DoxyCodeLine{125         PORT\_Init(MDR\_PORTE, \&ExtBusInitStruct);}
+\DoxyCodeLine{126 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{ebc_8c_a6b64f4215863b90dc0f8d0b2b4d513db}\label{ebc_8c_a6b64f4215863b90dc0f8d0b2b4d513db}} 
+\index{ebc.c@{ebc.c}!ebc\_init@{ebc\_init}}
+\index{ebc\_init@{ebc\_init}!ebc.c@{ebc.c}}
+\doxysubsubsection{\texorpdfstring{ebc\_init()}{ebc\_init()}}
+{\footnotesize\ttfamily void ebc\+\_\+init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{ebc_8h_a316b1f4d50291b83e654402968d0f009}{ebc\+\_\+devices}}}]{device }\end{DoxyParamCaption})}
+
+
+
+Инициализирует E\+BC для внешнего ОЗУ или ПЗУ 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em device} & 0-\/R\+AM, 1-\/R\+OM \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{131  \{}
+\DoxyCodeLine{132         \mbox{\hyperlink{ebc_8c_a0cb26daa245230725307e83802ba8438}{ebc\_gpio\_config}}(device);}
+\DoxyCodeLine{133     }
+\DoxyCodeLine{134         EBC\_InitTypeDef EBC\_InitStruct;}
+\DoxyCodeLine{135     EBC\_MemRegionInitTypeDef EBC\_MemRegionInitStruct;}
+\DoxyCodeLine{136 }
+\DoxyCodeLine{137     \textcolor{comment}{// Включение тактирования EBC}}
+\DoxyCodeLine{138     RST\_CLK\_PCLKcmd(RST\_CLK\_PCLK\_EBC, ENABLE);}
+\DoxyCodeLine{139 }
+\DoxyCodeLine{140     EBC\_StructInit(\&EBC\_InitStruct);}
+\DoxyCodeLine{141     }
+\DoxyCodeLine{142         \textcolor{keywordflow}{if} (device == \mbox{\hyperlink{ebc_8h_aa4b88f24716e66e8d41400b00e8ae8aea991481e1b7d5eab2a8424ca8d935f5ec}{EBC\_RAM}})}
+\DoxyCodeLine{143         \{}
+\DoxyCodeLine{144             EBC\_InitStruct.EBC\_Mode = EBC\_MODE\_RAM;}
+\DoxyCodeLine{145         \}}
+\DoxyCodeLine{146         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (device == \mbox{\hyperlink{ebc_8h_aa4b88f24716e66e8d41400b00e8ae8aead875d3de2bb4db8f95c05c7019c469c9}{EBC\_ROM}})}
+\DoxyCodeLine{147         \{}
+\DoxyCodeLine{148             EBC\_InitStruct.EBC\_Mode = EBC\_MODE\_ROM;}
+\DoxyCodeLine{149         \}}
+\DoxyCodeLine{150 }
+\DoxyCodeLine{151     EBC\_Init(\&EBC\_InitStruct);}
+\DoxyCodeLine{152         }
+\DoxyCodeLine{153         MDR\_EBC-\/>CONTROL = 0x00008001;}
+\DoxyCodeLine{154         \textcolor{keywordflow}{if} (device == \mbox{\hyperlink{ebc_8h_aa4b88f24716e66e8d41400b00e8ae8aea991481e1b7d5eab2a8424ca8d935f5ec}{EBC\_RAM}})}
+\DoxyCodeLine{155         \{}
+\DoxyCodeLine{156             MDR\_EBC-\/>CONTROL \&= \string~(1<<5); \textcolor{comment}{// 32-\/битный режим данных}}
+\DoxyCodeLine{157         \}}
+\DoxyCodeLine{158         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (device == \mbox{\hyperlink{ebc_8h_aa4b88f24716e66e8d41400b00e8ae8aead875d3de2bb4db8f95c05c7019c469c9}{EBC\_ROM}})}
+\DoxyCodeLine{159         \{}
+\DoxyCodeLine{160             MDR\_EBC-\/>CONTROL |= (1<<5);\textcolor{comment}{// 8-\/битный режим данных}}
+\DoxyCodeLine{161         \}}
+\DoxyCodeLine{162 }
+\DoxyCodeLine{163     EBC\_MemRegionStructInit(\&EBC\_MemRegionInitStruct);}
+\DoxyCodeLine{164     EBC\_MemRegionInitStruct.WS\_Setup    = 3;}
+\DoxyCodeLine{165     EBC\_MemRegionInitStruct.WS\_Active   = 9;}
+\DoxyCodeLine{166     EBC\_MemRegionInitStruct.WS\_Hold     = 3;}
+\DoxyCodeLine{167     EBC\_MemRegionInitStruct.Enable\_Tune = ENABLE;}
+\DoxyCodeLine{168     }
+\DoxyCodeLine{169     EBC\_MemRegionInit(\&EBC\_MemRegionInitStruct, EBC\_MEM\_REGION\_50000000);}
+\DoxyCodeLine{170 \}}
+
+\end{DoxyCode}

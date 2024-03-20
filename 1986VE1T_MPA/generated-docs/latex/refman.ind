@@ -1,0 +1,1661 @@
+\begin{theindex}
+
+  \item {\_\_list\_add}
+    \subitem {list.c}, \hyperpage{127}
+    \subitem {list.h}, \hyperpage{133}
+  \item {\_\_list\_del}
+    \subitem {list.c}, \hyperpage{128}
+    \subitem {list.h}, \hyperpage{133}
+  \item {1273pv19t.c}, \hyperpage{65}
+    \subitem {adc\_1}, \hyperpage{68}
+    \subitem {adc\_gpio\_config}, \hyperpage{66}
+    \subitem {adc\_init}, \hyperpage{67}
+    \subitem {adc\_reset}, \hyperpage{68}
+    \subitem {spi\_1}, \hyperpage{68}
+    \subitem {timer\_2}, \hyperpage{68}
+  \item {1273pv19t.h}, \hyperpage{69}
+    \subitem {adc\_init}, \hyperpage{72}
+    \subitem {adc\_n}, \hyperpage{72}
+    \subitem {adc\_reset}, \hyperpage{73}
+    \subitem {PIN\_ADC\_MODE\_A0}, \hyperpage{70}
+    \subitem {PIN\_ADC\_MODE\_A1}, \hyperpage{70}
+    \subitem {PIN\_ADC\_NSS}, \hyperpage{71}
+    \subitem {PIN\_ADC\_RST}, \hyperpage{71}
+    \subitem {PIN\_ADC\_SDIFS\_IRQ}, \hyperpage{71}
+    \subitem {PORT\_ADC\_MODE}, \hyperpage{71}
+    \subitem {PORT\_ADC\_NSS}, \hyperpage{71}
+    \subitem {PORT\_ADC\_RST}, \hyperpage{71}
+    \subitem {PORT\_ADC\_SDIFS\_IRQ}, \hyperpage{72}
+
+  \indexspace
+
+  \item {adc\_1}
+    \subitem {1273pv19t.c}, \hyperpage{68}
+    \subitem {dma.c}, \hyperpage{79}
+    \subitem {main.c}, \hyperpage{142}
+    \subitem {timers.c}, \hyperpage{195}
+  \item {adc\_chs\_mode}
+    \subitem {ai\_oper\_mode\_struct}, \hyperpage{7}
+  \item {adc\_config\_data}, \hyperpage{5}
+    \subitem {avg\_num}, \hyperpage{6}
+    \subitem {ch\_rx\_num}, \hyperpage{6}
+    \subitem {init\_flag}, \hyperpage{6}
+    \subitem {spi\_struct}, \hyperpage{6}
+    \subitem {timer\_n\_capture}, \hyperpage{6}
+  \item {adc\_gpio\_config}
+    \subitem {1273pv19t.c}, \hyperpage{66}
+  \item {adc\_init}
+    \subitem {1273pv19t.c}, \hyperpage{67}
+    \subitem {1273pv19t.h}, \hyperpage{72}
+  \item {adc\_n}
+    \subitem {1273pv19t.h}, \hyperpage{72}
+  \item {adc\_reset}
+    \subitem {1273pv19t.c}, \hyperpage{68}
+    \subitem {1273pv19t.h}, \hyperpage{73}
+  \item {add\_info}
+    \subitem {plc\_sof\_ver\_struct}, \hyperpage{34}
+  \item {add\_switch\_1}
+    \subitem {config\_struct}, \hyperpage{19}
+  \item {add\_switch\_2}
+    \subitem {config\_struct}, \hyperpage{20}
+  \item {address}
+    \subitem {range\_start\_struct}, \hyperpage{41}
+  \item {AI\_CodeADC}
+    \subitem {mpa\_register\_space\_ext\_ram}, \hyperpage{26}
+  \item {AI\_DiagnosticChannel}
+    \subitem {mpa\_register\_space\_ext\_ram}, \hyperpage{26}
+  \item {AI\_MaxCodeADC}
+    \subitem {mpa\_register\_space\_ext\_rom}, \hyperpage{28}
+  \item {AI\_MetrologDat}
+    \subitem {mpa\_register\_space\_ext\_rom}, \hyperpage{28}
+  \item {AI\_MinCodeADC}
+    \subitem {mpa\_register\_space\_ext\_rom}, \hyperpage{29}
+  \item {AI\_NumForAverag}
+    \subitem {mpa\_register\_space\_ext\_rom}, \hyperpage{29}
+  \item {ai\_oper\_mode}
+    \subitem {external\_rom.h}, \hyperpage{114}
+  \item {ai\_oper\_mode\_struct}, \hyperpage{7}
+    \subitem {adc\_chs\_mode}, \hyperpage{7}
+    \subitem {reserv1}, \hyperpage{7}
+  \item {AI\_OperMode}
+    \subitem {mpa\_register\_space\_ext\_rom}, \hyperpage{29}
+  \item {AI\_PhysQuantFloat}
+    \subitem {mpa\_register\_space\_ext\_ram}, \hyperpage{26}
+  \item {AI\_PolynConst0}
+    \subitem {mpa\_register\_space\_ext\_rom}, \hyperpage{29}
+  \item {AI\_PolynConst1}
+    \subitem {mpa\_register\_space\_ext\_rom}, \hyperpage{29}
+  \item {AI\_PolynConst2}
+    \subitem {mpa\_register\_space\_ext\_rom}, \hyperpage{29}
+  \item {AI\_PolynConst3}
+    \subitem {mpa\_register\_space\_ext\_rom}, \hyperpage{30}
+  \item {AI\_PolynConst4}
+    \subitem {mpa\_register\_space\_ext\_rom}, \hyperpage{30}
+  \item {AI\_PolynConst5}
+    \subitem {mpa\_register\_space\_ext\_rom}, \hyperpage{30}
+  \item {AI\_PolynConst6}
+    \subitem {mpa\_register\_space\_ext\_rom}, \hyperpage{30}
+  \item {AI\_RomRegs}
+    \subitem {mpa\_register\_space\_ext\_ram}, \hyperpage{26}
+  \item {AI\_SignalChanged}
+    \subitem {mpa\_register\_space\_ext\_ram}, \hyperpage{27}
+  \item {avg\_num}
+    \subitem {adc\_config\_data}, \hyperpage{6}
+
+  \indexspace
+
+  \item {BATCH}
+    \subitem {external\_rom.h}, \hyperpage{110}
+  \item {batch}
+    \subitem {device\_type\_struct}, \hyperpage{22}
+  \item {both\_control}
+    \subitem {service\_byte\_struct\_pm}, \hyperpage{46}
+  \item {buffer}
+    \subitem {spi\_config\_data}, \hyperpage{49}
+    \subitem {uart\_config\_data}, \hyperpage{60}
+  \item {buffer\_count}
+    \subitem {uart\_config\_data}, \hyperpage{60}
+  \item {buffer\_counter}
+    \subitem {spi\_config\_data}, \hyperpage{50}
+  \item {BUFFER\_MASK}
+    \subitem {uart.h}, \hyperpage{212}
+  \item {bus\_defect}
+    \subitem {external\_ram.h}, \hyperpage{99}
+  \item {bus\_defect\_struct}, \hyperpage{7}
+    \subitem {fail\_timeout}, \hyperpage{8}
+    \subitem {many\_fail\_packet}, \hyperpage{8}
+    \subitem {reserv}, \hyperpage{8}
+
+  \indexspace
+
+  \item {ch\_rx\_num}
+    \subitem {adc\_config\_data}, \hyperpage{6}
+  \item {CHANEL\_NUMBER}
+    \subitem {mdr32\_drivers.h}, \hyperpage{149}
+  \item {chassis\_addr}
+    \subitem {device\_address\_struct}, \hyperpage{21}
+  \item {checksum}
+    \subitem {packet\_tail\_Struct}, \hyperpage{33}
+  \item {clock.c}, \hyperpage{74}
+    \subitem {clock\_init}, \hyperpage{74}
+  \item {clock.h}, \hyperpage{75}
+    \subitem {clock\_init}, \hyperpage{75}
+  \item {clock\_init}
+    \subitem {clock.c}, \hyperpage{74}
+    \subitem {clock.h}, \hyperpage{75}
+  \item {CLOCK\_LEDS}
+    \subitem {leds.h}, \hyperpage{125}
+  \item {cmd}
+    \subitem {cmd\_header\_struct}, \hyperpage{9}
+  \item {cmd\_header\_struct}, \hyperpage{8}
+    \subitem {cmd}, \hyperpage{9}
+    \subitem {length}, \hyperpage{9}
+    \subitem {result}, \hyperpage{9}
+  \item {cmd\_number}
+    \subitem {packet\_header\_struct}, \hyperpage{31}
+  \item {cmd\_struct}, \hyperpage{10}
+    \subitem {data}, \hyperpage{10}
+    \subitem {header}, \hyperpage{10}
+  \item {cmd\_with\_data}
+    \subitem {tx\_rx\_packet\_struct}, \hyperpage{58}
+  \item {common\_ram\_register\_space}
+    \subitem {ram\_data\_struct}, \hyperpage{38}
+  \item {common\_ram\_registers}
+    \subitem {external\_ram.h}, \hyperpage{99}
+  \item {common\_register\_space\_ext\_ram}, \hyperpage{11}
+    \subitem {PLC\_BusDefect\_B1}, \hyperpage{12}
+    \subitem {PLC\_BusDefect\_B2}, \hyperpage{12}
+    \subitem {PLC\_CM\_State}, \hyperpage{12}
+    \subitem {PLC\_CommonRomRegs}, \hyperpage{13}
+    \subitem {PLC\_Config}, \hyperpage{13}
+    \subitem {PLC\_CorrPackFromDevice\_B1}, \hyperpage{13}
+    \subitem {PLC\_CorrPackFromDevice\_B2}, \hyperpage{13}
+    \subitem {PLC\_CorrPackToDevice\_B1}, \hyperpage{13}
+    \subitem {PLC\_CorrPackToDevice\_B2}, \hyperpage{13}
+    \subitem {PLC\_Durat}, \hyperpage{14}
+    \subitem {PLC\_ErrPackFromDevice\_B1}, \hyperpage{14}
+    \subitem {PLC\_ErrPackFromDevice\_B2}, \hyperpage{14}
+    \subitem {PLC\_ErrPackToDevice\_B1}, \hyperpage{14}
+    \subitem {PLC\_ErrPackToDevice\_B2}, \hyperpage{14}
+    \subitem {PLC\_PMAddr}, \hyperpage{14}
+    \subitem {PLC\_PowerDefect}, \hyperpage{15}
+    \subitem {PLC\_SelfDiagDefect}, \hyperpage{15}
+    \subitem {PLC\_SoftVer}, \hyperpage{15}
+    \subitem {Reserv\_1}, \hyperpage{15}
+  \item {common\_register\_space\_ext\_rom}, \hyperpage{16}
+    \subitem {PLC\_BusConfig\_B1}, \hyperpage{17}
+    \subitem {PLC\_BusConfig\_B2}, \hyperpage{17}
+    \subitem {PLC\_DeviceInfo}, \hyperpage{17}
+    \subitem {PLC\_DeviceType}, \hyperpage{17}
+    \subitem {PLC\_DualControl}, \hyperpage{17}
+    \subitem {PLC\_NumCrcErrorsForDefect\_B1}, \hyperpage{17}
+    \subitem {PLC\_NumCrcErrorsForDefect\_B2}, \hyperpage{18}
+    \subitem {PLC\_SerialNumber}, \hyperpage{18}
+    \subitem {PLC\_TimeoutForDefect\_B1}, \hyperpage{18}
+    \subitem {PLC\_TimeoutForDefect\_B2}, \hyperpage{18}
+    \subitem {PLC\_TimeSoloWork}, \hyperpage{18}
+    \subitem {PLC\_TimeToRepair}, \hyperpage{18}
+    \subitem {Reserv\_2}, \hyperpage{19}
+  \item {common\_rom\_registers}
+    \subitem {external\_rom.h}, \hyperpage{114}
+  \item {common\_rom\_registers\_space}
+    \subitem {rom\_data\_struct}, \hyperpage{43}
+  \item {CONFIG}
+    \subitem {rs422\_protocol.h}, \hyperpage{164}
+  \item {config\_struct}, \hyperpage{19}
+    \subitem {add\_switch\_1}, \hyperpage{19}
+    \subitem {add\_switch\_2}, \hyperpage{20}
+    \subitem {main\_switch}, \hyperpage{20}
+    \subitem {reserv}, \hyperpage{20}
+  \item {container\_of}
+    \subitem {list.h}, \hyperpage{131}
+  \item {crc32}
+    \subitem {rs422\_protocol.c}, \hyperpage{152}
+    \subitem {rs422\_protocol.h}, \hyperpage{169}
+  \item {CRC\_ERROR}
+    \subitem {rs422\_protocol.h}, \hyperpage{168}
+  \item {crc\_table}
+    \subitem {ram\_data\_struct}, \hyperpage{38}
+
+  \indexspace
+
+  \item {data}
+    \subitem {cmd\_struct}, \hyperpage{10}
+    \subitem {timer\_irq\_list\_struct}, \hyperpage{56}
+  \item {delay\_micro}
+    \subitem {timers.c}, \hyperpage{191}
+    \subitem {timers.h}, \hyperpage{198}
+  \item {delay\_milli}
+    \subitem {timers.c}, \hyperpage{191}
+    \subitem {timers.h}, \hyperpage{198}
+  \item {DEV\_INFO}
+    \subitem {external\_rom.h}, \hyperpage{110}
+  \item {DEV\_TYPE}
+    \subitem {external\_rom.h}, \hyperpage{110}
+  \item {DEV\_TYPE\_RESERV}
+    \subitem {external\_rom.h}, \hyperpage{111}
+  \item {develop}
+    \subitem {plc\_sof\_ver\_struct}, \hyperpage{34}
+  \item {device\_address}
+    \subitem {external\_ram.h}, \hyperpage{99}
+  \item {device\_address\_struct}, \hyperpage{20}
+    \subitem {chassis\_addr}, \hyperpage{21}
+    \subitem {module\_addr}, \hyperpage{21}
+    \subitem {reserv}, \hyperpage{21}
+  \item {device\_config}
+    \subitem {external\_ram.h}, \hyperpage{100}
+  \item {device\_type}
+    \subitem {external\_rom.h}, \hyperpage{114}
+  \item {device\_type\_struct}, \hyperpage{21}
+    \subitem {batch}, \hyperpage{22}
+    \subitem {modification}, \hyperpage{22}
+    \subitem {reserv}, \hyperpage{22}
+    \subitem {revision}, \hyperpage{22}
+    \subitem {type}, \hyperpage{23}
+    \subitem {use\_object}, \hyperpage{23}
+  \item {devices}
+    \subitem {ebc.h}, \hyperpage{85}
+  \item {dma.c}, \hyperpage{76}
+    \subitem {adc\_1}, \hyperpage{79}
+    \subitem {dma\_common\_init}, \hyperpage{77}
+    \subitem {DMA\_IRQHandler}, \hyperpage{77}
+    \subitem {spi\_1}, \hyperpage{79}
+    \subitem {spi\_2}, \hyperpage{79}
+    \subitem {timer\_1}, \hyperpage{79}
+    \subitem {timer\_2}, \hyperpage{79}
+    \subitem {timer\_3}, \hyperpage{79}
+    \subitem {uart\_1}, \hyperpage{79}
+    \subitem {uart\_2}, \hyperpage{80}
+  \item {dma.h}, \hyperpage{80}
+    \subitem {dma\_common\_init}, \hyperpage{81}
+  \item {dma\_channel}
+    \subitem {spi\_dma\_params}, \hyperpage{51}
+    \subitem {uart\_dma\_params}, \hyperpage{62}
+  \item {DMA\_Channel\_SPI\_RX}
+    \subitem {spi\_dma\_params}, \hyperpage{51}
+  \item {DMA\_Channel\_UART\_RX}
+    \subitem {uart\_dma\_params}, \hyperpage{62}
+  \item {dma\_common\_init}
+    \subitem {dma.c}, \hyperpage{77}
+    \subitem {dma.h}, \hyperpage{81}
+  \item {DMA\_InitStructure\_SPI\_RX}
+    \subitem {spi\_dma\_params}, \hyperpage{52}
+  \item {DMA\_InitStructure\_UART\_RX}
+    \subitem {uart\_dma\_params}, \hyperpage{62}
+  \item {dma\_irq\_counter}
+    \subitem {spi\_dma\_params}, \hyperpage{52}
+    \subitem {uart\_dma\_params}, \hyperpage{62}
+  \item {DMA\_IRQHandler}
+    \subitem {dma.c}, \hyperpage{77}
+  \item {dma\_spi\_rx\_init}
+    \subitem {spi.c}, \hyperpage{180}
+    \subitem {spi.h}, \hyperpage{187}
+  \item {DMA\_UART\_RX\_init}
+    \subitem {uart.c}, \hyperpage{201}
+    \subitem {uart.h}, \hyperpage{215}
+  \item {do\_mpa\_task}
+    \subitem {main.c}, \hyperpage{137}
+    \subitem {main.h}, \hyperpage{145}
+  \item {DUAL\_CONTROL}
+    \subitem {external\_rom.h}, \hyperpage{111}
+
+  \indexspace
+
+  \item {ebc.c}, \hyperpage{81}
+    \subitem {ebc\_gpio\_config}, \hyperpage{82}
+    \subitem {ebc\_init}, \hyperpage{83}
+  \item {ebc.h}, \hyperpage{84}
+    \subitem {devices}, \hyperpage{85}
+    \subitem {ebc\_devices}, \hyperpage{85}
+    \subitem {ebc\_init}, \hyperpage{86}
+    \subitem {EBC\_RAM}, \hyperpage{86}
+    \subitem {EBC\_ROM}, \hyperpage{86}
+  \item {ebc\_devices}
+    \subitem {ebc.h}, \hyperpage{85}
+  \item {ebc\_gpio\_config}
+    \subitem {ebc.c}, \hyperpage{82}
+  \item {ebc\_init}
+    \subitem {ebc.c}, \hyperpage{83}
+    \subitem {ebc.h}, \hyperpage{86}
+  \item {EBC\_RAM}
+    \subitem {ebc.h}, \hyperpage{86}
+  \item {EBC\_ROM}
+    \subitem {ebc.h}, \hyperpage{86}
+  \item {end}
+    \subitem {packet\_tail\_Struct}, \hyperpage{33}
+  \item {erase\_rom}
+    \subitem {external\_rom.c}, \hyperpage{105}
+    \subitem {external\_rom.h}, \hyperpage{115}
+  \item {errors}
+    \subitem {uart.h}, \hyperpage{215}
+  \item {event}
+    \subitem {timer\_irq\_list\_struct}, \hyperpage{56}
+  \item {EXT\_RAM\_START\_ADDR}
+    \subitem {external\_ram.h}, \hyperpage{94}
+  \item {EXT\_ROM\_START\_ADDR}
+    \subitem {external\_rom.h}, \hyperpage{111}
+  \item {external\_ram.c}, \hyperpage{87}
+    \subitem {find\_max\_halfword}, \hyperpage{87}
+    \subitem {init\_external\_ram\_space}, \hyperpage{88}
+    \subitem {polyn\_ch\_consts}, \hyperpage{89}
+    \subitem {ram\_space\_pointer}, \hyperpage{90}
+    \subitem {rom\_space\_pointer}, \hyperpage{90}
+  \item {external\_ram.h}, \hyperpage{90}
+    \subitem {bus\_defect}, \hyperpage{99}
+    \subitem {common\_ram\_registers}, \hyperpage{99}
+    \subitem {device\_address}, \hyperpage{99}
+    \subitem {device\_config}, \hyperpage{100}
+    \subitem {EXT\_RAM\_START\_ADDR}, \hyperpage{94}
+    \subitem {init\_external\_ram\_space}, \hyperpage{102}
+    \subitem {module\_type}, \hyperpage{100}
+    \subitem {MPA}, \hyperpage{102}
+    \subitem {mpa\_ram\_registers}, \hyperpage{100}
+    \subitem {MPCH}, \hyperpage{102}
+    \subitem {MPD}, \hyperpage{102}
+    \subitem {MPI}, \hyperpage{102}
+    \subitem {MPI\_U}, \hyperpage{102}
+    \subitem {MPPT}, \hyperpage{102}
+    \subitem {MPT}, \hyperpage{102}
+    \subitem {MSR}, \hyperpage{102}
+    \subitem {MVA}, \hyperpage{102}
+    \subitem {MVD}, \hyperpage{102}
+    \subitem {MVD\_U}, \hyperpage{102}
+    \subitem {PLC\_CONFIG\_ADD\_SWITCH1}, \hyperpage{94}
+    \subitem {PLC\_CONFIG\_ADD\_SWITCH2}, \hyperpage{94}
+    \subitem {PLC\_CONFIG\_MAIN\_SWITCH}, \hyperpage{94}
+    \subitem {PLC\_CONFIG\_RESERV}, \hyperpage{94}
+    \subitem {PLC\_PM\_CHASSIS\_ADDR}, \hyperpage{94}
+    \subitem {PLC\_PM\_MODULE\_ADDR}, \hyperpage{94}
+    \subitem {plc\_soft\_ver}, \hyperpage{100}
+    \subitem {PLC\_SOFT\_VER\_ADD\_INFO}, \hyperpage{95}
+    \subitem {PLC\_SOFT\_VER\_DEVELOP}, \hyperpage{95}
+    \subitem {PLC\_SOFT\_VER\_MODIFICATION}, \hyperpage{95}
+    \subitem {PLC\_SOFT\_VER\_REVISION}, \hyperpage{95}
+    \subitem {PLC\_SOFT\_VER\_SOFT\_VER}, \hyperpage{95}
+    \subitem {PLC\_SOFT\_VER\_TYPE}, \hyperpage{95}
+    \subitem {power\_failure}, \hyperpage{100}
+    \subitem {ram\_data}, \hyperpage{100}
+    \subitem {RAM\_REGISTER\_SPACE\_START\_ADDR}, \hyperpage{96}
+    \subitem {ram\_start\_struct}, \hyperpage{101}
+    \subitem {range}, \hyperpage{101}
+    \subitem {RESET\_BIT}, \hyperpage{96}
+    \subitem {self\_diag}, \hyperpage{101}
+    \subitem {service\_struct\_pm}, \hyperpage{101}
+    \subitem {service\_struct\_um}, \hyperpage{101}
+    \subitem {SET\_BIT}, \hyperpage{96}
+    \subitem {START\_STRUCT\_CHANGE\_FLAG}, \hyperpage{96}
+    \subitem {START\_STRUCT\_LENGTH}, \hyperpage{96}
+    \subitem {START\_STRUCT\_NUMBER\_OF\_RANGES}, \hyperpage{96}
+    \subitem {START\_STRUCT\_RANGE0\_ADDR}, \hyperpage{97}
+    \subitem {START\_STRUCT\_RANGE0\_SIZE}, \hyperpage{97}
+    \subitem {START\_STRUCT\_RANGE0\_START\_CH\_NUM}, \hyperpage{97}
+    \subitem {START\_STRUCT\_RANGE0\_TYPE}, \hyperpage{97}
+    \subitem {START\_STRUCT\_RANGE1\_ADDR}, \hyperpage{97}
+    \subitem {START\_STRUCT\_RANGE1\_SIZE}, \hyperpage{97}
+    \subitem {START\_STRUCT\_RANGE1\_START\_CH\_NUM}, \hyperpage{98}
+    \subitem {START\_STRUCT\_RANGE1\_TYPE}, \hyperpage{98}
+    \subitem {START\_STRUCT\_RANGE2\_ADDR}, \hyperpage{98}
+    \subitem {START\_STRUCT\_RANGE2\_SIZE}, \hyperpage{98}
+    \subitem {START\_STRUCT\_RANGE2\_START\_CH\_NUM}, \hyperpage{98}
+    \subitem {START\_STRUCT\_RANGE2\_TYPE}, \hyperpage{98}
+    \subitem {START\_STRUCT\_TEXT\_INFO\_ADDR}, \hyperpage{99}
+    \subitem {TEST\_BIT}, \hyperpage{99}
+    \subitem {TIMER\_NUM}, \hyperpage{99}
+    \subitem {type\_of\_module}, \hyperpage{101}
+  \item {external\_rom.c}, \hyperpage{104}
+    \subitem {erase\_rom}, \hyperpage{105}
+    \subitem {FIRST\_TIME\_INIT}, \hyperpage{105}
+    \subitem {init\_external\_rom\_space}, \hyperpage{105}
+    \subitem {memcpy\_to\_rom}, \hyperpage{106}
+    \subitem {polyn\_ch\_consts}, \hyperpage{107}
+    \subitem {read\_byte\_rom}, \hyperpage{106}
+    \subitem {write\_byte\_rom}, \hyperpage{107}
+  \item {external\_rom.h}, \hyperpage{108}
+    \subitem {ai\_oper\_mode}, \hyperpage{114}
+    \subitem {BATCH}, \hyperpage{110}
+    \subitem {common\_rom\_registers}, \hyperpage{114}
+    \subitem {DEV\_INFO}, \hyperpage{110}
+    \subitem {DEV\_TYPE}, \hyperpage{110}
+    \subitem {DEV\_TYPE\_RESERV}, \hyperpage{111}
+    \subitem {device\_type}, \hyperpage{114}
+    \subitem {DUAL\_CONTROL}, \hyperpage{111}
+    \subitem {erase\_rom}, \hyperpage{115}
+    \subitem {EXT\_ROM\_START\_ADDR}, \hyperpage{111}
+    \subitem {HWREG}, \hyperpage{111}
+    \subitem {init\_external\_rom\_space}, \hyperpage{115}
+    \subitem {MAX\_CODE\_ADC}, \hyperpage{111}
+    \subitem {memcpy\_to\_rom}, \hyperpage{116}
+    \subitem {METROLOG\_DAT}, \hyperpage{111}
+    \subitem {MIN\_CODE\_ADC}, \hyperpage{112}
+    \subitem {MODIFICATION}, \hyperpage{112}
+    \subitem {mpa\_rom\_registers}, \hyperpage{114}
+    \subitem {NUM\_CRC\_ERRORS\_FOR\_DEFECT\_B1}, \hyperpage{112}
+    \subitem {NUM\_CRC\_ERRORS\_FOR\_DEFECT\_B2}, \hyperpage{112}
+    \subitem {NUM\_FOR\_AVERAGE}, \hyperpage{112}
+    \subitem {read\_byte\_rom}, \hyperpage{116}
+    \subitem {REVISION}, \hyperpage{112}
+    \subitem {rom\_data}, \hyperpage{114}
+    \subitem {ROM\_REGISTER\_SPACE\_START\_ADDR}, \hyperpage{113}
+    \subitem {SERIAL\_NUMBER}, \hyperpage{113}
+    \subitem {TIME\_SOLO\_WORK}, \hyperpage{113}
+    \subitem {TIME\_TO\_REPAIR}, \hyperpage{113}
+    \subitem {TIMEOUT\_FOR\_DEFECT\_B1}, \hyperpage{113}
+    \subitem {TIMEOUT\_FOR\_DEFECT\_B2}, \hyperpage{113}
+    \subitem {write\_byte\_rom}, \hyperpage{117}
+
+  \indexspace
+
+  \item {fail\_bus\_1}
+    \subitem {service\_byte\_struct\_pm}, \hyperpage{46}
+  \item {fail\_bus\_2}
+    \subitem {service\_byte\_struct\_pm}, \hyperpage{46}
+  \item {fail\_chanels}
+    \subitem {self\_diag\_struct}, \hyperpage{44}
+  \item {fail\_crc\_firmware}
+    \subitem {self\_diag\_struct}, \hyperpage{44}
+  \item {fail\_download\_rom}
+    \subitem {self\_diag\_struct}, \hyperpage{44}
+  \item {fail\_firmware\_1\_bus}
+    \subitem {self\_diag\_struct}, \hyperpage{44}
+  \item {fail\_firmware\_2\_bus}
+    \subitem {self\_diag\_struct}, \hyperpage{44}
+  \item {fail\_firmware\_ram}
+    \subitem {self\_diag\_struct}, \hyperpage{44}
+  \item {fail\_soft\_ver}
+    \subitem {self\_diag\_struct}, \hyperpage{45}
+  \item {fail\_timeout}
+    \subitem {bus\_defect\_struct}, \hyperpage{8}
+  \item {fields\_cmd}
+    \subitem {rs422\_protocol.h}, \hyperpage{167}
+  \item {fields\_cmd\_header}
+    \subitem {rs422\_protocol.h}, \hyperpage{167}
+  \item {fields\_packet}
+    \subitem {rs422\_protocol.h}, \hyperpage{167}
+  \item {fields\_packet\_header}
+    \subitem {rs422\_protocol.h}, \hyperpage{167}
+  \item {fields\_packet\_tail}
+    \subitem {rs422\_protocol.h}, \hyperpage{168}
+  \item {FIFO\_SIZE}
+    \subitem {spi.h}, \hyperpage{185}
+  \item {fill\_crc32\_table}
+    \subitem {rs422\_protocol.c}, \hyperpage{152}
+    \subitem {rs422\_protocol.h}, \hyperpage{169}
+  \item {find\_max\_halfword}
+    \subitem {external\_ram.c}, \hyperpage{87}
+  \item {FIRST\_TIME\_INIT}
+    \subitem {external\_rom.c}, \hyperpage{105}
+  \item {flag\_change\_struct}
+    \subitem {start\_struct\_ext\_ram}, \hyperpage{53}
+  \item {free\_ram\_pages}
+    \subitem {internal\_ram.c}, \hyperpage{118}
+    \subitem {internal\_ram.h}, \hyperpage{121}
+
+  \indexspace
+
+  \item {GET\_UART\_BUF\_PTR}
+    \subitem {uart.h}, \hyperpage{212}
+
+  \indexspace
+
+  \item {handler}
+    \subitem {timer\_irq\_list\_struct}, \hyperpage{57}
+  \item {header}
+    \subitem {cmd\_struct}, \hyperpage{10}
+    \subitem {packet\_header\_struct}, \hyperpage{32}
+  \item {heap}
+    \subitem {main.c}, \hyperpage{142}
+  \item {heap\_ptr}
+    \subitem {internal\_ram.c}, \hyperpage{119}
+    \subitem {main.c}, \hyperpage{142}
+  \item {heap\_struct}, \hyperpage{23}
+    \subitem {memory\_page\_space}, \hyperpage{23}
+    \subitem {memory\_page\_status}, \hyperpage{24}
+  \item {HSE\_OSC}
+    \subitem {mdr32\_drivers.h}, \hyperpage{150}
+  \item {HWREG}
+    \subitem {external\_rom.h}, \hyperpage{111}
+
+  \indexspace
+
+  \item {init}
+    \subitem {service\_byte\_struct\_pm}, \hyperpage{46}
+  \item {INIT\_CMD}
+    \subitem {rs422\_protocol.h}, \hyperpage{165}
+  \item {INIT\_ERROR}
+    \subitem {uart.h}, \hyperpage{215}
+  \item {init\_external\_ram\_space}
+    \subitem {external\_ram.c}, \hyperpage{88}
+    \subitem {external\_ram.h}, \hyperpage{102}
+  \item {init\_external\_rom\_space}
+    \subitem {external\_rom.c}, \hyperpage{105}
+    \subitem {external\_rom.h}, \hyperpage{115}
+  \item {init\_flag}
+    \subitem {adc\_config\_data}, \hyperpage{6}
+  \item {init\_list\_head}
+    \subitem {list.c}, \hyperpage{128}
+    \subitem {list.h}, \hyperpage{134}
+  \item {int\_ram\_heap}
+    \subitem {internal\_ram.h}, \hyperpage{121}
+  \item {internal\_ram.c}, \hyperpage{118}
+    \subitem {free\_ram\_pages}, \hyperpage{118}
+    \subitem {heap\_ptr}, \hyperpage{119}
+    \subitem {malloc\_ram\_pages}, \hyperpage{118}
+  \item {internal\_ram.h}, \hyperpage{119}
+    \subitem {free\_ram\_pages}, \hyperpage{121}
+    \subitem {int\_ram\_heap}, \hyperpage{121}
+    \subitem {malloc\_ram\_pages}, \hyperpage{122}
+    \subitem {PAGE\_NUM}, \hyperpage{121}
+    \subitem {PAGE\_SIZE}, \hyperpage{121}
+  \item {IRQn}
+    \subitem {spi\_config\_data}, \hyperpage{50}
+    \subitem {uart\_config\_data}, \hyperpage{60}
+
+  \indexspace
+
+  \item {K1986VE1T}
+    \subitem {mdr32\_drivers.h}, \hyperpage{150}
+
+  \indexspace
+
+  \item {last\_answer}
+    \subitem {service\_byte\_struct\_um}, \hyperpage{48}
+  \item {leds.c}, \hyperpage{123}
+    \subitem {leds\_gpio\_config}, \hyperpage{123}
+  \item {leds.h}, \hyperpage{124}
+    \subitem {CLOCK\_LEDS}, \hyperpage{125}
+    \subitem {leds\_gpio\_config}, \hyperpage{126}
+    \subitem {PIN\_LED\_ERROR\_WORK}, \hyperpage{125}
+    \subitem {PIN\_LED\_OK\_WORK}, \hyperpage{125}
+    \subitem {PORT\_LEDS}, \hyperpage{125}
+    \subitem {RESET\_LED\_ERROR\_WORK}, \hyperpage{125}
+    \subitem {RESET\_LED\_OK\_WORK}, \hyperpage{126}
+    \subitem {SET\_LED\_ERROR\_WORK}, \hyperpage{126}
+    \subitem {SET\_LED\_OK\_WORK}, \hyperpage{126}
+  \item {leds\_gpio\_config}
+    \subitem {leds.c}, \hyperpage{123}
+    \subitem {leds.h}, \hyperpage{126}
+  \item {length}
+    \subitem {cmd\_header\_struct}, \hyperpage{9}
+    \subitem {start\_struct\_ext\_ram}, \hyperpage{53}
+  \item {list}
+    \subitem {timer\_irq\_list\_struct}, \hyperpage{57}
+  \item {list.c}, \hyperpage{127}
+    \subitem {\_\_list\_add}, \hyperpage{127}
+    \subitem {\_\_list\_del}, \hyperpage{128}
+    \subitem {init\_list\_head}, \hyperpage{128}
+    \subitem {list\_add}, \hyperpage{128}
+    \subitem {list\_add\_tail}, \hyperpage{128}
+    \subitem {list\_del}, \hyperpage{129}
+    \subitem {list\_empty}, \hyperpage{129}
+    \subitem {list\_is\_last}, \hyperpage{129}
+  \item {list.h}, \hyperpage{130}
+    \subitem {\_\_list\_add}, \hyperpage{133}
+    \subitem {\_\_list\_del}, \hyperpage{133}
+    \subitem {container\_of}, \hyperpage{131}
+    \subitem {init\_list\_head}, \hyperpage{134}
+    \subitem {list\_add}, \hyperpage{134}
+    \subitem {list\_add\_tail}, \hyperpage{134}
+    \subitem {list\_del}, \hyperpage{135}
+    \subitem {list\_empty}, \hyperpage{135}
+    \subitem {list\_entry}, \hyperpage{131}
+    \subitem {list\_for\_each}, \hyperpage{132}
+    \subitem {list\_for\_each\_entry}, \hyperpage{132}
+    \subitem {LIST\_HEAD}, \hyperpage{132}
+    \subitem {list\_head}, \hyperpage{133}
+    \subitem {LIST\_HEAD\_INIT}, \hyperpage{132}
+    \subitem {list\_is\_last}, \hyperpage{135}
+  \item {list\_add}
+    \subitem {list.c}, \hyperpage{128}
+    \subitem {list.h}, \hyperpage{134}
+  \item {list\_add\_tail}
+    \subitem {list.c}, \hyperpage{128}
+    \subitem {list.h}, \hyperpage{134}
+  \item {list\_del}
+    \subitem {list.c}, \hyperpage{129}
+    \subitem {list.h}, \hyperpage{135}
+  \item {list\_empty}
+    \subitem {list.c}, \hyperpage{129}
+    \subitem {list.h}, \hyperpage{135}
+  \item {list\_entry}
+    \subitem {list.h}, \hyperpage{131}
+  \item {list\_for\_each}
+    \subitem {list.h}, \hyperpage{132}
+  \item {list\_for\_each\_entry}
+    \subitem {list.h}, \hyperpage{132}
+  \item {LIST\_HEAD}
+    \subitem {list.h}, \hyperpage{132}
+  \item {list\_head}
+    \subitem {list.h}, \hyperpage{133}
+  \item {LIST\_HEAD\_INIT}
+    \subitem {list.h}, \hyperpage{132}
+  \item {list\_head\_struct}, \hyperpage{24}
+    \subitem {next}, \hyperpage{25}
+    \subitem {prev}, \hyperpage{25}
+  \item {list\_is\_last}
+    \subitem {list.c}, \hyperpage{129}
+    \subitem {list.h}, \hyperpage{135}
+  \item {list\_tmr\_handler\_add\_tail}
+    \subitem {timers.c}, \hyperpage{192}
+    \subitem {timers.h}, \hyperpage{198}
+  \item {list\_tmr\_handler\_init}
+    \subitem {timers.c}, \hyperpage{192}
+    \subitem {timers.h}, \hyperpage{199}
+
+  \indexspace
+
+  \item {main}
+    \subitem {main.c}, \hyperpage{138}
+  \item {main.c}, \hyperpage{136}
+    \subitem {adc\_1}, \hyperpage{142}
+    \subitem {do\_mpa\_task}, \hyperpage{137}
+    \subitem {heap}, \hyperpage{142}
+    \subitem {heap\_ptr}, \hyperpage{142}
+    \subitem {main}, \hyperpage{138}
+    \subitem {ram\_space\_pointer}, \hyperpage{142}
+    \subitem {receive\_adc\_chanel\_pack}, \hyperpage{140}
+    \subitem {request\_data}, \hyperpage{140}
+    \subitem {rom\_space\_pointer}, \hyperpage{142}
+    \subitem {spi\_1}, \hyperpage{143}
+    \subitem {spi\_2}, \hyperpage{143}
+    \subitem {sync\_adc\_chanels}, \hyperpage{141}
+    \subitem {timer\_1}, \hyperpage{143}
+    \subitem {timer\_2}, \hyperpage{143}
+    \subitem {timer\_3}, \hyperpage{143}
+    \subitem {tmr\_handler\_head}, \hyperpage{143}
+    \subitem {uart\_1}, \hyperpage{144}
+    \subitem {uart\_2}, \hyperpage{144}
+  \item {main.h}, \hyperpage{144}
+    \subitem {do\_mpa\_task}, \hyperpage{145}
+    \subitem {receive\_adc\_chanel\_pack}, \hyperpage{146}
+    \subitem {request\_data}, \hyperpage{147}
+    \subitem {sync\_adc\_chanels}, \hyperpage{148}
+  \item {main\_switch}
+    \subitem {config\_struct}, \hyperpage{20}
+  \item {malloc\_ram\_pages}
+    \subitem {internal\_ram.c}, \hyperpage{118}
+    \subitem {internal\_ram.h}, \hyperpage{122}
+  \item {many\_fail\_packet}
+    \subitem {bus\_defect\_struct}, \hyperpage{8}
+  \item {master}
+    \subitem {service\_byte\_struct\_pm}, \hyperpage{47}
+  \item {MAX\_CHANEL\_NUMBER}
+    \subitem {mdr32\_drivers.h}, \hyperpage{150}
+  \item {MAX\_CODE\_ADC}
+    \subitem {external\_rom.h}, \hyperpage{111}
+  \item {mdr32\_drivers.h}, \hyperpage{148}
+    \subitem {CHANEL\_NUMBER}, \hyperpage{149}
+    \subitem {HSE\_OSC}, \hyperpage{150}
+    \subitem {K1986VE1T}, \hyperpage{150}
+    \subitem {MAX\_CHANEL\_NUMBER}, \hyperpage{150}
+    \subitem {PM\_CHASSIS\_ADDR}, \hyperpage{150}
+    \subitem {PM\_DEV\_ADDR}, \hyperpage{150}
+    \subitem {WORK\_FREQ}, \hyperpage{150}
+  \item {memcpy\_to\_rom}
+    \subitem {external\_rom.c}, \hyperpage{106}
+    \subitem {external\_rom.h}, \hyperpage{116}
+  \item {memory\_page\_space}
+    \subitem {heap\_struct}, \hyperpage{23}
+  \item {memory\_page\_status}
+    \subitem {heap\_struct}, \hyperpage{24}
+  \item {METROLOG\_DAT}
+    \subitem {external\_rom.h}, \hyperpage{111}
+  \item {MIN\_CODE\_ADC}
+    \subitem {external\_rom.h}, \hyperpage{112}
+  \item {MODIFICATION}
+    \subitem {external\_rom.h}, \hyperpage{112}
+  \item {modification}
+    \subitem {device\_type\_struct}, \hyperpage{22}
+    \subitem {plc\_sof\_ver\_struct}, \hyperpage{34}
+  \item {module\_addr}
+    \subitem {device\_address\_struct}, \hyperpage{21}
+  \item {module\_type}
+    \subitem {external\_ram.h}, \hyperpage{100}
+  \item {MPA}
+    \subitem {external\_ram.h}, \hyperpage{102}
+  \item {mpa\_ram\_register\_space}
+    \subitem {ram\_data\_struct}, \hyperpage{38}
+  \item {mpa\_ram\_registers}
+    \subitem {external\_ram.h}, \hyperpage{100}
+  \item {mpa\_register\_space\_ext\_ram}, \hyperpage{25}
+    \subitem {AI\_CodeADC}, \hyperpage{26}
+    \subitem {AI\_DiagnosticChannel}, \hyperpage{26}
+    \subitem {AI\_PhysQuantFloat}, \hyperpage{26}
+    \subitem {AI\_RomRegs}, \hyperpage{26}
+    \subitem {AI\_SignalChanged}, \hyperpage{27}
+    \subitem {Reserv\_6}, \hyperpage{27}
+  \item {mpa\_register\_space\_ext\_rom}, \hyperpage{27}
+    \subitem {AI\_MaxCodeADC}, \hyperpage{28}
+    \subitem {AI\_MetrologDat}, \hyperpage{28}
+    \subitem {AI\_MinCodeADC}, \hyperpage{29}
+    \subitem {AI\_NumForAverag}, \hyperpage{29}
+    \subitem {AI\_OperMode}, \hyperpage{29}
+    \subitem {AI\_PolynConst0}, \hyperpage{29}
+    \subitem {AI\_PolynConst1}, \hyperpage{29}
+    \subitem {AI\_PolynConst2}, \hyperpage{29}
+    \subitem {AI\_PolynConst3}, \hyperpage{30}
+    \subitem {AI\_PolynConst4}, \hyperpage{30}
+    \subitem {AI\_PolynConst5}, \hyperpage{30}
+    \subitem {AI\_PolynConst6}, \hyperpage{30}
+    \subitem {Reserv\_3}, \hyperpage{30}
+    \subitem {Reserv\_4}, \hyperpage{30}
+    \subitem {Reserv\_5}, \hyperpage{31}
+  \item {mpa\_rom\_registers}
+    \subitem {external\_rom.h}, \hyperpage{114}
+  \item {mpa\_rom\_registers\_space}
+    \subitem {rom\_data\_struct}, \hyperpage{43}
+  \item {MPCH}
+    \subitem {external\_ram.h}, \hyperpage{102}
+  \item {MPD}
+    \subitem {external\_ram.h}, \hyperpage{102}
+  \item {MPI}
+    \subitem {external\_ram.h}, \hyperpage{102}
+  \item {MPI\_U}
+    \subitem {external\_ram.h}, \hyperpage{102}
+  \item {MPPT}
+    \subitem {external\_ram.h}, \hyperpage{102}
+  \item {MPT}
+    \subitem {external\_ram.h}, \hyperpage{102}
+  \item {MSR}
+    \subitem {external\_ram.h}, \hyperpage{102}
+  \item {MVA}
+    \subitem {external\_ram.h}, \hyperpage{102}
+  \item {MVD}
+    \subitem {external\_ram.h}, \hyperpage{102}
+  \item {MVD\_U}
+    \subitem {external\_ram.h}, \hyperpage{102}
+
+  \indexspace
+
+  \item {next}
+    \subitem {list\_head\_struct}, \hyperpage{25}
+  \item {NO\_ERROR}
+    \subitem {rs422\_protocol.h}, \hyperpage{168}
+  \item {NO\_ERRORS}
+    \subitem {uart.h}, \hyperpage{215}
+  \item {NUM\_CRC\_ERRORS\_FOR\_DEFECT\_B1}
+    \subitem {external\_rom.h}, \hyperpage{112}
+  \item {NUM\_CRC\_ERRORS\_FOR\_DEFECT\_B2}
+    \subitem {external\_rom.h}, \hyperpage{112}
+  \item {NUM\_FOR\_AVERAGE}
+    \subitem {external\_rom.h}, \hyperpage{112}
+  \item {NUMBER\_CMDS\_IN\_PACKET}
+    \subitem {rs422\_protocol.h}, \hyperpage{165}
+  \item {number\_of\_ranges}
+    \subitem {start\_struct\_ext\_ram}, \hyperpage{53}
+
+  \indexspace
+
+  \item {PACKET\_ERROR}
+    \subitem {rs422\_protocol.h}, \hyperpage{168}
+  \item {PACKET\_HEAD}
+    \subitem {rs422\_protocol.h}, \hyperpage{165}
+  \item {packet\_header}
+    \subitem {tx\_rx\_packet\_struct}, \hyperpage{58}
+  \item {packet\_header\_struct}, \hyperpage{31}
+    \subitem {cmd\_number}, \hyperpage{31}
+    \subitem {header}, \hyperpage{32}
+    \subitem {packet\_length}, \hyperpage{32}
+    \subitem {receiver\_addr}, \hyperpage{32}
+    \subitem {sender\_addr}, \hyperpage{32}
+    \subitem {service\_byte}, \hyperpage{32}
+  \item {packet\_length}
+    \subitem {packet\_header\_struct}, \hyperpage{32}
+  \item {packet\_rx}
+    \subitem {ram\_data\_struct}, \hyperpage{38}
+  \item {PACKET\_TAIL}
+    \subitem {rs422\_protocol.h}, \hyperpage{165}
+  \item {packet\_tail}
+    \subitem {tx\_rx\_packet\_struct}, \hyperpage{58}
+  \item {packet\_tail\_Struct}, \hyperpage{33}
+    \subitem {checksum}, \hyperpage{33}
+    \subitem {end}, \hyperpage{33}
+  \item {packet\_tx}
+    \subitem {ram\_data\_struct}, \hyperpage{38}
+  \item {PAGE\_NUM}
+    \subitem {internal\_ram.h}, \hyperpage{121}
+  \item {PAGE\_SIZE}
+    \subitem {internal\_ram.h}, \hyperpage{121}
+  \item {PIN\_ADC\_MODE\_A0}
+    \subitem {1273pv19t.h}, \hyperpage{70}
+  \item {PIN\_ADC\_MODE\_A1}
+    \subitem {1273pv19t.h}, \hyperpage{70}
+  \item {PIN\_ADC\_NSS}
+    \subitem {1273pv19t.h}, \hyperpage{71}
+  \item {PIN\_ADC\_RST}
+    \subitem {1273pv19t.h}, \hyperpage{71}
+  \item {PIN\_ADC\_SDIFS\_IRQ}
+    \subitem {1273pv19t.h}, \hyperpage{71}
+  \item {PIN\_LED\_ERROR\_WORK}
+    \subitem {leds.h}, \hyperpage{125}
+  \item {PIN\_LED\_OK\_WORK}
+    \subitem {leds.h}, \hyperpage{125}
+  \item {PIN\_SSP1\_RX}
+    \subitem {spi.h}, \hyperpage{185}
+  \item {PIN\_SSP1\_SCK}
+    \subitem {spi.h}, \hyperpage{185}
+  \item {PIN\_SSP1\_SS}
+    \subitem {spi.h}, \hyperpage{186}
+  \item {PIN\_SSP1\_TX}
+    \subitem {spi.h}, \hyperpage{186}
+  \item {PIN\_UART1\_EN}
+    \subitem {uart.h}, \hyperpage{212}
+  \item {PIN\_UART1\_RX}
+    \subitem {uart.h}, \hyperpage{212}
+  \item {PIN\_UART1\_TX}
+    \subitem {uart.h}, \hyperpage{212}
+  \item {PIN\_UART2\_EN}
+    \subitem {uart.h}, \hyperpage{212}
+  \item {PIN\_UART2\_RX}
+    \subitem {uart.h}, \hyperpage{213}
+  \item {PIN\_UART2\_TX}
+    \subitem {uart.h}, \hyperpage{213}
+  \item {PLC\_BusConfig\_B1}
+    \subitem {common\_register\_space\_ext\_rom}, \hyperpage{17}
+  \item {PLC\_BusConfig\_B2}
+    \subitem {common\_register\_space\_ext\_rom}, \hyperpage{17}
+  \item {PLC\_BusDefect\_B1}
+    \subitem {common\_register\_space\_ext\_ram}, \hyperpage{12}
+  \item {PLC\_BusDefect\_B2}
+    \subitem {common\_register\_space\_ext\_ram}, \hyperpage{12}
+  \item {PLC\_CM\_CRITICAL\_FAULT}
+    \subitem {rs422\_protocol.h}, \hyperpage{165}
+  \item {PLC\_CM\_INIT\_1\_BUS}
+    \subitem {rs422\_protocol.h}, \hyperpage{165}
+  \item {PLC\_CM\_INIT\_2\_BUS}
+    \subitem {rs422\_protocol.h}, \hyperpage{166}
+  \item {PLC\_CM\_NOT\_INIT}
+    \subitem {rs422\_protocol.h}, \hyperpage{166}
+  \item {PLC\_CM\_REMOVE\_INIT}
+    \subitem {rs422\_protocol.h}, \hyperpage{166}
+  \item {PLC\_CM\_State}
+    \subitem {common\_register\_space\_ext\_ram}, \hyperpage{12}
+  \item {PLC\_CM\_UNKNOWN\_STATE}
+    \subitem {rs422\_protocol.h}, \hyperpage{166}
+  \item {PLC\_CommonRomRegs}
+    \subitem {common\_register\_space\_ext\_ram}, \hyperpage{13}
+  \item {PLC\_Config}
+    \subitem {common\_register\_space\_ext\_ram}, \hyperpage{13}
+  \item {PLC\_CONFIG\_ADD\_SWITCH1}
+    \subitem {external\_ram.h}, \hyperpage{94}
+  \item {PLC\_CONFIG\_ADD\_SWITCH2}
+    \subitem {external\_ram.h}, \hyperpage{94}
+  \item {PLC\_CONFIG\_MAIN\_SWITCH}
+    \subitem {external\_ram.h}, \hyperpage{94}
+  \item {PLC\_CONFIG\_RESERV}
+    \subitem {external\_ram.h}, \hyperpage{94}
+  \item {PLC\_CorrPackFromDevice\_B1}
+    \subitem {common\_register\_space\_ext\_ram}, \hyperpage{13}
+  \item {PLC\_CorrPackFromDevice\_B2}
+    \subitem {common\_register\_space\_ext\_ram}, \hyperpage{13}
+  \item {PLC\_CorrPackToDevice\_B1}
+    \subitem {common\_register\_space\_ext\_ram}, \hyperpage{13}
+  \item {PLC\_CorrPackToDevice\_B2}
+    \subitem {common\_register\_space\_ext\_ram}, \hyperpage{13}
+  \item {PLC\_DeviceInfo}
+    \subitem {common\_register\_space\_ext\_rom}, \hyperpage{17}
+  \item {PLC\_DeviceType}
+    \subitem {common\_register\_space\_ext\_rom}, \hyperpage{17}
+  \item {PLC\_DualControl}
+    \subitem {common\_register\_space\_ext\_rom}, \hyperpage{17}
+  \item {PLC\_Durat}
+    \subitem {common\_register\_space\_ext\_ram}, \hyperpage{14}
+  \item {PLC\_ErrPackFromDevice\_B1}
+    \subitem {common\_register\_space\_ext\_ram}, \hyperpage{14}
+  \item {PLC\_ErrPackFromDevice\_B2}
+    \subitem {common\_register\_space\_ext\_ram}, \hyperpage{14}
+  \item {PLC\_ErrPackToDevice\_B1}
+    \subitem {common\_register\_space\_ext\_ram}, \hyperpage{14}
+  \item {PLC\_ErrPackToDevice\_B2}
+    \subitem {common\_register\_space\_ext\_ram}, \hyperpage{14}
+  \item {PLC\_NumCrcErrorsForDefect\_B1}
+    \subitem {common\_register\_space\_ext\_rom}, \hyperpage{17}
+  \item {PLC\_NumCrcErrorsForDefect\_B2}
+    \subitem {common\_register\_space\_ext\_rom}, \hyperpage{18}
+  \item {PLC\_PM\_CHASSIS\_ADDR}
+    \subitem {external\_ram.h}, \hyperpage{94}
+  \item {PLC\_PM\_MODULE\_ADDR}
+    \subitem {external\_ram.h}, \hyperpage{94}
+  \item {PLC\_PMAddr}
+    \subitem {common\_register\_space\_ext\_ram}, \hyperpage{14}
+  \item {PLC\_PowerDefect}
+    \subitem {common\_register\_space\_ext\_ram}, \hyperpage{15}
+  \item {PLC\_SelfDiagDefect}
+    \subitem {common\_register\_space\_ext\_ram}, \hyperpage{15}
+  \item {PLC\_SerialNumber}
+    \subitem {common\_register\_space\_ext\_rom}, \hyperpage{18}
+  \item {plc\_sof\_ver\_struct}, \hyperpage{33}
+    \subitem {add\_info}, \hyperpage{34}
+    \subitem {develop}, \hyperpage{34}
+    \subitem {modification}, \hyperpage{34}
+    \subitem {revision}, \hyperpage{34}
+    \subitem {soft\_ver}, \hyperpage{35}
+    \subitem {type}, \hyperpage{35}
+  \item {plc\_soft\_ver}
+    \subitem {external\_ram.h}, \hyperpage{100}
+  \item {PLC\_SOFT\_VER\_ADD\_INFO}
+    \subitem {external\_ram.h}, \hyperpage{95}
+  \item {PLC\_SOFT\_VER\_DEVELOP}
+    \subitem {external\_ram.h}, \hyperpage{95}
+  \item {PLC\_SOFT\_VER\_MODIFICATION}
+    \subitem {external\_ram.h}, \hyperpage{95}
+  \item {PLC\_SOFT\_VER\_REVISION}
+    \subitem {external\_ram.h}, \hyperpage{95}
+  \item {PLC\_SOFT\_VER\_SOFT\_VER}
+    \subitem {external\_ram.h}, \hyperpage{95}
+  \item {PLC\_SOFT\_VER\_TYPE}
+    \subitem {external\_ram.h}, \hyperpage{95}
+  \item {PLC\_SoftVer}
+    \subitem {common\_register\_space\_ext\_ram}, \hyperpage{15}
+  \item {PLC\_TimeoutForDefect\_B1}
+    \subitem {common\_register\_space\_ext\_rom}, \hyperpage{18}
+  \item {PLC\_TimeoutForDefect\_B2}
+    \subitem {common\_register\_space\_ext\_rom}, \hyperpage{18}
+  \item {PLC\_TimeSoloWork}
+    \subitem {common\_register\_space\_ext\_rom}, \hyperpage{18}
+  \item {PLC\_TimeToRepair}
+    \subitem {common\_register\_space\_ext\_rom}, \hyperpage{18}
+  \item {PM\_ADDR\_ERROR}
+    \subitem {rs422\_protocol.h}, \hyperpage{168}
+  \item {PM\_CHASSIS\_ADDR}
+    \subitem {mdr32\_drivers.h}, \hyperpage{150}
+  \item {PM\_DEV\_ADDR}
+    \subitem {mdr32\_drivers.h}, \hyperpage{150}
+  \item {polyn\_ch\_consts}
+    \subitem {external\_ram.c}, \hyperpage{89}
+    \subitem {external\_rom.c}, \hyperpage{107}
+  \item {PORT\_ADC\_MODE}
+    \subitem {1273pv19t.h}, \hyperpage{71}
+  \item {PORT\_ADC\_NSS}
+    \subitem {1273pv19t.h}, \hyperpage{71}
+  \item {PORT\_ADC\_RST}
+    \subitem {1273pv19t.h}, \hyperpage{71}
+  \item {PORT\_ADC\_SDIFS\_IRQ}
+    \subitem {1273pv19t.h}, \hyperpage{72}
+  \item {PORT\_LEDS}
+    \subitem {leds.h}, \hyperpage{125}
+  \item {PORT\_SSP1}
+    \subitem {spi.h}, \hyperpage{186}
+  \item {PORT\_UART1}
+    \subitem {uart.h}, \hyperpage{213}
+  \item {PORT\_UART1\_EN}
+    \subitem {uart.h}, \hyperpage{213}
+  \item {PORT\_UART2}
+    \subitem {uart.h}, \hyperpage{213}
+  \item {PORT\_UART2\_EN}
+    \subitem {uart.h}, \hyperpage{213}
+  \item {POSITION\_ERROR}
+    \subitem {uart.h}, \hyperpage{215}
+  \item {power\_fail}
+    \subitem {self\_diag\_struct}, \hyperpage{45}
+  \item {power\_failure}
+    \subitem {external\_ram.h}, \hyperpage{100}
+  \item {power\_failure\_struct}, \hyperpage{35}
+    \subitem {reserv}, \hyperpage{36}
+    \subitem {v1\_3\_3}, \hyperpage{36}
+    \subitem {v1\_5}, \hyperpage{36}
+    \subitem {v2\_3\_3}, \hyperpage{36}
+    \subitem {v2\_5}, \hyperpage{36}
+  \item {prev}
+    \subitem {list\_head\_struct}, \hyperpage{25}
+  \item {protocol\_do\_cmds}
+    \subitem {rs422\_protocol.c}, \hyperpage{152}
+    \subitem {rs422\_protocol.h}, \hyperpage{169}
+  \item {protocol\_error}
+    \subitem {rs422\_protocol.h}, \hyperpage{168}
+  \item {protocol\_errors}
+    \subitem {rs422\_protocol.h}, \hyperpage{168}
+
+  \indexspace
+
+  \item {ram\_data}
+    \subitem {external\_ram.h}, \hyperpage{100}
+  \item {ram\_data\_struct}, \hyperpage{37}
+    \subitem {common\_ram\_register\_space}, \hyperpage{38}
+    \subitem {crc\_table}, \hyperpage{38}
+    \subitem {mpa\_ram\_register\_space}, \hyperpage{38}
+    \subitem {packet\_rx}, \hyperpage{38}
+    \subitem {packet\_tx}, \hyperpage{38}
+    \subitem {Reserv}, \hyperpage{39}
+    \subitem {rx\_packet\_struct}, \hyperpage{39}
+    \subitem {service\_byte\_pm}, \hyperpage{39}
+    \subitem {service\_byte\_um}, \hyperpage{39}
+    \subitem {spi\_1\_rx\_buffer}, \hyperpage{39}
+    \subitem {start\_struct}, \hyperpage{39}
+    \subitem {tx\_data}, \hyperpage{40}
+    \subitem {tx\_packet\_struct}, \hyperpage{40}
+    \subitem {uart1\_rx\_buffer}, \hyperpage{40}
+    \subitem {uart2\_rx\_buffer}, \hyperpage{40}
+  \item {RAM\_REGISTER\_SPACE\_START\_ADDR}
+    \subitem {external\_ram.h}, \hyperpage{96}
+  \item {ram\_space\_pointer}
+    \subitem {external\_ram.c}, \hyperpage{90}
+    \subitem {main.c}, \hyperpage{142}
+    \subitem {rs422\_protocol.c}, \hyperpage{161}
+    \subitem {timers.c}, \hyperpage{195}
+  \item {ram\_start\_struct}
+    \subitem {external\_ram.h}, \hyperpage{101}
+  \item {range}
+    \subitem {external\_ram.h}, \hyperpage{101}
+  \item {range\_start\_struct}, \hyperpage{40}
+    \subitem {address}, \hyperpage{41}
+    \subitem {range\_type}, \hyperpage{41}
+    \subitem {size}, \hyperpage{41}
+    \subitem {start\_channel\_num}, \hyperpage{41}
+  \item {range\_type}
+    \subitem {range\_start\_struct}, \hyperpage{41}
+  \item {ranges\_in\_start\_struct}
+    \subitem {start\_struct\_ext\_ram}, \hyperpage{53}
+  \item {read\_byte\_rom}
+    \subitem {external\_rom.c}, \hyperpage{106}
+    \subitem {external\_rom.h}, \hyperpage{116}
+  \item {READ\_CMD}
+    \subitem {rs422\_protocol.h}, \hyperpage{166}
+  \item {read\_pos}
+    \subitem {uart\_config\_data}, \hyperpage{60}
+  \item {READ\_TIMEOUT\_ERROR}
+    \subitem {uart.h}, \hyperpage{215}
+  \item {read\_timeout\_flag}
+    \subitem {uart\_timeouts}, \hyperpage{64}
+  \item {read\_val\_timeout}
+    \subitem {uart\_timeouts}, \hyperpage{64}
+  \item {ready\_to\_control}
+    \subitem {service\_byte\_struct\_um}, \hyperpage{48}
+  \item {receive\_adc\_chanel\_pack}
+    \subitem {main.c}, \hyperpage{140}
+    \subitem {main.h}, \hyperpage{146}
+  \item {receive\_packet}
+    \subitem {rs422\_protocol.c}, \hyperpage{156}
+    \subitem {rs422\_protocol.h}, \hyperpage{173}
+  \item {receiver\_addr}
+    \subitem {packet\_header\_struct}, \hyperpage{32}
+  \item {RECOGNIZE\_BUS}
+    \subitem {uart.h}, \hyperpage{214}
+  \item {request\_data}
+    \subitem {main.c}, \hyperpage{140}
+    \subitem {main.h}, \hyperpage{147}
+  \item {Reserv}
+    \subitem {ram\_data\_struct}, \hyperpage{39}
+  \item {reserv}
+    \subitem {bus\_defect\_struct}, \hyperpage{8}
+    \subitem {config\_struct}, \hyperpage{20}
+    \subitem {device\_address\_struct}, \hyperpage{21}
+    \subitem {device\_type\_struct}, \hyperpage{22}
+    \subitem {power\_failure\_struct}, \hyperpage{36}
+    \subitem {self\_diag\_struct}, \hyperpage{45}
+    \subitem {service\_byte\_struct\_um}, \hyperpage{48}
+  \item {reserv1}
+    \subitem {ai\_oper\_mode\_struct}, \hyperpage{7}
+    \subitem {self\_diag\_struct}, \hyperpage{45}
+  \item {Reserv\_1}
+    \subitem {common\_register\_space\_ext\_ram}, \hyperpage{15}
+  \item {reserv\_1}
+    \subitem {service\_byte\_struct\_pm}, \hyperpage{47}
+  \item {Reserv\_2}
+    \subitem {common\_register\_space\_ext\_rom}, \hyperpage{19}
+  \item {reserv\_2}
+    \subitem {service\_byte\_struct\_pm}, \hyperpage{47}
+  \item {Reserv\_3}
+    \subitem {mpa\_register\_space\_ext\_rom}, \hyperpage{30}
+  \item {Reserv\_4}
+    \subitem {mpa\_register\_space\_ext\_rom}, \hyperpage{30}
+  \item {Reserv\_5}
+    \subitem {mpa\_register\_space\_ext\_rom}, \hyperpage{31}
+  \item {Reserv\_6}
+    \subitem {mpa\_register\_space\_ext\_ram}, \hyperpage{27}
+  \item {RESET\_BIT}
+    \subitem {external\_ram.h}, \hyperpage{96}
+  \item {RESET\_CMD}
+    \subitem {rs422\_protocol.h}, \hyperpage{166}
+  \item {RESET\_LED\_ERROR\_WORK}
+    \subitem {leds.h}, \hyperpage{125}
+  \item {RESET\_LED\_OK\_WORK}
+    \subitem {leds.h}, \hyperpage{126}
+  \item {result}
+    \subitem {cmd\_header\_struct}, \hyperpage{9}
+  \item {REVISION}
+    \subitem {external\_rom.h}, \hyperpage{112}
+  \item {revision}
+    \subitem {device\_type\_struct}, \hyperpage{22}
+    \subitem {plc\_sof\_ver\_struct}, \hyperpage{34}
+  \item {rom\_data}
+    \subitem {external\_rom.h}, \hyperpage{114}
+  \item {rom\_data\_struct}, \hyperpage{42}
+    \subitem {common\_rom\_registers\_space}, \hyperpage{43}
+    \subitem {mpa\_rom\_registers\_space}, \hyperpage{43}
+  \item {ROM\_REGISTER\_SPACE\_START\_ADDR}
+    \subitem {external\_rom.h}, \hyperpage{113}
+  \item {rom\_space\_pointer}
+    \subitem {external\_ram.c}, \hyperpage{90}
+    \subitem {main.c}, \hyperpage{142}
+    \subitem {rs422\_protocol.c}, \hyperpage{162}
+  \item {rs422\_protocol.c}, \hyperpage{151}
+    \subitem {crc32}, \hyperpage{152}
+    \subitem {fill\_crc32\_table}, \hyperpage{152}
+    \subitem {protocol\_do\_cmds}, \hyperpage{152}
+    \subitem {ram\_space\_pointer}, \hyperpage{161}
+    \subitem {receive\_packet}, \hyperpage{156}
+    \subitem {rom\_space\_pointer}, \hyperpage{162}
+    \subitem {rx\_error\_handler}, \hyperpage{158}
+    \subitem {transmit\_packet}, \hyperpage{159}
+    \subitem {um\_service\_byte\_handler}, \hyperpage{160}
+  \item {rs422\_protocol.h}, \hyperpage{162}
+    \subitem {CONFIG}, \hyperpage{164}
+    \subitem {crc32}, \hyperpage{169}
+    \subitem {CRC\_ERROR}, \hyperpage{168}
+    \subitem {fields\_cmd}, \hyperpage{167}
+    \subitem {fields\_cmd\_header}, \hyperpage{167}
+    \subitem {fields\_packet}, \hyperpage{167}
+    \subitem {fields\_packet\_header}, \hyperpage{167}
+    \subitem {fields\_packet\_tail}, \hyperpage{168}
+    \subitem {fill\_crc32\_table}, \hyperpage{169}
+    \subitem {INIT\_CMD}, \hyperpage{165}
+    \subitem {NO\_ERROR}, \hyperpage{168}
+    \subitem {NUMBER\_CMDS\_IN\_PACKET}, \hyperpage{165}
+    \subitem {PACKET\_ERROR}, \hyperpage{168}
+    \subitem {PACKET\_HEAD}, \hyperpage{165}
+    \subitem {PACKET\_TAIL}, \hyperpage{165}
+    \subitem {PLC\_CM\_CRITICAL\_FAULT}, \hyperpage{165}
+    \subitem {PLC\_CM\_INIT\_1\_BUS}, \hyperpage{165}
+    \subitem {PLC\_CM\_INIT\_2\_BUS}, \hyperpage{166}
+    \subitem {PLC\_CM\_NOT\_INIT}, \hyperpage{166}
+    \subitem {PLC\_CM\_REMOVE\_INIT}, \hyperpage{166}
+    \subitem {PLC\_CM\_UNKNOWN\_STATE}, \hyperpage{166}
+    \subitem {PM\_ADDR\_ERROR}, \hyperpage{168}
+    \subitem {protocol\_do\_cmds}, \hyperpage{169}
+    \subitem {protocol\_error}, \hyperpage{168}
+    \subitem {protocol\_errors}, \hyperpage{168}
+    \subitem {READ\_CMD}, \hyperpage{166}
+    \subitem {receive\_packet}, \hyperpage{173}
+    \subitem {RESET\_CMD}, \hyperpage{166}
+    \subitem {rx\_error\_handler}, \hyperpage{175}
+    \subitem {transmit\_packet}, \hyperpage{176}
+    \subitem {TYPE\_CMD}, \hyperpage{167}
+    \subitem {UART\_ERROR}, \hyperpage{168}
+    \subitem {um\_service\_byte\_handler}, \hyperpage{177}
+    \subitem {WRITE\_CMD}, \hyperpage{167}
+  \item {RST\_CLK\_PCLK\_SPIn}
+    \subitem {spi\_config\_data}, \hyperpage{50}
+  \item {RST\_CLK\_PCLK\_UARTn}
+    \subitem {uart\_config\_data}, \hyperpage{60}
+  \item {rx\_error\_handler}
+    \subitem {rs422\_protocol.c}, \hyperpage{158}
+    \subitem {rs422\_protocol.h}, \hyperpage{175}
+  \item {rx\_packet\_struct}
+    \subitem {ram\_data\_struct}, \hyperpage{39}
+
+  \indexspace
+
+  \item {self\_diag}
+    \subitem {external\_ram.h}, \hyperpage{101}
+  \item {self\_diag\_struct}, \hyperpage{43}
+    \subitem {fail\_chanels}, \hyperpage{44}
+    \subitem {fail\_crc\_firmware}, \hyperpage{44}
+    \subitem {fail\_download\_rom}, \hyperpage{44}
+    \subitem {fail\_firmware\_1\_bus}, \hyperpage{44}
+    \subitem {fail\_firmware\_2\_bus}, \hyperpage{44}
+    \subitem {fail\_firmware\_ram}, \hyperpage{44}
+    \subitem {fail\_soft\_ver}, \hyperpage{45}
+    \subitem {power\_fail}, \hyperpage{45}
+    \subitem {reserv}, \hyperpage{45}
+    \subitem {reserv1}, \hyperpage{45}
+  \item {self\_diagnostics\_error}
+    \subitem {service\_byte\_struct\_pm}, \hyperpage{47}
+  \item {sender\_addr}
+    \subitem {packet\_header\_struct}, \hyperpage{32}
+  \item {SERIAL\_NUMBER}
+    \subitem {external\_rom.h}, \hyperpage{113}
+  \item {service\_byte}
+    \subitem {packet\_header\_struct}, \hyperpage{32}
+  \item {service\_byte\_pm}
+    \subitem {ram\_data\_struct}, \hyperpage{39}
+  \item {service\_byte\_struct\_pm}, \hyperpage{45}
+    \subitem {both\_control}, \hyperpage{46}
+    \subitem {fail\_bus\_1}, \hyperpage{46}
+    \subitem {fail\_bus\_2}, \hyperpage{46}
+    \subitem {init}, \hyperpage{46}
+    \subitem {master}, \hyperpage{47}
+    \subitem {reserv\_1}, \hyperpage{47}
+    \subitem {reserv\_2}, \hyperpage{47}
+    \subitem {self\_diagnostics\_error}, \hyperpage{47}
+  \item {service\_byte\_struct\_um}, \hyperpage{47}
+    \subitem {last\_answer}, \hyperpage{48}
+    \subitem {ready\_to\_control}, \hyperpage{48}
+    \subitem {reserv}, \hyperpage{48}
+  \item {service\_byte\_um}
+    \subitem {ram\_data\_struct}, \hyperpage{39}
+  \item {service\_struct\_pm}
+    \subitem {external\_ram.h}, \hyperpage{101}
+  \item {service\_struct\_um}
+    \subitem {external\_ram.h}, \hyperpage{101}
+  \item {SET\_BIT}
+    \subitem {external\_ram.h}, \hyperpage{96}
+  \item {SET\_LED\_ERROR\_WORK}
+    \subitem {leds.h}, \hyperpage{126}
+  \item {SET\_LED\_OK\_WORK}
+    \subitem {leds.h}, \hyperpage{126}
+  \item {size}
+    \subitem {range\_start\_struct}, \hyperpage{41}
+  \item {SIZE\_ERROR}
+    \subitem {uart.h}, \hyperpage{215}
+  \item {soft\_ver}
+    \subitem {plc\_sof\_ver\_struct}, \hyperpage{35}
+  \item {SPI}
+    \subitem {spi\_config\_data}, \hyperpage{50}
+  \item {spi.c}, \hyperpage{179}
+    \subitem {dma\_spi\_rx\_init}, \hyperpage{180}
+    \subitem {spi\_1}, \hyperpage{183}
+    \subitem {spi\_2}, \hyperpage{183}
+    \subitem {spi\_clean\_fifo\_rx\_buf}, \hyperpage{180}
+    \subitem {spi\_gpio\_config}, \hyperpage{181}
+    \subitem {spi\_init}, \hyperpage{181}
+    \subitem {spi\_receive\_halfword}, \hyperpage{182}
+    \subitem {spi\_transmit\_halfword}, \hyperpage{182}
+    \subitem {spi\_transmit\_message}, \hyperpage{182}
+  \item {spi.h}, \hyperpage{184}
+    \subitem {dma\_spi\_rx\_init}, \hyperpage{187}
+    \subitem {FIFO\_SIZE}, \hyperpage{185}
+    \subitem {PIN\_SSP1\_RX}, \hyperpage{185}
+    \subitem {PIN\_SSP1\_SCK}, \hyperpage{185}
+    \subitem {PIN\_SSP1\_SS}, \hyperpage{186}
+    \subitem {PIN\_SSP1\_TX}, \hyperpage{186}
+    \subitem {PORT\_SSP1}, \hyperpage{186}
+    \subitem {SPI\_BUFFER\_SIZE}, \hyperpage{186}
+    \subitem {spi\_clean\_fifo\_rx\_buf}, \hyperpage{187}
+    \subitem {spi\_init}, \hyperpage{188}
+    \subitem {spi\_n}, \hyperpage{186}
+    \subitem {spi\_n\_dma\_ch\_params}, \hyperpage{186}
+    \subitem {spi\_receive\_halfword}, \hyperpage{188}
+    \subitem {spi\_transmit\_halfword}, \hyperpage{189}
+    \subitem {spi\_transmit\_message}, \hyperpage{189}
+  \item {spi\_1}
+    \subitem {1273pv19t.c}, \hyperpage{68}
+    \subitem {dma.c}, \hyperpage{79}
+    \subitem {main.c}, \hyperpage{143}
+    \subitem {spi.c}, \hyperpage{183}
+    \subitem {timers.c}, \hyperpage{195}
+  \item {spi\_1\_rx\_buffer}
+    \subitem {ram\_data\_struct}, \hyperpage{39}
+  \item {spi\_2}
+    \subitem {dma.c}, \hyperpage{79}
+    \subitem {main.c}, \hyperpage{143}
+    \subitem {spi.c}, \hyperpage{183}
+  \item {SPI\_BUFFER\_SIZE}
+    \subitem {spi.h}, \hyperpage{186}
+  \item {spi\_clean\_fifo\_rx\_buf}
+    \subitem {spi.c}, \hyperpage{180}
+    \subitem {spi.h}, \hyperpage{187}
+  \item {spi\_config\_data}, \hyperpage{49}
+    \subitem {buffer}, \hyperpage{49}
+    \subitem {buffer\_counter}, \hyperpage{50}
+    \subitem {IRQn}, \hyperpage{50}
+    \subitem {RST\_CLK\_PCLK\_SPIn}, \hyperpage{50}
+    \subitem {SPI}, \hyperpage{50}
+    \subitem {spi\_dma\_ch}, \hyperpage{50}
+    \subitem {SSPx}, \hyperpage{50}
+  \item {spi\_dma\_ch}
+    \subitem {spi\_config\_data}, \hyperpage{50}
+  \item {spi\_dma\_params}, \hyperpage{51}
+    \subitem {dma\_channel}, \hyperpage{51}
+    \subitem {DMA\_Channel\_SPI\_RX}, \hyperpage{51}
+    \subitem {DMA\_InitStructure\_SPI\_RX}, \hyperpage{52}
+    \subitem {dma\_irq\_counter}, \hyperpage{52}
+  \item {spi\_gpio\_config}
+    \subitem {spi.c}, \hyperpage{181}
+  \item {spi\_init}
+    \subitem {spi.c}, \hyperpage{181}
+    \subitem {spi.h}, \hyperpage{188}
+  \item {spi\_n}
+    \subitem {spi.h}, \hyperpage{186}
+  \item {spi\_n\_dma\_ch\_params}
+    \subitem {spi.h}, \hyperpage{186}
+  \item {spi\_receive\_halfword}
+    \subitem {spi.c}, \hyperpage{182}
+    \subitem {spi.h}, \hyperpage{188}
+  \item {spi\_struct}
+    \subitem {adc\_config\_data}, \hyperpage{6}
+  \item {spi\_transmit\_halfword}
+    \subitem {spi.c}, \hyperpage{182}
+    \subitem {spi.h}, \hyperpage{189}
+  \item {spi\_transmit\_message}
+    \subitem {spi.c}, \hyperpage{182}
+    \subitem {spi.h}, \hyperpage{189}
+  \item {SSPx}
+    \subitem {spi\_config\_data}, \hyperpage{50}
+  \item {start\_channel\_num}
+    \subitem {range\_start\_struct}, \hyperpage{41}
+  \item {start\_struct}
+    \subitem {ram\_data\_struct}, \hyperpage{39}
+  \item {START\_STRUCT\_CHANGE\_FLAG}
+    \subitem {external\_ram.h}, \hyperpage{96}
+  \item {start\_struct\_ext\_ram}, \hyperpage{52}
+    \subitem {flag\_change\_struct}, \hyperpage{53}
+    \subitem {length}, \hyperpage{53}
+    \subitem {number\_of\_ranges}, \hyperpage{53}
+    \subitem {ranges\_in\_start\_struct}, \hyperpage{53}
+    \subitem {text\_info}, \hyperpage{54}
+  \item {START\_STRUCT\_LENGTH}
+    \subitem {external\_ram.h}, \hyperpage{96}
+  \item {START\_STRUCT\_NUMBER\_OF\_RANGES}
+    \subitem {external\_ram.h}, \hyperpage{96}
+  \item {START\_STRUCT\_RANGE0\_ADDR}
+    \subitem {external\_ram.h}, \hyperpage{97}
+  \item {START\_STRUCT\_RANGE0\_SIZE}
+    \subitem {external\_ram.h}, \hyperpage{97}
+  \item {START\_STRUCT\_RANGE0\_START\_CH\_NUM}
+    \subitem {external\_ram.h}, \hyperpage{97}
+  \item {START\_STRUCT\_RANGE0\_TYPE}
+    \subitem {external\_ram.h}, \hyperpage{97}
+  \item {START\_STRUCT\_RANGE1\_ADDR}
+    \subitem {external\_ram.h}, \hyperpage{97}
+  \item {START\_STRUCT\_RANGE1\_SIZE}
+    \subitem {external\_ram.h}, \hyperpage{97}
+  \item {START\_STRUCT\_RANGE1\_START\_CH\_NUM}
+    \subitem {external\_ram.h}, \hyperpage{98}
+  \item {START\_STRUCT\_RANGE1\_TYPE}
+    \subitem {external\_ram.h}, \hyperpage{98}
+  \item {START\_STRUCT\_RANGE2\_ADDR}
+    \subitem {external\_ram.h}, \hyperpage{98}
+  \item {START\_STRUCT\_RANGE2\_SIZE}
+    \subitem {external\_ram.h}, \hyperpage{98}
+  \item {START\_STRUCT\_RANGE2\_START\_CH\_NUM}
+    \subitem {external\_ram.h}, \hyperpage{98}
+  \item {START\_STRUCT\_RANGE2\_TYPE}
+    \subitem {external\_ram.h}, \hyperpage{98}
+  \item {START\_STRUCT\_TEXT\_INFO\_ADDR}
+    \subitem {external\_ram.h}, \hyperpage{99}
+  \item {sTIM\_ChnInit}
+    \subitem {timer\_config\_struct}, \hyperpage{54}
+  \item {sync\_adc\_chanels}
+    \subitem {main.c}, \hyperpage{141}
+    \subitem {main.h}, \hyperpage{148}
+
+  \indexspace
+
+  \item {TEST\_BIT}
+    \subitem {external\_ram.h}, \hyperpage{99}
+  \item {text\_info}
+    \subitem {start\_struct\_ext\_ram}, \hyperpage{54}
+  \item {TIME\_SOLO\_WORK}
+    \subitem {external\_rom.h}, \hyperpage{113}
+  \item {TIME\_TO\_REPAIR}
+    \subitem {external\_rom.h}, \hyperpage{113}
+  \item {TIMEOUT\_FOR\_DEFECT\_B1}
+    \subitem {external\_rom.h}, \hyperpage{113}
+  \item {TIMEOUT\_FOR\_DEFECT\_B2}
+    \subitem {external\_rom.h}, \hyperpage{113}
+  \item {timer1\_init}
+    \subitem {timers.c}, \hyperpage{192}
+  \item {timer2\_init}
+    \subitem {timers.c}, \hyperpage{193}
+  \item {TIMER2\_IRQHandler}
+    \subitem {timers.c}, \hyperpage{193}
+  \item {timer3\_init}
+    \subitem {timers.c}, \hyperpage{194}
+  \item {timer\_1}
+    \subitem {dma.c}, \hyperpage{79}
+    \subitem {main.c}, \hyperpage{143}
+    \subitem {timers.c}, \hyperpage{195}
+  \item {timer\_2}
+    \subitem {1273pv19t.c}, \hyperpage{68}
+    \subitem {dma.c}, \hyperpage{79}
+    \subitem {main.c}, \hyperpage{143}
+    \subitem {timers.c}, \hyperpage{195}
+  \item {timer\_3}
+    \subitem {dma.c}, \hyperpage{79}
+    \subitem {main.c}, \hyperpage{143}
+    \subitem {timers.c}, \hyperpage{195}
+  \item {timer\_cnt}
+    \subitem {timer\_config\_struct}, \hyperpage{55}
+  \item {timer\_config\_struct}, \hyperpage{54}
+    \subitem {sTIM\_ChnInit}, \hyperpage{54}
+    \subitem {timer\_cnt}, \hyperpage{55}
+    \subitem {TIMER\_STATUS}, \hyperpage{55}
+    \subitem {TIMERInitStruct}, \hyperpage{55}
+    \subitem {TIMERx}, \hyperpage{55}
+  \item {timer\_init}
+    \subitem {timers.c}, \hyperpage{194}
+    \subitem {timers.h}, \hyperpage{199}
+  \item {timer\_irq\_list}
+    \subitem {timers.h}, \hyperpage{197}
+  \item {timer\_irq\_list\_struct}, \hyperpage{56}
+    \subitem {data}, \hyperpage{56}
+    \subitem {event}, \hyperpage{56}
+    \subitem {handler}, \hyperpage{57}
+    \subitem {list}, \hyperpage{57}
+  \item {timer\_n}
+    \subitem {timers.h}, \hyperpage{197}
+  \item {timer\_n\_capture}
+    \subitem {adc\_config\_data}, \hyperpage{6}
+  \item {timer\_n\_timeout}
+    \subitem {uart\_timeouts}, \hyperpage{64}
+  \item {TIMER\_NUM}
+    \subitem {external\_ram.h}, \hyperpage{99}
+  \item {TIMER\_STATUS}
+    \subitem {timer\_config\_struct}, \hyperpage{55}
+  \item {TIMERInitStruct}
+    \subitem {timer\_config\_struct}, \hyperpage{55}
+  \item {timers.c}, \hyperpage{190}
+    \subitem {adc\_1}, \hyperpage{195}
+    \subitem {delay\_micro}, \hyperpage{191}
+    \subitem {delay\_milli}, \hyperpage{191}
+    \subitem {list\_tmr\_handler\_add\_tail}, \hyperpage{192}
+    \subitem {list\_tmr\_handler\_init}, \hyperpage{192}
+    \subitem {ram\_space\_pointer}, \hyperpage{195}
+    \subitem {spi\_1}, \hyperpage{195}
+    \subitem {timer1\_init}, \hyperpage{192}
+    \subitem {timer2\_init}, \hyperpage{193}
+    \subitem {TIMER2\_IRQHandler}, \hyperpage{193}
+    \subitem {timer3\_init}, \hyperpage{194}
+    \subitem {timer\_1}, \hyperpage{195}
+    \subitem {timer\_2}, \hyperpage{195}
+    \subitem {timer\_3}, \hyperpage{195}
+    \subitem {timer\_init}, \hyperpage{194}
+    \subitem {tmr\_handler\_head}, \hyperpage{196}
+  \item {timers.h}, \hyperpage{196}
+    \subitem {delay\_micro}, \hyperpage{198}
+    \subitem {delay\_milli}, \hyperpage{198}
+    \subitem {list\_tmr\_handler\_add\_tail}, \hyperpage{198}
+    \subitem {list\_tmr\_handler\_init}, \hyperpage{199}
+    \subitem {timer\_init}, \hyperpage{199}
+    \subitem {timer\_irq\_list}, \hyperpage{197}
+    \subitem {timer\_n}, \hyperpage{197}
+  \item {TIMERx}
+    \subitem {timer\_config\_struct}, \hyperpage{55}
+  \item {tmr\_handler\_head}
+    \subitem {main.c}, \hyperpage{143}
+    \subitem {timers.c}, \hyperpage{196}
+  \item {transmit\_packet}
+    \subitem {rs422\_protocol.c}, \hyperpage{159}
+    \subitem {rs422\_protocol.h}, \hyperpage{176}
+  \item {tx\_data}
+    \subitem {ram\_data\_struct}, \hyperpage{40}
+  \item {tx\_packet\_struct}
+    \subitem {ram\_data\_struct}, \hyperpage{40}
+  \item {tx\_rx\_packet\_struct}, \hyperpage{57}
+    \subitem {cmd\_with\_data}, \hyperpage{58}
+    \subitem {packet\_header}, \hyperpage{58}
+    \subitem {packet\_tail}, \hyperpage{58}
+  \item {type}
+    \subitem {device\_type\_struct}, \hyperpage{23}
+    \subitem {plc\_sof\_ver\_struct}, \hyperpage{35}
+  \item {TYPE\_CMD}
+    \subitem {rs422\_protocol.h}, \hyperpage{167}
+  \item {type\_of\_module}
+    \subitem {external\_ram.h}, \hyperpage{101}
+
+  \indexspace
+
+  \item {UART}
+    \subitem {uart\_config\_data}, \hyperpage{60}
+  \item {uart.c}, \hyperpage{200}
+    \subitem {DMA\_UART\_RX\_init}, \hyperpage{201}
+    \subitem {UART1\_IRQHandler}, \hyperpage{201}
+    \subitem {UART2\_IRQHandler}, \hyperpage{202}
+    \subitem {uart\_1}, \hyperpage{209}
+    \subitem {uart\_2}, \hyperpage{209}
+    \subitem {uart\_clean}, \hyperpage{202}
+    \subitem {uart\_get\_buf\_counter}, \hyperpage{202}
+    \subitem {uart\_gpio\_config}, \hyperpage{203}
+    \subitem {uart\_init}, \hyperpage{204}
+    \subitem {uart\_read}, \hyperpage{205}
+    \subitem {uart\_read\_pos}, \hyperpage{206}
+    \subitem {uart\_set\_pos}, \hyperpage{206}
+    \subitem {uart\_set\_read\_timeout}, \hyperpage{207}
+    \subitem {uart\_set\_write\_timeout}, \hyperpage{207}
+    \subitem {uart\_write}, \hyperpage{208}
+  \item {uart.h}, \hyperpage{209}
+    \subitem {BUFFER\_MASK}, \hyperpage{212}
+    \subitem {DMA\_UART\_RX\_init}, \hyperpage{215}
+    \subitem {errors}, \hyperpage{215}
+    \subitem {GET\_UART\_BUF\_PTR}, \hyperpage{212}
+    \subitem {INIT\_ERROR}, \hyperpage{215}
+    \subitem {NO\_ERRORS}, \hyperpage{215}
+    \subitem {PIN\_UART1\_EN}, \hyperpage{212}
+    \subitem {PIN\_UART1\_RX}, \hyperpage{212}
+    \subitem {PIN\_UART1\_TX}, \hyperpage{212}
+    \subitem {PIN\_UART2\_EN}, \hyperpage{212}
+    \subitem {PIN\_UART2\_RX}, \hyperpage{213}
+    \subitem {PIN\_UART2\_TX}, \hyperpage{213}
+    \subitem {PORT\_UART1}, \hyperpage{213}
+    \subitem {PORT\_UART1\_EN}, \hyperpage{213}
+    \subitem {PORT\_UART2}, \hyperpage{213}
+    \subitem {PORT\_UART2\_EN}, \hyperpage{213}
+    \subitem {POSITION\_ERROR}, \hyperpage{215}
+    \subitem {READ\_TIMEOUT\_ERROR}, \hyperpage{215}
+    \subitem {RECOGNIZE\_BUS}, \hyperpage{214}
+    \subitem {SIZE\_ERROR}, \hyperpage{215}
+    \subitem {UART\_BUFFER\_SIZE}, \hyperpage{214}
+    \subitem {uart\_clean}, \hyperpage{216}
+    \subitem {uart\_dma\_ch\_params}, \hyperpage{214}
+    \subitem {uart\_errors}, \hyperpage{214}
+    \subitem {uart\_get\_buf\_counter}, \hyperpage{216}
+    \subitem {uart\_init}, \hyperpage{217}
+    \subitem {uart\_n}, \hyperpage{214}
+    \subitem {uart\_read}, \hyperpage{218}
+    \subitem {uart\_read\_pos}, \hyperpage{219}
+    \subitem {uart\_rx\_tx\_timeouts}, \hyperpage{215}
+    \subitem {uart\_set\_pos}, \hyperpage{220}
+    \subitem {uart\_set\_read\_timeout}, \hyperpage{220}
+    \subitem {uart\_set\_write\_timeout}, \hyperpage{221}
+    \subitem {uart\_write}, \hyperpage{221}
+    \subitem {WRITE\_TIMEOUT\_ERROR}, \hyperpage{215}
+  \item {UART1\_IRQHandler}
+    \subitem {uart.c}, \hyperpage{201}
+  \item {uart1\_rx\_buffer}
+    \subitem {ram\_data\_struct}, \hyperpage{40}
+  \item {UART2\_IRQHandler}
+    \subitem {uart.c}, \hyperpage{202}
+  \item {uart2\_rx\_buffer}
+    \subitem {ram\_data\_struct}, \hyperpage{40}
+  \item {uart\_1}
+    \subitem {dma.c}, \hyperpage{79}
+    \subitem {main.c}, \hyperpage{144}
+    \subitem {uart.c}, \hyperpage{209}
+  \item {uart\_2}
+    \subitem {dma.c}, \hyperpage{80}
+    \subitem {main.c}, \hyperpage{144}
+    \subitem {uart.c}, \hyperpage{209}
+  \item {UART\_BUFFER\_SIZE}
+    \subitem {uart.h}, \hyperpage{214}
+  \item {uart\_clean}
+    \subitem {uart.c}, \hyperpage{202}
+    \subitem {uart.h}, \hyperpage{216}
+  \item {uart\_config\_data}, \hyperpage{59}
+    \subitem {buffer}, \hyperpage{60}
+    \subitem {buffer\_count}, \hyperpage{60}
+    \subitem {IRQn}, \hyperpage{60}
+    \subitem {read\_pos}, \hyperpage{60}
+    \subitem {RST\_CLK\_PCLK\_UARTn}, \hyperpage{60}
+    \subitem {UART}, \hyperpage{60}
+    \subitem {uart\_dma\_ch}, \hyperpage{61}
+    \subitem {UART\_HCLKdiv}, \hyperpage{61}
+    \subitem {uart\_timeouts}, \hyperpage{61}
+    \subitem {UARTx}, \hyperpage{61}
+  \item {uart\_dma\_ch}
+    \subitem {uart\_config\_data}, \hyperpage{61}
+  \item {uart\_dma\_ch\_params}
+    \subitem {uart.h}, \hyperpage{214}
+  \item {uart\_dma\_params}, \hyperpage{61}
+    \subitem {dma\_channel}, \hyperpage{62}
+    \subitem {DMA\_Channel\_UART\_RX}, \hyperpage{62}
+    \subitem {DMA\_InitStructure\_UART\_RX}, \hyperpage{62}
+    \subitem {dma\_irq\_counter}, \hyperpage{62}
+  \item {UART\_ERROR}
+    \subitem {rs422\_protocol.h}, \hyperpage{168}
+  \item {uart\_errors}
+    \subitem {uart.h}, \hyperpage{214}
+  \item {uart\_get\_buf\_counter}
+    \subitem {uart.c}, \hyperpage{202}
+    \subitem {uart.h}, \hyperpage{216}
+  \item {uart\_gpio\_config}
+    \subitem {uart.c}, \hyperpage{203}
+  \item {UART\_HCLKdiv}
+    \subitem {uart\_config\_data}, \hyperpage{61}
+  \item {uart\_init}
+    \subitem {uart.c}, \hyperpage{204}
+    \subitem {uart.h}, \hyperpage{217}
+  \item {uart\_n}
+    \subitem {uart.h}, \hyperpage{214}
+  \item {uart\_read}
+    \subitem {uart.c}, \hyperpage{205}
+    \subitem {uart.h}, \hyperpage{218}
+  \item {uart\_read\_pos}
+    \subitem {uart.c}, \hyperpage{206}
+    \subitem {uart.h}, \hyperpage{219}
+  \item {uart\_rx\_tx\_timeouts}
+    \subitem {uart.h}, \hyperpage{215}
+  \item {uart\_set\_pos}
+    \subitem {uart.c}, \hyperpage{206}
+    \subitem {uart.h}, \hyperpage{220}
+  \item {uart\_set\_read\_timeout}
+    \subitem {uart.c}, \hyperpage{207}
+    \subitem {uart.h}, \hyperpage{220}
+  \item {uart\_set\_write\_timeout}
+    \subitem {uart.c}, \hyperpage{207}
+    \subitem {uart.h}, \hyperpage{221}
+  \item {uart\_timeouts}, \hyperpage{63}
+    \subitem {read\_timeout\_flag}, \hyperpage{64}
+    \subitem {read\_val\_timeout}, \hyperpage{64}
+    \subitem {timer\_n\_timeout}, \hyperpage{64}
+    \subitem {uart\_config\_data}, \hyperpage{61}
+    \subitem {write\_timeout\_flag}, \hyperpage{64}
+    \subitem {write\_val\_timeout}, \hyperpage{64}
+  \item {uart\_write}
+    \subitem {uart.c}, \hyperpage{208}
+    \subitem {uart.h}, \hyperpage{221}
+  \item {UARTx}
+    \subitem {uart\_config\_data}, \hyperpage{61}
+  \item {um\_service\_byte\_handler}
+    \subitem {rs422\_protocol.c}, \hyperpage{160}
+    \subitem {rs422\_protocol.h}, \hyperpage{177}
+  \item {use\_object}
+    \subitem {device\_type\_struct}, \hyperpage{23}
+
+  \indexspace
+
+  \item {v1\_3\_3}
+    \subitem {power\_failure\_struct}, \hyperpage{36}
+  \item {v1\_5}
+    \subitem {power\_failure\_struct}, \hyperpage{36}
+  \item {v2\_3\_3}
+    \subitem {power\_failure\_struct}, \hyperpage{36}
+  \item {v2\_5}
+    \subitem {power\_failure\_struct}, \hyperpage{36}
+
+  \indexspace
+
+  \item {WORK\_FREQ}
+    \subitem {mdr32\_drivers.h}, \hyperpage{150}
+  \item {write\_byte\_rom}
+    \subitem {external\_rom.c}, \hyperpage{107}
+    \subitem {external\_rom.h}, \hyperpage{117}
+  \item {WRITE\_CMD}
+    \subitem {rs422\_protocol.h}, \hyperpage{167}
+  \item {WRITE\_TIMEOUT\_ERROR}
+    \subitem {uart.h}, \hyperpage{215}
+  \item {write\_timeout\_flag}
+    \subitem {uart\_timeouts}, \hyperpage{64}
+  \item {write\_val\_timeout}
+    \subitem {uart\_timeouts}, \hyperpage{64}
+
+\end{theindex}

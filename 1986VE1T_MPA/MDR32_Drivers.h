@@ -1,8 +1,13 @@
+/*!
+ \file
+ \brief –ó–∞–≥–æ–ª–æ–≤–æ—á–Ω—ã–π —Ñ–∞–π–ª —Å –≥–ª–æ–±–∞–ª—å–Ω—ã–º–∏ –∫–æ–Ω—Å—Ç–∞–Ω—Ç–∞–º–∏ –∏ –ø–æ–¥–∫–ª—é—á–∞–µ–º—ã–º–∏ –±–∏–±–ª–∏–æ—Ç–µ–∫–∞–º–∏
+*/
+
 #ifndef __MDR32_DRIVERS_H
 #define __MDR32_DRIVERS_H
 
-#define K1986VE1T
-//#define K1986VE3T
+#define K1986VE1T			///< –í—ã–±–æ—Ä –ú–ö –ö1986–í–ï1–¢
+//#define K1986VE3T		///< –í—ã–±–æ—Ä –ú–ö –ö1986–í–ï3–¢
 
 #ifdef K1986VE1T
 	#include <MDR32F1QI.h>
@@ -28,13 +33,13 @@
 	#include <MDR32F9Qx_bkp.h>  	
 #endif
 
-#define HSE_OSC ((uint32_t)12000000) 		///< ◊‡ÒÚÓÚ‡ ‚ÌÂ¯ÌÂ„Ó Ú‡ÍÚÓ‚Ó„Ó „ÂÌÂ‡ÚÓ‡ (!Ú‡ÍÊÂ ËÁÏÂÌËÚ¸ ‚ MDR32_config.h)
-#define WORK_FREQ 144 									///< –‡·Ó˜‡ˇ ˜‡ÒÚÓÚ‡ ‚ Ã√ˆ
+#define HSE_OSC ((uint32_t)12000000) 		///< –ß–∞—Å—Ç–æ—Ç–∞ –≤–Ω–µ—à–Ω–µ–≥–æ —Ç–∞–∫—Ç–æ–≤–æ–≥–æ –≥–µ–Ω–µ—Ä–∞—Ç–æ—Ä–∞ (!—Ç–∞–∫–∂–µ –∏–∑–º–µ–Ω–∏—Ç—å –≤ MDR32_config.h)
+#define WORK_FREQ 144 									///< –†–∞–±–æ—á–∞—è —á–∞—Å—Ç–æ—Ç–∞ –≤ –ú–ì—Ü
 
-#define CHANEL_NUMBER 6									///<  ÓÎ-‚Ó Í‡Ì‡ÎÓ‚ ‚ Ãœ¿
-#define MAX_CHANEL_NUMBER 8							///< Ã‡ÍÒËÏ‡Î¸ÌÓÂ ÍÓÎ-‚Ó Í‡Ì‡ÎÓ‚ ‚ Ãœ¿
-#define PM_DEV_ADDR 0										///< ¿‰ÂÒ ÏÓ‰ÛÎˇ
-#define PM_CHASSIS_ADDR 0								///< ¿‰ÂÒ ¯‡ÒÒË
+#define CHANEL_NUMBER 6									///< –ö–æ–ª-–≤–æ –∫–∞–Ω–∞–ª–æ–≤ –≤ –ú–ü–ê
+#define MAX_CHANEL_NUMBER 8							///< –ú–∞–∫—Å–∏–º–∞–ª—å–Ω–æ–µ –∫–æ–ª-–≤–æ –∫–∞–Ω–∞–ª–æ–≤ –≤ –ú–ü–ê
+#define PM_DEV_ADDR 0										///< –ê–¥—Ä–µ—Å –º–æ–¥—É–ª—è
+#define PM_CHASSIS_ADDR 0								///< –ê–¥—Ä–µ—Å —à–∞—Å—Å–∏
 
 
 #endif /*__MDR32_DRIVERS_H */

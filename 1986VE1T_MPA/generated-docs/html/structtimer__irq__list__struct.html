@@ -1,0 +1,179 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.20"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>ПО для макета МПА (100 тема): Структура timer_irq_list_struct</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">ПО для макета МПА (100 тема)
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.20 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-attribs">Открытые атрибуты</a> &#124;
+<a href="structtimer__irq__list__struct-members.html">Полный список членов класса</a>  </div>
+  <div class="headertitle">
+<div class="title">Структура timer_irq_list_struct</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Структура-реализация односвязанного списка обработчиков прерываний таймеров  
+ <a href="structtimer__irq__list__struct.html#details">Подробнее...</a></p>
+
+<p><code>#include &lt;<a class="el" href="timers_8h_source.html">timers.h</a>&gt;</code></p>
+<div class="dynheader">
+Граф связей класса timer_irq_list_struct:</div>
+<div class="dyncontent">
+<div class="center"><img src="structtimer__irq__list__struct__coll__graph.png" border="0" usemap="#atimer__irq__list__struct_coll__map" alt="Collaboration graph"/></div>
+<map name="timer__irq__list__struct_coll__map" id="timer__irq__list__struct_coll__map">
+<area shape="rect" title="Структура&#45;реализация односвязанного списка обработчиков прерываний таймеров" alt="" coords="5,97,157,124"/>
+<area shape="rect" href="structlist__head__struct.html" title="Структура с описанием двусвязанного списка" alt="" coords="19,7,144,33"/>
+</map>
+<center><span class="legend">[<a href="graph_legend.html">см. легенду</a>]</span></center></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Открытые атрибуты</h2></td></tr>
+<tr class="memitem:a63bf1e4609042bd432379349df8cb596"><td class="memItemLeft" align="right" valign="top">void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtimer__irq__list__struct.html#a63bf1e4609042bd432379349df8cb596">handler</a> )(void *)</td></tr>
+<tr class="memdesc:a63bf1e4609042bd432379349df8cb596"><td class="mdescLeft">&#160;</td><td class="mdescRight">Указатель на функцию-обработчик прерывания <br  />
+  <a href="structtimer__irq__list__struct.html#a63bf1e4609042bd432379349df8cb596">Подробнее...</a><br /></td></tr>
+<tr class="separator:a63bf1e4609042bd432379349df8cb596"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c6e41629145a247f7b25a4c0aa7b6ce"><td class="memItemLeft" align="right" valign="top">TIMER_Status_Flags_TypeDef&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtimer__irq__list__struct.html#a4c6e41629145a247f7b25a4c0aa7b6ce">event</a></td></tr>
+<tr class="memdesc:a4c6e41629145a247f7b25a4c0aa7b6ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Событие, по которому срабатывает прерывание  <a href="structtimer__irq__list__struct.html#a4c6e41629145a247f7b25a4c0aa7b6ce">Подробнее...</a><br /></td></tr>
+<tr class="separator:a4c6e41629145a247f7b25a4c0aa7b6ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5990691b491982b75bd7c4a2f7d4a854"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtimer__irq__list__struct.html#a5990691b491982b75bd7c4a2f7d4a854">data</a></td></tr>
+<tr class="memdesc:a5990691b491982b75bd7c4a2f7d4a854"><td class="mdescLeft">&#160;</td><td class="mdescRight">Указатель на данные, передаваемые в обработчик (при необходимости)  <a href="structtimer__irq__list__struct.html#a5990691b491982b75bd7c4a2f7d4a854">Подробнее...</a><br /></td></tr>
+<tr class="separator:a5990691b491982b75bd7c4a2f7d4a854"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a8448369bb5f2d760abf5d552cb103a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="list_8h.html#a4829e226828f5e92b99dd3fd30c69469">list_head</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtimer__irq__list__struct.html#a6a8448369bb5f2d760abf5d552cb103a">list</a></td></tr>
+<tr class="memdesc:a6a8448369bb5f2d760abf5d552cb103a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Список прерываний  <a href="structtimer__irq__list__struct.html#a6a8448369bb5f2d760abf5d552cb103a">Подробнее...</a><br /></td></tr>
+<tr class="separator:a6a8448369bb5f2d760abf5d552cb103a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Структура-реализация односвязанного списка обработчиков прерываний таймеров </p>
+</div><h2 class="groupheader">Данные класса</h2>
+<a id="a5990691b491982b75bd7c4a2f7d4a854"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5990691b491982b75bd7c4a2f7d4a854">&#9670;&nbsp;</a></span>data</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void* timer_irq_list_struct::data</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Указатель на данные, передаваемые в обработчик (при необходимости) </p>
+
+</div>
+</div>
+<a id="a4c6e41629145a247f7b25a4c0aa7b6ce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c6e41629145a247f7b25a4c0aa7b6ce">&#9670;&nbsp;</a></span>event</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TIMER_Status_Flags_TypeDef timer_irq_list_struct::event</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Событие, по которому срабатывает прерывание </p>
+
+</div>
+</div>
+<a id="a63bf1e4609042bd432379349df8cb596"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a63bf1e4609042bd432379349df8cb596">&#9670;&nbsp;</a></span>handler</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void(* timer_irq_list_struct::handler) (void *)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Указатель на функцию-обработчик прерывания <br  />
+ </p>
+
+</div>
+</div>
+<a id="a6a8448369bb5f2d760abf5d552cb103a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6a8448369bb5f2d760abf5d552cb103a">&#9670;&nbsp;</a></span>list</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="list_8h.html#a4829e226828f5e92b99dd3fd30c69469">list_head</a> timer_irq_list_struct::list</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Список прерываний </p>
+
+</div>
+</div>
+<hr/>Объявления и описания членов структуры находятся в файле:<ul>
+<li><a class="el" href="timers_8h_source.html">timers.h</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20
+</small></address>
+</body>
+</html>

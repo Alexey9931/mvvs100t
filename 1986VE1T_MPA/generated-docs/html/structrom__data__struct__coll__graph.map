@@ -1,0 +1,7 @@
+<map id="rom_data_struct" name="rom_data_struct">
+<area shape="rect" id="node1" title="Структура организующая память во внешнем ПЗУ" alt="" coords="123,213,251,240"/>
+<area shape="rect" id="node2" href="$structmpa__register__space__ext__rom.html" title="Органиация пространства регистров МПА для зеркализации во внешнем ПЗУ" alt="" coords="8,95,161,136"/>
+<area shape="rect" id="node3" href="$structai__oper__mode__struct.html" title="Структура с битовыми полями для регистра режим работы канала" alt="" coords="5,5,164,32"/>
+<area shape="rect" id="node4" href="$structcommon__register__space__ext__rom.html" title="Органиация пространства общих регистров для зеркализации во внешнем ПЗУ" alt="" coords="201,95,382,136"/>
+<area shape="rect" id="node5" href="$structdevice__type__struct.html" title="Структура с битовыми полями для регистра тип устройства" alt="" coords="219,5,364,32"/>
+</map>

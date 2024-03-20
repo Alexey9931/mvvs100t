@@ -1,0 +1,235 @@
+\hypertarget{external__ram_8c}{}\doxysection{Файл external\+\_\+ram.\+c}
+\label{external__ram_8c}\index{external\_ram.c@{external\_ram.c}}
+
+
+Файл с реализацией A\+PI для работы с областью памяти внешнего ОЗУ  
+
+
+{\ttfamily \#include \char`\"{}external\+\_\+ram.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}ebc.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+Граф включаемых заголовочных файлов для external\+\_\+ram.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{external__ram_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Функции}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{external__ram_8c_abd38ccc254da7c21a588b537f3e38ebe}{init\+\_\+external\+\_\+ram\+\_\+space}} (void)
+\begin{DoxyCompactList}\small\item\em Инициализацирует область памяти внешнего ОЗУ \end{DoxyCompactList}\item 
+uint16\+\_\+t \mbox{\hyperlink{external__ram_8c_af4bd0fedf3600f5c3440c884770be9d9}{find\+\_\+max\+\_\+halfword}} (uint16\+\_\+t $\ast$array, uint32\+\_\+t array\+\_\+size)
+\begin{DoxyCompactList}\small\item\em Находит максимальный элемент массива \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Переменные}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{external__ram_8h_a28cf59a70f3b5cc1d30de9cc00673860}{ram\+\_\+data}} $\ast$ \mbox{\hyperlink{external__ram_8c_ac71509c38b7eba0d545dc42301c15146}{ram\+\_\+space\+\_\+pointer}}
+\begin{DoxyCompactList}\small\item\em Указатель для обращения к внешнему ОЗУ \end{DoxyCompactList}\item 
+\mbox{\hyperlink{external__rom_8h_a4cba9e00de8050b7c165884d361024d6}{rom\+\_\+data}} $\ast$ \mbox{\hyperlink{external__ram_8c_a059a00667e992f37c5e7868a87ee505b}{rom\+\_\+space\+\_\+pointer}}
+\begin{DoxyCompactList}\small\item\em Указатель для обращения к внешнему ПЗУ \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{external__ram_8c_aa1bc97b47398b1375004586d29ba3845}{polyn\+\_\+ch\+\_\+consts}} \mbox{[}\mbox{\hyperlink{mdr32__drivers_8h_a2332bbff598b25d3bddab65efa40db0f}{M\+A\+X\+\_\+\+C\+H\+A\+N\+E\+L\+\_\+\+N\+U\+M\+B\+ER}}\mbox{]}\mbox{[}7\mbox{]}
+\begin{DoxyCompactList}\small\item\em Константы полиномов \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Файл с реализацией A\+PI для работы с областью памяти внешнего ОЗУ 
+
+
+
+\doxysubsection{Функции}
+\mbox{\Hypertarget{external__ram_8c_af4bd0fedf3600f5c3440c884770be9d9}\label{external__ram_8c_af4bd0fedf3600f5c3440c884770be9d9}} 
+\index{external\_ram.c@{external\_ram.c}!find\_max\_halfword@{find\_max\_halfword}}
+\index{find\_max\_halfword@{find\_max\_halfword}!external\_ram.c@{external\_ram.c}}
+\doxysubsubsection{\texorpdfstring{find\_max\_halfword()}{find\_max\_halfword()}}
+{\footnotesize\ttfamily uint16\+\_\+t find\+\_\+max\+\_\+halfword (\begin{DoxyParamCaption}\item[{uint16\+\_\+t $\ast$}]{array,  }\item[{uint32\+\_\+t}]{array\+\_\+size }\end{DoxyParamCaption})}
+
+
+
+Находит максимальный элемент массива 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{147 \{}
+\DoxyCodeLine{148     uint16\_t result = 0;}
+\DoxyCodeLine{149     uint16\_t next\_item;}
+\DoxyCodeLine{150     }
+\DoxyCodeLine{151     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < array\_size; i++)}
+\DoxyCodeLine{152     \{}
+\DoxyCodeLine{153         memcpy(\&next\_item, (uint16\_t*)(array + i*\textcolor{keyword}{sizeof}(result)), \textcolor{keyword}{sizeof}(result));}
+\DoxyCodeLine{154         \textcolor{keywordflow}{if} (next\_item > result)}
+\DoxyCodeLine{155         \{}
+\DoxyCodeLine{156             result = next\_item;}
+\DoxyCodeLine{157         \}}
+\DoxyCodeLine{158     \}}
+\DoxyCodeLine{159     }
+\DoxyCodeLine{160     \textcolor{keywordflow}{return} result;}
+\DoxyCodeLine{161 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{external__ram_8c_abd38ccc254da7c21a588b537f3e38ebe}\label{external__ram_8c_abd38ccc254da7c21a588b537f3e38ebe}} 
+\index{external\_ram.c@{external\_ram.c}!init\_external\_ram\_space@{init\_external\_ram\_space}}
+\index{init\_external\_ram\_space@{init\_external\_ram\_space}!external\_ram.c@{external\_ram.c}}
+\doxysubsubsection{\texorpdfstring{init\_external\_ram\_space()}{init\_external\_ram\_space()}}
+{\footnotesize\ttfamily void init\+\_\+external\+\_\+ram\+\_\+space (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Инициализацирует область памяти внешнего ОЗУ 
+
+Функция инициализации области памяти внешнего ОЗУ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{36 \{}
+\DoxyCodeLine{37     \mbox{\hyperlink{external__ram_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}} = (\mbox{\hyperlink{structram__data__struct}{ram\_data}}*)\mbox{\hyperlink{external__ram_8h_a1ef1b42c4d9eb9d968b073616293fdc9}{EXT\_RAM\_START\_ADDR}};}
+\DoxyCodeLine{38     \mbox{\hyperlink{external__ram_8c_a059a00667e992f37c5e7868a87ee505b}{rom\_space\_pointer}} = (\mbox{\hyperlink{structrom__data__struct}{rom\_data}}*)\mbox{\hyperlink{external__rom_8h_a960345392a2283a7512431a480f2ad3d}{EXT\_ROM\_START\_ADDR}};}
+\DoxyCodeLine{39     }
+\DoxyCodeLine{40     \mbox{\hyperlink{structstart__struct__ext__ram}{ram\_start\_struct}}* start\_struct\_ptr = \&\mbox{\hyperlink{external__ram_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_a0de3b7f84ef21ea299d6e45bbfc7dcf4}{start\_struct}};}
+\DoxyCodeLine{41     \mbox{\hyperlink{structcommon__register__space__ext__ram}{common\_ram\_registers}}* common\_ram\_reg\_ptr = \&\mbox{\hyperlink{external__ram_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_a29ff19a4ce45ab988b4f61feaea38545}{common\_ram\_register\_space}};}
+\DoxyCodeLine{42     \mbox{\hyperlink{structmpa__register__space__ext__rom}{mpa\_rom\_registers}}* mpa\_rom\_reg\_ptr = \&\mbox{\hyperlink{external__ram_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_a99f72177584aee68a4ed2064b1fecbde}{mpa\_ram\_register\_space}}.\mbox{\hyperlink{structmpa__register__space__ext__ram_a667898579a4053c595e2ed9433cb3cb6}{AI\_RomRegs}};}
+\DoxyCodeLine{43     \mbox{\hyperlink{structcommon__register__space__ext__rom}{common\_rom\_registers}}* common\_rom\_reg\_ptr = \&\mbox{\hyperlink{external__ram_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_a29ff19a4ce45ab988b4f61feaea38545}{common\_ram\_register\_space}}.\mbox{\hyperlink{structcommon__register__space__ext__ram_a57d116516f9e264bccd561158118685a}{PLC\_CommonRomRegs}};}
+\DoxyCodeLine{44     }
+\DoxyCodeLine{45     \textcolor{comment}{// Первичная очистка используемого куска памяти ОЗУ}}
+\DoxyCodeLine{46     memset(\mbox{\hyperlink{external__ram_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}, 0, \textcolor{keyword}{sizeof}(\mbox{\hyperlink{structram__data__struct}{ram\_data}}));}
+\DoxyCodeLine{47     }
+\DoxyCodeLine{48     \textcolor{comment}{// Инициализации стартовой структуры, которая лежит в начале ОЗУ}}
+\DoxyCodeLine{49     start\_struct\_ptr-\/>\mbox{\hyperlink{structstart__struct__ext__ram_af26f072bbae24e05b8a6ac7402fec6eb}{length}} = \mbox{\hyperlink{external__ram_8h_ae37bd3592bb1b349fe4b94e1dc3ee49c}{START\_STRUCT\_LENGTH}};}
+\DoxyCodeLine{50     start\_struct\_ptr-\/>\mbox{\hyperlink{structstart__struct__ext__ram_a9ad0c564fe213235e2a3dfb232593a11}{text\_info}} = \mbox{\hyperlink{external__ram_8h_a51b0cb4c8eca3789167d74880836b923}{START\_STRUCT\_TEXT\_INFO\_ADDR}};}
+\DoxyCodeLine{51     start\_struct\_ptr-\/>\mbox{\hyperlink{structstart__struct__ext__ram_a3a7a1b6dcf3daf47e874924c6ecac160}{flag\_change\_struct}} = \mbox{\hyperlink{external__ram_8h_a33b2a493a76a15344b57e722887e8831}{START\_STRUCT\_CHANGE\_FLAG}};}
+\DoxyCodeLine{52     start\_struct\_ptr-\/>\mbox{\hyperlink{structstart__struct__ext__ram_a67d032854f55990c1ccee4c7ee992e16}{number\_of\_ranges}} = \mbox{\hyperlink{external__ram_8h_ad3dc9f60d0f6aada124ca7c034dd10a0}{START\_STRUCT\_NUMBER\_OF\_RANGES}};}
+\DoxyCodeLine{53     start\_struct\_ptr-\/>\mbox{\hyperlink{structstart__struct__ext__ram_a4aaa236644aacaa96a74bf662f97d8e5}{ranges\_in\_start\_struct}}[0].\mbox{\hyperlink{structrange__start__struct_adcd4de27e8bc5f1dfb639d52f5dfd8a8}{range\_type}} = \mbox{\hyperlink{external__ram_8h_abe4e87626c65fe161acc4a99921610cb}{START\_STRUCT\_RANGE0\_TYPE}};}
+\DoxyCodeLine{54     start\_struct\_ptr-\/>\mbox{\hyperlink{structstart__struct__ext__ram_a4aaa236644aacaa96a74bf662f97d8e5}{ranges\_in\_start\_struct}}[0].\mbox{\hyperlink{structrange__start__struct_ac54f3eb4958e3dffc77df73292e3552e}{start\_channel\_num}} = \mbox{\hyperlink{external__ram_8h_a6df07359af2df9edc74850bdd8941e3d}{START\_STRUCT\_RANGE0\_START\_CH\_NUM}};}
+\DoxyCodeLine{55     start\_struct\_ptr-\/>\mbox{\hyperlink{structstart__struct__ext__ram_a4aaa236644aacaa96a74bf662f97d8e5}{ranges\_in\_start\_struct}}[0].\mbox{\hyperlink{structrange__start__struct_a3f1b1953d1a483354d4e6df583c581ca}{address}} = \mbox{\hyperlink{external__ram_8h_ad3e5a18964b87c008d53c4e94c85c7b5}{START\_STRUCT\_RANGE0\_ADDR}};}
+\DoxyCodeLine{56     start\_struct\_ptr-\/>\mbox{\hyperlink{structstart__struct__ext__ram_a4aaa236644aacaa96a74bf662f97d8e5}{ranges\_in\_start\_struct}}[0].\mbox{\hyperlink{structrange__start__struct_aa90b6f86262a4375fdfb19f133768297}{size}} = \mbox{\hyperlink{external__ram_8h_af35db1a77385945a47dba0ce248500d6}{START\_STRUCT\_RANGE0\_SIZE}};}
+\DoxyCodeLine{57     start\_struct\_ptr-\/>\mbox{\hyperlink{structstart__struct__ext__ram_a4aaa236644aacaa96a74bf662f97d8e5}{ranges\_in\_start\_struct}}[1].\mbox{\hyperlink{structrange__start__struct_adcd4de27e8bc5f1dfb639d52f5dfd8a8}{range\_type}} = \mbox{\hyperlink{external__ram_8h_a5b3ffbe3d9ad3e66d33b7f2c083a9aaa}{START\_STRUCT\_RANGE1\_TYPE}};}
+\DoxyCodeLine{58     start\_struct\_ptr-\/>\mbox{\hyperlink{structstart__struct__ext__ram_a4aaa236644aacaa96a74bf662f97d8e5}{ranges\_in\_start\_struct}}[1].\mbox{\hyperlink{structrange__start__struct_ac54f3eb4958e3dffc77df73292e3552e}{start\_channel\_num}} = \mbox{\hyperlink{external__ram_8h_a97a2f9c967efd178810c047a8b556f6f}{START\_STRUCT\_RANGE1\_START\_CH\_NUM}};}
+\DoxyCodeLine{59     start\_struct\_ptr-\/>\mbox{\hyperlink{structstart__struct__ext__ram_a4aaa236644aacaa96a74bf662f97d8e5}{ranges\_in\_start\_struct}}[1].\mbox{\hyperlink{structrange__start__struct_a3f1b1953d1a483354d4e6df583c581ca}{address}} = \mbox{\hyperlink{external__ram_8h_a8f55841239783b802a14803bb0c9cf8a}{START\_STRUCT\_RANGE1\_ADDR}};}
+\DoxyCodeLine{60     start\_struct\_ptr-\/>\mbox{\hyperlink{structstart__struct__ext__ram_a4aaa236644aacaa96a74bf662f97d8e5}{ranges\_in\_start\_struct}}[1].\mbox{\hyperlink{structrange__start__struct_aa90b6f86262a4375fdfb19f133768297}{size}} = \mbox{\hyperlink{external__ram_8h_ab702aea253f6634cb3b49897197d17b2}{START\_STRUCT\_RANGE1\_SIZE}};}
+\DoxyCodeLine{61     start\_struct\_ptr-\/>\mbox{\hyperlink{structstart__struct__ext__ram_a4aaa236644aacaa96a74bf662f97d8e5}{ranges\_in\_start\_struct}}[2].\mbox{\hyperlink{structrange__start__struct_adcd4de27e8bc5f1dfb639d52f5dfd8a8}{range\_type}} = \mbox{\hyperlink{external__ram_8h_a53c5ab794aeac0abe0a9043619168478}{START\_STRUCT\_RANGE2\_TYPE}};}
+\DoxyCodeLine{62     start\_struct\_ptr-\/>\mbox{\hyperlink{structstart__struct__ext__ram_a4aaa236644aacaa96a74bf662f97d8e5}{ranges\_in\_start\_struct}}[2].\mbox{\hyperlink{structrange__start__struct_ac54f3eb4958e3dffc77df73292e3552e}{start\_channel\_num}} = \mbox{\hyperlink{external__ram_8h_a24991ae2e43be1728ec4ce894d52d6c6}{START\_STRUCT\_RANGE2\_START\_CH\_NUM}};}
+\DoxyCodeLine{63     start\_struct\_ptr-\/>\mbox{\hyperlink{structstart__struct__ext__ram_a4aaa236644aacaa96a74bf662f97d8e5}{ranges\_in\_start\_struct}}[2].\mbox{\hyperlink{structrange__start__struct_a3f1b1953d1a483354d4e6df583c581ca}{address}} = \mbox{\hyperlink{external__ram_8h_adaccaf723a78982291daeb88d3a55f6a}{START\_STRUCT\_RANGE2\_ADDR}};}
+\DoxyCodeLine{64     start\_struct\_ptr-\/>\mbox{\hyperlink{structstart__struct__ext__ram_a4aaa236644aacaa96a74bf662f97d8e5}{ranges\_in\_start\_struct}}[2].\mbox{\hyperlink{structrange__start__struct_aa90b6f86262a4375fdfb19f133768297}{size}} = \mbox{\hyperlink{external__ram_8h_ab0a52332fae6f01c9c3cb53e6a79e47e}{START\_STRUCT\_RANGE2\_SIZE}};}
+\DoxyCodeLine{65     }
+\DoxyCodeLine{66     \textcolor{comment}{// Кладем карту регистров по адресу 200 во внешней ОЗУ и инциализируем ее}}
+\DoxyCodeLine{67     \textcolor{comment}{// Кладем регистры, которые инициализируются в ПО}}
+\DoxyCodeLine{68     common\_ram\_reg\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__ram_a23be17a22dd1b33e9612afaa9fb5cbb6}{PLC\_SoftVer}}.\mbox{\hyperlink{structplc__sof__ver__struct_af5d82daa5849a38e9c5c586701ecc5d0}{revision}} = \mbox{\hyperlink{external__ram_8h_af62c42bd90de15725e48df88010fc8c1}{PLC\_SOFT\_VER\_REVISION}};}
+\DoxyCodeLine{69     common\_ram\_reg\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__ram_a23be17a22dd1b33e9612afaa9fb5cbb6}{PLC\_SoftVer}}.\mbox{\hyperlink{structplc__sof__ver__struct_af3e91ef4aa97b5c7cd5b12b085fbc541}{modification}} = \mbox{\hyperlink{external__ram_8h_a2b468cfd7fabd88f0e5fea3ab78668d0}{PLC\_SOFT\_VER\_MODIFICATION}};}
+\DoxyCodeLine{70     common\_ram\_reg\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__ram_a23be17a22dd1b33e9612afaa9fb5cbb6}{PLC\_SoftVer}}.\mbox{\hyperlink{structplc__sof__ver__struct_a95ceaa653e20a02ba497b6b4f3f36830}{type}} = \mbox{\hyperlink{external__ram_8h_a5b40d7a00e8ac853204e559f7ec01611}{PLC\_SOFT\_VER\_TYPE}};}
+\DoxyCodeLine{71     common\_ram\_reg\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__ram_a23be17a22dd1b33e9612afaa9fb5cbb6}{PLC\_SoftVer}}.\mbox{\hyperlink{structplc__sof__ver__struct_afaaf61df70cef194b5df5b4e24ab50f6}{soft\_ver}} = \mbox{\hyperlink{external__ram_8h_a84f5a2c222936e403f8bcfaf7fe7751c}{PLC\_SOFT\_VER\_SOFT\_VER}};}
+\DoxyCodeLine{72     common\_ram\_reg\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__ram_a23be17a22dd1b33e9612afaa9fb5cbb6}{PLC\_SoftVer}}.\mbox{\hyperlink{structplc__sof__ver__struct_ac047a51ef10db01a2cbf9c95a9e90d71}{add\_info}} = \mbox{\hyperlink{external__ram_8h_ab6d4f5adbb734a91485557c46dd2a9e4}{PLC\_SOFT\_VER\_ADD\_INFO}};}
+\DoxyCodeLine{73     common\_ram\_reg\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__ram_a23be17a22dd1b33e9612afaa9fb5cbb6}{PLC\_SoftVer}}.\mbox{\hyperlink{structplc__sof__ver__struct_a78276e658ea37ccc145e7c05d4484cbd}{develop}} = \mbox{\hyperlink{external__ram_8h_a539701869061920075e5c18a6c4bb6a9}{PLC\_SOFT\_VER\_DEVELOP}};}
+\DoxyCodeLine{74     common\_ram\_reg\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__ram_a98e192cc41987223a2ee0f3c47d82bbc}{PLC\_PMAddr}}.\mbox{\hyperlink{structdevice__address__struct_ae0c20d59ca32f79b879d71d608237ff6}{module\_addr}} = \mbox{\hyperlink{external__ram_8h_a6debff03411f9edcb559541756990e1d}{PLC\_PM\_MODULE\_ADDR}};}
+\DoxyCodeLine{75     common\_ram\_reg\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__ram_a98e192cc41987223a2ee0f3c47d82bbc}{PLC\_PMAddr}}.\mbox{\hyperlink{structdevice__address__struct_a1c70eb0eb09943f6951a34f0f40e86e9}{chassis\_addr}} = \mbox{\hyperlink{external__ram_8h_add5f6e7ff44eeed0b99d577905e14729}{PLC\_PM\_CHASSIS\_ADDR}};}
+\DoxyCodeLine{76     common\_ram\_reg\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__ram_a41f4f575b584bacda875396b0bb7edb8}{PLC\_Config}}.\mbox{\hyperlink{structconfig__struct_a262f76123d8023f3743eafc2c911097e}{main\_switch}} = \mbox{\hyperlink{external__ram_8h_add8d9601ea04edf5f1f0425f9a4a3281}{PLC\_CONFIG\_MAIN\_SWITCH}};}
+\DoxyCodeLine{77     common\_ram\_reg\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__ram_a41f4f575b584bacda875396b0bb7edb8}{PLC\_Config}}.\mbox{\hyperlink{structconfig__struct_ab242fdbd8d3bda843411d9d3f4b721cc}{add\_switch\_1}} = \mbox{\hyperlink{external__ram_8h_a758a60a7766da0f7c0ebbfd23ad97884}{PLC\_CONFIG\_ADD\_SWITCH1}};}
+\DoxyCodeLine{78     common\_ram\_reg\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__ram_a41f4f575b584bacda875396b0bb7edb8}{PLC\_Config}}.\mbox{\hyperlink{structconfig__struct_a3fabdd464332be4926adf06cd3c19ffc}{add\_switch\_2}} = \mbox{\hyperlink{external__ram_8h_aecfdac9a886784b7778ff255d1fa95e2}{PLC\_CONFIG\_ADD\_SWITCH2}};}
+\DoxyCodeLine{79     common\_ram\_reg\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__ram_a41f4f575b584bacda875396b0bb7edb8}{PLC\_Config}}.\mbox{\hyperlink{structconfig__struct_a576c2e7d2a574e03715c07674273d49e}{reserv}} = \mbox{\hyperlink{external__ram_8h_a4dcd3977de4c99985fda32b3d7e94f4f}{PLC\_CONFIG\_RESERV}};}
+\DoxyCodeLine{80     common\_ram\_reg\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__ram_a5a96150658343a9975428f52d86dfc70}{PLC\_CM\_State}} = \mbox{\hyperlink{rs422__protocol_8h_a187790db575f8159db45135102fb2504}{PLC\_CM\_NOT\_INIT}};}
+\DoxyCodeLine{81     }
+\DoxyCodeLine{82     \textcolor{comment}{// Кладем регистры, которые берутся из ПЗУ}}
+\DoxyCodeLine{83     \textcolor{comment}{// Если используется внешнее ПЗУ (в общем то как и должно быть) зеркализируем данные из ПЗУ в ОЗУ}}
+\DoxyCodeLine{84 \textcolor{preprocessor}{    \#ifdef ROM\_IS\_USED}}
+\DoxyCodeLine{85         \mbox{\hyperlink{structcommon__register__space__ext__rom}{common\_rom\_registers}}    common\_regs;}
+\DoxyCodeLine{86         \mbox{\hyperlink{structmpa__register__space__ext__rom}{mpa\_rom\_registers}}          mpa\_regs;}
+\DoxyCodeLine{87         }
+\DoxyCodeLine{88         \mbox{\hyperlink{ebc_8c_a6b64f4215863b90dc0f8d0b2b4d513db}{ebc\_init}}(\mbox{\hyperlink{ebc_8h_aa4b88f24716e66e8d41400b00e8ae8aead875d3de2bb4db8f95c05c7019c469c9}{EBC\_ROM}});}
+\DoxyCodeLine{89         memcpy(\&common\_regs, \&\mbox{\hyperlink{external__ram_8c_a059a00667e992f37c5e7868a87ee505b}{rom\_space\_pointer}}-\/>\mbox{\hyperlink{structrom__data__struct_aaa48723cc0d408c5b3f083bbeb6eb401}{common\_rom\_registers\_space}}, \textcolor{keyword}{sizeof}(common\_regs));}
+\DoxyCodeLine{90         memcpy(\&mpa\_regs, \&\mbox{\hyperlink{external__ram_8c_a059a00667e992f37c5e7868a87ee505b}{rom\_space\_pointer}}-\/>\mbox{\hyperlink{structrom__data__struct_aecc018732fe96f2112d8c8a77aaa7d5d}{mpa\_rom\_registers\_space}}, \textcolor{keyword}{sizeof}(mpa\_regs));}
+\DoxyCodeLine{91         \mbox{\hyperlink{ebc_8c_a6b64f4215863b90dc0f8d0b2b4d513db}{ebc\_init}}(\mbox{\hyperlink{ebc_8h_aa4b88f24716e66e8d41400b00e8ae8aea991481e1b7d5eab2a8424ca8d935f5ec}{EBC\_RAM}});}
+\DoxyCodeLine{92 }
+\DoxyCodeLine{93         memcpy(\&\mbox{\hyperlink{external__ram_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_a29ff19a4ce45ab988b4f61feaea38545}{common\_ram\_register\_space}}.\mbox{\hyperlink{structcommon__register__space__ext__ram_a57d116516f9e264bccd561158118685a}{PLC\_CommonRomRegs}}, \&common\_regs, \textcolor{keyword}{sizeof}(common\_regs));}
+\DoxyCodeLine{94         memcpy(\&\mbox{\hyperlink{external__ram_8c_ac71509c38b7eba0d545dc42301c15146}{ram\_space\_pointer}}-\/>\mbox{\hyperlink{structram__data__struct_a99f72177584aee68a4ed2064b1fecbde}{mpa\_ram\_register\_space}}.\mbox{\hyperlink{structmpa__register__space__ext__ram_a667898579a4053c595e2ed9433cb3cb6}{AI\_RomRegs}}, \&mpa\_regs, \textcolor{keyword}{sizeof}(mpa\_regs));}
+\DoxyCodeLine{95 \textcolor{preprocessor}{    \#endif}}
+\DoxyCodeLine{96 \textcolor{preprocessor}{    \#ifndef ROM\_IS\_USED}}
+\DoxyCodeLine{97         \textcolor{comment}{// Если не используется внешнее ПЗУ, то самостоятельно инициализируем регистры в ОЗУ (данный вариант временный и используется когда нет рабочей ПЗУ)}}
+\DoxyCodeLine{98         \textcolor{comment}{// Инициализация общих регистров}}
+\DoxyCodeLine{99         strncpy(\&common\_rom\_reg\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__rom_aa315ceee8d8a72000dbc2f425f01907f}{PLC\_DeviceInfo}},\mbox{\hyperlink{external__rom_8h_a7ba0cd77e48302e4132984de3022b62d}{DEV\_INFO}},\textcolor{keyword}{sizeof}(\mbox{\hyperlink{external__rom_8h_a7ba0cd77e48302e4132984de3022b62d}{DEV\_INFO}}));   }
+\DoxyCodeLine{100         common\_rom\_reg\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__rom_a654cd1c6b191e3311ad10abac5341e44}{PLC\_DeviceType}}.\mbox{\hyperlink{structdevice__type__struct_abf8cd32d8893bfe5113a04156f598ae3}{revision}} = \mbox{\hyperlink{external__rom_8h_ad526597ab378f3faff87123d7742c79a}{REVISION}};}
+\DoxyCodeLine{101         common\_rom\_reg\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__rom_a654cd1c6b191e3311ad10abac5341e44}{PLC\_DeviceType}}.\mbox{\hyperlink{structdevice__type__struct_a9ebba1b77ac9d75f2fbaf03c3dfd9b70}{modification}} = \mbox{\hyperlink{external__rom_8h_aed0e6f45a7dec027efc20ffceee8cc08}{MODIFICATION}};}
+\DoxyCodeLine{102         common\_rom\_reg\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__rom_a654cd1c6b191e3311ad10abac5341e44}{PLC\_DeviceType}}.\mbox{\hyperlink{structdevice__type__struct_a148cd2e3b112417214c0173f90bebadb}{type}} = \mbox{\hyperlink{external__ram_8h_a59706e6fa00848c00f472ae55efb1662a275aa1b8b472f3746bd7b664427b4f15}{MPA}};}
+\DoxyCodeLine{103         common\_rom\_reg\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__rom_a654cd1c6b191e3311ad10abac5341e44}{PLC\_DeviceType}}.\mbox{\hyperlink{structdevice__type__struct_ab5977d2a47b947eb58a9461eb352748b}{batch}} = \mbox{\hyperlink{external__rom_8h_a5454b7a913f969a1aa7eacaf500fb44e}{DEV\_TYPE}};}
+\DoxyCodeLine{104         common\_rom\_reg\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__rom_a654cd1c6b191e3311ad10abac5341e44}{PLC\_DeviceType}}.\mbox{\hyperlink{structdevice__type__struct_a4d2cb05049497b40162805cb6e99dea4}{reserv}} = \mbox{\hyperlink{external__rom_8h_aca398dfddfede8607ede24e635e63a74}{DEV\_TYPE\_RESERV}};}
+\DoxyCodeLine{105         common\_rom\_reg\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__rom_ac241de2a572726a1cdf305e5877e063b}{PLC\_SerialNumber}} = \mbox{\hyperlink{external__rom_8h_ad8a20d143f6a7579ed227578aeddec21}{SERIAL\_NUMBER}};}
+\DoxyCodeLine{106         common\_rom\_reg\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__rom_a2bea3a6689853dfab4b1154a91ae32ee}{PLC\_TimeoutForDefect\_B1}} = \mbox{\hyperlink{external__rom_8h_a8e6e9dbd245833a8c7f40119ae645747}{TIMEOUT\_FOR\_DEFECT\_B1}};}
+\DoxyCodeLine{107         common\_rom\_reg\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__rom_a4e9b070882f84e14036eff9f3e525f0b}{PLC\_TimeoutForDefect\_B2}} = \mbox{\hyperlink{external__rom_8h_aad4b836137e53a99bd674ac881552b2c}{TIMEOUT\_FOR\_DEFECT\_B2}};}
+\DoxyCodeLine{108         common\_rom\_reg\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__rom_aa5e113ae43750669b7de5b3585208ce3}{PLC\_NumCrcErrorsForDefect\_B1}} = \mbox{\hyperlink{external__rom_8h_a2d8679cc90acd0a2552afda3db96a587}{NUM\_CRC\_ERRORS\_FOR\_DEFECT\_B1}};}
+\DoxyCodeLine{109         common\_rom\_reg\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__rom_a9e20154c6b508ea1fe7c316e112f2d87}{PLC\_NumCrcErrorsForDefect\_B2}} = \mbox{\hyperlink{external__rom_8h_a395089f50e9714237ae0ecbade3fe17c}{NUM\_CRC\_ERRORS\_FOR\_DEFECT\_B2}};}
+\DoxyCodeLine{110         common\_rom\_reg\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__rom_a7e56d897c3bb6e895ad1d682b45e9af1}{PLC\_TimeToRepair}} = \mbox{\hyperlink{external__rom_8h_a95d7a976943c682beabf98f28ec7d1be}{TIME\_TO\_REPAIR}};}
+\DoxyCodeLine{111         common\_rom\_reg\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__rom_a65738cd951190832ba1adf79029567ec}{PLC\_TimeSoloWork}} = \mbox{\hyperlink{external__rom_8h_ad3ce557aa94cb7290af613899b07044d}{TIME\_SOLO\_WORK}};}
+\DoxyCodeLine{112         common\_rom\_reg\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__rom_a0c37cac35f86ad074f5afbced1ec68d7}{PLC\_DualControl}} = \mbox{\hyperlink{external__rom_8h_ae0fdc1811bdbb2c6074fb3df42539698}{DUAL\_CONTROL}};}
+\DoxyCodeLine{113         memset(\&common\_rom\_reg\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__rom_a93798da8bb62438512265e1c83ccfd19}{Reserv\_2}}, 0, \textcolor{keyword}{sizeof}(common\_rom\_reg\_ptr-\/>\mbox{\hyperlink{structcommon__register__space__ext__rom_a93798da8bb62438512265e1c83ccfd19}{Reserv\_2}}));}
+\DoxyCodeLine{114         }
+\DoxyCodeLine{115         \textcolor{comment}{// Инциализация регистров МПА}}
+\DoxyCodeLine{116         \textcolor{keywordflow}{for} (uint8\_t i = 0; i < \mbox{\hyperlink{mdr32__drivers_8h_a2332bbff598b25d3bddab65efa40db0f}{MAX\_CHANEL\_NUMBER}}; i++)}
+\DoxyCodeLine{117         \{}
+\DoxyCodeLine{118             \mbox{\hyperlink{external__ram_8h_a35ec17ccb6ce6c67129489452ebe5b13}{RESET\_BIT}}(i, mpa\_rom\_reg\_ptr-\/>\mbox{\hyperlink{structmpa__register__space__ext__rom_a49e8b51172c0d8ea6eda885e82343374}{AI\_OperMode}}.\mbox{\hyperlink{structai__oper__mode__struct_a066d6d1b821481dbd425f831570053a6}{adc\_chs\_mode}});}
+\DoxyCodeLine{119             mpa\_rom\_reg\_ptr-\/>\mbox{\hyperlink{structmpa__register__space__ext__rom_a1ac3a111cbf7f05ea99156d54e16b955}{AI\_NumForAverag}}[i] = \mbox{\hyperlink{external__rom_8h_a3fd7d68cc3eba687943a64bc193e963c}{NUM\_FOR\_AVERAGE}};}
+\DoxyCodeLine{120             mpa\_rom\_reg\_ptr-\/>\mbox{\hyperlink{structmpa__register__space__ext__rom_a7b24af1f2403ce6d5f5a9f729c1e6fc0}{AI\_MinCodeADC}}[i] = \mbox{\hyperlink{external__rom_8h_abe6e8e90da58faffd31fce91cd1d186f}{MIN\_CODE\_ADC}};}
+\DoxyCodeLine{121             mpa\_rom\_reg\_ptr-\/>\mbox{\hyperlink{structmpa__register__space__ext__rom_af0ec497c4c59db14a07540a4cbb78e3a}{AI\_MaxCodeADC}}[i] = \mbox{\hyperlink{external__rom_8h_a42bbbb386d02c190a64fc801382a39aa}{MAX\_CODE\_ADC}};}
+\DoxyCodeLine{122             \textcolor{comment}{// Такие значения коэф. полиномов только для напряжения 0-\/10В}}
+\DoxyCodeLine{123             mpa\_rom\_reg\_ptr-\/>\mbox{\hyperlink{structmpa__register__space__ext__rom_a6893959779b22a58c36f3aa0bd2b4777}{AI\_PolynConst0}}[i] = \mbox{\hyperlink{external__ram_8c_aa1bc97b47398b1375004586d29ba3845}{polyn\_ch\_consts}}[i][0];}
+\DoxyCodeLine{124             mpa\_rom\_reg\_ptr-\/>\mbox{\hyperlink{structmpa__register__space__ext__rom_ac9dcd4f5d112d0ba95ea072e06465f71}{AI\_PolynConst1}}[i] = \mbox{\hyperlink{external__ram_8c_aa1bc97b47398b1375004586d29ba3845}{polyn\_ch\_consts}}[i][1];}
+\DoxyCodeLine{125             mpa\_rom\_reg\_ptr-\/>\mbox{\hyperlink{structmpa__register__space__ext__rom_aa8b22285124f0d85fc148fcb896b6078}{AI\_PolynConst2}}[i] = \mbox{\hyperlink{external__ram_8c_aa1bc97b47398b1375004586d29ba3845}{polyn\_ch\_consts}}[i][2];}
+\DoxyCodeLine{126             mpa\_rom\_reg\_ptr-\/>\mbox{\hyperlink{structmpa__register__space__ext__rom_adaa30c909a5f4fb46337525db6ea536f}{AI\_PolynConst3}}[i] = \mbox{\hyperlink{external__ram_8c_aa1bc97b47398b1375004586d29ba3845}{polyn\_ch\_consts}}[i][3];}
+\DoxyCodeLine{127             mpa\_rom\_reg\_ptr-\/>\mbox{\hyperlink{structmpa__register__space__ext__rom_aa7d4ea93729864388f73d4452bd80030}{AI\_PolynConst4}}[i] = \mbox{\hyperlink{external__ram_8c_aa1bc97b47398b1375004586d29ba3845}{polyn\_ch\_consts}}[i][4];}
+\DoxyCodeLine{128             mpa\_rom\_reg\_ptr-\/>\mbox{\hyperlink{structmpa__register__space__ext__rom_a85ca16cef224c436d288720c9f111c41}{AI\_PolynConst5}}[i] = \mbox{\hyperlink{external__ram_8c_aa1bc97b47398b1375004586d29ba3845}{polyn\_ch\_consts}}[i][5];}
+\DoxyCodeLine{129             mpa\_rom\_reg\_ptr-\/>\mbox{\hyperlink{structmpa__register__space__ext__rom_aeb1c4b214192020c67cc59a1a6aa327c}{AI\_PolynConst6}}[i] = \mbox{\hyperlink{external__ram_8c_aa1bc97b47398b1375004586d29ba3845}{polyn\_ch\_consts}}[i][6];}
+\DoxyCodeLine{130             mpa\_rom\_reg\_ptr-\/>\mbox{\hyperlink{structmpa__register__space__ext__rom_a3d35b2e1585382f6eae5016c672b4ab6}{AI\_MetrologDat}}[i] = \mbox{\hyperlink{external__rom_8h_a59755ea0b4c28cd31d11a4bd93ce323d}{METROLOG\_DAT}};}
+\DoxyCodeLine{131         \}}
+\DoxyCodeLine{132         memset(mpa\_rom\_reg\_ptr-\/>\mbox{\hyperlink{structmpa__register__space__ext__rom_a3d35b2e1585382f6eae5016c672b4ab6}{AI\_MetrologDat}}, 0, \textcolor{keyword}{sizeof}(mpa\_rom\_reg\_ptr-\/>\mbox{\hyperlink{structmpa__register__space__ext__rom_a3d35b2e1585382f6eae5016c672b4ab6}{AI\_MetrologDat}}));}
+\DoxyCodeLine{133         memset(mpa\_rom\_reg\_ptr-\/>\mbox{\hyperlink{structmpa__register__space__ext__rom_ad0ab3d711fc7b3c2c661a93ec450e58f}{Reserv\_4}}, 0, \textcolor{keyword}{sizeof}(mpa\_rom\_reg\_ptr-\/>\mbox{\hyperlink{structmpa__register__space__ext__rom_ad0ab3d711fc7b3c2c661a93ec450e58f}{Reserv\_4}}));}
+\DoxyCodeLine{134         memset(mpa\_rom\_reg\_ptr-\/>\mbox{\hyperlink{structmpa__register__space__ext__rom_a8d21bd3ee4501d6530d5b6fb523e305b}{Reserv\_5}}, 0, \textcolor{keyword}{sizeof}(mpa\_rom\_reg\_ptr-\/>\mbox{\hyperlink{structmpa__register__space__ext__rom_a8d21bd3ee4501d6530d5b6fb523e305b}{Reserv\_5}}));}
+\DoxyCodeLine{135 \textcolor{preprocessor}{    \#endif}}
+\DoxyCodeLine{136     }
+\DoxyCodeLine{137     \textcolor{comment}{// Заполянем таблицу CRC32}}
+\DoxyCodeLine{138     \mbox{\hyperlink{rs422__protocol_8c_aed4c57914a23fa546b89d30973b11478}{fill\_crc32\_table}}();}
+\DoxyCodeLine{139 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Переменные}
+\mbox{\Hypertarget{external__ram_8c_aa1bc97b47398b1375004586d29ba3845}\label{external__ram_8c_aa1bc97b47398b1375004586d29ba3845}} 
+\index{external\_ram.c@{external\_ram.c}!polyn\_ch\_consts@{polyn\_ch\_consts}}
+\index{polyn\_ch\_consts@{polyn\_ch\_consts}!external\_ram.c@{external\_ram.c}}
+\doxysubsubsection{\texorpdfstring{polyn\_ch\_consts}{polyn\_ch\_consts}}
+{\footnotesize\ttfamily float polyn\+\_\+ch\+\_\+consts\mbox{[}\mbox{\hyperlink{mdr32__drivers_8h_a2332bbff598b25d3bddab65efa40db0f}{M\+A\+X\+\_\+\+C\+H\+A\+N\+E\+L\+\_\+\+N\+U\+M\+B\+ER}}\mbox{]}\mbox{[}7\mbox{]}}
+
+{\bfseries Инициализатор}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= \{}
+\DoxyCodeLine{    \{4.94072982f, 0.00015744f,  0.0f, 0.0f, 0.0f, 0.0f, 0.0f\},}
+\DoxyCodeLine{    \{4.92697692f, 0.00015771f,  0.0f, 0.0f, 0.0f, 0.0f, 0.0f\},}
+\DoxyCodeLine{    \{0.0f,              0.0f,               0.0f, 0.0f, 0.0f, 0.0f, 0.0f\},}
+\DoxyCodeLine{    \{0.0f,              0.0f,               0.0f, 0.0f, 0.0f, 0.0f, 0.0f\},}
+\DoxyCodeLine{    \{0.0f,              0.0f,               0.0f, 0.0f, 0.0f, 0.0f, 0.0f\},}
+\DoxyCodeLine{    \{0.0f,              0.0f,               0.0f, 0.0f, 0.0f, 0.0f, 0.0f\},}
+\DoxyCodeLine{    \{0.0f,              0.0f,               0.0f, 0.0f, 0.0f, 0.0f, 0.0f\}   }
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Константы полиномов 
+
+\mbox{\Hypertarget{external__ram_8c_ac71509c38b7eba0d545dc42301c15146}\label{external__ram_8c_ac71509c38b7eba0d545dc42301c15146}} 
+\index{external\_ram.c@{external\_ram.c}!ram\_space\_pointer@{ram\_space\_pointer}}
+\index{ram\_space\_pointer@{ram\_space\_pointer}!external\_ram.c@{external\_ram.c}}
+\doxysubsubsection{\texorpdfstring{ram\_space\_pointer}{ram\_space\_pointer}}
+{\footnotesize\ttfamily \mbox{\hyperlink{external__ram_8h_a28cf59a70f3b5cc1d30de9cc00673860}{ram\+\_\+data}}$\ast$ ram\+\_\+space\+\_\+pointer\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Указатель для обращения к внешнему ОЗУ 
+
+\mbox{\Hypertarget{external__ram_8c_a059a00667e992f37c5e7868a87ee505b}\label{external__ram_8c_a059a00667e992f37c5e7868a87ee505b}} 
+\index{external\_ram.c@{external\_ram.c}!rom\_space\_pointer@{rom\_space\_pointer}}
+\index{rom\_space\_pointer@{rom\_space\_pointer}!external\_ram.c@{external\_ram.c}}
+\doxysubsubsection{\texorpdfstring{rom\_space\_pointer}{rom\_space\_pointer}}
+{\footnotesize\ttfamily \mbox{\hyperlink{external__rom_8h_a4cba9e00de8050b7c165884d361024d6}{rom\+\_\+data}}$\ast$ rom\+\_\+space\+\_\+pointer\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Указатель для обращения к внешнему ПЗУ 
+

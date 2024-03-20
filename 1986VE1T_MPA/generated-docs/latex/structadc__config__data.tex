@@ -1,0 +1,96 @@
+\hypertarget{structadc__config__data}{}\doxysection{Структура adc\+\_\+config\+\_\+data}
+\label{structadc__config__data}\index{adc\_config\_data@{adc\_config\_data}}
+
+
+Структура с конфигурационными параметрами АЦП  
+
+
+
+
+{\ttfamily \#include $<$1273pv19t.\+h$>$}
+
+
+
+Граф связей класса adc\+\_\+config\+\_\+data\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=315pt]{structadc__config__data__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Открытые атрибуты}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{spi_8h_ab833736115a154e13899c6b9695957a2}{spi\+\_\+n}} $\ast$ \mbox{\hyperlink{structadc__config__data_a200c9d0952003f2561fabcd7fff26299}{spi\+\_\+struct}}
+\begin{DoxyCompactList}\small\item\em S\+PI, по которому подключен АЦП \end{DoxyCompactList}\item 
+\mbox{\hyperlink{timers_8h_a93415917cf28bb298dd781fbb842ddae}{timer\+\_\+n}} $\ast$ \mbox{\hyperlink{structadc__config__data_ac18ce0504a3921524c8bfddef5bc847d}{timer\+\_\+n\+\_\+capture}}
+\begin{DoxyCompactList}\small\item\em Выбор таймера для режима захвата сигнала S\+D\+I\+F\+S/\+S\+D\+O\+FS. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{structadc__config__data_a485b473e939318ba11fcccd0dac3e946}{init\+\_\+flag}}
+\begin{DoxyCompactList}\small\item\em Флаг инициализации АЦП \end{DoxyCompactList}\item 
+uint16\+\_\+t \mbox{\hyperlink{structadc__config__data_a33ece2b17d817bd874aa87b64f2dc2ee}{avg\+\_\+num}}
+\begin{DoxyCompactList}\small\item\em Кол-\/во выборок для усреднения ~\newline
+ \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{structadc__config__data_a8d40441a9a9d1d1fb714dc8c39542865}{ch\+\_\+rx\+\_\+num}}
+\begin{DoxyCompactList}\small\item\em Кол-\/во принятых каналов в одном пакете из C\+H\+A\+N\+E\+L\+\_\+\+N\+U\+M\+B\+ER возможных \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Структура с конфигурационными параметрами АЦП 
+
+\doxysubsection{Данные класса}
+\mbox{\Hypertarget{structadc__config__data_a33ece2b17d817bd874aa87b64f2dc2ee}\label{structadc__config__data_a33ece2b17d817bd874aa87b64f2dc2ee}} 
+\index{adc\_config\_data@{adc\_config\_data}!avg\_num@{avg\_num}}
+\index{avg\_num@{avg\_num}!adc\_config\_data@{adc\_config\_data}}
+\doxysubsubsection{\texorpdfstring{avg\_num}{avg\_num}}
+{\footnotesize\ttfamily uint16\+\_\+t adc\+\_\+config\+\_\+data\+::avg\+\_\+num}
+
+
+
+Кол-\/во выборок для усреднения ~\newline
+ 
+
+\mbox{\Hypertarget{structadc__config__data_a8d40441a9a9d1d1fb714dc8c39542865}\label{structadc__config__data_a8d40441a9a9d1d1fb714dc8c39542865}} 
+\index{adc\_config\_data@{adc\_config\_data}!ch\_rx\_num@{ch\_rx\_num}}
+\index{ch\_rx\_num@{ch\_rx\_num}!adc\_config\_data@{adc\_config\_data}}
+\doxysubsubsection{\texorpdfstring{ch\_rx\_num}{ch\_rx\_num}}
+{\footnotesize\ttfamily uint8\+\_\+t adc\+\_\+config\+\_\+data\+::ch\+\_\+rx\+\_\+num}
+
+
+
+Кол-\/во принятых каналов в одном пакете из C\+H\+A\+N\+E\+L\+\_\+\+N\+U\+M\+B\+ER возможных 
+
+\mbox{\Hypertarget{structadc__config__data_a485b473e939318ba11fcccd0dac3e946}\label{structadc__config__data_a485b473e939318ba11fcccd0dac3e946}} 
+\index{adc\_config\_data@{adc\_config\_data}!init\_flag@{init\_flag}}
+\index{init\_flag@{init\_flag}!adc\_config\_data@{adc\_config\_data}}
+\doxysubsubsection{\texorpdfstring{init\_flag}{init\_flag}}
+{\footnotesize\ttfamily uint8\+\_\+t adc\+\_\+config\+\_\+data\+::init\+\_\+flag}
+
+
+
+Флаг инициализации АЦП 
+
+\mbox{\Hypertarget{structadc__config__data_a200c9d0952003f2561fabcd7fff26299}\label{structadc__config__data_a200c9d0952003f2561fabcd7fff26299}} 
+\index{adc\_config\_data@{adc\_config\_data}!spi\_struct@{spi\_struct}}
+\index{spi\_struct@{spi\_struct}!adc\_config\_data@{adc\_config\_data}}
+\doxysubsubsection{\texorpdfstring{spi\_struct}{spi\_struct}}
+{\footnotesize\ttfamily \mbox{\hyperlink{spi_8h_ab833736115a154e13899c6b9695957a2}{spi\+\_\+n}}$\ast$ adc\+\_\+config\+\_\+data\+::spi\+\_\+struct}
+
+
+
+S\+PI, по которому подключен АЦП 
+
+\mbox{\Hypertarget{structadc__config__data_ac18ce0504a3921524c8bfddef5bc847d}\label{structadc__config__data_ac18ce0504a3921524c8bfddef5bc847d}} 
+\index{adc\_config\_data@{adc\_config\_data}!timer\_n\_capture@{timer\_n\_capture}}
+\index{timer\_n\_capture@{timer\_n\_capture}!adc\_config\_data@{adc\_config\_data}}
+\doxysubsubsection{\texorpdfstring{timer\_n\_capture}{timer\_n\_capture}}
+{\footnotesize\ttfamily \mbox{\hyperlink{timers_8h_a93415917cf28bb298dd781fbb842ddae}{timer\+\_\+n}}$\ast$ adc\+\_\+config\+\_\+data\+::timer\+\_\+n\+\_\+capture}
+
+
+
+Выбор таймера для режима захвата сигнала S\+D\+I\+F\+S/\+S\+D\+O\+FS. 
+
+
+
+Объявления и описания членов структуры находятся в файле\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{1273pv19t_8h}{1273pv19t.\+h}}\end{DoxyCompactItemize}

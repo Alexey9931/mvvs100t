@@ -1,0 +1,27 @@
+var searchData=
+[
+  ['adc_5f1_628',['adc_1',['../1273pv19t_8c.html#a558e219bfe7a1a334ebe338ca121e0ec',1,'adc_1():&#160;1273pv19t.c'],['../dma_8c.html#a558e219bfe7a1a334ebe338ca121e0ec',1,'adc_1():&#160;1273pv19t.c'],['../main_8c.html#a558e219bfe7a1a334ebe338ca121e0ec',1,'adc_1():&#160;1273pv19t.c'],['../timers_8c.html#a558e219bfe7a1a334ebe338ca121e0ec',1,'adc_1():&#160;1273pv19t.c']]],
+  ['adc_5fchs_5fmode_629',['adc_chs_mode',['../structai__oper__mode__struct.html#a066d6d1b821481dbd425f831570053a6',1,'ai_oper_mode_struct']]],
+  ['add_5finfo_630',['add_info',['../structplc__sof__ver__struct.html#ac047a51ef10db01a2cbf9c95a9e90d71',1,'plc_sof_ver_struct']]],
+  ['add_5fswitch_5f1_631',['add_switch_1',['../structconfig__struct.html#ab242fdbd8d3bda843411d9d3f4b721cc',1,'config_struct']]],
+  ['add_5fswitch_5f2_632',['add_switch_2',['../structconfig__struct.html#a3fabdd464332be4926adf06cd3c19ffc',1,'config_struct']]],
+  ['address_633',['address',['../structrange__start__struct.html#a3f1b1953d1a483354d4e6df583c581ca',1,'range_start_struct']]],
+  ['ai_5fcodeadc_634',['AI_CodeADC',['../structmpa__register__space__ext__ram.html#a7e5473b0af9ea61d8c0b1486da8b02cf',1,'mpa_register_space_ext_ram']]],
+  ['ai_5fdiagnosticchannel_635',['AI_DiagnosticChannel',['../structmpa__register__space__ext__ram.html#a1a1bc771a89052f2f8b5177315949637',1,'mpa_register_space_ext_ram']]],
+  ['ai_5fmaxcodeadc_636',['AI_MaxCodeADC',['../structmpa__register__space__ext__rom.html#af0ec497c4c59db14a07540a4cbb78e3a',1,'mpa_register_space_ext_rom']]],
+  ['ai_5fmetrologdat_637',['AI_MetrologDat',['../structmpa__register__space__ext__rom.html#a3d35b2e1585382f6eae5016c672b4ab6',1,'mpa_register_space_ext_rom']]],
+  ['ai_5fmincodeadc_638',['AI_MinCodeADC',['../structmpa__register__space__ext__rom.html#a7b24af1f2403ce6d5f5a9f729c1e6fc0',1,'mpa_register_space_ext_rom']]],
+  ['ai_5fnumforaverag_639',['AI_NumForAverag',['../structmpa__register__space__ext__rom.html#a1ac3a111cbf7f05ea99156d54e16b955',1,'mpa_register_space_ext_rom']]],
+  ['ai_5fopermode_640',['AI_OperMode',['../structmpa__register__space__ext__rom.html#a49e8b51172c0d8ea6eda885e82343374',1,'mpa_register_space_ext_rom']]],
+  ['ai_5fphysquantfloat_641',['AI_PhysQuantFloat',['../structmpa__register__space__ext__ram.html#a6775cde415d33a5e6b0070ee41d83fa0',1,'mpa_register_space_ext_ram']]],
+  ['ai_5fpolynconst0_642',['AI_PolynConst0',['../structmpa__register__space__ext__rom.html#a6893959779b22a58c36f3aa0bd2b4777',1,'mpa_register_space_ext_rom']]],
+  ['ai_5fpolynconst1_643',['AI_PolynConst1',['../structmpa__register__space__ext__rom.html#ac9dcd4f5d112d0ba95ea072e06465f71',1,'mpa_register_space_ext_rom']]],
+  ['ai_5fpolynconst2_644',['AI_PolynConst2',['../structmpa__register__space__ext__rom.html#aa8b22285124f0d85fc148fcb896b6078',1,'mpa_register_space_ext_rom']]],
+  ['ai_5fpolynconst3_645',['AI_PolynConst3',['../structmpa__register__space__ext__rom.html#adaa30c909a5f4fb46337525db6ea536f',1,'mpa_register_space_ext_rom']]],
+  ['ai_5fpolynconst4_646',['AI_PolynConst4',['../structmpa__register__space__ext__rom.html#aa7d4ea93729864388f73d4452bd80030',1,'mpa_register_space_ext_rom']]],
+  ['ai_5fpolynconst5_647',['AI_PolynConst5',['../structmpa__register__space__ext__rom.html#a85ca16cef224c436d288720c9f111c41',1,'mpa_register_space_ext_rom']]],
+  ['ai_5fpolynconst6_648',['AI_PolynConst6',['../structmpa__register__space__ext__rom.html#aeb1c4b214192020c67cc59a1a6aa327c',1,'mpa_register_space_ext_rom']]],
+  ['ai_5fromregs_649',['AI_RomRegs',['../structmpa__register__space__ext__ram.html#a667898579a4053c595e2ed9433cb3cb6',1,'mpa_register_space_ext_ram']]],
+  ['ai_5fsignalchanged_650',['AI_SignalChanged',['../structmpa__register__space__ext__ram.html#a57d7877553f94c1a71d81fc2f328b402',1,'mpa_register_space_ext_ram']]],
+  ['avg_5fnum_651',['avg_num',['../structadc__config__data.html#a33ece2b17d817bd874aa87b64f2dc2ee',1,'adc_config_data']]]
+];

@@ -1,0 +1,154 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.20"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>ПО для макета МПА (100 тема): Исходный файл spi.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">ПО для макета МПА (100 тема)
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.20 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">spi.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="spi_8h.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#ifndef __SPI_H</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#define __SPI_H</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="mdr32__drivers_8h.html">mdr32_drivers.h</a>&quot;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">// Ножки для SSP1</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="spi_8h.html#ab1b2ce8814a7a499806ef41a898d65b3">   12</a></span>&#160;<span class="preprocessor">#define PORT_SSP1 MDR_PORTD             </span></div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="spi_8h.html#aee0f6fc6957f1ed799d9b225326129e6">   13</a></span>&#160;<span class="preprocessor">#define PIN_SSP1_SCK PORT_Pin_4     </span></div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="spi_8h.html#aa00ef5091ed480f2f80745738d9dc317">   14</a></span>&#160;<span class="preprocessor">#define PIN_SSP1_RX PORT_Pin_3      </span></div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="spi_8h.html#a6d889b8dba7010a7b8acea1bf1ded4ab">   15</a></span>&#160;<span class="preprocessor">#define PIN_SSP1_TX PORT_Pin_2      </span></div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="spi_8h.html#a01a7257aa3943f00cfcaa20fd35c56da">   16</a></span>&#160;<span class="preprocessor">#define PIN_SSP1_SS PORT_Pin_5      </span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor"></span> </div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="spi_8h.html#a6092455278a1ac67204e0dbe08f9d13f">   18</a></span>&#160;<span class="preprocessor">#define FIFO_SIZE 8                     </span></div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="spi_8h.html#a97f9f5cc546b1896703fe63289b4fd3d">   19</a></span>&#160;<span class="preprocessor">#define SPI_BUFFER_SIZE 512     </span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">    </span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="structspi__dma__params.html">   25</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structspi__dma__params.html">spi_dma_params</a></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;{</div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="structspi__dma__params.html#a57f62569fee44582e631327600feb797">   27</a></span>&#160;    uint8_t                                     <a class="code" href="structspi__dma__params.html#a57f62569fee44582e631327600feb797">dma_channel</a>;                             </div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="structspi__dma__params.html#a74570a7fcec9998c7bd0ecec6099ff20">   28</a></span>&#160;    uint32_t                                    <a class="code" href="structspi__dma__params.html#a74570a7fcec9998c7bd0ecec6099ff20">dma_irq_counter</a>;                     </div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="structspi__dma__params.html#aecfb6cc2a477feda67e02ab29e9c7b4b">   29</a></span>&#160;    DMA_CtrlDataInitTypeDef     <a class="code" href="structspi__dma__params.html#aecfb6cc2a477feda67e02ab29e9c7b4b">DMA_InitStructure_SPI_RX</a>;  </div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="structspi__dma__params.html#a073f9ac240a1391e1dbdaaa03fc32dc5">   30</a></span>&#160;    DMA_ChannelInitTypeDef      <a class="code" href="structspi__dma__params.html#a073f9ac240a1391e1dbdaaa03fc32dc5">DMA_Channel_SPI_RX</a>;              </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;} </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#ifndef DOXYGEN</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;__attribute__((packed))</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="spi_8h.html#ae0c54cfbafccb029fc915487b6a2c990">   35</a></span>&#160;<a class="code" href="spi_8h.html#ae0c54cfbafccb029fc915487b6a2c990">spi_n_dma_ch_params</a>;  </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="structspi__config__data.html">   41</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structspi__config__data.html">spi_config_data</a></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;{</div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="structspi__config__data.html#af7c62ae50acedf3fd8aea07e6d804d47">   43</a></span>&#160;    MDR_SSP_TypeDef*                <a class="code" href="structspi__config__data.html#af7c62ae50acedf3fd8aea07e6d804d47">SSPx</a>;                                   </div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="structspi__config__data.html#aaafbcfaf3333ceebf395c3f9167ee277">   44</a></span>&#160;    <a class="code" href="structspi__dma__params.html">spi_n_dma_ch_params</a>         <a class="code" href="structspi__config__data.html#aaafbcfaf3333ceebf395c3f9167ee277">spi_dma_ch</a>;                                 </div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="structspi__config__data.html#a247538f866abbe38d75e28839e1eeda8">   45</a></span>&#160;    uint32_t                                <a class="code" href="structspi__config__data.html#a247538f866abbe38d75e28839e1eeda8">RST_CLK_PCLK_SPIn</a>;                  </div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="structspi__config__data.html#a4bee2d980540cdded5cf085ae1136ad3">   46</a></span>&#160;    SSP_InitTypeDef                 <a class="code" href="structspi__config__data.html#a4bee2d980540cdded5cf085ae1136ad3">SPI</a>;                                                </div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="structspi__config__data.html#a7a06c2f3824a0a98580af694e5c2b0ef">   47</a></span>&#160;    IRQn_Type                           <a class="code" href="structspi__config__data.html#a7a06c2f3824a0a98580af694e5c2b0ef">IRQn</a>;                                               </div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="structspi__config__data.html#aadd203ebcb848c6b32967e7ed6b40657">   48</a></span>&#160;    uint8_t                                 <a class="code" href="structspi__config__data.html#aadd203ebcb848c6b32967e7ed6b40657">buffer_counter</a>;                         </div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="structspi__config__data.html#a1867273e7c2b87ecac77f7797690ec95">   49</a></span>&#160;    uint16_t                                *<a class="code" href="structspi__config__data.html#a1867273e7c2b87ecac77f7797690ec95">buffer</a>;                                        </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;} </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">#ifndef DOXYGEN</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;__attribute__((packed))</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="spi_8h.html#ab833736115a154e13899c6b9695957a2">   54</a></span>&#160;<a class="code" href="spi_8h.html#ab833736115a154e13899c6b9695957a2">spi_n</a>;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="keywordtype">void</span> <a class="code" href="spi_8h.html#a1d731764013a9bc565b1e703a03751b4">spi_init</a>(<a class="code" href="structspi__config__data.html">spi_n</a> *spi_struct);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="keywordtype">void</span> <a class="code" href="spi_8h.html#a68aa0c3af0f472cf1ec75ae0c2d75e4c">spi_transmit_halfword</a>(<a class="code" href="structspi__config__data.html">spi_n</a> *spi_struct, uint16_t half_word);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="keywordtype">void</span> <a class="code" href="spi_8h.html#a48f5d3ec746f4cd7f83f481b7bd93e9f">spi_transmit_message</a>(<a class="code" href="structspi__config__data.html">spi_n</a> *spi_struct, uint16_t message[], uint32_t length);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;uint16_t <a class="code" href="spi_8h.html#a7ac70f87abf82267a8f6ef045c43321c">spi_receive_halfword</a>(<a class="code" href="structspi__config__data.html">spi_n</a> *spi_struct);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="keywordtype">void</span> <a class="code" href="spi_8h.html#a129f1bdb142ca6714cb77ec0e25f7e74">spi_clean_fifo_rx_buf</a>(<a class="code" href="structspi__config__data.html">spi_n</a> *spi_struct);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="keywordtype">void</span> <a class="code" href="spi_8h.html#ad78531a757476f1ec34b631951b94ec2">dma_spi_rx_init</a>(<a class="code" href="structspi__config__data.html">spi_n</a> *spi_struct);</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/*__SPI_H */</span><span class="preprocessor"></span></div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="astructspi__dma__params_html_a74570a7fcec9998c7bd0ecec6099ff20"><div class="ttname"><a href="structspi__dma__params.html#a74570a7fcec9998c7bd0ecec6099ff20">spi_dma_params::dma_irq_counter</a></div><div class="ttdeci">uint32_t dma_irq_counter</div><div class="ttdoc">Счетчик прерываний DMA.</div><div class="ttdef"><b>Definition:</b> spi.h:28</div></div>
+<div class="ttc" id="aspi_8h_html_a68aa0c3af0f472cf1ec75ae0c2d75e4c"><div class="ttname"><a href="spi_8h.html#a68aa0c3af0f472cf1ec75ae0c2d75e4c">spi_transmit_halfword</a></div><div class="ttdeci">void spi_transmit_halfword(spi_n *spi_struct, uint16_t half_word)</div><div class="ttdoc">Отправляет полуслово по SPIn.</div><div class="ttdef"><b>Definition:</b> spi.c:84</div></div>
+<div class="ttc" id="aspi_8h_html_a48f5d3ec746f4cd7f83f481b7bd93e9f"><div class="ttname"><a href="spi_8h.html#a48f5d3ec746f4cd7f83f481b7bd93e9f">spi_transmit_message</a></div><div class="ttdeci">void spi_transmit_message(spi_n *spi_struct, uint16_t message[], uint32_t length)</div><div class="ttdoc">Отправляет массив полуслов по SPIn.</div><div class="ttdef"><b>Definition:</b> spi.c:92</div></div>
+<div class="ttc" id="aspi_8h_html_ad78531a757476f1ec34b631951b94ec2"><div class="ttname"><a href="spi_8h.html#ad78531a757476f1ec34b631951b94ec2">dma_spi_rx_init</a></div><div class="ttdeci">void dma_spi_rx_init(spi_n *spi_struct)</div><div class="ttdoc">Инициализирует n-ый канал DMA на запрос от приемника SPIn.</div><div class="ttdef"><b>Definition:</b> spi.c:128</div></div>
+<div class="ttc" id="astructspi__dma__params_html"><div class="ttname"><a href="structspi__dma__params.html">spi_dma_params</a></div><div class="ttdoc">Структура с параметрами DMA канала SPIn.</div><div class="ttdef"><b>Definition:</b> spi.h:26</div></div>
+<div class="ttc" id="astructspi__config__data_html_af7c62ae50acedf3fd8aea07e6d804d47"><div class="ttname"><a href="structspi__config__data.html#af7c62ae50acedf3fd8aea07e6d804d47">spi_config_data::SSPx</a></div><div class="ttdeci">MDR_SSP_TypeDef * SSPx</div><div class="ttdoc">Библиотечная структура с периферийными регистрами блока SPI.</div><div class="ttdef"><b>Definition:</b> spi.h:43</div></div>
+<div class="ttc" id="astructspi__config__data_html"><div class="ttname"><a href="structspi__config__data.html">spi_config_data</a></div><div class="ttdoc">Структура с конфигурационными параметрами SPI.</div><div class="ttdef"><b>Definition:</b> spi.h:42</div></div>
+<div class="ttc" id="aspi_8h_html_a7ac70f87abf82267a8f6ef045c43321c"><div class="ttname"><a href="spi_8h.html#a7ac70f87abf82267a8f6ef045c43321c">spi_receive_halfword</a></div><div class="ttdeci">uint16_t spi_receive_halfword(spi_n *spi_struct)</div><div class="ttdoc">Принимает полуслово по SPIn.</div><div class="ttdef"><b>Definition:</b> spi.c:104</div></div>
+<div class="ttc" id="astructspi__config__data_html_aadd203ebcb848c6b32967e7ed6b40657"><div class="ttname"><a href="structspi__config__data.html#aadd203ebcb848c6b32967e7ed6b40657">spi_config_data::buffer_counter</a></div><div class="ttdeci">uint8_t buffer_counter</div><div class="ttdoc">Счетчик слов в приемнике SPI.</div><div class="ttdef"><b>Definition:</b> spi.h:48</div></div>
+<div class="ttc" id="astructspi__dma__params_html_aecfb6cc2a477feda67e02ab29e9c7b4b"><div class="ttname"><a href="structspi__dma__params.html#aecfb6cc2a477feda67e02ab29e9c7b4b">spi_dma_params::DMA_InitStructure_SPI_RX</a></div><div class="ttdeci">DMA_CtrlDataInitTypeDef DMA_InitStructure_SPI_RX</div><div class="ttdoc">Структура с настройками DMA в целом</div><div class="ttdef"><b>Definition:</b> spi.h:29</div></div>
+<div class="ttc" id="astructspi__config__data_html_a1867273e7c2b87ecac77f7797690ec95"><div class="ttname"><a href="structspi__config__data.html#a1867273e7c2b87ecac77f7797690ec95">spi_config_data::buffer</a></div><div class="ttdeci">uint16_t * buffer</div><div class="ttdoc">Указатель на буфер приемника SPI.</div><div class="ttdef"><b>Definition:</b> spi.h:49</div></div>
+<div class="ttc" id="astructspi__dma__params_html_a073f9ac240a1391e1dbdaaa03fc32dc5"><div class="ttname"><a href="structspi__dma__params.html#a073f9ac240a1391e1dbdaaa03fc32dc5">spi_dma_params::DMA_Channel_SPI_RX</a></div><div class="ttdeci">DMA_ChannelInitTypeDef DMA_Channel_SPI_RX</div><div class="ttdoc">Структура с настройками канала DMA.</div><div class="ttdef"><b>Definition:</b> spi.h:30</div></div>
+<div class="ttc" id="astructspi__config__data_html_a247538f866abbe38d75e28839e1eeda8"><div class="ttname"><a href="structspi__config__data.html#a247538f866abbe38d75e28839e1eeda8">spi_config_data::RST_CLK_PCLK_SPIn</a></div><div class="ttdeci">uint32_t RST_CLK_PCLK_SPIn</div><div class="ttdoc">Включение тактирования для SPIn.</div><div class="ttdef"><b>Definition:</b> spi.h:45</div></div>
+<div class="ttc" id="aspi_8h_html_a129f1bdb142ca6714cb77ec0e25f7e74"><div class="ttname"><a href="spi_8h.html#a129f1bdb142ca6714cb77ec0e25f7e74">spi_clean_fifo_rx_buf</a></div><div class="ttdeci">void spi_clean_fifo_rx_buf(spi_n *spi_struct)</div><div class="ttdoc">Очищает FIFO буфер приемника SPIn.</div><div class="ttdef"><b>Definition:</b> spi.c:117</div></div>
+<div class="ttc" id="astructspi__config__data_html_a4bee2d980540cdded5cf085ae1136ad3"><div class="ttname"><a href="structspi__config__data.html#a4bee2d980540cdded5cf085ae1136ad3">spi_config_data::SPI</a></div><div class="ttdeci">SSP_InitTypeDef SPI</div><div class="ttdoc">Библиотечная структура с конфигурационными параметрами SPI.</div><div class="ttdef"><b>Definition:</b> spi.h:46</div></div>
+<div class="ttc" id="aspi_8h_html_a1d731764013a9bc565b1e703a03751b4"><div class="ttname"><a href="spi_8h.html#a1d731764013a9bc565b1e703a03751b4">spi_init</a></div><div class="ttdeci">void spi_init(spi_n *spi_struct)</div><div class="ttdoc">Инициализацирует выбранный SPIn.</div><div class="ttdef"><b>Definition:</b> spi.c:52</div></div>
+<div class="ttc" id="astructspi__config__data_html_a7a06c2f3824a0a98580af694e5c2b0ef"><div class="ttname"><a href="structspi__config__data.html#a7a06c2f3824a0a98580af694e5c2b0ef">spi_config_data::IRQn</a></div><div class="ttdeci">IRQn_Type IRQn</div><div class="ttdoc">Выбор обработчика прерываний блока SPI.</div><div class="ttdef"><b>Definition:</b> spi.h:47</div></div>
+<div class="ttc" id="astructspi__config__data_html_aaafbcfaf3333ceebf395c3f9167ee277"><div class="ttname"><a href="structspi__config__data.html#aaafbcfaf3333ceebf395c3f9167ee277">spi_config_data::spi_dma_ch</a></div><div class="ttdeci">spi_n_dma_ch_params spi_dma_ch</div><div class="ttdoc">Структура с параметрами канала DMA для SPI.</div><div class="ttdef"><b>Definition:</b> spi.h:44</div></div>
+<div class="ttc" id="aspi_8h_html_ab833736115a154e13899c6b9695957a2"><div class="ttname"><a href="spi_8h.html#ab833736115a154e13899c6b9695957a2">spi_n</a></div><div class="ttdeci">struct spi_config_data spi_n</div><div class="ttdoc">Структура с конфигурационными параметрами SPI.</div></div>
+<div class="ttc" id="astructspi__dma__params_html_a57f62569fee44582e631327600feb797"><div class="ttname"><a href="structspi__dma__params.html#a57f62569fee44582e631327600feb797">spi_dma_params::dma_channel</a></div><div class="ttdeci">uint8_t dma_channel</div><div class="ttdoc">Выбор канала DMA для SPIn.</div><div class="ttdef"><b>Definition:</b> spi.h:27</div></div>
+<div class="ttc" id="amdr32__drivers_8h_html"><div class="ttname"><a href="mdr32__drivers_8h.html">mdr32_drivers.h</a></div><div class="ttdoc">Заголовочный файл с глобальными константами и подключаемыми библиотеками</div></div>
+<div class="ttc" id="aspi_8h_html_ae0c54cfbafccb029fc915487b6a2c990"><div class="ttname"><a href="spi_8h.html#ae0c54cfbafccb029fc915487b6a2c990">spi_n_dma_ch_params</a></div><div class="ttdeci">struct spi_dma_params spi_n_dma_ch_params</div><div class="ttdoc">Структура с параметрами DMA канала SPIn.</div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20
+</small></address>
+</body>
+</html>

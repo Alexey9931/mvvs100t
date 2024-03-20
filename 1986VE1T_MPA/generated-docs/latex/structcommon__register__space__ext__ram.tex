@@ -1,0 +1,264 @@
+\hypertarget{structcommon__register__space__ext__ram}{}\doxysection{Структура common\+\_\+register\+\_\+space\+\_\+ext\+\_\+ram}
+\label{structcommon__register__space__ext__ram}\index{common\_register\_space\_ext\_ram@{common\_register\_space\_ext\_ram}}
+
+
+Органиация пространства общих регистров во внешнем ОЗУ  
+
+
+
+
+{\ttfamily \#include $<$external\+\_\+ram.\+h$>$}
+
+
+
+Граф связей класса common\+\_\+register\+\_\+space\+\_\+ext\+\_\+ram\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{structcommon__register__space__ext__ram__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Открытые атрибуты}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{external__ram_8h_a3e996289f121b60086eeb46de8f62126}{plc\+\_\+soft\+\_\+ver}} \mbox{\hyperlink{structcommon__register__space__ext__ram_a23be17a22dd1b33e9612afaa9fb5cbb6}{P\+L\+C\+\_\+\+Soft\+Ver}}
+\begin{DoxyCompactList}\small\item\em Версия ПО ~\newline
+ \end{DoxyCompactList}\item 
+\mbox{\hyperlink{external__ram_8h_a2dac5dc7ff578e21da8e0e5008834360}{device\+\_\+config}} \mbox{\hyperlink{structcommon__register__space__ext__ram_a41f4f575b584bacda875396b0bb7edb8}{P\+L\+C\+\_\+\+Config}}
+\begin{DoxyCompactList}\small\item\em Конфигурация устройства \end{DoxyCompactList}\item 
+\mbox{\hyperlink{external__ram_8h_aaac64f1a34f5aa60a1e502b91a23fce8}{device\+\_\+address}} \mbox{\hyperlink{structcommon__register__space__ext__ram_a98e192cc41987223a2ee0f3c47d82bbc}{P\+L\+C\+\_\+\+P\+M\+Addr}}
+\begin{DoxyCompactList}\small\item\em Адрес устройства \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{structcommon__register__space__ext__ram_a64bd210afad78487c9193a8109318a5e}{P\+L\+C\+\_\+\+Durat}}
+\begin{DoxyCompactList}\small\item\em Время с момента запуска, с \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{structcommon__register__space__ext__ram_a5a96150658343a9975428f52d86dfc70}{P\+L\+C\+\_\+\+C\+M\+\_\+\+State}}
+\begin{DoxyCompactList}\small\item\em Состояние автомата выбора УМ \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{structcommon__register__space__ext__ram_a4e2c758faf568b5a9c8715256ef9af97}{P\+L\+C\+\_\+\+Corr\+Pack\+From\+Device\+\_\+\+B1}}
+\begin{DoxyCompactList}\small\item\em Корректных пакетов по Ш1, от устройства \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{structcommon__register__space__ext__ram_a6a45af96191489245a2761ab66213ab2}{P\+L\+C\+\_\+\+Corr\+Pack\+To\+Device\+\_\+\+B1}}
+\begin{DoxyCompactList}\small\item\em Корректных пакетов по Ш1, к устройству \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{structcommon__register__space__ext__ram_a9137275729f93cc8dcfb6e36577708f6}{P\+L\+C\+\_\+\+Err\+Pack\+To\+Device\+\_\+\+B1}}
+\begin{DoxyCompactList}\small\item\em Ошибок приема пакета по Ш1. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{structcommon__register__space__ext__ram_a65bb90f3b47e619d9c5739cd930e1765}{P\+L\+C\+\_\+\+Err\+Pack\+From\+Device\+\_\+\+B1}}
+\begin{DoxyCompactList}\small\item\em Ошибок отправки пакета по Ш1. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{structcommon__register__space__ext__ram_ad3936c82fcda75e3b43e1869fd0fb97f}{P\+L\+C\+\_\+\+Corr\+Pack\+From\+Device\+\_\+\+B2}}
+\begin{DoxyCompactList}\small\item\em Корректных пакетов по Ш2, от устройства \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{structcommon__register__space__ext__ram_a49d5a2f201634517f6b0c3b8b0c7426a}{P\+L\+C\+\_\+\+Corr\+Pack\+To\+Device\+\_\+\+B2}}
+\begin{DoxyCompactList}\small\item\em Корректных пакетов по Ш2, к устройству \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{structcommon__register__space__ext__ram_a5dfba01ac730555fcf94207da8dac540}{P\+L\+C\+\_\+\+Err\+Pack\+To\+Device\+\_\+\+B2}}
+\begin{DoxyCompactList}\small\item\em Ошибок приема пакета по Ш2. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{structcommon__register__space__ext__ram_ac15455ee68731cbe049caadc7cd01970}{P\+L\+C\+\_\+\+Err\+Pack\+From\+Device\+\_\+\+B2}}
+\begin{DoxyCompactList}\small\item\em Ошибок отправки пакета по Ш2. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{external__ram_8h_a0af0eff1baae45b5c07dbb112e449709}{power\+\_\+failure}} \mbox{\hyperlink{structcommon__register__space__ext__ram_a69676d2a978b4e5a1049c6ed5ddd7491}{P\+L\+C\+\_\+\+Power\+Defect}}
+\begin{DoxyCompactList}\small\item\em Неиспр питания \end{DoxyCompactList}\item 
+\mbox{\hyperlink{external__ram_8h_ac308ee858db1c1de4baaad977613c593}{bus\+\_\+defect}} \mbox{\hyperlink{structcommon__register__space__ext__ram_ab5e60da0a44659009cc670a6fa353141}{P\+L\+C\+\_\+\+Bus\+Defect\+\_\+\+B1}}
+\begin{DoxyCompactList}\small\item\em Неиспр 1 шины \end{DoxyCompactList}\item 
+\mbox{\hyperlink{external__ram_8h_ac308ee858db1c1de4baaad977613c593}{bus\+\_\+defect}} \mbox{\hyperlink{structcommon__register__space__ext__ram_a43b068532822b48d600bdb70f86b9eae}{P\+L\+C\+\_\+\+Bus\+Defect\+\_\+\+B2}}
+\begin{DoxyCompactList}\small\item\em Неиспр 2 шины \end{DoxyCompactList}\item 
+\mbox{\hyperlink{external__ram_8h_a0d97e29a474b978aa198100c058ba873}{self\+\_\+diag}} \mbox{\hyperlink{structcommon__register__space__ext__ram_a2cdef00da20bc6087da08b3e9f11136a}{P\+L\+C\+\_\+\+Self\+Diag\+Defect}}
+\begin{DoxyCompactList}\small\item\em Неиспр самодиагностики \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{structcommon__register__space__ext__ram_ad2a3e185f6580aaf61217365a6eff5cc}{Reserv\+\_\+1}} \mbox{[}68\mbox{]}
+\begin{DoxyCompactList}\small\item\em РЕЗЕРВ \end{DoxyCompactList}\item 
+\mbox{\hyperlink{external__rom_8h_a961b98b0181a6a1ed5ece00b1b1228ce}{common\+\_\+rom\+\_\+registers}} \mbox{\hyperlink{structcommon__register__space__ext__ram_a57d116516f9e264bccd561158118685a}{P\+L\+C\+\_\+\+Common\+Rom\+Regs}}
+\begin{DoxyCompactList}\small\item\em Общие регистры, которые храняться в ПЗУ \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Органиация пространства общих регистров во внешнем ОЗУ 
+
+\doxysubsection{Данные класса}
+\mbox{\Hypertarget{structcommon__register__space__ext__ram_ab5e60da0a44659009cc670a6fa353141}\label{structcommon__register__space__ext__ram_ab5e60da0a44659009cc670a6fa353141}} 
+\index{common\_register\_space\_ext\_ram@{common\_register\_space\_ext\_ram}!PLC\_BusDefect\_B1@{PLC\_BusDefect\_B1}}
+\index{PLC\_BusDefect\_B1@{PLC\_BusDefect\_B1}!common\_register\_space\_ext\_ram@{common\_register\_space\_ext\_ram}}
+\doxysubsubsection{\texorpdfstring{PLC\_BusDefect\_B1}{PLC\_BusDefect\_B1}}
+{\footnotesize\ttfamily \mbox{\hyperlink{external__ram_8h_ac308ee858db1c1de4baaad977613c593}{bus\+\_\+defect}} common\+\_\+register\+\_\+space\+\_\+ext\+\_\+ram\+::\+P\+L\+C\+\_\+\+Bus\+Defect\+\_\+\+B1}
+
+
+
+Неиспр 1 шины 
+
+\mbox{\Hypertarget{structcommon__register__space__ext__ram_a43b068532822b48d600bdb70f86b9eae}\label{structcommon__register__space__ext__ram_a43b068532822b48d600bdb70f86b9eae}} 
+\index{common\_register\_space\_ext\_ram@{common\_register\_space\_ext\_ram}!PLC\_BusDefect\_B2@{PLC\_BusDefect\_B2}}
+\index{PLC\_BusDefect\_B2@{PLC\_BusDefect\_B2}!common\_register\_space\_ext\_ram@{common\_register\_space\_ext\_ram}}
+\doxysubsubsection{\texorpdfstring{PLC\_BusDefect\_B2}{PLC\_BusDefect\_B2}}
+{\footnotesize\ttfamily \mbox{\hyperlink{external__ram_8h_ac308ee858db1c1de4baaad977613c593}{bus\+\_\+defect}} common\+\_\+register\+\_\+space\+\_\+ext\+\_\+ram\+::\+P\+L\+C\+\_\+\+Bus\+Defect\+\_\+\+B2}
+
+
+
+Неиспр 2 шины 
+
+\mbox{\Hypertarget{structcommon__register__space__ext__ram_a5a96150658343a9975428f52d86dfc70}\label{structcommon__register__space__ext__ram_a5a96150658343a9975428f52d86dfc70}} 
+\index{common\_register\_space\_ext\_ram@{common\_register\_space\_ext\_ram}!PLC\_CM\_State@{PLC\_CM\_State}}
+\index{PLC\_CM\_State@{PLC\_CM\_State}!common\_register\_space\_ext\_ram@{common\_register\_space\_ext\_ram}}
+\doxysubsubsection{\texorpdfstring{PLC\_CM\_State}{PLC\_CM\_State}}
+{\footnotesize\ttfamily uint32\+\_\+t common\+\_\+register\+\_\+space\+\_\+ext\+\_\+ram\+::\+P\+L\+C\+\_\+\+C\+M\+\_\+\+State}
+
+
+
+Состояние автомата выбора УМ 
+
+\mbox{\Hypertarget{structcommon__register__space__ext__ram_a57d116516f9e264bccd561158118685a}\label{structcommon__register__space__ext__ram_a57d116516f9e264bccd561158118685a}} 
+\index{common\_register\_space\_ext\_ram@{common\_register\_space\_ext\_ram}!PLC\_CommonRomRegs@{PLC\_CommonRomRegs}}
+\index{PLC\_CommonRomRegs@{PLC\_CommonRomRegs}!common\_register\_space\_ext\_ram@{common\_register\_space\_ext\_ram}}
+\doxysubsubsection{\texorpdfstring{PLC\_CommonRomRegs}{PLC\_CommonRomRegs}}
+{\footnotesize\ttfamily \mbox{\hyperlink{external__rom_8h_a961b98b0181a6a1ed5ece00b1b1228ce}{common\+\_\+rom\+\_\+registers}} common\+\_\+register\+\_\+space\+\_\+ext\+\_\+ram\+::\+P\+L\+C\+\_\+\+Common\+Rom\+Regs}
+
+
+
+Общие регистры, которые храняться в ПЗУ 
+
+\mbox{\Hypertarget{structcommon__register__space__ext__ram_a41f4f575b584bacda875396b0bb7edb8}\label{structcommon__register__space__ext__ram_a41f4f575b584bacda875396b0bb7edb8}} 
+\index{common\_register\_space\_ext\_ram@{common\_register\_space\_ext\_ram}!PLC\_Config@{PLC\_Config}}
+\index{PLC\_Config@{PLC\_Config}!common\_register\_space\_ext\_ram@{common\_register\_space\_ext\_ram}}
+\doxysubsubsection{\texorpdfstring{PLC\_Config}{PLC\_Config}}
+{\footnotesize\ttfamily \mbox{\hyperlink{external__ram_8h_a2dac5dc7ff578e21da8e0e5008834360}{device\+\_\+config}} common\+\_\+register\+\_\+space\+\_\+ext\+\_\+ram\+::\+P\+L\+C\+\_\+\+Config}
+
+
+
+Конфигурация устройства 
+
+\mbox{\Hypertarget{structcommon__register__space__ext__ram_a4e2c758faf568b5a9c8715256ef9af97}\label{structcommon__register__space__ext__ram_a4e2c758faf568b5a9c8715256ef9af97}} 
+\index{common\_register\_space\_ext\_ram@{common\_register\_space\_ext\_ram}!PLC\_CorrPackFromDevice\_B1@{PLC\_CorrPackFromDevice\_B1}}
+\index{PLC\_CorrPackFromDevice\_B1@{PLC\_CorrPackFromDevice\_B1}!common\_register\_space\_ext\_ram@{common\_register\_space\_ext\_ram}}
+\doxysubsubsection{\texorpdfstring{PLC\_CorrPackFromDevice\_B1}{PLC\_CorrPackFromDevice\_B1}}
+{\footnotesize\ttfamily uint32\+\_\+t common\+\_\+register\+\_\+space\+\_\+ext\+\_\+ram\+::\+P\+L\+C\+\_\+\+Corr\+Pack\+From\+Device\+\_\+\+B1}
+
+
+
+Корректных пакетов по Ш1, от устройства 
+
+\mbox{\Hypertarget{structcommon__register__space__ext__ram_ad3936c82fcda75e3b43e1869fd0fb97f}\label{structcommon__register__space__ext__ram_ad3936c82fcda75e3b43e1869fd0fb97f}} 
+\index{common\_register\_space\_ext\_ram@{common\_register\_space\_ext\_ram}!PLC\_CorrPackFromDevice\_B2@{PLC\_CorrPackFromDevice\_B2}}
+\index{PLC\_CorrPackFromDevice\_B2@{PLC\_CorrPackFromDevice\_B2}!common\_register\_space\_ext\_ram@{common\_register\_space\_ext\_ram}}
+\doxysubsubsection{\texorpdfstring{PLC\_CorrPackFromDevice\_B2}{PLC\_CorrPackFromDevice\_B2}}
+{\footnotesize\ttfamily uint32\+\_\+t common\+\_\+register\+\_\+space\+\_\+ext\+\_\+ram\+::\+P\+L\+C\+\_\+\+Corr\+Pack\+From\+Device\+\_\+\+B2}
+
+
+
+Корректных пакетов по Ш2, от устройства 
+
+\mbox{\Hypertarget{structcommon__register__space__ext__ram_a6a45af96191489245a2761ab66213ab2}\label{structcommon__register__space__ext__ram_a6a45af96191489245a2761ab66213ab2}} 
+\index{common\_register\_space\_ext\_ram@{common\_register\_space\_ext\_ram}!PLC\_CorrPackToDevice\_B1@{PLC\_CorrPackToDevice\_B1}}
+\index{PLC\_CorrPackToDevice\_B1@{PLC\_CorrPackToDevice\_B1}!common\_register\_space\_ext\_ram@{common\_register\_space\_ext\_ram}}
+\doxysubsubsection{\texorpdfstring{PLC\_CorrPackToDevice\_B1}{PLC\_CorrPackToDevice\_B1}}
+{\footnotesize\ttfamily uint32\+\_\+t common\+\_\+register\+\_\+space\+\_\+ext\+\_\+ram\+::\+P\+L\+C\+\_\+\+Corr\+Pack\+To\+Device\+\_\+\+B1}
+
+
+
+Корректных пакетов по Ш1, к устройству 
+
+\mbox{\Hypertarget{structcommon__register__space__ext__ram_a49d5a2f201634517f6b0c3b8b0c7426a}\label{structcommon__register__space__ext__ram_a49d5a2f201634517f6b0c3b8b0c7426a}} 
+\index{common\_register\_space\_ext\_ram@{common\_register\_space\_ext\_ram}!PLC\_CorrPackToDevice\_B2@{PLC\_CorrPackToDevice\_B2}}
+\index{PLC\_CorrPackToDevice\_B2@{PLC\_CorrPackToDevice\_B2}!common\_register\_space\_ext\_ram@{common\_register\_space\_ext\_ram}}
+\doxysubsubsection{\texorpdfstring{PLC\_CorrPackToDevice\_B2}{PLC\_CorrPackToDevice\_B2}}
+{\footnotesize\ttfamily uint32\+\_\+t common\+\_\+register\+\_\+space\+\_\+ext\+\_\+ram\+::\+P\+L\+C\+\_\+\+Corr\+Pack\+To\+Device\+\_\+\+B2}
+
+
+
+Корректных пакетов по Ш2, к устройству 
+
+\mbox{\Hypertarget{structcommon__register__space__ext__ram_a64bd210afad78487c9193a8109318a5e}\label{structcommon__register__space__ext__ram_a64bd210afad78487c9193a8109318a5e}} 
+\index{common\_register\_space\_ext\_ram@{common\_register\_space\_ext\_ram}!PLC\_Durat@{PLC\_Durat}}
+\index{PLC\_Durat@{PLC\_Durat}!common\_register\_space\_ext\_ram@{common\_register\_space\_ext\_ram}}
+\doxysubsubsection{\texorpdfstring{PLC\_Durat}{PLC\_Durat}}
+{\footnotesize\ttfamily uint32\+\_\+t common\+\_\+register\+\_\+space\+\_\+ext\+\_\+ram\+::\+P\+L\+C\+\_\+\+Durat}
+
+
+
+Время с момента запуска, с 
+
+\mbox{\Hypertarget{structcommon__register__space__ext__ram_a65bb90f3b47e619d9c5739cd930e1765}\label{structcommon__register__space__ext__ram_a65bb90f3b47e619d9c5739cd930e1765}} 
+\index{common\_register\_space\_ext\_ram@{common\_register\_space\_ext\_ram}!PLC\_ErrPackFromDevice\_B1@{PLC\_ErrPackFromDevice\_B1}}
+\index{PLC\_ErrPackFromDevice\_B1@{PLC\_ErrPackFromDevice\_B1}!common\_register\_space\_ext\_ram@{common\_register\_space\_ext\_ram}}
+\doxysubsubsection{\texorpdfstring{PLC\_ErrPackFromDevice\_B1}{PLC\_ErrPackFromDevice\_B1}}
+{\footnotesize\ttfamily uint32\+\_\+t common\+\_\+register\+\_\+space\+\_\+ext\+\_\+ram\+::\+P\+L\+C\+\_\+\+Err\+Pack\+From\+Device\+\_\+\+B1}
+
+
+
+Ошибок отправки пакета по Ш1. 
+
+\mbox{\Hypertarget{structcommon__register__space__ext__ram_ac15455ee68731cbe049caadc7cd01970}\label{structcommon__register__space__ext__ram_ac15455ee68731cbe049caadc7cd01970}} 
+\index{common\_register\_space\_ext\_ram@{common\_register\_space\_ext\_ram}!PLC\_ErrPackFromDevice\_B2@{PLC\_ErrPackFromDevice\_B2}}
+\index{PLC\_ErrPackFromDevice\_B2@{PLC\_ErrPackFromDevice\_B2}!common\_register\_space\_ext\_ram@{common\_register\_space\_ext\_ram}}
+\doxysubsubsection{\texorpdfstring{PLC\_ErrPackFromDevice\_B2}{PLC\_ErrPackFromDevice\_B2}}
+{\footnotesize\ttfamily uint32\+\_\+t common\+\_\+register\+\_\+space\+\_\+ext\+\_\+ram\+::\+P\+L\+C\+\_\+\+Err\+Pack\+From\+Device\+\_\+\+B2}
+
+
+
+Ошибок отправки пакета по Ш2. 
+
+\mbox{\Hypertarget{structcommon__register__space__ext__ram_a9137275729f93cc8dcfb6e36577708f6}\label{structcommon__register__space__ext__ram_a9137275729f93cc8dcfb6e36577708f6}} 
+\index{common\_register\_space\_ext\_ram@{common\_register\_space\_ext\_ram}!PLC\_ErrPackToDevice\_B1@{PLC\_ErrPackToDevice\_B1}}
+\index{PLC\_ErrPackToDevice\_B1@{PLC\_ErrPackToDevice\_B1}!common\_register\_space\_ext\_ram@{common\_register\_space\_ext\_ram}}
+\doxysubsubsection{\texorpdfstring{PLC\_ErrPackToDevice\_B1}{PLC\_ErrPackToDevice\_B1}}
+{\footnotesize\ttfamily uint32\+\_\+t common\+\_\+register\+\_\+space\+\_\+ext\+\_\+ram\+::\+P\+L\+C\+\_\+\+Err\+Pack\+To\+Device\+\_\+\+B1}
+
+
+
+Ошибок приема пакета по Ш1. 
+
+\mbox{\Hypertarget{structcommon__register__space__ext__ram_a5dfba01ac730555fcf94207da8dac540}\label{structcommon__register__space__ext__ram_a5dfba01ac730555fcf94207da8dac540}} 
+\index{common\_register\_space\_ext\_ram@{common\_register\_space\_ext\_ram}!PLC\_ErrPackToDevice\_B2@{PLC\_ErrPackToDevice\_B2}}
+\index{PLC\_ErrPackToDevice\_B2@{PLC\_ErrPackToDevice\_B2}!common\_register\_space\_ext\_ram@{common\_register\_space\_ext\_ram}}
+\doxysubsubsection{\texorpdfstring{PLC\_ErrPackToDevice\_B2}{PLC\_ErrPackToDevice\_B2}}
+{\footnotesize\ttfamily uint32\+\_\+t common\+\_\+register\+\_\+space\+\_\+ext\+\_\+ram\+::\+P\+L\+C\+\_\+\+Err\+Pack\+To\+Device\+\_\+\+B2}
+
+
+
+Ошибок приема пакета по Ш2. 
+
+\mbox{\Hypertarget{structcommon__register__space__ext__ram_a98e192cc41987223a2ee0f3c47d82bbc}\label{structcommon__register__space__ext__ram_a98e192cc41987223a2ee0f3c47d82bbc}} 
+\index{common\_register\_space\_ext\_ram@{common\_register\_space\_ext\_ram}!PLC\_PMAddr@{PLC\_PMAddr}}
+\index{PLC\_PMAddr@{PLC\_PMAddr}!common\_register\_space\_ext\_ram@{common\_register\_space\_ext\_ram}}
+\doxysubsubsection{\texorpdfstring{PLC\_PMAddr}{PLC\_PMAddr}}
+{\footnotesize\ttfamily \mbox{\hyperlink{external__ram_8h_aaac64f1a34f5aa60a1e502b91a23fce8}{device\+\_\+address}} common\+\_\+register\+\_\+space\+\_\+ext\+\_\+ram\+::\+P\+L\+C\+\_\+\+P\+M\+Addr}
+
+
+
+Адрес устройства 
+
+\mbox{\Hypertarget{structcommon__register__space__ext__ram_a69676d2a978b4e5a1049c6ed5ddd7491}\label{structcommon__register__space__ext__ram_a69676d2a978b4e5a1049c6ed5ddd7491}} 
+\index{common\_register\_space\_ext\_ram@{common\_register\_space\_ext\_ram}!PLC\_PowerDefect@{PLC\_PowerDefect}}
+\index{PLC\_PowerDefect@{PLC\_PowerDefect}!common\_register\_space\_ext\_ram@{common\_register\_space\_ext\_ram}}
+\doxysubsubsection{\texorpdfstring{PLC\_PowerDefect}{PLC\_PowerDefect}}
+{\footnotesize\ttfamily \mbox{\hyperlink{external__ram_8h_a0af0eff1baae45b5c07dbb112e449709}{power\+\_\+failure}} common\+\_\+register\+\_\+space\+\_\+ext\+\_\+ram\+::\+P\+L\+C\+\_\+\+Power\+Defect}
+
+
+
+Неиспр питания 
+
+\mbox{\Hypertarget{structcommon__register__space__ext__ram_a2cdef00da20bc6087da08b3e9f11136a}\label{structcommon__register__space__ext__ram_a2cdef00da20bc6087da08b3e9f11136a}} 
+\index{common\_register\_space\_ext\_ram@{common\_register\_space\_ext\_ram}!PLC\_SelfDiagDefect@{PLC\_SelfDiagDefect}}
+\index{PLC\_SelfDiagDefect@{PLC\_SelfDiagDefect}!common\_register\_space\_ext\_ram@{common\_register\_space\_ext\_ram}}
+\doxysubsubsection{\texorpdfstring{PLC\_SelfDiagDefect}{PLC\_SelfDiagDefect}}
+{\footnotesize\ttfamily \mbox{\hyperlink{external__ram_8h_a0d97e29a474b978aa198100c058ba873}{self\+\_\+diag}} common\+\_\+register\+\_\+space\+\_\+ext\+\_\+ram\+::\+P\+L\+C\+\_\+\+Self\+Diag\+Defect}
+
+
+
+Неиспр самодиагностики 
+
+\mbox{\Hypertarget{structcommon__register__space__ext__ram_a23be17a22dd1b33e9612afaa9fb5cbb6}\label{structcommon__register__space__ext__ram_a23be17a22dd1b33e9612afaa9fb5cbb6}} 
+\index{common\_register\_space\_ext\_ram@{common\_register\_space\_ext\_ram}!PLC\_SoftVer@{PLC\_SoftVer}}
+\index{PLC\_SoftVer@{PLC\_SoftVer}!common\_register\_space\_ext\_ram@{common\_register\_space\_ext\_ram}}
+\doxysubsubsection{\texorpdfstring{PLC\_SoftVer}{PLC\_SoftVer}}
+{\footnotesize\ttfamily \mbox{\hyperlink{external__ram_8h_a3e996289f121b60086eeb46de8f62126}{plc\+\_\+soft\+\_\+ver}} common\+\_\+register\+\_\+space\+\_\+ext\+\_\+ram\+::\+P\+L\+C\+\_\+\+Soft\+Ver}
+
+
+
+Версия ПО ~\newline
+ 
+
+\mbox{\Hypertarget{structcommon__register__space__ext__ram_ad2a3e185f6580aaf61217365a6eff5cc}\label{structcommon__register__space__ext__ram_ad2a3e185f6580aaf61217365a6eff5cc}} 
+\index{common\_register\_space\_ext\_ram@{common\_register\_space\_ext\_ram}!Reserv\_1@{Reserv\_1}}
+\index{Reserv\_1@{Reserv\_1}!common\_register\_space\_ext\_ram@{common\_register\_space\_ext\_ram}}
+\doxysubsubsection{\texorpdfstring{Reserv\_1}{Reserv\_1}}
+{\footnotesize\ttfamily uint8\+\_\+t common\+\_\+register\+\_\+space\+\_\+ext\+\_\+ram\+::\+Reserv\+\_\+1\mbox{[}68\mbox{]}}
+
+
+
+РЕЗЕРВ 
+
+
+
+Объявления и описания членов структуры находятся в файле\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{external__ram_8h}{external\+\_\+ram.\+h}}\end{DoxyCompactItemize}

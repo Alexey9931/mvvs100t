@@ -1,6 +1,6 @@
 /*!
  \file
- \brief Заголовочный файл с описанием API протокола обмена данными по интерфейсу RS-422
+ \brief Р—Р°РіРѕР»РѕРІРѕС‡РЅС‹Р№ С„Р°Р№Р» СЃ РѕРїРёСЃР°РЅРёРµРј API РїСЂРѕС‚РѕРєРѕР»Р° РѕР±РјРµРЅР° РґР°РЅРЅС‹РјРё РїРѕ РёРЅС‚РµСЂС„РµР№СЃСѓ RS-422
 */
 
 #ifndef __PROTOCOL_H
@@ -13,141 +13,165 @@
 #include <stdlib.h>
 #include <math.h>
 
-#define NUMBER_CMDS_IN_PACKET 255             		///< Максимальное число команд в одном пакете
+#define NUMBER_CMDS_IN_PACKET 255 ///< РњР°РєСЃРёРјР°Р»СЊРЅРѕ РІРѕР·РјРѕР¶РЅРѕРµ С‡РёСЃР»Рѕ РєРѕРјР°РЅРґ РІ РѕРґРЅРѕРј РїР°РєРµС‚Рµ
 
-///Заголовок пакета
+/// Р—Р°РіРѕР»РѕРІРѕРє РїР°РєРµС‚Р°
 #define PACKET_HEAD 0x55	
-///Хвост пакета
+/// РҐРІРѕСЃС‚ РїР°РєРµС‚Р°
 #define PACKET_TAIL 0xAAAA
 
-///Состояния автомата выбора УМ
-#define PLC_CM_UNKNOWN_STATE 		0x10	///<Неизвестное состояние
-#define PLC_CM_INIT_2_BUS 			0x09	///<Модуль инициализирован, управление по шине 2
-#define PLC_CM_CRITICAL_FAULT 	0x06	///<Критическая неисправность
-#define PLC_CM_REMOVE_INIT 			0x05	///<Управление не осуществляется (снятие инициализации)
-#define PLC_CM_INIT_1_BUS 			0x04	///<Модуль инициализирован, управление по шине 1
-#define PLC_CM_NOT_INIT 				0x01	///<Модуль не инициализирован
+// РЎРѕСЃС‚РѕСЏРЅРёСЏ Р°РІС‚РѕРјР°С‚Р° РІС‹Р±РѕСЂР° РЈРњ
+#define PLC_CM_UNKNOWN_STATE 		0x10	///< РќРµРёР·РІРµСЃС‚РЅРѕРµ СЃРѕСЃС‚РѕСЏРЅРёРµ
+#define PLC_CM_INIT_2_BUS 			0x09	///< РњРѕРґСѓР»СЊ РёРЅРёС†РёР°Р»РёР·РёСЂРѕРІР°РЅ, СѓРїСЂР°РІР»РµРЅРёРµ РїРѕ С€РёРЅРµ 2
+#define PLC_CM_CRITICAL_FAULT 	0x06	///< РљСЂРёС‚РёС‡РµСЃРєР°СЏ РЅРµРёСЃРїСЂР°РІРЅРѕСЃС‚СЊ
+#define PLC_CM_REMOVE_INIT 			0x05	///< РЈРїСЂР°РІР»РµРЅРёРµ РЅРµ РѕСЃСѓС‰РµСЃС‚РІР»СЏРµС‚СЃСЏ (СЃРЅСЏС‚РёРµ РёРЅРёС†РёР°Р»РёР·Р°С†РёРё)
+#define PLC_CM_INIT_1_BUS 			0x04	///< РњРѕРґСѓР»СЊ РёРЅРёС†РёР°Р»РёР·РёСЂРѕРІР°РЅ, СѓРїСЂР°РІР»РµРЅРёРµ РїРѕ С€РёРЅРµ 1
+#define PLC_CM_NOT_INIT 				0x01	///< РњРѕРґСѓР»СЊ РЅРµ РёРЅРёС†РёР°Р»РёР·РёСЂРѕРІР°РЅ
 
-///все поддерживаемые протоколом команды
-#define TYPE_CMD 0x00
-#define INIT_CMD 0x01
-#define READ_CMD 0x02
-#define WRITE_CMD 0x03
-#define RESET_CMD 0x04
-#define CONFIG 0x05
+// Р’СЃРµ РїРѕРґРґРµСЂР¶РёРІР°РµРјС‹Рµ РїСЂРѕС‚РѕРєРѕР»РѕРј РєРѕРјР°РЅРґС‹
+#define TYPE_CMD 	0x00		///< РљРѕРґ РєРѕРјР°РЅРґС‹ TYPE
+#define INIT_CMD 	0x01		///< РљРѕРґ РєРѕРјР°РЅРґС‹ INIT
+#define READ_CMD 	0x02		///< РљРѕРґ РєРѕРјР°РЅРґС‹ READ
+#define WRITE_CMD 0x03		///< РљРѕРґ РєРѕРјР°РЅРґС‹ WRITE
+#define RESET_CMD 0x04		///< РљРѕРґ РєРѕРјР°РЅРґС‹ RESET
+#define CONFIG 		0x05		///< РљРѕРґ РєРѕРјР°РЅРґС‹ CONFIG
 
-///Коды ошибок обмена данными
+/**
+ * @brief РљРѕРґС‹ РѕС€РёР±РѕРє, РєРѕС‚РѕСЂС‹Рµ РјРѕРіСѓС‚ РІРѕР·РЅРёРєР°С‚СЊ РІ РїСЂРѕС†РµСЃСЃРµ РѕР±РјРµРЅР° РґР°РЅРЅС‹РјРё РїРѕ С€РёРЅРµ
+ *
+ */
 typedef enum protocol_errors
 {
-	NO_ERROR,															///< Нет ошибок
-	UART_ERROR,														///< Ошибка работы UART
-	CRC_ERROR,														///< Ошибка контрольной суммы
-	PM_ADDR_ERROR,												///< Ошибка адресации
-	PACKET_ERROR													///< Ошибка структуры пакета
+	NO_ERROR,											///< РќРµС‚ РѕС€РёР±РѕРє
+	UART_ERROR,										///< РћС€РёР±РєР° СЂР°Р±РѕС‚С‹ UART
+	CRC_ERROR,										///< РћС€РёР±РєР° РєРѕРЅС‚СЂРѕР»СЊРЅРѕР№ СЃСѓРјРјС‹
+	PM_ADDR_ERROR,								///< РћС€РёР±РєР° Р°РґСЂРµСЃР°С†РёРё
+	PACKET_ERROR									///< РћС€РёР±РєР° СЃС‚СЂСѓРєС‚СѓСЂС‹ РїР°РєРµС‚Р°
 } protocol_error;
 
-///Структура с заголовком для каждой команды внутри одного пакета
+/**
+ * @brief РЎС‚СЂСѓРєС‚СѓСЂР° СЃ Р·Р°РіРѕР»РѕРІРєРѕРј РґР»СЏ РєР°Р¶РґРѕР№ РєРѕРјР°РЅРґС‹ (СЃСѓР±РїР°РєРµС‚Р°) РІРЅСѓС‚СЂРё РѕРґРЅРѕРіРѕ РїР°РєРµС‚Р°
+ *
+ */
 typedef struct cmd_header_struct
 {
-	uint8_t cmd;			///< Команда
-	uint16_t result;	///< Результат выполнения команды
-	uint16_t length;	///< Длина команды
-}__attribute__((packed)) fields_cmd_header;
+	uint8_t cmd;					///< РљРѕРјР°РЅРґР°
+	uint16_t result;			///< Р РµР·СѓР»СЊС‚Р°С‚ РІС‹РїРѕР»РЅРµРЅРёСЏ РєРѕРјР°РЅРґС‹
+	uint16_t length;			///< Р”Р»РёРЅР° РєРѕРјР°РЅРґС‹
+}
+#ifndef DOXYGEN
+__attribute__((packed))
+#endif
+fields_cmd_header;
 
-///Структура с полями данных для каждой команды внутри одного пакета
+/**
+ * @brief РЎС‚СЂСѓРєС‚СѓСЂР° СЃ РїРѕР»СЏРјРё РґР°РЅРЅС‹С… РґР»СЏ РєР°Р¶РґРѕР№ РєРѕРјР°РЅРґС‹ (СЃСѓР±РїР°РєРµС‚Р°) РІРЅСѓС‚СЂРё РѕРґРЅРѕРіРѕ РїР°РєРµС‚Р°
+ *
+ */
 typedef struct cmd_struct
 {
-	fields_cmd_header 	header;		///< Заголовок
-	uint8_t 						*data;		///< Данные
-}__attribute__((packed)) fields_cmd;
+	fields_cmd_header 	header;		///< Р—Р°РіРѕР»РѕРІРѕРє
+	uint8_t 						*data;		///< Р”Р°РЅРЅС‹Рµ
+}
+#ifndef DOXYGEN
+__attribute__((packed))
+#endif
+fields_cmd;
 
-///Структура с полями заголовка пакета
+/**
+ * @brief РЎС‚СЂСѓРєС‚СѓСЂР° СЃ РїРѕР»СЏРјРё Р·Р°РіРѕР»РѕРІРєР° РїР°РєРµС‚Р°
+ *
+ */
 typedef struct packet_header_struct
 {
-	uint8_t 	header;							///< Заголовок
-	uint8_t 	receiver_addr;			///< Адрес получателя
-	uint8_t 	sender_addr;				///< Адрес отправителя
-	uint16_t 	packet_length;			///< Длина пакета
-	uint8_t 	service_byte;				///< Сервисный байт
-	uint8_t 	cmd_number;					///< Количество команд
-}__attribute__((packed)) fields_packet_header;
+	uint8_t 	header;							///< Р—Р°РіРѕР»РѕРІРѕРє
+	uint8_t 	receiver_addr;			///< РђРґСЂРµСЃ РїРѕР»СѓС‡Р°С‚РµР»СЏ
+	uint8_t 	sender_addr;				///< РђРґСЂРµСЃ РѕС‚РїСЂР°РІРёС‚РµР»СЏ
+	uint16_t 	packet_length;			///< Р”Р»РёРЅР° РїР°РєРµС‚Р°
+	uint8_t 	service_byte;				///< РЎРµСЂРІРёСЃРЅС‹Р№ Р±Р°Р№С‚
+	uint8_t 	cmd_number;					///< РљРѕР»РёС‡РµСЃС‚РІРѕ РєРѕРјР°РЅРґ
+}
+#ifndef DOXYGEN
+__attribute__((packed))
+#endif
+fields_packet_header;
 
-///Структура с полями конца пакета
+/**
+ * @brief РЎС‚СЂСѓРєС‚СѓСЂР° СЃ РїРѕР»СЏРјРё РєРѕРЅС†Р° РїР°РєРµС‚Р°
+ *
+ */
 typedef struct packet_tail_Struct
 {
-	uint32_t checksum;		///< Контрольная сумма (CRC32)
-	uint16_t end;					///< Конец пакета
-}__attribute__((packed)) fields_packet_tail;
+	uint32_t checksum;		///< РљРѕРЅС‚СЂРѕР»СЊРЅР°СЏ СЃСѓРјРјР° (CRC32)
+	uint16_t end;					///< РљРѕРЅРµС† РїР°РєРµС‚Р°
+}
+#ifndef DOXYGEN
+__attribute__((packed))
+#endif
+fields_packet_tail;
 
-///Структура со всеми полями данных пакета
+/**
+ * @brief РЎС‚СЂСѓРєС‚СѓСЂР° РїР°РєРµС‚Р° РґР°РЅРЅС‹С… СЃРѕРіР»Р°СЃРЅРѕ СѓС‚РІРµСЂР¶РґРµРЅРЅРѕРјСѓ РїСЂРѕС‚РѕРєРѕР»Сѓ РѕР±РјРµРЅР° РґР°РЅРЅС‹РјРё
+ *
+ */
 typedef struct tx_rx_packet_struct
 {
-	fields_packet_header 	packet_header;																	///< Заголовочные поля
-	fields_cmd 						cmd_with_data[NUMBER_CMDS_IN_PACKET];						///< Массив полей с содержимым каждой команды
-	fields_packet_tail 		packet_tail;																		///< Поля хвоста пакета
-}__attribute__((packed)) fields_packet;
+	fields_packet_header 	packet_header;																	///< Р—Р°РіРѕР»РѕРІРѕС‡РЅС‹Рµ РїРѕР»СЏ
+	fields_cmd 						cmd_with_data[NUMBER_CMDS_IN_PACKET];						///< РњР°СЃСЃРёРІ РїРѕР»РµР№ (СЃСѓР±РїР°РєРµС‚РѕРІ) СЃ СЃРѕРґРµСЂР¶РёРјС‹Рј РєР°Р¶РґРѕР№ РєРѕРјР°РЅРґС‹
+	fields_packet_tail 		packet_tail;																		///< РџРѕР»СЏ С…РІРѕСЃС‚Р° РїР°РєРµС‚Р°
+}
+#ifndef DOXYGEN
+__attribute__((packed))
+#endif
+fields_packet;
 
 /*!
- *	\brief Отправляет пакет данных
- *	\param *uart_struct - Выбранный UART 
- *	\param ext_bus - Номер шины
- *	\return Код ошибки protocol_error
+ *	\brief РћС‚РїСЂР°РІР»СЏРµС‚ РїР°РєРµС‚ РґР°РЅРЅС‹С…
+ *	\param *uart_struct - Р’С‹Р±СЂР°РЅРЅС‹Р№ UART РњРљ
+ *	\param ext_bus - РќРѕРјРµСЂ С€РёРЅС‹
+ *	\return РљРѕРґ РѕС€РёР±РєРё protocol_error
 */
 protocol_error transmit_packet(uart_n *uart_struct, uint8_t ext_bus);
 
 /*!
- *	\brief Читает пакет данных
- *	\param *uart_struct - Выбранный UART 
- *	\param ext_bus - Номер шины
- *	\return Код ошибки protocol_error
+ *	\brief Р§РёС‚Р°РµС‚ РїР°РєРµС‚ РґР°РЅРЅС‹С…
+ *	\param *uart_struct - Р’С‹Р±СЂР°РЅРЅС‹Р№ UART РњРљ
+ *	\param ext_bus - РќРѕРјРµСЂ С€РёРЅС‹
+ *	\return РљРѕРґ РѕС€РёР±РєРё protocol_error
 */
 protocol_error receive_packet(uart_n *uart_struct, uint8_t ext_bus);
 
 /*!
- *	\brief Выполняет требуемые команды
- *	\param ext_bus - Номер шины
- *	\return Код ошибки protocol_error
+ *	\brief Р’С‹РїРѕР»РЅСЏРµС‚ С‚СЂРµР±СѓРµРјС‹Рµ РєРѕРјР°РЅРґС‹
+ *	\param ext_bus - РќРѕРјРµСЂ С€РёРЅС‹
+ *	\return РљРѕРґ РѕС€РёР±РєРё protocol_error
 */
 uint8_t protocol_do_cmds(uint8_t ext_bus);
 
 /*!
- *	\brief Вычисляет контрольную сумму по алгоритму CRC32
- *	\param *buf - Буфер с данными для расчета контрольной суммы
- *	\param len - Длина буфера
- *	\return Контрольная сумма
+ *	\brief Р’С‹С‡РёСЃР»СЏРµС‚ РєРѕРЅС‚СЂРѕР»СЊРЅСѓСЋ СЃСѓРјРјСѓ РїРѕ Р°Р»РіРѕСЂРёС‚РјСѓ CRC32
+ *	\param *buf - Р‘СѓС„РµСЂ СЃ РґР°РЅРЅС‹РјРё РґР»СЏ СЂР°СЃС‡РµС‚Р° РєРѕРЅС‚СЂРѕР»СЊРЅРѕР№ СЃСѓРјРјС‹
+ *	\param len - Р”Р»РёРЅР° Р±СѓС„РµСЂР°
+ *	\return РљРѕРЅС‚СЂРѕР»СЊРЅР°СЏ СЃСѓРјРјР°
 */
 uint_least32_t crc32(uint8_t *buf, size_t len);
 
 /*!
- *	\brief Заполняет таблицу CRC32
+ *	\brief Р—Р°РїРѕР»РЅСЏРµС‚ С‚Р°Р±Р»РёС†Сѓ CRC32
 */
 void fill_crc32_table(void);
 
 /*!
- *	\brief Обрабатывает ошибки приема пакетов
- *	\param error - Код ошибки
- *	\param ext_bus - Номер шины
+ *	\brief РћР±СЂР°Р±Р°С‚С‹РІР°РµС‚ РѕС€РёР±РєРё РїСЂРёРµРјР° РїР°РєРµС‚РѕРІ
+ *	\param error - РљРѕРґ РѕС€РёР±РєРё
+ *	\param ext_bus - РќРѕРјРµСЂ С€РёРЅС‹
 */
 void rx_error_handler(protocol_error error, uint8_t ext_bus);
 
 /*!
- *	\brief Обрабатывает сервисного байта УМ
- *	\param ext_bus - Номер шины
+ *	\brief РћР±СЂР°Р±Р°С‚С‹РІР°РµС‚ СЃРµСЂРІРёСЃРЅС‹Р№ Р±Р°Р№С‚ РЈРњ
+ *	\param ext_bus - РќРѕРјРµСЂ С€РёРЅС‹
 */
 void um_service_byte_handler(uint8_t ext_bus);
-
-/*!
- *	\brief Преобразует слово для передачи в сеть
- *	\param src - Слово
- *	\return Преобразованнное слово
-*/
-uint32_t* htonl(uint32_t *src);
-
-/*!
- *	\brief Преобразует полуслово для передачи в сеть
- *	\param src - Полуслово
- *	\return Преобразованнное полуслово
-*/
-uint16_t* htons(uint16_t *src);
 
 #endif /*__PROTOCOL_H */

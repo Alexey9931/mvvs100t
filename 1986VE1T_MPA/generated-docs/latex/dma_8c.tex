@@ -1,0 +1,256 @@
+\hypertarget{dma_8c}{}\doxysection{Файл dma.\+c}
+\label{dma_8c}\index{dma.c@{dma.c}}
+
+
+Файл с реализацией A\+PI для работы с D\+MA.  
+
+
+{\ttfamily \#include \char`\"{}dma.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}spi.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}1273pv19t.\+h\char`\"{}}\newline
+Граф включаемых заголовочных файлов для dma.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dma_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Функции}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{dma_8c_a88f1960e6ba93568ac05f5bfbbcfe7eb}{dma\+\_\+common\+\_\+init}} (void)
+\begin{DoxyCompactList}\small\item\em Выполняет общую инициализацию D\+MA. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{dma_8c_ac1fca8b8a3ce0431d9aebbf432eda751}{D\+M\+A\+\_\+\+I\+R\+Q\+Handler}} (void)
+\begin{DoxyCompactList}\small\item\em Обработчик прерываний D\+MA. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Переменные}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{spi_8h_ab833736115a154e13899c6b9695957a2}{spi\+\_\+n}} \mbox{\hyperlink{dma_8c_a168a603d82909428f4f498ae15a611d7}{spi\+\_\+1}}
+\begin{DoxyCompactList}\small\item\em Структура с конфигурационными параметрами блока S\+P\+I1 МК \end{DoxyCompactList}\item 
+\mbox{\hyperlink{spi_8h_ab833736115a154e13899c6b9695957a2}{spi\+\_\+n}} \mbox{\hyperlink{dma_8c_a37bdd3ddaee9770093c97c396a2942c2}{spi\+\_\+2}}
+\begin{DoxyCompactList}\small\item\em Структура с конфигурационными параметрами блока S\+P\+I2 МК \end{DoxyCompactList}\item 
+\mbox{\hyperlink{1273pv19t_8h_a373968a5da87bc4464c88e86a02c2c52}{adc\+\_\+n}} \mbox{\hyperlink{dma_8c_a558e219bfe7a1a334ebe338ca121e0ec}{adc\+\_\+1}}
+\begin{DoxyCompactList}\small\item\em Структура с конфигурационными параметрами микросхемы АЦП \end{DoxyCompactList}\item 
+\mbox{\hyperlink{timers_8h_a93415917cf28bb298dd781fbb842ddae}{timer\+\_\+n}} \mbox{\hyperlink{dma_8c_a31ea70aa2bae87d7190dd89907374e82}{timer\+\_\+1}}
+\begin{DoxyCompactList}\small\item\em Структура с конфигурационными параметрами блока Timer1 МК \end{DoxyCompactList}\item 
+\mbox{\hyperlink{timers_8h_a93415917cf28bb298dd781fbb842ddae}{timer\+\_\+n}} \mbox{\hyperlink{dma_8c_a1bd790a808dd714d6cdae26f4ee59bdb}{timer\+\_\+2}}
+\begin{DoxyCompactList}\small\item\em Структура с конфигурационными параметрами блока Timer2 МК \end{DoxyCompactList}\item 
+\mbox{\hyperlink{timers_8h_a93415917cf28bb298dd781fbb842ddae}{timer\+\_\+n}} \mbox{\hyperlink{dma_8c_ab5444d3d745188ad65e535e648990690}{timer\+\_\+3}}
+\begin{DoxyCompactList}\small\item\em Структура с конфигурационными параметрами блока Timer3 МК \end{DoxyCompactList}\item 
+\mbox{\hyperlink{uart_8h_adaa8285f14392d31d36867eddcd78572}{uart\+\_\+n}} \mbox{\hyperlink{dma_8c_aec4a192d186c4544c080be90dd080448}{uart\+\_\+1}}
+\begin{DoxyCompactList}\small\item\em Структура с конфигурационными параметрами блока U\+A\+R\+T1 МК \end{DoxyCompactList}\item 
+\mbox{\hyperlink{uart_8h_adaa8285f14392d31d36867eddcd78572}{uart\+\_\+n}} \mbox{\hyperlink{dma_8c_a50c3857c2c6185b8f3b9e556d4616100}{uart\+\_\+2}}
+\begin{DoxyCompactList}\small\item\em Структура с конфигурационными параметрами блока U\+A\+R\+T2 МК \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Файл с реализацией A\+PI для работы с D\+MA. 
+
+
+
+\doxysubsection{Функции}
+\mbox{\Hypertarget{dma_8c_a88f1960e6ba93568ac05f5bfbbcfe7eb}\label{dma_8c_a88f1960e6ba93568ac05f5bfbbcfe7eb}} 
+\index{dma.c@{dma.c}!dma\_common\_init@{dma\_common\_init}}
+\index{dma\_common\_init@{dma\_common\_init}!dma.c@{dma.c}}
+\doxysubsubsection{\texorpdfstring{dma\_common\_init()}{dma\_common\_init()}}
+{\footnotesize\ttfamily void dma\+\_\+common\+\_\+init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Выполняет общую инициализацию D\+MA. 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{44 \{}
+\DoxyCodeLine{45     \textcolor{comment}{// Разрешить тактирование DMA}}
+\DoxyCodeLine{46     RST\_CLK\_PCLKcmd(RST\_CLK\_PCLK\_RST\_CLK | RST\_CLK\_PCLK\_DMA | RST\_CLK\_PCLK\_SSP1 |RST\_CLK\_PCLK\_SSP2 |RST\_CLK\_PCLK\_SSP3, ENABLE);}
+\DoxyCodeLine{47 \textcolor{preprocessor}{    \#ifdef K1986VE3T}}
+\DoxyCodeLine{48     RST\_CLK\_PCLKcmd(RST\_CLK\_PCLK\_SSP4, ENABLE);}
+\DoxyCodeLine{49 \textcolor{preprocessor}{    \#endif}}
+\DoxyCodeLine{50     \textcolor{comment}{// Запретить все прерывания, в том числе от SSP}}
+\DoxyCodeLine{51     NVIC-\/>ICPR[0] = 0xFFFFFFFF;}
+\DoxyCodeLine{52     NVIC-\/>ICER[0] = 0xFFFFFFFF;}
+\DoxyCodeLine{53     }
+\DoxyCodeLine{54     MDR\_SSP1-\/>DMACR=0;}
+\DoxyCodeLine{55     MDR\_SSP2-\/>DMACR=0;}
+\DoxyCodeLine{56     MDR\_SSP3-\/>DMACR=0;}
+\DoxyCodeLine{57 \textcolor{preprocessor}{    \#ifdef K1986VE3T}}
+\DoxyCodeLine{58     MDR\_SSP4-\/>DMACR=0;}
+\DoxyCodeLine{59 \textcolor{preprocessor}{    \#endif}}
+\DoxyCodeLine{60     \textcolor{comment}{// Сбросить все настройки DMA}}
+\DoxyCodeLine{61     DMA\_DeInit();}
+\DoxyCodeLine{62 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{dma_8c_ac1fca8b8a3ce0431d9aebbf432eda751}\label{dma_8c_ac1fca8b8a3ce0431d9aebbf432eda751}} 
+\index{dma.c@{dma.c}!DMA\_IRQHandler@{DMA\_IRQHandler}}
+\index{DMA\_IRQHandler@{DMA\_IRQHandler}!dma.c@{dma.c}}
+\doxysubsubsection{\texorpdfstring{DMA\_IRQHandler()}{DMA\_IRQHandler()}}
+{\footnotesize\ttfamily void D\+M\+A\+\_\+\+I\+R\+Q\+Handler (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Обработчик прерываний D\+MA. 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{68 \{}
+\DoxyCodeLine{69     \textcolor{comment}{// Если сработало прерывание при заполнении буфера приемника UART1}}
+\DoxyCodeLine{70     \textcolor{keywordflow}{if}(DMA\_GetFlagStatus(DMA\_Channel\_REQ\_UART1\_RX, DMA\_FLAG\_CHNL\_ENA) == 0)}
+\DoxyCodeLine{71     \{}
+\DoxyCodeLine{72         \textcolor{comment}{// Если скопирован последний буфер UART}}
+\DoxyCodeLine{73         \textcolor{keywordflow}{if} (\mbox{\hyperlink{dma_8c_aec4a192d186c4544c080be90dd080448}{uart\_1}}.\mbox{\hyperlink{structuart__config__data_a1f6f31cbf34ef43cfba85fd38f3348e4}{uart\_dma\_ch}}.\mbox{\hyperlink{structuart__dma__params_a78d3fe2eb0fb883be17045069af5491e}{dma\_irq\_counter}} == ((\mbox{\hyperlink{uart_8h_a0d57378e32bf8278011460740bc29f7f}{UART\_BUFFER\_SIZE}}/1024) -\/ 1))}
+\DoxyCodeLine{74         \{}
+\DoxyCodeLine{75             \mbox{\hyperlink{uart_8c_ae14bbae27563550125dabbbe18aa55d4}{DMA\_UART\_RX\_init}}(\&\mbox{\hyperlink{dma_8c_aec4a192d186c4544c080be90dd080448}{uart\_1}});}
+\DoxyCodeLine{76             \mbox{\hyperlink{dma_8c_aec4a192d186c4544c080be90dd080448}{uart\_1}}.\mbox{\hyperlink{structuart__config__data_a1f6f31cbf34ef43cfba85fd38f3348e4}{uart\_dma\_ch}}.\mbox{\hyperlink{structuart__dma__params_a78d3fe2eb0fb883be17045069af5491e}{dma\_irq\_counter}} = 0;}
+\DoxyCodeLine{77             \mbox{\hyperlink{dma_8c_aec4a192d186c4544c080be90dd080448}{uart\_1}}.\mbox{\hyperlink{structuart__config__data_a7b173ce3ba50d5d98ecc51cd80725433}{buffer\_count}} = 0;}
+\DoxyCodeLine{78         \}}
+\DoxyCodeLine{79       \textcolor{keywordflow}{else}}
+\DoxyCodeLine{80         \{}
+\DoxyCodeLine{81             \mbox{\hyperlink{dma_8c_aec4a192d186c4544c080be90dd080448}{uart\_1}}.\mbox{\hyperlink{structuart__config__data_a1f6f31cbf34ef43cfba85fd38f3348e4}{uart\_dma\_ch}}.\mbox{\hyperlink{structuart__dma__params_a57078c8a90ebfae005ef5c190e38c8e7}{DMA\_InitStructure\_UART\_RX}}.DMA\_DestBaseAddr += \mbox{\hyperlink{dma_8c_aec4a192d186c4544c080be90dd080448}{uart\_1}}.\mbox{\hyperlink{structuart__config__data_a1f6f31cbf34ef43cfba85fd38f3348e4}{uart\_dma\_ch}}.\mbox{\hyperlink{structuart__dma__params_a57078c8a90ebfae005ef5c190e38c8e7}{DMA\_InitStructure\_UART\_RX}}.DMA\_CycleSize;}
+\DoxyCodeLine{82             \textcolor{comment}{// Инициализировать канал снова}}
+\DoxyCodeLine{83             DMA\_Init(\mbox{\hyperlink{dma_8c_aec4a192d186c4544c080be90dd080448}{uart\_1}}.\mbox{\hyperlink{structuart__config__data_a1f6f31cbf34ef43cfba85fd38f3348e4}{uart\_dma\_ch}}.\mbox{\hyperlink{structuart__dma__params_a64401b64ba4343b3a70b26079a91798f}{dma\_channel}}, \&\mbox{\hyperlink{dma_8c_aec4a192d186c4544c080be90dd080448}{uart\_1}}.\mbox{\hyperlink{structuart__config__data_a1f6f31cbf34ef43cfba85fd38f3348e4}{uart\_dma\_ch}}.\mbox{\hyperlink{structuart__dma__params_a7f3e599d1565aefe1288df16c02be58a}{DMA\_Channel\_UART\_RX}});}
+\DoxyCodeLine{84             \mbox{\hyperlink{dma_8c_aec4a192d186c4544c080be90dd080448}{uart\_1}}.\mbox{\hyperlink{structuart__config__data_a1f6f31cbf34ef43cfba85fd38f3348e4}{uart\_dma\_ch}}.\mbox{\hyperlink{structuart__dma__params_a78d3fe2eb0fb883be17045069af5491e}{dma\_irq\_counter}}++;}
+\DoxyCodeLine{85         \}}
+\DoxyCodeLine{86     \}}
+\DoxyCodeLine{87     \textcolor{comment}{// Если сработало прерывание при заполнении буфера приемника UART2}}
+\DoxyCodeLine{88     \textcolor{keywordflow}{if}(DMA\_GetFlagStatus(DMA\_Channel\_REQ\_UART2\_RX, DMA\_FLAG\_CHNL\_ENA) == 0)}
+\DoxyCodeLine{89     \{}
+\DoxyCodeLine{90         \textcolor{comment}{// Если скопирован последний буфер UART}}
+\DoxyCodeLine{91         \textcolor{keywordflow}{if} (\mbox{\hyperlink{dma_8c_a50c3857c2c6185b8f3b9e556d4616100}{uart\_2}}.\mbox{\hyperlink{structuart__config__data_a1f6f31cbf34ef43cfba85fd38f3348e4}{uart\_dma\_ch}}.\mbox{\hyperlink{structuart__dma__params_a78d3fe2eb0fb883be17045069af5491e}{dma\_irq\_counter}} == ((\mbox{\hyperlink{uart_8h_a0d57378e32bf8278011460740bc29f7f}{UART\_BUFFER\_SIZE}}/1024) -\/ 1))}
+\DoxyCodeLine{92         \{}
+\DoxyCodeLine{93             \mbox{\hyperlink{uart_8c_ae14bbae27563550125dabbbe18aa55d4}{DMA\_UART\_RX\_init}}(\&\mbox{\hyperlink{dma_8c_a50c3857c2c6185b8f3b9e556d4616100}{uart\_2}});}
+\DoxyCodeLine{94             \mbox{\hyperlink{dma_8c_a50c3857c2c6185b8f3b9e556d4616100}{uart\_2}}.\mbox{\hyperlink{structuart__config__data_a1f6f31cbf34ef43cfba85fd38f3348e4}{uart\_dma\_ch}}.\mbox{\hyperlink{structuart__dma__params_a78d3fe2eb0fb883be17045069af5491e}{dma\_irq\_counter}} = 0;}
+\DoxyCodeLine{95         \}}
+\DoxyCodeLine{96       \textcolor{keywordflow}{else}}
+\DoxyCodeLine{97         \{}
+\DoxyCodeLine{98             \mbox{\hyperlink{dma_8c_a50c3857c2c6185b8f3b9e556d4616100}{uart\_2}}.\mbox{\hyperlink{structuart__config__data_a1f6f31cbf34ef43cfba85fd38f3348e4}{uart\_dma\_ch}}.\mbox{\hyperlink{structuart__dma__params_a57078c8a90ebfae005ef5c190e38c8e7}{DMA\_InitStructure\_UART\_RX}}.DMA\_DestBaseAddr += \mbox{\hyperlink{dma_8c_a50c3857c2c6185b8f3b9e556d4616100}{uart\_2}}.\mbox{\hyperlink{structuart__config__data_a1f6f31cbf34ef43cfba85fd38f3348e4}{uart\_dma\_ch}}.\mbox{\hyperlink{structuart__dma__params_a57078c8a90ebfae005ef5c190e38c8e7}{DMA\_InitStructure\_UART\_RX}}.DMA\_CycleSize;}
+\DoxyCodeLine{99              \textcolor{comment}{// Инициализировать канал снова}}
+\DoxyCodeLine{100             DMA\_Init(\mbox{\hyperlink{dma_8c_a50c3857c2c6185b8f3b9e556d4616100}{uart\_2}}.\mbox{\hyperlink{structuart__config__data_a1f6f31cbf34ef43cfba85fd38f3348e4}{uart\_dma\_ch}}.\mbox{\hyperlink{structuart__dma__params_a64401b64ba4343b3a70b26079a91798f}{dma\_channel}}, \&\mbox{\hyperlink{dma_8c_a50c3857c2c6185b8f3b9e556d4616100}{uart\_2}}.\mbox{\hyperlink{structuart__config__data_a1f6f31cbf34ef43cfba85fd38f3348e4}{uart\_dma\_ch}}.\mbox{\hyperlink{structuart__dma__params_a7f3e599d1565aefe1288df16c02be58a}{DMA\_Channel\_UART\_RX}});}
+\DoxyCodeLine{101             \mbox{\hyperlink{dma_8c_a50c3857c2c6185b8f3b9e556d4616100}{uart\_2}}.\mbox{\hyperlink{structuart__config__data_a1f6f31cbf34ef43cfba85fd38f3348e4}{uart\_dma\_ch}}.\mbox{\hyperlink{structuart__dma__params_a78d3fe2eb0fb883be17045069af5491e}{dma\_irq\_counter}}++;}
+\DoxyCodeLine{102         \}}
+\DoxyCodeLine{103     \}}
+\DoxyCodeLine{104 \textcolor{preprocessor}{    \#ifdef K1986VE3T}}
+\DoxyCodeLine{105     \textcolor{comment}{// Если сработало прерывание при заполнении буфера приемника UART3}}
+\DoxyCodeLine{106     \textcolor{keywordflow}{if}(DMA\_GetFlagStatus(DMA\_Channel\_SW12, DMA\_FLAG\_CHNL\_ENA) == RESET)}
+\DoxyCodeLine{107     \{}
+\DoxyCodeLine{108         \textcolor{comment}{// Если скопирован последний буфер UART}}
+\DoxyCodeLine{109         \textcolor{keywordflow}{if} (uart\_3.uart\_dma\_ch.dma\_irq\_counter == ((\mbox{\hyperlink{uart_8h_a0d57378e32bf8278011460740bc29f7f}{UART\_BUFFER\_SIZE}}/1024) -\/ 1))}
+\DoxyCodeLine{110         \{}
+\DoxyCodeLine{111             \mbox{\hyperlink{uart_8c_ae14bbae27563550125dabbbe18aa55d4}{DMA\_UART\_RX\_init}}(\&uart\_3);}
+\DoxyCodeLine{112             uart\_3.uart\_dma\_ch.dma\_irq\_counter = 0;}
+\DoxyCodeLine{113             uart\_3.buffer\_count = 0;}
+\DoxyCodeLine{114         \}}
+\DoxyCodeLine{115       \textcolor{keywordflow}{else}}
+\DoxyCodeLine{116         \{}
+\DoxyCodeLine{117             uart\_3.uart\_dma\_ch.DMA\_InitStructure\_UART\_RX.DMA\_DestBaseAddr += uart\_3.uart\_dma\_ch.DMA\_InitStructure\_UART\_RX.DMA\_CycleSize;}
+\DoxyCodeLine{118             \textcolor{comment}{// Инициализировать канал снова}}
+\DoxyCodeLine{119             DMA\_Init(uart\_3.uart\_dma\_ch.dma\_channel, \&uart\_3.uart\_dma\_ch.DMA\_Channel\_UART\_RX);}
+\DoxyCodeLine{120             uart\_3.uart\_dma\_ch.dma\_irq\_counter++;}
+\DoxyCodeLine{121         \}}
+\DoxyCodeLine{122     \}}
+\DoxyCodeLine{123     \textcolor{comment}{// Если сработало прерывание при заполнении буфера приемника UART4}}
+\DoxyCodeLine{124     \textcolor{keywordflow}{if}(DMA\_GetFlagStatus(DMA\_Channel\_SW14, DMA\_FLAG\_CHNL\_ENA) == RESET)}
+\DoxyCodeLine{125     \{}
+\DoxyCodeLine{126         \textcolor{comment}{// Если скопирован последний буфер UART}}
+\DoxyCodeLine{127         \textcolor{keywordflow}{if} (uart\_4.uart\_dma\_ch.dma\_irq\_counter == ((\mbox{\hyperlink{uart_8h_a0d57378e32bf8278011460740bc29f7f}{UART\_BUFFER\_SIZE}}/1024) -\/ 1))}
+\DoxyCodeLine{128         \{}
+\DoxyCodeLine{129             \mbox{\hyperlink{uart_8c_ae14bbae27563550125dabbbe18aa55d4}{DMA\_UART\_RX\_init}}(\&uart\_4);}
+\DoxyCodeLine{130             uart\_4.uart\_dma\_ch.dma\_irq\_counter = 0;}
+\DoxyCodeLine{131             uart\_4.buffer\_count = 0;}
+\DoxyCodeLine{132         \}}
+\DoxyCodeLine{133       \textcolor{keywordflow}{else}}
+\DoxyCodeLine{134         \{}
+\DoxyCodeLine{135             uart\_4.uart\_dma\_ch.DMA\_InitStructure\_UART\_RX.DMA\_DestBaseAddr += uart\_4.uart\_dma\_ch.DMA\_InitStructure\_UART\_RX.DMA\_CycleSize;}
+\DoxyCodeLine{136             \textcolor{comment}{// Инициализировать канал снова}}
+\DoxyCodeLine{137             DMA\_Init(uart\_4.uart\_dma\_ch.dma\_channel, \&uart\_4.uart\_dma\_ch.DMA\_Channel\_UART\_RX);}
+\DoxyCodeLine{138             uart\_4.uart\_dma\_ch.dma\_irq\_counter++;}
+\DoxyCodeLine{139         \}}
+\DoxyCodeLine{140     \}}
+\DoxyCodeLine{141 \textcolor{preprocessor}{    \#endif}}
+\DoxyCodeLine{142 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Переменные}
+\mbox{\Hypertarget{dma_8c_a558e219bfe7a1a334ebe338ca121e0ec}\label{dma_8c_a558e219bfe7a1a334ebe338ca121e0ec}} 
+\index{dma.c@{dma.c}!adc\_1@{adc\_1}}
+\index{adc\_1@{adc\_1}!dma.c@{dma.c}}
+\doxysubsubsection{\texorpdfstring{adc\_1}{adc\_1}}
+{\footnotesize\ttfamily \mbox{\hyperlink{1273pv19t_8h_a373968a5da87bc4464c88e86a02c2c52}{adc\+\_\+n}} adc\+\_\+1\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Структура с конфигурационными параметрами микросхемы АЦП 
+
+\mbox{\Hypertarget{dma_8c_a168a603d82909428f4f498ae15a611d7}\label{dma_8c_a168a603d82909428f4f498ae15a611d7}} 
+\index{dma.c@{dma.c}!spi\_1@{spi\_1}}
+\index{spi\_1@{spi\_1}!dma.c@{dma.c}}
+\doxysubsubsection{\texorpdfstring{spi\_1}{spi\_1}}
+{\footnotesize\ttfamily \mbox{\hyperlink{spi_8h_ab833736115a154e13899c6b9695957a2}{spi\+\_\+n}} spi\+\_\+1\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Структура с конфигурационными параметрами блока S\+P\+I1 МК 
+
+\mbox{\Hypertarget{dma_8c_a37bdd3ddaee9770093c97c396a2942c2}\label{dma_8c_a37bdd3ddaee9770093c97c396a2942c2}} 
+\index{dma.c@{dma.c}!spi\_2@{spi\_2}}
+\index{spi\_2@{spi\_2}!dma.c@{dma.c}}
+\doxysubsubsection{\texorpdfstring{spi\_2}{spi\_2}}
+{\footnotesize\ttfamily \mbox{\hyperlink{spi_8h_ab833736115a154e13899c6b9695957a2}{spi\+\_\+n}} spi\+\_\+2\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Структура с конфигурационными параметрами блока S\+P\+I2 МК 
+
+\mbox{\Hypertarget{dma_8c_a31ea70aa2bae87d7190dd89907374e82}\label{dma_8c_a31ea70aa2bae87d7190dd89907374e82}} 
+\index{dma.c@{dma.c}!timer\_1@{timer\_1}}
+\index{timer\_1@{timer\_1}!dma.c@{dma.c}}
+\doxysubsubsection{\texorpdfstring{timer\_1}{timer\_1}}
+{\footnotesize\ttfamily \mbox{\hyperlink{timers_8h_a93415917cf28bb298dd781fbb842ddae}{timer\+\_\+n}} timer\+\_\+1\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Структура с конфигурационными параметрами блока Timer1 МК 
+
+\mbox{\Hypertarget{dma_8c_a1bd790a808dd714d6cdae26f4ee59bdb}\label{dma_8c_a1bd790a808dd714d6cdae26f4ee59bdb}} 
+\index{dma.c@{dma.c}!timer\_2@{timer\_2}}
+\index{timer\_2@{timer\_2}!dma.c@{dma.c}}
+\doxysubsubsection{\texorpdfstring{timer\_2}{timer\_2}}
+{\footnotesize\ttfamily \mbox{\hyperlink{timers_8h_a93415917cf28bb298dd781fbb842ddae}{timer\+\_\+n}} timer\+\_\+2\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Структура с конфигурационными параметрами блока Timer2 МК 
+
+\mbox{\Hypertarget{dma_8c_ab5444d3d745188ad65e535e648990690}\label{dma_8c_ab5444d3d745188ad65e535e648990690}} 
+\index{dma.c@{dma.c}!timer\_3@{timer\_3}}
+\index{timer\_3@{timer\_3}!dma.c@{dma.c}}
+\doxysubsubsection{\texorpdfstring{timer\_3}{timer\_3}}
+{\footnotesize\ttfamily \mbox{\hyperlink{timers_8h_a93415917cf28bb298dd781fbb842ddae}{timer\+\_\+n}} timer\+\_\+3\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Структура с конфигурационными параметрами блока Timer3 МК 
+
+\mbox{\Hypertarget{dma_8c_aec4a192d186c4544c080be90dd080448}\label{dma_8c_aec4a192d186c4544c080be90dd080448}} 
+\index{dma.c@{dma.c}!uart\_1@{uart\_1}}
+\index{uart\_1@{uart\_1}!dma.c@{dma.c}}
+\doxysubsubsection{\texorpdfstring{uart\_1}{uart\_1}}
+{\footnotesize\ttfamily \mbox{\hyperlink{uart_8h_adaa8285f14392d31d36867eddcd78572}{uart\+\_\+n}} uart\+\_\+1\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Структура с конфигурационными параметрами блока U\+A\+R\+T1 МК 
+
+\mbox{\Hypertarget{dma_8c_a50c3857c2c6185b8f3b9e556d4616100}\label{dma_8c_a50c3857c2c6185b8f3b9e556d4616100}} 
+\index{dma.c@{dma.c}!uart\_2@{uart\_2}}
+\index{uart\_2@{uart\_2}!dma.c@{dma.c}}
+\doxysubsubsection{\texorpdfstring{uart\_2}{uart\_2}}
+{\footnotesize\ttfamily \mbox{\hyperlink{uart_8h_adaa8285f14392d31d36867eddcd78572}{uart\+\_\+n}} uart\+\_\+2\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Структура с конфигурационными параметрами блока U\+A\+R\+T2 МК 
+

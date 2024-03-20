@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.20"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>ПО для макета МПА (100 тема): Исходный файл main.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">ПО для макета МПА (100 тема)
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.20 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">main.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="main_8h.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#ifndef __MAIN_H</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#define __MAIN_H</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="1273pv19t_8h.html">1273pv19t.h</a>&quot;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="timers_8h.html">timers.h</a>&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="spi_8h.html">spi.h</a>&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="uart_8h.html">uart.h</a>&quot;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="rs422__protocol_8h.html">rs422_protocol.h</a>&quot;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="clock_8h.html">clock.h</a>&quot;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="dma_8h.html">dma.h</a>&quot;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="ebc_8h.html">ebc.h</a>&quot;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="internal__ram_8h.html">internal_ram.h</a>&quot;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="external__ram_8h.html">external_ram.h</a>&quot;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="external__rom_8h.html">external_rom.h</a>&quot;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="leds_8h.html">leds.h</a>&quot;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="list_8h.html">list.h</a>&quot;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;uint8_t <a class="code" href="main_8h.html#a353773deeb7196ea82e8394fe09298f9">request_data</a>(<a class="code" href="structuart__config__data.html">uart_n</a> *uart_struct);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keywordtype">void</span> <a class="code" href="main_8h.html#add9034e8ca82f81aa078fb0476ae4463">do_mpa_task</a>(<a class="code" href="structadc__config__data.html">adc_n</a> *adc_struct);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keywordtype">void</span> <a class="code" href="main_8h.html#a531a35bda98d26ed2060df2248a74d0e">sync_adc_chanels</a>(<span class="keywordtype">void</span> *data);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="keywordtype">void</span> <a class="code" href="main_8h.html#a35f65903f40fb5180ffc3c65917e627e">receive_adc_chanel_pack</a>(<span class="keywordtype">void</span> *data);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/*__MAIN_H */</span><span class="preprocessor"></span></div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="astructuart__config__data_html"><div class="ttname"><a href="structuart__config__data.html">uart_config_data</a></div><div class="ttdoc">Структура с конфигурационными параметрами UART и буфером приема</div><div class="ttdef"><b>Definition:</b> uart.h:80</div></div>
+<div class="ttc" id="aspi_8h_html"><div class="ttname"><a href="spi_8h.html">spi.h</a></div><div class="ttdoc">Заголовочный файл с описанием API для работы с SPI.</div></div>
+<div class="ttc" id="aexternal__ram_8h_html"><div class="ttname"><a href="external__ram_8h.html">external_ram.h</a></div><div class="ttdoc">Заголовочный файл с описанием API для работы с областью памяти внешнего ОЗУ</div></div>
+<div class="ttc" id="ainternal__ram_8h_html"><div class="ttname"><a href="internal__ram_8h.html">internal_ram.h</a></div><div class="ttdoc">Заголовочный файл с описанием API для работы с областью памяти внутреннего ОЗУ</div></div>
+<div class="ttc" id="amain_8h_html_a353773deeb7196ea82e8394fe09298f9"><div class="ttname"><a href="main_8h.html#a353773deeb7196ea82e8394fe09298f9">request_data</a></div><div class="ttdeci">uint8_t request_data(uart_n *uart_struct)</div><div class="ttdoc">Запрашивает данные на выбранной шине</div><div class="ttdef"><b>Definition:</b> main.c:162</div></div>
+<div class="ttc" id="aleds_8h_html"><div class="ttname"><a href="leds_8h.html">leds.h</a></div><div class="ttdoc">Заголовочный файл с описанием API для работы со светодиодными индикаторами</div></div>
+<div class="ttc" id="aclock_8h_html"><div class="ttname"><a href="clock_8h.html">clock.h</a></div><div class="ttdoc">Заголовочный файл с описанием API для настройки тактирования МК</div></div>
+<div class="ttc" id="amain_8h_html_a531a35bda98d26ed2060df2248a74d0e"><div class="ttname"><a href="main_8h.html#a531a35bda98d26ed2060df2248a74d0e">sync_adc_chanels</a></div><div class="ttdeci">void sync_adc_chanels(void *data)</div><div class="ttdoc">Синхронизирует каналы АЦП (выполняется при срабатывании прерывания Timer2 по переполнению счетчика CN...</div><div class="ttdef"><b>Definition:</b> main.c:263</div></div>
+<div class="ttc" id="auart_8h_html"><div class="ttname"><a href="uart_8h.html">uart.h</a></div><div class="ttdoc">Заголовочный файл с описанием API для работы с UART.</div></div>
+<div class="ttc" id="aexternal__rom_8h_html"><div class="ttname"><a href="external__rom_8h.html">external_rom.h</a></div><div class="ttdoc">Заголовочный файл с описанием API для работы с областью памяти внешнего ПЗУ</div></div>
+<div class="ttc" id="astructadc__config__data_html"><div class="ttname"><a href="structadc__config__data.html">adc_config_data</a></div><div class="ttdoc">Структура с конфигурационными параметрами АЦП</div><div class="ttdef"><b>Definition:</b> 1273pv19t.h:32</div></div>
+<div class="ttc" id="aebc_8h_html"><div class="ttname"><a href="ebc_8h.html">ebc.h</a></div><div class="ttdoc">Заголовочный файл с описанием API для работы с EBC (контроллер внешней системной шины)</div></div>
+<div class="ttc" id="a1273pv19t_8h_html"><div class="ttname"><a href="1273pv19t_8h.html">1273pv19t.h</a></div><div class="ttdoc">Заголовочный файл с описанием API для работы с микросхемой АЦП 1273ПВ19Т</div></div>
+<div class="ttc" id="atimers_8h_html"><div class="ttname"><a href="timers_8h.html">timers.h</a></div><div class="ttdoc">Заголовочный файл с описанием API для работы с таймерами</div></div>
+<div class="ttc" id="ars422__protocol_8h_html"><div class="ttname"><a href="rs422__protocol_8h.html">rs422_protocol.h</a></div><div class="ttdoc">Заголовочный файл с описанием API протокола обмена данными по интерфейсу RS-422.</div></div>
+<div class="ttc" id="amain_8h_html_a35f65903f40fb5180ffc3c65917e627e"><div class="ttname"><a href="main_8h.html#a35f65903f40fb5180ffc3c65917e627e">receive_adc_chanel_pack</a></div><div class="ttdeci">void receive_adc_chanel_pack(void *data)</div><div class="ttdoc">Принимает пакет с результатами измерений одного канала (выполняется при срабатывании прерывания Timer...</div><div class="ttdef"><b>Definition:</b> main.c:295</div></div>
+<div class="ttc" id="alist_8h_html"><div class="ttname"><a href="list_8h.html">list.h</a></div><div class="ttdoc">Заголовочный файл с описанием API для работы со списками (реализация аналогична linux kernel)</div></div>
+<div class="ttc" id="amain_8h_html_add9034e8ca82f81aa078fb0476ae4463"><div class="ttname"><a href="main_8h.html#add9034e8ca82f81aa078fb0476ae4463">do_mpa_task</a></div><div class="ttdeci">void do_mpa_task(adc_n *adc_struct)</div><div class="ttdoc">Выполняет периферийные задачи МПА</div><div class="ttdef"><b>Definition:</b> main.c:196</div></div>
+<div class="ttc" id="adma_8h_html"><div class="ttname"><a href="dma_8h.html">dma.h</a></div><div class="ttdoc">Заголовочный файл с описанием API для работы с DMA.</div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20
+</small></address>
+</body>
+</html>

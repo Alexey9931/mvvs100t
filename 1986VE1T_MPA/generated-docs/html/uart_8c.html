@@ -1,0 +1,958 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.20"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>ПО для макета МПА (100 тема): Файл uart.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">ПО для макета МПА (100 тема)
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.20 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Функции</a> &#124;
+<a href="#var-members">Переменные</a>  </div>
+  <div class="headertitle">
+<div class="title">Файл uart.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Файл с реализацией API для работы с UART.  
+<a href="#details">Подробнее...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="uart_8h_source.html">uart.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="timers_8h_source.html">timers.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Граф включаемых заголовочных файлов для uart.c:</div>
+<div class="dyncontent">
+<div class="center"><img src="uart_8c__incl.png" border="0" usemap="#auart_8c" alt=""/></div>
+<map name="uart_8c" id="uart_8c">
+<area shape="rect" title="Файл с реализацией API для работы с UART." alt="" coords="587,5,645,32"/>
+<area shape="rect" href="uart_8h.html" title="Заголовочный файл с описанием API для работы с UART." alt="" coords="627,80,687,107"/>
+<area shape="rect" href="timers_8h.html" title="Заголовочный файл с описанием API для работы с таймерами" alt="" coords="530,155,606,181"/>
+<area shape="rect" href="mdr32__drivers_8h.html" title="Заголовочный файл с глобальными константами и подключаемыми библиотеками" alt="" coords="660,304,788,331"/>
+<area shape="rect" title=" " alt="" coords="630,155,701,181"/>
+<area shape="rect" title=" " alt="" coords="5,379,115,405"/>
+<area shape="rect" title=" " alt="" coords="139,379,298,405"/>
+<area shape="rect" title=" " alt="" coords="322,379,465,405"/>
+<area shape="rect" title=" " alt="" coords="489,379,628,405"/>
+<area shape="rect" title=" " alt="" coords="653,379,795,405"/>
+<area shape="rect" title=" " alt="" coords="819,379,965,405"/>
+<area shape="rect" title=" " alt="" coords="989,379,1139,405"/>
+<area shape="rect" title=" " alt="" coords="1164,379,1303,405"/>
+<area shape="rect" title=" " alt="" coords="1327,379,1467,405"/>
+<area shape="rect" title=" " alt="" coords="471,304,537,331"/>
+<area shape="rect" href="list_8h.html" title="Заголовочный файл с описанием API для работы со списками (реализация аналогична linux kernel)" alt="" coords="557,229,611,256"/>
+<area shape="rect" title=" " alt="" coords="561,304,636,331"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Функции</h2></td></tr>
+<tr class="memitem:a81be101f2729b7893235f704f583533e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uart_8c.html#a81be101f2729b7893235f704f583533e">UART1_IRQHandler</a> (void)</td></tr>
+<tr class="memdesc:a81be101f2729b7893235f704f583533e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Обработчик прерываний UART1.  <a href="uart_8c.html#a81be101f2729b7893235f704f583533e">Подробнее...</a><br /></td></tr>
+<tr class="separator:a81be101f2729b7893235f704f583533e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac20eca44aeea90e6f603831193cc9b28"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uart_8c.html#ac20eca44aeea90e6f603831193cc9b28">UART2_IRQHandler</a> (void)</td></tr>
+<tr class="memdesc:ac20eca44aeea90e6f603831193cc9b28"><td class="mdescLeft">&#160;</td><td class="mdescRight">Обработчик прерываний UART2.  <a href="uart_8c.html#ac20eca44aeea90e6f603831193cc9b28">Подробнее...</a><br /></td></tr>
+<tr class="separator:ac20eca44aeea90e6f603831193cc9b28"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af46c427bcd65a9bce1977df90f335eac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uart_8c.html#af46c427bcd65a9bce1977df90f335eac">uart_gpio_config</a> (void)</td></tr>
+<tr class="memdesc:af46c427bcd65a9bce1977df90f335eac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Конфигурирует выводы МК для UART.  <a href="uart_8c.html#af46c427bcd65a9bce1977df90f335eac">Подробнее...</a><br /></td></tr>
+<tr class="separator:af46c427bcd65a9bce1977df90f335eac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea88fcf520be11e83cfd915492675ae5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="uart_8h.html#a7c366cf58b12c041cc1dc3130264643f">uart_errors</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uart_8c.html#aea88fcf520be11e83cfd915492675ae5">uart_init</a> (<a class="el" href="uart_8h.html#adaa8285f14392d31d36867eddcd78572">uart_n</a> *uart_struct)</td></tr>
+<tr class="memdesc:aea88fcf520be11e83cfd915492675ae5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Инициализацирует выбранный UARTn.  <a href="uart_8c.html#aea88fcf520be11e83cfd915492675ae5">Подробнее...</a><br /></td></tr>
+<tr class="separator:aea88fcf520be11e83cfd915492675ae5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae6a3bc40518edab0e42a8fbb40aaa8d9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="uart_8h.html#a7c366cf58b12c041cc1dc3130264643f">uart_errors</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uart_8c.html#ae6a3bc40518edab0e42a8fbb40aaa8d9">uart_write</a> (<a class="el" href="uart_8h.html#adaa8285f14392d31d36867eddcd78572">uart_n</a> *uart_struct, uint8_t *data, uint32_t data_size)</td></tr>
+<tr class="memdesc:ae6a3bc40518edab0e42a8fbb40aaa8d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Передаёт данные по UART.  <a href="uart_8c.html#ae6a3bc40518edab0e42a8fbb40aaa8d9">Подробнее...</a><br /></td></tr>
+<tr class="separator:ae6a3bc40518edab0e42a8fbb40aaa8d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e6732641a7051f1b7932b1684826ad9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="uart_8h.html#a7c366cf58b12c041cc1dc3130264643f">uart_errors</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uart_8c.html#a7e6732641a7051f1b7932b1684826ad9">uart_read</a> (<a class="el" href="uart_8h.html#adaa8285f14392d31d36867eddcd78572">uart_n</a> *uart_struct, uint32_t len, uint8_t *data)</td></tr>
+<tr class="memdesc:a7e6732641a7051f1b7932b1684826ad9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Читает данные из буфера UART.  <a href="uart_8c.html#a7e6732641a7051f1b7932b1684826ad9">Подробнее...</a><br /></td></tr>
+<tr class="separator:a7e6732641a7051f1b7932b1684826ad9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3eac6a0676f547ab7ca6c1af822ff0a0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="uart_8h.html#a7c366cf58b12c041cc1dc3130264643f">uart_errors</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uart_8c.html#a3eac6a0676f547ab7ca6c1af822ff0a0">uart_set_pos</a> (<a class="el" href="uart_8h.html#adaa8285f14392d31d36867eddcd78572">uart_n</a> *uart_struct, uint32_t pos)</td></tr>
+<tr class="memdesc:a3eac6a0676f547ab7ca6c1af822ff0a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Устанавливает курсор чтения в кольцевом буфере  <a href="uart_8c.html#a3eac6a0676f547ab7ca6c1af822ff0a0">Подробнее...</a><br /></td></tr>
+<tr class="separator:a3eac6a0676f547ab7ca6c1af822ff0a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4c246743abceb853beddc6f00487b94"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uart_8c.html#ae4c246743abceb853beddc6f00487b94">uart_read_pos</a> (<a class="el" href="uart_8h.html#adaa8285f14392d31d36867eddcd78572">uart_n</a> *uart_struct)</td></tr>
+<tr class="memdesc:ae4c246743abceb853beddc6f00487b94"><td class="mdescLeft">&#160;</td><td class="mdescRight">Читает текущую позицию курсора чтения в кольцевом буфере  <a href="uart_8c.html#ae4c246743abceb853beddc6f00487b94">Подробнее...</a><br /></td></tr>
+<tr class="separator:ae4c246743abceb853beddc6f00487b94"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a4afed7cf6535ff74c5839a153e3845"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uart_8c.html#a9a4afed7cf6535ff74c5839a153e3845">uart_get_buf_counter</a> (<a class="el" href="uart_8h.html#adaa8285f14392d31d36867eddcd78572">uart_n</a> *uart_struct)</td></tr>
+<tr class="memdesc:a9a4afed7cf6535ff74c5839a153e3845"><td class="mdescLeft">&#160;</td><td class="mdescRight">Читает кол-во байт в кольцевом буфере UART.  <a href="uart_8c.html#a9a4afed7cf6535ff74c5839a153e3845">Подробнее...</a><br /></td></tr>
+<tr class="separator:a9a4afed7cf6535ff74c5839a153e3845"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a66de1150972b09285805d2103e5a6cdf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uart_8c.html#a66de1150972b09285805d2103e5a6cdf">uart_clean</a> (<a class="el" href="uart_8h.html#adaa8285f14392d31d36867eddcd78572">uart_n</a> *uart_struct)</td></tr>
+<tr class="memdesc:a66de1150972b09285805d2103e5a6cdf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Очищает кольцевой буфер приемника UART.  <a href="uart_8c.html#a66de1150972b09285805d2103e5a6cdf">Подробнее...</a><br /></td></tr>
+<tr class="separator:a66de1150972b09285805d2103e5a6cdf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae14bbae27563550125dabbbe18aa55d4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uart_8c.html#ae14bbae27563550125dabbbe18aa55d4">DMA_UART_RX_init</a> (<a class="el" href="uart_8h.html#adaa8285f14392d31d36867eddcd78572">uart_n</a> *uart_struct)</td></tr>
+<tr class="memdesc:ae14bbae27563550125dabbbe18aa55d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Инициализирует n-ый канал DMA на запрос от приемника UARTn.  <a href="uart_8c.html#ae14bbae27563550125dabbbe18aa55d4">Подробнее...</a><br /></td></tr>
+<tr class="separator:ae14bbae27563550125dabbbe18aa55d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c75315e9e96f617d559097cf3b85470"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uart_8c.html#a7c75315e9e96f617d559097cf3b85470">uart_set_read_timeout</a> (<a class="el" href="uart_8h.html#adaa8285f14392d31d36867eddcd78572">uart_n</a> *uart_struct, uint32_t read_timeout)</td></tr>
+<tr class="memdesc:a7c75315e9e96f617d559097cf3b85470"><td class="mdescLeft">&#160;</td><td class="mdescRight">Устанавливает таймаут UARTn на чтение  <a href="uart_8c.html#a7c75315e9e96f617d559097cf3b85470">Подробнее...</a><br /></td></tr>
+<tr class="separator:a7c75315e9e96f617d559097cf3b85470"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c4a26eef1955212637e5328e098c050"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uart_8c.html#a3c4a26eef1955212637e5328e098c050">uart_set_write_timeout</a> (<a class="el" href="uart_8h.html#adaa8285f14392d31d36867eddcd78572">uart_n</a> *uart_struct, uint32_t write_timeout)</td></tr>
+<tr class="memdesc:a3c4a26eef1955212637e5328e098c050"><td class="mdescLeft">&#160;</td><td class="mdescRight">Устанавливает таймаут UARTn на запись  <a href="uart_8c.html#a3c4a26eef1955212637e5328e098c050">Подробнее...</a><br /></td></tr>
+<tr class="separator:a3c4a26eef1955212637e5328e098c050"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Переменные</h2></td></tr>
+<tr class="memitem:aec4a192d186c4544c080be90dd080448"><td class="memItemLeft" align="right" valign="top"><a class="el" href="uart_8h.html#adaa8285f14392d31d36867eddcd78572">uart_n</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uart_8c.html#aec4a192d186c4544c080be90dd080448">uart_1</a></td></tr>
+<tr class="memdesc:aec4a192d186c4544c080be90dd080448"><td class="mdescLeft">&#160;</td><td class="mdescRight">Структура с конфигурационными параметрами блока UART1 МК  <a href="uart_8c.html#aec4a192d186c4544c080be90dd080448">Подробнее...</a><br /></td></tr>
+<tr class="separator:aec4a192d186c4544c080be90dd080448"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a50c3857c2c6185b8f3b9e556d4616100"><td class="memItemLeft" align="right" valign="top"><a class="el" href="uart_8h.html#adaa8285f14392d31d36867eddcd78572">uart_n</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uart_8c.html#a50c3857c2c6185b8f3b9e556d4616100">uart_2</a></td></tr>
+<tr class="memdesc:a50c3857c2c6185b8f3b9e556d4616100"><td class="mdescLeft">&#160;</td><td class="mdescRight">Структура с конфигурационными параметрами блока UART2 МК  <a href="uart_8c.html#a50c3857c2c6185b8f3b9e556d4616100">Подробнее...</a><br /></td></tr>
+<tr class="separator:a50c3857c2c6185b8f3b9e556d4616100"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Файл с реализацией API для работы с UART. </p>
+</div><h2 class="groupheader">Функции</h2>
+<a id="ae14bbae27563550125dabbbe18aa55d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae14bbae27563550125dabbbe18aa55d4">&#9670;&nbsp;</a></span>DMA_UART_RX_init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DMA_UART_RX_init </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="uart_8h.html#adaa8285f14392d31d36867eddcd78572">uart_n</a> *&#160;</td>
+          <td class="paramname"><em>uart_struct</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Инициализирует n-ый канал DMA на запрос от приемника UARTn. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*uart_struct</td><td>- Выбранный UART для инициализации </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="fragment"><div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;{</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160; </div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;    DMA_StructInit(&amp;uart_struct-&gt;<a class="code" href="structuart__config__data.html#a1f6f31cbf34ef43cfba85fd38f3348e4">uart_dma_ch</a>.<a class="code" href="structuart__dma__params.html#a7f3e599d1565aefe1288df16c02be58a">DMA_Channel_UART_RX</a>);</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;    uart_struct-&gt;<a class="code" href="structuart__config__data.html#a1f6f31cbf34ef43cfba85fd38f3348e4">uart_dma_ch</a>.<a class="code" href="structuart__dma__params.html#a57078c8a90ebfae005ef5c190e38c8e7">DMA_InitStructure_UART_RX</a>.DMA_SourceBaseAddr = (uint32_t)(&amp;(uart_struct-&gt;<a class="code" href="structuart__config__data.html#a950a23e70a1db49a148ac1669bc98518">UARTx</a>-&gt;DR));</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;    uart_struct-&gt;<a class="code" href="structuart__config__data.html#a1f6f31cbf34ef43cfba85fd38f3348e4">uart_dma_ch</a>.<a class="code" href="structuart__dma__params.html#a57078c8a90ebfae005ef5c190e38c8e7">DMA_InitStructure_UART_RX</a>.DMA_DestBaseAddr = (uint32_t)(uart_struct-&gt;<a class="code" href="structuart__config__data.html#a8a48424595e1d0f6b98fb6b57f177abb">buffer</a>);</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;    uart_struct-&gt;<a class="code" href="structuart__config__data.html#a1f6f31cbf34ef43cfba85fd38f3348e4">uart_dma_ch</a>.<a class="code" href="structuart__dma__params.html#a57078c8a90ebfae005ef5c190e38c8e7">DMA_InitStructure_UART_RX</a>.DMA_CycleSize = 1024;</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;    uart_struct-&gt;<a class="code" href="structuart__config__data.html#a1f6f31cbf34ef43cfba85fd38f3348e4">uart_dma_ch</a>.<a class="code" href="structuart__dma__params.html#a57078c8a90ebfae005ef5c190e38c8e7">DMA_InitStructure_UART_RX</a>.DMA_SourceIncSize = DMA_SourceIncNo;</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;    uart_struct-&gt;<a class="code" href="structuart__config__data.html#a1f6f31cbf34ef43cfba85fd38f3348e4">uart_dma_ch</a>.<a class="code" href="structuart__dma__params.html#a57078c8a90ebfae005ef5c190e38c8e7">DMA_InitStructure_UART_RX</a>.DMA_DestIncSize = DMA_DestIncByte;</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;    uart_struct-&gt;<a class="code" href="structuart__config__data.html#a1f6f31cbf34ef43cfba85fd38f3348e4">uart_dma_ch</a>.<a class="code" href="structuart__dma__params.html#a57078c8a90ebfae005ef5c190e38c8e7">DMA_InitStructure_UART_RX</a>.DMA_MemoryDataSize = DMA_MemoryDataSize_Byte;</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;    uart_struct-&gt;<a class="code" href="structuart__config__data.html#a1f6f31cbf34ef43cfba85fd38f3348e4">uart_dma_ch</a>.<a class="code" href="structuart__dma__params.html#a57078c8a90ebfae005ef5c190e38c8e7">DMA_InitStructure_UART_RX</a>.DMA_NumContinuous = DMA_Transfers_1;</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;    uart_struct-&gt;<a class="code" href="structuart__config__data.html#a1f6f31cbf34ef43cfba85fd38f3348e4">uart_dma_ch</a>.<a class="code" href="structuart__dma__params.html#a57078c8a90ebfae005ef5c190e38c8e7">DMA_InitStructure_UART_RX</a>.DMA_SourceProtCtrl = DMA_SourcePrivileged;</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;    uart_struct-&gt;<a class="code" href="structuart__config__data.html#a1f6f31cbf34ef43cfba85fd38f3348e4">uart_dma_ch</a>.<a class="code" href="structuart__dma__params.html#a57078c8a90ebfae005ef5c190e38c8e7">DMA_InitStructure_UART_RX</a>.DMA_DestProtCtrl = DMA_DestPrivileged;</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;    uart_struct-&gt;<a class="code" href="structuart__config__data.html#a1f6f31cbf34ef43cfba85fd38f3348e4">uart_dma_ch</a>.<a class="code" href="structuart__dma__params.html#a57078c8a90ebfae005ef5c190e38c8e7">DMA_InitStructure_UART_RX</a>.DMA_Mode = DMA_Mode_Basic;</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;    </div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;    <span class="comment">// Задать структуру канала</span></div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;    uart_struct-&gt;<a class="code" href="structuart__config__data.html#a1f6f31cbf34ef43cfba85fd38f3348e4">uart_dma_ch</a>.<a class="code" href="structuart__dma__params.html#a7f3e599d1565aefe1288df16c02be58a">DMA_Channel_UART_RX</a>.DMA_PriCtrlData = &amp;uart_struct-&gt;<a class="code" href="structuart__config__data.html#a1f6f31cbf34ef43cfba85fd38f3348e4">uart_dma_ch</a>.<a class="code" href="structuart__dma__params.html#a57078c8a90ebfae005ef5c190e38c8e7">DMA_InitStructure_UART_RX</a>;</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;    uart_struct-&gt;<a class="code" href="structuart__config__data.html#a1f6f31cbf34ef43cfba85fd38f3348e4">uart_dma_ch</a>.<a class="code" href="structuart__dma__params.html#a7f3e599d1565aefe1288df16c02be58a">DMA_Channel_UART_RX</a>.DMA_Priority = DMA_Priority_High;</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;    uart_struct-&gt;<a class="code" href="structuart__config__data.html#a1f6f31cbf34ef43cfba85fd38f3348e4">uart_dma_ch</a>.<a class="code" href="structuart__dma__params.html#a7f3e599d1565aefe1288df16c02be58a">DMA_Channel_UART_RX</a>.DMA_UseBurst = DMA_BurstClear;</div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;    uart_struct-&gt;<a class="code" href="structuart__config__data.html#a1f6f31cbf34ef43cfba85fd38f3348e4">uart_dma_ch</a>.<a class="code" href="structuart__dma__params.html#a7f3e599d1565aefe1288df16c02be58a">DMA_Channel_UART_RX</a>.DMA_SelectDataStructure = DMA_CTRL_DATA_PRIMARY;</div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;    </div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;    <span class="comment">// Инициализировать канал</span></div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;    DMA_Init(uart_struct-&gt;<a class="code" href="structuart__config__data.html#a1f6f31cbf34ef43cfba85fd38f3348e4">uart_dma_ch</a>.<a class="code" href="structuart__dma__params.html#a64401b64ba4343b3a70b26079a91798f">dma_channel</a>, &amp;uart_struct-&gt;<a class="code" href="structuart__config__data.html#a1f6f31cbf34ef43cfba85fd38f3348e4">uart_dma_ch</a>.<a class="code" href="structuart__dma__params.html#a7f3e599d1565aefe1288df16c02be58a">DMA_Channel_UART_RX</a>);</div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;    </div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;    MDR_DMA-&gt;CHNL_REQ_MASK_CLR = 1 &lt;&lt; uart_struct-&gt;<a class="code" href="structuart__config__data.html#a1f6f31cbf34ef43cfba85fd38f3348e4">uart_dma_ch</a>.<a class="code" href="structuart__dma__params.html#a64401b64ba4343b3a70b26079a91798f">dma_channel</a>;</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;    MDR_DMA-&gt;CHNL_USEBURST_CLR = 1 &lt;&lt; uart_struct-&gt;<a class="code" href="structuart__config__data.html#a1f6f31cbf34ef43cfba85fd38f3348e4">uart_dma_ch</a>.<a class="code" href="structuart__dma__params.html#a64401b64ba4343b3a70b26079a91798f">dma_channel</a>;</div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;    </div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;    UART_DMACmd(uart_struct-&gt;<a class="code" href="structuart__config__data.html#a950a23e70a1db49a148ac1669bc98518">UARTx</a>,UART_DMA_RXE, ENABLE);</div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;    <span class="comment">// Разрешить работу DMA с UART</span></div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;    DMA_Cmd (uart_struct-&gt;<a class="code" href="structuart__config__data.html#a1f6f31cbf34ef43cfba85fd38f3348e4">uart_dma_ch</a>.<a class="code" href="structuart__dma__params.html#a64401b64ba4343b3a70b26079a91798f">dma_channel</a>, ENABLE);</div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;    </div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;    NVIC_SetPriority (DMA_IRQn, 1);</div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;    NVIC_EnableIRQ(DMA_IRQn);</div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a81be101f2729b7893235f704f583533e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81be101f2729b7893235f704f583533e">&#9670;&nbsp;</a></span>UART1_IRQHandler()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void UART1_IRQHandler </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Обработчик прерываний UART1. </p>
+<div class="fragment"><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;{</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <a class="code" href="uart_8c.html#aec4a192d186c4544c080be90dd080448">uart_1</a>.<a class="code" href="structuart__config__data.html#a7b173ce3ba50d5d98ecc51cd80725433">buffer_count</a> &amp;= <a class="code" href="uart_8h.html#aa08b802e49991b12915e73b280563900">BUFFER_MASK</a>;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="keywordflow">while</span> (UART_GetFlagStatus(<a class="code" href="uart_8c.html#aec4a192d186c4544c080be90dd080448">uart_1</a>.<a class="code" href="structuart__config__data.html#a950a23e70a1db49a148ac1669bc98518">UARTx</a>, UART_FLAG_TXFE) != SET){}</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <a class="code" href="uart_8c.html#aec4a192d186c4544c080be90dd080448">uart_1</a>.<a class="code" href="structuart__config__data.html#a7b173ce3ba50d5d98ecc51cd80725433">buffer_count</a>++;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        UART_ReceiveData(<a class="code" href="uart_8c.html#aec4a192d186c4544c080be90dd080448">uart_1</a>.<a class="code" href="structuart__config__data.html#a950a23e70a1db49a148ac1669bc98518">UARTx</a>);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        UART_ClearITPendingBit(<a class="code" href="uart_8c.html#aec4a192d186c4544c080be90dd080448">uart_1</a>.<a class="code" href="structuart__config__data.html#a950a23e70a1db49a148ac1669bc98518">UARTx</a>, UART_IT_RX);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ac20eca44aeea90e6f603831193cc9b28"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac20eca44aeea90e6f603831193cc9b28">&#9670;&nbsp;</a></span>UART2_IRQHandler()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void UART2_IRQHandler </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Обработчик прерываний UART2. </p>
+<div class="fragment"><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;{</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <a class="code" href="uart_8c.html#a50c3857c2c6185b8f3b9e556d4616100">uart_2</a>.<a class="code" href="structuart__config__data.html#a7b173ce3ba50d5d98ecc51cd80725433">buffer_count</a> &amp;= <a class="code" href="uart_8h.html#aa08b802e49991b12915e73b280563900">BUFFER_MASK</a>;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="keywordflow">while</span> (UART_GetFlagStatus(<a class="code" href="uart_8c.html#a50c3857c2c6185b8f3b9e556d4616100">uart_2</a>.<a class="code" href="structuart__config__data.html#a950a23e70a1db49a148ac1669bc98518">UARTx</a>, UART_FLAG_TXFE) != SET){}</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <a class="code" href="uart_8c.html#a50c3857c2c6185b8f3b9e556d4616100">uart_2</a>.<a class="code" href="structuart__config__data.html#a7b173ce3ba50d5d98ecc51cd80725433">buffer_count</a>++;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        UART_ReceiveData(<a class="code" href="uart_8c.html#a50c3857c2c6185b8f3b9e556d4616100">uart_2</a>.<a class="code" href="structuart__config__data.html#a950a23e70a1db49a148ac1669bc98518">UARTx</a>);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        UART_ClearITPendingBit(<a class="code" href="uart_8c.html#a50c3857c2c6185b8f3b9e556d4616100">uart_2</a>.<a class="code" href="structuart__config__data.html#a950a23e70a1db49a148ac1669bc98518">UARTx</a>, UART_IT_RX);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a66de1150972b09285805d2103e5a6cdf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a66de1150972b09285805d2103e5a6cdf">&#9670;&nbsp;</a></span>uart_clean()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void uart_clean </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="uart_8h.html#adaa8285f14392d31d36867eddcd78572">uart_n</a> *&#160;</td>
+          <td class="paramname"><em>uart_struct</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Очищает кольцевой буфер приемника UART. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*uart_struct</td><td>- Выбранный UART для инициализации </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="fragment"><div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;{</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;    memset(uart_struct-&gt;<a class="code" href="structuart__config__data.html#a8a48424595e1d0f6b98fb6b57f177abb">buffer</a>, 0, <a class="code" href="uart_8h.html#a0d57378e32bf8278011460740bc29f7f">UART_BUFFER_SIZE</a>);</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a9a4afed7cf6535ff74c5839a153e3845"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a4afed7cf6535ff74c5839a153e3845">&#9670;&nbsp;</a></span>uart_get_buf_counter()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t uart_get_buf_counter </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="uart_8h.html#adaa8285f14392d31d36867eddcd78572">uart_n</a> *&#160;</td>
+          <td class="paramname"><em>uart_struct</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Читает кол-во байт в кольцевом буфере UART. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*uart_struct</td><td>- Выбранный UART для инициализации </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Кол-во байт в кольцевом буфере UART </dd></dl>
+<div class="fragment"><div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;{</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;    <span class="keywordflow">return</span> uart_struct-&gt;<a class="code" href="structuart__config__data.html#a7b173ce3ba50d5d98ecc51cd80725433">buffer_count</a>;</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="af46c427bcd65a9bce1977df90f335eac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af46c427bcd65a9bce1977df90f335eac">&#9670;&nbsp;</a></span>uart_gpio_config()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void uart_gpio_config </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Конфигурирует выводы МК для UART. </p>
+<div class="fragment"><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;{</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="comment">// Включение тактирования портов</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    RST_CLK_PCLKcmd(RST_CLK_PCLK_RST_CLK|RST_CLK_PCLK_PORTD|RST_CLK_PCLK_PORTC, ENABLE);    </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="comment">// Инициализации портов UART1</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    PORT_InitTypeDef GPIO_init_structUART1;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    PORT_StructInit(&amp;GPIO_init_structUART1);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    GPIO_init_structUART1.PORT_FUNC = PORT_FUNC_MAIN;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    GPIO_init_structUART1.PORT_SPEED = PORT_SPEED_MAXFAST;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    GPIO_init_structUART1.PORT_MODE = PORT_MODE_DIGITAL;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    GPIO_init_structUART1.PORT_PULL_UP = PORT_PULL_UP_OFF;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    GPIO_init_structUART1.PORT_PULL_DOWN = PORT_PULL_DOWN_ON;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    GPIO_init_structUART1.PORT_PD_SHM = PORT_PD_SHM_OFF;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    GPIO_init_structUART1.PORT_PD = PORT_PD_DRIVER;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    GPIO_init_structUART1.PORT_GFEN = PORT_GFEN_OFF;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="comment">// Инициализация вывода PC3 как UART_TX (передача)</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    GPIO_init_structUART1.PORT_Pin = <a class="code" href="uart_8h.html#a88fb8ea352bc1b90ead32b6a5b7683de">PIN_UART1_TX</a>;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    GPIO_init_structUART1.PORT_OE = PORT_OE_OUT;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    PORT_Init(<a class="code" href="uart_8h.html#a57684e701a73ac9b933644e50f1b7c26">PORT_UART1</a>, &amp;GPIO_init_structUART1);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="comment">// Инициализация вывода PC4 как UART_RX (прием)</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    GPIO_init_structUART1.PORT_Pin = <a class="code" href="uart_8h.html#aa3ad2fe6929c560f3dee7a710c615089">PIN_UART1_RX</a>;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    GPIO_init_structUART1.PORT_OE = PORT_OE_IN;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    PORT_Init(<a class="code" href="uart_8h.html#a57684e701a73ac9b933644e50f1b7c26">PORT_UART1</a>, &amp;GPIO_init_structUART1);</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="comment">// Инициализация ножки разрешения записи данных по UART1 (для микросхемы rs485)</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    GPIO_init_structUART1.PORT_Pin = <a class="code" href="uart_8h.html#af5a73d5cef316ce47a72c75874c28e68">PIN_UART1_EN</a>;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    GPIO_init_structUART1.PORT_FUNC = PORT_FUNC_PORT;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    GPIO_init_structUART1.PORT_OE = PORT_OE_OUT;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    PORT_Init(<a class="code" href="uart_8h.html#a590c865bf82f5db76c4ee77fa5f6cf20">PORT_UART1_EN</a>, &amp;GPIO_init_structUART1);</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="comment">// Дезактивирование микросхемы RS485 на выдачу данных</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    PORT_WriteBit(<a class="code" href="uart_8h.html#a590c865bf82f5db76c4ee77fa5f6cf20">PORT_UART1_EN</a>, <a class="code" href="uart_8h.html#af5a73d5cef316ce47a72c75874c28e68">PIN_UART1_EN</a>, 0);</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <span class="comment">// Инициализация портов UART2</span></div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    PORT_InitTypeDef GPIO_init_structUART2;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    </div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    PORT_StructInit(&amp;GPIO_init_structUART2);</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    GPIO_init_structUART2.PORT_FUNC = PORT_FUNC_MAIN;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    GPIO_init_structUART2.PORT_SPEED = PORT_SPEED_MAXFAST;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    GPIO_init_structUART2.PORT_MODE = PORT_MODE_DIGITAL;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    GPIO_init_structUART2.PORT_PULL_UP = PORT_PULL_UP_OFF;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    GPIO_init_structUART2.PORT_PULL_DOWN = PORT_PULL_DOWN_ON;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    GPIO_init_structUART2.PORT_PD_SHM = PORT_PD_SHM_OFF;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    GPIO_init_structUART2.PORT_PD = PORT_PD_DRIVER;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    GPIO_init_structUART2.PORT_GFEN = PORT_GFEN_OFF;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <span class="comment">// Инициализация вывода PD13 как UART_TX (передача)</span></div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    GPIO_init_structUART2.PORT_Pin = <a class="code" href="uart_8h.html#a71a0f60173663ff994058cc1c3c12a91">PIN_UART2_TX</a>;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    GPIO_init_structUART2.PORT_OE = PORT_OE_OUT;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    PORT_Init(<a class="code" href="uart_8h.html#a5a715f2a3cbcff2804367489da622378">PORT_UART2</a>, &amp;GPIO_init_structUART2);</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    <span class="comment">// Инициализация вывода PD14 как UART_RX (прием)</span></div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    GPIO_init_structUART2.PORT_Pin = <a class="code" href="uart_8h.html#a6de937aac78b3eee2db9ca6d79d2a3a4">PIN_UART2_RX</a>;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    GPIO_init_structUART2.PORT_OE = PORT_OE_IN;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    PORT_Init(<a class="code" href="uart_8h.html#a5a715f2a3cbcff2804367489da622378">PORT_UART2</a>, &amp;GPIO_init_structUART2);</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160; </div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    <span class="comment">// Инициализация ножки разрешения записи данных по UART2 (для микросхемы rs485)</span></div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    GPIO_init_structUART2.PORT_Pin = <a class="code" href="uart_8h.html#a11012fd387b786acaf1bd8fdba424351">PIN_UART2_EN</a>;</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    GPIO_init_structUART2.PORT_FUNC = PORT_FUNC_PORT;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    GPIO_init_structUART2.PORT_OE = PORT_OE_OUT;</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    PORT_Init(<a class="code" href="uart_8h.html#aec8f70a46f17ed2f70e86294ee2acc96">PORT_UART2_EN</a>, &amp;GPIO_init_structUART2);</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    <span class="comment">// Дезактивирование микросхемы RS485 на выдачу данных</span></div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    PORT_WriteBit(<a class="code" href="uart_8h.html#aec8f70a46f17ed2f70e86294ee2acc96">PORT_UART2_EN</a>, <a class="code" href="uart_8h.html#a11012fd387b786acaf1bd8fdba424351">PIN_UART2_EN</a>, 0);</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="aea88fcf520be11e83cfd915492675ae5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea88fcf520be11e83cfd915492675ae5">&#9670;&nbsp;</a></span>uart_init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="uart_8h.html#a7c366cf58b12c041cc1dc3130264643f">uart_errors</a> uart_init </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="uart_8h.html#adaa8285f14392d31d36867eddcd78572">uart_n</a> *&#160;</td>
+          <td class="paramname"><em>uart_struct</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Инициализацирует выбранный UARTn. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*uart_struct</td><td>- Выбранный UART для инициализации </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Код ошибки uart_errors </dd></dl>
+<div class="fragment"><div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;{ </div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    <a class="code" href="uart_8c.html#af46c427bcd65a9bce1977df90f335eac">uart_gpio_config</a>();</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    </div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    <a class="code" href="uart_8h.html#a7c366cf58b12c041cc1dc3130264643f">uart_errors</a> error;</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    </div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    <span class="comment">// Объявление структуры для инициализации контроллера UART</span></div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    UART_InitTypeDef UART_InitStructure;</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    uint8_t res = 0;</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    </div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    <span class="comment">// Включение тактирования UART</span></div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    <span class="keywordflow">if</span>(uart_struct-&gt;<a class="code" href="structuart__config__data.html#a950a23e70a1db49a148ac1669bc98518">UARTx</a> == MDR_UART1)</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    {</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        uart_struct-&gt;<a class="code" href="structuart__config__data.html#a2f1897c8ad4f96c27121372935dca904">RST_CLK_PCLK_UARTn</a> = RST_CLK_PCLK_UART1;</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    }</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span>(uart_struct-&gt;<a class="code" href="structuart__config__data.html#a950a23e70a1db49a148ac1669bc98518">UARTx</a> == MDR_UART2)</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    {</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        uart_struct-&gt;<a class="code" href="structuart__config__data.html#a2f1897c8ad4f96c27121372935dca904">RST_CLK_PCLK_UARTn</a> = RST_CLK_PCLK_UART2;</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    }</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    RST_CLK_PCLKcmd(uart_struct-&gt;<a class="code" href="structuart__config__data.html#a2f1897c8ad4f96c27121372935dca904">RST_CLK_PCLK_UARTn</a>, ENABLE);</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160; </div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    <span class="comment">// Делитель тактовой частоты UART</span></div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    uart_struct-&gt;<a class="code" href="structuart__config__data.html#a74443decfdc49e69c7e9086ac3dd7c48">UART_HCLKdiv</a> = UART_HCLKdiv1;</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    UART_BRGInit(uart_struct-&gt;<a class="code" href="structuart__config__data.html#a950a23e70a1db49a148ac1669bc98518">UARTx</a>, uart_struct-&gt;<a class="code" href="structuart__config__data.html#a74443decfdc49e69c7e9086ac3dd7c48">UART_HCLKdiv</a>);</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160; </div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    NVIC_EnableIRQ(uart_struct-&gt;<a class="code" href="structuart__config__data.html#a51652f1abe929239e24fd89fd9ede3b4">IRQn</a>);</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    </div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    <span class="comment">// Конфигурация UART</span></div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    UART_InitStructure.UART_BaudRate = uart_struct-&gt;<a class="code" href="structuart__config__data.html#a1f17323cdc482e50e3547119dc2bb57b">UART</a>.UART_BaudRate;</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    UART_InitStructure.UART_WordLength = uart_struct-&gt;<a class="code" href="structuart__config__data.html#a1f17323cdc482e50e3547119dc2bb57b">UART</a>.UART_WordLength;</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    UART_InitStructure.UART_StopBits = uart_struct-&gt;<a class="code" href="structuart__config__data.html#a1f17323cdc482e50e3547119dc2bb57b">UART</a>.UART_StopBits;</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    UART_InitStructure.UART_Parity = uart_struct-&gt;<a class="code" href="structuart__config__data.html#a1f17323cdc482e50e3547119dc2bb57b">UART</a>.UART_Parity;</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    UART_InitStructure.UART_FIFOMode = uart_struct-&gt;<a class="code" href="structuart__config__data.html#a1f17323cdc482e50e3547119dc2bb57b">UART</a>.UART_FIFOMode;</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    UART_InitStructure.UART_HardwareFlowControl = uart_struct-&gt;<a class="code" href="structuart__config__data.html#a1f17323cdc482e50e3547119dc2bb57b">UART</a>.UART_HardwareFlowControl;</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160; </div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    <span class="comment">// Инициализация UART с заданными параметрами</span></div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    res = UART_Init(uart_struct-&gt;<a class="code" href="structuart__config__data.html#a950a23e70a1db49a148ac1669bc98518">UARTx</a>, &amp;UART_InitStructure);</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;    <span class="keywordflow">if</span> (res != SUCCESS) </div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    {</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;        error = <a class="code" href="uart_8h.html#acc42076253600be964e110149b458971aa446325b29d7c917325acc576f0f0f45">INIT_ERROR</a>;</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;        <span class="keywordflow">return</span> error;</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    }</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160; </div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    <span class="comment">// Включение прерываний UART</span></div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    NVIC_SetPriority (uart_struct-&gt;<a class="code" href="structuart__config__data.html#a51652f1abe929239e24fd89fd9ede3b4">IRQn</a>, 0);</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    UART_ITConfig( uart_struct-&gt;<a class="code" href="structuart__config__data.html#a950a23e70a1db49a148ac1669bc98518">UARTx</a>, UART_IT_RX, ENABLE );</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    </div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    <span class="comment">// Включение сконфигурированного UART</span></div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    UART_Cmd(uart_struct-&gt;<a class="code" href="structuart__config__data.html#a950a23e70a1db49a148ac1669bc98518">UARTx</a>, ENABLE);</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    </div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="uart_8h.html#acc42076253600be964e110149b458971a14820276ae7e4047a53d9b78109f7e2a">NO_ERRORS</a>;</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a7e6732641a7051f1b7932b1684826ad9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e6732641a7051f1b7932b1684826ad9">&#9670;&nbsp;</a></span>uart_read()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="uart_8h.html#a7c366cf58b12c041cc1dc3130264643f">uart_errors</a> uart_read </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="uart_8h.html#adaa8285f14392d31d36867eddcd78572">uart_n</a> *&#160;</td>
+          <td class="paramname"><em>uart_struct</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>len</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Читает данные из буфера UART. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*uart_struct</td><td>- Выбранный UART для инициализации </td></tr>
+    <tr><td class="paramname">len</td><td>- Кол-во байт для чтения </td></tr>
+    <tr><td class="paramname">*data</td><td>- Указатель на массив, куда считываются байты из буфера UART </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Код ошибки uart_errors </dd></dl>
+<div class="fragment"><div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;{</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;    <a class="code" href="uart_8h.html#a7c366cf58b12c041cc1dc3130264643f">uart_errors</a> error;</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;    uint32_t timer_cnt = 0;</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;    </div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;    <span class="comment">// Если длина превышает размер буфера</span></div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;    <span class="keywordflow">if</span> (len &gt; <a class="code" href="uart_8h.html#a0d57378e32bf8278011460740bc29f7f">UART_BUFFER_SIZE</a>)</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;    {</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;        error = <a class="code" href="uart_8h.html#acc42076253600be964e110149b458971a00d70d3edd67bde5b2049fb31fcba4fd">SIZE_ERROR</a>;</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;        uart_struct-&gt;<a class="code" href="structuart__config__data.html#a2f8d77645e82d7f5f061714d8e0c1eab">read_pos</a>++;</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;        <span class="keywordflow">return</span> error;</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;    }</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;    <span class="comment">// Если последний принятый байт перевалит границу буфера и байты будут перезаписываться в буфере с самого начала</span></div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;    <span class="keywordflow">if</span> (((uart_struct-&gt;<a class="code" href="structuart__config__data.html#a2f8d77645e82d7f5f061714d8e0c1eab">read_pos</a>)+len) &gt; <a class="code" href="uart_8h.html#a0d57378e32bf8278011460740bc29f7f">UART_BUFFER_SIZE</a>)</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;    {</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;        <span class="comment">// Если задан таймаут </span></div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;        <span class="keywordflow">if</span> (uart_struct-&gt;<a class="code" href="structuart__config__data.html#a7e54939f749f906e4f662c13f58abf16">uart_timeouts</a>.<a class="code" href="structuart__timeouts.html#ad777bbdf0e5a86bf0d5260c588430c5c">read_timeout_flag</a> == 1)</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;        {</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;            TIMER_SetCounter(uart_struct-&gt;<a class="code" href="structuart__config__data.html#a7e54939f749f906e4f662c13f58abf16">uart_timeouts</a>.<a class="code" href="structuart__timeouts.html#aa704f3a30041e52af9c8aa9e9283bce7">timer_n_timeout</a>-&gt;<a class="code" href="structtimer__config__struct.html#a26d6f987c10095f685286d88e1cc4a96">TIMERx</a>, 0);</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;            <span class="keywordflow">while</span> ((<span class="keywordtype">int</span>)((uart_struct-&gt;<a class="code" href="structuart__config__data.html#a7b173ce3ba50d5d98ecc51cd80725433">buffer_count</a>) - (uart_struct-&gt;<a class="code" href="structuart__config__data.html#a2f8d77645e82d7f5f061714d8e0c1eab">read_pos</a>)) &gt;= 0)</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;            {</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;                timer_cnt = TIMER_GetCounter(uart_struct-&gt;<a class="code" href="structuart__config__data.html#a7e54939f749f906e4f662c13f58abf16">uart_timeouts</a>.<a class="code" href="structuart__timeouts.html#aa704f3a30041e52af9c8aa9e9283bce7">timer_n_timeout</a>-&gt;<a class="code" href="structtimer__config__struct.html#a26d6f987c10095f685286d88e1cc4a96">TIMERx</a>);</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;                <span class="keywordflow">if</span> (timer_cnt &gt;= (uart_struct-&gt;<a class="code" href="structuart__config__data.html#a7e54939f749f906e4f662c13f58abf16">uart_timeouts</a>.<a class="code" href="structuart__timeouts.html#a4d128f40f101681bf72034dc35dc6c0b">read_val_timeout</a>*50))</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;                {</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;                    error = <a class="code" href="uart_8h.html#acc42076253600be964e110149b458971a0f91482313337f86a041c4de8e01bd40">READ_TIMEOUT_ERROR</a>;</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;                    <span class="keywordflow">return</span> error;</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;                }</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;            }</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;            <span class="keywordflow">while</span> ((<a class="code" href="uart_8h.html#a0d57378e32bf8278011460740bc29f7f">UART_BUFFER_SIZE</a> - (uart_struct-&gt;<a class="code" href="structuart__config__data.html#a2f8d77645e82d7f5f061714d8e0c1eab">read_pos</a>) + (uart_struct-&gt;<a class="code" href="structuart__config__data.html#a7b173ce3ba50d5d98ecc51cd80725433">buffer_count</a>)) &lt; len)</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;            {</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;                timer_cnt = TIMER_GetCounter(uart_struct-&gt;<a class="code" href="structuart__config__data.html#a7e54939f749f906e4f662c13f58abf16">uart_timeouts</a>.<a class="code" href="structuart__timeouts.html#aa704f3a30041e52af9c8aa9e9283bce7">timer_n_timeout</a>-&gt;<a class="code" href="structtimer__config__struct.html#a26d6f987c10095f685286d88e1cc4a96">TIMERx</a>);</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;                <span class="keywordflow">if</span> (timer_cnt &gt;= (uart_struct-&gt;<a class="code" href="structuart__config__data.html#a7e54939f749f906e4f662c13f58abf16">uart_timeouts</a>.<a class="code" href="structuart__timeouts.html#a4d128f40f101681bf72034dc35dc6c0b">read_val_timeout</a>*50)) </div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;                {</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;                    error = <a class="code" href="uart_8h.html#acc42076253600be964e110149b458971a0f91482313337f86a041c4de8e01bd40">READ_TIMEOUT_ERROR</a>;</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;                    <span class="keywordflow">return</span> error;</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;                }</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;            }</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;        }</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;        </div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;        <span class="keywordflow">if</span> ((<span class="keywordtype">int</span>)((uart_struct-&gt;<a class="code" href="structuart__config__data.html#a7b173ce3ba50d5d98ecc51cd80725433">buffer_count</a>) - (uart_struct-&gt;<a class="code" href="structuart__config__data.html#a2f8d77645e82d7f5f061714d8e0c1eab">read_pos</a>)) &gt;= 0)</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;        {</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;            error = <a class="code" href="uart_8h.html#acc42076253600be964e110149b458971a00d70d3edd67bde5b2049fb31fcba4fd">SIZE_ERROR</a>;</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;            <span class="keywordflow">return</span> error;</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;        }</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;        {</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;            <span class="keywordflow">if</span> ((<a class="code" href="uart_8h.html#a0d57378e32bf8278011460740bc29f7f">UART_BUFFER_SIZE</a> + (uart_struct-&gt;<a class="code" href="structuart__config__data.html#a7b173ce3ba50d5d98ecc51cd80725433">buffer_count</a>) - (uart_struct-&gt;<a class="code" href="structuart__config__data.html#a2f8d77645e82d7f5f061714d8e0c1eab">read_pos</a>)) &lt; len)</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;            {</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;                error = <a class="code" href="uart_8h.html#acc42076253600be964e110149b458971a00d70d3edd67bde5b2049fb31fcba4fd">SIZE_ERROR</a>;</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;                <span class="keywordflow">return</span> error;</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;            }</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;            memcpy(data, (uart_struct-&gt;<a class="code" href="structuart__config__data.html#a8a48424595e1d0f6b98fb6b57f177abb">buffer</a>) + (uart_struct-&gt;<a class="code" href="structuart__config__data.html#a2f8d77645e82d7f5f061714d8e0c1eab">read_pos</a>), <a class="code" href="uart_8h.html#a0d57378e32bf8278011460740bc29f7f">UART_BUFFER_SIZE</a>-(uart_struct-&gt;<a class="code" href="structuart__config__data.html#a2f8d77645e82d7f5f061714d8e0c1eab">read_pos</a>));</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;            memcpy(data + <a class="code" href="uart_8h.html#a0d57378e32bf8278011460740bc29f7f">UART_BUFFER_SIZE</a>-(uart_struct-&gt;<a class="code" href="structuart__config__data.html#a2f8d77645e82d7f5f061714d8e0c1eab">read_pos</a>), uart_struct-&gt;<a class="code" href="structuart__config__data.html#a8a48424595e1d0f6b98fb6b57f177abb">buffer</a>, len+(uart_struct-&gt;<a class="code" href="structuart__config__data.html#a2f8d77645e82d7f5f061714d8e0c1eab">read_pos</a>)-<a class="code" href="uart_8h.html#a0d57378e32bf8278011460740bc29f7f">UART_BUFFER_SIZE</a>);</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;            uart_struct-&gt;<a class="code" href="structuart__config__data.html#a2f8d77645e82d7f5f061714d8e0c1eab">read_pos</a> = (uart_struct-&gt;<a class="code" href="structuart__config__data.html#a2f8d77645e82d7f5f061714d8e0c1eab">read_pos</a>) + len-<a class="code" href="uart_8h.html#a0d57378e32bf8278011460740bc29f7f">UART_BUFFER_SIZE</a>;</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;        }</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;    }</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;    <span class="comment">// Если последний принятый байт не перевалит границу буфера</span></div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;    {</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;        <span class="comment">// Если задан таймаут </span></div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;        <span class="keywordflow">if</span> (uart_struct-&gt;<a class="code" href="structuart__config__data.html#a7e54939f749f906e4f662c13f58abf16">uart_timeouts</a>.<a class="code" href="structuart__timeouts.html#ad777bbdf0e5a86bf0d5260c588430c5c">read_timeout_flag</a> == 1)</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;        {</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;            TIMER_SetCounter(uart_struct-&gt;<a class="code" href="structuart__config__data.html#a7e54939f749f906e4f662c13f58abf16">uart_timeouts</a>.<a class="code" href="structuart__timeouts.html#aa704f3a30041e52af9c8aa9e9283bce7">timer_n_timeout</a>-&gt;<a class="code" href="structtimer__config__struct.html#a26d6f987c10095f685286d88e1cc4a96">TIMERx</a>, 0);</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;            <span class="keywordflow">while</span> (((uart_struct-&gt;<a class="code" href="structuart__config__data.html#a7b173ce3ba50d5d98ecc51cd80725433">buffer_count</a>) - (uart_struct-&gt;<a class="code" href="structuart__config__data.html#a2f8d77645e82d7f5f061714d8e0c1eab">read_pos</a>)) &lt; len)</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;            {</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;                timer_cnt = TIMER_GetCounter(uart_struct-&gt;<a class="code" href="structuart__config__data.html#a7e54939f749f906e4f662c13f58abf16">uart_timeouts</a>.<a class="code" href="structuart__timeouts.html#aa704f3a30041e52af9c8aa9e9283bce7">timer_n_timeout</a>-&gt;<a class="code" href="structtimer__config__struct.html#a26d6f987c10095f685286d88e1cc4a96">TIMERx</a>);</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;                <span class="keywordflow">if</span> (timer_cnt &gt;= (uart_struct-&gt;<a class="code" href="structuart__config__data.html#a7e54939f749f906e4f662c13f58abf16">uart_timeouts</a>.<a class="code" href="structuart__timeouts.html#a4d128f40f101681bf72034dc35dc6c0b">read_val_timeout</a>*50))</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;                {               </div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;                    error = <a class="code" href="uart_8h.html#acc42076253600be964e110149b458971a0f91482313337f86a041c4de8e01bd40">READ_TIMEOUT_ERROR</a>;</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;                    <span class="keywordflow">return</span> error;</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;                }</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;            }</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;        }</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;        </div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;        <span class="keywordflow">if</span> (((uart_struct-&gt;<a class="code" href="structuart__config__data.html#a7b173ce3ba50d5d98ecc51cd80725433">buffer_count</a>) - (uart_struct-&gt;<a class="code" href="structuart__config__data.html#a2f8d77645e82d7f5f061714d8e0c1eab">read_pos</a>)) &lt; len) </div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;        {</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;            error = <a class="code" href="uart_8h.html#acc42076253600be964e110149b458971a00d70d3edd67bde5b2049fb31fcba4fd">SIZE_ERROR</a>;</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;            <span class="keywordflow">return</span> error;</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;        }</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;        memcpy(data, (uart_struct-&gt;<a class="code" href="structuart__config__data.html#a8a48424595e1d0f6b98fb6b57f177abb">buffer</a>) + (uart_struct-&gt;<a class="code" href="structuart__config__data.html#a2f8d77645e82d7f5f061714d8e0c1eab">read_pos</a>), len);</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;        uart_struct-&gt;<a class="code" href="structuart__config__data.html#a2f8d77645e82d7f5f061714d8e0c1eab">read_pos</a> = (uart_struct-&gt;<a class="code" href="structuart__config__data.html#a2f8d77645e82d7f5f061714d8e0c1eab">read_pos</a>) + len;</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;    }</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;    </div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="uart_8h.html#acc42076253600be964e110149b458971a14820276ae7e4047a53d9b78109f7e2a">NO_ERRORS</a>;</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ae4c246743abceb853beddc6f00487b94"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae4c246743abceb853beddc6f00487b94">&#9670;&nbsp;</a></span>uart_read_pos()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t uart_read_pos </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="uart_8h.html#adaa8285f14392d31d36867eddcd78572">uart_n</a> *&#160;</td>
+          <td class="paramname"><em>uart_struct</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Читает текущую позицию курсора чтения в кольцевом буфере </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*uart_struct</td><td>- Выбранный UART для инициализации </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Текущая позиция курсора </dd></dl>
+<div class="fragment"><div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;{</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;    <span class="keywordflow">return</span> uart_struct-&gt;<a class="code" href="structuart__config__data.html#a2f8d77645e82d7f5f061714d8e0c1eab">read_pos</a>;</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a3eac6a0676f547ab7ca6c1af822ff0a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3eac6a0676f547ab7ca6c1af822ff0a0">&#9670;&nbsp;</a></span>uart_set_pos()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="uart_8h.html#a7c366cf58b12c041cc1dc3130264643f">uart_errors</a> uart_set_pos </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="uart_8h.html#adaa8285f14392d31d36867eddcd78572">uart_n</a> *&#160;</td>
+          <td class="paramname"><em>uart_struct</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>pos</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Устанавливает курсор чтения в кольцевом буфере </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*uart_struct</td><td>- Выбранный UART для инициализации </td></tr>
+    <tr><td class="paramname">pos</td><td>- Позиция курсора в буфере </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Код ошибки uart_errors </dd></dl>
+<div class="fragment"><div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;{</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;    <a class="code" href="uart_8h.html#a7c366cf58b12c041cc1dc3130264643f">uart_errors</a> error;</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;    </div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;    <span class="keywordflow">if</span> (pos &gt; <a class="code" href="uart_8h.html#a0d57378e32bf8278011460740bc29f7f">UART_BUFFER_SIZE</a>)</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;    {</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;        error = <a class="code" href="uart_8h.html#acc42076253600be964e110149b458971a50592fa5d44fc63417e52b9aad6d0021">POSITION_ERROR</a>;</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;        <span class="keywordflow">return</span> error;</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;    }</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;    uart_struct-&gt;<a class="code" href="structuart__config__data.html#a2f8d77645e82d7f5f061714d8e0c1eab">read_pos</a> = pos;</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="uart_8h.html#acc42076253600be964e110149b458971a14820276ae7e4047a53d9b78109f7e2a">NO_ERRORS</a>;</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a7c75315e9e96f617d559097cf3b85470"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7c75315e9e96f617d559097cf3b85470">&#9670;&nbsp;</a></span>uart_set_read_timeout()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void uart_set_read_timeout </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="uart_8h.html#adaa8285f14392d31d36867eddcd78572">uart_n</a> *&#160;</td>
+          <td class="paramname"><em>uart_struct</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>read_timeout</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Устанавливает таймаут UARTn на чтение </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*uart_struct</td><td>- Выбранный UART для инициализации </td></tr>
+    <tr><td class="paramname">read_timeout</td><td>- Таймаут на чтение (в мс) </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="fragment"><div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;{</div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;    uart_struct-&gt;<a class="code" href="structuart__config__data.html#a7e54939f749f906e4f662c13f58abf16">uart_timeouts</a>.<a class="code" href="structuart__timeouts.html#ad777bbdf0e5a86bf0d5260c588430c5c">read_timeout_flag</a> = 1;</div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;    uart_struct-&gt;<a class="code" href="structuart__config__data.html#a7e54939f749f906e4f662c13f58abf16">uart_timeouts</a>.<a class="code" href="structuart__timeouts.html#a4d128f40f101681bf72034dc35dc6c0b">read_val_timeout</a> = read_timeout;</div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a3c4a26eef1955212637e5328e098c050"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c4a26eef1955212637e5328e098c050">&#9670;&nbsp;</a></span>uart_set_write_timeout()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void uart_set_write_timeout </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="uart_8h.html#adaa8285f14392d31d36867eddcd78572">uart_n</a> *&#160;</td>
+          <td class="paramname"><em>uart_struct</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>write_timeout</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Устанавливает таймаут UARTn на запись </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*uart_struct</td><td>- Выбранный UART для инициализации </td></tr>
+    <tr><td class="paramname">write_timeout</td><td>- Таймаут на запись (в мс) </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="fragment"><div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;{</div>
+<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;    uart_struct-&gt;<a class="code" href="structuart__config__data.html#a7e54939f749f906e4f662c13f58abf16">uart_timeouts</a>.<a class="code" href="structuart__timeouts.html#af40ee912511acefddcf789b5b986a048">write_timeout_flag</a> = 1;</div>
+<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;    uart_struct-&gt;<a class="code" href="structuart__config__data.html#a7e54939f749f906e4f662c13f58abf16">uart_timeouts</a>.<a class="code" href="structuart__timeouts.html#a8166acab7b59bbd32fbf6ca139a9d9d5">write_val_timeout</a> = write_timeout;</div>
+<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ae6a3bc40518edab0e42a8fbb40aaa8d9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae6a3bc40518edab0e42a8fbb40aaa8d9">&#9670;&nbsp;</a></span>uart_write()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="uart_8h.html#a7c366cf58b12c041cc1dc3130264643f">uart_errors</a> uart_write </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="uart_8h.html#adaa8285f14392d31d36867eddcd78572">uart_n</a> *&#160;</td>
+          <td class="paramname"><em>uart_struct</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>data_size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Передаёт данные по UART. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*uart_struct</td><td>- Выбранный UART для инициализации </td></tr>
+    <tr><td class="paramname">*data</td><td>- Указатель на массив данных </td></tr>
+    <tr><td class="paramname">data_size</td><td>- Размер данных в байтах </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Код ошибки uart_errors </dd></dl>
+<div class="fragment"><div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;{</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    <a class="code" href="uart_8h.html#a7c366cf58b12c041cc1dc3130264643f">uart_errors</a> error;</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    uint32_t timer_cnt = 0;</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    </div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    <span class="comment">// Активирование микросхемы RS485 на выдачу данных</span></div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    <span class="keywordflow">if</span> (uart_struct-&gt;<a class="code" href="structuart__config__data.html#a950a23e70a1db49a148ac1669bc98518">UARTx</a> == MDR_UART1)</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    {</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;        PORT_WriteBit(<a class="code" href="uart_8h.html#a590c865bf82f5db76c4ee77fa5f6cf20">PORT_UART1_EN</a>, <a class="code" href="uart_8h.html#af5a73d5cef316ce47a72c75874c28e68">PIN_UART1_EN</a>, 1);</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    }</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (uart_struct-&gt;<a class="code" href="structuart__config__data.html#a950a23e70a1db49a148ac1669bc98518">UARTx</a> == MDR_UART2)</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;    {</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;        PORT_WriteBit(<a class="code" href="uart_8h.html#aec8f70a46f17ed2f70e86294ee2acc96">PORT_UART2_EN</a>, <a class="code" href="uart_8h.html#a11012fd387b786acaf1bd8fdba424351">PIN_UART2_EN</a>, 1);</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    }</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;    </div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;    <span class="keywordflow">if</span> (uart_struct-&gt;<a class="code" href="structuart__config__data.html#a7e54939f749f906e4f662c13f58abf16">uart_timeouts</a>.<a class="code" href="structuart__timeouts.html#af40ee912511acefddcf789b5b986a048">write_timeout_flag</a> == 1)</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;    {</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;        TIMER_SetCounter(uart_struct-&gt;<a class="code" href="structuart__config__data.html#a7e54939f749f906e4f662c13f58abf16">uart_timeouts</a>.<a class="code" href="structuart__timeouts.html#aa704f3a30041e52af9c8aa9e9283bce7">timer_n_timeout</a>-&gt;<a class="code" href="structtimer__config__struct.html#a26d6f987c10095f685286d88e1cc4a96">TIMERx</a>, 0);</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;    }</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;    <span class="keywordflow">if</span> (data_size &gt; <a class="code" href="uart_8h.html#a0d57378e32bf8278011460740bc29f7f">UART_BUFFER_SIZE</a>)</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;    {</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;        error = <a class="code" href="uart_8h.html#acc42076253600be964e110149b458971a00d70d3edd67bde5b2049fb31fcba4fd">SIZE_ERROR</a>;</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;        <span class="keywordflow">return</span> error;</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;    }</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; data_size; i++)</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;    {</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;        UART_SendData(uart_struct-&gt;<a class="code" href="structuart__config__data.html#a950a23e70a1db49a148ac1669bc98518">UARTx</a>, data[i]);</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;        <span class="keywordflow">while</span> (UART_GetFlagStatus(uart_struct-&gt;<a class="code" href="structuart__config__data.html#a950a23e70a1db49a148ac1669bc98518">UARTx</a>, UART_FLAG_TXFF) == SET)</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;        {</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;            <span class="keywordflow">if</span> (uart_struct-&gt;<a class="code" href="structuart__config__data.html#a7e54939f749f906e4f662c13f58abf16">uart_timeouts</a>.<a class="code" href="structuart__timeouts.html#af40ee912511acefddcf789b5b986a048">write_timeout_flag</a> == 1)</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;            {</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;                timer_cnt = TIMER_GetCounter(uart_struct-&gt;<a class="code" href="structuart__config__data.html#a7e54939f749f906e4f662c13f58abf16">uart_timeouts</a>.<a class="code" href="structuart__timeouts.html#aa704f3a30041e52af9c8aa9e9283bce7">timer_n_timeout</a>-&gt;<a class="code" href="structtimer__config__struct.html#a26d6f987c10095f685286d88e1cc4a96">TIMERx</a>);</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;                <span class="keywordflow">if</span> (timer_cnt &gt;= (uart_struct-&gt;<a class="code" href="structuart__config__data.html#a7e54939f749f906e4f662c13f58abf16">uart_timeouts</a>.<a class="code" href="structuart__timeouts.html#a8166acab7b59bbd32fbf6ca139a9d9d5">write_val_timeout</a>*50)) </div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;                {</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;                    error = <a class="code" href="uart_8h.html#acc42076253600be964e110149b458971a94e4602a53bb7bd09807e344f43fd9df">WRITE_TIMEOUT_ERROR</a>;</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;                    <span class="keywordflow">return</span> error;</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;                }</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;            }</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;        }</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    }</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    <span class="comment">// Небольшая задержка для микросхемы RS-485 </span></div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    <a class="code" href="timers_8c.html#a55159cc6c08a6ece9ceae2ac776b86f2">delay_micro</a>(10);</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    <span class="comment">// Дезактивирование микросхемы RS485 на прием данных</span></div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;    <span class="keywordflow">if</span> (uart_struct-&gt;<a class="code" href="structuart__config__data.html#a950a23e70a1db49a148ac1669bc98518">UARTx</a> == MDR_UART1)</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;    {</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;        PORT_WriteBit(<a class="code" href="uart_8h.html#a590c865bf82f5db76c4ee77fa5f6cf20">PORT_UART1_EN</a>, <a class="code" href="uart_8h.html#af5a73d5cef316ce47a72c75874c28e68">PIN_UART1_EN</a>, 0);</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;    }</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (uart_struct-&gt;<a class="code" href="structuart__config__data.html#a950a23e70a1db49a148ac1669bc98518">UARTx</a> == MDR_UART2)</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;    {</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;        PORT_WriteBit(<a class="code" href="uart_8h.html#aec8f70a46f17ed2f70e86294ee2acc96">PORT_UART2_EN</a>, <a class="code" href="uart_8h.html#a11012fd387b786acaf1bd8fdba424351">PIN_UART2_EN</a>, 0);</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    }</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    </div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="uart_8h.html#acc42076253600be964e110149b458971a14820276ae7e4047a53d9b78109f7e2a">NO_ERRORS</a>;</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">Переменные</h2>
+<a id="aec4a192d186c4544c080be90dd080448"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aec4a192d186c4544c080be90dd080448">&#9670;&nbsp;</a></span>uart_1</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="uart_8h.html#adaa8285f14392d31d36867eddcd78572">uart_n</a> uart_1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Структура с конфигурационными параметрами блока UART1 МК </p>
+<p>Структуры с конфигурационными параметрами блоков UART МК </p>
+
+</div>
+</div>
+<a id="a50c3857c2c6185b8f3b9e556d4616100"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a50c3857c2c6185b8f3b9e556d4616100">&#9670;&nbsp;</a></span>uart_2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="uart_8h.html#adaa8285f14392d31d36867eddcd78572">uart_n</a> uart_2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Структура с конфигурационными параметрами блока UART2 МК </p>
+
+</div>
+</div>
+</div><!-- contents -->
+<div class="ttc" id="astructtimer__config__struct_html_a26d6f987c10095f685286d88e1cc4a96"><div class="ttname"><a href="structtimer__config__struct.html#a26d6f987c10095f685286d88e1cc4a96">timer_config_struct::TIMERx</a></div><div class="ttdeci">MDR_TIMER_TypeDef * TIMERx</div><div class="ttdoc">Библиотечная структура с периферийными регистрами блока TIMER.</div><div class="ttdef"><b>Definition:</b> timers.h:19</div></div>
+<div class="ttc" id="auart_8h_html_a71a0f60173663ff994058cc1c3c12a91"><div class="ttname"><a href="uart_8h.html#a71a0f60173663ff994058cc1c3c12a91">PIN_UART2_TX</a></div><div class="ttdeci">#define PIN_UART2_TX</div><div class="ttdoc">Линия TX порта UART2.</div><div class="ttdef"><b>Definition:</b> uart.h:18</div></div>
+<div class="ttc" id="astructuart__config__data_html_a2f1897c8ad4f96c27121372935dca904"><div class="ttname"><a href="structuart__config__data.html#a2f1897c8ad4f96c27121372935dca904">uart_config_data::RST_CLK_PCLK_UARTn</a></div><div class="ttdeci">uint32_t RST_CLK_PCLK_UARTn</div><div class="ttdoc">Включение тактирования для UARTn.</div><div class="ttdef"><b>Definition:</b> uart.h:85</div></div>
+<div class="ttc" id="astructuart__config__data_html_a51652f1abe929239e24fd89fd9ede3b4"><div class="ttname"><a href="structuart__config__data.html#a51652f1abe929239e24fd89fd9ede3b4">uart_config_data::IRQn</a></div><div class="ttdeci">IRQn_Type IRQn</div><div class="ttdoc">Выбор обработчика прерываний UARTn.</div><div class="ttdef"><b>Definition:</b> uart.h:84</div></div>
+<div class="ttc" id="auart_8h_html_acc42076253600be964e110149b458971a94e4602a53bb7bd09807e344f43fd9df"><div class="ttname"><a href="uart_8h.html#acc42076253600be964e110149b458971a94e4602a53bb7bd09807e344f43fd9df">WRITE_TIMEOUT_ERROR</a></div><div class="ttdeci">@ WRITE_TIMEOUT_ERROR</div><div class="ttdoc">Ошибка сигнализирует о том, что превышен таймаут на запись</div><div class="ttdef"><b>Definition:</b> uart.h:36</div></div>
+<div class="ttc" id="auart_8h_html_a7c366cf58b12c041cc1dc3130264643f"><div class="ttname"><a href="uart_8h.html#a7c366cf58b12c041cc1dc3130264643f">uart_errors</a></div><div class="ttdeci">enum errors uart_errors</div><div class="ttdoc">Коды ошибок работы UART.</div></div>
+<div class="ttc" id="auart_8h_html_acc42076253600be964e110149b458971aa446325b29d7c917325acc576f0f0f45"><div class="ttname"><a href="uart_8h.html#acc42076253600be964e110149b458971aa446325b29d7c917325acc576f0f0f45">INIT_ERROR</a></div><div class="ttdeci">@ INIT_ERROR</div><div class="ttdoc">Ошибка инициализации UART.</div><div class="ttdef"><b>Definition:</b> uart.h:35</div></div>
+<div class="ttc" id="auart_8h_html_aa08b802e49991b12915e73b280563900"><div class="ttname"><a href="uart_8h.html#aa08b802e49991b12915e73b280563900">BUFFER_MASK</a></div><div class="ttdeci">#define BUFFER_MASK</div><div class="ttdoc">Маска, необходимая для корректной работы кольцевого буфера</div><div class="ttdef"><b>Definition:</b> uart.h:26</div></div>
+<div class="ttc" id="auart_8h_html_acc42076253600be964e110149b458971a00d70d3edd67bde5b2049fb31fcba4fd"><div class="ttname"><a href="uart_8h.html#acc42076253600be964e110149b458971a00d70d3edd67bde5b2049fb31fcba4fd">SIZE_ERROR</a></div><div class="ttdeci">@ SIZE_ERROR</div><div class="ttdoc">Ошибка сигнализирует о том, что либо в буфере недостаточно данных для чтения, либо размер записываемы...</div><div class="ttdef"><b>Definition:</b> uart.h:38</div></div>
+<div class="ttc" id="auart_8h_html_a11012fd387b786acaf1bd8fdba424351"><div class="ttname"><a href="uart_8h.html#a11012fd387b786acaf1bd8fdba424351">PIN_UART2_EN</a></div><div class="ttdeci">#define PIN_UART2_EN</div><div class="ttdoc">Линия EN микросхемы RS485 для UART2.</div><div class="ttdef"><b>Definition:</b> uart.h:23</div></div>
+<div class="ttc" id="astructuart__config__data_html_a7b173ce3ba50d5d98ecc51cd80725433"><div class="ttname"><a href="structuart__config__data.html#a7b173ce3ba50d5d98ecc51cd80725433">uart_config_data::buffer_count</a></div><div class="ttdeci">uint32_t buffer_count</div><div class="ttdoc">Счетчик элементов буфера</div><div class="ttdef"><b>Definition:</b> uart.h:89</div></div>
+<div class="ttc" id="astructuart__config__data_html_a7e54939f749f906e4f662c13f58abf16"><div class="ttname"><a href="structuart__config__data.html#a7e54939f749f906e4f662c13f58abf16">uart_config_data::uart_timeouts</a></div><div class="ttdeci">uart_rx_tx_timeouts uart_timeouts</div><div class="ttdoc">Структура с таймаутами UARTn.</div><div class="ttdef"><b>Definition:</b> uart.h:82</div></div>
+<div class="ttc" id="atimers_8c_html_a55159cc6c08a6ece9ceae2ac776b86f2"><div class="ttname"><a href="timers_8c.html#a55159cc6c08a6ece9ceae2ac776b86f2">delay_micro</a></div><div class="ttdeci">void delay_micro(uint32_t time_micro)</div><div class="ttdoc">Реализует задержку в мкс</div><div class="ttdef"><b>Definition:</b> timers.c:161</div></div>
+<div class="ttc" id="astructuart__timeouts_html_af40ee912511acefddcf789b5b986a048"><div class="ttname"><a href="structuart__timeouts.html#af40ee912511acefddcf789b5b986a048">uart_timeouts::write_timeout_flag</a></div><div class="ttdeci">uint8_t write_timeout_flag</div><div class="ttdoc">Флаг таймаута на запись</div><div class="ttdef"><b>Definition:</b> uart.h:50</div></div>
+<div class="ttc" id="astructuart__config__data_html_a1f6f31cbf34ef43cfba85fd38f3348e4"><div class="ttname"><a href="structuart__config__data.html#a1f6f31cbf34ef43cfba85fd38f3348e4">uart_config_data::uart_dma_ch</a></div><div class="ttdeci">uart_dma_ch_params uart_dma_ch</div><div class="ttdoc">Структура с параметрами канала DMA для UART.</div><div class="ttdef"><b>Definition:</b> uart.h:83</div></div>
+<div class="ttc" id="auart_8h_html_a57684e701a73ac9b933644e50f1b7c26"><div class="ttname"><a href="uart_8h.html#a57684e701a73ac9b933644e50f1b7c26">PORT_UART1</a></div><div class="ttdeci">#define PORT_UART1</div><div class="ttdoc">Порт UART1.</div><div class="ttdef"><b>Definition:</b> uart.h:13</div></div>
+<div class="ttc" id="auart_8h_html_acc42076253600be964e110149b458971a0f91482313337f86a041c4de8e01bd40"><div class="ttname"><a href="uart_8h.html#acc42076253600be964e110149b458971a0f91482313337f86a041c4de8e01bd40">READ_TIMEOUT_ERROR</a></div><div class="ttdeci">@ READ_TIMEOUT_ERROR</div><div class="ttdoc">Ошибка сигнализирует о том, что превышен таймаут на чтение</div><div class="ttdef"><b>Definition:</b> uart.h:37</div></div>
+<div class="ttc" id="astructuart__config__data_html_a8a48424595e1d0f6b98fb6b57f177abb"><div class="ttname"><a href="structuart__config__data.html#a8a48424595e1d0f6b98fb6b57f177abb">uart_config_data::buffer</a></div><div class="ttdeci">uint8_t * buffer</div><div class="ttdoc">Указатель на буфер преимника UART.</div><div class="ttdef"><b>Definition:</b> uart.h:88</div></div>
+<div class="ttc" id="auart_8h_html_a590c865bf82f5db76c4ee77fa5f6cf20"><div class="ttname"><a href="uart_8h.html#a590c865bf82f5db76c4ee77fa5f6cf20">PORT_UART1_EN</a></div><div class="ttdeci">#define PORT_UART1_EN</div><div class="ttdoc">Порт линии EN микросхемы RS485 для UART1.</div><div class="ttdef"><b>Definition:</b> uart.h:20</div></div>
+<div class="ttc" id="auart_8h_html_acc42076253600be964e110149b458971a14820276ae7e4047a53d9b78109f7e2a"><div class="ttname"><a href="uart_8h.html#acc42076253600be964e110149b458971a14820276ae7e4047a53d9b78109f7e2a">NO_ERRORS</a></div><div class="ttdeci">@ NO_ERRORS</div><div class="ttdoc">Нет ошибок</div><div class="ttdef"><b>Definition:</b> uart.h:34</div></div>
+<div class="ttc" id="auart_8h_html_a0d57378e32bf8278011460740bc29f7f"><div class="ttname"><a href="uart_8h.html#a0d57378e32bf8278011460740bc29f7f">UART_BUFFER_SIZE</a></div><div class="ttdeci">#define UART_BUFFER_SIZE</div><div class="ttdoc">Размер кольцевого буфера UARTn (в кБайтах)</div><div class="ttdef"><b>Definition:</b> uart.h:25</div></div>
+<div class="ttc" id="astructuart__timeouts_html_aa704f3a30041e52af9c8aa9e9283bce7"><div class="ttname"><a href="structuart__timeouts.html#aa704f3a30041e52af9c8aa9e9283bce7">uart_timeouts::timer_n_timeout</a></div><div class="ttdeci">timer_n * timer_n_timeout</div><div class="ttdoc">Выбор таймера для отслеживания таймаутов</div><div class="ttdef"><b>Definition:</b> uart.h:48</div></div>
+<div class="ttc" id="auart_8c_html_aec4a192d186c4544c080be90dd080448"><div class="ttname"><a href="uart_8c.html#aec4a192d186c4544c080be90dd080448">uart_1</a></div><div class="ttdeci">uart_n uart_1</div><div class="ttdoc">Структура с конфигурационными параметрами блока UART1 МК</div><div class="ttdef"><b>Definition:</b> uart.c:10</div></div>
+<div class="ttc" id="astructuart__config__data_html_a950a23e70a1db49a148ac1669bc98518"><div class="ttname"><a href="structuart__config__data.html#a950a23e70a1db49a148ac1669bc98518">uart_config_data::UARTx</a></div><div class="ttdeci">MDR_UART_TypeDef * UARTx</div><div class="ttdoc">Библиотечная структура с периферийными регистрами блока UART.</div><div class="ttdef"><b>Definition:</b> uart.h:81</div></div>
+<div class="ttc" id="astructuart__config__data_html_a2f8d77645e82d7f5f061714d8e0c1eab"><div class="ttname"><a href="structuart__config__data.html#a2f8d77645e82d7f5f061714d8e0c1eab">uart_config_data::read_pos</a></div><div class="ttdeci">uint32_t read_pos</div><div class="ttdoc">Текущая позиция курсора чтения в буфере</div><div class="ttdef"><b>Definition:</b> uart.h:90</div></div>
+<div class="ttc" id="auart_8h_html_af5a73d5cef316ce47a72c75874c28e68"><div class="ttname"><a href="uart_8h.html#af5a73d5cef316ce47a72c75874c28e68">PIN_UART1_EN</a></div><div class="ttdeci">#define PIN_UART1_EN</div><div class="ttdoc">Линия EN микросхемы RS485 для UART1.</div><div class="ttdef"><b>Definition:</b> uart.h:22</div></div>
+<div class="ttc" id="auart_8h_html_a5a715f2a3cbcff2804367489da622378"><div class="ttname"><a href="uart_8h.html#a5a715f2a3cbcff2804367489da622378">PORT_UART2</a></div><div class="ttdeci">#define PORT_UART2</div><div class="ttdoc">Порт UART2.</div><div class="ttdef"><b>Definition:</b> uart.h:16</div></div>
+<div class="ttc" id="auart_8h_html_a88fb8ea352bc1b90ead32b6a5b7683de"><div class="ttname"><a href="uart_8h.html#a88fb8ea352bc1b90ead32b6a5b7683de">PIN_UART1_TX</a></div><div class="ttdeci">#define PIN_UART1_TX</div><div class="ttdoc">Линия TX порта UART1.</div><div class="ttdef"><b>Definition:</b> uart.h:15</div></div>
+<div class="ttc" id="astructuart__dma__params_html_a7f3e599d1565aefe1288df16c02be58a"><div class="ttname"><a href="structuart__dma__params.html#a7f3e599d1565aefe1288df16c02be58a">uart_dma_params::DMA_Channel_UART_RX</a></div><div class="ttdeci">DMA_ChannelInitTypeDef DMA_Channel_UART_RX</div><div class="ttdoc">Структура с настройками канала DMA.</div><div class="ttdef"><b>Definition:</b> uart.h:68</div></div>
+<div class="ttc" id="auart_8h_html_aec8f70a46f17ed2f70e86294ee2acc96"><div class="ttname"><a href="uart_8h.html#aec8f70a46f17ed2f70e86294ee2acc96">PORT_UART2_EN</a></div><div class="ttdeci">#define PORT_UART2_EN</div><div class="ttdoc">Порт линии EN микросхемы RS485 для UART2.</div><div class="ttdef"><b>Definition:</b> uart.h:21</div></div>
+<div class="ttc" id="auart_8c_html_a50c3857c2c6185b8f3b9e556d4616100"><div class="ttname"><a href="uart_8c.html#a50c3857c2c6185b8f3b9e556d4616100">uart_2</a></div><div class="ttdeci">uart_n uart_2</div><div class="ttdoc">Структура с конфигурационными параметрами блока UART2 МК</div><div class="ttdef"><b>Definition:</b> uart.c:12</div></div>
+<div class="ttc" id="astructuart__timeouts_html_a4d128f40f101681bf72034dc35dc6c0b"><div class="ttname"><a href="structuart__timeouts.html#a4d128f40f101681bf72034dc35dc6c0b">uart_timeouts::read_val_timeout</a></div><div class="ttdeci">uint32_t read_val_timeout</div><div class="ttdoc">Таймаут на чтение</div><div class="ttdef"><b>Definition:</b> uart.h:51</div></div>
+<div class="ttc" id="auart_8h_html_aa3ad2fe6929c560f3dee7a710c615089"><div class="ttname"><a href="uart_8h.html#aa3ad2fe6929c560f3dee7a710c615089">PIN_UART1_RX</a></div><div class="ttdeci">#define PIN_UART1_RX</div><div class="ttdoc">Линия RX порта UART1.</div><div class="ttdef"><b>Definition:</b> uart.h:14</div></div>
+<div class="ttc" id="astructuart__dma__params_html_a64401b64ba4343b3a70b26079a91798f"><div class="ttname"><a href="structuart__dma__params.html#a64401b64ba4343b3a70b26079a91798f">uart_dma_params::dma_channel</a></div><div class="ttdeci">uint8_t dma_channel</div><div class="ttdoc">Выбор канала DMA для UARTn.</div><div class="ttdef"><b>Definition:</b> uart.h:65</div></div>
+<div class="ttc" id="astructuart__config__data_html_a74443decfdc49e69c7e9086ac3dd7c48"><div class="ttname"><a href="structuart__config__data.html#a74443decfdc49e69c7e9086ac3dd7c48">uart_config_data::UART_HCLKdiv</a></div><div class="ttdeci">uint32_t UART_HCLKdiv</div><div class="ttdoc">Выбор делителя тактовой частоты для тактирования блока UARTn</div><div class="ttdef"><b>Definition:</b> uart.h:87</div></div>
+<div class="ttc" id="astructuart__dma__params_html_a57078c8a90ebfae005ef5c190e38c8e7"><div class="ttname"><a href="structuart__dma__params.html#a57078c8a90ebfae005ef5c190e38c8e7">uart_dma_params::DMA_InitStructure_UART_RX</a></div><div class="ttdeci">DMA_CtrlDataInitTypeDef DMA_InitStructure_UART_RX</div><div class="ttdoc">Структура с настройками DMA в целом</div><div class="ttdef"><b>Definition:</b> uart.h:67</div></div>
+<div class="ttc" id="astructuart__timeouts_html_ad777bbdf0e5a86bf0d5260c588430c5c"><div class="ttname"><a href="structuart__timeouts.html#ad777bbdf0e5a86bf0d5260c588430c5c">uart_timeouts::read_timeout_flag</a></div><div class="ttdeci">uint8_t read_timeout_flag</div><div class="ttdoc">Флаг таймаута на чтение</div><div class="ttdef"><b>Definition:</b> uart.h:49</div></div>
+<div class="ttc" id="auart_8c_html_af46c427bcd65a9bce1977df90f335eac"><div class="ttname"><a href="uart_8c.html#af46c427bcd65a9bce1977df90f335eac">uart_gpio_config</a></div><div class="ttdeci">void uart_gpio_config(void)</div><div class="ttdoc">Конфигурирует выводы МК для UART.</div><div class="ttdef"><b>Definition:</b> uart.c:75</div></div>
+<div class="ttc" id="auart_8h_html_acc42076253600be964e110149b458971a50592fa5d44fc63417e52b9aad6d0021"><div class="ttname"><a href="uart_8h.html#acc42076253600be964e110149b458971a50592fa5d44fc63417e52b9aad6d0021">POSITION_ERROR</a></div><div class="ttdeci">@ POSITION_ERROR</div><div class="ttdoc">Ошибка установки курсора чтения</div><div class="ttdef"><b>Definition:</b> uart.h:39</div></div>
+<div class="ttc" id="auart_8h_html_a6de937aac78b3eee2db9ca6d79d2a3a4"><div class="ttname"><a href="uart_8h.html#a6de937aac78b3eee2db9ca6d79d2a3a4">PIN_UART2_RX</a></div><div class="ttdeci">#define PIN_UART2_RX</div><div class="ttdoc">Линия RX порта UART2.</div><div class="ttdef"><b>Definition:</b> uart.h:17</div></div>
+<div class="ttc" id="astructuart__timeouts_html_a8166acab7b59bbd32fbf6ca139a9d9d5"><div class="ttname"><a href="structuart__timeouts.html#a8166acab7b59bbd32fbf6ca139a9d9d5">uart_timeouts::write_val_timeout</a></div><div class="ttdeci">uint32_t write_val_timeout</div><div class="ttdoc">Таймаут на запись</div><div class="ttdef"><b>Definition:</b> uart.h:52</div></div>
+<div class="ttc" id="astructuart__config__data_html_a1f17323cdc482e50e3547119dc2bb57b"><div class="ttname"><a href="structuart__config__data.html#a1f17323cdc482e50e3547119dc2bb57b">uart_config_data::UART</a></div><div class="ttdeci">UART_InitTypeDef UART</div><div class="ttdoc">Библиотечная структура с конфигурационными параметрами UART.</div><div class="ttdef"><b>Definition:</b> uart.h:86</div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20
+</small></address>
+</body>
+</html>

@@ -1,0 +1,368 @@
+\hypertarget{list_8h}{}\doxysection{Файл list.\+h}
+\label{list_8h}\index{list.h@{list.h}}
+
+
+Заголовочный файл с описанием A\+PI для работы со списками (реализация аналогична linux kernel)  
+
+
+{\ttfamily \#include \char`\"{}mdr32\+\_\+drivers.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$stddef.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+Граф включаемых заголовочных файлов для list.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{list_8h__incl}
+\end{center}
+\end{figure}
+Граф файлов, в которые включается этот файл\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{list_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Классы}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structlist__head__struct}{list\+\_\+head\+\_\+struct}}
+\begin{DoxyCompactList}\small\item\em Структура с описанием двусвязанного списка \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Макросы}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{list_8h_a9b782fefb5ab71ce9762182e45a615e1}{list\+\_\+for\+\_\+each\+\_\+entry}}(pos,  head,  member)
+\begin{DoxyCompactList}\small\item\em Макрос для обхода двусвязного списка (более оптимальный вариант) \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{list_8h_ab8b24e6660ab3760c923e4b4db3fa502}{list\+\_\+for\+\_\+each}}(pos,  head)~	for (pos = (head)-\/$>$next; pos != (head); pos = pos-\/$>$next)
+\begin{DoxyCompactList}\small\item\em Макрос для обхода двусвязанного списка (head -\/ указывает на список, pos -\/ курсор, используемый для обхода) \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{list_8h_af8c317a42292b61c93aae91e59118a46}{container\+\_\+of}}(ptr,  type,  member)
+\begin{DoxyCompactList}\small\item\em Макрос определяет адрес структуры по известному адресу члена этой структуры (ptr-\/указатель на член структуры, type-\/тип структуры, member-\/имя члена структуры) \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{list_8h_a26c976b7f654e70df318c1843e5094de}{list\+\_\+entry}}(ptr,  type,  member)~	\mbox{\hyperlink{list_8h_af8c317a42292b61c93aae91e59118a46}{container\+\_\+of}}(ptr, type, member)
+\begin{DoxyCompactList}\small\item\em Макрос обертка container\+\_\+of. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{list_8h_a4642d4b7df28478bb762fe43c85b5c63}{L\+I\+S\+T\+\_\+\+H\+E\+A\+D\+\_\+\+I\+N\+IT}}(name)~\{ \&(name), \&(name) \}
+\begin{DoxyCompactList}\small\item\em Макрос инициализации двусвязного списка \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{list_8h_a42f0e72af970a790b60a740af8c9ecd0}{L\+I\+S\+T\+\_\+\+H\+E\+AD}}(name)~	\mbox{\hyperlink{list_8h_a4829e226828f5e92b99dd3fd30c69469}{list\+\_\+head}} name = \mbox{\hyperlink{list_8h_a4642d4b7df28478bb762fe43c85b5c63}{L\+I\+S\+T\+\_\+\+H\+E\+A\+D\+\_\+\+I\+N\+IT}}(name)
+\begin{DoxyCompactList}\small\item\em Макрос создания двусвязного списка с именем name. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Определения типов}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{structlist__head__struct}{list\+\_\+head\+\_\+struct}} \mbox{\hyperlink{list_8h_a4829e226828f5e92b99dd3fd30c69469}{list\+\_\+head}}
+\begin{DoxyCompactList}\small\item\em Структура с описанием двусвязанного списка \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Функции}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{list_8h_a1c2b5c9a9806c781abd7a6e8ff05c566}{init\+\_\+list\+\_\+head}} (\mbox{\hyperlink{list_8h_a4829e226828f5e92b99dd3fd30c69469}{list\+\_\+head}} $\ast$list)
+\begin{DoxyCompactList}\small\item\em Инициализирует двусвязанный список \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{list_8h_a2c742297bd0827db9a20507d7024bfc1}{\+\_\+\+\_\+list\+\_\+add}} (\mbox{\hyperlink{list_8h_a4829e226828f5e92b99dd3fd30c69469}{list\+\_\+head}} $\ast$new, \mbox{\hyperlink{list_8h_a4829e226828f5e92b99dd3fd30c69469}{list\+\_\+head}} $\ast$prev, \mbox{\hyperlink{list_8h_a4829e226828f5e92b99dd3fd30c69469}{list\+\_\+head}} $\ast$next)
+\begin{DoxyCompactList}\small\item\em Вставляет элемент в связанный список (между предыдущими и следующими элементами) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{list_8h_a49fb283881d3fb673331250cc67b5fbb}{list\+\_\+add}} (\mbox{\hyperlink{list_8h_a4829e226828f5e92b99dd3fd30c69469}{list\+\_\+head}} $\ast$new, \mbox{\hyperlink{list_8h_a4829e226828f5e92b99dd3fd30c69469}{list\+\_\+head}} $\ast$head)
+\begin{DoxyCompactList}\small\item\em Вставляет элемент в заголовок связанного списка \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{list_8h_ab5bd4d17afc5d068a0d2a0f57c976c28}{list\+\_\+add\+\_\+tail}} (\mbox{\hyperlink{list_8h_a4829e226828f5e92b99dd3fd30c69469}{list\+\_\+head}} $\ast$new, \mbox{\hyperlink{list_8h_a4829e226828f5e92b99dd3fd30c69469}{list\+\_\+head}} $\ast$head)
+\begin{DoxyCompactList}\small\item\em Вставляет элемент в конец связанного списка \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{list_8h_a489b4f41f20fea640740ebcd90106f4a}{\+\_\+\+\_\+list\+\_\+del}} (\mbox{\hyperlink{list_8h_a4829e226828f5e92b99dd3fd30c69469}{list\+\_\+head}} $\ast$prev, \mbox{\hyperlink{list_8h_a4829e226828f5e92b99dd3fd30c69469}{list\+\_\+head}} $\ast$next)
+\begin{DoxyCompactList}\small\item\em Удаляет элемент списка \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{list_8h_adffc89551348dfaa865daa7147285257}{list\+\_\+del}} (\mbox{\hyperlink{list_8h_a4829e226828f5e92b99dd3fd30c69469}{list\+\_\+head}} $\ast$entry)
+\begin{DoxyCompactList}\small\item\em Удаляет элемент списка и очищает его \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{list_8h_a64e50625a85917080c3cf9b4229cc736}{list\+\_\+is\+\_\+last}} (\mbox{\hyperlink{list_8h_a4829e226828f5e92b99dd3fd30c69469}{list\+\_\+head}} $\ast$list, \mbox{\hyperlink{list_8h_a4829e226828f5e92b99dd3fd30c69469}{list\+\_\+head}} $\ast$head)
+\begin{DoxyCompactList}\small\item\em Определяет, является ли текущий узел списка последним узлом в списке \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{list_8h_a3774bda332fe9767b7bbb12aef8c95ef}{list\+\_\+empty}} (\mbox{\hyperlink{list_8h_a4829e226828f5e92b99dd3fd30c69469}{list\+\_\+head}} $\ast$head)
+\begin{DoxyCompactList}\small\item\em Определяет, является ли связанный список пустым \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Заголовочный файл с описанием A\+PI для работы со списками (реализация аналогична linux kernel) 
+
+
+
+\doxysubsection{Макросы}
+\mbox{\Hypertarget{list_8h_af8c317a42292b61c93aae91e59118a46}\label{list_8h_af8c317a42292b61c93aae91e59118a46}} 
+\index{list.h@{list.h}!container\_of@{container\_of}}
+\index{container\_of@{container\_of}!list.h@{list.h}}
+\doxysubsubsection{\texorpdfstring{container\_of}{container\_of}}
+{\footnotesize\ttfamily \#define container\+\_\+of(\begin{DoxyParamCaption}\item[{}]{ptr,  }\item[{}]{type,  }\item[{}]{member }\end{DoxyParamCaption})}
+
+{\bfseries Макроопределение\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{    (\{          \(\backslash\)}
+\DoxyCodeLine{    const typeof( ((type *)0)-\/>member ) *\_\_mptr = (ptr);    \(\backslash\)}
+\DoxyCodeLine{    (type *)( (\textcolor{keywordtype}{char} *)\_\_mptr -\/ offsetof(type,member) );\})}
+
+\end{DoxyCode}
+
+
+Макрос определяет адрес структуры по известному адресу члена этой структуры (ptr-\/указатель на член структуры, type-\/тип структуры, member-\/имя члена структуры) 
+
+\mbox{\Hypertarget{list_8h_a26c976b7f654e70df318c1843e5094de}\label{list_8h_a26c976b7f654e70df318c1843e5094de}} 
+\index{list.h@{list.h}!list\_entry@{list\_entry}}
+\index{list\_entry@{list\_entry}!list.h@{list.h}}
+\doxysubsubsection{\texorpdfstring{list\_entry}{list\_entry}}
+{\footnotesize\ttfamily \#define list\+\_\+entry(\begin{DoxyParamCaption}\item[{}]{ptr,  }\item[{}]{type,  }\item[{}]{member }\end{DoxyParamCaption})~	\mbox{\hyperlink{list_8h_af8c317a42292b61c93aae91e59118a46}{container\+\_\+of}}(ptr, type, member)}
+
+
+
+Макрос обертка container\+\_\+of. 
+
+\mbox{\Hypertarget{list_8h_ab8b24e6660ab3760c923e4b4db3fa502}\label{list_8h_ab8b24e6660ab3760c923e4b4db3fa502}} 
+\index{list.h@{list.h}!list\_for\_each@{list\_for\_each}}
+\index{list\_for\_each@{list\_for\_each}!list.h@{list.h}}
+\doxysubsubsection{\texorpdfstring{list\_for\_each}{list\_for\_each}}
+{\footnotesize\ttfamily \#define list\+\_\+for\+\_\+each(\begin{DoxyParamCaption}\item[{}]{pos,  }\item[{}]{head }\end{DoxyParamCaption})~	for (pos = (head)-\/$>$next; pos != (head); pos = pos-\/$>$next)}
+
+
+
+Макрос для обхода двусвязанного списка (head -\/ указывает на список, pos -\/ курсор, используемый для обхода) 
+
+\mbox{\Hypertarget{list_8h_a9b782fefb5ab71ce9762182e45a615e1}\label{list_8h_a9b782fefb5ab71ce9762182e45a615e1}} 
+\index{list.h@{list.h}!list\_for\_each\_entry@{list\_for\_each\_entry}}
+\index{list\_for\_each\_entry@{list\_for\_each\_entry}!list.h@{list.h}}
+\doxysubsubsection{\texorpdfstring{list\_for\_each\_entry}{list\_for\_each\_entry}}
+{\footnotesize\ttfamily \#define list\+\_\+for\+\_\+each\+\_\+entry(\begin{DoxyParamCaption}\item[{}]{pos,  }\item[{}]{head,  }\item[{}]{member }\end{DoxyParamCaption})}
+
+{\bfseries Макроопределение\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{    \textcolor{keywordflow}{for} (pos = \mbox{\hyperlink{list_8h_a26c976b7f654e70df318c1843e5094de}{list\_entry}}((head)-\/>next, typeof(*pos), member);    \(\backslash\)}
+\DoxyCodeLine{         \&pos-\/>member != (head);    \(\backslash\)}
+\DoxyCodeLine{         pos = \mbox{\hyperlink{list_8h_a26c976b7f654e70df318c1843e5094de}{list\_entry}}(pos-\/>member.next, typeof(*pos), member))}
+
+\end{DoxyCode}
+
+
+Макрос для обхода двусвязного списка (более оптимальный вариант) 
+
+\mbox{\Hypertarget{list_8h_a42f0e72af970a790b60a740af8c9ecd0}\label{list_8h_a42f0e72af970a790b60a740af8c9ecd0}} 
+\index{list.h@{list.h}!LIST\_HEAD@{LIST\_HEAD}}
+\index{LIST\_HEAD@{LIST\_HEAD}!list.h@{list.h}}
+\doxysubsubsection{\texorpdfstring{LIST\_HEAD}{LIST\_HEAD}}
+{\footnotesize\ttfamily \#define L\+I\+S\+T\+\_\+\+H\+E\+AD(\begin{DoxyParamCaption}\item[{}]{name }\end{DoxyParamCaption})~	\mbox{\hyperlink{list_8h_a4829e226828f5e92b99dd3fd30c69469}{list\+\_\+head}} name = \mbox{\hyperlink{list_8h_a4642d4b7df28478bb762fe43c85b5c63}{L\+I\+S\+T\+\_\+\+H\+E\+A\+D\+\_\+\+I\+N\+IT}}(name)}
+
+
+
+Макрос создания двусвязного списка с именем name. 
+
+\mbox{\Hypertarget{list_8h_a4642d4b7df28478bb762fe43c85b5c63}\label{list_8h_a4642d4b7df28478bb762fe43c85b5c63}} 
+\index{list.h@{list.h}!LIST\_HEAD\_INIT@{LIST\_HEAD\_INIT}}
+\index{LIST\_HEAD\_INIT@{LIST\_HEAD\_INIT}!list.h@{list.h}}
+\doxysubsubsection{\texorpdfstring{LIST\_HEAD\_INIT}{LIST\_HEAD\_INIT}}
+{\footnotesize\ttfamily \#define L\+I\+S\+T\+\_\+\+H\+E\+A\+D\+\_\+\+I\+N\+IT(\begin{DoxyParamCaption}\item[{}]{name }\end{DoxyParamCaption})~\{ \&(name), \&(name) \}}
+
+
+
+Макрос инициализации двусвязного списка 
+
+
+
+\doxysubsection{Типы}
+\mbox{\Hypertarget{list_8h_a4829e226828f5e92b99dd3fd30c69469}\label{list_8h_a4829e226828f5e92b99dd3fd30c69469}} 
+\index{list.h@{list.h}!list\_head@{list\_head}}
+\index{list\_head@{list\_head}!list.h@{list.h}}
+\doxysubsubsection{\texorpdfstring{list\_head}{list\_head}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structlist__head__struct}{list\+\_\+head\+\_\+struct}} \mbox{\hyperlink{list_8h_a4829e226828f5e92b99dd3fd30c69469}{list\+\_\+head}}}
+
+
+
+Структура с описанием двусвязанного списка 
+
+
+
+\doxysubsection{Функции}
+\mbox{\Hypertarget{list_8h_a2c742297bd0827db9a20507d7024bfc1}\label{list_8h_a2c742297bd0827db9a20507d7024bfc1}} 
+\index{list.h@{list.h}!\_\_list\_add@{\_\_list\_add}}
+\index{\_\_list\_add@{\_\_list\_add}!list.h@{list.h}}
+\doxysubsubsection{\texorpdfstring{\_\_list\_add()}{\_\_list\_add()}}
+{\footnotesize\ttfamily void \+\_\+\+\_\+list\+\_\+add (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{list_8h_a4829e226828f5e92b99dd3fd30c69469}{list\+\_\+head}} $\ast$}]{new,  }\item[{\mbox{\hyperlink{list_8h_a4829e226828f5e92b99dd3fd30c69469}{list\+\_\+head}} $\ast$}]{prev,  }\item[{\mbox{\hyperlink{list_8h_a4829e226828f5e92b99dd3fd30c69469}{list\+\_\+head}} $\ast$}]{next }\end{DoxyParamCaption})}
+
+
+
+Вставляет элемент в связанный список (между предыдущими и следующими элементами) 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em new} & -\/ указатель на новый элемент списка \\
+\hline
+{\em prev} & -\/ указатель на предыдущий элемент списка \\
+\hline
+{\em next} & -\/ указатель на следующий элемент списка\\
+\hline
+\end{DoxyParams}
+Функция вставки элемента в связанный список (между предыдущими и следующими элементами) 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{20 \{}
+\DoxyCodeLine{21     next-\/>\mbox{\hyperlink{structlist__head__struct_a04e79e6b3de74793a4c9f785dc8ef6ae}{prev}} = \textcolor{keyword}{new};}
+\DoxyCodeLine{22     \textcolor{keyword}{new}-\/>\mbox{\hyperlink{structlist__head__struct_a5b2ea2972b4aa6d34d2df3336f088d5f}{next}} = next;}
+\DoxyCodeLine{23     \textcolor{keyword}{new}-\/>\mbox{\hyperlink{structlist__head__struct_a04e79e6b3de74793a4c9f785dc8ef6ae}{prev}} = prev;}
+\DoxyCodeLine{24     prev-\/>\mbox{\hyperlink{structlist__head__struct_a5b2ea2972b4aa6d34d2df3336f088d5f}{next}} = \textcolor{keyword}{new};}
+\DoxyCodeLine{25 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{list_8h_a489b4f41f20fea640740ebcd90106f4a}\label{list_8h_a489b4f41f20fea640740ebcd90106f4a}} 
+\index{list.h@{list.h}!\_\_list\_del@{\_\_list\_del}}
+\index{\_\_list\_del@{\_\_list\_del}!list.h@{list.h}}
+\doxysubsubsection{\texorpdfstring{\_\_list\_del()}{\_\_list\_del()}}
+{\footnotesize\ttfamily void \+\_\+\+\_\+list\+\_\+del (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{list_8h_a4829e226828f5e92b99dd3fd30c69469}{list\+\_\+head}} $\ast$}]{prev,  }\item[{\mbox{\hyperlink{list_8h_a4829e226828f5e92b99dd3fd30c69469}{list\+\_\+head}} $\ast$}]{next }\end{DoxyParamCaption})}
+
+
+
+Удаляет элемент списка 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em prev} & -\/ указатель на предыдущий элемент \\
+\hline
+{\em next} & -\/ указатель на следующий элемент\\
+\hline
+\end{DoxyParams}
+Функция удаления элемента списка 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{44 \{}
+\DoxyCodeLine{45   next-\/>\mbox{\hyperlink{structlist__head__struct_a04e79e6b3de74793a4c9f785dc8ef6ae}{prev}} = prev;}
+\DoxyCodeLine{46   prev-\/>\mbox{\hyperlink{structlist__head__struct_a5b2ea2972b4aa6d34d2df3336f088d5f}{next}} = next;}
+\DoxyCodeLine{47 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{list_8h_a1c2b5c9a9806c781abd7a6e8ff05c566}\label{list_8h_a1c2b5c9a9806c781abd7a6e8ff05c566}} 
+\index{list.h@{list.h}!init\_list\_head@{init\_list\_head}}
+\index{init\_list\_head@{init\_list\_head}!list.h@{list.h}}
+\doxysubsubsection{\texorpdfstring{init\_list\_head()}{init\_list\_head()}}
+{\footnotesize\ttfamily void init\+\_\+list\+\_\+head (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{list_8h_a4829e226828f5e92b99dd3fd30c69469}{list\+\_\+head}} $\ast$}]{list }\end{DoxyParamCaption})}
+
+
+
+Инициализирует двусвязанный список 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em list} & -\/ указатель на заголовок списка\\
+\hline
+\end{DoxyParams}
+Функция инициализации двусвязного списка 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{12 \{}
+\DoxyCodeLine{13     list-\/>\mbox{\hyperlink{structlist__head__struct_a5b2ea2972b4aa6d34d2df3336f088d5f}{next}} = list;}
+\DoxyCodeLine{14     list-\/>\mbox{\hyperlink{structlist__head__struct_a04e79e6b3de74793a4c9f785dc8ef6ae}{prev}} = list;}
+\DoxyCodeLine{15 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{list_8h_a49fb283881d3fb673331250cc67b5fbb}\label{list_8h_a49fb283881d3fb673331250cc67b5fbb}} 
+\index{list.h@{list.h}!list\_add@{list\_add}}
+\index{list\_add@{list\_add}!list.h@{list.h}}
+\doxysubsubsection{\texorpdfstring{list\_add()}{list\_add()}}
+{\footnotesize\ttfamily void list\+\_\+add (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{list_8h_a4829e226828f5e92b99dd3fd30c69469}{list\+\_\+head}} $\ast$}]{new,  }\item[{\mbox{\hyperlink{list_8h_a4829e226828f5e92b99dd3fd30c69469}{list\+\_\+head}} $\ast$}]{head }\end{DoxyParamCaption})}
+
+
+
+Вставляет элемент в заголовок связанного списка 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em new} & -\/ указатель на новый элемент списка \\
+\hline
+{\em head} & -\/ указатель на заголовок списка\\
+\hline
+\end{DoxyParams}
+Функция вставки элемента сразу после head 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{30 \{}
+\DoxyCodeLine{31     \mbox{\hyperlink{list_8c_a2c742297bd0827db9a20507d7024bfc1}{\_\_list\_add}}(\textcolor{keyword}{new}, head, head-\/>\mbox{\hyperlink{structlist__head__struct_a5b2ea2972b4aa6d34d2df3336f088d5f}{next}});}
+\DoxyCodeLine{32 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{list_8h_ab5bd4d17afc5d068a0d2a0f57c976c28}\label{list_8h_ab5bd4d17afc5d068a0d2a0f57c976c28}} 
+\index{list.h@{list.h}!list\_add\_tail@{list\_add\_tail}}
+\index{list\_add\_tail@{list\_add\_tail}!list.h@{list.h}}
+\doxysubsubsection{\texorpdfstring{list\_add\_tail()}{list\_add\_tail()}}
+{\footnotesize\ttfamily void list\+\_\+add\+\_\+tail (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{list_8h_a4829e226828f5e92b99dd3fd30c69469}{list\+\_\+head}} $\ast$}]{new,  }\item[{\mbox{\hyperlink{list_8h_a4829e226828f5e92b99dd3fd30c69469}{list\+\_\+head}} $\ast$}]{head }\end{DoxyParamCaption})}
+
+
+
+Вставляет элемент в конец связанного списка 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em new} & -\/ указатель на новый элемент списка \\
+\hline
+{\em head} & -\/ указатель на заголовок списка\\
+\hline
+\end{DoxyParams}
+Функция вставки элемента перед head (т.\+е. в хвост узла) 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{37 \{}
+\DoxyCodeLine{38     \mbox{\hyperlink{list_8c_a2c742297bd0827db9a20507d7024bfc1}{\_\_list\_add}}(\textcolor{keyword}{new}, head-\/>\mbox{\hyperlink{structlist__head__struct_a04e79e6b3de74793a4c9f785dc8ef6ae}{prev}}, head);}
+\DoxyCodeLine{39 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{list_8h_adffc89551348dfaa865daa7147285257}\label{list_8h_adffc89551348dfaa865daa7147285257}} 
+\index{list.h@{list.h}!list\_del@{list\_del}}
+\index{list\_del@{list\_del}!list.h@{list.h}}
+\doxysubsubsection{\texorpdfstring{list\_del()}{list\_del()}}
+{\footnotesize\ttfamily void list\+\_\+del (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{list_8h_a4829e226828f5e92b99dd3fd30c69469}{list\+\_\+head}} $\ast$}]{entry }\end{DoxyParamCaption})}
+
+
+
+Удаляет элемент списка и очищает его 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em entry} & -\/ указатель на удаляемый элемент\\
+\hline
+\end{DoxyParams}
+Функция удаления элемента списка и его очистки 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{52 \{}
+\DoxyCodeLine{53   \mbox{\hyperlink{list_8c_a489b4f41f20fea640740ebcd90106f4a}{\_\_list\_del}}(entry-\/>\mbox{\hyperlink{structlist__head__struct_a04e79e6b3de74793a4c9f785dc8ef6ae}{prev}}, entry-\/>\mbox{\hyperlink{structlist__head__struct_a5b2ea2972b4aa6d34d2df3336f088d5f}{next}});}
+\DoxyCodeLine{54   entry-\/>\mbox{\hyperlink{structlist__head__struct_a5b2ea2972b4aa6d34d2df3336f088d5f}{next}} = NULL;}
+\DoxyCodeLine{55   entry-\/>\mbox{\hyperlink{structlist__head__struct_a04e79e6b3de74793a4c9f785dc8ef6ae}{prev}} = NULL;}
+\DoxyCodeLine{56 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{list_8h_a3774bda332fe9767b7bbb12aef8c95ef}\label{list_8h_a3774bda332fe9767b7bbb12aef8c95ef}} 
+\index{list.h@{list.h}!list\_empty@{list\_empty}}
+\index{list\_empty@{list\_empty}!list.h@{list.h}}
+\doxysubsubsection{\texorpdfstring{list\_empty()}{list\_empty()}}
+{\footnotesize\ttfamily int list\+\_\+empty (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{list_8h_a4829e226828f5e92b99dd3fd30c69469}{list\+\_\+head}} $\ast$}]{head }\end{DoxyParamCaption})}
+
+
+
+Определяет, является ли связанный список пустым 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em head} & -\/ указатель на заголовок списка \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Сообщение с результатом (1 -\/ список пуст, 0 -\/ не пуст)
+\end{DoxyReturn}
+Функция, определяющая, является ли связанный список пустым, возвращает true, если пуст, в противном случае возвращает false 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{68 \{}
+\DoxyCodeLine{69     \textcolor{keywordflow}{return} head-\/>\mbox{\hyperlink{structlist__head__struct_a5b2ea2972b4aa6d34d2df3336f088d5f}{next}} == head;}
+\DoxyCodeLine{70 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{list_8h_a64e50625a85917080c3cf9b4229cc736}\label{list_8h_a64e50625a85917080c3cf9b4229cc736}} 
+\index{list.h@{list.h}!list\_is\_last@{list\_is\_last}}
+\index{list\_is\_last@{list\_is\_last}!list.h@{list.h}}
+\doxysubsubsection{\texorpdfstring{list\_is\_last()}{list\_is\_last()}}
+{\footnotesize\ttfamily int list\+\_\+is\+\_\+last (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{list_8h_a4829e226828f5e92b99dd3fd30c69469}{list\+\_\+head}} $\ast$}]{list,  }\item[{\mbox{\hyperlink{list_8h_a4829e226828f5e92b99dd3fd30c69469}{list\+\_\+head}} $\ast$}]{head }\end{DoxyParamCaption})}
+
+
+
+Определяет, является ли текущий узел списка последним узлом в списке 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em list} & -\/ текущий элемент списка \\
+\hline
+{\em head} & -\/ указатель на заголовок списка \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Сообщение с результатом (1 -\/ является, 0 -\/ не является)
+\end{DoxyReturn}
+Функция, определяющая, является ли текущий узел списка последним узлом в списке 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{61 \{}
+\DoxyCodeLine{62     \textcolor{keywordflow}{return} list-\/>\mbox{\hyperlink{structlist__head__struct_a5b2ea2972b4aa6d34d2df3336f088d5f}{next}} == head;}
+\DoxyCodeLine{63 \} }
+
+\end{DoxyCode}

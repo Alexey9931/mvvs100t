@@ -1,0 +1,714 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.20"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>ПО для макета МПА (100 тема): Файл list.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">ПО для макета МПА (100 тема)
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.20 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Классы</a> &#124;
+<a href="#define-members">Макросы</a> &#124;
+<a href="#typedef-members">Определения типов</a> &#124;
+<a href="#func-members">Функции</a>  </div>
+  <div class="headertitle">
+<div class="title">Файл list.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Заголовочный файл с описанием API для работы со списками (реализация аналогична linux kernel)  
+<a href="#details">Подробнее...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="mdr32__drivers_8h_source.html">mdr32_drivers.h</a>&quot;</code><br />
+<code>#include &lt;stddef.h&gt;</code><br />
+<code>#include &lt;stdio.h&gt;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Граф включаемых заголовочных файлов для list.h:</div>
+<div class="dyncontent">
+<div class="center"><img src="list_8h__incl.png" border="0" usemap="#alist_8h" alt=""/></div>
+<map name="list_8h" id="list_8h">
+<area shape="rect" title="Заголовочный файл с описанием API для работы со списками (реализация аналогична linux kernel)" alt="" coords="822,5,877,32"/>
+<area shape="rect" href="mdr32__drivers_8h.html" title="Заголовочный файл с глобальными константами и подключаемыми библиотеками" alt="" coords="660,80,788,107"/>
+<area shape="rect" title=" " alt="" coords="812,80,887,107"/>
+<area shape="rect" title=" " alt="" coords="911,80,977,107"/>
+<area shape="rect" title=" " alt="" coords="5,155,115,181"/>
+<area shape="rect" title=" " alt="" coords="139,155,298,181"/>
+<area shape="rect" title=" " alt="" coords="322,155,465,181"/>
+<area shape="rect" title=" " alt="" coords="489,155,628,181"/>
+<area shape="rect" title=" " alt="" coords="653,155,795,181"/>
+<area shape="rect" title=" " alt="" coords="819,155,965,181"/>
+<area shape="rect" title=" " alt="" coords="989,155,1139,181"/>
+<area shape="rect" title=" " alt="" coords="1164,155,1303,181"/>
+<area shape="rect" title=" " alt="" coords="1327,155,1467,181"/>
+</map>
+</div>
+</div><div class="textblock"><div class="dynheader">
+Граф файлов, в которые включается этот файл:</div>
+<div class="dyncontent">
+<div class="center"><img src="list_8h__dep__incl.png" border="0" usemap="#alist_8hdep" alt=""/></div>
+<map name="list_8hdep" id="alist_8hdep">
+<area shape="rect" title="Заголовочный файл с описанием API для работы со списками (реализация аналогична linux kernel)" alt="" coords="895,5,949,32"/>
+<area shape="rect" href="list_8c.html" title="Файл с реализацией API для работы со списками (реализация аналогична linux kernel)" alt="" coords="806,80,859,107"/>
+<area shape="rect" href="main_8h.html" title="Заголовочный файл с реализацией основного функционала МПА" alt="" coords="891,379,958,405"/>
+<area shape="rect" href="timers_8h.html" title="Заголовочный файл с описанием API для работы с таймерами" alt="" coords="884,80,960,107"/>
+<area shape="rect" href="main_8c.html" title=" " alt="" coords="891,453,958,480"/>
+<area shape="rect" href="timers_8c.html" title="Файл с реализацией API для работы с таймерами" alt="" coords="735,453,810,480"/>
+<area shape="rect" href="1273pv19t_8c.html" title="Файл с реализацией API для работы с АЦП 1273ПВ19Т" alt="" coords="575,379,677,405"/>
+<area shape="rect" href="1273pv19t_8h.html" title="Заголовочный файл с описанием API для работы с микросхемой АЦП 1273ПВ19Т" alt="" coords="627,304,729,331"/>
+<area shape="rect" href="uart_8c.html" title="Файл с реализацией API для работы с UART." alt="" coords="959,229,1018,256"/>
+<area shape="rect" href="uart_8h.html" title="Заголовочный файл с описанием API для работы с UART." alt="" coords="892,155,952,181"/>
+<area shape="rect" href="dma_8c.html" title="Файл с реализацией API для работы с DMA." alt="" coords="753,379,816,405"/>
+<area shape="rect" href="spi_8c.html" title="Файл с реализацией API для работы с SPI." alt="" coords="499,379,551,405"/>
+<area shape="rect" href="dma_8h.html" title="Заголовочный файл с описанием API для работы с DMA." alt="" coords="753,304,816,331"/>
+<area shape="rect" href="rs422__protocol_8h.html" title="Заголовочный файл с описанием API протокола обмена данными по интерфейсу RS&#45;422." alt="" coords="385,229,515,256"/>
+<area shape="rect" href="external__ram_8h.html" title="Заголовочный файл с описанием API для работы с областью памяти внешнего ОЗУ" alt="" coords="371,304,492,331"/>
+<area shape="rect" href="rs422__protocol_8c.html" title="Файл с реализацией API протокола обмена данными по интерфейсу RS&#45;422." alt="" coords="5,379,135,405"/>
+<area shape="rect" href="external__ram_8c.html" title="Файл с реализацией API для работы с областью памяти внешнего ОЗУ" alt="" coords="354,379,474,405"/>
+<area shape="rect" href="external__rom_8c.html" title="Файл с реализацией API для работы с областью памяти внешнего ПЗУ" alt="" coords="210,379,330,405"/>
+</map>
+</div>
+</div>
+<p><a href="list_8h_source.html">См. исходные тексты.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Классы</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlist__head__struct.html">list_head_struct</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Структура с описанием двусвязанного списка  <a href="structlist__head__struct.html#details">Подробнее...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Макросы</h2></td></tr>
+<tr class="memitem:a9b782fefb5ab71ce9762182e45a615e1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#a9b782fefb5ab71ce9762182e45a615e1">list_for_each_entry</a>(pos,  head,  member)</td></tr>
+<tr class="memdesc:a9b782fefb5ab71ce9762182e45a615e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Макрос для обхода двусвязного списка (более оптимальный вариант)  <a href="list_8h.html#a9b782fefb5ab71ce9762182e45a615e1">Подробнее...</a><br /></td></tr>
+<tr class="separator:a9b782fefb5ab71ce9762182e45a615e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab8b24e6660ab3760c923e4b4db3fa502"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#ab8b24e6660ab3760c923e4b4db3fa502">list_for_each</a>(pos,  head)&#160;&#160;&#160;	for (pos = (head)-&gt;next; pos != (head); pos = pos-&gt;next)</td></tr>
+<tr class="memdesc:ab8b24e6660ab3760c923e4b4db3fa502"><td class="mdescLeft">&#160;</td><td class="mdescRight">Макрос для обхода двусвязанного списка (head - указывает на список, pos - курсор, используемый для обхода)  <a href="list_8h.html#ab8b24e6660ab3760c923e4b4db3fa502">Подробнее...</a><br /></td></tr>
+<tr class="separator:ab8b24e6660ab3760c923e4b4db3fa502"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af8c317a42292b61c93aae91e59118a46"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#af8c317a42292b61c93aae91e59118a46">container_of</a>(ptr,  type,  member)</td></tr>
+<tr class="memdesc:af8c317a42292b61c93aae91e59118a46"><td class="mdescLeft">&#160;</td><td class="mdescRight">Макрос определяет адрес структуры по известному адресу члена этой структуры (ptr-указатель на член структуры, type-тип структуры, member-имя члена структуры)  <a href="list_8h.html#af8c317a42292b61c93aae91e59118a46">Подробнее...</a><br /></td></tr>
+<tr class="separator:af8c317a42292b61c93aae91e59118a46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26c976b7f654e70df318c1843e5094de"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#a26c976b7f654e70df318c1843e5094de">list_entry</a>(ptr,  type,  member)&#160;&#160;&#160;	<a class="el" href="list_8h.html#af8c317a42292b61c93aae91e59118a46">container_of</a>(ptr, type, member)</td></tr>
+<tr class="memdesc:a26c976b7f654e70df318c1843e5094de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Макрос обертка container_of.  <a href="list_8h.html#a26c976b7f654e70df318c1843e5094de">Подробнее...</a><br /></td></tr>
+<tr class="separator:a26c976b7f654e70df318c1843e5094de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4642d4b7df28478bb762fe43c85b5c63"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#a4642d4b7df28478bb762fe43c85b5c63">LIST_HEAD_INIT</a>(name)&#160;&#160;&#160;{ &amp;(name), &amp;(name) }</td></tr>
+<tr class="memdesc:a4642d4b7df28478bb762fe43c85b5c63"><td class="mdescLeft">&#160;</td><td class="mdescRight">Макрос инициализации двусвязного списка  <a href="list_8h.html#a4642d4b7df28478bb762fe43c85b5c63">Подробнее...</a><br /></td></tr>
+<tr class="separator:a4642d4b7df28478bb762fe43c85b5c63"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42f0e72af970a790b60a740af8c9ecd0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#a42f0e72af970a790b60a740af8c9ecd0">LIST_HEAD</a>(name)&#160;&#160;&#160;	<a class="el" href="list_8h.html#a4829e226828f5e92b99dd3fd30c69469">list_head</a> name = <a class="el" href="list_8h.html#a4642d4b7df28478bb762fe43c85b5c63">LIST_HEAD_INIT</a>(name)</td></tr>
+<tr class="memdesc:a42f0e72af970a790b60a740af8c9ecd0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Макрос создания двусвязного списка с именем name.  <a href="list_8h.html#a42f0e72af970a790b60a740af8c9ecd0">Подробнее...</a><br /></td></tr>
+<tr class="separator:a42f0e72af970a790b60a740af8c9ecd0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Определения типов</h2></td></tr>
+<tr class="memitem:a4829e226828f5e92b99dd3fd30c69469"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structlist__head__struct.html">list_head_struct</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#a4829e226828f5e92b99dd3fd30c69469">list_head</a></td></tr>
+<tr class="memdesc:a4829e226828f5e92b99dd3fd30c69469"><td class="mdescLeft">&#160;</td><td class="mdescRight">Структура с описанием двусвязанного списка  <a href="list_8h.html#a4829e226828f5e92b99dd3fd30c69469">Подробнее...</a><br /></td></tr>
+<tr class="separator:a4829e226828f5e92b99dd3fd30c69469"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Функции</h2></td></tr>
+<tr class="memitem:a1c2b5c9a9806c781abd7a6e8ff05c566"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#a1c2b5c9a9806c781abd7a6e8ff05c566">init_list_head</a> (<a class="el" href="list_8h.html#a4829e226828f5e92b99dd3fd30c69469">list_head</a> *list)</td></tr>
+<tr class="memdesc:a1c2b5c9a9806c781abd7a6e8ff05c566"><td class="mdescLeft">&#160;</td><td class="mdescRight">Инициализирует двусвязанный список  <a href="list_8h.html#a1c2b5c9a9806c781abd7a6e8ff05c566">Подробнее...</a><br /></td></tr>
+<tr class="separator:a1c2b5c9a9806c781abd7a6e8ff05c566"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c742297bd0827db9a20507d7024bfc1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#a2c742297bd0827db9a20507d7024bfc1">__list_add</a> (<a class="el" href="list_8h.html#a4829e226828f5e92b99dd3fd30c69469">list_head</a> *new, <a class="el" href="list_8h.html#a4829e226828f5e92b99dd3fd30c69469">list_head</a> *prev, <a class="el" href="list_8h.html#a4829e226828f5e92b99dd3fd30c69469">list_head</a> *next)</td></tr>
+<tr class="memdesc:a2c742297bd0827db9a20507d7024bfc1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Вставляет элемент в связанный список (между предыдущими и следующими элементами)  <a href="list_8h.html#a2c742297bd0827db9a20507d7024bfc1">Подробнее...</a><br /></td></tr>
+<tr class="separator:a2c742297bd0827db9a20507d7024bfc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a49fb283881d3fb673331250cc67b5fbb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#a49fb283881d3fb673331250cc67b5fbb">list_add</a> (<a class="el" href="list_8h.html#a4829e226828f5e92b99dd3fd30c69469">list_head</a> *new, <a class="el" href="list_8h.html#a4829e226828f5e92b99dd3fd30c69469">list_head</a> *head)</td></tr>
+<tr class="memdesc:a49fb283881d3fb673331250cc67b5fbb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Вставляет элемент в заголовок связанного списка  <a href="list_8h.html#a49fb283881d3fb673331250cc67b5fbb">Подробнее...</a><br /></td></tr>
+<tr class="separator:a49fb283881d3fb673331250cc67b5fbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5bd4d17afc5d068a0d2a0f57c976c28"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#ab5bd4d17afc5d068a0d2a0f57c976c28">list_add_tail</a> (<a class="el" href="list_8h.html#a4829e226828f5e92b99dd3fd30c69469">list_head</a> *new, <a class="el" href="list_8h.html#a4829e226828f5e92b99dd3fd30c69469">list_head</a> *head)</td></tr>
+<tr class="memdesc:ab5bd4d17afc5d068a0d2a0f57c976c28"><td class="mdescLeft">&#160;</td><td class="mdescRight">Вставляет элемент в конец связанного списка  <a href="list_8h.html#ab5bd4d17afc5d068a0d2a0f57c976c28">Подробнее...</a><br /></td></tr>
+<tr class="separator:ab5bd4d17afc5d068a0d2a0f57c976c28"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a489b4f41f20fea640740ebcd90106f4a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#a489b4f41f20fea640740ebcd90106f4a">__list_del</a> (<a class="el" href="list_8h.html#a4829e226828f5e92b99dd3fd30c69469">list_head</a> *prev, <a class="el" href="list_8h.html#a4829e226828f5e92b99dd3fd30c69469">list_head</a> *next)</td></tr>
+<tr class="memdesc:a489b4f41f20fea640740ebcd90106f4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Удаляет элемент списка  <a href="list_8h.html#a489b4f41f20fea640740ebcd90106f4a">Подробнее...</a><br /></td></tr>
+<tr class="separator:a489b4f41f20fea640740ebcd90106f4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adffc89551348dfaa865daa7147285257"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#adffc89551348dfaa865daa7147285257">list_del</a> (<a class="el" href="list_8h.html#a4829e226828f5e92b99dd3fd30c69469">list_head</a> *entry)</td></tr>
+<tr class="memdesc:adffc89551348dfaa865daa7147285257"><td class="mdescLeft">&#160;</td><td class="mdescRight">Удаляет элемент списка и очищает его  <a href="list_8h.html#adffc89551348dfaa865daa7147285257">Подробнее...</a><br /></td></tr>
+<tr class="separator:adffc89551348dfaa865daa7147285257"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64e50625a85917080c3cf9b4229cc736"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#a64e50625a85917080c3cf9b4229cc736">list_is_last</a> (<a class="el" href="list_8h.html#a4829e226828f5e92b99dd3fd30c69469">list_head</a> *list, <a class="el" href="list_8h.html#a4829e226828f5e92b99dd3fd30c69469">list_head</a> *head)</td></tr>
+<tr class="memdesc:a64e50625a85917080c3cf9b4229cc736"><td class="mdescLeft">&#160;</td><td class="mdescRight">Определяет, является ли текущий узел списка последним узлом в списке  <a href="list_8h.html#a64e50625a85917080c3cf9b4229cc736">Подробнее...</a><br /></td></tr>
+<tr class="separator:a64e50625a85917080c3cf9b4229cc736"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3774bda332fe9767b7bbb12aef8c95ef"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#a3774bda332fe9767b7bbb12aef8c95ef">list_empty</a> (<a class="el" href="list_8h.html#a4829e226828f5e92b99dd3fd30c69469">list_head</a> *head)</td></tr>
+<tr class="memdesc:a3774bda332fe9767b7bbb12aef8c95ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Определяет, является ли связанный список пустым  <a href="list_8h.html#a3774bda332fe9767b7bbb12aef8c95ef">Подробнее...</a><br /></td></tr>
+<tr class="separator:a3774bda332fe9767b7bbb12aef8c95ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Заголовочный файл с описанием API для работы со списками (реализация аналогична linux kernel) </p>
+</div><h2 class="groupheader">Макросы</h2>
+<a id="af8c317a42292b61c93aae91e59118a46"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af8c317a42292b61c93aae91e59118a46">&#9670;&nbsp;</a></span>container_of</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define container_of</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">ptr, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">type, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">member&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Макроопределение:</b><div class="fragment"><div class="line">    ({          \</div>
+<div class="line">    const typeof( ((type *)0)-&gt;member ) *__mptr = (ptr);    \</div>
+<div class="line">    (type *)( (<span class="keywordtype">char</span> *)__mptr - offsetof(type,member) );})</div>
+</div><!-- fragment -->
+<p>Макрос определяет адрес структуры по известному адресу члена этой структуры (ptr-указатель на член структуры, type-тип структуры, member-имя члена структуры) </p>
+
+</div>
+</div>
+<a id="a26c976b7f654e70df318c1843e5094de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a26c976b7f654e70df318c1843e5094de">&#9670;&nbsp;</a></span>list_entry</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define list_entry</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">ptr, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">type, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">member&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;	<a class="el" href="list_8h.html#af8c317a42292b61c93aae91e59118a46">container_of</a>(ptr, type, member)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Макрос обертка container_of. </p>
+
+</div>
+</div>
+<a id="ab8b24e6660ab3760c923e4b4db3fa502"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab8b24e6660ab3760c923e4b4db3fa502">&#9670;&nbsp;</a></span>list_for_each</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define list_for_each</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">pos, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">head&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;	for (pos = (head)-&gt;next; pos != (head); pos = pos-&gt;next)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Макрос для обхода двусвязанного списка (head - указывает на список, pos - курсор, используемый для обхода) </p>
+
+</div>
+</div>
+<a id="a9b782fefb5ab71ce9762182e45a615e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b782fefb5ab71ce9762182e45a615e1">&#9670;&nbsp;</a></span>list_for_each_entry</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define list_for_each_entry</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">pos, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">head, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">member&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Макроопределение:</b><div class="fragment"><div class="line">    <span class="keywordflow">for</span> (pos = <a class="code" href="list_8h.html#a26c976b7f654e70df318c1843e5094de">list_entry</a>((head)-&gt;next, typeof(*pos), member);  \</div>
+<div class="line">         &amp;pos-&gt;member != (head);    \</div>
+<div class="line">         pos = <a class="code" href="list_8h.html#a26c976b7f654e70df318c1843e5094de">list_entry</a>(pos-&gt;member.next, typeof(*pos), member))</div>
+</div><!-- fragment -->
+<p>Макрос для обхода двусвязного списка (более оптимальный вариант) </p>
+
+</div>
+</div>
+<a id="a42f0e72af970a790b60a740af8c9ecd0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a42f0e72af970a790b60a740af8c9ecd0">&#9670;&nbsp;</a></span>LIST_HEAD</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LIST_HEAD</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">name</td><td>)</td>
+          <td>&#160;&#160;&#160;	<a class="el" href="list_8h.html#a4829e226828f5e92b99dd3fd30c69469">list_head</a> name = <a class="el" href="list_8h.html#a4642d4b7df28478bb762fe43c85b5c63">LIST_HEAD_INIT</a>(name)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Макрос создания двусвязного списка с именем name. </p>
+
+</div>
+</div>
+<a id="a4642d4b7df28478bb762fe43c85b5c63"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4642d4b7df28478bb762fe43c85b5c63">&#9670;&nbsp;</a></span>LIST_HEAD_INIT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LIST_HEAD_INIT</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">name</td><td>)</td>
+          <td>&#160;&#160;&#160;{ &amp;(name), &amp;(name) }</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Макрос инициализации двусвязного списка </p>
+
+</div>
+</div>
+<h2 class="groupheader">Типы</h2>
+<a id="a4829e226828f5e92b99dd3fd30c69469"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4829e226828f5e92b99dd3fd30c69469">&#9670;&nbsp;</a></span>list_head</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structlist__head__struct.html">list_head_struct</a> <a class="el" href="list_8h.html#a4829e226828f5e92b99dd3fd30c69469">list_head</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Структура с описанием двусвязанного списка </p>
+
+</div>
+</div>
+<h2 class="groupheader">Функции</h2>
+<a id="a2c742297bd0827db9a20507d7024bfc1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c742297bd0827db9a20507d7024bfc1">&#9670;&nbsp;</a></span>__list_add()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void __list_add </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="list_8h.html#a4829e226828f5e92b99dd3fd30c69469">list_head</a> *&#160;</td>
+          <td class="paramname"><em>new</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="list_8h.html#a4829e226828f5e92b99dd3fd30c69469">list_head</a> *&#160;</td>
+          <td class="paramname"><em>prev</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="list_8h.html#a4829e226828f5e92b99dd3fd30c69469">list_head</a> *&#160;</td>
+          <td class="paramname"><em>next</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Вставляет элемент в связанный список (между предыдущими и следующими элементами) </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">new</td><td>- указатель на новый элемент списка </td></tr>
+    <tr><td class="paramname">prev</td><td>- указатель на предыдущий элемент списка </td></tr>
+    <tr><td class="paramname">next</td><td>- указатель на следующий элемент списка</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Функция вставки элемента в связанный список (между предыдущими и следующими элементами) </p>
+<div class="fragment"><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;{</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    next-&gt;<a class="code" href="structlist__head__struct.html#a04e79e6b3de74793a4c9f785dc8ef6ae">prev</a> = <span class="keyword">new</span>;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keyword">new</span>-&gt;<a class="code" href="structlist__head__struct.html#a5b2ea2972b4aa6d34d2df3336f088d5f">next</a> = next;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keyword">new</span>-&gt;<a class="code" href="structlist__head__struct.html#a04e79e6b3de74793a4c9f785dc8ef6ae">prev</a> = prev;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    prev-&gt;<a class="code" href="structlist__head__struct.html#a5b2ea2972b4aa6d34d2df3336f088d5f">next</a> = <span class="keyword">new</span>;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a489b4f41f20fea640740ebcd90106f4a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a489b4f41f20fea640740ebcd90106f4a">&#9670;&nbsp;</a></span>__list_del()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void __list_del </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="list_8h.html#a4829e226828f5e92b99dd3fd30c69469">list_head</a> *&#160;</td>
+          <td class="paramname"><em>prev</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="list_8h.html#a4829e226828f5e92b99dd3fd30c69469">list_head</a> *&#160;</td>
+          <td class="paramname"><em>next</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Удаляет элемент списка </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">prev</td><td>- указатель на предыдущий элемент </td></tr>
+    <tr><td class="paramname">next</td><td>- указатель на следующий элемент</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Функция удаления элемента списка </p>
+<div class="fragment"><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;{</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  next-&gt;<a class="code" href="structlist__head__struct.html#a04e79e6b3de74793a4c9f785dc8ef6ae">prev</a> = prev;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  prev-&gt;<a class="code" href="structlist__head__struct.html#a5b2ea2972b4aa6d34d2df3336f088d5f">next</a> = next;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a1c2b5c9a9806c781abd7a6e8ff05c566"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c2b5c9a9806c781abd7a6e8ff05c566">&#9670;&nbsp;</a></span>init_list_head()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void init_list_head </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="list_8h.html#a4829e226828f5e92b99dd3fd30c69469">list_head</a> *&#160;</td>
+          <td class="paramname"><em>list</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Инициализирует двусвязанный список </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">list</td><td>- указатель на заголовок списка</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Функция инициализации двусвязного списка </p>
+<div class="fragment"><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;{</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    list-&gt;<a class="code" href="structlist__head__struct.html#a5b2ea2972b4aa6d34d2df3336f088d5f">next</a> = list;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    list-&gt;<a class="code" href="structlist__head__struct.html#a04e79e6b3de74793a4c9f785dc8ef6ae">prev</a> = list;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a49fb283881d3fb673331250cc67b5fbb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a49fb283881d3fb673331250cc67b5fbb">&#9670;&nbsp;</a></span>list_add()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void list_add </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="list_8h.html#a4829e226828f5e92b99dd3fd30c69469">list_head</a> *&#160;</td>
+          <td class="paramname"><em>new</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="list_8h.html#a4829e226828f5e92b99dd3fd30c69469">list_head</a> *&#160;</td>
+          <td class="paramname"><em>head</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Вставляет элемент в заголовок связанного списка </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">new</td><td>- указатель на новый элемент списка </td></tr>
+    <tr><td class="paramname">head</td><td>- указатель на заголовок списка</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Функция вставки элемента сразу после head </p>
+<div class="fragment"><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;{</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <a class="code" href="list_8c.html#a2c742297bd0827db9a20507d7024bfc1">__list_add</a>(<span class="keyword">new</span>, head, head-&gt;<a class="code" href="structlist__head__struct.html#a5b2ea2972b4aa6d34d2df3336f088d5f">next</a>);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ab5bd4d17afc5d068a0d2a0f57c976c28"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab5bd4d17afc5d068a0d2a0f57c976c28">&#9670;&nbsp;</a></span>list_add_tail()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void list_add_tail </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="list_8h.html#a4829e226828f5e92b99dd3fd30c69469">list_head</a> *&#160;</td>
+          <td class="paramname"><em>new</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="list_8h.html#a4829e226828f5e92b99dd3fd30c69469">list_head</a> *&#160;</td>
+          <td class="paramname"><em>head</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Вставляет элемент в конец связанного списка </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">new</td><td>- указатель на новый элемент списка </td></tr>
+    <tr><td class="paramname">head</td><td>- указатель на заголовок списка</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Функция вставки элемента перед head (т.е. в хвост узла) </p>
+<div class="fragment"><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;{</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <a class="code" href="list_8c.html#a2c742297bd0827db9a20507d7024bfc1">__list_add</a>(<span class="keyword">new</span>, head-&gt;<a class="code" href="structlist__head__struct.html#a04e79e6b3de74793a4c9f785dc8ef6ae">prev</a>, head);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="adffc89551348dfaa865daa7147285257"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adffc89551348dfaa865daa7147285257">&#9670;&nbsp;</a></span>list_del()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void list_del </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="list_8h.html#a4829e226828f5e92b99dd3fd30c69469">list_head</a> *&#160;</td>
+          <td class="paramname"><em>entry</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Удаляет элемент списка и очищает его </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">entry</td><td>- указатель на удаляемый элемент</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Функция удаления элемента списка и его очистки </p>
+<div class="fragment"><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;{</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  <a class="code" href="list_8c.html#a489b4f41f20fea640740ebcd90106f4a">__list_del</a>(entry-&gt;<a class="code" href="structlist__head__struct.html#a04e79e6b3de74793a4c9f785dc8ef6ae">prev</a>, entry-&gt;<a class="code" href="structlist__head__struct.html#a5b2ea2972b4aa6d34d2df3336f088d5f">next</a>);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  entry-&gt;<a class="code" href="structlist__head__struct.html#a5b2ea2972b4aa6d34d2df3336f088d5f">next</a> = NULL;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  entry-&gt;<a class="code" href="structlist__head__struct.html#a04e79e6b3de74793a4c9f785dc8ef6ae">prev</a> = NULL;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a3774bda332fe9767b7bbb12aef8c95ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3774bda332fe9767b7bbb12aef8c95ef">&#9670;&nbsp;</a></span>list_empty()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int list_empty </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="list_8h.html#a4829e226828f5e92b99dd3fd30c69469">list_head</a> *&#160;</td>
+          <td class="paramname"><em>head</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Определяет, является ли связанный список пустым </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">head</td><td>- указатель на заголовок списка </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Сообщение с результатом (1 - список пуст, 0 - не пуст)</dd></dl>
+<p>Функция, определяющая, является ли связанный список пустым, возвращает true, если пуст, в противном случае возвращает false </p>
+<div class="fragment"><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;{</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordflow">return</span> head-&gt;<a class="code" href="structlist__head__struct.html#a5b2ea2972b4aa6d34d2df3336f088d5f">next</a> == head;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a64e50625a85917080c3cf9b4229cc736"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a64e50625a85917080c3cf9b4229cc736">&#9670;&nbsp;</a></span>list_is_last()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int list_is_last </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="list_8h.html#a4829e226828f5e92b99dd3fd30c69469">list_head</a> *&#160;</td>
+          <td class="paramname"><em>list</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="list_8h.html#a4829e226828f5e92b99dd3fd30c69469">list_head</a> *&#160;</td>
+          <td class="paramname"><em>head</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Определяет, является ли текущий узел списка последним узлом в списке </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">list</td><td>- текущий элемент списка </td></tr>
+    <tr><td class="paramname">head</td><td>- указатель на заголовок списка </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Сообщение с результатом (1 - является, 0 - не является)</dd></dl>
+<p>Функция, определяющая, является ли текущий узел списка последним узлом в списке </p>
+<div class="fragment"><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;{</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordflow">return</span> list-&gt;<a class="code" href="structlist__head__struct.html#a5b2ea2972b4aa6d34d2df3336f088d5f">next</a> == head;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;} </div>
+</div><!-- fragment -->
+</div>
+</div>
+</div><!-- contents -->
+<div class="ttc" id="alist_8h_html_a26c976b7f654e70df318c1843e5094de"><div class="ttname"><a href="list_8h.html#a26c976b7f654e70df318c1843e5094de">list_entry</a></div><div class="ttdeci">#define list_entry(ptr, type, member)</div><div class="ttdoc">Макрос обертка container_of.</div><div class="ttdef"><b>Definition:</b> list.h:29</div></div>
+<div class="ttc" id="alist_8c_html_a2c742297bd0827db9a20507d7024bfc1"><div class="ttname"><a href="list_8c.html#a2c742297bd0827db9a20507d7024bfc1">__list_add</a></div><div class="ttdeci">void __list_add(list_head *new, list_head *prev, list_head *next)</div><div class="ttdoc">Вставляет элемент в связанный список (между предыдущими и следующими элементами)</div><div class="ttdef"><b>Definition:</b> list.c:19</div></div>
+<div class="ttc" id="alist_8c_html_a489b4f41f20fea640740ebcd90106f4a"><div class="ttname"><a href="list_8c.html#a489b4f41f20fea640740ebcd90106f4a">__list_del</a></div><div class="ttdeci">void __list_del(list_head *prev, list_head *next)</div><div class="ttdoc">Удаляет элемент списка</div><div class="ttdef"><b>Definition:</b> list.c:43</div></div>
+<div class="ttc" id="astructlist__head__struct_html_a5b2ea2972b4aa6d34d2df3336f088d5f"><div class="ttname"><a href="structlist__head__struct.html#a5b2ea2972b4aa6d34d2df3336f088d5f">list_head_struct::next</a></div><div class="ttdeci">struct list_head * next</div><div class="ttdoc">Указатель на следующий элемент списка</div><div class="ttdef"><b>Definition:</b> list.h:45</div></div>
+<div class="ttc" id="astructlist__head__struct_html_a04e79e6b3de74793a4c9f785dc8ef6ae"><div class="ttname"><a href="structlist__head__struct.html#a04e79e6b3de74793a4c9f785dc8ef6ae">list_head_struct::prev</a></div><div class="ttdeci">struct list_head * prev</div><div class="ttdoc">Указатель на предыдущий элемент списка</div><div class="ttdef"><b>Definition:</b> list.h:46</div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20
+</small></address>
+</body>
+</html>

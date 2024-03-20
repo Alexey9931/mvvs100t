@@ -1,0 +1,4 @@
+<map id="spi_config_data" name="spi_config_data">
+<area shape="rect" id="node1" title="Структура с конфигурационными параметрами SPI." alt="" coords="11,95,133,121"/>
+<area shape="rect" id="node2" href="$structspi__dma__params.html" title="Структура с параметрами DMA канала SPIn." alt="" coords="5,5,139,32"/>
+</map>

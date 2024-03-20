@@ -1,45 +1,39 @@
 /*!
  \file
- \brief Заголовочный файл с реализацией API для настройки тактирования МК
+ \brief Р¤Р°Р№Р» СЃ СЂРµР°Р»РёР·Р°С†РёРµР№ API РґР»СЏ РЅР°СЃС‚СЂРѕР№РєРё С‚Р°РєС‚РёСЂРѕРІР°РЅРёСЏ РњРљ
 */
 
 #include "clock.h"
 
 /*
-Функция настройки тактирования МК
+	Р¤СѓРЅРєС†РёСЏ РЅР°СЃС‚СЂРѕР№РєРё С‚Р°РєС‚РёСЂРѕРІР°РЅРёСЏ РњРљ
 */
-void clock_init(void) // тактирование WORK_FREQ МГц
+void clock_init(void)
 {
-	// Сброс настроек системы тактирования
+	// РЎР±СЂРѕСЃ РЅР°СЃС‚СЂРѕРµРє СЃРёСЃС‚РµРјС‹ С‚Р°РєС‚РёСЂРѕРІР°РЅРёСЏ
   RST_CLK_DeInit();
 	
-	//настройка тактирования от внешнего кварца HSE_OSC МГц
-	// Включаем генератор на внешнем кварце
+	// РќР°СЃС‚СЂРѕР№РєР° С‚Р°РєС‚РёСЂРѕРІР°РЅРёСЏ РѕС‚ РІРЅРµС€РЅРµРіРѕ РєРІР°СЂС†Р° HSE_OSC РњР“С†
+	// Р’РєР»СЋС‡Р°РµРј РіРµРЅРµСЂР°С‚РѕСЂ РЅР° РІРЅРµС€РЅРµРј РєРІР°СЂС†Рµ
 	RST_CLK_HSEconfig (RST_CLK_HSE_ON);
 	while (RST_CLK_HSEstatus () != SUCCESS);
 	
-	// Настраиваем источник и коэффициент умножения PLL
-	//(CPU_C1_SEL = HSE / 1 * 12 = 144 МГц )
+	// РќР°СЃС‚СЂР°РёРІР°РµРј РёСЃС‚РѕС‡РЅРёРє Рё РєРѕСЌС„С„РёС†РёРµРЅС‚ СѓРјРЅРѕР¶РµРЅРёСЏ PLL
+	//(CPU_C1_SEL = HSE / 1 * 12 = 144 РњР“С† )
 	RST_CLK_CPU_PLLconfig ( RST_CLK_CPU_PLLsrcHSEdiv1,11);
 	
-	// Включаем PLL, но еще не подключаем к кристаллу (PLL умножает частоту тактирования)
+	// Р’РєР»СЋС‡Р°РµРј PLL, РЅРѕ РµС‰Рµ РЅРµ РїРѕРґРєР»СЋС‡Р°РµРј Рє РєСЂРёСЃС‚Р°Р»Р»Сѓ (PLL СѓРјРЅРѕР¶Р°РµС‚ С‡Р°СЃС‚РѕС‚Сѓ С‚Р°РєС‚РёСЂРѕРІР°РЅРёСЏ)
 	RST_CLK_CPU_PLLcmd (ENABLE);
 	while (RST_CLK_CPU_PLLstatus () != SUCCESS);
 	
-	// Делитель С3 ( CPU_C3_SEL = CPU_C2_SEL )
+	// Р”РµР»РёС‚РµР»СЊ РЎ3 ( CPU_C3_SEL = CPU_C2_SEL )
 	RST_CLK_CPUclkPrescaler (RST_CLK_CPUclkDIV1);
 	
-	// На С2 идет с PLL, а не напрямую с С1 (CPU_C2_SEL = PLL)
+	// РќР° РЎ2 РёРґРµС‚ СЃ PLL, Р° РЅРµ РЅР°РїСЂСЏРјСѓСЋ СЃ РЎ1 (CPU_C2_SEL = PLL)
 	RST_CLK_CPU_PLLuse (ENABLE);
-	// CPU берет тактирование с выхода С3
-	//(HCLK_SEL = CPU_C3_SEL = 128 МГц)
+	// CPU Р±РµСЂРµС‚ С‚Р°РєС‚РёСЂРѕРІР°РЅРёРµ СЃ РІС‹С…РѕРґР° РЎ3
+	//( HCLK_SEL = CPU_C3_SEL = 128 РњР“С†)
 	RST_CLK_CPUclkSelection(RST_CLK_CPUclkCPU_C3);
-	
-	 
-	/* Enables the RST_CLK_PCLK_BKP */
- // RST_CLK_PCLKcmd(RST_CLK_PCLK_BKP, ENABLE);
-  /* Setting the parameters of the voltage regulator SelectRI and LOW in the BKP controller (CPU_CLK = 128 MHz) */
-  //BKP_DUccMode(BKP_DUcc_over_80MHz);
 	
 	SystemCoreClockUpdate();
 }

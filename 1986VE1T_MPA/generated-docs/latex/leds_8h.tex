@@ -1,0 +1,177 @@
+\hypertarget{leds_8h}{}\doxysection{Файл leds.\+h}
+\label{leds_8h}\index{leds.h@{leds.h}}
+
+
+Заголовочный файл с описанием A\+PI для работы со светодиодными индикаторами  
+
+
+{\ttfamily \#include \char`\"{}mdr32\+\_\+drivers.\+h\char`\"{}}\newline
+Граф включаемых заголовочных файлов для leds.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{leds_8h__incl}
+\end{center}
+\end{figure}
+Граф файлов, в которые включается этот файл\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=309pt]{leds_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Макросы}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{leds_8h_a5ce60c4a7ee9b8df3c4eae48cc2478c3}{P\+O\+R\+T\+\_\+\+L\+E\+DS}}~M\+D\+R\+\_\+\+P\+O\+R\+TD
+\begin{DoxyCompactList}\small\item\em Порт выводов на светодиоды \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{leds_8h_a6d499bd331122dda583e0006e7d277d3}{C\+L\+O\+C\+K\+\_\+\+L\+E\+DS}}~R\+S\+T\+\_\+\+C\+L\+K\+\_\+\+P\+C\+L\+K\+\_\+\+P\+O\+R\+TD
+\begin{DoxyCompactList}\small\item\em Выбор тактирования выводов для светодиодов \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{leds_8h_a7230c8e2dae96adad41296a45ebaf2b0}{P\+I\+N\+\_\+\+L\+E\+D\+\_\+\+O\+K\+\_\+\+W\+O\+RK}}~P\+O\+R\+T\+\_\+\+Pin\+\_\+7
+\begin{DoxyCompactList}\small\item\em Светодиод-\/индикатор корректной работы \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{leds_8h_a3f040ee9ad09af1046a3cd2fcd94d149}{P\+I\+N\+\_\+\+L\+E\+D\+\_\+\+E\+R\+R\+O\+R\+\_\+\+W\+O\+RK}}~P\+O\+R\+T\+\_\+\+Pin\+\_\+8
+\begin{DoxyCompactList}\small\item\em Светодиод-\/индикатор неисправности ~\newline
+ \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{leds_8h_a430aace194cfb35550cca261ba966571}{S\+E\+T\+\_\+\+L\+E\+D\+\_\+\+O\+K\+\_\+\+W\+O\+RK}}()~\{\mbox{\hyperlink{leds_8h_a5ce60c4a7ee9b8df3c4eae48cc2478c3}{P\+O\+R\+T\+\_\+\+L\+E\+DS}}-\/$>$S\+E\+T\+TX = \mbox{\hyperlink{leds_8h_a7230c8e2dae96adad41296a45ebaf2b0}{P\+I\+N\+\_\+\+L\+E\+D\+\_\+\+O\+K\+\_\+\+W\+O\+RK}};\}
+\begin{DoxyCompactList}\small\item\em Макрос включения светодиода корректной работы \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{leds_8h_a1ef7b516af7c36e82d260f9267c749d1}{R\+E\+S\+E\+T\+\_\+\+L\+E\+D\+\_\+\+O\+K\+\_\+\+W\+O\+RK}}()~\{\mbox{\hyperlink{leds_8h_a5ce60c4a7ee9b8df3c4eae48cc2478c3}{P\+O\+R\+T\+\_\+\+L\+E\+DS}}-\/$>$C\+L\+R\+TX = \mbox{\hyperlink{leds_8h_a7230c8e2dae96adad41296a45ebaf2b0}{P\+I\+N\+\_\+\+L\+E\+D\+\_\+\+O\+K\+\_\+\+W\+O\+RK}};\}
+\begin{DoxyCompactList}\small\item\em Макрос выключения светодиода корректной работы \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{leds_8h_a52ea46b9f9af903424e711659ad661a0}{S\+E\+T\+\_\+\+L\+E\+D\+\_\+\+E\+R\+R\+O\+R\+\_\+\+W\+O\+RK}}()~\{\mbox{\hyperlink{leds_8h_a5ce60c4a7ee9b8df3c4eae48cc2478c3}{P\+O\+R\+T\+\_\+\+L\+E\+DS}}-\/$>$S\+E\+T\+TX = \mbox{\hyperlink{leds_8h_a3f040ee9ad09af1046a3cd2fcd94d149}{P\+I\+N\+\_\+\+L\+E\+D\+\_\+\+E\+R\+R\+O\+R\+\_\+\+W\+O\+RK}};\}
+\begin{DoxyCompactList}\small\item\em Макрос включения светодиода некорректной работы \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{leds_8h_a5a72f7f58350bb195a2673db18c456d3}{R\+E\+S\+E\+T\+\_\+\+L\+E\+D\+\_\+\+E\+R\+R\+O\+R\+\_\+\+W\+O\+RK}}()~\{\mbox{\hyperlink{leds_8h_a5ce60c4a7ee9b8df3c4eae48cc2478c3}{P\+O\+R\+T\+\_\+\+L\+E\+DS}}-\/$>$C\+L\+R\+TX = \mbox{\hyperlink{leds_8h_a3f040ee9ad09af1046a3cd2fcd94d149}{P\+I\+N\+\_\+\+L\+E\+D\+\_\+\+E\+R\+R\+O\+R\+\_\+\+W\+O\+RK}};\}
+\begin{DoxyCompactList}\small\item\em Макрос выключения светодиода некорректной работы \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Функции}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{leds_8h_a71356b7b172c1d4ea20d3c5aa61f7c35}{leds\+\_\+gpio\+\_\+config}} (void)
+\begin{DoxyCompactList}\small\item\em Конфигурирует выводы МК для светодиодных индикаторов \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Заголовочный файл с описанием A\+PI для работы со светодиодными индикаторами 
+
+
+
+\doxysubsection{Макросы}
+\mbox{\Hypertarget{leds_8h_a6d499bd331122dda583e0006e7d277d3}\label{leds_8h_a6d499bd331122dda583e0006e7d277d3}} 
+\index{leds.h@{leds.h}!CLOCK\_LEDS@{CLOCK\_LEDS}}
+\index{CLOCK\_LEDS@{CLOCK\_LEDS}!leds.h@{leds.h}}
+\doxysubsubsection{\texorpdfstring{CLOCK\_LEDS}{CLOCK\_LEDS}}
+{\footnotesize\ttfamily \#define C\+L\+O\+C\+K\+\_\+\+L\+E\+DS~R\+S\+T\+\_\+\+C\+L\+K\+\_\+\+P\+C\+L\+K\+\_\+\+P\+O\+R\+TD}
+
+
+
+Выбор тактирования выводов для светодиодов 
+
+\mbox{\Hypertarget{leds_8h_a3f040ee9ad09af1046a3cd2fcd94d149}\label{leds_8h_a3f040ee9ad09af1046a3cd2fcd94d149}} 
+\index{leds.h@{leds.h}!PIN\_LED\_ERROR\_WORK@{PIN\_LED\_ERROR\_WORK}}
+\index{PIN\_LED\_ERROR\_WORK@{PIN\_LED\_ERROR\_WORK}!leds.h@{leds.h}}
+\doxysubsubsection{\texorpdfstring{PIN\_LED\_ERROR\_WORK}{PIN\_LED\_ERROR\_WORK}}
+{\footnotesize\ttfamily \#define P\+I\+N\+\_\+\+L\+E\+D\+\_\+\+E\+R\+R\+O\+R\+\_\+\+W\+O\+RK~P\+O\+R\+T\+\_\+\+Pin\+\_\+8}
+
+
+
+Светодиод-\/индикатор неисправности ~\newline
+ 
+
+\mbox{\Hypertarget{leds_8h_a7230c8e2dae96adad41296a45ebaf2b0}\label{leds_8h_a7230c8e2dae96adad41296a45ebaf2b0}} 
+\index{leds.h@{leds.h}!PIN\_LED\_OK\_WORK@{PIN\_LED\_OK\_WORK}}
+\index{PIN\_LED\_OK\_WORK@{PIN\_LED\_OK\_WORK}!leds.h@{leds.h}}
+\doxysubsubsection{\texorpdfstring{PIN\_LED\_OK\_WORK}{PIN\_LED\_OK\_WORK}}
+{\footnotesize\ttfamily \#define P\+I\+N\+\_\+\+L\+E\+D\+\_\+\+O\+K\+\_\+\+W\+O\+RK~P\+O\+R\+T\+\_\+\+Pin\+\_\+7}
+
+
+
+Светодиод-\/индикатор корректной работы 
+
+\mbox{\Hypertarget{leds_8h_a5ce60c4a7ee9b8df3c4eae48cc2478c3}\label{leds_8h_a5ce60c4a7ee9b8df3c4eae48cc2478c3}} 
+\index{leds.h@{leds.h}!PORT\_LEDS@{PORT\_LEDS}}
+\index{PORT\_LEDS@{PORT\_LEDS}!leds.h@{leds.h}}
+\doxysubsubsection{\texorpdfstring{PORT\_LEDS}{PORT\_LEDS}}
+{\footnotesize\ttfamily \#define P\+O\+R\+T\+\_\+\+L\+E\+DS~M\+D\+R\+\_\+\+P\+O\+R\+TD}
+
+
+
+Порт выводов на светодиоды 
+
+\mbox{\Hypertarget{leds_8h_a5a72f7f58350bb195a2673db18c456d3}\label{leds_8h_a5a72f7f58350bb195a2673db18c456d3}} 
+\index{leds.h@{leds.h}!RESET\_LED\_ERROR\_WORK@{RESET\_LED\_ERROR\_WORK}}
+\index{RESET\_LED\_ERROR\_WORK@{RESET\_LED\_ERROR\_WORK}!leds.h@{leds.h}}
+\doxysubsubsection{\texorpdfstring{RESET\_LED\_ERROR\_WORK}{RESET\_LED\_ERROR\_WORK}}
+{\footnotesize\ttfamily \#define R\+E\+S\+E\+T\+\_\+\+L\+E\+D\+\_\+\+E\+R\+R\+O\+R\+\_\+\+W\+O\+RK(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~\{\mbox{\hyperlink{leds_8h_a5ce60c4a7ee9b8df3c4eae48cc2478c3}{P\+O\+R\+T\+\_\+\+L\+E\+DS}}-\/$>$C\+L\+R\+TX = \mbox{\hyperlink{leds_8h_a3f040ee9ad09af1046a3cd2fcd94d149}{P\+I\+N\+\_\+\+L\+E\+D\+\_\+\+E\+R\+R\+O\+R\+\_\+\+W\+O\+RK}};\}}
+
+
+
+Макрос выключения светодиода некорректной работы 
+
+\mbox{\Hypertarget{leds_8h_a1ef7b516af7c36e82d260f9267c749d1}\label{leds_8h_a1ef7b516af7c36e82d260f9267c749d1}} 
+\index{leds.h@{leds.h}!RESET\_LED\_OK\_WORK@{RESET\_LED\_OK\_WORK}}
+\index{RESET\_LED\_OK\_WORK@{RESET\_LED\_OK\_WORK}!leds.h@{leds.h}}
+\doxysubsubsection{\texorpdfstring{RESET\_LED\_OK\_WORK}{RESET\_LED\_OK\_WORK}}
+{\footnotesize\ttfamily \#define R\+E\+S\+E\+T\+\_\+\+L\+E\+D\+\_\+\+O\+K\+\_\+\+W\+O\+RK(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~\{\mbox{\hyperlink{leds_8h_a5ce60c4a7ee9b8df3c4eae48cc2478c3}{P\+O\+R\+T\+\_\+\+L\+E\+DS}}-\/$>$C\+L\+R\+TX = \mbox{\hyperlink{leds_8h_a7230c8e2dae96adad41296a45ebaf2b0}{P\+I\+N\+\_\+\+L\+E\+D\+\_\+\+O\+K\+\_\+\+W\+O\+RK}};\}}
+
+
+
+Макрос выключения светодиода корректной работы 
+
+\mbox{\Hypertarget{leds_8h_a52ea46b9f9af903424e711659ad661a0}\label{leds_8h_a52ea46b9f9af903424e711659ad661a0}} 
+\index{leds.h@{leds.h}!SET\_LED\_ERROR\_WORK@{SET\_LED\_ERROR\_WORK}}
+\index{SET\_LED\_ERROR\_WORK@{SET\_LED\_ERROR\_WORK}!leds.h@{leds.h}}
+\doxysubsubsection{\texorpdfstring{SET\_LED\_ERROR\_WORK}{SET\_LED\_ERROR\_WORK}}
+{\footnotesize\ttfamily \#define S\+E\+T\+\_\+\+L\+E\+D\+\_\+\+E\+R\+R\+O\+R\+\_\+\+W\+O\+RK(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~\{\mbox{\hyperlink{leds_8h_a5ce60c4a7ee9b8df3c4eae48cc2478c3}{P\+O\+R\+T\+\_\+\+L\+E\+DS}}-\/$>$S\+E\+T\+TX = \mbox{\hyperlink{leds_8h_a3f040ee9ad09af1046a3cd2fcd94d149}{P\+I\+N\+\_\+\+L\+E\+D\+\_\+\+E\+R\+R\+O\+R\+\_\+\+W\+O\+RK}};\}}
+
+
+
+Макрос включения светодиода некорректной работы 
+
+\mbox{\Hypertarget{leds_8h_a430aace194cfb35550cca261ba966571}\label{leds_8h_a430aace194cfb35550cca261ba966571}} 
+\index{leds.h@{leds.h}!SET\_LED\_OK\_WORK@{SET\_LED\_OK\_WORK}}
+\index{SET\_LED\_OK\_WORK@{SET\_LED\_OK\_WORK}!leds.h@{leds.h}}
+\doxysubsubsection{\texorpdfstring{SET\_LED\_OK\_WORK}{SET\_LED\_OK\_WORK}}
+{\footnotesize\ttfamily \#define S\+E\+T\+\_\+\+L\+E\+D\+\_\+\+O\+K\+\_\+\+W\+O\+RK(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~\{\mbox{\hyperlink{leds_8h_a5ce60c4a7ee9b8df3c4eae48cc2478c3}{P\+O\+R\+T\+\_\+\+L\+E\+DS}}-\/$>$S\+E\+T\+TX = \mbox{\hyperlink{leds_8h_a7230c8e2dae96adad41296a45ebaf2b0}{P\+I\+N\+\_\+\+L\+E\+D\+\_\+\+O\+K\+\_\+\+W\+O\+RK}};\}}
+
+
+
+Макрос включения светодиода корректной работы 
+
+
+
+\doxysubsection{Функции}
+\mbox{\Hypertarget{leds_8h_a71356b7b172c1d4ea20d3c5aa61f7c35}\label{leds_8h_a71356b7b172c1d4ea20d3c5aa61f7c35}} 
+\index{leds.h@{leds.h}!leds\_gpio\_config@{leds\_gpio\_config}}
+\index{leds\_gpio\_config@{leds\_gpio\_config}!leds.h@{leds.h}}
+\doxysubsubsection{\texorpdfstring{leds\_gpio\_config()}{leds\_gpio\_config()}}
+{\footnotesize\ttfamily void leds\+\_\+gpio\+\_\+config (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Конфигурирует выводы МК для светодиодных индикаторов 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{12 \{}
+\DoxyCodeLine{13     \textcolor{comment}{// Включение тактирования портов}}
+\DoxyCodeLine{14     RST\_CLK\_PCLKcmd(RST\_CLK\_PCLK\_RST\_CLK|\mbox{\hyperlink{leds_8h_a6d499bd331122dda583e0006e7d277d3}{CLOCK\_LEDS}}, ENABLE); }
+\DoxyCodeLine{15     }
+\DoxyCodeLine{16     PORT\_InitTypeDef gpio\_init\_struct\_leds;}
+\DoxyCodeLine{17     PORT\_StructInit(\&gpio\_init\_struct\_leds);}
+\DoxyCodeLine{18     }
+\DoxyCodeLine{19     \textcolor{comment}{// Инициализация светодиода-\/индикатора корректной работы}}
+\DoxyCodeLine{20     gpio\_init\_struct\_leds.PORT\_Pin = \mbox{\hyperlink{leds_8h_a7230c8e2dae96adad41296a45ebaf2b0}{PIN\_LED\_OK\_WORK}};}
+\DoxyCodeLine{21     gpio\_init\_struct\_leds.PORT\_FUNC = PORT\_FUNC\_PORT;}
+\DoxyCodeLine{22     gpio\_init\_struct\_leds.PORT\_OE = PORT\_OE\_OUT;}
+\DoxyCodeLine{23     gpio\_init\_struct\_leds.PORT\_MODE = PORT\_MODE\_DIGITAL;}
+\DoxyCodeLine{24     gpio\_init\_struct\_leds.PORT\_SPEED = PORT\_SPEED\_MAXFAST;}
+\DoxyCodeLine{25     PORT\_Init(\mbox{\hyperlink{leds_8h_a5ce60c4a7ee9b8df3c4eae48cc2478c3}{PORT\_LEDS}}, \&gpio\_init\_struct\_leds);}
+\DoxyCodeLine{26     }
+\DoxyCodeLine{27     \textcolor{comment}{// Инициализация светодиода-\/индикатора неисправности}}
+\DoxyCodeLine{28     gpio\_init\_struct\_leds.PORT\_Pin = \mbox{\hyperlink{leds_8h_a3f040ee9ad09af1046a3cd2fcd94d149}{PIN\_LED\_ERROR\_WORK}};}
+\DoxyCodeLine{29     gpio\_init\_struct\_leds.PORT\_FUNC = PORT\_FUNC\_PORT;}
+\DoxyCodeLine{30     gpio\_init\_struct\_leds.PORT\_OE = PORT\_OE\_OUT;}
+\DoxyCodeLine{31     gpio\_init\_struct\_leds.PORT\_MODE = PORT\_MODE\_DIGITAL;}
+\DoxyCodeLine{32     gpio\_init\_struct\_leds.PORT\_SPEED = PORT\_SPEED\_MAXFAST;}
+\DoxyCodeLine{33     PORT\_Init(\mbox{\hyperlink{leds_8h_a5ce60c4a7ee9b8df3c4eae48cc2478c3}{PORT\_LEDS}}, \&gpio\_init\_struct\_leds);}
+\DoxyCodeLine{34 \}}
+
+\end{DoxyCode}

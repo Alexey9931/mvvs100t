@@ -1,23 +1,22 @@
 /*!
  \file
- \brief Файл с реализацией API для работы со светоиодными индикаторами
+ \brief Р¤Р°Р№Р» СЃ СЂРµР°Р»РёР·Р°С†РёРµР№ API РґР»СЏ СЂР°Р±РѕС‚С‹ СЃРѕ СЃРІРµС‚РѕРґРёРѕРґРЅС‹РјРё РёРЅРґРёРєР°С‚РѕСЂР°РјРё
 */
 
 #include "leds.h"
 
 /*
-Функция конфигурирования выводов МК для светодиодов-индикаторов
+	Р¤СѓРЅРєС†РёСЏ РєРѕРЅС„РёРіСѓСЂРёСЂРѕРІР°РЅРёСЏ РІС‹РІРѕРґРѕРІ РњРљ РґР»СЏ СЃРІРµС‚РѕРґРёРѕРґРѕРІ-РёРЅРґРёРєР°С‚РѕСЂРѕРІ
 */
-
 void leds_gpio_config(void)
 {
-	// Включение тактирования портов
+	// Р’РєР»СЋС‡РµРЅРёРµ С‚Р°РєС‚РёСЂРѕРІР°РЅРёСЏ РїРѕСЂС‚РѕРІ
 	RST_CLK_PCLKcmd(RST_CLK_PCLK_RST_CLK|CLOCK_LEDS, ENABLE);	
 	
 	PORT_InitTypeDef gpio_init_struct_leds;
 	PORT_StructInit(&gpio_init_struct_leds);
 	
-	//инициализация светодиода-индикатора корректной работы
+	// РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ СЃРІРµС‚РѕРґРёРѕРґР°-РёРЅРґРёРєР°С‚РѕСЂР° РєРѕСЂСЂРµРєС‚РЅРѕР№ СЂР°Р±РѕС‚С‹
 	gpio_init_struct_leds.PORT_Pin = PIN_LED_OK_WORK;
 	gpio_init_struct_leds.PORT_FUNC = PORT_FUNC_PORT;
 	gpio_init_struct_leds.PORT_OE = PORT_OE_OUT;
@@ -25,7 +24,7 @@ void leds_gpio_config(void)
 	gpio_init_struct_leds.PORT_SPEED = PORT_SPEED_MAXFAST;
 	PORT_Init(PORT_LEDS, &gpio_init_struct_leds);
 	
-	//инициализация светодиода-индикатора неисправности
+	// РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ СЃРІРµС‚РѕРґРёРѕРґР°-РёРЅРґРёРєР°С‚РѕСЂР° РЅРµРёСЃРїСЂР°РІРЅРѕСЃС‚Рё
 	gpio_init_struct_leds.PORT_Pin = PIN_LED_ERROR_WORK;
 	gpio_init_struct_leds.PORT_FUNC = PORT_FUNC_PORT;
 	gpio_init_struct_leds.PORT_OE = PORT_OE_OUT;

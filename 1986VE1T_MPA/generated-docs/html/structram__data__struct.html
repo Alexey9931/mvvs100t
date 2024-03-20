@@ -1,0 +1,406 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.20"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>ПО для макета МПА (100 тема): Структура ram_data_struct</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">ПО для макета МПА (100 тема)
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.20 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-attribs">Открытые атрибуты</a> &#124;
+<a href="structram__data__struct-members.html">Полный список членов класса</a>  </div>
+  <div class="headertitle">
+<div class="title">Структура ram_data_struct</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Структура организующая память во внешнем ОЗУ  
+ <a href="structram__data__struct.html#details">Подробнее...</a></p>
+
+<p><code>#include &lt;<a class="el" href="external__ram_8h_source.html">external_ram.h</a>&gt;</code></p>
+<div class="dynheader">
+Граф связей класса ram_data_struct:</div>
+<div class="dyncontent">
+<div class="center"><img src="structram__data__struct__coll__graph.png" border="0" usemap="#aram__data__struct_coll__map" alt="Collaboration graph"/></div>
+<map name="ram__data__struct_coll__map" id="ram__data__struct_coll__map">
+<area shape="rect" title="Структура организующая память во внешнем ОЗУ" alt="" coords="1105,220,1233,247"/>
+<area shape="rect" href="structservice__byte__struct__pm.html" title="Структура с битовыми полями для сервисного байта ПМ" alt="" coords="709,79,886,105"/>
+<area shape="rect" href="structstart__struct__ext__ram.html" title="Структура, которая лежит в начале ОЗУ любого модуля" alt="" coords="719,129,876,156"/>
+<area shape="rect" href="structrange__start__struct.html" title="Структура одного диапазона для стартовой структуры" alt="" coords="343,9,483,36"/>
+<area shape="rect" href="structmpa__register__space__ext__ram.html" title="Органиация пространства регистров МПА во внешнем ОЗУ" alt="" coords="721,181,874,222"/>
+<area shape="rect" href="structmpa__register__space__ext__rom.html" title="Органиация пространства регистров МПА для зеркализации во внешнем ПЗУ" alt="" coords="337,61,490,102"/>
+<area shape="rect" href="structai__oper__mode__struct.html" title="Структура с битовыми полями для регистра режим работы канала" alt="" coords="5,68,164,95"/>
+<area shape="rect" href="structcommon__register__space__ext__ram.html" title="Органиация пространства общих регистров во внешнем ОЗУ" alt="" coords="707,246,888,287"/>
+<area shape="rect" href="structconfig__struct.html" title="Структура с битовыми полями для регистра конфигурация" alt="" coords="361,127,466,153"/>
+<area shape="rect" href="structplc__sof__ver__struct.html" title="Структура с битовыми полями для регистра версия ПО" alt="" coords="343,177,483,204"/>
+<area shape="rect" href="structself__diag__struct.html" title="Структура с битовыми полями для регистра неисправность самодиагностики" alt="" coords="351,228,476,255"/>
+<area shape="rect" href="structpower__failure__struct.html" title="Структура с битовыми полями для регистра неисправность питания" alt="" coords="336,279,491,305"/>
+<area shape="rect" href="structcommon__register__space__ext__rom.html" title="Органиация пространства общих регистров для зеркализации во внешнем ПЗУ" alt="" coords="323,330,504,371"/>
+<area shape="rect" href="structdevice__type__struct.html" title="Структура с битовыми полями для регистра тип устройства" alt="" coords="12,337,157,364"/>
+<area shape="rect" href="structdevice__address__struct.html" title="Структура с битовыми полями для регистра адрес устройства" alt="" coords="330,396,497,423"/>
+<area shape="rect" href="structbus__defect__struct.html" title="Структура с битовыми полями для регистра неисправность шины" alt="" coords="345,447,482,473"/>
+<area shape="rect" href="structservice__byte__struct__um.html" title="Структура с битовыми полями для сервисного байта УМ" alt="" coords="709,312,886,339"/>
+<area shape="rect" href="structtx__rx__packet__struct.html" title="Структура пакета данных согласно утвержденному протоколу обмена данными" alt="" coords="722,525,873,552"/>
+<area shape="rect" href="structcmd__struct.html" title="Структура с полями данных для каждой команды (субпакета) внутри одного пакета" alt="" coords="366,497,461,524"/>
+<area shape="rect" href="structcmd__header__struct.html" title="Структура с заголовком для каждой команды (субпакета) внутри одного пакета" alt="" coords="11,497,158,524"/>
+<area shape="rect" href="structpacket__tail__Struct.html" title="Структура с полями конца пакета" alt="" coords="344,548,483,575"/>
+<area shape="rect" href="structpacket__header__struct.html" title="Структура с полями заголовка пакета" alt="" coords="332,599,495,625"/>
+</map>
+<center><span class="legend">[<a href="graph_legend.html">см. легенду</a>]</span></center></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Открытые атрибуты</h2></td></tr>
+<tr class="memitem:a0de3b7f84ef21ea299d6e45bbfc7dcf4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="external__ram_8h.html#ad52ebc9def70278428b60cfdc9d51fe8">ram_start_struct</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structram__data__struct.html#a0de3b7f84ef21ea299d6e45bbfc7dcf4">start_struct</a></td></tr>
+<tr class="memdesc:a0de3b7f84ef21ea299d6e45bbfc7dcf4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Структура по умолчанию, которая должна находиться в начале ОЗУ  <a href="structram__data__struct.html#a0de3b7f84ef21ea299d6e45bbfc7dcf4">Подробнее...</a><br /></td></tr>
+<tr class="separator:a0de3b7f84ef21ea299d6e45bbfc7dcf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a802ed45cf44c03eb17497774fb59aeb5"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structram__data__struct.html#a802ed45cf44c03eb17497774fb59aeb5">Reserv</a> [<a class="el" href="external__ram_8h.html#af46525578bcb3a80d76d60b7537f0f94">RAM_REGISTER_SPACE_START_ADDR</a> - sizeof(<a class="el" href="external__ram_8h.html#ad52ebc9def70278428b60cfdc9d51fe8">ram_start_struct</a>)]</td></tr>
+<tr class="memdesc:a802ed45cf44c03eb17497774fb59aeb5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Зарезервированное место  <a href="structram__data__struct.html#a802ed45cf44c03eb17497774fb59aeb5">Подробнее...</a><br /></td></tr>
+<tr class="separator:a802ed45cf44c03eb17497774fb59aeb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29ff19a4ce45ab988b4f61feaea38545"><td class="memItemLeft" align="right" valign="top"><a class="el" href="external__ram_8h.html#ae89789d7f765328bd1d8c6e089f1f2ab">common_ram_registers</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structram__data__struct.html#a29ff19a4ce45ab988b4f61feaea38545">common_ram_register_space</a></td></tr>
+<tr class="memdesc:a29ff19a4ce45ab988b4f61feaea38545"><td class="mdescLeft">&#160;</td><td class="mdescRight">Карта общих регистров начиная с адреса REGISTER_SPACE_START_ADDR.  <a href="structram__data__struct.html#a29ff19a4ce45ab988b4f61feaea38545">Подробнее...</a><br /></td></tr>
+<tr class="separator:a29ff19a4ce45ab988b4f61feaea38545"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a99f72177584aee68a4ed2064b1fecbde"><td class="memItemLeft" align="right" valign="top"><a class="el" href="external__ram_8h.html#a1cb2f4e25a86473899fae359eccd2c4d">mpa_ram_registers</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structram__data__struct.html#a99f72177584aee68a4ed2064b1fecbde">mpa_ram_register_space</a></td></tr>
+<tr class="memdesc:a99f72177584aee68a4ed2064b1fecbde"><td class="mdescLeft">&#160;</td><td class="mdescRight">Карта регистров МПА начиная с адреса REGISTER_SPACE_START_ADDR.  <a href="structram__data__struct.html#a99f72177584aee68a4ed2064b1fecbde">Подробнее...</a><br /></td></tr>
+<tr class="separator:a99f72177584aee68a4ed2064b1fecbde"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f2127d07d9edbc570aae7abb635cdd8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="rs422__protocol_8h.html#a31e46c5def1d302719d62543c9b3a11e">fields_packet</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structram__data__struct.html#a7f2127d07d9edbc570aae7abb635cdd8">rx_packet_struct</a></td></tr>
+<tr class="memdesc:a7f2127d07d9edbc570aae7abb635cdd8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Принятый пакет с идентифицированными полями  <a href="structram__data__struct.html#a7f2127d07d9edbc570aae7abb635cdd8">Подробнее...</a><br /></td></tr>
+<tr class="separator:a7f2127d07d9edbc570aae7abb635cdd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aade052f13f081a219189d9494fbdde89"><td class="memItemLeft" align="right" valign="top"><a class="el" href="rs422__protocol_8h.html#a31e46c5def1d302719d62543c9b3a11e">fields_packet</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structram__data__struct.html#aade052f13f081a219189d9494fbdde89">tx_packet_struct</a></td></tr>
+<tr class="memdesc:aade052f13f081a219189d9494fbdde89"><td class="mdescLeft">&#160;</td><td class="mdescRight">Отправляемый пакет с идентифицированными полями  <a href="structram__data__struct.html#aade052f13f081a219189d9494fbdde89">Подробнее...</a><br /></td></tr>
+<tr class="separator:aade052f13f081a219189d9494fbdde89"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a492d81e21ce5dac959ae56a9175b3dde"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structram__data__struct.html#a492d81e21ce5dac959ae56a9175b3dde">tx_data</a> [<a class="el" href="uart_8h.html#a0d57378e32bf8278011460740bc29f7f">UART_BUFFER_SIZE</a>]</td></tr>
+<tr class="memdesc:a492d81e21ce5dac959ae56a9175b3dde"><td class="mdescLeft">&#160;</td><td class="mdescRight">Выделенное место для данных tx_packet.  <a href="structram__data__struct.html#a492d81e21ce5dac959ae56a9175b3dde">Подробнее...</a><br /></td></tr>
+<tr class="separator:a492d81e21ce5dac959ae56a9175b3dde"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a858728905809492bd23395b9f8b6ad95"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structram__data__struct.html#a858728905809492bd23395b9f8b6ad95">packet_rx</a> [<a class="el" href="uart_8h.html#a0d57378e32bf8278011460740bc29f7f">UART_BUFFER_SIZE</a>]</td></tr>
+<tr class="memdesc:a858728905809492bd23395b9f8b6ad95"><td class="mdescLeft">&#160;</td><td class="mdescRight">Буфер с принятым пакетом  <a href="structram__data__struct.html#a858728905809492bd23395b9f8b6ad95">Подробнее...</a><br /></td></tr>
+<tr class="separator:a858728905809492bd23395b9f8b6ad95"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3665b197d1eb167f35ba9a58b3677691"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structram__data__struct.html#a3665b197d1eb167f35ba9a58b3677691">packet_tx</a> [<a class="el" href="uart_8h.html#a0d57378e32bf8278011460740bc29f7f">UART_BUFFER_SIZE</a>]</td></tr>
+<tr class="memdesc:a3665b197d1eb167f35ba9a58b3677691"><td class="mdescLeft">&#160;</td><td class="mdescRight">Буфер с отправленным пакетом  <a href="structram__data__struct.html#a3665b197d1eb167f35ba9a58b3677691">Подробнее...</a><br /></td></tr>
+<tr class="separator:a3665b197d1eb167f35ba9a58b3677691"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac62275f40908961a48f2c49d8e85a2df"><td class="memItemLeft" align="right" valign="top"><a class="el" href="external__ram_8h.html#afc65bf27de36d72dec215dfa5368374c">service_struct_pm</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structram__data__struct.html#ac62275f40908961a48f2c49d8e85a2df">service_byte_pm</a></td></tr>
+<tr class="memdesc:ac62275f40908961a48f2c49d8e85a2df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Структура сервисного байта ПМ  <a href="structram__data__struct.html#ac62275f40908961a48f2c49d8e85a2df">Подробнее...</a><br /></td></tr>
+<tr class="separator:ac62275f40908961a48f2c49d8e85a2df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a20ec1ad93822ba1a91654812c83b77e2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="external__ram_8h.html#a4102ee639f837e4d037aef163aeacf15">service_struct_um</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structram__data__struct.html#a20ec1ad93822ba1a91654812c83b77e2">service_byte_um</a></td></tr>
+<tr class="memdesc:a20ec1ad93822ba1a91654812c83b77e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Структура сервисного байта УМ  <a href="structram__data__struct.html#a20ec1ad93822ba1a91654812c83b77e2">Подробнее...</a><br /></td></tr>
+<tr class="separator:a20ec1ad93822ba1a91654812c83b77e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a4fb4f881c11792f26679743010a42f"><td class="memItemLeft" align="right" valign="top">uint_least32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structram__data__struct.html#a4a4fb4f881c11792f26679743010a42f">crc_table</a> [256]</td></tr>
+<tr class="memdesc:a4a4fb4f881c11792f26679743010a42f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Таблица для вычисления контрольной суммы  <a href="structram__data__struct.html#a4a4fb4f881c11792f26679743010a42f">Подробнее...</a><br /></td></tr>
+<tr class="separator:a4a4fb4f881c11792f26679743010a42f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41d91820425c08fe1b256be17b38de21"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structram__data__struct.html#a41d91820425c08fe1b256be17b38de21">uart1_rx_buffer</a> [<a class="el" href="uart_8h.html#a0d57378e32bf8278011460740bc29f7f">UART_BUFFER_SIZE</a>]</td></tr>
+<tr class="memdesc:a41d91820425c08fe1b256be17b38de21"><td class="mdescLeft">&#160;</td><td class="mdescRight">Буфер приемника UART1.  <a href="structram__data__struct.html#a41d91820425c08fe1b256be17b38de21">Подробнее...</a><br /></td></tr>
+<tr class="separator:a41d91820425c08fe1b256be17b38de21"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae35f6e14155e3bf0057c8a13a8d6bc0c"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structram__data__struct.html#ae35f6e14155e3bf0057c8a13a8d6bc0c">uart2_rx_buffer</a> [<a class="el" href="uart_8h.html#a0d57378e32bf8278011460740bc29f7f">UART_BUFFER_SIZE</a>]</td></tr>
+<tr class="memdesc:ae35f6e14155e3bf0057c8a13a8d6bc0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Буфер приемника UART2.  <a href="structram__data__struct.html#ae35f6e14155e3bf0057c8a13a8d6bc0c">Подробнее...</a><br /></td></tr>
+<tr class="separator:ae35f6e14155e3bf0057c8a13a8d6bc0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa408978a8e55bf008474fd09861d867f"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structram__data__struct.html#aa408978a8e55bf008474fd09861d867f">spi_1_rx_buffer</a> [<a class="el" href="spi_8h.html#a97f9f5cc546b1896703fe63289b4fd3d">SPI_BUFFER_SIZE</a>]</td></tr>
+<tr class="memdesc:aa408978a8e55bf008474fd09861d867f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Буфер приемника SPI1.  <a href="structram__data__struct.html#aa408978a8e55bf008474fd09861d867f">Подробнее...</a><br /></td></tr>
+<tr class="separator:aa408978a8e55bf008474fd09861d867f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Структура организующая память во внешнем ОЗУ </p>
+</div><h2 class="groupheader">Данные класса</h2>
+<a id="a29ff19a4ce45ab988b4f61feaea38545"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a29ff19a4ce45ab988b4f61feaea38545">&#9670;&nbsp;</a></span>common_ram_register_space</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="external__ram_8h.html#ae89789d7f765328bd1d8c6e089f1f2ab">common_ram_registers</a> ram_data_struct::common_ram_register_space</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Карта общих регистров начиная с адреса REGISTER_SPACE_START_ADDR. </p>
+
+</div>
+</div>
+<a id="a4a4fb4f881c11792f26679743010a42f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4a4fb4f881c11792f26679743010a42f">&#9670;&nbsp;</a></span>crc_table</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint_least32_t ram_data_struct::crc_table[256]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Таблица для вычисления контрольной суммы </p>
+
+</div>
+</div>
+<a id="a99f72177584aee68a4ed2064b1fecbde"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a99f72177584aee68a4ed2064b1fecbde">&#9670;&nbsp;</a></span>mpa_ram_register_space</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="external__ram_8h.html#a1cb2f4e25a86473899fae359eccd2c4d">mpa_ram_registers</a> ram_data_struct::mpa_ram_register_space</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Карта регистров МПА начиная с адреса REGISTER_SPACE_START_ADDR. </p>
+
+</div>
+</div>
+<a id="a858728905809492bd23395b9f8b6ad95"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a858728905809492bd23395b9f8b6ad95">&#9670;&nbsp;</a></span>packet_rx</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t ram_data_struct::packet_rx[<a class="el" href="uart_8h.html#a0d57378e32bf8278011460740bc29f7f">UART_BUFFER_SIZE</a>]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Буфер с принятым пакетом </p>
+
+</div>
+</div>
+<a id="a3665b197d1eb167f35ba9a58b3677691"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3665b197d1eb167f35ba9a58b3677691">&#9670;&nbsp;</a></span>packet_tx</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t ram_data_struct::packet_tx[<a class="el" href="uart_8h.html#a0d57378e32bf8278011460740bc29f7f">UART_BUFFER_SIZE</a>]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Буфер с отправленным пакетом </p>
+
+</div>
+</div>
+<a id="a802ed45cf44c03eb17497774fb59aeb5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a802ed45cf44c03eb17497774fb59aeb5">&#9670;&nbsp;</a></span>Reserv</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t ram_data_struct::Reserv[<a class="el" href="external__ram_8h.html#af46525578bcb3a80d76d60b7537f0f94">RAM_REGISTER_SPACE_START_ADDR</a> - sizeof(<a class="el" href="external__ram_8h.html#ad52ebc9def70278428b60cfdc9d51fe8">ram_start_struct</a>)]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Зарезервированное место </p>
+
+</div>
+</div>
+<a id="a7f2127d07d9edbc570aae7abb635cdd8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7f2127d07d9edbc570aae7abb635cdd8">&#9670;&nbsp;</a></span>rx_packet_struct</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="rs422__protocol_8h.html#a31e46c5def1d302719d62543c9b3a11e">fields_packet</a> ram_data_struct::rx_packet_struct</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Принятый пакет с идентифицированными полями </p>
+
+</div>
+</div>
+<a id="ac62275f40908961a48f2c49d8e85a2df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac62275f40908961a48f2c49d8e85a2df">&#9670;&nbsp;</a></span>service_byte_pm</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="external__ram_8h.html#afc65bf27de36d72dec215dfa5368374c">service_struct_pm</a> ram_data_struct::service_byte_pm</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Структура сервисного байта ПМ </p>
+
+</div>
+</div>
+<a id="a20ec1ad93822ba1a91654812c83b77e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a20ec1ad93822ba1a91654812c83b77e2">&#9670;&nbsp;</a></span>service_byte_um</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="external__ram_8h.html#a4102ee639f837e4d037aef163aeacf15">service_struct_um</a> ram_data_struct::service_byte_um</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Структура сервисного байта УМ </p>
+
+</div>
+</div>
+<a id="aa408978a8e55bf008474fd09861d867f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa408978a8e55bf008474fd09861d867f">&#9670;&nbsp;</a></span>spi_1_rx_buffer</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t ram_data_struct::spi_1_rx_buffer[<a class="el" href="spi_8h.html#a97f9f5cc546b1896703fe63289b4fd3d">SPI_BUFFER_SIZE</a>]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Буфер приемника SPI1. </p>
+
+</div>
+</div>
+<a id="a0de3b7f84ef21ea299d6e45bbfc7dcf4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0de3b7f84ef21ea299d6e45bbfc7dcf4">&#9670;&nbsp;</a></span>start_struct</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="external__ram_8h.html#ad52ebc9def70278428b60cfdc9d51fe8">ram_start_struct</a> ram_data_struct::start_struct</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Структура по умолчанию, которая должна находиться в начале ОЗУ </p>
+
+</div>
+</div>
+<a id="a492d81e21ce5dac959ae56a9175b3dde"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a492d81e21ce5dac959ae56a9175b3dde">&#9670;&nbsp;</a></span>tx_data</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t ram_data_struct::tx_data[<a class="el" href="uart_8h.html#a0d57378e32bf8278011460740bc29f7f">UART_BUFFER_SIZE</a>]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Выделенное место для данных tx_packet. </p>
+
+</div>
+</div>
+<a id="aade052f13f081a219189d9494fbdde89"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aade052f13f081a219189d9494fbdde89">&#9670;&nbsp;</a></span>tx_packet_struct</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="rs422__protocol_8h.html#a31e46c5def1d302719d62543c9b3a11e">fields_packet</a> ram_data_struct::tx_packet_struct</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Отправляемый пакет с идентифицированными полями </p>
+
+</div>
+</div>
+<a id="a41d91820425c08fe1b256be17b38de21"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a41d91820425c08fe1b256be17b38de21">&#9670;&nbsp;</a></span>uart1_rx_buffer</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t ram_data_struct::uart1_rx_buffer[<a class="el" href="uart_8h.html#a0d57378e32bf8278011460740bc29f7f">UART_BUFFER_SIZE</a>]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Буфер приемника UART1. </p>
+
+</div>
+</div>
+<a id="ae35f6e14155e3bf0057c8a13a8d6bc0c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae35f6e14155e3bf0057c8a13a8d6bc0c">&#9670;&nbsp;</a></span>uart2_rx_buffer</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t ram_data_struct::uart2_rx_buffer[<a class="el" href="uart_8h.html#a0d57378e32bf8278011460740bc29f7f">UART_BUFFER_SIZE</a>]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Буфер приемника UART2. </p>
+
+</div>
+</div>
+<hr/>Объявления и описания членов структуры находятся в файле:<ul>
+<li><a class="el" href="external__ram_8h_source.html">external_ram.h</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой&#160;<a href="http://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.8.20
+</small></address>
+</body>
+</html>

@@ -1,0 +1,214 @@
+\hypertarget{structmpa__register__space__ext__rom}{}\doxysection{Структура mpa\+\_\+register\+\_\+space\+\_\+ext\+\_\+rom}
+\label{structmpa__register__space__ext__rom}\index{mpa\_register\_space\_ext\_rom@{mpa\_register\_space\_ext\_rom}}
+
+
+Органиация пространства регистров МПА для зеркализации во внешнем ПЗУ  
+
+
+
+
+{\ttfamily \#include $<$external\+\_\+rom.\+h$>$}
+
+
+
+Граф связей класса mpa\+\_\+register\+\_\+space\+\_\+ext\+\_\+rom\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=208pt]{structmpa__register__space__ext__rom__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Открытые атрибуты}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{external__rom_8h_ac1bc9cf72b9c0ccf37ccbdf84d77fca0}{ai\+\_\+oper\+\_\+mode}} \mbox{\hyperlink{structmpa__register__space__ext__rom_a49e8b51172c0d8ea6eda885e82343374}{A\+I\+\_\+\+Oper\+Mode}}
+\begin{DoxyCompactList}\small\item\em Режим работы канала \end{DoxyCompactList}\item 
+uint16\+\_\+t \mbox{\hyperlink{structmpa__register__space__ext__rom_a1ac3a111cbf7f05ea99156d54e16b955}{A\+I\+\_\+\+Num\+For\+Averag}} \mbox{[}\mbox{\hyperlink{mdr32__drivers_8h_a2332bbff598b25d3bddab65efa40db0f}{M\+A\+X\+\_\+\+C\+H\+A\+N\+E\+L\+\_\+\+N\+U\+M\+B\+ER}}\mbox{]}
+\begin{DoxyCompactList}\small\item\em Кол-\/во выборок для усреднения \end{DoxyCompactList}\item 
+int16\+\_\+t \mbox{\hyperlink{structmpa__register__space__ext__rom_a7b24af1f2403ce6d5f5a9f729c1e6fc0}{A\+I\+\_\+\+Min\+Code\+A\+DC}} \mbox{[}\mbox{\hyperlink{mdr32__drivers_8h_a2332bbff598b25d3bddab65efa40db0f}{M\+A\+X\+\_\+\+C\+H\+A\+N\+E\+L\+\_\+\+N\+U\+M\+B\+ER}}\mbox{]}
+\begin{DoxyCompactList}\small\item\em Константа B -\/ минимум кода АЦП \end{DoxyCompactList}\item 
+int16\+\_\+t \mbox{\hyperlink{structmpa__register__space__ext__rom_af0ec497c4c59db14a07540a4cbb78e3a}{A\+I\+\_\+\+Max\+Code\+A\+DC}} \mbox{[}\mbox{\hyperlink{mdr32__drivers_8h_a2332bbff598b25d3bddab65efa40db0f}{M\+A\+X\+\_\+\+C\+H\+A\+N\+E\+L\+\_\+\+N\+U\+M\+B\+ER}}\mbox{]}
+\begin{DoxyCompactList}\small\item\em Константа A -\/ максимум кода АЦП \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{structmpa__register__space__ext__rom_a8990c914859c8b1fa2dbab542c1978c4}{Reserv\+\_\+3}} \mbox{[}32\mbox{]}
+\begin{DoxyCompactList}\small\item\em Резерв \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{structmpa__register__space__ext__rom_a6893959779b22a58c36f3aa0bd2b4777}{A\+I\+\_\+\+Polyn\+Const0}} \mbox{[}\mbox{\hyperlink{mdr32__drivers_8h_a2332bbff598b25d3bddab65efa40db0f}{M\+A\+X\+\_\+\+C\+H\+A\+N\+E\+L\+\_\+\+N\+U\+M\+B\+ER}}\mbox{]}
+\begin{DoxyCompactList}\small\item\em Константа А0 апрокс. полинома \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{structmpa__register__space__ext__rom_ac9dcd4f5d112d0ba95ea072e06465f71}{A\+I\+\_\+\+Polyn\+Const1}} \mbox{[}\mbox{\hyperlink{mdr32__drivers_8h_a2332bbff598b25d3bddab65efa40db0f}{M\+A\+X\+\_\+\+C\+H\+A\+N\+E\+L\+\_\+\+N\+U\+M\+B\+ER}}\mbox{]}
+\begin{DoxyCompactList}\small\item\em Константа А1 апрокс. полинома \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{structmpa__register__space__ext__rom_aa8b22285124f0d85fc148fcb896b6078}{A\+I\+\_\+\+Polyn\+Const2}} \mbox{[}\mbox{\hyperlink{mdr32__drivers_8h_a2332bbff598b25d3bddab65efa40db0f}{M\+A\+X\+\_\+\+C\+H\+A\+N\+E\+L\+\_\+\+N\+U\+M\+B\+ER}}\mbox{]}
+\begin{DoxyCompactList}\small\item\em Константа А2 апрокс. полинома \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{structmpa__register__space__ext__rom_adaa30c909a5f4fb46337525db6ea536f}{A\+I\+\_\+\+Polyn\+Const3}} \mbox{[}\mbox{\hyperlink{mdr32__drivers_8h_a2332bbff598b25d3bddab65efa40db0f}{M\+A\+X\+\_\+\+C\+H\+A\+N\+E\+L\+\_\+\+N\+U\+M\+B\+ER}}\mbox{]}
+\begin{DoxyCompactList}\small\item\em Константа А3 апрокс. полинома \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{structmpa__register__space__ext__rom_aa7d4ea93729864388f73d4452bd80030}{A\+I\+\_\+\+Polyn\+Const4}} \mbox{[}\mbox{\hyperlink{mdr32__drivers_8h_a2332bbff598b25d3bddab65efa40db0f}{M\+A\+X\+\_\+\+C\+H\+A\+N\+E\+L\+\_\+\+N\+U\+M\+B\+ER}}\mbox{]}
+\begin{DoxyCompactList}\small\item\em Константа А4 апрокс. полинома \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{structmpa__register__space__ext__rom_a85ca16cef224c436d288720c9f111c41}{A\+I\+\_\+\+Polyn\+Const5}} \mbox{[}\mbox{\hyperlink{mdr32__drivers_8h_a2332bbff598b25d3bddab65efa40db0f}{M\+A\+X\+\_\+\+C\+H\+A\+N\+E\+L\+\_\+\+N\+U\+M\+B\+ER}}\mbox{]}
+\begin{DoxyCompactList}\small\item\em Константа А5 апрокс. полинома \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{structmpa__register__space__ext__rom_aeb1c4b214192020c67cc59a1a6aa327c}{A\+I\+\_\+\+Polyn\+Const6}} \mbox{[}\mbox{\hyperlink{mdr32__drivers_8h_a2332bbff598b25d3bddab65efa40db0f}{M\+A\+X\+\_\+\+C\+H\+A\+N\+E\+L\+\_\+\+N\+U\+M\+B\+ER}}\mbox{]}
+\begin{DoxyCompactList}\small\item\em Константа А6 апрокс. полинома \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{structmpa__register__space__ext__rom_a3d35b2e1585382f6eae5016c672b4ab6}{A\+I\+\_\+\+Metrolog\+Dat}} \mbox{[}32\mbox{]}
+\begin{DoxyCompactList}\small\item\em Сведения о метрологии \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{structmpa__register__space__ext__rom_ad0ab3d711fc7b3c2c661a93ec450e58f}{Reserv\+\_\+4}} \mbox{[}32\mbox{]}
+\begin{DoxyCompactList}\small\item\em Резерв \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{structmpa__register__space__ext__rom_a8d21bd3ee4501d6530d5b6fb523e305b}{Reserv\+\_\+5}} \mbox{[}32\mbox{]}
+\begin{DoxyCompactList}\small\item\em Резерв \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Органиация пространства регистров МПА для зеркализации во внешнем ПЗУ 
+
+\doxysubsection{Данные класса}
+\mbox{\Hypertarget{structmpa__register__space__ext__rom_af0ec497c4c59db14a07540a4cbb78e3a}\label{structmpa__register__space__ext__rom_af0ec497c4c59db14a07540a4cbb78e3a}} 
+\index{mpa\_register\_space\_ext\_rom@{mpa\_register\_space\_ext\_rom}!AI\_MaxCodeADC@{AI\_MaxCodeADC}}
+\index{AI\_MaxCodeADC@{AI\_MaxCodeADC}!mpa\_register\_space\_ext\_rom@{mpa\_register\_space\_ext\_rom}}
+\doxysubsubsection{\texorpdfstring{AI\_MaxCodeADC}{AI\_MaxCodeADC}}
+{\footnotesize\ttfamily int16\+\_\+t mpa\+\_\+register\+\_\+space\+\_\+ext\+\_\+rom\+::\+A\+I\+\_\+\+Max\+Code\+A\+DC\mbox{[}\mbox{\hyperlink{mdr32__drivers_8h_a2332bbff598b25d3bddab65efa40db0f}{M\+A\+X\+\_\+\+C\+H\+A\+N\+E\+L\+\_\+\+N\+U\+M\+B\+ER}}\mbox{]}}
+
+
+
+Константа A -\/ максимум кода АЦП 
+
+\mbox{\Hypertarget{structmpa__register__space__ext__rom_a3d35b2e1585382f6eae5016c672b4ab6}\label{structmpa__register__space__ext__rom_a3d35b2e1585382f6eae5016c672b4ab6}} 
+\index{mpa\_register\_space\_ext\_rom@{mpa\_register\_space\_ext\_rom}!AI\_MetrologDat@{AI\_MetrologDat}}
+\index{AI\_MetrologDat@{AI\_MetrologDat}!mpa\_register\_space\_ext\_rom@{mpa\_register\_space\_ext\_rom}}
+\doxysubsubsection{\texorpdfstring{AI\_MetrologDat}{AI\_MetrologDat}}
+{\footnotesize\ttfamily uint8\+\_\+t mpa\+\_\+register\+\_\+space\+\_\+ext\+\_\+rom\+::\+A\+I\+\_\+\+Metrolog\+Dat\mbox{[}32\mbox{]}}
+
+
+
+Сведения о метрологии 
+
+\mbox{\Hypertarget{structmpa__register__space__ext__rom_a7b24af1f2403ce6d5f5a9f729c1e6fc0}\label{structmpa__register__space__ext__rom_a7b24af1f2403ce6d5f5a9f729c1e6fc0}} 
+\index{mpa\_register\_space\_ext\_rom@{mpa\_register\_space\_ext\_rom}!AI\_MinCodeADC@{AI\_MinCodeADC}}
+\index{AI\_MinCodeADC@{AI\_MinCodeADC}!mpa\_register\_space\_ext\_rom@{mpa\_register\_space\_ext\_rom}}
+\doxysubsubsection{\texorpdfstring{AI\_MinCodeADC}{AI\_MinCodeADC}}
+{\footnotesize\ttfamily int16\+\_\+t mpa\+\_\+register\+\_\+space\+\_\+ext\+\_\+rom\+::\+A\+I\+\_\+\+Min\+Code\+A\+DC\mbox{[}\mbox{\hyperlink{mdr32__drivers_8h_a2332bbff598b25d3bddab65efa40db0f}{M\+A\+X\+\_\+\+C\+H\+A\+N\+E\+L\+\_\+\+N\+U\+M\+B\+ER}}\mbox{]}}
+
+
+
+Константа B -\/ минимум кода АЦП 
+
+\mbox{\Hypertarget{structmpa__register__space__ext__rom_a1ac3a111cbf7f05ea99156d54e16b955}\label{structmpa__register__space__ext__rom_a1ac3a111cbf7f05ea99156d54e16b955}} 
+\index{mpa\_register\_space\_ext\_rom@{mpa\_register\_space\_ext\_rom}!AI\_NumForAverag@{AI\_NumForAverag}}
+\index{AI\_NumForAverag@{AI\_NumForAverag}!mpa\_register\_space\_ext\_rom@{mpa\_register\_space\_ext\_rom}}
+\doxysubsubsection{\texorpdfstring{AI\_NumForAverag}{AI\_NumForAverag}}
+{\footnotesize\ttfamily uint16\+\_\+t mpa\+\_\+register\+\_\+space\+\_\+ext\+\_\+rom\+::\+A\+I\+\_\+\+Num\+For\+Averag\mbox{[}\mbox{\hyperlink{mdr32__drivers_8h_a2332bbff598b25d3bddab65efa40db0f}{M\+A\+X\+\_\+\+C\+H\+A\+N\+E\+L\+\_\+\+N\+U\+M\+B\+ER}}\mbox{]}}
+
+
+
+Кол-\/во выборок для усреднения 
+
+\mbox{\Hypertarget{structmpa__register__space__ext__rom_a49e8b51172c0d8ea6eda885e82343374}\label{structmpa__register__space__ext__rom_a49e8b51172c0d8ea6eda885e82343374}} 
+\index{mpa\_register\_space\_ext\_rom@{mpa\_register\_space\_ext\_rom}!AI\_OperMode@{AI\_OperMode}}
+\index{AI\_OperMode@{AI\_OperMode}!mpa\_register\_space\_ext\_rom@{mpa\_register\_space\_ext\_rom}}
+\doxysubsubsection{\texorpdfstring{AI\_OperMode}{AI\_OperMode}}
+{\footnotesize\ttfamily \mbox{\hyperlink{external__rom_8h_ac1bc9cf72b9c0ccf37ccbdf84d77fca0}{ai\+\_\+oper\+\_\+mode}} mpa\+\_\+register\+\_\+space\+\_\+ext\+\_\+rom\+::\+A\+I\+\_\+\+Oper\+Mode}
+
+
+
+Режим работы канала 
+
+\mbox{\Hypertarget{structmpa__register__space__ext__rom_a6893959779b22a58c36f3aa0bd2b4777}\label{structmpa__register__space__ext__rom_a6893959779b22a58c36f3aa0bd2b4777}} 
+\index{mpa\_register\_space\_ext\_rom@{mpa\_register\_space\_ext\_rom}!AI\_PolynConst0@{AI\_PolynConst0}}
+\index{AI\_PolynConst0@{AI\_PolynConst0}!mpa\_register\_space\_ext\_rom@{mpa\_register\_space\_ext\_rom}}
+\doxysubsubsection{\texorpdfstring{AI\_PolynConst0}{AI\_PolynConst0}}
+{\footnotesize\ttfamily float mpa\+\_\+register\+\_\+space\+\_\+ext\+\_\+rom\+::\+A\+I\+\_\+\+Polyn\+Const0\mbox{[}\mbox{\hyperlink{mdr32__drivers_8h_a2332bbff598b25d3bddab65efa40db0f}{M\+A\+X\+\_\+\+C\+H\+A\+N\+E\+L\+\_\+\+N\+U\+M\+B\+ER}}\mbox{]}}
+
+
+
+Константа А0 апрокс. полинома 
+
+\mbox{\Hypertarget{structmpa__register__space__ext__rom_ac9dcd4f5d112d0ba95ea072e06465f71}\label{structmpa__register__space__ext__rom_ac9dcd4f5d112d0ba95ea072e06465f71}} 
+\index{mpa\_register\_space\_ext\_rom@{mpa\_register\_space\_ext\_rom}!AI\_PolynConst1@{AI\_PolynConst1}}
+\index{AI\_PolynConst1@{AI\_PolynConst1}!mpa\_register\_space\_ext\_rom@{mpa\_register\_space\_ext\_rom}}
+\doxysubsubsection{\texorpdfstring{AI\_PolynConst1}{AI\_PolynConst1}}
+{\footnotesize\ttfamily float mpa\+\_\+register\+\_\+space\+\_\+ext\+\_\+rom\+::\+A\+I\+\_\+\+Polyn\+Const1\mbox{[}\mbox{\hyperlink{mdr32__drivers_8h_a2332bbff598b25d3bddab65efa40db0f}{M\+A\+X\+\_\+\+C\+H\+A\+N\+E\+L\+\_\+\+N\+U\+M\+B\+ER}}\mbox{]}}
+
+
+
+Константа А1 апрокс. полинома 
+
+\mbox{\Hypertarget{structmpa__register__space__ext__rom_aa8b22285124f0d85fc148fcb896b6078}\label{structmpa__register__space__ext__rom_aa8b22285124f0d85fc148fcb896b6078}} 
+\index{mpa\_register\_space\_ext\_rom@{mpa\_register\_space\_ext\_rom}!AI\_PolynConst2@{AI\_PolynConst2}}
+\index{AI\_PolynConst2@{AI\_PolynConst2}!mpa\_register\_space\_ext\_rom@{mpa\_register\_space\_ext\_rom}}
+\doxysubsubsection{\texorpdfstring{AI\_PolynConst2}{AI\_PolynConst2}}
+{\footnotesize\ttfamily float mpa\+\_\+register\+\_\+space\+\_\+ext\+\_\+rom\+::\+A\+I\+\_\+\+Polyn\+Const2\mbox{[}\mbox{\hyperlink{mdr32__drivers_8h_a2332bbff598b25d3bddab65efa40db0f}{M\+A\+X\+\_\+\+C\+H\+A\+N\+E\+L\+\_\+\+N\+U\+M\+B\+ER}}\mbox{]}}
+
+
+
+Константа А2 апрокс. полинома 
+
+\mbox{\Hypertarget{structmpa__register__space__ext__rom_adaa30c909a5f4fb46337525db6ea536f}\label{structmpa__register__space__ext__rom_adaa30c909a5f4fb46337525db6ea536f}} 
+\index{mpa\_register\_space\_ext\_rom@{mpa\_register\_space\_ext\_rom}!AI\_PolynConst3@{AI\_PolynConst3}}
+\index{AI\_PolynConst3@{AI\_PolynConst3}!mpa\_register\_space\_ext\_rom@{mpa\_register\_space\_ext\_rom}}
+\doxysubsubsection{\texorpdfstring{AI\_PolynConst3}{AI\_PolynConst3}}
+{\footnotesize\ttfamily float mpa\+\_\+register\+\_\+space\+\_\+ext\+\_\+rom\+::\+A\+I\+\_\+\+Polyn\+Const3\mbox{[}\mbox{\hyperlink{mdr32__drivers_8h_a2332bbff598b25d3bddab65efa40db0f}{M\+A\+X\+\_\+\+C\+H\+A\+N\+E\+L\+\_\+\+N\+U\+M\+B\+ER}}\mbox{]}}
+
+
+
+Константа А3 апрокс. полинома 
+
+\mbox{\Hypertarget{structmpa__register__space__ext__rom_aa7d4ea93729864388f73d4452bd80030}\label{structmpa__register__space__ext__rom_aa7d4ea93729864388f73d4452bd80030}} 
+\index{mpa\_register\_space\_ext\_rom@{mpa\_register\_space\_ext\_rom}!AI\_PolynConst4@{AI\_PolynConst4}}
+\index{AI\_PolynConst4@{AI\_PolynConst4}!mpa\_register\_space\_ext\_rom@{mpa\_register\_space\_ext\_rom}}
+\doxysubsubsection{\texorpdfstring{AI\_PolynConst4}{AI\_PolynConst4}}
+{\footnotesize\ttfamily float mpa\+\_\+register\+\_\+space\+\_\+ext\+\_\+rom\+::\+A\+I\+\_\+\+Polyn\+Const4\mbox{[}\mbox{\hyperlink{mdr32__drivers_8h_a2332bbff598b25d3bddab65efa40db0f}{M\+A\+X\+\_\+\+C\+H\+A\+N\+E\+L\+\_\+\+N\+U\+M\+B\+ER}}\mbox{]}}
+
+
+
+Константа А4 апрокс. полинома 
+
+\mbox{\Hypertarget{structmpa__register__space__ext__rom_a85ca16cef224c436d288720c9f111c41}\label{structmpa__register__space__ext__rom_a85ca16cef224c436d288720c9f111c41}} 
+\index{mpa\_register\_space\_ext\_rom@{mpa\_register\_space\_ext\_rom}!AI\_PolynConst5@{AI\_PolynConst5}}
+\index{AI\_PolynConst5@{AI\_PolynConst5}!mpa\_register\_space\_ext\_rom@{mpa\_register\_space\_ext\_rom}}
+\doxysubsubsection{\texorpdfstring{AI\_PolynConst5}{AI\_PolynConst5}}
+{\footnotesize\ttfamily float mpa\+\_\+register\+\_\+space\+\_\+ext\+\_\+rom\+::\+A\+I\+\_\+\+Polyn\+Const5\mbox{[}\mbox{\hyperlink{mdr32__drivers_8h_a2332bbff598b25d3bddab65efa40db0f}{M\+A\+X\+\_\+\+C\+H\+A\+N\+E\+L\+\_\+\+N\+U\+M\+B\+ER}}\mbox{]}}
+
+
+
+Константа А5 апрокс. полинома 
+
+\mbox{\Hypertarget{structmpa__register__space__ext__rom_aeb1c4b214192020c67cc59a1a6aa327c}\label{structmpa__register__space__ext__rom_aeb1c4b214192020c67cc59a1a6aa327c}} 
+\index{mpa\_register\_space\_ext\_rom@{mpa\_register\_space\_ext\_rom}!AI\_PolynConst6@{AI\_PolynConst6}}
+\index{AI\_PolynConst6@{AI\_PolynConst6}!mpa\_register\_space\_ext\_rom@{mpa\_register\_space\_ext\_rom}}
+\doxysubsubsection{\texorpdfstring{AI\_PolynConst6}{AI\_PolynConst6}}
+{\footnotesize\ttfamily float mpa\+\_\+register\+\_\+space\+\_\+ext\+\_\+rom\+::\+A\+I\+\_\+\+Polyn\+Const6\mbox{[}\mbox{\hyperlink{mdr32__drivers_8h_a2332bbff598b25d3bddab65efa40db0f}{M\+A\+X\+\_\+\+C\+H\+A\+N\+E\+L\+\_\+\+N\+U\+M\+B\+ER}}\mbox{]}}
+
+
+
+Константа А6 апрокс. полинома 
+
+\mbox{\Hypertarget{structmpa__register__space__ext__rom_a8990c914859c8b1fa2dbab542c1978c4}\label{structmpa__register__space__ext__rom_a8990c914859c8b1fa2dbab542c1978c4}} 
+\index{mpa\_register\_space\_ext\_rom@{mpa\_register\_space\_ext\_rom}!Reserv\_3@{Reserv\_3}}
+\index{Reserv\_3@{Reserv\_3}!mpa\_register\_space\_ext\_rom@{mpa\_register\_space\_ext\_rom}}
+\doxysubsubsection{\texorpdfstring{Reserv\_3}{Reserv\_3}}
+{\footnotesize\ttfamily uint8\+\_\+t mpa\+\_\+register\+\_\+space\+\_\+ext\+\_\+rom\+::\+Reserv\+\_\+3\mbox{[}32\mbox{]}}
+
+
+
+Резерв 
+
+\mbox{\Hypertarget{structmpa__register__space__ext__rom_ad0ab3d711fc7b3c2c661a93ec450e58f}\label{structmpa__register__space__ext__rom_ad0ab3d711fc7b3c2c661a93ec450e58f}} 
+\index{mpa\_register\_space\_ext\_rom@{mpa\_register\_space\_ext\_rom}!Reserv\_4@{Reserv\_4}}
+\index{Reserv\_4@{Reserv\_4}!mpa\_register\_space\_ext\_rom@{mpa\_register\_space\_ext\_rom}}
+\doxysubsubsection{\texorpdfstring{Reserv\_4}{Reserv\_4}}
+{\footnotesize\ttfamily uint8\+\_\+t mpa\+\_\+register\+\_\+space\+\_\+ext\+\_\+rom\+::\+Reserv\+\_\+4\mbox{[}32\mbox{]}}
+
+
+
+Резерв 
+
+\mbox{\Hypertarget{structmpa__register__space__ext__rom_a8d21bd3ee4501d6530d5b6fb523e305b}\label{structmpa__register__space__ext__rom_a8d21bd3ee4501d6530d5b6fb523e305b}} 
+\index{mpa\_register\_space\_ext\_rom@{mpa\_register\_space\_ext\_rom}!Reserv\_5@{Reserv\_5}}
+\index{Reserv\_5@{Reserv\_5}!mpa\_register\_space\_ext\_rom@{mpa\_register\_space\_ext\_rom}}
+\doxysubsubsection{\texorpdfstring{Reserv\_5}{Reserv\_5}}
+{\footnotesize\ttfamily uint8\+\_\+t mpa\+\_\+register\+\_\+space\+\_\+ext\+\_\+rom\+::\+Reserv\+\_\+5\mbox{[}32\mbox{]}}
+
+
+
+Резерв 
+
+
+
+Объявления и описания членов структуры находятся в файле\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{external__rom_8h}{external\+\_\+rom.\+h}}\end{DoxyCompactItemize}

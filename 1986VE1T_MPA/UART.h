@@ -10,24 +10,25 @@
 #include "timers.h"
 #include "string.h"
 
-///ножки для UART1-2
-#define PORT_UART1 		MDR_PORTC
-#define PIN_UART1_RX 	PORT_Pin_4
-#define PIN_UART1_TX 	PORT_Pin_3
-#define PORT_UART2 		MDR_PORTD
-#define PIN_UART2_RX 	PORT_Pin_14
-#define PIN_UART2_TX 	PORT_Pin_13
-///управляющие ножки для активации на прием микросхемы RS-485 для UART1-2
-#define PORT_UART1_EN MDR_PORTD
-#define PORT_UART2_EN	MDR_PORTD
-#define PIN_UART1_EN 	PORT_Pin_10
-#define PIN_UART2_EN 	PORT_Pin_12
+#define PORT_UART1 		MDR_PORTC			///< Порт UART1
+#define PIN_UART1_RX 	PORT_Pin_4		///< Линия RX порта UART1
+#define PIN_UART1_TX 	PORT_Pin_3		///< Линия TX порта UART1
+#define PORT_UART2 		MDR_PORTD			///< Порт UART2
+#define PIN_UART2_RX 	PORT_Pin_14		///< Линия RX порта UART2
+#define PIN_UART2_TX 	PORT_Pin_13		///< Линия TX порта UART2
 
-#define UART_BUFFER_SIZE 	16384             				///< Размер кольцевого буфера UARTn (в кБАйтах)
+#define PORT_UART1_EN MDR_PORTD			///< Порт линии EN микросхемы RS485 для UART1
+#define PORT_UART2_EN	MDR_PORTD			///< Порт линии EN микросхемы RS485 для UART2
+#define PIN_UART1_EN 	PORT_Pin_10		///< Линия EN микросхемы RS485 для UART1
+#define PIN_UART2_EN 	PORT_Pin_12		///< Линия EN микросхемы RS485 для UART2
+
+#define UART_BUFFER_SIZE 	16384             				///< Размер кольцевого буфера UARTn (в кБайтах)
 #define BUFFER_MASK 			(UART_BUFFER_SIZE-1)			///< Маска, необходимая для корректной работы кольцевого буфера
 
-
-///Коды ошибок работы UART
+/**
+ * @brief Коды ошибок работы UART
+ *
+ */
 typedef enum errors
 {
 	NO_ERRORS,														///< Нет ошибок
@@ -38,7 +39,10 @@ typedef enum errors
 	POSITION_ERROR												///< Ошибка установки курсора чтения
 } uart_errors;
 
-///Структура с таймаутами UARTn
+/**
+ * @brief Структура с таймаутами UARTn
+ *
+ */
 typedef struct uart_timeouts
 {
 	timer_n 							*timer_n_timeout;							///< Выбор таймера для отслеживания таймаутов
@@ -46,18 +50,32 @@ typedef struct uart_timeouts
 	uint8_t 							write_timeout_flag; 					///< Флаг таймаута на запись
 	uint32_t 							read_val_timeout;  						///< Таймаут на чтение
 	uint32_t 							write_val_timeout; 						///< Таймаут на запись
-} uart_rx_tx_timeouts;
+} 
+#ifndef DOXYGEN
+__attribute__((packed))
+#endif
+uart_rx_tx_timeouts;
 
-///Структура с параметрами DMA канала UARTn
+/**
+ * @brief Структура с параметрами DMA канала UARTn
+ *
+ */
 typedef struct uart_dma_params
 {
 	uint8_t 									dma_channel;							 ///< Выбор канала DMA для UARTn
 	uint32_t 									dma_irq_counter;					 ///< Счетчик прерываний DMA
 	DMA_CtrlDataInitTypeDef 	DMA_InitStructure_UART_RX; ///< Структура с настройками DMA в целом 
 	DMA_ChannelInitTypeDef 		DMA_Channel_UART_RX;  		 ///< Структура с настройками канала DMA
-} uart_dma_ch_params;  
+} 
+#ifndef DOXYGEN
+__attribute__((packed))
+#endif
+uart_dma_ch_params;  
 
-///Структура с конфигурационными параметрами UART и буфером приема
+/**
+ * @brief Структура с конфигурационными параметрами UART и буфером приема
+ *
+ */
 typedef struct uart_config_data
 {
 	MDR_UART_TypeDef* 		UARTx;            					///< Библиотечная структура с периферийными регистрами блока UART
@@ -70,32 +88,36 @@ typedef struct uart_config_data
 	uint8_t* 							buffer;											///< Указатель на буфер преимника UART
 	uint32_t 							buffer_count;								///< Счетчик элементов буфера
 	uint32_t 							read_pos;										///< Текущая позиция курсора чтения в буфере
-} uart_n;
+} 
+#ifndef DOXYGEN
+__attribute__((packed))
+#endif
+uart_n;
 
 /*!
  *	\brief Инициализацирует выбранный  UARTn
  *	\param *uart_struct - Выбранный UART для инициализации
- *	\return Сообщение с результатом (0 - успех, 1- ошибка)
+ *	\return Код ошибки uart_errors
 */
-uint8_t uart_init(uart_n *uart_struct);
+uart_errors uart_init(uart_n *uart_struct);
 
 /*!
  *  \brief Передаёт данные по UART
  *  \param *uart_struct - Выбранный UART для инициализации
  *  \param *data - Указатель на массив данных
  *  \param data_size - Размер данных в байтах
- *  \return Сообщение с результатом (0 - успех, 1- ошибка)
+ *  \return Код ошибки uart_errors
 */
-uint8_t uart_write(uart_n *uart_struct, uint8_t *data, uint32_t data_size);
+uart_errors uart_write(uart_n *uart_struct, uint8_t *data, uint32_t data_size);
 
 /*!
  * \brief Читает данные из буфера UART
  * \param *uart_struct - Выбранный UART для инициализации
  * \param len - Кол-во байт для чтения
  * \param *data - Указатель на массив, куда считываются байты из буфера UART
- * \return Сообщение с результатом (0 - успех, 1- ошибка)
+ * \return Код ошибки uart_errors
 */
-uint8_t uart_read(uart_n *uart_struct, uint32_t len, uint8_t *data);
+uart_errors uart_read(uart_n *uart_struct, uint32_t len, uint8_t *data);
 
 /*!
  * \brief Очищает кольцевой буфер приемника UART
@@ -107,9 +129,9 @@ void uart_clean(uart_n *uart_struct);
  * \brief Устанавливает курсор чтения в кольцевом буфере
  * \param *uart_struct - Выбранный UART для инициализации
  * \param pos - Позиция курсора в буфере
- * \return Сообщение с результатом (0 - успех, 1- ошибка)
+ * \return Код ошибки uart_errors
 */
-uint8_t uart_set_pos(uart_n *uart_struct, uint32_t pos);
+uart_errors uart_set_pos(uart_n *uart_struct, uint32_t pos);
 
 /*!
  * \brief Читает текущую позицию курсора чтения в кольцевом буфере

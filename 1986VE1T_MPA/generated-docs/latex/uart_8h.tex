@@ -1,0 +1,836 @@
+\hypertarget{uart_8h}{}\doxysection{Файл uart.\+h}
+\label{uart_8h}\index{uart.h@{uart.h}}
+
+
+Заголовочный файл с описанием A\+PI для работы с U\+A\+RT.  
+
+
+{\ttfamily \#include \char`\"{}mdr32\+\_\+drivers.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}timers.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}string.\+h\char`\"{}}\newline
+Граф включаемых заголовочных файлов для uart.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{uart_8h__incl}
+\end{center}
+\end{figure}
+Граф файлов, в которые включается этот файл\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{uart_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Классы}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structuart__timeouts}{uart\+\_\+timeouts}}
+\begin{DoxyCompactList}\small\item\em Структура с таймаутами U\+A\+R\+Tn. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structuart__dma__params}{uart\+\_\+dma\+\_\+params}}
+\begin{DoxyCompactList}\small\item\em Структура с параметрами D\+MA канала U\+A\+R\+Tn. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structuart__config__data}{uart\+\_\+config\+\_\+data}}
+\begin{DoxyCompactList}\small\item\em Структура с конфигурационными параметрами U\+A\+RT и буфером приема \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Макросы}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{uart_8h_a57684e701a73ac9b933644e50f1b7c26}{P\+O\+R\+T\+\_\+\+U\+A\+R\+T1}}~M\+D\+R\+\_\+\+P\+O\+R\+TC
+\begin{DoxyCompactList}\small\item\em Порт U\+A\+R\+T1. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{uart_8h_aa3ad2fe6929c560f3dee7a710c615089}{P\+I\+N\+\_\+\+U\+A\+R\+T1\+\_\+\+RX}}~P\+O\+R\+T\+\_\+\+Pin\+\_\+4
+\begin{DoxyCompactList}\small\item\em Линия RX порта U\+A\+R\+T1. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{uart_8h_a88fb8ea352bc1b90ead32b6a5b7683de}{P\+I\+N\+\_\+\+U\+A\+R\+T1\+\_\+\+TX}}~P\+O\+R\+T\+\_\+\+Pin\+\_\+3
+\begin{DoxyCompactList}\small\item\em Линия TX порта U\+A\+R\+T1. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{uart_8h_a5a715f2a3cbcff2804367489da622378}{P\+O\+R\+T\+\_\+\+U\+A\+R\+T2}}~M\+D\+R\+\_\+\+P\+O\+R\+TD
+\begin{DoxyCompactList}\small\item\em Порт U\+A\+R\+T2. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{uart_8h_a6de937aac78b3eee2db9ca6d79d2a3a4}{P\+I\+N\+\_\+\+U\+A\+R\+T2\+\_\+\+RX}}~P\+O\+R\+T\+\_\+\+Pin\+\_\+14
+\begin{DoxyCompactList}\small\item\em Линия RX порта U\+A\+R\+T2. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{uart_8h_a71a0f60173663ff994058cc1c3c12a91}{P\+I\+N\+\_\+\+U\+A\+R\+T2\+\_\+\+TX}}~P\+O\+R\+T\+\_\+\+Pin\+\_\+13
+\begin{DoxyCompactList}\small\item\em Линия TX порта U\+A\+R\+T2. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{uart_8h_a590c865bf82f5db76c4ee77fa5f6cf20}{P\+O\+R\+T\+\_\+\+U\+A\+R\+T1\+\_\+\+EN}}~M\+D\+R\+\_\+\+P\+O\+R\+TD
+\begin{DoxyCompactList}\small\item\em Порт линии EN микросхемы R\+S485 для U\+A\+R\+T1. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{uart_8h_aec8f70a46f17ed2f70e86294ee2acc96}{P\+O\+R\+T\+\_\+\+U\+A\+R\+T2\+\_\+\+EN}}~M\+D\+R\+\_\+\+P\+O\+R\+TD
+\begin{DoxyCompactList}\small\item\em Порт линии EN микросхемы R\+S485 для U\+A\+R\+T2. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{uart_8h_af5a73d5cef316ce47a72c75874c28e68}{P\+I\+N\+\_\+\+U\+A\+R\+T1\+\_\+\+EN}}~P\+O\+R\+T\+\_\+\+Pin\+\_\+10
+\begin{DoxyCompactList}\small\item\em Линия EN микросхемы R\+S485 для U\+A\+R\+T1. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{uart_8h_a11012fd387b786acaf1bd8fdba424351}{P\+I\+N\+\_\+\+U\+A\+R\+T2\+\_\+\+EN}}~P\+O\+R\+T\+\_\+\+Pin\+\_\+12
+\begin{DoxyCompactList}\small\item\em Линия EN микросхемы R\+S485 для U\+A\+R\+T2. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{uart_8h_a0d57378e32bf8278011460740bc29f7f}{U\+A\+R\+T\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE}}~16384
+\begin{DoxyCompactList}\small\item\em Размер кольцевого буфера U\+A\+R\+Tn (в кБайтах) \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{uart_8h_aa08b802e49991b12915e73b280563900}{B\+U\+F\+F\+E\+R\+\_\+\+M\+A\+SK}}~(\mbox{\hyperlink{uart_8h_a0d57378e32bf8278011460740bc29f7f}{U\+A\+R\+T\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE}}-\/1)
+\begin{DoxyCompactList}\small\item\em Маска, необходимая для корректной работы кольцевого буфера \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{uart_8h_a76aa2435d5c21f3636b0b576c7cfeefc}{R\+E\+C\+O\+G\+N\+I\+Z\+E\+\_\+\+B\+US}}(ext\+\_\+bus,  uart\+\_\+struct)
+\begin{DoxyCompactList}\small\item\em Макрос для определения по какой шине идет обмен данными \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{uart_8h_a4a8dd93d7e01285628644eaf90067f90}{G\+E\+T\+\_\+\+U\+A\+R\+T\+\_\+\+B\+U\+F\+\_\+\+P\+TR}}~uart\+\_\+struct-\/$>$buffer
+\begin{DoxyCompactList}\small\item\em Макрос возвращающий указатель на буфер U\+A\+RT. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Определения типов}
+\begin{DoxyCompactItemize}
+\item 
+typedef enum \mbox{\hyperlink{uart_8h_acc42076253600be964e110149b458971}{errors}} \mbox{\hyperlink{uart_8h_a7c366cf58b12c041cc1dc3130264643f}{uart\+\_\+errors}}
+\begin{DoxyCompactList}\small\item\em Коды ошибок работы U\+A\+RT. \end{DoxyCompactList}\item 
+typedef struct \mbox{\hyperlink{structuart__timeouts}{uart\+\_\+timeouts}} \mbox{\hyperlink{uart_8h_ad16348bb8987711d91f43cb83d414baf}{uart\+\_\+rx\+\_\+tx\+\_\+timeouts}}
+\begin{DoxyCompactList}\small\item\em Структура с таймаутами U\+A\+R\+Tn. \end{DoxyCompactList}\item 
+typedef struct \mbox{\hyperlink{structuart__dma__params}{uart\+\_\+dma\+\_\+params}} \mbox{\hyperlink{uart_8h_a5a07858f5460c10bb5201e4eae5fe708}{uart\+\_\+dma\+\_\+ch\+\_\+params}}
+\begin{DoxyCompactList}\small\item\em Структура с параметрами D\+MA канала U\+A\+R\+Tn. \end{DoxyCompactList}\item 
+typedef struct \mbox{\hyperlink{structuart__config__data}{uart\+\_\+config\+\_\+data}} \mbox{\hyperlink{uart_8h_adaa8285f14392d31d36867eddcd78572}{uart\+\_\+n}}
+\begin{DoxyCompactList}\small\item\em Структура с конфигурационными параметрами U\+A\+RT и буфером приема \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Перечисления}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{uart_8h_acc42076253600be964e110149b458971}{errors}} \{ \newline
+\mbox{\hyperlink{uart_8h_acc42076253600be964e110149b458971a14820276ae7e4047a53d9b78109f7e2a}{N\+O\+\_\+\+E\+R\+R\+O\+RS}}, 
+\mbox{\hyperlink{uart_8h_acc42076253600be964e110149b458971aa446325b29d7c917325acc576f0f0f45}{I\+N\+I\+T\+\_\+\+E\+R\+R\+OR}}, 
+\mbox{\hyperlink{uart_8h_acc42076253600be964e110149b458971a94e4602a53bb7bd09807e344f43fd9df}{W\+R\+I\+T\+E\+\_\+\+T\+I\+M\+E\+O\+U\+T\+\_\+\+E\+R\+R\+OR}}, 
+\mbox{\hyperlink{uart_8h_acc42076253600be964e110149b458971a0f91482313337f86a041c4de8e01bd40}{R\+E\+A\+D\+\_\+\+T\+I\+M\+E\+O\+U\+T\+\_\+\+E\+R\+R\+OR}}, 
+\newline
+\mbox{\hyperlink{uart_8h_acc42076253600be964e110149b458971a00d70d3edd67bde5b2049fb31fcba4fd}{S\+I\+Z\+E\+\_\+\+E\+R\+R\+OR}}, 
+\mbox{\hyperlink{uart_8h_acc42076253600be964e110149b458971a50592fa5d44fc63417e52b9aad6d0021}{P\+O\+S\+I\+T\+I\+O\+N\+\_\+\+E\+R\+R\+OR}}
+ \}
+\begin{DoxyCompactList}\small\item\em Коды ошибок работы U\+A\+RT. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Функции}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{uart_8h_a7c366cf58b12c041cc1dc3130264643f}{uart\+\_\+errors}} \mbox{\hyperlink{uart_8h_aea88fcf520be11e83cfd915492675ae5}{uart\+\_\+init}} (\mbox{\hyperlink{uart_8h_adaa8285f14392d31d36867eddcd78572}{uart\+\_\+n}} $\ast$uart\+\_\+struct)
+\begin{DoxyCompactList}\small\item\em Инициализацирует выбранный U\+A\+R\+Tn. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{uart_8h_a7c366cf58b12c041cc1dc3130264643f}{uart\+\_\+errors}} \mbox{\hyperlink{uart_8h_ae6a3bc40518edab0e42a8fbb40aaa8d9}{uart\+\_\+write}} (\mbox{\hyperlink{uart_8h_adaa8285f14392d31d36867eddcd78572}{uart\+\_\+n}} $\ast$uart\+\_\+struct, uint8\+\_\+t $\ast$data, uint32\+\_\+t data\+\_\+size)
+\begin{DoxyCompactList}\small\item\em Передаёт данные по U\+A\+RT. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{uart_8h_a7c366cf58b12c041cc1dc3130264643f}{uart\+\_\+errors}} \mbox{\hyperlink{uart_8h_a7e6732641a7051f1b7932b1684826ad9}{uart\+\_\+read}} (\mbox{\hyperlink{uart_8h_adaa8285f14392d31d36867eddcd78572}{uart\+\_\+n}} $\ast$uart\+\_\+struct, uint32\+\_\+t len, uint8\+\_\+t $\ast$data)
+\begin{DoxyCompactList}\small\item\em Читает данные из буфера U\+A\+RT. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{uart_8h_a66de1150972b09285805d2103e5a6cdf}{uart\+\_\+clean}} (\mbox{\hyperlink{uart_8h_adaa8285f14392d31d36867eddcd78572}{uart\+\_\+n}} $\ast$uart\+\_\+struct)
+\begin{DoxyCompactList}\small\item\em Очищает кольцевой буфер приемника U\+A\+RT. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{uart_8h_a7c366cf58b12c041cc1dc3130264643f}{uart\+\_\+errors}} \mbox{\hyperlink{uart_8h_a3eac6a0676f547ab7ca6c1af822ff0a0}{uart\+\_\+set\+\_\+pos}} (\mbox{\hyperlink{uart_8h_adaa8285f14392d31d36867eddcd78572}{uart\+\_\+n}} $\ast$uart\+\_\+struct, uint32\+\_\+t pos)
+\begin{DoxyCompactList}\small\item\em Устанавливает курсор чтения в кольцевом буфере \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{uart_8h_ae4c246743abceb853beddc6f00487b94}{uart\+\_\+read\+\_\+pos}} (\mbox{\hyperlink{uart_8h_adaa8285f14392d31d36867eddcd78572}{uart\+\_\+n}} $\ast$uart\+\_\+struct)
+\begin{DoxyCompactList}\small\item\em Читает текущую позицию курсора чтения в кольцевом буфере \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{uart_8h_a9a4afed7cf6535ff74c5839a153e3845}{uart\+\_\+get\+\_\+buf\+\_\+counter}} (\mbox{\hyperlink{uart_8h_adaa8285f14392d31d36867eddcd78572}{uart\+\_\+n}} $\ast$uart\+\_\+struct)
+\begin{DoxyCompactList}\small\item\em Читает кол-\/во байт в кольцевом буфере U\+A\+RT. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{uart_8h_ae14bbae27563550125dabbbe18aa55d4}{D\+M\+A\+\_\+\+U\+A\+R\+T\+\_\+\+R\+X\+\_\+init}} (\mbox{\hyperlink{uart_8h_adaa8285f14392d31d36867eddcd78572}{uart\+\_\+n}} $\ast$uart\+\_\+struct)
+\begin{DoxyCompactList}\small\item\em Инициализирует n-\/ый канал D\+MA на запрос от приемника U\+A\+R\+Tn. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{uart_8h_a7c75315e9e96f617d559097cf3b85470}{uart\+\_\+set\+\_\+read\+\_\+timeout}} (\mbox{\hyperlink{uart_8h_adaa8285f14392d31d36867eddcd78572}{uart\+\_\+n}} $\ast$uart\+\_\+struct, uint32\+\_\+t read\+\_\+timeout)
+\begin{DoxyCompactList}\small\item\em Устанавливает таймаут U\+A\+R\+Tn на чтение \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{uart_8h_a3c4a26eef1955212637e5328e098c050}{uart\+\_\+set\+\_\+write\+\_\+timeout}} (\mbox{\hyperlink{uart_8h_adaa8285f14392d31d36867eddcd78572}{uart\+\_\+n}} $\ast$uart\+\_\+struct, uint32\+\_\+t write\+\_\+timeout)
+\begin{DoxyCompactList}\small\item\em Устанавливает таймаут U\+A\+R\+Tn на запись \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Заголовочный файл с описанием A\+PI для работы с U\+A\+RT. 
+
+
+
+\doxysubsection{Макросы}
+\mbox{\Hypertarget{uart_8h_aa08b802e49991b12915e73b280563900}\label{uart_8h_aa08b802e49991b12915e73b280563900}} 
+\index{uart.h@{uart.h}!BUFFER\_MASK@{BUFFER\_MASK}}
+\index{BUFFER\_MASK@{BUFFER\_MASK}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{BUFFER\_MASK}{BUFFER\_MASK}}
+{\footnotesize\ttfamily \#define B\+U\+F\+F\+E\+R\+\_\+\+M\+A\+SK~(\mbox{\hyperlink{uart_8h_a0d57378e32bf8278011460740bc29f7f}{U\+A\+R\+T\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE}}-\/1)}
+
+
+
+Маска, необходимая для корректной работы кольцевого буфера 
+
+\mbox{\Hypertarget{uart_8h_a4a8dd93d7e01285628644eaf90067f90}\label{uart_8h_a4a8dd93d7e01285628644eaf90067f90}} 
+\index{uart.h@{uart.h}!GET\_UART\_BUF\_PTR@{GET\_UART\_BUF\_PTR}}
+\index{GET\_UART\_BUF\_PTR@{GET\_UART\_BUF\_PTR}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{GET\_UART\_BUF\_PTR}{GET\_UART\_BUF\_PTR}}
+{\footnotesize\ttfamily \#define G\+E\+T\+\_\+\+U\+A\+R\+T\+\_\+\+B\+U\+F\+\_\+\+P\+TR~uart\+\_\+struct-\/$>$buffer}
+
+
+
+Макрос возвращающий указатель на буфер U\+A\+RT. 
+
+\mbox{\Hypertarget{uart_8h_af5a73d5cef316ce47a72c75874c28e68}\label{uart_8h_af5a73d5cef316ce47a72c75874c28e68}} 
+\index{uart.h@{uart.h}!PIN\_UART1\_EN@{PIN\_UART1\_EN}}
+\index{PIN\_UART1\_EN@{PIN\_UART1\_EN}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{PIN\_UART1\_EN}{PIN\_UART1\_EN}}
+{\footnotesize\ttfamily \#define P\+I\+N\+\_\+\+U\+A\+R\+T1\+\_\+\+EN~P\+O\+R\+T\+\_\+\+Pin\+\_\+10}
+
+
+
+Линия EN микросхемы R\+S485 для U\+A\+R\+T1. 
+
+\mbox{\Hypertarget{uart_8h_aa3ad2fe6929c560f3dee7a710c615089}\label{uart_8h_aa3ad2fe6929c560f3dee7a710c615089}} 
+\index{uart.h@{uart.h}!PIN\_UART1\_RX@{PIN\_UART1\_RX}}
+\index{PIN\_UART1\_RX@{PIN\_UART1\_RX}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{PIN\_UART1\_RX}{PIN\_UART1\_RX}}
+{\footnotesize\ttfamily \#define P\+I\+N\+\_\+\+U\+A\+R\+T1\+\_\+\+RX~P\+O\+R\+T\+\_\+\+Pin\+\_\+4}
+
+
+
+Линия RX порта U\+A\+R\+T1. 
+
+\mbox{\Hypertarget{uart_8h_a88fb8ea352bc1b90ead32b6a5b7683de}\label{uart_8h_a88fb8ea352bc1b90ead32b6a5b7683de}} 
+\index{uart.h@{uart.h}!PIN\_UART1\_TX@{PIN\_UART1\_TX}}
+\index{PIN\_UART1\_TX@{PIN\_UART1\_TX}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{PIN\_UART1\_TX}{PIN\_UART1\_TX}}
+{\footnotesize\ttfamily \#define P\+I\+N\+\_\+\+U\+A\+R\+T1\+\_\+\+TX~P\+O\+R\+T\+\_\+\+Pin\+\_\+3}
+
+
+
+Линия TX порта U\+A\+R\+T1. 
+
+\mbox{\Hypertarget{uart_8h_a11012fd387b786acaf1bd8fdba424351}\label{uart_8h_a11012fd387b786acaf1bd8fdba424351}} 
+\index{uart.h@{uart.h}!PIN\_UART2\_EN@{PIN\_UART2\_EN}}
+\index{PIN\_UART2\_EN@{PIN\_UART2\_EN}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{PIN\_UART2\_EN}{PIN\_UART2\_EN}}
+{\footnotesize\ttfamily \#define P\+I\+N\+\_\+\+U\+A\+R\+T2\+\_\+\+EN~P\+O\+R\+T\+\_\+\+Pin\+\_\+12}
+
+
+
+Линия EN микросхемы R\+S485 для U\+A\+R\+T2. 
+
+\mbox{\Hypertarget{uart_8h_a6de937aac78b3eee2db9ca6d79d2a3a4}\label{uart_8h_a6de937aac78b3eee2db9ca6d79d2a3a4}} 
+\index{uart.h@{uart.h}!PIN\_UART2\_RX@{PIN\_UART2\_RX}}
+\index{PIN\_UART2\_RX@{PIN\_UART2\_RX}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{PIN\_UART2\_RX}{PIN\_UART2\_RX}}
+{\footnotesize\ttfamily \#define P\+I\+N\+\_\+\+U\+A\+R\+T2\+\_\+\+RX~P\+O\+R\+T\+\_\+\+Pin\+\_\+14}
+
+
+
+Линия RX порта U\+A\+R\+T2. 
+
+\mbox{\Hypertarget{uart_8h_a71a0f60173663ff994058cc1c3c12a91}\label{uart_8h_a71a0f60173663ff994058cc1c3c12a91}} 
+\index{uart.h@{uart.h}!PIN\_UART2\_TX@{PIN\_UART2\_TX}}
+\index{PIN\_UART2\_TX@{PIN\_UART2\_TX}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{PIN\_UART2\_TX}{PIN\_UART2\_TX}}
+{\footnotesize\ttfamily \#define P\+I\+N\+\_\+\+U\+A\+R\+T2\+\_\+\+TX~P\+O\+R\+T\+\_\+\+Pin\+\_\+13}
+
+
+
+Линия TX порта U\+A\+R\+T2. 
+
+\mbox{\Hypertarget{uart_8h_a57684e701a73ac9b933644e50f1b7c26}\label{uart_8h_a57684e701a73ac9b933644e50f1b7c26}} 
+\index{uart.h@{uart.h}!PORT\_UART1@{PORT\_UART1}}
+\index{PORT\_UART1@{PORT\_UART1}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{PORT\_UART1}{PORT\_UART1}}
+{\footnotesize\ttfamily \#define P\+O\+R\+T\+\_\+\+U\+A\+R\+T1~M\+D\+R\+\_\+\+P\+O\+R\+TC}
+
+
+
+Порт U\+A\+R\+T1. 
+
+\mbox{\Hypertarget{uart_8h_a590c865bf82f5db76c4ee77fa5f6cf20}\label{uart_8h_a590c865bf82f5db76c4ee77fa5f6cf20}} 
+\index{uart.h@{uart.h}!PORT\_UART1\_EN@{PORT\_UART1\_EN}}
+\index{PORT\_UART1\_EN@{PORT\_UART1\_EN}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{PORT\_UART1\_EN}{PORT\_UART1\_EN}}
+{\footnotesize\ttfamily \#define P\+O\+R\+T\+\_\+\+U\+A\+R\+T1\+\_\+\+EN~M\+D\+R\+\_\+\+P\+O\+R\+TD}
+
+
+
+Порт линии EN микросхемы R\+S485 для U\+A\+R\+T1. 
+
+\mbox{\Hypertarget{uart_8h_a5a715f2a3cbcff2804367489da622378}\label{uart_8h_a5a715f2a3cbcff2804367489da622378}} 
+\index{uart.h@{uart.h}!PORT\_UART2@{PORT\_UART2}}
+\index{PORT\_UART2@{PORT\_UART2}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{PORT\_UART2}{PORT\_UART2}}
+{\footnotesize\ttfamily \#define P\+O\+R\+T\+\_\+\+U\+A\+R\+T2~M\+D\+R\+\_\+\+P\+O\+R\+TD}
+
+
+
+Порт U\+A\+R\+T2. 
+
+\mbox{\Hypertarget{uart_8h_aec8f70a46f17ed2f70e86294ee2acc96}\label{uart_8h_aec8f70a46f17ed2f70e86294ee2acc96}} 
+\index{uart.h@{uart.h}!PORT\_UART2\_EN@{PORT\_UART2\_EN}}
+\index{PORT\_UART2\_EN@{PORT\_UART2\_EN}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{PORT\_UART2\_EN}{PORT\_UART2\_EN}}
+{\footnotesize\ttfamily \#define P\+O\+R\+T\+\_\+\+U\+A\+R\+T2\+\_\+\+EN~M\+D\+R\+\_\+\+P\+O\+R\+TD}
+
+
+
+Порт линии EN микросхемы R\+S485 для U\+A\+R\+T2. 
+
+\mbox{\Hypertarget{uart_8h_a76aa2435d5c21f3636b0b576c7cfeefc}\label{uart_8h_a76aa2435d5c21f3636b0b576c7cfeefc}} 
+\index{uart.h@{uart.h}!RECOGNIZE\_BUS@{RECOGNIZE\_BUS}}
+\index{RECOGNIZE\_BUS@{RECOGNIZE\_BUS}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{RECOGNIZE\_BUS}{RECOGNIZE\_BUS}}
+{\footnotesize\ttfamily \#define R\+E\+C\+O\+G\+N\+I\+Z\+E\+\_\+\+B\+US(\begin{DoxyParamCaption}\item[{}]{ext\+\_\+bus,  }\item[{}]{uart\+\_\+struct }\end{DoxyParamCaption})}
+
+{\bfseries Макроопределение\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{    (\{\(\backslash\)}
+\DoxyCodeLine{    if(uart\_struct-\/>UARTx == MDR\_UART1) ext\_bus = 1;\(\backslash\)}
+\DoxyCodeLine{    else \textcolor{keywordflow}{if}(uart\_struct-\/>UARTx == MDR\_UART2) ext\_bus = 2;\(\backslash\)}
+\DoxyCodeLine{\})}
+
+\end{DoxyCode}
+
+
+Макрос для определения по какой шине идет обмен данными 
+
+\mbox{\Hypertarget{uart_8h_a0d57378e32bf8278011460740bc29f7f}\label{uart_8h_a0d57378e32bf8278011460740bc29f7f}} 
+\index{uart.h@{uart.h}!UART\_BUFFER\_SIZE@{UART\_BUFFER\_SIZE}}
+\index{UART\_BUFFER\_SIZE@{UART\_BUFFER\_SIZE}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{UART\_BUFFER\_SIZE}{UART\_BUFFER\_SIZE}}
+{\footnotesize\ttfamily \#define U\+A\+R\+T\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+ZE~16384}
+
+
+
+Размер кольцевого буфера U\+A\+R\+Tn (в кБайтах) 
+
+
+
+\doxysubsection{Типы}
+\mbox{\Hypertarget{uart_8h_a5a07858f5460c10bb5201e4eae5fe708}\label{uart_8h_a5a07858f5460c10bb5201e4eae5fe708}} 
+\index{uart.h@{uart.h}!uart\_dma\_ch\_params@{uart\_dma\_ch\_params}}
+\index{uart\_dma\_ch\_params@{uart\_dma\_ch\_params}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{uart\_dma\_ch\_params}{uart\_dma\_ch\_params}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structuart__dma__params}{uart\+\_\+dma\+\_\+params}} \mbox{\hyperlink{uart_8h_a5a07858f5460c10bb5201e4eae5fe708}{uart\+\_\+dma\+\_\+ch\+\_\+params}}}
+
+
+
+Структура с параметрами D\+MA канала U\+A\+R\+Tn. 
+
+\mbox{\Hypertarget{uart_8h_a7c366cf58b12c041cc1dc3130264643f}\label{uart_8h_a7c366cf58b12c041cc1dc3130264643f}} 
+\index{uart.h@{uart.h}!uart\_errors@{uart\_errors}}
+\index{uart\_errors@{uart\_errors}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{uart\_errors}{uart\_errors}}
+{\footnotesize\ttfamily typedef enum \mbox{\hyperlink{uart_8h_acc42076253600be964e110149b458971}{errors}} \mbox{\hyperlink{uart_8h_a7c366cf58b12c041cc1dc3130264643f}{uart\+\_\+errors}}}
+
+
+
+Коды ошибок работы U\+A\+RT. 
+
+\mbox{\Hypertarget{uart_8h_adaa8285f14392d31d36867eddcd78572}\label{uart_8h_adaa8285f14392d31d36867eddcd78572}} 
+\index{uart.h@{uart.h}!uart\_n@{uart\_n}}
+\index{uart\_n@{uart\_n}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{uart\_n}{uart\_n}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structuart__config__data}{uart\+\_\+config\+\_\+data}} \mbox{\hyperlink{uart_8h_adaa8285f14392d31d36867eddcd78572}{uart\+\_\+n}}}
+
+
+
+Структура с конфигурационными параметрами U\+A\+RT и буфером приема 
+
+\mbox{\Hypertarget{uart_8h_ad16348bb8987711d91f43cb83d414baf}\label{uart_8h_ad16348bb8987711d91f43cb83d414baf}} 
+\index{uart.h@{uart.h}!uart\_rx\_tx\_timeouts@{uart\_rx\_tx\_timeouts}}
+\index{uart\_rx\_tx\_timeouts@{uart\_rx\_tx\_timeouts}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{uart\_rx\_tx\_timeouts}{uart\_rx\_tx\_timeouts}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structuart__timeouts}{uart\+\_\+timeouts}} \mbox{\hyperlink{uart_8h_ad16348bb8987711d91f43cb83d414baf}{uart\+\_\+rx\+\_\+tx\+\_\+timeouts}}}
+
+
+
+Структура с таймаутами U\+A\+R\+Tn. 
+
+
+
+\doxysubsection{Перечисления}
+\mbox{\Hypertarget{uart_8h_acc42076253600be964e110149b458971}\label{uart_8h_acc42076253600be964e110149b458971}} 
+\index{uart.h@{uart.h}!errors@{errors}}
+\index{errors@{errors}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{errors}{errors}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{uart_8h_acc42076253600be964e110149b458971}{errors}}}
+
+
+
+Коды ошибок работы U\+A\+RT. 
+
+\begin{DoxyEnumFields}{Элементы перечислений}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NO\_ERRORS@{NO\_ERRORS}!uart.h@{uart.h}}\index{uart.h@{uart.h}!NO\_ERRORS@{NO\_ERRORS}}}\mbox{\Hypertarget{uart_8h_acc42076253600be964e110149b458971a14820276ae7e4047a53d9b78109f7e2a}\label{uart_8h_acc42076253600be964e110149b458971a14820276ae7e4047a53d9b78109f7e2a}} 
+N\+O\+\_\+\+E\+R\+R\+O\+RS&Нет ошибок \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{INIT\_ERROR@{INIT\_ERROR}!uart.h@{uart.h}}\index{uart.h@{uart.h}!INIT\_ERROR@{INIT\_ERROR}}}\mbox{\Hypertarget{uart_8h_acc42076253600be964e110149b458971aa446325b29d7c917325acc576f0f0f45}\label{uart_8h_acc42076253600be964e110149b458971aa446325b29d7c917325acc576f0f0f45}} 
+I\+N\+I\+T\+\_\+\+E\+R\+R\+OR&Ошибка инициализации U\+A\+RT. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{WRITE\_TIMEOUT\_ERROR@{WRITE\_TIMEOUT\_ERROR}!uart.h@{uart.h}}\index{uart.h@{uart.h}!WRITE\_TIMEOUT\_ERROR@{WRITE\_TIMEOUT\_ERROR}}}\mbox{\Hypertarget{uart_8h_acc42076253600be964e110149b458971a94e4602a53bb7bd09807e344f43fd9df}\label{uart_8h_acc42076253600be964e110149b458971a94e4602a53bb7bd09807e344f43fd9df}} 
+W\+R\+I\+T\+E\+\_\+\+T\+I\+M\+E\+O\+U\+T\+\_\+\+E\+R\+R\+OR&Ошибка сигнализирует о том, что превышен таймаут на запись \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{READ\_TIMEOUT\_ERROR@{READ\_TIMEOUT\_ERROR}!uart.h@{uart.h}}\index{uart.h@{uart.h}!READ\_TIMEOUT\_ERROR@{READ\_TIMEOUT\_ERROR}}}\mbox{\Hypertarget{uart_8h_acc42076253600be964e110149b458971a0f91482313337f86a041c4de8e01bd40}\label{uart_8h_acc42076253600be964e110149b458971a0f91482313337f86a041c4de8e01bd40}} 
+R\+E\+A\+D\+\_\+\+T\+I\+M\+E\+O\+U\+T\+\_\+\+E\+R\+R\+OR&Ошибка сигнализирует о том, что превышен таймаут на чтение \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SIZE\_ERROR@{SIZE\_ERROR}!uart.h@{uart.h}}\index{uart.h@{uart.h}!SIZE\_ERROR@{SIZE\_ERROR}}}\mbox{\Hypertarget{uart_8h_acc42076253600be964e110149b458971a00d70d3edd67bde5b2049fb31fcba4fd}\label{uart_8h_acc42076253600be964e110149b458971a00d70d3edd67bde5b2049fb31fcba4fd}} 
+S\+I\+Z\+E\+\_\+\+E\+R\+R\+OR&Ошибка сигнализирует о том, что либо в буфере недостаточно данных для чтения, либо размер записываемых/считываемых данных больше размера самого буфера \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{POSITION\_ERROR@{POSITION\_ERROR}!uart.h@{uart.h}}\index{uart.h@{uart.h}!POSITION\_ERROR@{POSITION\_ERROR}}}\mbox{\Hypertarget{uart_8h_acc42076253600be964e110149b458971a50592fa5d44fc63417e52b9aad6d0021}\label{uart_8h_acc42076253600be964e110149b458971a50592fa5d44fc63417e52b9aad6d0021}} 
+P\+O\+S\+I\+T\+I\+O\+N\+\_\+\+E\+R\+R\+OR&Ошибка установки курсора чтения \\
+\hline
+
+\end{DoxyEnumFields}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{33 \{}
+\DoxyCodeLine{34     \mbox{\hyperlink{uart_8h_acc42076253600be964e110149b458971a14820276ae7e4047a53d9b78109f7e2a}{NO\_ERRORS}},                                                     }
+\DoxyCodeLine{35     \mbox{\hyperlink{uart_8h_acc42076253600be964e110149b458971aa446325b29d7c917325acc576f0f0f45}{INIT\_ERROR}},                                                       }
+\DoxyCodeLine{36     \mbox{\hyperlink{uart_8h_acc42076253600be964e110149b458971a94e4602a53bb7bd09807e344f43fd9df}{WRITE\_TIMEOUT\_ERROR}},                                 }
+\DoxyCodeLine{37     \mbox{\hyperlink{uart_8h_acc42076253600be964e110149b458971a0f91482313337f86a041c4de8e01bd40}{READ\_TIMEOUT\_ERROR}},                                       }
+\DoxyCodeLine{38     \mbox{\hyperlink{uart_8h_acc42076253600be964e110149b458971a00d70d3edd67bde5b2049fb31fcba4fd}{SIZE\_ERROR}},                                                       }
+\DoxyCodeLine{39     \mbox{\hyperlink{uart_8h_acc42076253600be964e110149b458971a50592fa5d44fc63417e52b9aad6d0021}{POSITION\_ERROR}}                                                }
+\DoxyCodeLine{40 \} \mbox{\hyperlink{uart_8h_a7c366cf58b12c041cc1dc3130264643f}{uart\_errors}};}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Функции}
+\mbox{\Hypertarget{uart_8h_ae14bbae27563550125dabbbe18aa55d4}\label{uart_8h_ae14bbae27563550125dabbbe18aa55d4}} 
+\index{uart.h@{uart.h}!DMA\_UART\_RX\_init@{DMA\_UART\_RX\_init}}
+\index{DMA\_UART\_RX\_init@{DMA\_UART\_RX\_init}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{DMA\_UART\_RX\_init()}{DMA\_UART\_RX\_init()}}
+{\footnotesize\ttfamily void D\+M\+A\+\_\+\+U\+A\+R\+T\+\_\+\+R\+X\+\_\+init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{uart_8h_adaa8285f14392d31d36867eddcd78572}{uart\+\_\+n}} $\ast$}]{uart\+\_\+struct }\end{DoxyParamCaption})}
+
+
+
+Инициализирует n-\/ый канал D\+MA на запрос от приемника U\+A\+R\+Tn. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em $\ast$uart\+\_\+struct} & -\/ Выбранный U\+A\+RT для инициализации \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{379 \{}
+\DoxyCodeLine{380 }
+\DoxyCodeLine{381     DMA\_StructInit(\&uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a1f6f31cbf34ef43cfba85fd38f3348e4}{uart\_dma\_ch}}.\mbox{\hyperlink{structuart__dma__params_a7f3e599d1565aefe1288df16c02be58a}{DMA\_Channel\_UART\_RX}});}
+\DoxyCodeLine{382     uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a1f6f31cbf34ef43cfba85fd38f3348e4}{uart\_dma\_ch}}.\mbox{\hyperlink{structuart__dma__params_a57078c8a90ebfae005ef5c190e38c8e7}{DMA\_InitStructure\_UART\_RX}}.DMA\_SourceBaseAddr = (uint32\_t)(\&(uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a950a23e70a1db49a148ac1669bc98518}{UARTx}}-\/>DR));}
+\DoxyCodeLine{383     uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a1f6f31cbf34ef43cfba85fd38f3348e4}{uart\_dma\_ch}}.\mbox{\hyperlink{structuart__dma__params_a57078c8a90ebfae005ef5c190e38c8e7}{DMA\_InitStructure\_UART\_RX}}.DMA\_DestBaseAddr = (uint32\_t)(uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a8a48424595e1d0f6b98fb6b57f177abb}{buffer}});}
+\DoxyCodeLine{384     uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a1f6f31cbf34ef43cfba85fd38f3348e4}{uart\_dma\_ch}}.\mbox{\hyperlink{structuart__dma__params_a57078c8a90ebfae005ef5c190e38c8e7}{DMA\_InitStructure\_UART\_RX}}.DMA\_CycleSize = 1024;}
+\DoxyCodeLine{385     uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a1f6f31cbf34ef43cfba85fd38f3348e4}{uart\_dma\_ch}}.\mbox{\hyperlink{structuart__dma__params_a57078c8a90ebfae005ef5c190e38c8e7}{DMA\_InitStructure\_UART\_RX}}.DMA\_SourceIncSize = DMA\_SourceIncNo;}
+\DoxyCodeLine{386     uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a1f6f31cbf34ef43cfba85fd38f3348e4}{uart\_dma\_ch}}.\mbox{\hyperlink{structuart__dma__params_a57078c8a90ebfae005ef5c190e38c8e7}{DMA\_InitStructure\_UART\_RX}}.DMA\_DestIncSize = DMA\_DestIncByte;}
+\DoxyCodeLine{387     uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a1f6f31cbf34ef43cfba85fd38f3348e4}{uart\_dma\_ch}}.\mbox{\hyperlink{structuart__dma__params_a57078c8a90ebfae005ef5c190e38c8e7}{DMA\_InitStructure\_UART\_RX}}.DMA\_MemoryDataSize = DMA\_MemoryDataSize\_Byte;}
+\DoxyCodeLine{388     uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a1f6f31cbf34ef43cfba85fd38f3348e4}{uart\_dma\_ch}}.\mbox{\hyperlink{structuart__dma__params_a57078c8a90ebfae005ef5c190e38c8e7}{DMA\_InitStructure\_UART\_RX}}.DMA\_NumContinuous = DMA\_Transfers\_1;}
+\DoxyCodeLine{389     uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a1f6f31cbf34ef43cfba85fd38f3348e4}{uart\_dma\_ch}}.\mbox{\hyperlink{structuart__dma__params_a57078c8a90ebfae005ef5c190e38c8e7}{DMA\_InitStructure\_UART\_RX}}.DMA\_SourceProtCtrl = DMA\_SourcePrivileged;}
+\DoxyCodeLine{390     uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a1f6f31cbf34ef43cfba85fd38f3348e4}{uart\_dma\_ch}}.\mbox{\hyperlink{structuart__dma__params_a57078c8a90ebfae005ef5c190e38c8e7}{DMA\_InitStructure\_UART\_RX}}.DMA\_DestProtCtrl = DMA\_DestPrivileged;}
+\DoxyCodeLine{391     uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a1f6f31cbf34ef43cfba85fd38f3348e4}{uart\_dma\_ch}}.\mbox{\hyperlink{structuart__dma__params_a57078c8a90ebfae005ef5c190e38c8e7}{DMA\_InitStructure\_UART\_RX}}.DMA\_Mode = DMA\_Mode\_Basic;}
+\DoxyCodeLine{392     }
+\DoxyCodeLine{393     \textcolor{comment}{// Задать структуру канала}}
+\DoxyCodeLine{394     uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a1f6f31cbf34ef43cfba85fd38f3348e4}{uart\_dma\_ch}}.\mbox{\hyperlink{structuart__dma__params_a7f3e599d1565aefe1288df16c02be58a}{DMA\_Channel\_UART\_RX}}.DMA\_PriCtrlData = \&uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a1f6f31cbf34ef43cfba85fd38f3348e4}{uart\_dma\_ch}}.\mbox{\hyperlink{structuart__dma__params_a57078c8a90ebfae005ef5c190e38c8e7}{DMA\_InitStructure\_UART\_RX}};}
+\DoxyCodeLine{395     uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a1f6f31cbf34ef43cfba85fd38f3348e4}{uart\_dma\_ch}}.\mbox{\hyperlink{structuart__dma__params_a7f3e599d1565aefe1288df16c02be58a}{DMA\_Channel\_UART\_RX}}.DMA\_Priority = DMA\_Priority\_High;}
+\DoxyCodeLine{396     uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a1f6f31cbf34ef43cfba85fd38f3348e4}{uart\_dma\_ch}}.\mbox{\hyperlink{structuart__dma__params_a7f3e599d1565aefe1288df16c02be58a}{DMA\_Channel\_UART\_RX}}.DMA\_UseBurst = DMA\_BurstClear;}
+\DoxyCodeLine{397     uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a1f6f31cbf34ef43cfba85fd38f3348e4}{uart\_dma\_ch}}.\mbox{\hyperlink{structuart__dma__params_a7f3e599d1565aefe1288df16c02be58a}{DMA\_Channel\_UART\_RX}}.DMA\_SelectDataStructure = DMA\_CTRL\_DATA\_PRIMARY;}
+\DoxyCodeLine{398     }
+\DoxyCodeLine{399     \textcolor{comment}{// Инициализировать канал}}
+\DoxyCodeLine{400     DMA\_Init(uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a1f6f31cbf34ef43cfba85fd38f3348e4}{uart\_dma\_ch}}.\mbox{\hyperlink{structuart__dma__params_a64401b64ba4343b3a70b26079a91798f}{dma\_channel}}, \&uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a1f6f31cbf34ef43cfba85fd38f3348e4}{uart\_dma\_ch}}.\mbox{\hyperlink{structuart__dma__params_a7f3e599d1565aefe1288df16c02be58a}{DMA\_Channel\_UART\_RX}});}
+\DoxyCodeLine{401     }
+\DoxyCodeLine{402     MDR\_DMA-\/>CHNL\_REQ\_MASK\_CLR = 1 << uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a1f6f31cbf34ef43cfba85fd38f3348e4}{uart\_dma\_ch}}.\mbox{\hyperlink{structuart__dma__params_a64401b64ba4343b3a70b26079a91798f}{dma\_channel}};}
+\DoxyCodeLine{403     MDR\_DMA-\/>CHNL\_USEBURST\_CLR = 1 << uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a1f6f31cbf34ef43cfba85fd38f3348e4}{uart\_dma\_ch}}.\mbox{\hyperlink{structuart__dma__params_a64401b64ba4343b3a70b26079a91798f}{dma\_channel}};}
+\DoxyCodeLine{404     }
+\DoxyCodeLine{405     UART\_DMACmd(uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a950a23e70a1db49a148ac1669bc98518}{UARTx}},UART\_DMA\_RXE, ENABLE);}
+\DoxyCodeLine{406     \textcolor{comment}{// Разрешить работу DMA с UART}}
+\DoxyCodeLine{407     DMA\_Cmd (uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a1f6f31cbf34ef43cfba85fd38f3348e4}{uart\_dma\_ch}}.\mbox{\hyperlink{structuart__dma__params_a64401b64ba4343b3a70b26079a91798f}{dma\_channel}}, ENABLE);}
+\DoxyCodeLine{408     }
+\DoxyCodeLine{409     NVIC\_SetPriority (DMA\_IRQn, 1);}
+\DoxyCodeLine{410     NVIC\_EnableIRQ(DMA\_IRQn);}
+\DoxyCodeLine{411 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{uart_8h_a66de1150972b09285805d2103e5a6cdf}\label{uart_8h_a66de1150972b09285805d2103e5a6cdf}} 
+\index{uart.h@{uart.h}!uart\_clean@{uart\_clean}}
+\index{uart\_clean@{uart\_clean}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{uart\_clean()}{uart\_clean()}}
+{\footnotesize\ttfamily void uart\+\_\+clean (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{uart_8h_adaa8285f14392d31d36867eddcd78572}{uart\+\_\+n}} $\ast$}]{uart\+\_\+struct }\end{DoxyParamCaption})}
+
+
+
+Очищает кольцевой буфер приемника U\+A\+RT. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em $\ast$uart\+\_\+struct} & -\/ Выбранный U\+A\+RT для инициализации \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{372 \{}
+\DoxyCodeLine{373     memset(uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a8a48424595e1d0f6b98fb6b57f177abb}{buffer}}, 0, \mbox{\hyperlink{uart_8h_a0d57378e32bf8278011460740bc29f7f}{UART\_BUFFER\_SIZE}});}
+\DoxyCodeLine{374 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{uart_8h_a9a4afed7cf6535ff74c5839a153e3845}\label{uart_8h_a9a4afed7cf6535ff74c5839a153e3845}} 
+\index{uart.h@{uart.h}!uart\_get\_buf\_counter@{uart\_get\_buf\_counter}}
+\index{uart\_get\_buf\_counter@{uart\_get\_buf\_counter}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{uart\_get\_buf\_counter()}{uart\_get\_buf\_counter()}}
+{\footnotesize\ttfamily uint32\+\_\+t uart\+\_\+get\+\_\+buf\+\_\+counter (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{uart_8h_adaa8285f14392d31d36867eddcd78572}{uart\+\_\+n}} $\ast$}]{uart\+\_\+struct }\end{DoxyParamCaption})}
+
+
+
+Читает кол-\/во байт в кольцевом буфере U\+A\+RT. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em $\ast$uart\+\_\+struct} & -\/ Выбранный U\+A\+RT для инициализации \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Кол-\/во байт в кольцевом буфере U\+A\+RT 
+\end{DoxyReturn}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{365 \{}
+\DoxyCodeLine{366     \textcolor{keywordflow}{return} uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a7b173ce3ba50d5d98ecc51cd80725433}{buffer\_count}};}
+\DoxyCodeLine{367 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{uart_8h_aea88fcf520be11e83cfd915492675ae5}\label{uart_8h_aea88fcf520be11e83cfd915492675ae5}} 
+\index{uart.h@{uart.h}!uart\_init@{uart\_init}}
+\index{uart\_init@{uart\_init}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{uart\_init()}{uart\_init()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{uart_8h_a7c366cf58b12c041cc1dc3130264643f}{uart\+\_\+errors}} uart\+\_\+init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{uart_8h_adaa8285f14392d31d36867eddcd78572}{uart\+\_\+n}} $\ast$}]{uart\+\_\+struct }\end{DoxyParamCaption})}
+
+
+
+Инициализацирует выбранный U\+A\+R\+Tn. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em $\ast$uart\+\_\+struct} & -\/ Выбранный U\+A\+RT для инициализации \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Код ошибки uart\+\_\+errors 
+\end{DoxyReturn}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{143 \{ }
+\DoxyCodeLine{144     \mbox{\hyperlink{uart_8c_af46c427bcd65a9bce1977df90f335eac}{uart\_gpio\_config}}();}
+\DoxyCodeLine{145     }
+\DoxyCodeLine{146     \mbox{\hyperlink{uart_8h_a7c366cf58b12c041cc1dc3130264643f}{uart\_errors}} error;}
+\DoxyCodeLine{147     }
+\DoxyCodeLine{148     \textcolor{comment}{// Объявление структуры для инициализации контроллера UART}}
+\DoxyCodeLine{149     UART\_InitTypeDef UART\_InitStructure;}
+\DoxyCodeLine{150     uint8\_t res = 0;}
+\DoxyCodeLine{151     }
+\DoxyCodeLine{152     \textcolor{comment}{// Включение тактирования UART}}
+\DoxyCodeLine{153     \textcolor{keywordflow}{if}(uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a950a23e70a1db49a148ac1669bc98518}{UARTx}} == MDR\_UART1)}
+\DoxyCodeLine{154     \{}
+\DoxyCodeLine{155         uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a2f1897c8ad4f96c27121372935dca904}{RST\_CLK\_PCLK\_UARTn}} = RST\_CLK\_PCLK\_UART1;}
+\DoxyCodeLine{156     \}}
+\DoxyCodeLine{157     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a950a23e70a1db49a148ac1669bc98518}{UARTx}} == MDR\_UART2)}
+\DoxyCodeLine{158     \{}
+\DoxyCodeLine{159         uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a2f1897c8ad4f96c27121372935dca904}{RST\_CLK\_PCLK\_UARTn}} = RST\_CLK\_PCLK\_UART2;}
+\DoxyCodeLine{160     \}}
+\DoxyCodeLine{161     RST\_CLK\_PCLKcmd(uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a2f1897c8ad4f96c27121372935dca904}{RST\_CLK\_PCLK\_UARTn}}, ENABLE);}
+\DoxyCodeLine{162 }
+\DoxyCodeLine{163     \textcolor{comment}{// Делитель тактовой частоты UART}}
+\DoxyCodeLine{164     uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a74443decfdc49e69c7e9086ac3dd7c48}{UART\_HCLKdiv}} = UART\_HCLKdiv1;}
+\DoxyCodeLine{165     UART\_BRGInit(uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a950a23e70a1db49a148ac1669bc98518}{UARTx}}, uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a74443decfdc49e69c7e9086ac3dd7c48}{UART\_HCLKdiv}});}
+\DoxyCodeLine{166 }
+\DoxyCodeLine{167     NVIC\_EnableIRQ(uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a51652f1abe929239e24fd89fd9ede3b4}{IRQn}});}
+\DoxyCodeLine{168     }
+\DoxyCodeLine{169     \textcolor{comment}{// Конфигурация UART}}
+\DoxyCodeLine{170     UART\_InitStructure.UART\_BaudRate = uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a1f17323cdc482e50e3547119dc2bb57b}{UART}}.UART\_BaudRate;}
+\DoxyCodeLine{171     UART\_InitStructure.UART\_WordLength = uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a1f17323cdc482e50e3547119dc2bb57b}{UART}}.UART\_WordLength;}
+\DoxyCodeLine{172     UART\_InitStructure.UART\_StopBits = uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a1f17323cdc482e50e3547119dc2bb57b}{UART}}.UART\_StopBits;}
+\DoxyCodeLine{173     UART\_InitStructure.UART\_Parity = uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a1f17323cdc482e50e3547119dc2bb57b}{UART}}.UART\_Parity;}
+\DoxyCodeLine{174     UART\_InitStructure.UART\_FIFOMode = uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a1f17323cdc482e50e3547119dc2bb57b}{UART}}.UART\_FIFOMode;}
+\DoxyCodeLine{175     UART\_InitStructure.UART\_HardwareFlowControl = uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a1f17323cdc482e50e3547119dc2bb57b}{UART}}.UART\_HardwareFlowControl;}
+\DoxyCodeLine{176 }
+\DoxyCodeLine{177     \textcolor{comment}{// Инициализация UART с заданными параметрами}}
+\DoxyCodeLine{178     res = UART\_Init(uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a950a23e70a1db49a148ac1669bc98518}{UARTx}}, \&UART\_InitStructure);}
+\DoxyCodeLine{179     \textcolor{keywordflow}{if} (res != SUCCESS) }
+\DoxyCodeLine{180     \{}
+\DoxyCodeLine{181         error = \mbox{\hyperlink{uart_8h_acc42076253600be964e110149b458971aa446325b29d7c917325acc576f0f0f45}{INIT\_ERROR}};}
+\DoxyCodeLine{182         \textcolor{keywordflow}{return} error;}
+\DoxyCodeLine{183     \}}
+\DoxyCodeLine{184 }
+\DoxyCodeLine{185     \textcolor{comment}{// Включение прерываний UART}}
+\DoxyCodeLine{186     NVIC\_SetPriority (uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a51652f1abe929239e24fd89fd9ede3b4}{IRQn}}, 0);}
+\DoxyCodeLine{187     UART\_ITConfig( uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a950a23e70a1db49a148ac1669bc98518}{UARTx}}, UART\_IT\_RX, ENABLE );}
+\DoxyCodeLine{188     }
+\DoxyCodeLine{189     \textcolor{comment}{// Включение сконфигурированного UART}}
+\DoxyCodeLine{190     UART\_Cmd(uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a950a23e70a1db49a148ac1669bc98518}{UARTx}}, ENABLE);}
+\DoxyCodeLine{191     }
+\DoxyCodeLine{192     \textcolor{keywordflow}{return} \mbox{\hyperlink{uart_8h_acc42076253600be964e110149b458971a14820276ae7e4047a53d9b78109f7e2a}{NO\_ERRORS}};}
+\DoxyCodeLine{193 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{uart_8h_a7e6732641a7051f1b7932b1684826ad9}\label{uart_8h_a7e6732641a7051f1b7932b1684826ad9}} 
+\index{uart.h@{uart.h}!uart\_read@{uart\_read}}
+\index{uart\_read@{uart\_read}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{uart\_read()}{uart\_read()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{uart_8h_a7c366cf58b12c041cc1dc3130264643f}{uart\+\_\+errors}} uart\+\_\+read (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{uart_8h_adaa8285f14392d31d36867eddcd78572}{uart\+\_\+n}} $\ast$}]{uart\+\_\+struct,  }\item[{uint32\+\_\+t}]{len,  }\item[{uint8\+\_\+t $\ast$}]{data }\end{DoxyParamCaption})}
+
+
+
+Читает данные из буфера U\+A\+RT. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em $\ast$uart\+\_\+struct} & -\/ Выбранный U\+A\+RT для инициализации \\
+\hline
+{\em len} & -\/ Кол-\/во байт для чтения \\
+\hline
+{\em $\ast$data} & -\/ Указатель на массив, куда считываются байты из буфера U\+A\+RT \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Код ошибки uart\+\_\+errors 
+\end{DoxyReturn}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{255 \{}
+\DoxyCodeLine{256     \mbox{\hyperlink{uart_8h_a7c366cf58b12c041cc1dc3130264643f}{uart\_errors}} error;}
+\DoxyCodeLine{257     uint32\_t timer\_cnt = 0;}
+\DoxyCodeLine{258     }
+\DoxyCodeLine{259     \textcolor{comment}{// Если длина превышает размер буфера}}
+\DoxyCodeLine{260     \textcolor{keywordflow}{if} (len > \mbox{\hyperlink{uart_8h_a0d57378e32bf8278011460740bc29f7f}{UART\_BUFFER\_SIZE}})}
+\DoxyCodeLine{261     \{}
+\DoxyCodeLine{262         error = \mbox{\hyperlink{uart_8h_acc42076253600be964e110149b458971a00d70d3edd67bde5b2049fb31fcba4fd}{SIZE\_ERROR}};}
+\DoxyCodeLine{263         uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a2f8d77645e82d7f5f061714d8e0c1eab}{read\_pos}}++;}
+\DoxyCodeLine{264         \textcolor{keywordflow}{return} error;}
+\DoxyCodeLine{265     \}}
+\DoxyCodeLine{266     \textcolor{comment}{// Если последний принятый байт перевалит границу буфера и байты будут перезаписываться в буфере с самого начала}}
+\DoxyCodeLine{267     \textcolor{keywordflow}{if} (((uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a2f8d77645e82d7f5f061714d8e0c1eab}{read\_pos}})+len) > \mbox{\hyperlink{uart_8h_a0d57378e32bf8278011460740bc29f7f}{UART\_BUFFER\_SIZE}})}
+\DoxyCodeLine{268     \{}
+\DoxyCodeLine{269         \textcolor{comment}{// Если задан таймаут }}
+\DoxyCodeLine{270         \textcolor{keywordflow}{if} (uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a7e54939f749f906e4f662c13f58abf16}{uart\_timeouts}}.\mbox{\hyperlink{structuart__timeouts_ad777bbdf0e5a86bf0d5260c588430c5c}{read\_timeout\_flag}} == 1)}
+\DoxyCodeLine{271         \{}
+\DoxyCodeLine{272             TIMER\_SetCounter(uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a7e54939f749f906e4f662c13f58abf16}{uart\_timeouts}}.\mbox{\hyperlink{structuart__timeouts_aa704f3a30041e52af9c8aa9e9283bce7}{timer\_n\_timeout}}-\/>\mbox{\hyperlink{structtimer__config__struct_a26d6f987c10095f685286d88e1cc4a96}{TIMERx}}, 0);}
+\DoxyCodeLine{273             \textcolor{keywordflow}{while} ((\textcolor{keywordtype}{int})((uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a7b173ce3ba50d5d98ecc51cd80725433}{buffer\_count}}) -\/ (uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a2f8d77645e82d7f5f061714d8e0c1eab}{read\_pos}})) >= 0)}
+\DoxyCodeLine{274             \{}
+\DoxyCodeLine{275                 timer\_cnt = TIMER\_GetCounter(uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a7e54939f749f906e4f662c13f58abf16}{uart\_timeouts}}.\mbox{\hyperlink{structuart__timeouts_aa704f3a30041e52af9c8aa9e9283bce7}{timer\_n\_timeout}}-\/>\mbox{\hyperlink{structtimer__config__struct_a26d6f987c10095f685286d88e1cc4a96}{TIMERx}});}
+\DoxyCodeLine{276                 \textcolor{keywordflow}{if} (timer\_cnt >= (uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a7e54939f749f906e4f662c13f58abf16}{uart\_timeouts}}.\mbox{\hyperlink{structuart__timeouts_a4d128f40f101681bf72034dc35dc6c0b}{read\_val\_timeout}}*50))}
+\DoxyCodeLine{277                 \{}
+\DoxyCodeLine{278                     error = \mbox{\hyperlink{uart_8h_acc42076253600be964e110149b458971a0f91482313337f86a041c4de8e01bd40}{READ\_TIMEOUT\_ERROR}};}
+\DoxyCodeLine{279                     \textcolor{keywordflow}{return} error;}
+\DoxyCodeLine{280                 \}}
+\DoxyCodeLine{281             \}}
+\DoxyCodeLine{282             \textcolor{keywordflow}{while} ((\mbox{\hyperlink{uart_8h_a0d57378e32bf8278011460740bc29f7f}{UART\_BUFFER\_SIZE}} -\/ (uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a2f8d77645e82d7f5f061714d8e0c1eab}{read\_pos}}) + (uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a7b173ce3ba50d5d98ecc51cd80725433}{buffer\_count}})) < len)}
+\DoxyCodeLine{283             \{}
+\DoxyCodeLine{284                 timer\_cnt = TIMER\_GetCounter(uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a7e54939f749f906e4f662c13f58abf16}{uart\_timeouts}}.\mbox{\hyperlink{structuart__timeouts_aa704f3a30041e52af9c8aa9e9283bce7}{timer\_n\_timeout}}-\/>\mbox{\hyperlink{structtimer__config__struct_a26d6f987c10095f685286d88e1cc4a96}{TIMERx}});}
+\DoxyCodeLine{285                 \textcolor{keywordflow}{if} (timer\_cnt >= (uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a7e54939f749f906e4f662c13f58abf16}{uart\_timeouts}}.\mbox{\hyperlink{structuart__timeouts_a4d128f40f101681bf72034dc35dc6c0b}{read\_val\_timeout}}*50)) }
+\DoxyCodeLine{286                 \{}
+\DoxyCodeLine{287                     error = \mbox{\hyperlink{uart_8h_acc42076253600be964e110149b458971a0f91482313337f86a041c4de8e01bd40}{READ\_TIMEOUT\_ERROR}};}
+\DoxyCodeLine{288                     \textcolor{keywordflow}{return} error;}
+\DoxyCodeLine{289                 \}}
+\DoxyCodeLine{290             \}}
+\DoxyCodeLine{291         \}}
+\DoxyCodeLine{292         }
+\DoxyCodeLine{293         \textcolor{keywordflow}{if} ((\textcolor{keywordtype}{int})((uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a7b173ce3ba50d5d98ecc51cd80725433}{buffer\_count}}) -\/ (uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a2f8d77645e82d7f5f061714d8e0c1eab}{read\_pos}})) >= 0)}
+\DoxyCodeLine{294         \{}
+\DoxyCodeLine{295             error = \mbox{\hyperlink{uart_8h_acc42076253600be964e110149b458971a00d70d3edd67bde5b2049fb31fcba4fd}{SIZE\_ERROR}};}
+\DoxyCodeLine{296             \textcolor{keywordflow}{return} error;}
+\DoxyCodeLine{297         \}}
+\DoxyCodeLine{298         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{299         \{}
+\DoxyCodeLine{300             \textcolor{keywordflow}{if} ((\mbox{\hyperlink{uart_8h_a0d57378e32bf8278011460740bc29f7f}{UART\_BUFFER\_SIZE}} + (uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a7b173ce3ba50d5d98ecc51cd80725433}{buffer\_count}}) -\/ (uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a2f8d77645e82d7f5f061714d8e0c1eab}{read\_pos}})) < len)}
+\DoxyCodeLine{301             \{}
+\DoxyCodeLine{302                 error = \mbox{\hyperlink{uart_8h_acc42076253600be964e110149b458971a00d70d3edd67bde5b2049fb31fcba4fd}{SIZE\_ERROR}};}
+\DoxyCodeLine{303                 \textcolor{keywordflow}{return} error;}
+\DoxyCodeLine{304             \}}
+\DoxyCodeLine{305             memcpy(data, (uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a8a48424595e1d0f6b98fb6b57f177abb}{buffer}}) + (uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a2f8d77645e82d7f5f061714d8e0c1eab}{read\_pos}}), \mbox{\hyperlink{uart_8h_a0d57378e32bf8278011460740bc29f7f}{UART\_BUFFER\_SIZE}}-\/(uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a2f8d77645e82d7f5f061714d8e0c1eab}{read\_pos}}));}
+\DoxyCodeLine{306             memcpy(data + \mbox{\hyperlink{uart_8h_a0d57378e32bf8278011460740bc29f7f}{UART\_BUFFER\_SIZE}}-\/(uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a2f8d77645e82d7f5f061714d8e0c1eab}{read\_pos}}), uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a8a48424595e1d0f6b98fb6b57f177abb}{buffer}}, len+(uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a2f8d77645e82d7f5f061714d8e0c1eab}{read\_pos}})-\/\mbox{\hyperlink{uart_8h_a0d57378e32bf8278011460740bc29f7f}{UART\_BUFFER\_SIZE}});}
+\DoxyCodeLine{307             uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a2f8d77645e82d7f5f061714d8e0c1eab}{read\_pos}} = (uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a2f8d77645e82d7f5f061714d8e0c1eab}{read\_pos}}) + len-\/\mbox{\hyperlink{uart_8h_a0d57378e32bf8278011460740bc29f7f}{UART\_BUFFER\_SIZE}};}
+\DoxyCodeLine{308         \}}
+\DoxyCodeLine{309     \}}
+\DoxyCodeLine{310     \textcolor{comment}{// Если последний принятый байт не перевалит границу буфера}}
+\DoxyCodeLine{311     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{312     \{}
+\DoxyCodeLine{313         \textcolor{comment}{// Если задан таймаут }}
+\DoxyCodeLine{314         \textcolor{keywordflow}{if} (uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a7e54939f749f906e4f662c13f58abf16}{uart\_timeouts}}.\mbox{\hyperlink{structuart__timeouts_ad777bbdf0e5a86bf0d5260c588430c5c}{read\_timeout\_flag}} == 1)}
+\DoxyCodeLine{315         \{}
+\DoxyCodeLine{316             TIMER\_SetCounter(uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a7e54939f749f906e4f662c13f58abf16}{uart\_timeouts}}.\mbox{\hyperlink{structuart__timeouts_aa704f3a30041e52af9c8aa9e9283bce7}{timer\_n\_timeout}}-\/>\mbox{\hyperlink{structtimer__config__struct_a26d6f987c10095f685286d88e1cc4a96}{TIMERx}}, 0);}
+\DoxyCodeLine{317             \textcolor{keywordflow}{while} (((uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a7b173ce3ba50d5d98ecc51cd80725433}{buffer\_count}}) -\/ (uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a2f8d77645e82d7f5f061714d8e0c1eab}{read\_pos}})) < len)}
+\DoxyCodeLine{318             \{}
+\DoxyCodeLine{319                 timer\_cnt = TIMER\_GetCounter(uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a7e54939f749f906e4f662c13f58abf16}{uart\_timeouts}}.\mbox{\hyperlink{structuart__timeouts_aa704f3a30041e52af9c8aa9e9283bce7}{timer\_n\_timeout}}-\/>\mbox{\hyperlink{structtimer__config__struct_a26d6f987c10095f685286d88e1cc4a96}{TIMERx}});}
+\DoxyCodeLine{320                 \textcolor{keywordflow}{if} (timer\_cnt >= (uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a7e54939f749f906e4f662c13f58abf16}{uart\_timeouts}}.\mbox{\hyperlink{structuart__timeouts_a4d128f40f101681bf72034dc35dc6c0b}{read\_val\_timeout}}*50))}
+\DoxyCodeLine{321                 \{               }
+\DoxyCodeLine{322                     error = \mbox{\hyperlink{uart_8h_acc42076253600be964e110149b458971a0f91482313337f86a041c4de8e01bd40}{READ\_TIMEOUT\_ERROR}};}
+\DoxyCodeLine{323                     \textcolor{keywordflow}{return} error;}
+\DoxyCodeLine{324                 \}}
+\DoxyCodeLine{325             \}}
+\DoxyCodeLine{326         \}}
+\DoxyCodeLine{327         }
+\DoxyCodeLine{328         \textcolor{keywordflow}{if} (((uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a7b173ce3ba50d5d98ecc51cd80725433}{buffer\_count}}) -\/ (uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a2f8d77645e82d7f5f061714d8e0c1eab}{read\_pos}})) < len) }
+\DoxyCodeLine{329         \{}
+\DoxyCodeLine{330             error = \mbox{\hyperlink{uart_8h_acc42076253600be964e110149b458971a00d70d3edd67bde5b2049fb31fcba4fd}{SIZE\_ERROR}};}
+\DoxyCodeLine{331             \textcolor{keywordflow}{return} error;}
+\DoxyCodeLine{332         \}}
+\DoxyCodeLine{333         memcpy(data, (uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a8a48424595e1d0f6b98fb6b57f177abb}{buffer}}) + (uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a2f8d77645e82d7f5f061714d8e0c1eab}{read\_pos}}), len);}
+\DoxyCodeLine{334         uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a2f8d77645e82d7f5f061714d8e0c1eab}{read\_pos}} = (uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a2f8d77645e82d7f5f061714d8e0c1eab}{read\_pos}}) + len;}
+\DoxyCodeLine{335     \}}
+\DoxyCodeLine{336     }
+\DoxyCodeLine{337     \textcolor{keywordflow}{return} \mbox{\hyperlink{uart_8h_acc42076253600be964e110149b458971a14820276ae7e4047a53d9b78109f7e2a}{NO\_ERRORS}};}
+\DoxyCodeLine{338 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{uart_8h_ae4c246743abceb853beddc6f00487b94}\label{uart_8h_ae4c246743abceb853beddc6f00487b94}} 
+\index{uart.h@{uart.h}!uart\_read\_pos@{uart\_read\_pos}}
+\index{uart\_read\_pos@{uart\_read\_pos}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{uart\_read\_pos()}{uart\_read\_pos()}}
+{\footnotesize\ttfamily uint32\+\_\+t uart\+\_\+read\+\_\+pos (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{uart_8h_adaa8285f14392d31d36867eddcd78572}{uart\+\_\+n}} $\ast$}]{uart\+\_\+struct }\end{DoxyParamCaption})}
+
+
+
+Читает текущую позицию курсора чтения в кольцевом буфере 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em $\ast$uart\+\_\+struct} & -\/ Выбранный U\+A\+RT для инициализации \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Текущая позиция курсора 
+\end{DoxyReturn}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{358 \{}
+\DoxyCodeLine{359     \textcolor{keywordflow}{return} uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a2f8d77645e82d7f5f061714d8e0c1eab}{read\_pos}};}
+\DoxyCodeLine{360 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{uart_8h_a3eac6a0676f547ab7ca6c1af822ff0a0}\label{uart_8h_a3eac6a0676f547ab7ca6c1af822ff0a0}} 
+\index{uart.h@{uart.h}!uart\_set\_pos@{uart\_set\_pos}}
+\index{uart\_set\_pos@{uart\_set\_pos}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{uart\_set\_pos()}{uart\_set\_pos()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{uart_8h_a7c366cf58b12c041cc1dc3130264643f}{uart\+\_\+errors}} uart\+\_\+set\+\_\+pos (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{uart_8h_adaa8285f14392d31d36867eddcd78572}{uart\+\_\+n}} $\ast$}]{uart\+\_\+struct,  }\item[{uint32\+\_\+t}]{pos }\end{DoxyParamCaption})}
+
+
+
+Устанавливает курсор чтения в кольцевом буфере 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em $\ast$uart\+\_\+struct} & -\/ Выбранный U\+A\+RT для инициализации \\
+\hline
+{\em pos} & -\/ Позиция курсора в буфере \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Код ошибки uart\+\_\+errors 
+\end{DoxyReturn}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{343 \{}
+\DoxyCodeLine{344     \mbox{\hyperlink{uart_8h_a7c366cf58b12c041cc1dc3130264643f}{uart\_errors}} error;}
+\DoxyCodeLine{345     }
+\DoxyCodeLine{346     \textcolor{keywordflow}{if} (pos > \mbox{\hyperlink{uart_8h_a0d57378e32bf8278011460740bc29f7f}{UART\_BUFFER\_SIZE}})}
+\DoxyCodeLine{347     \{}
+\DoxyCodeLine{348         error = \mbox{\hyperlink{uart_8h_acc42076253600be964e110149b458971a50592fa5d44fc63417e52b9aad6d0021}{POSITION\_ERROR}};}
+\DoxyCodeLine{349         \textcolor{keywordflow}{return} error;}
+\DoxyCodeLine{350     \}}
+\DoxyCodeLine{351     uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a2f8d77645e82d7f5f061714d8e0c1eab}{read\_pos}} = pos;}
+\DoxyCodeLine{352     \textcolor{keywordflow}{return} \mbox{\hyperlink{uart_8h_acc42076253600be964e110149b458971a14820276ae7e4047a53d9b78109f7e2a}{NO\_ERRORS}};}
+\DoxyCodeLine{353 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{uart_8h_a7c75315e9e96f617d559097cf3b85470}\label{uart_8h_a7c75315e9e96f617d559097cf3b85470}} 
+\index{uart.h@{uart.h}!uart\_set\_read\_timeout@{uart\_set\_read\_timeout}}
+\index{uart\_set\_read\_timeout@{uart\_set\_read\_timeout}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{uart\_set\_read\_timeout()}{uart\_set\_read\_timeout()}}
+{\footnotesize\ttfamily void uart\+\_\+set\+\_\+read\+\_\+timeout (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{uart_8h_adaa8285f14392d31d36867eddcd78572}{uart\+\_\+n}} $\ast$}]{uart\+\_\+struct,  }\item[{uint32\+\_\+t}]{read\+\_\+timeout }\end{DoxyParamCaption})}
+
+
+
+Устанавливает таймаут U\+A\+R\+Tn на чтение 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em $\ast$uart\+\_\+struct} & -\/ Выбранный U\+A\+RT для инициализации \\
+\hline
+{\em read\+\_\+timeout} & -\/ Таймаут на чтение (в мс) \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{416 \{}
+\DoxyCodeLine{417     uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a7e54939f749f906e4f662c13f58abf16}{uart\_timeouts}}.\mbox{\hyperlink{structuart__timeouts_ad777bbdf0e5a86bf0d5260c588430c5c}{read\_timeout\_flag}} = 1;}
+\DoxyCodeLine{418     uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a7e54939f749f906e4f662c13f58abf16}{uart\_timeouts}}.\mbox{\hyperlink{structuart__timeouts_a4d128f40f101681bf72034dc35dc6c0b}{read\_val\_timeout}} = read\_timeout;}
+\DoxyCodeLine{419 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{uart_8h_a3c4a26eef1955212637e5328e098c050}\label{uart_8h_a3c4a26eef1955212637e5328e098c050}} 
+\index{uart.h@{uart.h}!uart\_set\_write\_timeout@{uart\_set\_write\_timeout}}
+\index{uart\_set\_write\_timeout@{uart\_set\_write\_timeout}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{uart\_set\_write\_timeout()}{uart\_set\_write\_timeout()}}
+{\footnotesize\ttfamily void uart\+\_\+set\+\_\+write\+\_\+timeout (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{uart_8h_adaa8285f14392d31d36867eddcd78572}{uart\+\_\+n}} $\ast$}]{uart\+\_\+struct,  }\item[{uint32\+\_\+t}]{write\+\_\+timeout }\end{DoxyParamCaption})}
+
+
+
+Устанавливает таймаут U\+A\+R\+Tn на запись 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em $\ast$uart\+\_\+struct} & -\/ Выбранный U\+A\+RT для инициализации \\
+\hline
+{\em write\+\_\+timeout} & -\/ Таймаут на запись (в мс) \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{424 \{}
+\DoxyCodeLine{425     uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a7e54939f749f906e4f662c13f58abf16}{uart\_timeouts}}.\mbox{\hyperlink{structuart__timeouts_af40ee912511acefddcf789b5b986a048}{write\_timeout\_flag}} = 1;}
+\DoxyCodeLine{426     uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a7e54939f749f906e4f662c13f58abf16}{uart\_timeouts}}.\mbox{\hyperlink{structuart__timeouts_a8166acab7b59bbd32fbf6ca139a9d9d5}{write\_val\_timeout}} = write\_timeout;}
+\DoxyCodeLine{427 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{uart_8h_ae6a3bc40518edab0e42a8fbb40aaa8d9}\label{uart_8h_ae6a3bc40518edab0e42a8fbb40aaa8d9}} 
+\index{uart.h@{uart.h}!uart\_write@{uart\_write}}
+\index{uart\_write@{uart\_write}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{uart\_write()}{uart\_write()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{uart_8h_a7c366cf58b12c041cc1dc3130264643f}{uart\+\_\+errors}} uart\+\_\+write (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{uart_8h_adaa8285f14392d31d36867eddcd78572}{uart\+\_\+n}} $\ast$}]{uart\+\_\+struct,  }\item[{uint8\+\_\+t $\ast$}]{data,  }\item[{uint32\+\_\+t}]{data\+\_\+size }\end{DoxyParamCaption})}
+
+
+
+Передаёт данные по U\+A\+RT. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em $\ast$uart\+\_\+struct} & -\/ Выбранный U\+A\+RT для инициализации \\
+\hline
+{\em $\ast$data} & -\/ Указатель на массив данных \\
+\hline
+{\em data\+\_\+size} & -\/ Размер данных в байтах \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Код ошибки uart\+\_\+errors 
+\end{DoxyReturn}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{198 \{}
+\DoxyCodeLine{199     \mbox{\hyperlink{uart_8h_a7c366cf58b12c041cc1dc3130264643f}{uart\_errors}} error;}
+\DoxyCodeLine{200     uint32\_t timer\_cnt = 0;}
+\DoxyCodeLine{201     }
+\DoxyCodeLine{202     \textcolor{comment}{// Активирование микросхемы RS485 на выдачу данных}}
+\DoxyCodeLine{203     \textcolor{keywordflow}{if} (uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a950a23e70a1db49a148ac1669bc98518}{UARTx}} == MDR\_UART1)}
+\DoxyCodeLine{204     \{}
+\DoxyCodeLine{205         PORT\_WriteBit(\mbox{\hyperlink{uart_8h_a590c865bf82f5db76c4ee77fa5f6cf20}{PORT\_UART1\_EN}}, \mbox{\hyperlink{uart_8h_af5a73d5cef316ce47a72c75874c28e68}{PIN\_UART1\_EN}}, 1);}
+\DoxyCodeLine{206     \}}
+\DoxyCodeLine{207     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a950a23e70a1db49a148ac1669bc98518}{UARTx}} == MDR\_UART2)}
+\DoxyCodeLine{208     \{}
+\DoxyCodeLine{209         PORT\_WriteBit(\mbox{\hyperlink{uart_8h_aec8f70a46f17ed2f70e86294ee2acc96}{PORT\_UART2\_EN}}, \mbox{\hyperlink{uart_8h_a11012fd387b786acaf1bd8fdba424351}{PIN\_UART2\_EN}}, 1);}
+\DoxyCodeLine{210     \}}
+\DoxyCodeLine{211     }
+\DoxyCodeLine{212     \textcolor{keywordflow}{if} (uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a7e54939f749f906e4f662c13f58abf16}{uart\_timeouts}}.\mbox{\hyperlink{structuart__timeouts_af40ee912511acefddcf789b5b986a048}{write\_timeout\_flag}} == 1)}
+\DoxyCodeLine{213     \{}
+\DoxyCodeLine{214         TIMER\_SetCounter(uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a7e54939f749f906e4f662c13f58abf16}{uart\_timeouts}}.\mbox{\hyperlink{structuart__timeouts_aa704f3a30041e52af9c8aa9e9283bce7}{timer\_n\_timeout}}-\/>\mbox{\hyperlink{structtimer__config__struct_a26d6f987c10095f685286d88e1cc4a96}{TIMERx}}, 0);}
+\DoxyCodeLine{215     \}}
+\DoxyCodeLine{216     \textcolor{keywordflow}{if} (data\_size > \mbox{\hyperlink{uart_8h_a0d57378e32bf8278011460740bc29f7f}{UART\_BUFFER\_SIZE}})}
+\DoxyCodeLine{217     \{}
+\DoxyCodeLine{218         error = \mbox{\hyperlink{uart_8h_acc42076253600be964e110149b458971a00d70d3edd67bde5b2049fb31fcba4fd}{SIZE\_ERROR}};}
+\DoxyCodeLine{219         \textcolor{keywordflow}{return} error;}
+\DoxyCodeLine{220     \}}
+\DoxyCodeLine{221     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < data\_size; i++)}
+\DoxyCodeLine{222     \{}
+\DoxyCodeLine{223         UART\_SendData(uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a950a23e70a1db49a148ac1669bc98518}{UARTx}}, data[i]);}
+\DoxyCodeLine{224         \textcolor{keywordflow}{while} (UART\_GetFlagStatus(uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a950a23e70a1db49a148ac1669bc98518}{UARTx}}, UART\_FLAG\_TXFF) == SET)}
+\DoxyCodeLine{225         \{}
+\DoxyCodeLine{226             \textcolor{keywordflow}{if} (uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a7e54939f749f906e4f662c13f58abf16}{uart\_timeouts}}.\mbox{\hyperlink{structuart__timeouts_af40ee912511acefddcf789b5b986a048}{write\_timeout\_flag}} == 1)}
+\DoxyCodeLine{227             \{}
+\DoxyCodeLine{228                 timer\_cnt = TIMER\_GetCounter(uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a7e54939f749f906e4f662c13f58abf16}{uart\_timeouts}}.\mbox{\hyperlink{structuart__timeouts_aa704f3a30041e52af9c8aa9e9283bce7}{timer\_n\_timeout}}-\/>\mbox{\hyperlink{structtimer__config__struct_a26d6f987c10095f685286d88e1cc4a96}{TIMERx}});}
+\DoxyCodeLine{229                 \textcolor{keywordflow}{if} (timer\_cnt >= (uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a7e54939f749f906e4f662c13f58abf16}{uart\_timeouts}}.\mbox{\hyperlink{structuart__timeouts_a8166acab7b59bbd32fbf6ca139a9d9d5}{write\_val\_timeout}}*50)) }
+\DoxyCodeLine{230                 \{}
+\DoxyCodeLine{231                     error = \mbox{\hyperlink{uart_8h_acc42076253600be964e110149b458971a94e4602a53bb7bd09807e344f43fd9df}{WRITE\_TIMEOUT\_ERROR}};}
+\DoxyCodeLine{232                     \textcolor{keywordflow}{return} error;}
+\DoxyCodeLine{233                 \}}
+\DoxyCodeLine{234             \}}
+\DoxyCodeLine{235         \}}
+\DoxyCodeLine{236     \}}
+\DoxyCodeLine{237     \textcolor{comment}{// Небольшая задержка для микросхемы RS-\/485 }}
+\DoxyCodeLine{238     \mbox{\hyperlink{timers_8c_a55159cc6c08a6ece9ceae2ac776b86f2}{delay\_micro}}(10);}
+\DoxyCodeLine{239     \textcolor{comment}{// Дезактивирование микросхемы RS485 на прием данных}}
+\DoxyCodeLine{240     \textcolor{keywordflow}{if} (uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a950a23e70a1db49a148ac1669bc98518}{UARTx}} == MDR\_UART1)}
+\DoxyCodeLine{241     \{}
+\DoxyCodeLine{242         PORT\_WriteBit(\mbox{\hyperlink{uart_8h_a590c865bf82f5db76c4ee77fa5f6cf20}{PORT\_UART1\_EN}}, \mbox{\hyperlink{uart_8h_af5a73d5cef316ce47a72c75874c28e68}{PIN\_UART1\_EN}}, 0);}
+\DoxyCodeLine{243     \}}
+\DoxyCodeLine{244     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (uart\_struct-\/>\mbox{\hyperlink{structuart__config__data_a950a23e70a1db49a148ac1669bc98518}{UARTx}} == MDR\_UART2)}
+\DoxyCodeLine{245     \{}
+\DoxyCodeLine{246         PORT\_WriteBit(\mbox{\hyperlink{uart_8h_aec8f70a46f17ed2f70e86294ee2acc96}{PORT\_UART2\_EN}}, \mbox{\hyperlink{uart_8h_a11012fd387b786acaf1bd8fdba424351}{PIN\_UART2\_EN}}, 0);}
+\DoxyCodeLine{247     \}}
+\DoxyCodeLine{248     }
+\DoxyCodeLine{249     \textcolor{keywordflow}{return} \mbox{\hyperlink{uart_8h_acc42076253600be964e110149b458971a14820276ae7e4047a53d9b78109f7e2a}{NO\_ERRORS}};}
+\DoxyCodeLine{250 \}}
+
+\end{DoxyCode}

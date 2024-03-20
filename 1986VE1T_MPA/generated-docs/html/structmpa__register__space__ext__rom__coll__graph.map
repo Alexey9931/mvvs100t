@@ -1,0 +1,4 @@
+<map id="mpa_register_space_ext_rom" name="mpa_register_space_ext_rom">
+<area shape="rect" id="node1" title="Органиация пространства регистров МПА для зеркализации во внешнем ПЗУ" alt="" coords="8,95,161,136"/>
+<area shape="rect" id="node2" href="$structai__oper__mode__struct.html" title="Структура с битовыми полями для регистра режим работы канала" alt="" coords="5,5,164,32"/>
+</map>

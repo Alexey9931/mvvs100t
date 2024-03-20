@@ -1,0 +1,20 @@
+<map id="list.h" name="list.h">
+<area shape="rect" id="node1" title="Заголовочный файл с описанием API для работы со списками (реализация аналогична linux kernel)" alt="" coords="895,5,949,32"/>
+<area shape="rect" id="node2" href="$list_8c.html" title="Файл с реализацией API для работы со списками (реализация аналогична linux kernel)" alt="" coords="806,80,859,107"/>
+<area shape="rect" id="node3" href="$main_8h.html" title="Заголовочный файл с реализацией основного функционала МПА" alt="" coords="891,379,958,405"/>
+<area shape="rect" id="node6" href="$timers_8h.html" title="Заголовочный файл с описанием API для работы с таймерами" alt="" coords="884,80,960,107"/>
+<area shape="rect" id="node4" href="$main_8c.html" title=" " alt="" coords="891,453,958,480"/>
+<area shape="rect" id="node5" href="$timers_8c.html" title="Файл с реализацией API для работы с таймерами" alt="" coords="735,453,810,480"/>
+<area shape="rect" id="node7" href="$1273pv19t_8c.html" title="Файл с реализацией API для работы с АЦП 1273ПВ19Т" alt="" coords="575,379,677,405"/>
+<area shape="rect" id="node8" href="$1273pv19t_8h.html" title="Заголовочный файл с описанием API для работы с микросхемой АЦП 1273ПВ19Т" alt="" coords="627,304,729,331"/>
+<area shape="rect" id="node11" href="$uart_8c.html" title="Файл с реализацией API для работы с UART." alt="" coords="959,229,1018,256"/>
+<area shape="rect" id="node12" href="$uart_8h.html" title="Заголовочный файл с описанием API для работы с UART." alt="" coords="892,155,952,181"/>
+<area shape="rect" id="node9" href="$dma_8c.html" title="Файл с реализацией API для работы с DMA." alt="" coords="753,379,816,405"/>
+<area shape="rect" id="node10" href="$spi_8c.html" title="Файл с реализацией API для работы с SPI." alt="" coords="499,379,551,405"/>
+<area shape="rect" id="node13" href="$dma_8h.html" title="Заголовочный файл с описанием API для работы с DMA." alt="" coords="753,304,816,331"/>
+<area shape="rect" id="node14" href="$rs422__protocol_8h.html" title="Заголовочный файл с описанием API протокола обмена данными по интерфейсу RS&#45;422." alt="" coords="385,229,515,256"/>
+<area shape="rect" id="node15" href="$external__ram_8h.html" title="Заголовочный файл с описанием API для работы с областью памяти внешнего ОЗУ" alt="" coords="371,304,492,331"/>
+<area shape="rect" id="node18" href="$rs422__protocol_8c.html" title="Файл с реализацией API протокола обмена данными по интерфейсу RS&#45;422." alt="" coords="5,379,135,405"/>
+<area shape="rect" id="node16" href="$external__ram_8c.html" title="Файл с реализацией API для работы с областью памяти внешнего ОЗУ" alt="" coords="354,379,474,405"/>
+<area shape="rect" id="node17" href="$external__rom_8c.html" title="Файл с реализацией API для работы с областью памяти внешнего ПЗУ" alt="" coords="210,379,330,405"/>
+</map>

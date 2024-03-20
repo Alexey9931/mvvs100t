@@ -10,20 +10,26 @@
 #include <math.h>
 #include "main.h"
 
+/// Структура с конфигурационными параметрами микросхемы АЦП
 extern adc_n adc_1;
+/// Указатель для обращения к внешнему ОЗУ
 extern ram_data *ram_space_pointer;
 
+/// Указатели на списки обработчиков таймеров
+list_head tmr_handler_head[TIMER_NUM];
 
-list_head tmr_handler_head[TIMER_NUM];//указатели на списки обработчиков таймеров
-
+/// Структура с конфигурационными параметрами блока Timer1 МК
 timer_n timer_1;
+/// Структура с конфигурационными параметрами блока Timer2 МК
 timer_n timer_2;
+/// Структура с конфигурационными параметрами блока Timer3 МК
 timer_n timer_3;
 
+/// Структура с конфигурационными параметрами блока SPI МК
 extern spi_n spi_1;
 
-/*
-Функция инициализации Timer1
+/*!
+ *	\brief Инициализирует Timer1
 */
 void timer1_init(timer_n *timer_struct);
 void timer1_init(timer_n *timer_struct)
@@ -43,8 +49,8 @@ void timer1_init(timer_n *timer_struct)
   TIMER_Cmd(MDR_TIMER1,ENABLE);
 	TIMER_SetCounter(MDR_TIMER1, 0);
 }
-/*
-Функция инициализации Timer3 
+/*!
+ *	\brief Инициализирует Timer3
 */
 void timer3_init(timer_n *timer_struct);
 void timer3_init(timer_n *timer_struct)
@@ -64,8 +70,8 @@ void timer3_init(timer_n *timer_struct)
   TIMER_Cmd(MDR_TIMER3, ENABLE);
 	TIMER_SetCounter(MDR_TIMER3, 0);
 }
-/*
-Функция инициализации Timer2
+/*!
+ *	\brief Инициализирует Timer2
 */
 void timer2_init(timer_n *timer_struct);
 void timer2_init(timer_n *timer_struct)
@@ -103,14 +109,13 @@ void timer2_init(timer_n *timer_struct)
 	NVIC_EnableIRQ(TIMER2_IRQn);
 	//NVIC_SetPriority(timer_struct->IRQn, 0);
 
-
   TIMER_BRGInit(MDR_TIMER2,TIMER_HCLKdiv1);
 
   TIMER_Cmd(MDR_TIMER2,ENABLE);
 	TIMER_SetCounter(MDR_TIMER2, 0);
 }
 /*
-Функция инициализации выбранного Timer 
+	Функция инициализации выбранного Timer 
 */
 void timer_init(timer_n *timer_struct)
 {
@@ -127,22 +132,12 @@ void timer_init(timer_n *timer_struct)
 		timer3_init(timer_struct);
 	}
 }
-/*
-Обработчик прерываний Timer2
+/*!
+ *	\brief Обработчик прерываний Timer2 (Обработка прерываний путем обхода двусвязного списка реализована аналогично linux kernel)
 */
 void TIMER2_IRQHandler(void);
 void TIMER2_IRQHandler(void)
 {
-	
-//	timer_irq_list *el = tmr_handler_head[1];
-//	while(el != NULL)
-//	{
-//		if (TIMER_GetITStatus(timer_2.TIMERx, el->event) == SET)
-//		{
-//			el->handler(el->data);
-//		}
-//		el = el->list.next;
-//	}
 	timer_irq_list *ep;
 	list_for_each_entry(ep, &tmr_handler_head[1], list)
 	{
@@ -151,89 +146,40 @@ void TIMER2_IRQHandler(void)
 			ep->handler(ep->data);
 		}
 	}
-	
-	
-//	//если сработало прерывание по переполнению счетчика CNT (CNT=ARR)
-//	if (TIMER_GetITStatus(timer_2.TIMERx, TIMER_STATUS_CNT_ARR) == SET)
-//	{
-//		//только если инициализирован АЦП
-//		if ((adc_1.init_flag == 1))
-//		{
-//			TIMER_ITConfig(timer_2.TIMERx, TIMER_STATUS_CNT_ARR, DISABLE);	
-//			//считываем FIFO буфер SPI
-//			uint16_t spi_rx_value[FIFO_SIZE];
-//			for (uint8_t i = 0; i < FIFO_SIZE; i++)
-//			{
-//				spi_rx_value[i] = adc_1.spi_struct->SSPx->DR;
-//			}
-//			//только если пришли все каналы, то записываем в буфер SPI
-//			if (adc_1.ch_rx_num == CHANEL_NUMBER)
-//			{
-//				memcpy(ram_space_pointer->spi_1_rx_buffer + spi_1.buffer_counter, spi_rx_value, CHANEL_NUMBER*sizeof(spi_rx_value[0]));
-//				spi_1.buffer_counter += CHANEL_NUMBER;
-//				if (adc_1.spi_struct->buffer_counter >= (CHANEL_NUMBER*adc_1.avg_num))
-//				{
-//					adc_1.spi_struct->buffer_counter = 0;
-//				}
-//			}
-//			adc_1.ch_rx_num = 0;
-//		}
-//		TIMER_ClearITPendingBit(timer_2.TIMERx, TIMER_STATUS_CNT_ARR);
-//	}
-//	//если сработало прерывание по срабатыванию захвата по 2 каналу Timer2
-//	else if (TIMER_GetITStatus(timer_2.TIMERx, TIMER_STATUS_CCR_CAP1_CH4) == SET)
-//	{
-//		//PORT_WriteBit(PORT_ADC_MODE, PIN_ADC_MODE_A0, 1);
-//			//только если инициализирован АЦП
-//			if ((adc_1.init_flag == 1))
-//			{
-//					TIMER_ITConfig(timer_2.TIMERx, TIMER_STATUS_CNT_ARR, DISABLE);
-//					adc_1.ch_rx_num++;
-//					if (adc_1.ch_rx_num == (CHANEL_NUMBER+1))
-//					{
-//						adc_1.ch_rx_num = 1;
-//					}
-//					TIMER_SetCounter(timer_2.TIMERx, 0);	
-//					TIMER_ClearITPendingBit(timer_2.TIMERx, TIMER_STATUS_CNT_ARR);
-//					TIMER_ITConfig(timer_2.TIMERx, TIMER_STATUS_CNT_ARR, ENABLE);			
-//			}
-//			TIMER_ClearITPendingBit(timer_2.TIMERx, TIMER_STATUS_CCR_CAP1_CH4);
-//			//PORT_WriteBit(PORT_ADC_MODE, PIN_ADC_MODE_A0, 0);
-//	}
 }
 /*
-Функция реализации задержки в мс
+	Функция реализации задержки в мс
 */
 void delay_milli(uint32_t time_milli)//задержка в мс 
 { 
 	TIMER_SetCounter(MDR_TIMER3, 0);
-	//uint32_t timer_cnt = TIMER_GetCounter(MDR_TIMER3);
 	while (TIMER_GetCounter(MDR_TIMER3) <=(time_milli*50));
 }
 /*
-Функция реализации задержки в мкс
+	Функция реализации задержки в мкс
 */
 void delay_micro(uint32_t time_micro)//задержка в мкс (максимум 10мс -> time_micro=9999)
 { 
 	TIMER_SetCounter(MDR_TIMER1, 0);
-	//uint32_t timer_cnt = TIMER_GetCounter(MDR_TIMER1);
 	while (TIMER_GetCounter(MDR_TIMER1) <= time_micro);
 }
 /*
-Функция добавления обработчиков прерываний таймеров в список обработчиков
+	Функция добавления обработчиков прерываний таймеров в список обработчиков
 */
 void list_tmr_handler_add_tail(uint8_t tmr_num, void (*func_ptr)(void*), void *data, TIMER_Status_Flags_TypeDef event)
 {
-	//выделяем память для нового указателя
+	// Выделяем память для нового указателя
 	timer_irq_list *ptr = (timer_irq_list*)malloc_ram_pages(sizeof(timer_irq_list));
-	//инициализируем элемент списка
+	// Инициализируем элемент списка
 	ptr->data = data;
 	ptr->event = event;
 	ptr->handler = func_ptr;
 	
 	list_add_tail(&ptr->list, &tmr_handler_head[tmr_num]);
 }
-
+/*
+	Функция инициализации списка обработчиков прерываний таймера
+*/
 void list_tmr_handler_init(uint8_t tmr_num)
 {
 	init_list_head(&tmr_handler_head[tmr_num]);
